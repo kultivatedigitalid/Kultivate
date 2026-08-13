@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import InteriorHero from '../../components/shared/InteriorHero.astro';
 import FinalCTA from '../../components/home/FinalCTA.astro';
+import ContactSuccessModal from '../../components/contact/ContactSuccessModal.astro';
 import { siteConfig } from '../../data/site';
 import { useTranslations } from '../../i18n/routes';
 
@@ -16,8 +17,8 @@ const t = useTranslations(locale);
 >
   <InteriorHero
     label="START A PROJECT"
-    title="Start with the problem that matters most."
-    description="Tell us what is holding growth back. We will help define the first step that makes sense."
+    title="Tell us what matters."
+    description="What you are building, what is in the way, and where you need help."
     image="/assets/banners/contact.webp"
     imageAlt="Blue paths of light joining into one structure"
     compact
@@ -81,9 +82,9 @@ const t = useTranslations(locale);
                 <label for="budget" class="form-label">{t('contact.budget')}</label>
                 <select id="budget" name="budget" class="form-select">
                   <option value="">{t('contact.placeholder_budget')}</option>
-                  <option value="tier1">&lt; $1,000 USD</option>
-                  <option value="tier2">$1,000 - $2,500 USD</option>
-                  <option value="tier3">&gt; $2,500 USD</option>
+                  <option value="tier1">&lt; IDR 15 million</option>
+                  <option value="tier2">IDR 15 million - IDR 35 million</option>
+                  <option value="tier3">&gt; IDR 35 million</option>
                 </select>
               </div>
             </div>
@@ -100,6 +101,7 @@ const t = useTranslations(locale);
                 {t('contact.submit')}
               </button>
             </div>
+            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
           </form>
         </div>
 
@@ -149,6 +151,7 @@ const t = useTranslations(locale);
     </div>
   </section>
 
+  <ContactSuccessModal locale={locale} />
   <FinalCTA locale={locale} />
 </BaseLayout>
 
@@ -279,6 +282,8 @@ const t = useTranslations(locale);
     color: var(--mist);
     line-height: 1.4;
   }
+
+  .form-status { min-height: 1.5em; color: var(--error); font-size: 0.875rem; }
 
   .contact-info-col {
     display: flex;

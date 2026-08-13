@@ -5,6 +5,7 @@ import FinalCTA from '../../components/home/FinalCTA.astro';
 import { siteConfig } from '../../data/site';
 
 const locale = 'en';
+const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURIComponent('Data deletion request')}&body=${encodeURIComponent('Full name:\nEmail address or WhatsApp number used on the form:\nApproximate form submission date:\n\nPlease delete the data I submitted through the Kultivate website form.')}`;
 ---
 
 <BaseLayout 
@@ -24,32 +25,37 @@ const locale = 'en';
   <section class="section privacy-content-section">
     <div class="container">
       <div class="privacy-card card">
-        <h2>1. Information Collection</h2>
+        <h2>1. Data We Collect</h2>
         <p>
-          We collect personal information directly provided by you when submitting forms on this website, including your full name, email address, WhatsApp contact number, company/brand name, and project requirements.
+          We retain the information you submit through the Start a Project form: name, company, email, WhatsApp number, service interest, project summary, target timeline, and budget range.
         </p>
 
-        <h2>2. Use of Information</h2>
+        <h2>2. Use and Access</h2>
         <p>
-          Collected data is strictly used to evaluate and respond to your project inquiries, prepare service scope proposals, and communicate regarding project deliverables. We do not sell or share personal data with third parties for marketing purposes.
+          We use this data to review your needs, respond to inquiries, prepare a scope of work, and communicate about the project. Access is limited to Kultivate team members who need it for these purposes.
         </p>
 
-        <h2>3. Static Form Processing</h2>
+        <h2>3. Form Processing</h2>
         <p>
-          Forms on this static site are processed using encrypted static form providers ({siteConfig.formEndpoint.includes('formspree') ? 'Formspree' : 'Approved Form Processor'}). Submitted data is securely handled via industry-standard HTTPS protocols.
+          Form submissions are delivered through Formspree as our form processor. Beyond that technical processing, Kultivate does not sell or share form data with other parties for marketing.
         </p>
 
-        <h2>4. Analytics & Cookie Policy</h2>
+        <h2>4. Retention and Deletion</h2>
         <p>
-          This website may utilize anonymous analytical cookies (such as Google Analytics) to monitor traffic patterns and improve user experience. You may configure or reject cookies via your browser preference settings.
+          Kultivate retains form data until you request deletion. Use our <a href={privacyRequestHref}>data deletion email template</a> so we can locate the correct information and confirm when the request is complete.
         </p>
 
-        <h2>5. Data Protection Contact</h2>
+        <h2>5. Analytics and Cookies</h2>
         <p>
-          If you have questions regarding this Privacy Policy or wish to request data updates/removal, please contact us directly via email at <strong>{siteConfig.email}</strong>.
+          This website currently does not use analytics or tracking cookies. Cookies required by third-party services are limited to the technical needs of those services.
         </p>
 
-        <p class="last-updated text-mono">Last updated: August 6, 2026</p>
+        <h2>6. Privacy Contact</h2>
+        <p>
+          Questions, corrections, or deletion requests can be sent to <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+        </p>
+
+        <p class="last-updated text-mono">Effective date: August 13, 2026</p>
       </div>
     </div>
   </section>

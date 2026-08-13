@@ -7,8 +7,8 @@ const copy = locale === 'id'
   ? {
       hero: {
         label: 'LAYANAN',
-        title: 'Satu sistem. Tiga cara tumbuh.',
-        description: 'Website, search, dan social yang bergerak bersama.'
+        title: 'Layanan yang terhubung.',
+        description: 'Website, SEO, dan social sebagai satu sistem.'
       },
       explore: 'Lihat layanan',
       services: [
@@ -41,8 +41,8 @@ const copy = locale === 'id'
   : {
       hero: {
         label: 'SERVICES',
-        title: 'One system. Three ways to grow.',
-        description: 'Website, search, and social moving together.'
+        title: 'Services that connect.',
+        description: 'Website, SEO, and social as one system.'
       },
       explore: 'Explore service',
       services: [
@@ -104,10 +104,11 @@ const copy = locale === 'id'
 
 <style>
   .services-index {
+    margin-top: -1px;
     padding: clamp(44px, 6vw, 88px) 0 clamp(76px, 10vw, 148px);
     background:
-      radial-gradient(ellipse 54% 22% at 50% 0%, rgba(23, 107, 255, 0.11), transparent 78%),
-      linear-gradient(180deg, #070b12, #05080e 44%, #070b12 100%);
+      radial-gradient(ellipse 54% 24% at 50% 10%, rgba(23, 107, 255, 0.065), transparent 80%),
+      linear-gradient(180deg, #070b12 0%, #070b12 11%, #060a11 42%, #05080e 70%, #070b12 100%);
   }
 
   .service-stream { display: flex; flex-direction: column; gap: clamp(104px, 14vw, 196px); }

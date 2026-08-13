@@ -133,9 +133,12 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
   <footer class="footer">
     <div class="footer-container container">
       <div class="footer-brand-section">
-        <a href={'/' + locale + '/'} class="logo logo-footer" aria-label="Kultivate">
-          <img src="/kultivate-logo.svg" alt="Kultivate" width="190" height="36" />
-        </a>
+        <div class="footer-signature">
+          <a href={'/' + locale + '/'} class="logo logo-footer" aria-label="Kultivate">
+            <img src="/kultivate-logo.svg" alt="Kultivate" width="190" height="36" />
+          </a>
+          <span class="footer-credit">by PT Karya Lintas Generasi, Joshua Wijaya.</span>
+        </div>
         <p class="footer-tagline">{t('footer.tagline')}</p>
       </div>
 
@@ -244,11 +247,35 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
   }
 
   .logo {
+    position: relative;
     display: inline-flex;
     align-items: center;
   }
 
-  .logo img { width: 112px; height: auto; display: block; }
+  .logo::after {
+    content: '';
+    position: absolute;
+    left: 78.667%;
+    top: 69.444%;
+    width: 4px;
+    aspect-ratio: 1;
+    border-radius: 0.5px;
+    background: var(--cyan-glow);
+    box-shadow: 0 0 0 rgba(103, 217, 255, 0);
+    transform: translate(-50%, -50%) scale(1);
+    transform-origin: center;
+    pointer-events: none;
+    transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 240ms var(--ease-out);
+  }
+
+  .logo img {
+    width: 112px;
+    height: auto;
+    display: block;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: drop-shadow(0 0 0 rgba(103, 217, 255, 0));
+    transition: opacity 160ms var(--ease-out), transform 240ms cubic-bezier(0.16, 1, 0.3, 1), filter 240ms var(--ease-out);
+  }
 
   .logo:active,
   .nav-list a:active,
@@ -398,12 +425,32 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
   }
 
   .footer-brand-section {
-    max-width: 340px;
+    max-width: 460px;
   }
 
-  .logo-footer { margin-bottom: 18px; }
+  .footer-signature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: fit-content;
+    margin-bottom: 18px;
+  }
+
+  .logo-footer { flex: none; }
 
   .logo-footer img { width: 128px; }
+
+  .logo-footer::after { width: 4px; }
+
+  .footer-credit {
+    max-width: 220px;
+    color: rgba(201, 211, 223, 0.68);
+    font-size: 0.72rem;
+    line-height: 1.35;
+    opacity: 0;
+    transform: translate3d(-8px, 0, 0);
+    transition: opacity 160ms var(--ease-out), transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
 
   .footer-tagline {
     color: var(--steel);
@@ -492,7 +539,24 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .logo:hover img { opacity: 0.86; }
+    .logo:hover img,
+    .logo:focus-visible img {
+      opacity: 1;
+      transform: translate3d(0, -2px, 0) scale(1.035);
+      filter: drop-shadow(0 7px 10px rgba(103, 217, 255, 0.16));
+    }
+
+    .logo:hover::after,
+    .logo:focus-visible::after {
+      transform: translate(-50%, calc(-50% - 2px)) scale(1.65);
+      box-shadow: 0 0 16px rgba(103, 217, 255, 0.5);
+    }
+
+    .footer-signature:hover .footer-credit,
+    .footer-signature:focus-within .footer-credit {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
 
     .nav-list a:hover,
     .lang-btn:hover {
@@ -506,6 +570,21 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
     .footer-links-col a:hover {
       transform: translateX(2px);
     }
+  }
+
+
+  @media (hover: none) {
+    .footer-credit { opacity: 1; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo img,
+    .logo::after { transition: none; }
+    .logo:hover img,
+    .logo:focus-visible img { transform: none; }
+    .logo:hover::after,
+    .logo:focus-visible::after { transform: translate(-50%, -50%) scale(1.35); }
+    .footer-credit { transition: opacity 120ms ease-out; transform: none; }
   }
 
   @media (prefers-reduced-transparency: reduce) {

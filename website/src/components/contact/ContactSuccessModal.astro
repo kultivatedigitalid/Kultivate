@@ -1,0 +1,108 @@
+---
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+---
+
+<dialog
+  id="contact-success"
+  class="contact-success"
+  aria-labelledby="contact-success-title"
+  aria-describedby="contact-success-description"
+  data-sending={locale === 'id' ? 'Mengirim...' : 'Sending...'}
+  data-error={locale === 'id' ? 'Formulir belum terkirim. Coba lagi atau hubungi kami melalui email.' : 'The form was not sent. Try again or contact us by email.'}
+>
+  <div class="contact-success__content">
+    <span class="text-mono">{locale === 'id' ? 'PERMINTAAN DITERIMA' : 'REQUEST RECEIVED'}</span>
+    <h2 id="contact-success-title">{locale === 'id' ? 'Terima kasih.' : 'Thank you.'}</h2>
+    <p id="contact-success-description">
+      {locale === 'id'
+        ? 'Terima kasih sudah mengisi formulir. Tim kami akan menghubungi Anda paling lambat H+1 hari kerja.'
+        : 'Thank you for completing the form. Our team will contact you within one business day.'}
+    </p>
+    <button type="button" class="btn btn-primary" data-success-close>
+      {locale === 'id' ? 'Baik, saya mengerti' : 'Got it'}
+    </button>
+  </div>
+</dialog>
+
+<style>
+  .contact-success {
+    width: min(560px, calc(100vw - 32px));
+    padding: 0;
+    border: 0;
+    border-radius: 12px;
+    color: var(--cloud-white);
+    background: rgba(7, 11, 18, 0.96);
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 180ms var(--ease-out), transform 240ms cubic-bezier(0.16, 1, 0.3, 1), overlay 240ms allow-discrete, display 240ms allow-discrete;
+  }
+
+  .contact-success[open] { opacity: 1; transform: translateY(0); }
+
+  @starting-style {
+    .contact-success[open] { opacity: 0; transform: translateY(32px); }
+  }
+
+  .contact-success::backdrop {
+    background: rgba(2, 5, 10, 0.68);
+    backdrop-filter: blur(14px);
+    opacity: 0;
+    transition: opacity 200ms var(--ease-out), overlay 240ms allow-discrete, display 240ms allow-discrete;
+  }
+
+  .contact-success[open]::backdrop { opacity: 1; }
+  @starting-style { .contact-success[open]::backdrop { opacity: 0; } }
+
+  .contact-success__content { padding: clamp(30px, 5vw, 52px); }
+  .contact-success__content > span { display: block; margin-bottom: 22px; color: var(--cyan-glow); }
+  .contact-success h2 { margin-bottom: 18px; font-size: clamp(2.25rem, 5vw, 3.8rem); font-weight: 540; letter-spacing: -0.04em; line-height: 0.98; }
+  .contact-success p { max-width: 46ch; margin-bottom: 32px; color: var(--mist); line-height: 1.65; }
+  .contact-success .btn { min-width: 168px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-success { transform: none; transition-duration: 120ms; }
+    .contact-success::backdrop { backdrop-filter: none; transition-duration: 120ms; }
+    @starting-style { .contact-success[open] { transform: none; } }
+  }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#contact-form');
+  const modal = document.querySelector<HTMLDialogElement>('#contact-success');
+  const closeButton = modal?.querySelector<HTMLButtonElement>('[data-success-close]');
+  const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+  const submitLabel = submitButton?.textContent?.trim() || '';
+  const status = form?.querySelector<HTMLElement>('[data-form-status]');
+
+  closeButton?.addEventListener('click', () => modal?.close());
+  modal?.addEventListener('click', (event) => {
+    if (event.target === modal) modal.close();
+  });
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!submitButton || !modal) return;
+
+    submitButton.disabled = true;
+    submitButton.textContent = modal.dataset.sending || 'Sending...';
+    if (status) status.textContent = '';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+
+      if (!response.ok) throw new Error('Form submission failed');
+      form.reset();
+      modal.showModal();
+    } catch {
+      if (status) status.textContent = modal.dataset.error || 'The form was not sent.';
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = submitLabel;
+    }
+  });
+</script>

@@ -4,8 +4,8 @@ interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
 const articles = editorialItems[locale].slice(0, 4);
 const copy = locale === 'id'
-  ? { title: 'Catatan untuk kerja digital yang lebih jernih.', all: 'Lihat semua', read: 'Baca artikel' }
-  : { title: 'Notes for clearer digital work.', all: 'View all', read: 'Read article' };
+  ? { title: 'Catatan untuk keputusan digital.', all: 'Lihat semua', read: 'Baca artikel' }
+  : { title: 'Notes for digital decisions.', all: 'View all', read: 'Read article' };
 ---
 
 <section id="insights" class="insights-section" aria-labelledby="insights-title">

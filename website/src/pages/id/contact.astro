@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import InteriorHero from '../../components/shared/InteriorHero.astro';
 import FinalCTA from '../../components/home/FinalCTA.astro';
+import ContactSuccessModal from '../../components/contact/ContactSuccessModal.astro';
 import { siteConfig } from '../../data/site';
 import { useTranslations } from '../../i18n/routes';
 
@@ -16,8 +17,8 @@ const t = useTranslations(locale);
 >
   <InteriorHero
     label="MULAI PROYEK"
-    title="Mulai dari masalah yang paling nyata."
-    description="Ceritakan apa yang sedang menahan pertumbuhan. Kami akan membantu menentukan langkah pertama yang masuk akal."
+    title="Ceritakan kebutuhan Anda."
+    description="Apa yang sedang dibangun, apa yang menghambat, dan bantuan yang dibutuhkan."
     image="/assets/banners/contact.webp"
     imageAlt="Jalur cahaya biru yang bergabung menuju satu struktur"
     compact
@@ -100,6 +101,7 @@ const t = useTranslations(locale);
                 {t('contact.submit')}
               </button>
             </div>
+            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
           </form>
         </div>
 
@@ -149,6 +151,7 @@ const t = useTranslations(locale);
     </div>
   </section>
 
+  <ContactSuccessModal locale={locale} />
   <FinalCTA locale={locale} />
 </BaseLayout>
 
@@ -279,6 +282,8 @@ const t = useTranslations(locale);
     color: var(--mist);
     line-height: 1.4;
   }
+
+  .form-status { min-height: 1.5em; color: var(--error); font-size: 0.875rem; }
 
   .contact-info-col {
     display: flex;

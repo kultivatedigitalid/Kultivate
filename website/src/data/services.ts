@@ -20,10 +20,10 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       tagline: 'Buat nilai bisnis Anda langsung terasa.',
       description: 'Website yang cepat dan jelas—dibangun sebagai pusat pesan, kredibilitas, dan inquiry.',
       problemsSolved: [
-        'Website lambat dan sering down yang membuat calon pelanggan pergi.',
-        'Desain tidak responsif di perangkat mobile.',
-        'Struktur kode berantakan yang menyulitkan optimasi SEO.',
-        'Kurangnya integrasi analitik untuk mengukur aktivitas pengunjung.'
+        'Website cepat dan stabil saat calon pelanggan datang.',
+        'Pengalaman yang tetap jelas di mobile, tablet, dan desktop.',
+        'Struktur kode yang rapi untuk SEO dan pengembangan berikutnya.',
+        'Analitik yang menunjukkan perjalanan pengunjung hingga inquiry.'
       ],
       whoItIsFor: [
         'Bisnis berkembang yang ingin meningkatkan kredibilitas profesional.',
@@ -57,9 +57,9 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       tagline: 'Hadir tepat saat kebutuhan dicari.',
       description: 'Struktur teknis dan konten mengikuti niat pencarian, lalu mengarahkannya ke nilai bisnis yang relevan.',
       problemsSolved: [
-        'Website tidak muncul di halaman pertama pencarian Google.',
-        'Trafik website ada, tetapi tidak menghasilkan leads/inquiry yang relevan.',
-        'Struktur konten membingungkan bot mesin pencari.'
+        'Halaman penting lebih mudah ditemukan untuk pencarian yang relevan.',
+        'Trafik lebih selaras dengan layanan dan peluang inquiry.',
+        'Struktur konten mudah dipahami pengguna dan mesin pencari.'
       ],
       whoItIsFor: [
         'Bisnis B2B atau jasa yang mengandalkan inquiry inbound.',
@@ -92,9 +92,9 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       tagline: 'Tetap dekat setelah perhatian pertama.',
       description: 'Sistem konten yang menjaga pesan tetap konsisten, relevan, dan mudah diteruskan.',
       problemsSolved: [
-        'Halaman media sosial tampak mati dan tidak aktif karena jarang posting.',
-        'Visual konten tidak konsisten dan tidak mencerminkan brand guideline.',
-        'Gagal menyampaikan pesan utama jasa atau produk di platform sosial.'
+        'Ritme publikasi yang aktif dan dapat dijalankan secara konsisten.',
+        'Visual brand yang tetap dikenali di setiap format konten.',
+        'Nilai utama produk atau layanan tersampaikan dengan jelas.'
       ],
       whoItIsFor: [
         'Pemilik brand yang sibuk dan tidak sempat memikirkan ide konten harian.',
@@ -128,10 +128,10 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       tagline: 'Make your value clear on arrival.',
       description: 'A fast, focused website built as the center of your message, credibility, and inquiries.',
       problemsSolved: [
-        'Slow load times and frequent downtime leading to lost prospects.',
-        'Unresponsive layouts across mobile and tablet devices.',
-        'Messy codebase impeding search engine crawls and SEO performance.',
-        'Lack of structural web analytics to track user conversions.'
+        'A fast, stable website when prospects arrive.',
+        'A clear experience across mobile, tablet, and desktop.',
+        'A maintainable codebase ready for SEO and future improvements.',
+        'Analytics that trace the visitor journey through to inquiry.'
       ],
       whoItIsFor: [
         'Growing businesses seeking to elevate professional credibility.',
@@ -165,9 +165,9 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       tagline: 'Show up when the need is real.',
       description: 'Technical structure and content follow search intent, then connect it to relevant business value.',
       problemsSolved: [
-        'Website missing from high-value search queries.',
-        'Traffic arrives, but fails to convert into relevant leads or inquiries.',
-        'Confusing navigation paths that hinder search engine bots.'
+        'Priority pages become easier to find for relevant searches.',
+        'Traffic aligns more closely with services and inquiry opportunities.',
+        'Content structures that users and search engines can navigate clearly.'
       ],
       whoItIsFor: [
         'B2B firms and service providers relying on qualified inbound inquiries.',
@@ -200,9 +200,9 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       tagline: 'Stay close after the first impression.',
       description: 'A content system that keeps the message consistent, relevant, and easy to carry forward.',
       problemsSolved: [
-        'Inactive or dormant social channels caused by inconsistent posting schedules.',
-        'Visual styling shifts that deviate from the approved brand guidelines.',
-        'Failure to convey the primary benefits of products or services in social content.'
+        'An active publishing rhythm the team can sustain.',
+        'A recognizable brand across every content format.',
+        'Clear communication of the product or service value.'
       ],
       whoItIsFor: [
         'Brand owners needing structured content ideas without the day-to-day production overhead.',

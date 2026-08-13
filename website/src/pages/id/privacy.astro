@@ -5,6 +5,7 @@ import FinalCTA from '../../components/home/FinalCTA.astro';
 import { siteConfig } from '../../data/site';
 
 const locale = 'id';
+const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURIComponent('Permintaan penghapusan data')}&body=${encodeURIComponent('Nama lengkap:\nEmail atau nomor WhatsApp yang digunakan saat mengisi formulir:\nPerkiraan tanggal pengiriman formulir:\n\nMohon hapus data saya yang tersimpan melalui formulir website Kultivate.')}`;
 ---
 
 <BaseLayout 
@@ -24,32 +25,37 @@ const locale = 'id';
   <section class="section privacy-content-section">
     <div class="container">
       <div class="privacy-card card">
-        <h2>1. Pengumpulan Data Informasi</h2>
+        <h2>1. Data yang Dikumpulkan</h2>
         <p>
-          Kami mengumpulkan informasi yang Anda berikan secara langsung saat mengisi formulir Kontak / Mulai Proyek, termasuk nama lengkap, alamat email, nomor WhatsApp, nama perusahaan, serta rincian kebutuhan proyek digital Anda.
+          Kami menyimpan data yang Anda kirim melalui formulir Mulai Proyek: nama, perusahaan, email, nomor WhatsApp, layanan yang diminati, ringkasan kebutuhan, target waktu, dan rentang budget.
         </p>
 
-        <h2>2. Penggunaan Informasi</h2>
+        <h2>2. Penggunaan dan Akses</h2>
         <p>
-          Informasi yang dikumpulkan hanya digunakan untuk merespons pertanyaan proyek Anda, menyusun proposal penawaran layanan, serta berkomunikasi terkait pengerjaan proyek. Kami tidak pernah menjual atau membagikan data Anda kepada pihak ketiga untuk kepentingan pemasaran.
+          Data digunakan untuk meninjau kebutuhan, merespons inquiry, menyiapkan lingkup kerja, dan berkomunikasi mengenai proyek. Akses dibatasi kepada tim internal Kultivate yang membutuhkannya untuk proses tersebut.
         </p>
 
-        <h2>3. Pengolahan Formulir Static</h2>
+        <h2>3. Pemrosesan Formulir</h2>
         <p>
-          Formulir di website ini menggunakan penyedia layanan formulir static terenkripsi ({siteConfig.formEndpoint.includes('formspree') ? 'Formspree' : 'Form Processor Approved'}). Data yang dikirimkan diproses secara aman melalui protokol HTTPS standar industri.
+          Formulir dikirim melalui Formspree sebagai penyedia pemrosesan formulir. Selain pemrosesan teknis tersebut, Kultivate tidak menjual atau membagikan data formulir kepada pihak lain untuk pemasaran.
         </p>
 
-        <h2>4. Analitik & Cookie Consent</h2>
+        <h2>4. Penyimpanan dan Penghapusan</h2>
         <p>
-          Website ini dapat menggunakan cookie analitik anonim (seperti Google Analytics) untuk mengukur trafik dan meningkatkan pengalaman pengguna. Anda dapat mengatur atau menolak cookie melalui pengaturan peramban (browser) Anda.
+          Kultivate menyimpan data formulir sampai Anda meminta penghapusan. Kirim permintaan melalui <a href={privacyRequestHref}>template email penghapusan data</a> agar kami dapat menemukan data yang tepat dan mengonfirmasi penyelesaiannya.
         </p>
 
-        <h2>5. Kontak Perlindungan Data</h2>
+        <h2>5. Analytics dan Cookie</h2>
         <p>
-          Jika Anda memiliki pertanyaan terkait kebijakan privasi atau ingin memperbarui/menghapus data Anda dari sistem kami, silakan hubungi kami melalui email di <strong>{siteConfig.email}</strong>.
+          Website ini saat ini tidak menggunakan analytics atau cookie pelacakan. Cookie yang diperlukan oleh layanan pihak ketiga hanya mengikuti kebutuhan teknis layanan tersebut.
         </p>
 
-        <p class="last-updated text-mono">Terakhir diperbarui: 6 Agustus 2026</p>
+        <h2>6. Kontak Privasi</h2>
+        <p>
+          Pertanyaan, koreksi, atau permintaan penghapusan data dapat dikirim ke <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+        </p>
+
+        <p class="last-updated text-mono">Berlaku sejak: 13 Agustus 2026</p>
       </div>
     </div>
   </section>
