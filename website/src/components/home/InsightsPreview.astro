@@ -1,0 +1,53 @@
+---
+import { editorialItems } from '../../data/editorial';
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+const articles = editorialItems[locale].slice(0, 4);
+const copy = locale === 'id'
+  ? { title: 'Catatan untuk kerja digital yang lebih jernih.', all: 'Lihat semua', read: 'Baca artikel' }
+  : { title: 'Notes for clearer digital work.', all: 'View all', read: 'Read article' };
+---
+
+<section id="insights" class="insights-section" aria-labelledby="insights-title">
+  <div class="container insights-shell">
+    <header class="insights-header">
+      <div><span class="section-kicker">Blog</span><h2 id="insights-title">{copy.title}</h2></div>
+      <a href={'/' + locale + '/insights/'} class="all-insights-link"><span>{copy.all}</span><span aria-hidden="true">&#8594;</span></a>
+    </header>
+    <div class="insights-rail" aria-label={locale === 'id' ? 'Artikel terbaru, geser secara horizontal' : 'Latest articles, scroll horizontally'}>
+      {articles.map((article) => (
+        <a href={'/' + locale + '/insights/' + article.slug + '/'} class="insight-card">
+          <figure><img src={article.image} alt={article.alt} width="1536" height="1024" loading="lazy" decoding="async" /></figure>
+          <div class="insight-meta text-mono"><span>{article.category}</span><time>{article.date}</time></div>
+          <h3>{article.title}</h3>
+          <span class="read-link"><span>{copy.read}</span><span aria-hidden="true">&#8594;</span></span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .insights-section { position: relative; margin-top: -1px; overflow: hidden; padding-block: clamp(70px, 8vw, 112px); background: radial-gradient(ellipse 46% 28% at 80% 2%, rgba(103, 217, 255, 0.055), transparent 76%), linear-gradient(180deg, #070b12 0%, #07101a 48%, #070b12 100%); }
+  .insights-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 34px; }
+  .insights-header > div { max-width: 700px; }
+  .insights-header h2 { font-size: clamp(2rem, 3.7vw, 4rem); }
+  .all-insights-link { display: inline-flex; min-height: 44px; align-items: center; gap: 8px; color: var(--mist); font-size: 0.82rem; }
+  .insights-rail { display: grid; grid-auto-flow: column; grid-auto-columns: clamp(290px, 30vw, 400px); gap: 16px; overflow-x: auto; scroll-snap-type: inline mandatory; scrollbar-width: thin; scrollbar-color: rgba(103, 217, 255, 0.34) transparent; padding-bottom: 18px; }
+  .insight-card { min-width: 0; display: block; color: inherit; scroll-snap-align: start; }
+  .insight-card figure { aspect-ratio: 16 / 9; overflow: hidden; border-radius: 7px; margin-bottom: 16px; background: #07101a; }
+  .insight-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.78) saturate(0.82); transition: transform 620ms var(--ease-out), filter 400ms var(--ease-out); }
+  .insight-meta { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 13px; color: rgba(201, 211, 223, 0.52); font-size: 0.61rem; }
+  .insight-card h3 { max-width: 24ch; min-height: 2.35em; color: var(--cloud-white); font-size: clamp(1.08rem, 1.5vw, 1.38rem); font-weight: 540; line-height: 1.18; }
+  .read-link { width: fit-content; min-height: 44px; display: inline-flex; align-items: center; gap: 9px; margin-top: 18px; border: 1px solid rgba(201, 211, 223, 0.36); border-radius: 999px; padding: 8px 15px; color: var(--mist); font-family: var(--font-mono); font-size: 0.61rem; letter-spacing: 0.08em; text-transform: uppercase; transition: border-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 180ms var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) {
+    .all-insights-link:hover, .insight-card:hover .read-link { color: var(--cloud-white); }
+    .insight-card:hover .read-link { transform: translateY(-2px); border-color: rgba(207, 247, 255, 0.72); }
+    .insight-card:hover img { transform: scale(1.035); filter: brightness(0.9) saturate(0.96); }
+  }
+  @media (max-width: 760px) {
+    .insights-header { align-items: flex-start; flex-direction: column; gap: 16px; }
+    .insights-rail { grid-auto-columns: minmax(270px, 84vw); }
+  }
+  @media (prefers-reduced-motion: reduce) { .insight-card img, .read-link { transition: none; } }
+</style>

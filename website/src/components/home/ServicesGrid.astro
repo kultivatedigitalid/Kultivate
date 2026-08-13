@@ -1,0 +1,300 @@
+---
+import { servicesData } from '../../data/services';
+
+interface Props {
+  locale: 'id' | 'en';
+}
+
+const { locale } = Astro.props;
+const services = servicesData[locale] || [];
+
+const presentation = locale === 'id'
+  ? {
+      'website-development': {
+        title: 'Website',
+        role: 'Fondasi',
+        description: 'Satu tempat untuk menjelaskan nilai dan mengubah perhatian menjadi inquiry.',
+        image: '/assets/services/website-system-v2.webp'
+      },
+      seo: {
+        title: 'SEO',
+        role: 'Ditemukan',
+        description: 'Struktur yang membawa bisnis Anda hadir saat kebutuhan mulai dicari.',
+        image: '/assets/services/seo-discovery-v2.webp'
+      },
+      'social-media-management': {
+        title: 'Social',
+        role: 'Diingat',
+        description: 'Distribusi konten yang menjaga pesan tetap konsisten dan dekat.',
+        image: '/assets/services/social-distribution-v2.webp'
+      }
+    }
+  : {
+      'website-development': {
+        title: 'Website',
+        role: 'Foundation',
+        description: 'One place to clarify your value and turn attention into inquiry.',
+        image: '/assets/services/website-system-v2.webp'
+      },
+      seo: {
+        title: 'SEO',
+        role: 'Discovery',
+        description: 'A structure that makes your business present when the search begins.',
+        image: '/assets/services/seo-discovery-v2.webp'
+      },
+      'social-media-management': {
+        title: 'Social',
+        role: 'Recall',
+        description: 'Content distribution that keeps the message consistent and close.',
+        image: '/assets/services/social-distribution-v2.webp'
+      }
+    };
+---
+
+<section id="services" class="services-section section-padding" aria-labelledby="services-title">
+  <div class="container">
+    <header class="services-header">
+      <span class="section-kicker">{locale === 'id' ? 'Layanan' : 'Services'}</span>
+      <h2 id="services-title">{locale === 'id' ? 'Fondasi, penemuan, distribusi?terhubung.' : 'Foundation, discovery, distribution?connected.'}</h2>
+      <p>
+        {locale === 'id'
+          ? 'Mulai dari kebutuhan yang paling mendesak. Kami menjaga dampaknya tetap menyatu.'
+          : 'Start with the most urgent need. We keep the impact connected.'}
+      </p>
+    </header>
+
+    <div class="services-grid">
+      {services.map((service) => {
+        const item = presentation[service.id as keyof typeof presentation];
+        return (
+          <a
+            class="service-panel"
+            href={'/' + locale + '/services/' + service.slug + '/'}
+            aria-label={service.title}
+          >
+            <div class="service-media" aria-hidden="true">
+              <img
+                src={item.image}
+                alt=""
+                width="1200"
+                height="768"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="service-scrim" aria-hidden="true"></div>
+            <div class="service-content">
+              <span class="service-role text-mono">{item.role}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+              <span class="service-action">
+                <span>{locale === 'id' ? 'Pelajari' : 'Explore'}</span>
+                <span aria-hidden="true">&#8594;</span>
+              </span>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    position: relative;
+    background:
+      radial-gradient(ellipse 46% 48% at 88% 14%, rgba(103, 217, 255, 0.06), transparent 72%),
+      radial-gradient(ellipse 58% 62% at 46% 58%, rgba(23, 107, 255, 0.07), transparent 74%),
+      linear-gradient(180deg, transparent 0%, rgba(11, 19, 34, 0.2) 52%, transparent 100%);
+  }
+
+  .services-header {
+    max-width: 720px;
+    margin-bottom: clamp(36px, 5vw, 56px);
+  }
+
+  .services-header h2 {
+    margin-bottom: 16px;
+  }
+
+  .services-header p {
+    max-width: 52ch;
+    color: var(--steel);
+    font-size: 0.96rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    overflow: hidden;
+    border-radius: var(--border-radius-lg);
+    background: rgba(39, 50, 68, 0.52);
+  }
+
+  .service-panel {
+    position: relative;
+    min-width: 0;
+    min-height: clamp(320px, 34vw, 430px);
+    overflow: hidden;
+    background: linear-gradient(155deg, rgba(11, 19, 34, 0.96), rgba(7, 11, 18, 0.98));
+    isolation: isolate;
+    transition:
+      transform 220ms var(--ease-out),
+      box-shadow 220ms var(--ease-out);
+  }
+
+  .service-media,
+  .service-media img,
+  .service-scrim {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .service-media {
+    z-index: -2;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 480ms var(--ease-out);
+  }
+
+  .service-media img {
+    object-fit: cover;
+    opacity: 0.82;
+    transform: scale(1.035);
+    transition: transform 480ms var(--ease-out);
+  }
+
+  .service-scrim {
+    z-index: -1;
+    background:
+      linear-gradient(0deg, rgba(7, 11, 18, 0.98) 0%, rgba(7, 11, 18, 0.68) 52%, rgba(7, 11, 18, 0.2) 100%),
+      linear-gradient(90deg, rgba(7, 11, 18, 0.62), transparent);
+  }
+
+  .service-content {
+    min-height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(24px, 3.2vw, 38px);
+    transition: transform 220ms var(--ease-out);
+  }
+
+  .service-role {
+    color: rgba(201, 211, 223, 0.72);
+  }
+
+  .service-content h3 {
+    margin-bottom: 14px;
+    color: var(--cloud-white);
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 2.8vw, 3.35rem);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+  }
+
+  .service-content p {
+    max-width: 30ch;
+    color: rgba(201, 211, 223, 0.84);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .service-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--mist);
+    font-size: 0.82rem;
+    font-weight: 550;
+  }
+
+  .service-action [aria-hidden] {
+    transition: transform 180ms var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .service-panel:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-panel:hover .service-media {
+      clip-path: inset(0 0 0 0);
+    }
+
+    .service-panel:hover .service-media img {
+      transform: scale(1);
+    }
+
+    .service-panel:hover .service-content {
+      transform: translateY(-2px);
+    }
+
+    .service-panel:hover .service-action [aria-hidden] {
+      transform: translate3d(2px, -2px, 0);
+    }
+  }
+
+  .service-panel:active {
+    transform: scale(0.995);
+  }
+
+  .service-panel:focus-visible .service-media {
+    clip-path: inset(0);
+    transition-duration: 0ms;
+  }
+
+  .service-panel:focus-visible .service-media img {
+    transform: scale(1);
+    transition-duration: 0ms;
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .service-media {
+      clip-path: inset(0);
+    }
+
+    .service-media img {
+      opacity: 0.5;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 920px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-panel,
+    .service-content {
+      min-height: 202px;
+    }
+
+    .service-content {
+      padding: 24px;
+    }
+
+    .service-content h3 {
+      font-size: clamp(2rem, 9vw, 3rem);
+    }
+
+    .service-content p {
+      max-width: 38ch;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-panel,
+    .service-media,
+    .service-media img,
+    .service-content,
+    .service-action [aria-hidden] {
+      transition: color 180ms ease, opacity 180ms ease;
+    }
+  }
+</style>

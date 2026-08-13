@@ -1,0 +1,162 @@
+---
+import InteriorHero from '../shared/InteriorHero.astro';
+import { portfolioItems } from '../../data/editorial';
+
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+const items = portfolioItems[locale];
+const copy = locale === 'id'
+  ? {
+      label: 'PORTOFOLIO',
+      title: 'Hasil kerja yang menggerakkan bisnis.',
+      description: 'Website, search, dan content yang bekerja sebagai satu sistem.',
+      note: 'Hasil kerja kami'
+    }
+  : {
+      label: 'PORTFOLIO',
+      title: 'Work that moves the business.',
+      description: 'Website, search, and content working as one system.',
+      note: 'Our work'
+    };
+---
+
+<InteriorHero
+  title={copy.title}
+  description={copy.description}
+  label={copy.label}
+  image="/assets/banners/portfolio.webp"
+  imageAlt={locale === 'id' ? 'Bidang arsitektur biru gelap yang bertemu menuju satu titik' : 'Dark blue architectural planes converging toward one point'}
+/>
+
+<section class="portfolio-section" aria-label={locale === 'id' ? 'Hasil kerja' : 'Our work'}>
+  <div class="container portfolio-lead"><span class="text-mono">{copy.note}</span></div>
+  <div class="portfolio-grid container">
+    {items.map((item, index) => (
+      <article class:list={['portfolio-item', 'portfolio-item--' + (index + 1)]} tabindex="0" style={{ '--project-theme': item.theme }}>
+        <figure class="portfolio-media">
+          <img src={item.image} alt={item.alt} width="1536" height="1024" loading={index < 3 ? 'eager' : 'lazy'} decoding="async" />
+          <figcaption class="portfolio-caption">
+            <strong>{item.brand}</strong>
+            <span>{item.descriptor}</span>
+          </figcaption>
+        </figure>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .portfolio-section {
+    margin-top: -1px;
+    padding: clamp(36px, 5vw, 72px) 0 clamp(76px, 10vw, 148px);
+    background:
+      radial-gradient(ellipse 54% 22% at 50% 0%, rgba(23, 107, 255, 0.08), transparent 80%),
+      linear-gradient(180deg, #070b12 0%, #060a11 34%, #05080e 72%, #070b12 100%);
+  }
+
+  .portfolio-lead { margin-bottom: 24px; color: rgba(201, 211, 223, 0.5); }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(12px, 1.5vw, 22px);
+  }
+
+  .portfolio-item { min-width: 0; outline: none; }
+  .portfolio-item--1,
+  .portfolio-item--5,
+  .portfolio-item--9,
+  .portfolio-item--10 { grid-column: span 5; }
+  .portfolio-item--2,
+  .portfolio-item--4,
+  .portfolio-item--8,
+  .portfolio-item--12 { grid-column: span 3; }
+  .portfolio-item--3,
+  .portfolio-item--6,
+  .portfolio-item--7,
+  .portfolio-item--11 { grid-column: span 4; }
+
+  .portfolio-media {
+    position: relative;
+    height: clamp(280px, 26vw, 420px);
+    overflow: hidden;
+    border-radius: 7px;
+    background: color-mix(in srgb, var(--project-theme) 34%, #07101a);
+  }
+
+  .portfolio-media::after {
+    content: '';
+    position: absolute;
+    inset: 34% 0 0;
+    background: linear-gradient(180deg, transparent, rgba(5, 8, 14, 0.94));
+    opacity: 0;
+    transition: opacity 320ms var(--ease-out);
+  }
+
+  .portfolio-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.56) saturate(0.64) contrast(1.14);
+    animation: portfolio-breathe 20s var(--ease-in-out) infinite alternate;
+    transition: filter 420ms var(--ease-out), transform 650ms var(--ease-out);
+  }
+
+  .portfolio-item:nth-child(2n) img { animation-direction: alternate-reverse; animation-duration: 23s; }
+  .portfolio-item:nth-child(3n) img { animation-duration: 26s; }
+
+  .portfolio-caption {
+    position: absolute;
+    z-index: 1;
+    inset: auto 0 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    padding: clamp(18px, 2vw, 28px);
+    color: var(--cloud-white);
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+    transition: opacity 260ms var(--ease-out), transform 380ms var(--ease-out);
+  }
+
+  .portfolio-caption strong { font-size: clamp(1.05rem, 1.45vw, 1.45rem); font-weight: 590; }
+  .portfolio-caption span { max-width: 18ch; color: rgba(226, 234, 243, 0.76); font-size: 0.82rem; line-height: 1.3; text-align: right; }
+
+  @keyframes portfolio-breathe {
+    from { transform: scale(1.025) translate3d(-0.35%, 0.2%, 0); }
+    to { transform: scale(1.06) translate3d(0.55%, -0.4%, 0); }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .portfolio-item:hover .portfolio-media::after,
+    .portfolio-item:focus-visible .portfolio-media::after { opacity: 1; }
+    .portfolio-item:hover .portfolio-caption,
+    .portfolio-item:focus-visible .portfolio-caption { opacity: 1; transform: translate3d(0, 0, 0); }
+    .portfolio-item:hover img,
+    .portfolio-item:focus-visible img {
+      animation-play-state: paused;
+      transform: scale(1.072);
+      filter: brightness(0.74) saturate(0.88) contrast(1.08);
+    }
+  }
+
+  @media (max-width: 1040px) {
+    .portfolio-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .portfolio-item { grid-column: span 3; }
+  }
+
+  @media (max-width: 700px), (hover: none) {
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-item { grid-column: auto; }
+    .portfolio-media { height: auto; aspect-ratio: 4 / 3; }
+    .portfolio-media::after { opacity: 1; }
+    .portfolio-caption { opacity: 1; transform: none; padding: 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .portfolio-media img { animation: none; transform: none; }
+    .portfolio-caption,
+    .portfolio-media::after { transition: none; }
+  }
+</style>

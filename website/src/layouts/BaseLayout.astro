@@ -1,0 +1,518 @@
+---
+import { siteConfig } from '../data/site';
+import { navigationData } from '../data/navigation';
+import { useTranslations, getAlternateLocalePath } from '../i18n/routes';
+import '../styles/global.css';
+import '../styles/utilities.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  locale: 'id' | 'en';
+  alternatePath?: string;
+}
+
+const { title, description, locale, alternatePath: alternatePathOverride } = Astro.props;
+const t = useTranslations(locale);
+const currentPath = Astro.url.pathname;
+const currentLocalePath = /^\/(id|en)(\/|$)/.test(currentPath) ? currentPath : `/${locale}/`;
+const pageTitle = title ? title + ' | ' + siteConfig.name : siteConfig.name + ' - ' + siteConfig.tagline;
+const pageDescription = description || t('footer.tagline');
+const canonicalUrl = new URL(currentPath, siteConfig.domain).href;
+const alternateLocale = locale === 'id' ? 'en' : 'id';
+const alternatePath = alternatePathOverride || getAlternateLocalePath(currentPath, alternateLocale);
+const alternateUrl = new URL(alternatePath, siteConfig.domain).href;
+const navItems = navigationData[locale] || [];
+const skipLabel = locale === 'id' ? 'Lewati ke konten' : 'Skip to content';
+const menuLabel = locale === 'id' ? 'Menu' : 'Menu';
+const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
+---
+
+<!DOCTYPE html>
+<html lang={locale === 'id' ? 'id-ID' : 'en'}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDescription} />
+  <link rel="canonical" href={canonicalUrl} />
+  <link rel="alternate" hreflang={locale === 'id' ? 'id-ID' : 'en'} href={canonicalUrl} />
+  <link rel="alternate" hreflang={locale === 'id' ? 'en' : 'id-ID'} href={alternateUrl} />
+  <link rel="alternate" hreflang="x-default" href={new URL('/id/', siteConfig.domain).href} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:image" content={new URL('/assets/banners/portfolio.webp', siteConfig.domain).href} />
+  <meta property="og:site_name" content="Kultivate" />
+  <meta property="og:locale" content={locale === 'id' ? 'id_ID' : 'en_US'} />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">{skipLabel}</a>
+  <div class="header-sentinel" data-header-sentinel aria-hidden="true"></div>
+
+  <header class="header" id="site-header">
+    <div class="header-container container">
+      <a href={'/' + locale + '/'} class="logo" aria-label="Kultivate">
+        <img src="/kultivate-logo.svg" alt="Kultivate" width="190" height="36" />
+      </a>
+
+      <nav class="desktop-nav" aria-label={locale === 'id' ? 'Navigasi utama' : 'Primary navigation'}>
+        <ul class="nav-list">
+          {navItems.map((item) => (
+            <li>
+              <a href={item.route} aria-current={currentPath === item.route ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <nav class="lang-switch" aria-label={locale === 'id' ? 'Pilih bahasa' : 'Choose language'}>
+          <a
+            href={locale === 'id' ? currentLocalePath : alternatePath}
+            class={locale === 'id' ? 'lang-btn active' : 'lang-btn'}
+            aria-current={locale === 'id' ? 'page' : undefined}
+            aria-label="Bahasa Indonesia"
+          >ID</a>
+          <span aria-hidden="true">/</span>
+          <a
+            href={locale === 'en' ? currentLocalePath : alternatePath}
+            class={locale === 'en' ? 'lang-btn active' : 'lang-btn'}
+            aria-current={locale === 'en' ? 'page' : undefined}
+            aria-label="English"
+          >EN</a>
+        </nav>
+
+        <a href={'/' + locale + '/contact/'} class="btn btn-primary btn-cta btn-nav">
+          <span>{t('nav.start_project')}</span>
+        </a>
+
+        <button
+          class="mobile-menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-nav-panel"
+          data-menu-label={menuLabel}
+          data-close-label={closeLabel}
+        >
+          <span>{menuLabel}</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-nav-panel" class="mobile-nav-panel" hidden>
+      <nav class="mobile-nav" aria-label={locale === 'id' ? 'Navigasi seluler' : 'Mobile navigation'}>
+        <ul class="mobile-nav-list">
+          {navItems.map((item) => (
+            <li>
+              <a href={item.route} aria-current={currentPath === item.route ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <li class="mobile-cta-item">
+            <a href={'/' + locale + '/contact/'} class="btn btn-primary btn-cta">
+              <span>{t('nav.start_project')}</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container container">
+      <div class="footer-brand-section">
+        <a href={'/' + locale + '/'} class="logo logo-footer" aria-label="Kultivate">
+          <img src="/kultivate-logo.svg" alt="Kultivate" width="190" height="36" />
+        </a>
+        <p class="footer-tagline">{t('footer.tagline')}</p>
+      </div>
+
+      <div class="footer-links-grid">
+        <div class="footer-links-col">
+          <span class="footer-col-title">{t('footer.services')}</span>
+          <ul>
+            <li><a href={'/' + locale + '/services/website-development/'}>Website</a></li>
+            <li><a href={'/' + locale + '/services/seo/'}>SEO</a></li>
+            <li><a href={'/' + locale + '/services/social-media-management/'}>Social Media</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <span class="footer-col-title">{t('footer.about')}</span>
+          <ul>
+            <li><a href={'/' + locale + '/work/'}>{t('nav.work')}</a></li>
+            <li><a href={'/' + locale + '/about/'}>{t('nav.about')}</a></li>
+            <li><a href={'/' + locale + '/insights/'}>{t('nav.insights')}</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <span class="footer-col-title">{t('footer.legal')}</span>
+          <ul>
+            <li><a href={'/' + locale + '/privacy/'}>{t('footer.privacy')}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p>&copy; {new Date().getFullYear()} Kultivate. {t('footer.rights')}</p>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('#site-header');
+    const sentinel = document.querySelector('[data-header-sentinel]');
+    if (header && sentinel) {
+      const headerObserver = new IntersectionObserver(([entry]) => {
+        header.classList.toggle('scrolled', !entry.isIntersecting);
+      });
+      headerObserver.observe(sentinel);
+    }
+
+    const menuButton = document.querySelector('.mobile-menu-toggle');
+    const menuPanel = document.querySelector('#mobile-nav-panel');
+
+    const setMenuState = (isOpen) => {
+      if (!(menuButton instanceof HTMLButtonElement) || !(menuPanel instanceof HTMLElement)) return;
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuPanel.hidden = !isOpen;
+      const label = menuButton.querySelector('span');
+      if (label) {
+        label.textContent = isOpen ? menuButton.dataset.closeLabel || 'Close' : menuButton.dataset.menuLabel || 'Menu';
+      }
+    };
+
+    menuButton?.addEventListener('click', () => {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      setMenuState(!isOpen);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        if (menuButton instanceof HTMLButtonElement) menuButton.focus();
+      }
+    });
+  </script>
+</body>
+</html>
+
+<style>
+  .header-sentinel {
+    position: absolute;
+    inset: 0 0 auto;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+  }
+
+  .header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: var(--z-sticky);
+    border-bottom: 1px solid transparent;
+    background: transparent;
+    transition:
+      background-color 220ms var(--ease-out),
+      border-color 220ms var(--ease-out),
+      backdrop-filter 220ms var(--ease-out);
+  }
+
+  .header.scrolled {
+    border-bottom-color: rgba(39, 50, 68, 0.5);
+    background: rgba(7, 11, 18, 0.86);
+    backdrop-filter: blur(14px);
+  }
+
+  .header-container {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .logo img { width: 112px; height: auto; display: block; }
+
+  .logo:active,
+  .nav-list a:active,
+  .lang-btn:active,
+  .footer-links-col a:active {
+    transform: scale(0.98);
+  }
+
+  .mobile-menu-toggle:active {
+    transform: scale(0.96);
+  }
+
+  .desktop-nav {
+    margin-left: auto;
+  }
+
+  .nav-list,
+  .mobile-nav-list,
+  .footer-links-col ul {
+    list-style: none;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: clamp(20px, 2.2vw, 34px);
+  }
+
+  .nav-list a {
+    position: relative;
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    color: rgba(201, 211, 223, 0.76);
+    font-size: 0.83rem;
+    font-weight: 500;
+  }
+
+  .nav-list a::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 8px;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: var(--cyan-glow);
+    transition: transform var(--transition-micro);
+  }
+
+  .nav-list a:hover,
+  .nav-list a[aria-current='page'] {
+    color: var(--cloud-white);
+  }
+
+  .nav-list a:hover::after,
+  .nav-list a[aria-current='page']::after {
+    transform: scaleX(1);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-left: clamp(28px, 3.8vw, 60px);
+  }
+
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--slate);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+  }
+
+  .lang-btn {
+    min-width: 28px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--steel);
+  }
+
+  .lang-btn:hover,
+  .lang-btn.active {
+    color: var(--cloud-white);
+  }
+
+  .btn-nav {
+    min-height: 38px;
+    padding: 8px 18px;
+    font-size: 0.78rem;
+  }
+
+  .mobile-menu-toggle {
+    display: none;
+    padding: 0;
+    color: var(--mist);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mobile-nav-panel {
+    position: absolute;
+    inset: 72px 0 auto;
+    border-bottom: 1px solid rgba(39, 50, 68, 0.6);
+    background: rgba(7, 11, 18, 0.98);
+    padding: 20px;
+  }
+
+  .mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-nav-list a {
+    display: flex;
+    min-height: 52px;
+    align-items: center;
+    color: var(--mist);
+    font-size: 1.05rem;
+  }
+
+  .mobile-nav-list a[aria-current='page'] {
+    color: var(--cloud-white);
+  }
+
+  .mobile-cta-item {
+    margin-top: 16px;
+  }
+
+  .footer {
+    margin-top: auto;
+    border-top: 1px solid rgba(39, 50, 68, 0.55);
+    background: rgba(7, 11, 18, 0.76);
+    padding-top: clamp(72px, 8vw, 104px);
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: minmax(260px, 1.2fr) 2fr;
+    gap: clamp(48px, 8vw, 120px);
+    padding-bottom: 64px;
+  }
+
+  .footer-brand-section {
+    max-width: 340px;
+  }
+
+  .logo-footer { margin-bottom: 18px; }
+
+  .logo-footer img { width: 128px; }
+
+  .footer-tagline {
+    color: var(--steel);
+    font-size: 0.92rem;
+  }
+
+  .footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(120px, 1fr));
+    gap: 32px;
+  }
+
+  .footer-col-title {
+    display: block;
+    margin-bottom: 20px;
+    color: var(--mist);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .footer-links-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .footer-links-col a {
+    color: var(--steel);
+    font-size: 0.9rem;
+  }
+
+  .footer-links-col a:hover {
+    color: var(--mist);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(39, 50, 68, 0.42);
+    padding-block: 22px;
+  }
+
+  .footer-bottom p {
+    max-width: none;
+    color: var(--steel);
+    font-size: 0.78rem;
+  }
+
+  @media (max-width: 1060px) {
+    .header-actions {
+      margin-left: auto;
+    }
+
+    .desktop-nav,
+    .btn-nav {
+      display: none;
+    }
+
+    .mobile-menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .header-container {
+      min-height: 64px;
+    }
+
+    .mobile-nav-panel {
+      inset-block-start: 64px;
+    }
+
+    .header-actions {
+      gap: 12px;
+    }
+
+    .footer-container {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-links-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .logo:hover img { opacity: 0.86; }
+
+    .nav-list a:hover,
+    .lang-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu-toggle:hover {
+      color: var(--cloud-white);
+    }
+
+    .footer-links-col a:hover {
+      transform: translateX(2px);
+    }
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .header.scrolled,
+    .mobile-nav-panel {
+      background: var(--void-black);
+      backdrop-filter: none;
+    }
+  }
+</style>

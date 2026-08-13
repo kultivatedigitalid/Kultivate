@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ServiceHero from '../../../components/services/ServiceHero.astro';
+import ServiceProblems from '../../../components/services/ServiceProblems.astro';
+import ServiceScope from '../../../components/services/ServiceScope.astro';
+import ServiceProcess from '../../../components/services/ServiceProcess.astro';
+import ServiceFAQ from '../../../components/services/ServiceFAQ.astro';
+import FinalCTA from '../../../components/home/FinalCTA.astro';
+import { servicesData } from '../../../data/services';
+
+const locale = 'en';
+
+export async function getStaticPaths() {
+  const items = servicesData['en'];
+  return items.map(service => ({
+    params: { slug: service.slug },
+    props: { service }
+  }));
+}
+
+const { service } = Astro.props;
+
+// Format data for subcomponents
+const problemItems = service.problemsSolved.map(p => ({ title: p, description: '' }));
+
+const scopeItems = [
+  {
+    title: 'Scope of work',
+    items: service.scope
+  },
+  {
+    title: 'Deliverables',
+    items: service.deliverables
+  },
+  {
+    title: 'Designed For',
+    items: service.whoItIsFor
+  }
+];
+
+const processSteps = service.process.map(p => {
+  const parts = p.split(': ');
+  return {
+    step: parts[0].toUpperCase(),
+    name: parts[0],
+    description: parts[1] || p
+  };
+});
+
+const defaultFaqs = [
+  {
+    question: `What is the typical timeframe for a ${service.title} project?`,
+    answer: `Most projects run for 2 to 6 weeks. Scope and asset readiness set the pace; milestones are agreed before work begins.`
+  },
+  {
+    question: `Can ${service.title} be combined with other Kultivate services?`,
+    answer: `Yes. Website, SEO, and social can be designed as one system, or started from the most urgent need.`
+  },
+  {
+    question: `How do project reporting and transparency work?`,
+    answer: `Progress, decisions, dependencies, and deliverables stay visible through an update rhythm agreed at the start.`
+  }
+];
+---
+
+<BaseLayout 
+  locale={locale} 
+  title={`${service.title} - Kultivate Services`} 
+  description={service.description}
+>
+  <ServiceHero
+    title={service.title}
+    tagline={service.tagline}
+    description={service.description}
+    systemRole="KULTIVATE SERVICE"
+    locale={locale}
+  />
+
+  <ServiceProblems
+    heading="What changes"
+    problems={problemItems}
+  />
+
+  <ServiceScope
+    heading="What we take care of"
+    scopes={scopeItems}
+    locale={locale}
+  />
+
+  <ServiceProcess
+    heading="From first decision to a working system"
+    steps={processSteps}
+  />
+
+  <ServiceFAQ
+    heading="What teams usually want to know"
+    faqs={defaultFaqs}
+  />
+
+  <FinalCTA locale={locale} />
+</BaseLayout>

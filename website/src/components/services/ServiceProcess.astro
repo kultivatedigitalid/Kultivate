@@ -1,0 +1,21 @@
+---
+interface ProcessStep { step: string; name: string; description: string; }
+interface Props { heading: string; steps: ProcessStep[]; }
+const { heading, steps } = Astro.props;
+---
+<section class="service-process" aria-labelledby="process-title">
+  <div class="container"><header class="process-heading"><span class="section-kicker">Process</span><h2 id="process-title">{heading}</h2></header><ol class="process-grid">{steps.map((item, index) => (<li><span class="step-num text-mono">0{index + 1}</span><h3>{item.name}</h3><p>{item.description}</p></li>))}</ol></div>
+</section>
+<style>
+  .service-process { padding-block: clamp(96px, 13vw, 176px); background: linear-gradient(180deg, #070b12, #05080e); }
+  .process-heading { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 36px; align-items: end; margin-bottom: clamp(62px, 9vw, 112px); }
+  .process-heading h2 { max-width: 12ch; font-size: clamp(2.7rem, 5vw, 5.5rem); font-weight: 520; line-height: 0.96; }
+  .process-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); list-style: none; }
+  .process-grid li { min-width: 0; padding: 26px clamp(18px, 2.4vw, 34px) 0 0; border-top: 1px solid rgba(89, 106, 130, 0.36); }
+  .process-grid li + li { padding-left: clamp(18px, 2.4vw, 34px); }
+  .step-num { display: block; margin-bottom: 46px; color: rgba(201, 211, 223, 0.46); }
+  .process-grid h3 { margin-bottom: 14px; font-size: clamp(1.15rem, 1.7vw, 1.65rem); font-weight: 550; }
+  .process-grid p { color: var(--steel); font-size: 0.88rem; line-height: 1.58; }
+  @media (max-width: 860px) { .process-grid { grid-template-columns: repeat(2, 1fr); gap: 58px 0; } }
+  @media (max-width: 620px) { .process-heading, .process-grid { grid-template-columns: 1fr; } .process-grid { gap: 44px; } .process-grid li + li { padding-left: 0; } .step-num { margin-bottom: 28px; } }
+</style>

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/home/Hero.astro';
+import SelectedWork from '../../components/home/SelectedWork.astro';
+import ServicesGrid from '../../components/home/ServicesGrid.astro';
+import ConnectedSystem from '../../components/home/ConnectedSystem.astro';
+import WhyKultivate from '../../components/home/WhyKultivate.astro';
+import InsightsPreview from '../../components/home/InsightsPreview.astro';
+import FinalCTA from '../../components/home/FinalCTA.astro';
+---
+
+<BaseLayout
+  locale="en"
+  title="Website, SEO & Social Moving as One"
+  description="One partner for your digital foundation, discovery, and distribution."
+>
+  <div class="home-flow">
+    <Hero locale="en" />
+    <SelectedWork locale="en" />
+    <ServicesGrid locale="en" />
+    <ConnectedSystem locale="en" />
+    <WhyKultivate locale="en" />
+    <InsightsPreview locale="en" />
+    <FinalCTA locale="en" />
+  </div>
+</BaseLayout>

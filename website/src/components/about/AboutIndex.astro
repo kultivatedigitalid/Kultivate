@@ -1,0 +1,127 @@
+---
+import InteriorHero from '../shared/InteriorHero.astro';
+
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+const copy = locale === 'id'
+  ? {
+      label: 'ABOUT US',
+      title: 'Satu tim. Satu sistem.',
+      description: 'Strategi, desain, teknologi, dan distribusi dalam satu arah.',
+      beliefTitle: 'Yang terhubung, bergerak lebih jauh.',
+      belief: 'Kami menyatukan keputusan, eksekusi, dan channel yang membawa bisnis bertumbuh.',
+      principles: [
+        ['Jelas sebelum kompleks', 'Keputusan yang mudah dipahami.'],
+        ['Bukti sebelum volume', 'Kerja yang mengubah hasil.'],
+        ['Craft dengan tujuan', 'Setiap detail punya alasan.']
+      ],
+      teamTitle: 'Tim inti',
+      teamNote: 'Tim inti'
+    }
+  : {
+      label: 'ABOUT US',
+      title: 'One team. One system.',
+      description: 'Strategy, design, technology, and distribution in one direction.',
+      beliefTitle: 'Connected work moves further.',
+      belief: 'We unite decisions, execution, and the channels that move a business forward.',
+      principles: [
+        ['Clarity before complexity', 'Decisions people can understand.'],
+        ['Proof before volume', 'Work that changes the outcome.'],
+        ['Craft with a job', 'Every detail has a reason.']
+      ],
+      teamTitle: 'Core team',
+      teamNote: 'Core team'
+    };
+
+const team = [
+  { name: 'Mira Santoso', role: 'Strategy & Growth', image: '/assets/team/mira-santoso.webp', alt: 'Portrait placeholder for Mira Santoso' },
+  { name: 'Raka Pratama', role: 'Design & Technology', image: '/assets/team/raka-pratama.webp', alt: 'Portrait placeholder for Raka Pratama' },
+  { name: 'Ayu Mahendra', role: 'Content & Distribution', image: '/assets/team/ayu-mahendra.webp', alt: 'Portrait placeholder for Ayu Mahendra' }
+];
+---
+
+<InteriorHero
+  title={copy.title}
+  description={copy.description}
+  label={copy.label}
+  image="/assets/about-team-system.webp"
+  imageAlt={locale === 'id' ? 'Sistem visual abstrak yang menyimbolkan kolaborasi tim' : 'Abstract visual system representing team collaboration'}
+/>
+
+<section class="about-story">
+  <div class="container belief-layout">
+    <h2>{copy.beliefTitle}</h2>
+    <p>{copy.belief}</p>
+  </div>
+
+  <div class="container principles" aria-label={locale === 'id' ? 'Prinsip kerja' : 'Working principles'}>
+    {copy.principles.map(([title, description], index) => (
+      <article>
+        <span class="text-mono">0{index + 1}</span>
+        <h3>{title}</h3>
+        <p>{description}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<section class="team-section" aria-labelledby="team-title">
+  <div class="container team-heading">
+    <h2 id="team-title">{copy.teamTitle}</h2>
+    <span class="text-mono">{copy.teamNote}</span>
+  </div>
+  <div class="container team-grid">
+    {team.map((person) => (
+      <article class="person">
+        <figure><img src={person.image} alt={person.alt} width="1120" height="1400" loading="lazy" decoding="async" /></figure>
+        <div><h3>{person.name}</h3><p>{person.role}</p></div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .about-story {
+    padding: clamp(52px, 7vw, 104px) 0 clamp(88px, 12vw, 160px);
+    background:
+      radial-gradient(ellipse 52% 24% at 50% 0%, rgba(23, 107, 255, 0.1), transparent 76%),
+      linear-gradient(180deg, #070b12, #05080e 100%);
+  }
+
+  .belief-layout { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.7fr); gap: clamp(42px, 8vw, 124px); align-items: start; }
+  .belief-layout h2 { max-width: 12ch; font-size: clamp(2.7rem, 5vw, 5.5rem); font-weight: 520; letter-spacing: -0.04em; line-height: 0.96; }
+  .belief-layout p { max-width: 42ch; padding-top: 10px; color: rgba(201, 211, 223, 0.78); font-size: clamp(1.05rem, 1.4vw, 1.28rem); line-height: 1.62; }
+
+  .principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 5vw, 72px); margin-top: clamp(96px, 13vw, 172px); }
+  .principles article { padding-top: 24px; border-top: 1px solid rgba(89, 106, 130, 0.28); }
+  .principles .text-mono { color: rgba(201, 211, 223, 0.46); }
+  .principles h3 { margin: 28px 0 14px; font-size: clamp(1.35rem, 2vw, 2rem); font-weight: 550; }
+  .principles p { color: var(--steel); font-size: 0.92rem; }
+
+  .team-section { padding-block: clamp(88px, 11vw, 160px); background: #05080e; }
+  .team-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; margin-bottom: 42px; }
+  .team-heading h2 { font-size: clamp(2.5rem, 4.5vw, 5rem); font-weight: 520; }
+  .team-heading span { color: rgba(201, 211, 223, 0.46); }
+  .team-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2vw, 28px); }
+  .person figure { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 8px; background: #07101a; }
+  .person img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.88); transition: transform 650ms var(--ease-out), filter 400ms var(--ease-out); }
+  .person > div { padding-top: 18px; }
+  .person h3 { margin-bottom: 4px; font-size: 1.18rem; font-weight: 560; }
+  .person p { color: var(--steel); font-size: 0.88rem; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .person:hover img { transform: scale(1.025); filter: saturate(1); }
+  }
+
+  @media (max-width: 760px) {
+    .belief-layout,
+    .principles,
+    .team-grid { grid-template-columns: 1fr; }
+    .principles { gap: 42px; }
+    .team-heading { align-items: flex-start; flex-direction: column; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .person img { transition: none; }
+  }
+</style>

@@ -1,0 +1,51 @@
+---
+interface Props {
+  title: string;
+  tagline: string;
+  description: string;
+  systemRole: string;
+  locale: 'id' | 'en';
+}
+const { title, tagline, description, systemRole, locale } = Astro.props;
+const image = title.includes('Website')
+  ? '/assets/services/website-system-v2.webp'
+  : title.includes('Search')
+    ? '/assets/services/seo-discovery-v2.webp'
+    : '/assets/services/social-distribution-v2.webp';
+---
+
+<header class="service-hero">
+  <img src={image} alt={`${title} service visual`} width="1536" height="1152" decoding="async" fetchpriority="high" />
+  <span class="service-hero__veil" aria-hidden="true"></span>
+  <div class="container service-hero-content">
+    <span class="service-system-label text-mono">{systemRole}</span>
+    <h1>{title}</h1>
+    <p class="service-tagline">{tagline}</p>
+    <p class="service-description">{description}</p>
+    <div class="service-actions">
+      <a href={`/${locale}/contact/`} class="btn btn-primary btn-cta">{locale === 'id' ? 'Mulai Proyek' : 'Start a Project'}</a>
+      <a href={`/${locale}/work/`} class="btn btn-secondary">{locale === 'id' ? 'Lihat Portofolio' : 'View Portfolio'}</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .service-hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; background: #07101a; }
+  .service-hero > img,
+  .service-hero__veil { position: absolute; inset: 0; }
+  .service-hero > img { z-index: -2; width: 100%; height: 100%; object-fit: cover; animation: service-hero-drift 22s cubic-bezier(0.45, 0, 0.2, 1) infinite alternate; }
+  .service-hero__veil { z-index: -1; background: linear-gradient(90deg, rgba(5, 8, 14, 0.96), rgba(5, 8, 14, 0.66) 52%, rgba(5, 8, 14, 0.16)), linear-gradient(180deg, rgba(5, 8, 14, 0.22), transparent 36%, rgba(7, 11, 18, 0.28) 68%, #070b12 100%); }
+  .service-hero-content { position: relative; z-index: 1; padding-top: 150px; padding-bottom: clamp(54px, 7vw, 92px); }
+  .service-system-label { display: block; margin-bottom: 24px; color: rgba(226, 234, 243, 0.62); }
+  .service-hero h1 { max-width: 13ch; margin-bottom: 18px; font-size: clamp(3.1rem, 2rem + 4.2vw, 6rem); font-weight: 540; letter-spacing: -0.04em; line-height: 0.96; }
+  .service-tagline { max-width: 24ch; margin-bottom: 16px; color: var(--signal-ice); font-size: clamp(1.2rem, 2.2vw, 1.75rem); font-weight: 560; line-height: 1.18; }
+  .service-description { max-width: 54ch; margin-bottom: 30px; color: rgba(226, 234, 243, 0.76); font-size: 1rem; }
+  .service-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  @keyframes service-hero-drift { from { transform: scale(1.02) translate3d(-0.5%, 0, 0); } to { transform: scale(1.06) translate3d(0.7%, -0.5%, 0); } }
+  @media (max-width: 760px) {
+    .service-hero { min-height: 100svh; }
+    .service-hero-content { padding-top: 124px; padding-bottom: 58px; }
+    .service-hero h1 { font-size: clamp(2.7rem, 12vw, 4rem); }
+  }
+  @media (prefers-reduced-motion: reduce) { .service-hero > img { animation: none; transform: none; } }
+</style>

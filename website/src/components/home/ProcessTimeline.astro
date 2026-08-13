@@ -1,0 +1,151 @@
+---
+interface Props {
+  locale: 'id' | 'en';
+}
+
+const { locale } = Astro.props;
+
+const stages = locale === 'id' ? [
+  {
+    stage: 'Discover',
+    title: 'Penemuan',
+    desc: 'Kami menganalisis audiens, mengaudit performa saluran saat ini, dan merumuskan strategi berdasarkan data objektif.'
+  },
+  {
+    stage: 'Define',
+    title: 'Definisi',
+    desc: 'Menyusun silsilah arsitektur informasi, menetapkan lingkup kerja (scope), wireframe, dan kesepakatan target visual.'
+  },
+  {
+    stage: 'Build',
+    title: 'Pembangunan',
+    desc: 'Frontend engineering, perapian konten dwibahasa, optimasi teknis on-page, dan perakitan distribusi konten sosial.'
+  },
+  {
+    stage: 'Improve',
+    title: 'Peningkatan',
+    desc: 'Audit Core Web Vitals, pengujian aksesibilitas keyboard/kontras, peluncuran statis, dan evaluasi berkelanjutan.'
+  }
+] : [
+  {
+    stage: 'Discover',
+    title: 'Discover',
+    desc: 'We research market intent, audit current system indicators, and formulate objectives based on factual proof.'
+  },
+  {
+    stage: 'Define',
+    title: 'Define',
+    desc: 'Drafting structure sitemaps, framing interface flows, and locking down exact deliverables and boundaries.'
+  },
+  {
+    stage: 'Build',
+    title: 'Build',
+    desc: 'Writing optimized frontend code, organizing bilingual copy layouts, and assembling distribution structures.'
+  },
+  {
+    stage: 'Improve',
+    title: 'Improve',
+    desc: 'Running load speed profiles, accessibility landmarks tests, deployment, and data monitoring loops.'
+  }
+];
+---
+
+<section class="process-timeline section-padding">
+  <div class="container">
+    <div class="section-intro">
+      <span class="text-mono">{locale === 'id' ? 'Proses Kerja' : 'Our Process'}</span>
+      <h2 class="section-title text-gradient">
+        {locale === 'id' ? 'Bagaimana kami bekerja sama.' : 'How we work together.'}
+      </h2>
+      <p class="section-subtitle">
+        {locale === 'id'
+          ? 'Metodologi terstruktur kami dirancang untuk mengutamakan kejelasan, meminimalkan risiko keterlambatan, dan memastikan kualitas akhir craft.'
+          : 'Our structured methodology is engineered to prioritize transparency, minimize project delays, and enforce premium craft quality.'}
+      </p>
+    </div>
+
+    <div class="process-grid">
+      {stages.map((item, index) => (
+        <div class="stage-item card">
+          <div class="stage-header">
+            <span class="stage-badge text-mono">{item.stage}</span>
+            <span class="stage-num text-mono">0{index + 1}</span>
+          </div>
+          <h3 class="stage-title">{item.title}</h3>
+          <p class="stage-desc">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-intro {
+    margin-bottom: var(--spacing-xl);
+    max-width: 600px;
+  }
+
+  .section-title {
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 800;
+  }
+
+  .section-subtitle {
+    color: var(--mist);
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  .stage-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    background-color: var(--deep-navy);
+    border: var(--border-width-subtle) solid var(--slate);
+  }
+
+  .stage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stage-badge {
+    color: var(--cyan-glow);
+    font-weight: 700;
+  }
+
+  .stage-num {
+    color: var(--slate);
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .stage-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .stage-desc {
+    font-size: 0.875rem;
+    color: var(--mist);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

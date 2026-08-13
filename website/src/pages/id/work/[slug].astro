@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CaseStudyHeader from '../../../components/work/CaseStudyHeader.astro';
+import NextProject from '../../../components/work/NextProject.astro';
+import FinalCTA from '../../../components/home/FinalCTA.astro';
+import { getCollection, render } from 'astro:content';
+
+const locale = 'id';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('work', (entry) => {
+    return entry.data.locale === 'id' && !entry.data.draft;
+  });
+
+  return projects.map((project, index) => {
+    const nextProject = projects[(index + 1) % projects.length];
+    return {
+      params: { slug: project.data.slug },
+      props: { project, nextProject: projects.length > 1 ? nextProject : null },
+    };
+  });
+}
+
+const { project, nextProject } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout 
+  locale={locale} 
+  title={project.data.seoTitle || project.data.title} 
+  description={project.data.seoDescription || project.data.summary}
+>
+  <article class="case-study-page section">
+    <div class="container">
+      <CaseStudyHeader
+        title={project.data.title}
+        client={project.data.client}
+        industry={project.data.industry}
+        period={project.data.period}
+        services={project.data.services}
+        summary={project.data.summary}
+        coverImage={project.data.coverImage}
+        coverAlt={project.data.coverAlt}
+        proofStatus={project.data.proofStatus}
+        locale={locale}
+      />
+
+      <div class="case-content-grid">
+        <div class="case-main-body">
+          <section class="case-section card">
+            <h2 class="case-section-title">Tantangan (Challenge)</h2>
+            <p>{project.data.challenge}</p>
+          </section>
+
+          <section class="case-section card">
+            <h2 class="case-section-title">Pendekatan (Approach)</h2>
+            <p>{project.data.approach}</p>
+          </section>
+
+          <section class="case-section card">
+            <h2 class="case-section-title">Hasil Kerja (Deliverables)</h2>
+            <ul class="deliverables-list">
+              {project.data.deliverables.map(item => (
+                <li class="deliverable-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {project.data.proofStatus === 'verified' ? (
+            <section class="case-section card">
+              <h2 class="case-section-title">Hasil & Dampak (Outcomes)</h2>
+              <ul class="outcomes-list">
+                {project.data.outcomes.map(item => (
+                  <li class="outcome-item">{item}</li>
+                ))}
+              </ul>
+            </section>
+          ) : (
+            <section class="case-section card border-subtle">
+              <h2 class="case-section-title">Catatan Dampak & Bukti</h2>
+              <p class="text-mono text-muted">
+                Metrik dan hasil proyek ini belum dipublikasikan secara terbuka (PLACEHOLDER - NOT PUBLIC PROOF).
+              </p>
+            </section>
+          )}
+
+          <div class="markdown-body">
+            <Content />
+          </div>
+        </div>
+      </div>
+
+      <NextProject
+        nextSlug={nextProject?.data.slug}
+        nextTitle={nextProject?.data.title}
+        locale={locale}
+      />
+    </div>
+  </article>
+
+  <FinalCTA locale={locale} />
+</BaseLayout>
+
+<style>
+  .case-study-page {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xxl);
+  }
+
+  .case-content-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .case-main-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .case-section {
+    padding: var(--spacing-xl);
+    background-color: var(--deep-navy);
+  }
+
+  .case-section-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--cyan-glow);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .case-section p {
+    font-size: 1.0625rem;
+    color: var(--mist);
+    line-height: 1.6;
+  }
+
+  .deliverables-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .deliverable-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 1rem;
+    color: var(--mist);
+  }
+
+  .deliverable-item svg {
+    color: var(--electric-blue);
+    flex-shrink: 0;
+  }
+
+  .text-muted {
+    color: var(--steel);
+  }
+
+  .markdown-body {
+    font-size: 1.0625rem;
+    color: var(--mist);
+    line-height: 1.7;
+    margin-top: var(--spacing-lg);
+  }
+</style>

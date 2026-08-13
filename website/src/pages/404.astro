@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { useTranslations } from '../i18n/routes';
+
+const locale = 'id';
+const t = useTranslations(locale);
+---
+
+<BaseLayout locale={locale} title="404 - Halaman Tidak Ditemukan / Page Not Found" description="Halaman yang Anda cari tidak ditemukan atau telah dipindahkan.">
+  <div class="error-container container glow-field">
+    <div class="error-content">
+      <span class="error-code text-mono">404</span>
+      <h1 class="error-title">Halaman Tidak Ditemukan</h1>
+      <p class="error-desc">
+        Halaman yang Anda cari tidak dapat ditemukan. Silakan kembali ke halaman utama atau jelajahi layanan kami.
+      </p>
+      <p class="error-desc-en text-mono">
+        The page you are looking for could not be found. Please return to the homepage or explore our services.
+      </p>
+
+      <div class="error-actions">
+        <a href="/id/" class="btn btn-primary">Kembali ke Beranda</a>
+        <a href="/id/work/" class="btn btn-secondary">Lihat Karya Kami</a>
+        <a href="/id/services/" class="btn btn-secondary">Pelajari Layanan</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .error-container {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: clamp(132px, 16vw, 200px);
+    padding-bottom: var(--spacing-xxl);
+    text-align: center;
+    background: radial-gradient(ellipse 70% 45% at 50% 38%, rgba(23, 107, 255, 0.2), transparent 70%), linear-gradient(180deg, #05080e 0%, #07101a 56%, #070b12 100%);
+  }
+
+  .error-content {
+    max-width: 600px;
+  }
+
+  .error-code {
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 700;
+    color: var(--cyan-glow);
+    line-height: 1;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .error-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--cloud-white);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .error-desc {
+    font-size: 1.125rem;
+    color: var(--mist);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .error-desc-en {
+    font-size: 0.9375rem;
+    color: var(--steel);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .error-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

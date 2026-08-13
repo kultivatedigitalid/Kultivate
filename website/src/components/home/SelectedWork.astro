@@ -1,0 +1,50 @@
+---
+import { portfolioItems } from '../../data/editorial';
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+const projects = portfolioItems[locale].slice(0, 3);
+const copy = locale === 'id'
+  ? { title: 'Satu brand, terasa di seluruh sistem.', all: 'Lihat semua proyek' }
+  : { title: 'One brand, felt across the system.', all: 'View all projects' };
+---
+
+<section id="work" class="selected-work" aria-labelledby="work-title">
+  <div class="container work-shell">
+    <header class="work-header">
+      <div><span class="section-kicker">{locale === 'id' ? 'Portofolio' : 'Portfolio'}</span><h2 id="work-title">{copy.title}</h2></div>
+      <a href={`/${locale}/work/`} class="link-hover-arrow"><span>{copy.all}</span><span aria-hidden="true">&#8594;</span></a>
+    </header>
+    <div class="projects-grid">
+      {projects.map((project, index) => (
+        <a class:list={['project', { 'project--featured': index === 0 }]} href={`/${locale}/work/`}>
+          <figure><img src={project.image} alt={project.alt} width="1536" height="1024" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" /></figure>
+          <div><h3>{project.brand}</h3><span>{project.descriptor}</span></div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .selected-work { position: relative; min-height: 720px; height: 100svh; max-height: 960px; overflow: hidden; background: linear-gradient(180deg, #070b12 0%, #060a11 62%, #07101a 100%); }
+  .work-shell { height: 100%; display: flex; flex-direction: column; padding-block: clamp(58px, 7vh, 84px); }
+  .work-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; margin-bottom: clamp(26px, 4vh, 44px); }
+  .work-header > div { max-width: 720px; }
+  .work-header h2 { font-size: clamp(2rem, 3.5vw, 4rem); }
+  .projects-grid { min-height: 0; flex: 1; display: grid; grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 20px); }
+  .project { min-width: 0; display: flex; flex-direction: column; }
+  .project figure { min-height: 0; flex: 1; overflow: hidden; border-radius: 8px; background: #07101a; }
+  .project img { width: 100%; height: 100%; object-fit: cover; transition: transform 650ms var(--ease-out), filter 420ms var(--ease-out); }
+  .project > div { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding-top: 16px; }
+  .project h3 { font-size: 1.08rem; font-weight: 560; }
+  .project span { color: var(--steel); font-size: 0.8rem; text-align: right; }
+  @media (hover: hover) and (pointer: fine) { .project:hover img { transform: scale(1.03); filter: saturate(1.06); } }
+  @media (max-width: 760px) {
+    .selected-work { height: auto; min-height: 100svh; max-height: none; }
+    .work-shell { min-height: 100svh; padding-block: 72px; }
+    .work-header { align-items: flex-start; flex-direction: column; }
+    .projects-grid { width: calc(100% + 20px); grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(270px, 84vw); overflow-x: auto; scroll-snap-type: inline mandatory; padding: 0 20px 14px 0; }
+    .project { min-height: 480px; scroll-snap-align: start; }
+  }
+  @media (prefers-reduced-motion: reduce) { .project img { transition: none; } }
+</style>

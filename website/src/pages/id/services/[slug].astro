@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ServiceHero from '../../../components/services/ServiceHero.astro';
+import ServiceProblems from '../../../components/services/ServiceProblems.astro';
+import ServiceScope from '../../../components/services/ServiceScope.astro';
+import ServiceProcess from '../../../components/services/ServiceProcess.astro';
+import ServiceFAQ from '../../../components/services/ServiceFAQ.astro';
+import FinalCTA from '../../../components/home/FinalCTA.astro';
+import { servicesData } from '../../../data/services';
+
+const locale = 'id';
+
+export async function getStaticPaths() {
+  const items = servicesData['id'];
+  return items.map(service => ({
+    params: { slug: service.slug },
+    props: { service }
+  }));
+}
+
+const { service } = Astro.props;
+
+// Format data for subcomponents
+const problemItems = service.problemsSolved.map(p => ({ title: p, description: '' }));
+
+const scopeItems = [
+  {
+    title: 'Cakupan kerja',
+    items: service.scope
+  },
+  {
+    title: 'Hasil yang diterima',
+    items: service.deliverables
+  },
+  {
+    title: 'Dirancang untuk',
+    items: service.whoItIsFor
+  }
+];
+
+const processSteps = service.process.map(p => {
+  const [stepPart, descPart] = p.split(': ');
+  const match = stepPart.match(/^([^(]+)\s*\(([^)]+)\)$/);
+  const name = match ? `${match[1]} (${match[2]})` : stepPart;
+  return {
+    step: match ? match[2] : 'STEP',
+    name: name,
+    description: descPart || p
+  };
+});
+
+const defaultFaqs = [
+  {
+    question: `Berapa lama estimasi pengerjaan proyek ${service.title}?`,
+    answer: `Sebagian besar proyek berjalan 2 sampai 6 minggu. Scope dan kesiapan aset menentukan ritmenya; milestone disepakati sebelum pekerjaan dimulai.`
+  },
+  {
+    question: `Apakah layanan ${service.title} dapat digabungkan dengan jasa lainnya?`,
+    answer: `Bisa. Website, SEO, dan social dapat dirancang sebagai satu sistem, atau dimulai dari kebutuhan yang paling mendesak.`
+  },
+  {
+    question: `Bagaimana sistem pelaporan dan transparansi proyek?`,
+    answer: `Progres, keputusan, dependensi, dan hasil kerja dibuka sepanjang proyek melalui ritme update yang disepakati.`
+  }
+];
+---
+
+<BaseLayout 
+  locale={locale} 
+  title={`${service.title} - Layanan Kultivate`} 
+  description={service.description}
+>
+  <ServiceHero
+    title={service.title}
+    tagline={service.tagline}
+    description={service.description}
+    systemRole="LAYANAN KULTIVATE"
+    locale={locale}
+  />
+
+  <ServiceProblems
+    heading="Hasil yang terasa"
+    problems={problemItems}
+  />
+
+  <ServiceScope
+    heading="Lingkup kerja"
+    scopes={scopeItems}
+    locale={locale}
+  />
+
+  <ServiceProcess
+    heading="Cara kami bekerja"
+    steps={processSteps}
+  />
+
+  <ServiceFAQ
+    heading="Pertanyaan umum"
+    faqs={defaultFaqs}
+  />
+
+  <FinalCTA locale={locale} />
+</BaseLayout>

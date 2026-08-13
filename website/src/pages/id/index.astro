@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/home/Hero.astro';
+import SelectedWork from '../../components/home/SelectedWork.astro';
+import ServicesGrid from '../../components/home/ServicesGrid.astro';
+import ConnectedSystem from '../../components/home/ConnectedSystem.astro';
+import WhyKultivate from '../../components/home/WhyKultivate.astro';
+import InsightsPreview from '../../components/home/InsightsPreview.astro';
+import FinalCTA from '../../components/home/FinalCTA.astro';
+---
+
+<BaseLayout
+  locale="id"
+  title="Website, SEO & Social yang Bergerak Searah"
+  description="Satu partner untuk fondasi, penemuan, dan distribusi digital."
+>
+  <div class="home-flow">
+    <Hero locale="id" />
+    <SelectedWork locale="id" />
+    <ServicesGrid locale="id" />
+    <ConnectedSystem locale="id" />
+    <WhyKultivate locale="id" />
+    <InsightsPreview locale="id" />
+    <FinalCTA locale="id" />
+  </div>
+</BaseLayout>

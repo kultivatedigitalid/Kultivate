@@ -1,0 +1,275 @@
+---
+interface Props {
+  locale: 'id' | 'en';
+}
+
+const { locale } = Astro.props;
+
+const stages = locale === 'id'
+  ? [
+      { index: '01', stage: 'Cari', channel: 'Search', question: 'Saat kebutuhan muncul.' },
+      { index: '02', stage: 'Kenal', channel: 'Website', question: 'Nilainya terasa jelas.' },
+      { index: '03', stage: 'Ingat', channel: 'Social', question: 'Pesannya tetap dekat.' },
+      { index: '04', stage: 'Mulai', channel: 'Inquiry', question: 'Langkah berikutnya ringan.' }
+    ]
+  : [
+      { index: '01', stage: 'Search', channel: 'Search', question: 'When the need appears.' },
+      { index: '02', stage: 'See', channel: 'Website', question: 'The value is easy to grasp.' },
+      { index: '03', stage: 'Recall', channel: 'Social', question: 'The message stays close.' },
+      { index: '04', stage: 'Start', channel: 'Inquiry', question: 'The next step feels easy.' }
+    ];
+---
+
+<section id="system" class="connected-system section-padding" aria-labelledby="system-title">
+  <div class="system-glow" aria-hidden="true"></div>
+  <div class="container">
+    <header class="system-header">
+      <span class="section-kicker">{locale === 'id' ? 'Cara kerjanya' : 'How it works'}</span>
+      <h2 id="system-title">{locale === 'id' ? 'Ditemukan. Dipahami. Dipilih.' : 'Found. Understood. Chosen.'}</h2>
+      <p>
+        {locale === 'id'
+          ? 'Kami merancang perjalanan itu sebagai satu alur, bukan tiga layanan terpisah.'
+          : 'We design that journey as one flow, not three disconnected services.'}
+      </p>
+    </header>
+
+    <div class="flow-frame">
+      <ol class="system-flow" aria-label={locale === 'id' ? 'Alur sistem digital' : 'Digital system flow'}>
+        {stages.map((stage, index) => (
+          <li class="system-step">
+            <span class="stage-index text-mono">{stage.index}</span>
+            <div class="stage-heading">
+              <span>{stage.stage}</span>
+              <strong>{stage.channel}</strong>
+            </div>
+            <p>{stage.question}</p>
+            {index < stages.length - 1 && <span class="step-arrow" aria-hidden="true">→</span>}
+          </li>
+        ))}
+      </ol>
+
+      <div class="feedback-loop">
+        <span class="loop-label text-mono">{locale === 'id' ? 'Sinyal masuk' : 'Signals in'}</span>
+        <div class="loop-track" aria-hidden="true"></div>
+        <p>
+          {locale === 'id'
+            ? 'Setiap respons membuat siklus berikutnya lebih tajam.'
+            : 'Every response sharpens the next cycle.'}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .connected-system {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 52% 54% at 92% 24%, rgba(103, 217, 255, 0.065), transparent 74%),
+      radial-gradient(ellipse 48% 60% at 12% 82%, rgba(23, 107, 255, 0.07), transparent 76%),
+      linear-gradient(180deg, transparent 0%, rgba(11, 19, 34, 0.3) 48%, transparent 100%);
+  }
+
+  .system-glow {
+    position: absolute;
+    inset: 14% -18% auto auto;
+    width: 66%;
+    height: 72%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(49, 117, 255, 0.16), rgba(103, 217, 255, 0.035) 44%, transparent 70%);
+    filter: blur(44px);
+    pointer-events: none;
+  }
+
+  .system-header {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.65fr);
+    column-gap: clamp(48px, 9vw, 132px);
+    align-items: end;
+    margin-bottom: clamp(44px, 6vw, 72px);
+  }
+
+  .system-header .section-kicker {
+    grid-column: 1 / -1;
+  }
+
+  .system-header h2 {
+    max-width: 11ch;
+  }
+
+  .system-header p {
+    max-width: 54ch;
+    color: var(--steel);
+  }
+
+  .flow-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius-lg);
+    background: rgba(39, 50, 68, 0.48);
+  }
+
+  .system-flow {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    list-style: none;
+  }
+
+  .system-step {
+    position: relative;
+    min-width: 0;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(24px, 2.8vw, 36px);
+    background: linear-gradient(150deg, rgba(11, 19, 34, 0.96), rgba(7, 11, 18, 0.98));
+  }
+
+  .stage-index {
+    color: rgba(201, 211, 223, 0.52);
+  }
+
+  .stage-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-block: 16px;
+  }
+
+  .stage-heading span {
+    color: var(--steel);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .stage-heading strong {
+    color: var(--cloud-white);
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 2.6vw, 2.75rem);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+
+  .system-step p {
+    max-width: 22ch;
+    color: rgba(201, 211, 223, 0.72);
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+
+  .step-arrow {
+    position: absolute;
+    inset: 50% -16px auto auto;
+    z-index: 2;
+    display: grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: var(--void-black);
+    color: rgba(103, 217, 255, 0.8);
+  }
+
+  .feedback-loop {
+    display: grid;
+    grid-template-columns: 160px minmax(140px, 1fr) minmax(240px, 380px);
+    gap: 28px;
+    align-items: center;
+    padding: 24px clamp(24px, 2.8vw, 36px);
+    background: rgba(7, 11, 18, 0.92);
+  }
+
+  .loop-label {
+    color: var(--signal-ice);
+  }
+
+  .loop-track {
+    position: relative;
+    height: 1px;
+    overflow: hidden;
+    background: rgba(39, 50, 68, 0.88);
+  }
+
+  .loop-track::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 -35%;
+    width: 35%;
+    background: linear-gradient(90deg, transparent, var(--cyan-glow), transparent);
+    animation: loop-scan 8.5s linear infinite;
+  }
+
+  .feedback-loop p {
+    color: var(--steel);
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  @keyframes loop-scan {
+    to {
+      transform: translate3d(390%, 0, 0);
+    }
+  }
+
+  @media (max-width: 980px) {
+    .system-header {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .system-header h2 {
+      max-width: 13ch;
+    }
+
+    .system-flow {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .step-arrow {
+      display: none;
+    }
+
+    .feedback-loop {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .system-flow {
+      grid-template-columns: 1fr;
+    }
+
+    .system-step {
+      min-height: 188px;
+    }
+
+    .step-arrow {
+      inset: auto auto -16px 50%;
+      display: grid;
+      transform: translateX(-50%) rotate(90deg);
+    }
+
+    .feedback-loop {
+      padding-block: 28px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .loop-track::after {
+      animation: none;
+      opacity: 0.45;
+      transform: translate3d(185%, 0, 0);
+    }
+  }
+</style>

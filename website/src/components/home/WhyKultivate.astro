@@ -1,0 +1,99 @@
+---
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+const reasons = locale === 'id'
+  ? [
+      { index: '01', title: 'Berpikir terhubung', desc: 'Website, SEO, dan social dirancang sebagai satu sistem pertumbuhan—bukan tiga pekerjaan terpisah.', image: '/assets/why/connected-system.webp', alt: 'Tiga bidang digital yang terhubung menjadi satu alur' },
+      { index: '02', title: 'Keputusan transparan', desc: 'Prioritas, trade-off, dan langkah berikutnya terlihat sebelum eksekusi dimulai.', image: '/assets/why/visible-decisions.webp', alt: 'Bidang transparan yang bergerak menuju susunan yang selaras' },
+      { index: '03', title: 'Craft yang bekerja', desc: 'Setiap detail dipoles untuk memperjelas pesan, memudahkan tindakan, atau memperkuat kepercayaan.', image: '/assets/why/purposeful-craft.webp', alt: 'Detail digital presisi dengan tepi cahaya biru' }
+    ]
+  : [
+      { index: '01', title: 'Connected thinking', desc: 'Website, SEO, and social are designed as one growth system—not three separate jobs.', image: '/assets/why/connected-system.webp', alt: 'Three digital fields connected into one flow' },
+      { index: '02', title: 'Visible decisions', desc: 'Priorities, trade-offs, and next steps are clear before execution begins.', image: '/assets/why/visible-decisions.webp', alt: 'Transparent planes moving into exact alignment' },
+      { index: '03', title: 'Craft that works', desc: 'Every detail is refined to clarify the message, ease action, or strengthen trust.', image: '/assets/why/purposeful-craft.webp', alt: 'A precision digital detail with a blue illuminated edge' }
+    ];
+---
+
+<section id="why" class="why-kultivate section-padding" aria-labelledby="why-title">
+  <div class="container why-layout">
+    <div class="why-intro">
+      <span class="section-kicker">{locale === 'id' ? 'Mengapa Kultivate' : 'Why Kultivate'}</span>
+      <h2 id="why-title">{locale === 'id' ? 'Jelas sebelum kompleks.' : 'Clarity before complexity.'}</h2>
+      <p>{locale === 'id' ? 'Strategi dan eksekusi tetap dekat, supaya setiap keputusan punya alasan dan arah.' : 'Strategy and execution stay close, so every decision has a reason and a direction.'}</p>
+    </div>
+
+    <div class="reasons-list">
+      {reasons.map((reason) => (
+        <article class="reason-item" tabindex="0">
+          <img src={reason.image} alt={reason.alt} width="1536" height="1152" loading="lazy" decoding="async" />
+          <span class="reason-veil" aria-hidden="true"></span>
+          <div class="reason-copy">
+            <span class="reason-index text-mono">{reason.index}</span>
+            <div><h3>{reason.title}</h3><p>{reason.desc}</p></div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-kultivate {
+    position: relative;
+    background:
+      radial-gradient(ellipse 48% 36% at 8% 38%, rgba(23, 107, 255, 0.075), transparent 76%),
+      linear-gradient(180deg, #07101a 0%, #060a11 52%, #070b12 100%);
+  }
+  .why-layout { display: grid; grid-template-columns: minmax(280px, 0.72fr) minmax(520px, 1.28fr); gap: clamp(56px, 8vw, 116px); align-items: start; }
+  .why-intro { position: sticky; top: 126px; }
+  .why-intro h2 { max-width: 9ch; margin-bottom: 24px; font-size: clamp(3rem, 2rem + 3.5vw, 5.4rem); font-weight: 520; letter-spacing: -0.04em; line-height: 0.96; }
+  .why-intro p { max-width: 38ch; color: var(--steel); }
+  .reasons-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .reason-item {
+    position: relative;
+    min-height: 174px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    border-radius: 8px;
+    outline: none;
+    background: rgba(11, 19, 34, 0.72);
+    transition: min-height 560ms var(--ease-out), opacity 340ms var(--ease-out), transform 560ms var(--ease-out);
+  }
+  .reason-item img,
+  .reason-veil { position: absolute; inset: 0; }
+  .reason-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: translate3d(-4%, 0, 0) scale(1.07); transition: opacity 460ms var(--ease-out), transform 720ms var(--ease-out); }
+  .reason-veil { background: linear-gradient(90deg, rgba(6, 10, 17, 0.98) 0%, rgba(6, 10, 17, 0.84) 45%, rgba(6, 10, 17, 0.22) 100%), linear-gradient(180deg, transparent 30%, rgba(6, 10, 17, 0.88)); opacity: 0.72; transition: opacity 420ms var(--ease-out); }
+  .reason-copy { position: relative; z-index: 1; width: 100%; display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 16px; padding: clamp(24px, 3vw, 36px); }
+  .reason-index { padding-top: 6px; color: rgba(201, 211, 223, 0.5); }
+  .reason-item h3 { margin-bottom: 10px; font-size: clamp(1.45rem, 1.8vw, 2.1rem); font-weight: 560; line-height: 1.08; }
+  .reason-item p { max-width: 44ch; color: rgba(201, 211, 223, 0.72); font-size: 0.92rem; line-height: 1.55; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .reasons-list:hover .reason-item:not(:hover) { min-height: 154px; opacity: 0.68; transform: scale(0.99); }
+    .reason-item:hover,
+    .reason-item:focus-visible { min-height: 276px; transform: scale(1.01); }
+    .reason-item:hover img,
+    .reason-item:focus-visible img { opacity: 0.94; transform: translate3d(0, 0, 0) scale(1.02); }
+    .reason-item:hover .reason-veil,
+    .reason-item:focus-visible .reason-veil { opacity: 1; }
+  }
+
+  @media (max-width: 1020px) {
+    .why-layout { grid-template-columns: 1fr; gap: 44px; }
+    .why-intro { position: static; }
+    .why-intro h2 { max-width: 11ch; }
+  }
+  @media (max-width: 760px), (hover: none) {
+    .reason-item { min-height: 280px; }
+    .reason-item img { opacity: 0.85; transform: none; }
+    .reason-veil { opacity: 1; }
+    .reason-copy { grid-template-columns: 36px minmax(0, 1fr); gap: 12px; padding: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reason-item,
+    .reason-item img,
+    .reason-veil { transition: none; }
+  }
+</style>

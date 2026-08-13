@@ -1,0 +1,137 @@
+---
+import InteriorHero from '../shared/InteriorHero.astro';
+
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+const copy = locale === 'id'
+  ? {
+      hero: {
+        label: 'LAYANAN',
+        title: 'Satu sistem. Tiga cara tumbuh.',
+        description: 'Website, search, dan social yang bergerak bersama.'
+      },
+      explore: 'Lihat layanan',
+      services: [
+        {
+          title: 'Website Development',
+          result: 'Nilai yang langsung terasa.',
+          description: 'Website yang jelas, cepat, dan siap mengubah perhatian menjadi inquiry.',
+          image: '/assets/services/website-system-v2.webp',
+          alt: 'Struktur website modular yang terhubung',
+          slug: 'website-development'
+        },
+        {
+          title: 'Search Engine Optimization',
+          result: 'Ditemukan saat dibutuhkan.',
+          description: 'Search yang mengikuti niat, bukan sekadar trafik.',
+          image: '/assets/services/seo-discovery-v2.webp',
+          alt: 'Jalur pencarian yang mengarah ke satu hasil',
+          slug: 'seo'
+        },
+        {
+          title: 'Social Media Management',
+          result: 'Pesan yang tetap bergerak.',
+          description: 'Konten yang konsisten dan mudah diteruskan.',
+          image: '/assets/services/social-distribution-v2.webp',
+          alt: 'Sistem distribusi konten dalam alur yang teratur',
+          slug: 'social-media-management'
+        }
+      ]
+    }
+  : {
+      hero: {
+        label: 'SERVICES',
+        title: 'One system. Three ways to grow.',
+        description: 'Website, search, and social moving together.'
+      },
+      explore: 'Explore service',
+      services: [
+        {
+          title: 'Website Development',
+          result: 'Value, clear on arrival.',
+          description: 'A fast, clear website built to turn attention into inquiry.',
+          image: '/assets/services/website-system-v2.webp',
+          alt: 'A connected modular website structure',
+          slug: 'website-development'
+        },
+        {
+          title: 'Search Engine Optimization',
+          result: 'Found when it matters.',
+          description: 'Search built around intent, not vanity traffic.',
+          image: '/assets/services/seo-discovery-v2.webp',
+          alt: 'A search path resolving into one clear result',
+          slug: 'seo'
+        },
+        {
+          title: 'Social Media Management',
+          result: 'Keep the message moving.',
+          description: 'Content that stays consistent and easy to carry forward.',
+          image: '/assets/services/social-distribution-v2.webp',
+          alt: 'A content distribution system moving in a clear rhythm',
+          slug: 'social-media-management'
+        }
+      ]
+    };
+---
+
+<InteriorHero
+  title={copy.hero.title}
+  description={copy.hero.description}
+  label={copy.hero.label}
+  image="/assets/banners/services.webp"
+  imageAlt={locale === 'id' ? 'Tiga jalur cahaya yang menyatu dalam satu sistem' : 'Three paths of light merging into one system'}
+/>
+
+<section class="services-index" aria-label={copy.hero.label}>
+  <div class="container service-stream">
+    {copy.services.map((service, index) => (
+      <article class="service-row">
+        <figure class="service-row__visual">
+          <img src={service.image} alt={service.alt} width="1536" height="1152" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+        </figure>
+        <div class="service-row__copy">
+          <div class="service-row__meta text-mono"><span>0{index + 1}</span><span>{service.title}</span></div>
+          <h2>{service.result}</h2>
+          <p>{service.description}</p>
+          <a href={`/${locale}/services/${service.slug}/`} class="link-hover-arrow">
+            <span>{copy.explore}</span><span aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .services-index {
+    padding: clamp(44px, 6vw, 88px) 0 clamp(76px, 10vw, 148px);
+    background:
+      radial-gradient(ellipse 54% 22% at 50% 0%, rgba(23, 107, 255, 0.11), transparent 78%),
+      linear-gradient(180deg, #070b12, #05080e 44%, #070b12 100%);
+  }
+
+  .service-stream { display: flex; flex-direction: column; gap: clamp(104px, 14vw, 196px); }
+  .service-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(42px, 7vw, 108px); align-items: center; }
+  .service-row:nth-child(even) .service-row__visual { order: 2; }
+  .service-row__visual { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 8px; background: #07101a; }
+  .service-row__visual img { width: 100%; height: 100%; object-fit: cover; animation: service-image-drift 18s var(--ease-in-out) infinite alternate; }
+  .service-row:nth-child(even) img { animation-direction: alternate-reverse; }
+  .service-row__meta { display: flex; justify-content: space-between; gap: 18px; margin-bottom: 30px; color: rgba(201, 211, 223, 0.56); }
+  .service-row__copy h2 { max-width: 12ch; margin-bottom: 22px; font-size: clamp(2.35rem, 4.2vw, 4.7rem); font-weight: 520; letter-spacing: -0.04em; line-height: 0.98; }
+  .service-row__copy > p { max-width: 42ch; color: rgba(201, 211, 223, 0.78); font-size: 1.02rem; }
+
+  @keyframes service-image-drift {
+    from { transform: scale(1.02) translate3d(-0.5%, 0, 0); }
+    to { transform: scale(1.065) translate3d(0.6%, -0.4%, 0); }
+  }
+
+  @media (max-width: 840px) {
+    .service-row { grid-template-columns: 1fr; gap: 30px; } .service-row__visual { height: auto; aspect-ratio: 4 / 3; }
+    .service-row:nth-child(even) .service-row__visual { order: initial; }
+    .service-row__copy h2 { font-size: clamp(2.35rem, 10vw, 3.6rem); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-row__visual img { animation: none; transform: none; }
+  }
+</style>

@@ -1,0 +1,24 @@
+---
+interface ProblemItem { title: string; description: string; }
+interface Props { heading: string; problems: ProblemItem[]; }
+const { heading, problems } = Astro.props;
+---
+<section class="service-problems" aria-labelledby="problems-title">
+  <div class="container problems-layout">
+    <div class="problems-intro"><span class="section-kicker">Outcome</span><h2 id="problems-title">{heading}</h2></div>
+    <ol class="problems-list">{problems.map((item, idx) => (<li><span class="problem-num text-mono">0{idx + 1}</span><div><h3>{item.title}</h3>{item.description && <p>{item.description}</p>}</div></li>))}</ol>
+  </div>
+</section>
+<style>
+  .service-problems { padding-block: clamp(96px, 13vw, 176px); background: radial-gradient(ellipse 58% 24% at 72% 0%, rgba(23, 107, 255, 0.1), transparent 78%), linear-gradient(180deg, #070b12, #05080e); }
+  .problems-layout { display: grid; grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr); gap: clamp(52px, 9vw, 136px); align-items: start; }
+  .problems-intro { position: sticky; top: 116px; }
+  .problems-intro h2 { max-width: 10ch; font-size: clamp(2.6rem, 4.7vw, 5.3rem); font-weight: 520; line-height: 0.98; }
+  .problems-list { list-style: none; }
+  .problems-list li { display: grid; grid-template-columns: 54px 1fr; gap: 22px; padding-block: 30px; border-top: 1px solid rgba(89, 106, 130, 0.3); }
+  .problems-list li:last-child { border-bottom: 1px solid rgba(89, 106, 130, 0.3); }
+  .problem-num { padding-top: 5px; color: rgba(201, 211, 223, 0.44); }
+  .problems-list h3 { max-width: 25ch; font-size: clamp(1.25rem, 2vw, 2rem); font-weight: 540; line-height: 1.16; }
+  .problems-list p { margin-top: 10px; color: var(--steel); font-size: 0.92rem; }
+  @media (max-width: 760px) { .problems-layout { grid-template-columns: 1fr; gap: 52px; } .problems-intro { position: static; } }
+</style>

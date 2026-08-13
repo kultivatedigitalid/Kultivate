@@ -1,0 +1,22 @@
+# Pending Inputs
+
+
+**Brand baseline:** Kultivate Brand Guideline Book v2.0
+**Last updated:** 2026-08-06
+
+| ID | Input | Blocks | Owner | Status |
+|---|---|---|---|---|
+| P-001 | Approved logo master and variants | Header, footer, favicon | Kultivate | PENDING |
+| P-002 | Domain and hosting | Deployment, canonical URLs | Kultivate | PENDING |
+| P-003 | Public business email and WhatsApp | Contact and CTA | Kultivate | PENDING |
+| P-004 | Static form processor/data flow | Contact form, privacy | Kultivate | PENDING |
+| P-005 | Analytics and consent choice | Events, privacy | Kultivate | PENDING |
+| P-006 | Publishable portfolio list | Work pages | Kultivate | PENDING |
+| P-007 | Client/logo/testimonial permissions | Public proof | Kultivate | PENDING |
+| P-008 | Verified project outcomes | Case studies | Kultivate | PENDING |
+| P-009 | Team names, roles, photos | About | Kultivate | PENDING |
+| P-010 | Legal/public address details | Footer, privacy | Kultivate | PENDING |
+| P-011 | Final Indonesian copy | All pages | Joshua/Approver | PENDING |
+| P-012 | Reviewed English copy | All pages | Translator/Approver | PENDING |
+
+Never invent a pending value to make a page look complete.

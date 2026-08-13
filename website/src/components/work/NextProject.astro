@@ -1,0 +1,70 @@
+---
+interface Props {
+  nextSlug?: string;
+  nextTitle?: string;
+  locale: 'id' | 'en';
+}
+
+const { nextSlug, nextTitle, locale } = Astro.props;
+---
+
+<div class="next-project border-subtle card">
+  <div class="next-content">
+    <span class="next-label text-mono">{locale === 'id' ? 'Karya Berikutnya' : 'Next Case Study'}</span>
+    {nextSlug && nextTitle ? (
+      <h3 class="next-title">
+        <a href={`/${locale}/work/${nextSlug}/`}>{nextTitle}</a>
+      </h3>
+    ) : (
+      <h3 class="next-title">
+        <a href={`/${locale}/work/`}>{locale === 'id' ? 'Lihat Semua Karya' : 'View All Work'}</a>
+      </h3>
+    )}
+  </div>
+
+  <a href={nextSlug ? `/${locale}/work/${nextSlug}/` : `/${locale}/work/`} class="btn btn-secondary">
+    <span>{locale === 'id' ? 'Lanjut' : 'Next'}</span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+      <polyline points="12 5 19 12 12 19"></polyline>
+    </svg>
+  </a>
+</div>
+
+<style>
+  .next-project {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-xl);
+    margin-top: var(--spacing-xxl);
+    background-color: var(--deep-navy);
+  }
+
+  .next-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--steel);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .next-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cloud-white);
+  }
+
+  .next-title a:hover {
+    color: var(--cyan-glow);
+  }
+
+  @media (max-width: 640px) {
+    .next-project {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+    }
+  }
+</style>

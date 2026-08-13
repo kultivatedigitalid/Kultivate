@@ -1,0 +1,47 @@
+:root {
+  /* Brand Colors v2.0 */
+  --void-black: #070B12;
+  --deep-navy: #0B1322;
+  --electric-blue: #176BFF;
+  --cyan-glow: #67D9FF;
+  --cloud-white: #F4F7FB;
+  --mist: #C9D3DF;
+  --steel: #7A8798;
+  --slate: #273244;
+  --signal-ice: #CFF7FF;
+
+  /* Functional Colors */
+  --success: #39C98A;
+  --warning: #FFB84D;
+  --error: #FF5C73;
+
+  /* Typography roles */
+  --font-sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Sounds Right', 'Instrument Sans', system-ui, sans-serif;
+  --font-mono: 'Space Mono', 'SFMono-Regular', Consolas, monospace;
+
+  /* Spacing Grid (8px base) */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --spacing-xxl: 96px;
+  --spacing-giant: 160px;
+
+  /* Layout */
+  --max-content-width: 1360px;
+  --border-radius-sm: 12px;
+  --border-radius-lg: 16px;
+  --border-width-subtle: 1px;
+
+  /* Layering */
+  --z-sticky: 40;
+  --z-overlay: 60;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --transition-micro: 180ms var(--ease-out);
+  --transition-panel: 420ms var(--ease-out);
+}

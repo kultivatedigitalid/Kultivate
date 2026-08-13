@@ -1,0 +1,25 @@
+---
+interface DeliverableItem { title: string; items: string[]; }
+interface Props { heading: string; scopes: DeliverableItem[]; locale: 'id' | 'en'; }
+const { heading, scopes, locale } = Astro.props;
+---
+<section class="service-scope" aria-labelledby="scope-title">
+  <div class="container scope-layout">
+    <header><span class="section-kicker">{locale === 'id' ? 'Cakupan' : 'Coverage'}</span><h2 id="scope-title">{heading}</h2></header>
+    <div class="scope-stream">{scopes.map((scope, index) => (<article class="scope-row"><div class="scope-row__title"><span class="text-mono">0{index + 1}</span><h3>{scope.title}</h3></div><ul>{scope.items.map(item => <li>{item}</li>)}</ul></article>))}</div>
+  </div>
+</section>
+<style>
+  .service-scope { padding-block: clamp(96px, 13vw, 176px); background: linear-gradient(180deg, #05080e 0%, #07101a 62%, #070b12 100%); }
+  .scope-layout > header { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 36px; align-items: end; margin-bottom: clamp(54px, 8vw, 96px); }
+  .scope-layout > header h2 { max-width: 11ch; font-size: clamp(2.7rem, 5.2vw, 5.7rem); font-weight: 520; line-height: 0.96; }
+  .scope-stream { border-top: 1px solid rgba(89, 106, 130, 0.34); }
+  .scope-row { display: grid; grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr); gap: clamp(38px, 7vw, 104px); padding-block: clamp(42px, 6vw, 72px); border-bottom: 1px solid rgba(89, 106, 130, 0.34); }
+  .scope-row__title { display: grid; grid-template-columns: 46px 1fr; gap: 14px; align-items: start; }
+  .scope-row__title span { padding-top: 5px; color: rgba(201, 211, 223, 0.44); }
+  .scope-row h3 { font-size: clamp(1.35rem, 2.1vw, 2.1rem); font-weight: 540; }
+  .scope-row ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 32px; list-style: none; }
+  .scope-row li { position: relative; padding-left: 18px; color: rgba(201, 211, 223, 0.78); font-size: 0.94rem; line-height: 1.55; }
+  .scope-row li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 6px; height: 1px; background: var(--cyan-glow); }
+  @media (max-width: 760px) { .scope-layout > header, .scope-row { grid-template-columns: 1fr; } .scope-row ul { grid-template-columns: 1fr; } }
+</style>
