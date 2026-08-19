@@ -1,27 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { useTranslations } from '../i18n/routes';
 
-const locale = 'id';
-const t = useTranslations(locale);
+const locale = 'en';
 ---
 
-<BaseLayout locale={locale} title="404 - Halaman Tidak Ditemukan / Page Not Found" description="Halaman yang Anda cari tidak ditemukan atau telah dipindahkan.">
+<BaseLayout locale={locale} title="404 - Page Not Found" description="This page was not found at this address.">
   <div class="error-container container glow-field">
     <div class="error-content">
       <span class="error-code text-mono">404</span>
-      <h1 class="error-title">Halaman Tidak Ditemukan</h1>
+      <h1 class="error-title">Page not found</h1>
       <p class="error-desc">
-        Halaman yang Anda cari tidak dapat ditemukan. Silakan kembali ke halaman utama atau jelajahi layanan kami.
+        This page was not found at this address. Return home or choose another section.
       </p>
       <p class="error-desc-en text-mono">
-        The page you are looking for could not be found. Please return to the homepage or explore our services.
+        Kami tidak menemukan halaman pada alamat ini. Kembali ke Home atau pilih bagian lain.
       </p>
 
       <div class="error-actions">
-        <a href="/id/" class="btn btn-primary">Kembali ke Beranda</a>
-        <a href="/id/work/" class="btn btn-secondary">Lihat Karya Kami</a>
-        <a href="/id/services/" class="btn btn-secondary">Pelajari Layanan</a>
+        <a href="/en/" class="btn btn-primary">Back to Home</a>
+        <a href="/en/work/" class="btn btn-secondary">View Portfolio</a>
+        <a href="/en/services/" class="btn btn-secondary">Explore Services</a>
       </div>
     </div>
   </div>

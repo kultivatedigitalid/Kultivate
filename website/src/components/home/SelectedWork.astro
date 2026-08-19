@@ -4,8 +4,8 @@ interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
 const projects = portfolioItems[locale].slice(0, 3);
 const copy = locale === 'id'
-  ? { title: 'Karya dalam satu sistem.', all: 'Lihat semua proyek' }
-  : { title: 'Work across one system.', all: 'View all projects' };
+  ? { title: 'Karya kami', all: 'Lihat semua proyek' }
+  : { title: 'Our work', all: 'View all projects' };
 ---
 
 <section id="work" class="selected-work" aria-labelledby="work-title">

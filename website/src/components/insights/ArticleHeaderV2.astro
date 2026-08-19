@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  summary: string;
+  category: string;
+  author: string;
+  publishedAt: string;
+  updatedAt?: string;
+  heroImage: string;
+  heroAlt: string;
+  locale: 'id' | 'en';
+}
+
+const { title, summary, category, author, publishedAt, updatedAt, heroImage, heroAlt, locale } = Astro.props;
+const dateLocale = locale === 'id' ? 'id-ID' : 'en-GB';
+const formatDate = (value: string) => new Intl.DateTimeFormat(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(value + 'T00:00:00'));
+---
+
+<header class="article-header">
+  <a href={'/' + locale + '/insights/'} class="back-link text-mono">
+    <span aria-hidden="true">&#8592;</span>
+    <span>{locale === 'id' ? 'Kembali ke Blog' : 'Back to Blog'}</span>
+  </a>
+  <div class="article-category text-mono">{category}</div>
+  <h1>{title}</h1>
+  <p class="article-summary">{summary}</p>
+  <div class="article-byline text-mono">
+    <span>{locale === 'id' ? 'Oleh' : 'By'} <strong>{author}</strong></span>
+    <time datetime={publishedAt}>{formatDate(publishedAt)}</time>
+    {updatedAt && <time datetime={updatedAt}>{locale === 'id' ? 'Diperbarui ' : 'Updated '}{formatDate(updatedAt)}</time>}
+  </div>
+  <figure class="article-hero"><img src={heroImage} alt={heroAlt} decoding="async" fetchpriority="high" /></figure>
+</header>
+
+<style>
+  .article-header { display: grid; grid-template-columns: minmax(170px, 0.38fr) minmax(0, 1.4fr); gap: 0 clamp(36px, 7vw, 108px); align-items: start; }
+  .back-link { min-height: 44px; display: inline-flex; align-items: center; gap: 9px; color: rgba(201, 211, 223, 0.68); }
+  .article-category { grid-column: 2; color: var(--cyan-glow); }
+  .article-header h1 { grid-column: 2; max-width: 18ch; margin: 18px 0 22px; font-size: clamp(2.75rem, 2rem + 3.2vw, 5.8rem); font-weight: 540; line-height: 0.96; }
+  .article-summary { grid-column: 2; max-width: 56ch; color: rgba(226, 234, 243, 0.76); font-size: clamp(1.04rem, 1.25vw, 1.2rem); }
+  .article-byline { grid-column: 2; display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 28px; color: rgba(201, 211, 223, 0.56); }
+  .article-byline strong { color: rgba(238, 245, 250, 0.82); font-weight: 560; }
+  .article-hero { grid-column: 1 / -1; aspect-ratio: 16 / 8.5; overflow: hidden; border-radius: 8px; margin-top: clamp(44px, 6vw, 78px); background: #07101a; }
+  .article-hero img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8) saturate(0.86); }
+  @media (hover: hover) and (pointer: fine) { .back-link:hover { color: var(--cloud-white); } }
+  @media (max-width: 760px) { .article-header { grid-template-columns: 1fr; } .article-category, .article-header h1, .article-summary, .article-byline { grid-column: auto; } .article-category { margin-top: 28px; } .article-hero { grid-column: auto; aspect-ratio: 4 / 3; } }
+</style>

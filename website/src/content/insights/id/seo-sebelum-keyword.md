@@ -1,5 +1,5 @@
 ---
-title: "SEO dimulai sebelum keyword dipilih."
+title: "SEO dimulai sebelum keyword dipilih"
 slug: "seo-sebelum-keyword"
 locale: "id"
 translationKey: "seo-before-keywords"
@@ -16,16 +16,16 @@ sources: []
 draft: false
 ---
 
-Keyword hanya berguna setelah arah bisnis jelas. Tanpa konteks, daftar keyword mudah berubah menjadi banyak halaman yang ramai tetapi tidak membawa kebutuhan yang tepat.
+Sebelum memilih keyword, kami perlu memahami apa yang ditawarkan bisnis Anda, siapa yang ingin dijangkau, dan apa yang sedang dicari pelanggan tersebut. Tanpa konteks itu, daftar keyword dapat menghasilkan traffic tanpa hubungan bisnis yang berguna.
 
-## Mulai dari keputusan audiens
+## Mulai dari pertanyaan pelanggan
 
-Petakan pertanyaan yang muncul sebelum seseorang menghubungi Anda. Apa yang perlu mereka pahami, bandingkan, atau yakini? Pertanyaan ini lebih berharga daripada volume pencarian yang berdiri sendiri.
+Petakan pertanyaan pelanggan sebelum mereka menghubungi Anda. Apa yang ingin mereka pahami, bandingkan, atau verifikasi? Pertanyaan tersebut memberi keyword data konteks bisnis yang praktis.
 
-## Bentuk struktur yang masuk akal
+## Bentuk struktur halaman yang jelas
 
-Kelompokkan kebutuhan ke dalam halaman layanan, panduan, dan bukti kerja. Setiap halaman perlu memiliki peran yang berbeda serta hubungan yang jelas dengan halaman lain. Mesin pencari mendapatkan struktur. Pembaca mendapatkan arah.
+Kelompokkan pertanyaan tersebut ke dalam halaman layanan, konten pendukung, dan bukti. Setiap halaman membutuhkan peran yang jelas agar pelanggan dan mesin pencari memahami hubungan antar informasi.
 
-## Pilih peluang yang relevan
+## Pilih peluang yang sesuai
 
-Prioritaskan topik yang dekat dengan layanan, memiliki maksud yang dapat dilayani, dan dapat dijawab secara jujur. SEO yang sehat bukan perlombaan mengejar semua kata. Ia membantu bisnis ditemukan ketika konteksnya tepat.
+Prioritaskan pencarian yang terhubung dengan hal yang benar-benar dapat ditawarkan dan dijelaskan oleh bisnis Anda. SEO yang kuat bukan tentang membahas setiap keyword. SEO perlu berguna ketika pertanyaan yang tepat diajukan.

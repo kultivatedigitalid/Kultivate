@@ -7,68 +7,84 @@ const copy = locale === 'id'
   ? {
       hero: {
         label: 'LAYANAN',
-        title: 'Layanan yang terhubung.',
-        description: 'Website, SEO, dan social sebagai satu sistem.'
+        title: 'Layanan untuk kebutuhan search bisnis Anda.',
+        description: 'Sesuai prioritas Anda, kami dapat membantu melalui SEO, AEO & GEO, Web Services, Content Management, atau kombinasi yang memang dibutuhkan.'
       },
       explore: 'Lihat layanan',
       services: [
         {
-          title: 'Website Development',
-          result: 'Nilai yang langsung terasa.',
-          description: 'Website yang jelas, cepat, dan siap mengubah perhatian menjadi inquiry.',
-          image: '/assets/services/website-system-v2.webp',
-          alt: 'Struktur website modular yang terhubung',
-          slug: 'website-development'
-        },
-        {
-          title: 'Search Engine Optimization',
-          result: 'Ditemukan saat dibutuhkan.',
-          description: 'Search yang mengikuti niat, bukan sekadar trafik.',
+          title: 'SEO',
+          result: 'Bantu pelanggan yang tepat menemukan apa yang Anda tawarkan.',
+          description: 'Kami memperbaiki fondasi teknis, halaman prioritas, dan authority untuk pencarian yang terhubung dengan bisnis Anda.',
           image: '/assets/services/seo-discovery-v2.webp',
-          alt: 'Jalur pencarian yang mengarah ke satu hasil',
+          alt: 'Jalur search yang mengarah ke satu hasil',
           slug: 'seo'
         },
         {
-          title: 'Social Media Management',
-          result: 'Pesan yang tetap bergerak.',
-          description: 'Konten yang konsisten dan mudah diteruskan.',
+          title: 'AEO & GEO',
+          result: 'Siapkan expertise Anda untuk AI search.',
+          description: 'Kami menyusun konten dan sinyal teknis agar answer engines dapat memahami dan mengambil informasi penting dari website Anda.',
+          image: '/assets/services/seo-discovery-v2.webp',
+          alt: 'Jalur informasi yang tersusun menjadi jawaban',
+          slug: 'aeo-geo'
+        },
+        {
+          title: 'Web Services',
+          result: 'Dukung search dengan website yang lebih kuat.',
+          description: 'Kami membangun, merawat, dan memperbaiki website ketika masalah teknis membatasi performa search atau usability.',
+          image: '/assets/services/website-system-v2.webp',
+          alt: 'Struktur website modular yang terhubung',
+          slug: 'web-services'
+        },
+        {
+          title: 'Content Management',
+          result: 'Jaga konten yang berguna tetap aktual.',
+          description: 'Kami merencanakan, membuat, menerbitkan, dan memperbarui konten berdasarkan pertanyaan pelanggan serta prioritas bisnis Anda.',
           image: '/assets/services/social-distribution-v2.webp',
-          alt: 'Sistem distribusi konten dalam alur yang teratur',
-          slug: 'social-media-management'
+          alt: 'Sistem content dalam alur yang teratur',
+          slug: 'content-management'
         }
       ]
     }
   : {
       hero: {
         label: 'SERVICES',
-        title: 'Services that connect.',
-        description: 'Website, SEO, and social as one system.'
+        title: 'Services for the search work your business needs.',
+        description: 'Depending on your priorities, we can support you with SEO, AEO & GEO, Web Services, Content Management, or a combination of them.'
       },
-      explore: 'Explore service',
+      explore: 'View service',
       services: [
         {
-          title: 'Website Development',
-          result: 'Value, clear on arrival.',
-          description: 'A fast, clear website built to turn attention into inquiry.',
-          image: '/assets/services/website-system-v2.webp',
-          alt: 'A connected modular website structure',
-          slug: 'website-development'
-        },
-        {
-          title: 'Search Engine Optimization',
-          result: 'Found when it matters.',
-          description: 'Search built around intent, not vanity traffic.',
+          title: 'SEO',
+          result: 'Help the right customers find what you offer.',
+          description: 'We improve technical foundations, priority pages, and authority around searches connected to your business.',
           image: '/assets/services/seo-discovery-v2.webp',
           alt: 'A search path resolving into one clear result',
           slug: 'seo'
         },
         {
-          title: 'Social Media Management',
-          result: 'Keep the message moving.',
-          description: 'Content that stays consistent and easy to carry forward.',
+          title: 'AEO & GEO',
+          result: 'Prepare your expertise for AI search.',
+          description: 'We organize content and technical signals so answer engines can understand and retrieve useful information from your website.',
+          image: '/assets/services/seo-discovery-v2.webp',
+          alt: 'Information paths structured into a clear answer',
+          slug: 'aeo-geo'
+        },
+        {
+          title: 'Web Services',
+          result: 'Support search with a stronger website.',
+          description: 'We build, maintain, and improve websites where technical issues limit search performance or usability.',
+          image: '/assets/services/website-system-v2.webp',
+          alt: 'A connected modular website structure',
+          slug: 'web-services'
+        },
+        {
+          title: 'Content Management',
+          result: 'Keep useful content current.',
+          description: 'We plan, create, publish, and refresh content around your customer questions and business priorities.',
           image: '/assets/services/social-distribution-v2.webp',
-          alt: 'A content distribution system moving in a clear rhythm',
-          slug: 'social-media-management'
+          alt: 'A content system moving in a clear rhythm',
+          slug: 'content-management'
         }
       ]
     };
@@ -79,7 +95,7 @@ const copy = locale === 'id'
   description={copy.hero.description}
   label={copy.hero.label}
   image="/assets/banners/services.webp"
-  imageAlt={locale === 'id' ? 'Tiga jalur cahaya yang menyatu dalam satu sistem' : 'Three paths of light merging into one system'}
+  imageAlt={locale === 'id' ? 'Empat jalur cahaya yang mewakili pilihan layanan Kultivate' : 'Four paths of light representing Kultivate service options'}
 />
 
 <section class="services-index" aria-label={copy.hero.label}>
@@ -87,7 +103,7 @@ const copy = locale === 'id'
     {copy.services.map((service, index) => (
       <article class="service-row">
         <figure class="service-row__visual">
-          <img src={service.image} alt={service.alt} width="1536" height="1152" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+          <img src={service.image} alt={service.alt} width="1536" height="1152" loading="lazy" decoding="async" />
         </figure>
         <div class="service-row__copy">
           <div class="service-row__meta text-mono"><span>0{index + 1}</span><span>{service.title}</span></div>
@@ -110,7 +126,6 @@ const copy = locale === 'id'
       radial-gradient(ellipse 54% 24% at 50% 10%, rgba(23, 107, 255, 0.065), transparent 80%),
       linear-gradient(180deg, #070b12 0%, #070b12 11%, #060a11 42%, #05080e 70%, #070b12 100%);
   }
-
   .service-stream { display: flex; flex-direction: column; gap: clamp(104px, 14vw, 196px); }
   .service-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(42px, 7vw, 108px); align-items: center; }
   .service-row:nth-child(even) .service-row__visual { order: 2; }
@@ -120,19 +135,12 @@ const copy = locale === 'id'
   .service-row__meta { display: flex; justify-content: space-between; gap: 18px; margin-bottom: 30px; color: rgba(201, 211, 223, 0.56); }
   .service-row__copy h2 { max-width: 12ch; margin-bottom: 22px; font-size: clamp(2.35rem, 4.2vw, 4.7rem); font-weight: 520; letter-spacing: -0.04em; line-height: 0.98; }
   .service-row__copy > p { max-width: 42ch; color: rgba(201, 211, 223, 0.78); font-size: 1.02rem; }
-
-  @keyframes service-image-drift {
-    from { transform: scale(1.02) translate3d(-0.5%, 0, 0); }
-    to { transform: scale(1.065) translate3d(0.6%, -0.4%, 0); }
-  }
-
+  @keyframes service-image-drift { from { transform: scale(1.02) translate3d(-0.5%, 0, 0); } to { transform: scale(1.065) translate3d(0.6%, -0.4%, 0); } }
   @media (max-width: 840px) {
-    .service-row { grid-template-columns: 1fr; gap: 30px; } .service-row__visual { height: auto; aspect-ratio: 4 / 3; }
+    .service-row { grid-template-columns: 1fr; gap: 30px; }
+    .service-row__visual { height: auto; aspect-ratio: 4 / 3; }
     .service-row:nth-child(even) .service-row__visual { order: initial; }
     .service-row__copy h2 { font-size: clamp(2.35rem, 10vw, 3.6rem); }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    .service-row__visual img { animation: none; transform: none; }
-  }
-</style>
+  @media (prefers-reduced-motion: reduce) { .service-row__visual img { animation: none; transform: none; } }
+</style>

@@ -4,14 +4,14 @@ interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
 const articles = editorialItems[locale].slice(0, 4);
 const copy = locale === 'id'
-  ? { title: 'Catatan untuk keputusan digital.', all: 'Lihat semua', read: 'Baca artikel' }
-  : { title: 'Notes for digital decisions.', all: 'View all', read: 'Read article' };
+  ? { label: 'Blog Pilihan', all: 'Lihat semua', read: 'Baca artikel' }
+  : { label: 'Featured Blog', all: 'View all', read: 'Read article' };
 ---
 
 <section id="insights" class="insights-section" aria-labelledby="insights-title">
   <div class="container insights-shell">
     <header class="insights-header">
-      <div><span class="section-kicker">Blog</span><h2 id="insights-title">{copy.title}</h2></div>
+      <h2 id="insights-title" class="featured-label">{copy.label}</h2>
       <a href={'/' + locale + '/insights/'} class="all-insights-link"><span>{copy.all}</span><span aria-hidden="true">&#8594;</span></a>
     </header>
     <div class="insights-rail" aria-label={locale === 'id' ? 'Artikel terbaru, geser secara horizontal' : 'Latest articles, scroll horizontally'}>
@@ -31,7 +31,7 @@ const copy = locale === 'id'
   .insights-section { position: relative; margin-top: -1px; overflow: hidden; padding-block: clamp(70px, 8vw, 112px); background: radial-gradient(ellipse 46% 28% at 80% 2%, rgba(103, 217, 255, 0.055), transparent 76%), linear-gradient(180deg, #070b12 0%, #07101a 48%, #070b12 100%); }
   .insights-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 34px; }
   .insights-header > div { max-width: 700px; }
-  .insights-header h2 { font-size: clamp(2rem, 3.7vw, 4rem); }
+  .featured-label { color: var(--mist); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; }
   .all-insights-link { display: inline-flex; min-height: 44px; align-items: center; gap: 8px; color: var(--mist); font-size: 0.82rem; }
   .insights-rail { display: grid; grid-auto-flow: column; grid-auto-columns: clamp(290px, 30vw, 400px); gap: 16px; overflow-x: auto; scroll-snap-type: inline mandatory; scrollbar-width: thin; scrollbar-color: rgba(103, 217, 255, 0.34) transparent; padding-bottom: 18px; }
   .insight-card { min-width: 0; display: block; color: inherit; scroll-snap-align: start; }

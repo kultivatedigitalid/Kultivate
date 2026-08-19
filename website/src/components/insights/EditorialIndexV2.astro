@@ -1,0 +1,124 @@
+---
+import { editorialItems } from '../../data/editorial';
+
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+const [featured, ...remaining] = editorialItems[locale];
+const topStories = remaining.slice(0, 2);
+const archive = remaining.slice(2);
+const topics = [...new Set(editorialItems[locale].map((article) => article.category))];
+const copy = locale === 'id'
+  ? {
+      label: 'BLOG',
+      title: 'Catatan praktis tentang search',
+      description: 'Penjelasan yang membantu Anda memahami pilihan, pekerjaan, dan alasan di balik rekomendasi search',
+      topics: 'Topik',
+      featured: 'Featured story',
+      top: 'Top stories',
+      all: 'Semua artikel',
+      read: 'Baca artikel'
+    }
+  : {
+      label: 'BLOG',
+      title: 'Practical search notes',
+      description: 'Clear explanations to help you understand the choices, work, and reasoning behind search recommendations',
+      topics: 'Topics',
+      featured: 'Featured story',
+      top: 'Top stories',
+      all: 'All stories',
+      read: 'Read article'
+    };
+---
+
+<header class="blog-header">
+  <div class="container blog-header__grid">
+    <span class="text-mono">{copy.label}</span>
+    <h1>{copy.title}</h1>
+    <p>{copy.description}</p>
+  </div>
+  <div class="container topic-row" aria-label={copy.topics}>
+    <span class="text-mono">{copy.topics}</span>
+    <ul>{topics.map((topic) => <li>{topic}</li>)}</ul>
+  </div>
+</header>
+
+<main class="editorial" id="all-stories">
+  <div class="container">
+    <section class="featured-block" aria-labelledby="featured-title">
+      <span class="section-label text-mono">{copy.featured}</span>
+      <div class="featured-layout">
+        <a href={'/' + locale + '/insights/' + featured.slug + '/'} class="featured-story">
+          <figure><img src={featured.image} alt={featured.alt} width="1536" height="1024" decoding="async" /></figure>
+          <div class="featured-copy">
+            <div class="story-meta text-mono"><span>{featured.category}</span><time>{featured.date}</time></div>
+            <h2 id="featured-title">{featured.title}</h2>
+            <p>{featured.summary}</p>
+            <span class="story-link"><span>{copy.read}</span><span aria-hidden="true">&#8594;</span></span>
+          </div>
+        </a>
+
+        <aside class="top-stories" aria-labelledby="top-stories-title">
+          <h2 id="top-stories-title">{copy.top}</h2>
+          {topStories.map((article) => (
+            <a href={'/' + locale + '/insights/' + article.slug + '/'}>
+              <div class="story-meta text-mono"><span>{article.category}</span><time>{article.date}</time></div>
+              <h3>{article.title}</h3>
+              <p>{article.summary}</p>
+            </a>
+          ))}
+        </aside>
+      </div>
+    </section>
+
+    <section class="archive-block" aria-labelledby="archive-title">
+      <h2 id="archive-title">{copy.all}</h2>
+      <div class="archive-grid">
+        {archive.map((article) => (
+          <a href={'/' + locale + '/insights/' + article.slug + '/'} class="archive-card">
+            <figure><img src={article.image} alt={article.alt} width="1536" height="1024" loading="lazy" decoding="async" /></figure>
+            <div class="story-meta text-mono"><span>{article.category}</span><time>{article.date}</time></div>
+            <h3>{article.title}</h3>
+            <p>{article.summary}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</main>
+
+<style>
+  .blog-header { padding: clamp(144px, 16vw, 218px) 0 0; background: radial-gradient(ellipse 48% 56% at 82% 16%, rgba(70, 134, 183, 0.22), transparent 74%), #070b12; }
+  .blog-header__grid { display: grid; grid-template-columns: minmax(150px, 0.42fr) minmax(390px, 1.15fr) minmax(260px, 0.65fr); gap: clamp(30px, 6vw, 90px); align-items: end; padding-bottom: clamp(62px, 8vw, 108px); }
+  .blog-header__grid > span { align-self: start; color: rgba(201, 211, 223, 0.58); }
+  .blog-header h1 { max-width: 13ch; font-size: clamp(3rem, 2rem + 3.8vw, 6rem); font-weight: 540; line-height: 0.95; }
+  .blog-header p { max-width: 43ch; padding-bottom: 8px; color: rgba(226, 234, 243, 0.74); }
+  .topic-row { display: grid; grid-template-columns: minmax(150px, 0.42fr) 1.86fr; gap: clamp(30px, 6vw, 90px); align-items: center; border-block: 1px solid rgba(89, 106, 130, 0.34); padding-block: 20px; }
+  .topic-row > span { color: rgba(201, 211, 223, 0.48); }
+  .topic-row ul { display: flex; flex-wrap: wrap; gap: 10px 24px; list-style: none; }
+  .topic-row li { color: rgba(226, 234, 243, 0.82); font-size: 0.86rem; }
+  .editorial { margin-top: -1px; padding: clamp(72px, 9vw, 124px) 0 clamp(96px, 12vw, 164px); background: linear-gradient(180deg, #070b12 0%, #060a11 54%, #05080e 100%); }
+  .section-label { display: block; margin-bottom: 26px; color: rgba(201, 211, 223, 0.52); }
+  .featured-layout { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(280px, 0.68fr); gap: clamp(44px, 7vw, 112px); align-items: start; }
+  .featured-story { min-width: 0; color: inherit; }
+  .featured-story figure { aspect-ratio: 16 / 9; overflow: hidden; border-radius: 8px; background: #07101a; }
+  .featured-story img, .archive-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.78) saturate(0.84); transition: transform 620ms var(--ease-out), filter 400ms var(--ease-out); }
+  .featured-copy { max-width: 760px; padding-top: 26px; }
+  .story-meta { display: flex; justify-content: space-between; gap: 16px; color: rgba(201, 211, 223, 0.55); }
+  .featured-copy h2 { max-width: 17ch; margin: 18px 0 16px; font-size: clamp(2rem, 3.8vw, 4.15rem); font-weight: 540; line-height: 0.99; }
+  .featured-copy > p { max-width: 54ch; color: var(--steel); }
+  .story-link { display: inline-flex; min-height: 44px; align-items: center; gap: 10px; margin-top: 18px; color: var(--mist); font-size: 0.82rem; }
+  .top-stories > h2 { margin-bottom: 16px; font-size: clamp(1.65rem, 2.4vw, 2.45rem); font-weight: 540; }
+  .top-stories > a { display: block; border-top: 1px solid rgba(89, 106, 130, 0.34); padding-block: 24px 30px; }
+  .top-stories h3 { margin: 16px 0 10px; font-size: clamp(1.2rem, 1.8vw, 1.7rem); font-weight: 540; line-height: 1.08; }
+  .top-stories p { color: var(--steel); font-size: 0.87rem; }
+  .archive-block { margin-top: clamp(104px, 14vw, 188px); }
+  .archive-block > h2 { margin-bottom: 34px; font-size: clamp(2rem, 3vw, 3.2rem); font-weight: 540; }
+  .archive-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(52px, 7vw, 96px) clamp(18px, 3vw, 42px); }
+  .archive-card figure { aspect-ratio: 16 / 10; overflow: hidden; border-radius: 8px; margin-bottom: 20px; background: #07101a; }
+  .archive-card h3 { margin: 16px 0 10px; font-size: clamp(1.4rem, 2vw, 2rem); font-weight: 540; line-height: 1.08; }
+  .archive-card p { color: var(--steel); font-size: 0.9rem; }
+  @media (hover: hover) and (pointer: fine) { .featured-story:hover img, .archive-card:hover img { transform: scale(1.03); filter: brightness(0.92) saturate(0.98); } .featured-story:hover .story-link { color: var(--cloud-white); } }
+  @media (max-width: 960px) { .blog-header__grid { grid-template-columns: minmax(130px, 0.35fr) 1fr; } .blog-header p { grid-column: 2; } .featured-layout { grid-template-columns: 1fr; } .top-stories { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } .top-stories > h2 { grid-column: 1 / -1; } .archive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 700px) { .blog-header__grid, .topic-row { grid-template-columns: 1fr; } .blog-header p { grid-column: auto; } .top-stories, .archive-grid { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .featured-story img, .archive-card img { transition: none; } }
+</style>

@@ -33,6 +33,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script is:inline>document.documentElement.classList.add('js');</script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,7 +42,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
   <link rel="canonical" href={canonicalUrl} />
   <link rel="alternate" hreflang={locale === 'id' ? 'id-ID' : 'en'} href={canonicalUrl} />
   <link rel="alternate" hreflang={locale === 'id' ? 'en' : 'id-ID'} href={alternateUrl} />
-  <link rel="alternate" hreflang="x-default" href={new URL('/id/', siteConfig.domain).href} />
+  <link rel="alternate" hreflang="x-default" href={new URL('/en/', siteConfig.domain).href} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:title" content={pageTitle} />
@@ -75,18 +76,18 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
       <div class="header-actions">
         <nav class="lang-switch" aria-label={locale === 'id' ? 'Pilih bahasa' : 'Choose language'}>
           <a
-            href={locale === 'id' ? currentLocalePath : alternatePath}
-            class={locale === 'id' ? 'lang-btn active' : 'lang-btn'}
-            aria-current={locale === 'id' ? 'page' : undefined}
-            aria-label="Bahasa Indonesia"
-          >ID</a>
-          <span aria-hidden="true">/</span>
-          <a
             href={locale === 'en' ? currentLocalePath : alternatePath}
             class={locale === 'en' ? 'lang-btn active' : 'lang-btn'}
             aria-current={locale === 'en' ? 'page' : undefined}
             aria-label="English"
           >EN</a>
+          <span aria-hidden="true">/</span>
+          <a
+            href={locale === 'id' ? currentLocalePath : alternatePath}
+            class={locale === 'id' ? 'lang-btn active' : 'lang-btn'}
+            aria-current={locale === 'id' ? 'page' : undefined}
+            aria-label="Bahasa Indonesia"
+          >ID</a>
         </nav>
 
         <a href={'/' + locale + '/contact/'} class="btn btn-primary btn-cta btn-nav">
@@ -137,7 +138,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
           <a href={'/' + locale + '/'} class="logo logo-footer" aria-label="Kultivate">
             <img src="/kultivate-logo.svg?v=3" alt="Kultivate" width="190" height="36" />
           </a>
-          <span class="footer-credit">by PT Karya Lintas Generasi, Joshua Wijaya.</span>
+          <span class="footer-credit">by Kultivate, Joshua Wijaya</span>
         </div>
         <p class="footer-tagline">{t('footer.tagline')}</p>
       </div>
@@ -146,9 +147,10 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
         <div class="footer-links-col">
           <span class="footer-col-title">{t('footer.services')}</span>
           <ul>
-            <li><a href={'/' + locale + '/services/website-development/'}>Website</a></li>
             <li><a href={'/' + locale + '/services/seo/'}>SEO</a></li>
-            <li><a href={'/' + locale + '/services/social-media-management/'}>Social Media</a></li>
+            <li><a href={'/' + locale + '/services/aeo-geo/'}>AEO &amp; GEO</a></li>
+            <li><a href={'/' + locale + '/services/web-services/'}>Web Services</a></li>
+            <li><a href={'/' + locale + '/services/content-management/'}>Content Management</a></li>
           </ul>
         </div>
         <div class="footer-links-col">
@@ -207,6 +209,20 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
         if (menuButton instanceof HTMLButtonElement) menuButton.focus();
       }
     });
+
+    const revealLazyImage = (image) => {
+      image.dataset.lazyState = 'loaded';
+    };
+
+    document.querySelectorAll('img[loading="lazy"]').forEach((image) => {
+      image.dataset.lazyState = 'pending';
+      if (image.complete) {
+        requestAnimationFrame(() => revealLazyImage(image));
+      } else {
+        image.addEventListener('load', () => revealLazyImage(image), { once: true });
+        image.addEventListener('error', () => revealLazyImage(image), { once: true });
+      }
+    });
   </script>
 </body>
 </html>
@@ -250,6 +266,9 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
     position: relative;
     display: inline-flex;
     align-items: center;
+  }
+  .header-container > .logo {
+    margin-left: clamp(-14px, -1vw, -8px);
   }
 
   .logo::after {

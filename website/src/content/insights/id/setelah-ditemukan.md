@@ -1,9 +1,9 @@
 ---
-title: "Ditemukan saja belum cukup."
+title: "Ditemukan saja belum cukup"
 slug: "setelah-ditemukan"
 locale: "id"
 translationKey: "after-discovery"
-summary: "Perjalanan sesudah klik menentukan apakah perhatian berubah menjadi inquiry."
+summary: "Halaman setelah klik perlu melanjutkan pertanyaan dan memperjelas langkah berikutnya."
 category: "Growth"
 author: "Kultivate"
 publishedAt: "2026-07-10"
@@ -11,21 +11,21 @@ updatedAt: "2026-08-13"
 heroImage: "/assets/portfolio/naru.webp"
 heroAlt: "Patung energi kaca dengan aliran cahaya biru"
 seoTitle: "Apa yang Terjadi Setelah Ditemukan | Kultivate"
-seoDescription: "Susun pengalaman setelah klik agar pencarian dan perhatian dapat berkembang menjadi inquiry."
+seoDescription: "Lanjutkan search intent setelah klik melalui informasi layanan yang jelas, bukti yang relevan, dan langkah berikutnya yang praktis."
 sources: []
 draft: false
 ---
 
-Visibilitas membuka pintu. Pengalaman setelah klik menentukan apakah orang ingin melangkah lebih jauh. Karena itu, SEO dan distribusi tidak dapat dipisahkan dari halaman tujuan.
+Search visibility membawa pelanggan ke halaman. Halaman tersebut tetap perlu menjelaskan apa yang Anda tawarkan, mengapa relevan, dan langkah apa yang dapat diambil berikutnya.
 
-## Lanjutkan konteks
+## Lanjutkan pertanyaannya
 
-Judul halaman dan pembuka harus terasa sebagai kelanjutan dari pencarian atau konten yang membawa pengunjung masuk. Jika konteks berubah terlalu jauh, perhatian hilang sebelum nilai utama terlihat.
+Judul dan pembuka halaman perlu melanjutkan pencarian atau konten yang membawa pelanggan ke sana. Pertahankan subjek dan tingkat detail yang sama agar jawabannya mudah dikenali.
 
-## Hilangkan keputusan yang tidak perlu
+## Jaga keputusan tetap sederhana
 
-Tunjukkan layanan, bukti, dan langkah berikutnya dalam urutan yang sederhana. Jangan memaksa semua orang membaca seluruh perusahaan sebelum memahami jawaban yang mereka cari.
+Tampilkan layanan, bukti yang relevan, dan langkah berikutnya dalam urutan yang jelas. Pelanggan tidak perlu membaca seluruh cerita perusahaan sebelum memahami jawaban yang mereka cari.
 
-## Buat inquiry terasa ringan
+## Perjelas langkah berikutnya
 
-CTA harus jelas, tetapi proses sesudahnya juga penting. Form yang singkat, ekspektasi respons yang jujur, dan pilihan kontak yang relevan mengurangi keraguan tanpa menggunakan tekanan.
+Gunakan CTA yang spesifik, formulir yang fokus, dan informasi yang jujur tentang apa yang terjadi setelah inquiry dikirim.

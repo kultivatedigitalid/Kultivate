@@ -1,12 +1,12 @@
 ---
 interface ProblemItem { title: string; description: string; }
-interface Props { heading: string; problems: ProblemItem[]; }
-const { heading, problems } = Astro.props;
+interface Props { heading: string; problems: ProblemItem[]; locale: 'id' | 'en'; }
+const { heading, problems, locale } = Astro.props;
 ---
 <section class="service-problems" aria-labelledby="problems-title">
   <div class="container problems-layout">
-    <div class="problems-intro"><span class="section-kicker">Outcome</span><h2 id="problems-title">{heading}</h2></div>
-    <ol class="problems-list">{problems.map((item, idx) => (<li><span class="problem-num text-mono">0{idx + 1}</span><div><h3>{item.title}</h3>{item.description && <p>{item.description}</p>}</div></li>))}</ol>
+    <div class="problems-intro"><span class="section-kicker">{locale === 'id' ? 'Kapan dibutuhkan' : 'When it helps'}</span><h2 id="problems-title">{heading}</h2></div>
+    <ul class="problems-list">{problems.map((item, idx) => (<li><span class="problem-num text-mono">0{idx + 1}</span><div><h3>{item.title}</h3>{item.description && <p>{item.description}</p>}</div></li>))}</ul>
   </div>
 </section>
 <style>

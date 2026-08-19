@@ -1,127 +1,95 @@
 ---
 import InteriorHero from '../shared/InteriorHero.astro';
-
 interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
 const copy = locale === 'id'
   ? {
-      label: 'ABOUT US',
-      title: 'Satu tim. Satu sistem.',
-      description: 'Strategi, desain, teknologi, dan distribusi dalam satu arah.',
-      beliefTitle: 'Satu arah kerja.',
-      belief: 'Strategi, desain, teknologi, dan distribusi disepakati sejak awal.',
+      label: 'TENTANG KAMI',
+      title: 'SEO agency yang memulai dari bisnis Anda.',
+      description: 'Kami membangun strategi search Anda berdasarkan apa yang ditawarkan bisnis Anda, pelanggan yang ingin dijangkau, dan cara mereka mencari.',
+      beliefTitle: 'Dukungan SEO yang disesuaikan dengan prioritas Anda.',
+      belief: 'Pekerjaan kami mencakup SEO, AEO & GEO, Web Services, dan Content Management. Kami merekomendasikan layanan yang sesuai dengan posisi dan tujuan Anda saat ini, tanpa menambahkan pekerjaan yang tidak dibutuhkan.',
       principles: [
-        ['Konteks sebelum eksekusi', 'Pahami kebutuhan sebelum membuat.'],
-        ['Sistem sebelum channel', 'Setiap channel punya peran.'],
-        ['Detail yang berguna', 'Setiap detail punya fungsi.']
+        ['Konteks sebelum rekomendasi', 'Kami mulai dari bisnis Anda, pelanggan yang ingin dijangkau, dan pertanyaan search yang terhubung dengan apa yang Anda tawarkan.'],
+        ['Cakupan yang tepat', 'Setiap layanan dapat berjalan sendiri atau digabungkan, sesuai bagian yang membutuhkan perhatian.'],
+        ['Bukti sebelum klaim', 'Kami mendasarkan rekomendasi pada data yang tersedia dan tidak memasukkan asumsi yang belum terverifikasi ke dalam rencana.']
       ],
-      teamTitle: 'Tim inti',
+      teamTitle: 'Kenali lima orang di balik pekerjaan kami.',
       teamNote: 'Tim inti'
     }
   : {
       label: 'ABOUT US',
-      title: 'One team. One system.',
-      description: 'Strategy, design, technology, and distribution in one direction.',
-      beliefTitle: 'One direction.',
-      belief: 'Strategy, design, technology, and distribution align from the start.',
+      title: 'An SEO agency that starts with your business.',
+      description: 'We build your search strategy around what your business offers, the customers you want to reach, and how they search.',
+      beliefTitle: 'SEO support shaped around your priorities.',
+      belief: 'Our work covers SEO, AEO & GEO, Web Services, and Content Management. We recommend the services that fit your current position and goals, without adding work you do not need.',
       principles: [
-        ['Context before execution', 'Understand the need before making.'],
-        ['System before channels', 'Every channel has a role.'],
-        ['Useful details', 'Every detail has a function.']
+        ['Context before recommendations', 'We begin with your business, the customers you want to reach, and the search questions connected to what you offer.'],
+        ['The right scope', 'Each service can work independently or alongside others, depending on what needs attention.'],
+        ['Evidence before claims', 'We base recommendations on available data and keep unverified assumptions out of the plan.']
       ],
-      teamTitle: 'Core team',
+      teamTitle: 'Meet the five people behind the work.',
       teamNote: 'Core team'
     };
 
-const team = [
-  { name: 'Mira Santoso', role: 'Strategy & Growth', image: '/assets/team/mira-santoso.webp', alt: 'Portrait placeholder for Mira Santoso' },
-  { name: 'Raka Pratama', role: 'Design & Technology', image: '/assets/team/raka-pratama.webp', alt: 'Portrait placeholder for Raka Pratama' },
-  { name: 'Ayu Mahendra', role: 'Content & Distribution', image: '/assets/team/ayu-mahendra.webp', alt: 'Portrait placeholder for Ayu Mahendra' }
-];
+const team = locale === 'id'
+  ? [
+      ['Mira Santoso', 'Strategi & Riset SEO', '/assets/team/mira-santoso.webp'],
+      ['Raka Pratama', 'Technical SEO', '/assets/team/raka-pratama.webp'],
+      ['Ayu Mahendra', 'Content & On-Page', '/assets/team/ayu-mahendra.webp'],
+      ['Dimas Wirawan', 'Authority & Outreach', '/assets/team/dimas-wirawan.webp'],
+      ['Nadia Putri', 'Measurement & Growth', '/assets/team/nadia-putri.webp']
+    ]
+  : [
+      ['Mira Santoso', 'SEO Strategy & Research', '/assets/team/mira-santoso.webp'],
+      ['Raka Pratama', 'Technical SEO', '/assets/team/raka-pratama.webp'],
+      ['Ayu Mahendra', 'Content & On-Page', '/assets/team/ayu-mahendra.webp'],
+      ['Dimas Wirawan', 'Authority & Outreach', '/assets/team/dimas-wirawan.webp'],
+      ['Nadia Putri', 'Measurement & Growth', '/assets/team/nadia-putri.webp']
+    ];
 ---
 
-<InteriorHero
-  title={copy.title}
-  description={copy.description}
-  label={copy.label}
-  image="/assets/about-team-system.webp"
-  imageAlt={locale === 'id' ? 'Sistem visual abstrak yang menyimbolkan kolaborasi tim' : 'Abstract visual system representing team collaboration'}
-/>
+<InteriorHero title={copy.title} description={copy.description} label={copy.label} image="/assets/about-team-system.webp" imageAlt={locale === 'id' ? 'Sistem visual abstrak yang mewakili kolaborasi tim SEO' : 'Abstract visual system representing SEO team collaboration'} />
 
 <section class="about-story">
-  <div class="container belief-layout">
-    <h2>{copy.beliefTitle}</h2>
-    <p>{copy.belief}</p>
-  </div>
-
+  <div class="container belief-layout"><h2>{copy.beliefTitle}</h2><p>{copy.belief}</p></div>
   <div class="container principles" aria-label={locale === 'id' ? 'Prinsip kerja' : 'Working principles'}>
-    {copy.principles.map(([title, description], index) => (
-      <article>
-        <span class="text-mono">0{index + 1}</span>
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </article>
-    ))}
+    {copy.principles.map(([title, description], index) => <article><span class="text-mono">0{index + 1}</span><h3>{title}</h3><p>{description}</p></article>)}
   </div>
 </section>
 
 <section class="team-section" aria-labelledby="team-title">
-  <div class="container team-heading">
-    <h2 id="team-title">{copy.teamTitle}</h2>
-    <span class="text-mono">{copy.teamNote}</span>
-  </div>
+  <div class="container team-heading"><h2 id="team-title">{copy.teamTitle}</h2><span class="text-mono">{copy.teamNote}</span></div>
   <div class="container team-grid">
-    {team.map((person) => (
-      <article class="person">
-        <figure><img src={person.image} alt={person.alt} width="1120" height="1400" loading="lazy" decoding="async" /></figure>
-        <div><h3>{person.name}</h3><p>{person.role}</p></div>
-      </article>
+    {team.map(([name, role, image]) => (
+      <article class="person"><figure><img src={image} alt={`${locale === 'id' ? 'Foto profil' : 'Profile portrait'} — ${name}`} width="1120" height="1400" loading="lazy" decoding="async" /></figure><div><h3>{name}</h3><p>{role}</p></div></article>
     ))}
   </div>
 </section>
 
 <style>
-  .about-story {
-    padding: clamp(52px, 7vw, 104px) 0 clamp(88px, 12vw, 160px);
-    background:
-      radial-gradient(ellipse 52% 24% at 50% 10%, rgba(23, 107, 255, 0.06), transparent 80%),
-      linear-gradient(180deg, #070b12 0%, #070b12 11%, #060a11 44%, #05080e 100%);
-  }
-
-  .belief-layout { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.7fr); gap: clamp(42px, 8vw, 124px); align-items: start; }
-  .belief-layout h2 { max-width: 12ch; font-size: clamp(2.7rem, 5vw, 5.5rem); font-weight: 520; letter-spacing: -0.04em; line-height: 0.96; }
-  .belief-layout p { max-width: 42ch; padding-top: 10px; color: rgba(201, 211, 223, 0.78); font-size: clamp(1.05rem, 1.4vw, 1.28rem); line-height: 1.62; }
-
-  .principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 5vw, 72px); margin-top: clamp(96px, 13vw, 172px); }
-  .principles article { padding-top: 24px; border-top: 1px solid rgba(89, 106, 130, 0.28); }
-  .principles .text-mono { color: rgba(201, 211, 223, 0.46); }
-  .principles h3 { margin: 28px 0 14px; font-size: clamp(1.35rem, 2vw, 2rem); font-weight: 550; }
-  .principles p { color: var(--steel); font-size: 0.92rem; }
-
-  .team-section { padding-block: clamp(88px, 11vw, 160px); background: #05080e; }
-  .team-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; margin-bottom: 42px; }
-  .team-heading h2 { font-size: clamp(2.5rem, 4.5vw, 5rem); font-weight: 520; }
-  .team-heading span { color: rgba(201, 211, 223, 0.46); }
-  .team-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2vw, 28px); }
-  .person figure { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 8px; background: #07101a; }
-  .person img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.88); transition: transform 650ms var(--ease-out), filter 400ms var(--ease-out); }
-  .person > div { padding-top: 18px; }
-  .person h3 { margin-bottom: 4px; font-size: 1.18rem; font-weight: 560; }
-  .person p { color: var(--steel); font-size: 0.88rem; }
-
-  @media (hover: hover) and (pointer: fine) {
-    .person:hover img { transform: scale(1.025); filter: saturate(1); }
-  }
-
-  @media (max-width: 760px) {
-    .belief-layout,
-    .principles,
-    .team-grid { grid-template-columns: 1fr; }
-    .principles { gap: 42px; }
-    .team-heading { align-items: flex-start; flex-direction: column; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .person img { transition: none; }
-  }
-</style>
+  .about-story { padding:clamp(52px,7vw,104px) 0 clamp(88px,12vw,160px); background:radial-gradient(ellipse 52% 24% at 50% 10%,rgba(23,107,255,.06),transparent 80%),linear-gradient(180deg,#070b12 0%,#070b12 11%,#060a11 44%,#05080e 100%); }
+  .belief-layout { display:grid; grid-template-columns:minmax(0,1.12fr) minmax(280px,.7fr); gap:clamp(42px,8vw,124px); align-items:start; }
+  .belief-layout h2 { max-width:12ch; font-size:clamp(2.7rem,5vw,5.5rem); font-weight:520; letter-spacing:-.04em; line-height:.96; }
+  .belief-layout p { max-width:46ch; padding-top:10px; color:rgba(201,211,223,.78); font-size:clamp(1.05rem,1.4vw,1.28rem); line-height:1.62; }
+  .principles { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(28px,5vw,72px); margin-top:clamp(96px,13vw,172px); }
+  .principles article { padding-top:24px; border-top:1px solid rgba(89,106,130,.28); }
+  .principles .text-mono { color:rgba(201,211,223,.46); }
+  .principles h3 { margin:28px 0 14px; font-size:clamp(1.35rem,2vw,2rem); font-weight:550; }
+  .principles p { color:var(--steel); font-size:.92rem; }
+  .team-section { padding-block:clamp(88px,11vw,160px); background:#05080e; }
+  .team-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:28px; margin-bottom:42px; }
+  .team-heading h2 { max-width:14ch; font-size:clamp(2.5rem,4.5vw,5rem); font-weight:520; }
+  .team-heading span { max-width:30ch; color:rgba(201,211,223,.46); text-align:right; }
+  .team-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:clamp(10px,1.5vw,22px); }
+  .person figure { aspect-ratio:4/5; overflow:hidden; border-radius:8px; background:#07101a; }
+  .person img { width:100%; height:100%; object-fit:cover; filter:saturate(.88); transition:transform 650ms var(--ease-out),filter 400ms var(--ease-out); }
+  .person>div { padding-top:18px; }
+  .person h3 { margin-bottom:4px; font-size:1.05rem; font-weight:560; }
+  .person p { color:var(--steel); font-size:.8rem; }
+  @media (hover:hover) and (pointer:fine) { .person:hover img{transform:scale(1.025);filter:saturate(1)} }
+  @media (max-width:1000px) { .team-grid{grid-template-columns:repeat(3,minmax(0,1fr))} }
+  @media (max-width:760px) { .belief-layout,.principles{grid-template-columns:1fr}.principles{gap:42px}.team-heading{align-items:flex-start;flex-direction:column}.team-heading span{text-align:left}.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+  @media (max-width:440px) { .team-grid{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion:reduce) { .person img{transition:none} }
+</style>

@@ -10,15 +10,15 @@ const locale = 'id';
 const t = useTranslations(locale);
 ---
 
-<BaseLayout 
-  locale={locale} 
-  title="Mulai Proyek" 
-  description="Ceritakan apa yang sedang Anda bangun. Mulai proyek bersama Kultivate."
+<BaseLayout
+  locale={locale}
+  title="Konsultasi dengan Kultivate"
+  description="Ceritakan bagian yang membutuhkan perhatian. Kami akan memahami konteksnya sebelum merekomendasikan pekerjaan."
 >
   <InteriorHero
-    label="MULAI PROYEK"
-    title="Ceritakan kebutuhan Anda."
-    description="Apa yang sedang dibangun, apa yang menghambat, dan bantuan yang dibutuhkan."
+    label="KONTAK"
+    title="Ceritakan bagian yang membutuhkan perhatian"
+    description="Bagikan posisi, prioritas, dan dukungan yang sedang Anda pertimbangkan. Kami akan memahami konteksnya sebelum merekomendasikan pekerjaan."
     image="/assets/banners/contact.webp"
     imageAlt="Jalur cahaya biru yang bergabung menuju satu struktur"
     compact
@@ -56,10 +56,10 @@ const t = useTranslations(locale);
               <label for="service" class="form-label">{t('contact.service_interest')} <span class="required">*</span></label>
               <select id="service" name="service" required class="form-select">
                 <option value="">-- Pilih Layanan --</option>
-                <option value="website">{t('contact.service_web')}</option>
                 <option value="seo">{t('contact.service_seo')}</option>
-                <option value="social">{t('contact.service_social')}</option>
-                <option value="system">{t('contact.service_system')}</option>
+                <option value="aeo-geo">{t('contact.service_system')}</option>
+                <option value="web-services">{t('contact.service_web')}</option>
+                <option value="content-management">{t('contact.service_social')}</option>
               </select>
             </div>
 
@@ -73,9 +73,9 @@ const t = useTranslations(locale);
                 <label for="timeline" class="form-label">{t('contact.timeline')}</label>
                 <select id="timeline" name="timeline" class="form-select">
                   <option value="">{t('contact.placeholder_timeline')}</option>
-                  <option value="asap">Secepatnya (&lt; 2 minggu)</option>
-                  <option value="1-2months">1 - 2 Bulan</option>
-                  <option value="flexible">Fleksibel / Perencanaan</option>
+                  <option value="asap">Secepatnya</option>
+                  <option value="1-2months">Dalam 1–2 bulan</option>
+                  <option value="flexible">Masih dalam perencanaan</option>
                 </select>
               </div>
               <div class="form-group">
@@ -108,9 +108,9 @@ const t = useTranslations(locale);
         <!-- Direct Contact Info Column -->
         <div class="contact-info-col">
           <div class="info-card card">
-            <h2 class="info-title">Lebih suka bicara langsung?</h2>
+            <h2 class="info-title">Lebih suka mengirim pesan langsung?</h2>
             <p class="info-desc">
-              WhatsApp atau email. Pilih yang paling nyaman.
+              Hubungi kami melalui WhatsApp atau email.
             </p>
 
             <div class="contact-links">
@@ -134,7 +134,7 @@ const t = useTranslations(locale);
                   </svg>
                 </div>
                 <div>
-                  <span class="link-label text-mono">Email Inquiry</span>
+                  <span class="link-label text-mono">Email</span>
                   <span class="link-val">{siteConfig.email}</span>
                 </div>
               </a>

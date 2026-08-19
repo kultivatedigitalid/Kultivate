@@ -1,10 +1,10 @@
 ---
 interface ProcessStep { step: string; name: string; description: string; }
-interface Props { heading: string; steps: ProcessStep[]; }
-const { heading, steps } = Astro.props;
+interface Props { heading: string; steps: ProcessStep[]; locale: 'id' | 'en'; }
+const { heading, steps, locale } = Astro.props;
 ---
 <section class="service-process" aria-labelledby="process-title">
-  <div class="container"><header class="process-heading"><span class="section-kicker">Process</span><h2 id="process-title">{heading}</h2></header><ol class="process-grid">{steps.map((item, index) => (<li><span class="step-num text-mono">0{index + 1}</span><h3>{item.name}</h3><p>{item.description}</p></li>))}</ol></div>
+  <div class="container"><header class="process-heading"><span class="section-kicker">{locale === 'id' ? 'Proses' : 'Process'}</span><h2 id="process-title">{heading}</h2></header><ol class="process-grid">{steps.map((item, index) => (<li><span class="step-num text-mono">0{index + 1}</span><h3>{item.name}</h3><p>{item.description}</p></li>))}</ol></div>
 </section>
 <style>
   .service-process { padding-block: clamp(96px, 13vw, 176px); background: linear-gradient(180deg, #070b12, #05080e); }

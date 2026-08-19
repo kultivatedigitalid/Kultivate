@@ -19,11 +19,11 @@ const t = useTranslations(locale);
   <div class="container">
     <div class="cta-content">
       <div>
-        <h2 id="final-cta-title">{locale === 'id' ? 'Mulai dari kebutuhan.' : 'Start with the need.'}</h2>
+        <h2 id="final-cta-title">{locale === 'id' ? 'Mulai dari prioritas Anda saat ini' : 'Start with your current priorities'}</h2>
         <p>
           {locale === 'id'
-            ? 'Ceritakan konteksnya. Kami bantu menentukan langkah pertama.'
-            : 'Share the context. We will help define the first step.'}
+            ? 'Ceritakan bagian yang membutuhkan perhatian. Kami akan memahami konteksnya sebelum merekomendasikan pekerjaan.'
+            : 'Tell us what needs attention. We will review the context before recommending any work.'}
         </p>
       </div>
       <a href={'/' + locale + '/contact/'} class="btn btn-primary btn-cta">

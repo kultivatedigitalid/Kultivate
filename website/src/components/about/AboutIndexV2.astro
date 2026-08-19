@@ -1,0 +1,125 @@
+---
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+const copy = locale === 'id'
+  ? {
+      label: 'TENTANG KAMI',
+      title: 'SEO agency yang memulai dari bisnis Anda',
+      description: 'Kami membangun arah search berdasarkan apa yang Anda tawarkan, pelanggan yang ingin dijangkau, dan cara mereka mencari',
+      imageAlt: 'Lima profesional Indonesia meninjau riset bersama di ruang kerja',
+      cultureLabel: 'Cara kami bekerja bersama',
+      sections: [
+        ['Visi kami', 'Membuat pekerjaan search lebih mudah dipahami dan dijalankan', 'Kami ingin membantu bisnis mengambil keputusan search yang lebih jelas, dengan rekomendasi yang terhubung pada penawaran, pelanggan, dan arah pertumbuhan Anda'],
+        ['Esensi kami', 'Memahami konteks sebelum menentukan pekerjaan', 'Kami bertanya untuk memahami bisnis Anda, lalu menjaga penjelasan tetap jelas agar tim Anda mengetahui apa yang direkomendasikan dan alasannya'],
+        ['Cara kerja kami', 'Tetap terlibat dari arah hingga pelaksanaan', 'Orang yang menyusun strategi tetap dekat saat riset, konten, halaman, dan perbaikan teknis dikerjakan']
+      ],
+      teamTitle: 'Lima orang di balik pekerjaan kami',
+      teamNote: 'Tim inti'
+    }
+  : {
+      label: 'ABOUT US',
+      title: 'An SEO agency that starts with your business',
+      description: 'We shape your search direction around what you offer, the customers you want to reach, and how they search',
+      imageAlt: 'Five Indonesian professionals reviewing research together in a workspace',
+      cultureLabel: 'How we work together',
+      sections: [
+        ['Our vision', 'Make search work easier to understand and act on', 'We want to help businesses make clearer search decisions, with recommendations connected to your offer, customers, and direction for growth'],
+        ['Our essence', 'Understand the context before defining the work', 'We ask enough questions to understand your business, then keep the explanation clear so your team knows what we recommend and why'],
+        ['How we work', 'Stay involved from direction to delivery', 'The people shaping the strategy remain close as research, content, pages, and technical improvements move forward']
+      ],
+      teamTitle: 'Five people behind the work',
+      teamNote: 'Core team'
+    };
+
+const team = locale === 'id'
+  ? [
+      ['Mira Santoso', 'Strategi & Riset SEO', '/assets/team/mira-santoso.webp'],
+      ['Raka Pratama', 'Technical SEO', '/assets/team/raka-pratama.webp'],
+      ['Ayu Mahendra', 'Content & On-Page', '/assets/team/ayu-mahendra.webp'],
+      ['Dimas Wirawan', 'Authority & Outreach', '/assets/team/dimas-wirawan.webp'],
+      ['Nadia Putri', 'Measurement & Growth', '/assets/team/nadia-putri.webp']
+    ]
+  : [
+      ['Mira Santoso', 'SEO Strategy & Research', '/assets/team/mira-santoso.webp'],
+      ['Raka Pratama', 'Technical SEO', '/assets/team/raka-pratama.webp'],
+      ['Ayu Mahendra', 'Content & On-Page', '/assets/team/ayu-mahendra.webp'],
+      ['Dimas Wirawan', 'Authority & Outreach', '/assets/team/dimas-wirawan.webp'],
+      ['Nadia Putri', 'Measurement & Growth', '/assets/team/nadia-putri.webp']
+    ];
+---
+
+<header class="about-hero">
+  <div class="container about-hero__copy">
+    <span class="text-mono">{copy.label}</span>
+    <h1>{copy.title}</h1>
+    <p>{copy.description}</p>
+  </div>
+</header>
+
+<section class="about-culture" aria-label={copy.cultureLabel}>
+  <div class="container">
+    <figure>
+      <img src="/assets/about/culture-v3.webp" alt={copy.imageAlt} width="1920" height="1080" decoding="async" fetchpriority="high" />
+      <figcaption class="text-mono">{copy.cultureLabel}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="about-story" aria-label={locale === 'id' ? 'Visi, esensi, dan cara kerja Kultivate' : 'Kultivate vision, essence, and way of working'}>
+  <div class="container story-list">
+    {copy.sections.map(([label, title, description], index) => (
+      <article class="story-row">
+        <div class="story-row__label"><span class="text-mono">0{index + 1}</span><p>{label}</p></div>
+        <h2>{title}</h2>
+        <p class="story-row__body">{description}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<section class="team-section" aria-labelledby="team-title">
+  <div class="container team-heading"><h2 id="team-title">{copy.teamTitle}</h2><span class="text-mono">{copy.teamNote}</span></div>
+  <div class="container team-grid">
+    {team.map(([name, role, image]) => (
+      <article class="person">
+        <figure><img src={image} alt={(locale === 'id' ? 'Foto profil — ' : 'Profile portrait — ') + name} width="1120" height="1400" loading="lazy" decoding="async" /></figure>
+        <div><h3>{name}</h3><p>{role}</p></div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .about-hero { padding: clamp(148px, 17vw, 226px) 0 clamp(64px, 8vw, 110px); background: radial-gradient(ellipse 48% 58% at 84% 24%, rgba(70, 134, 183, 0.22), transparent 72%), #070b12; }
+  .about-hero__copy { display: grid; grid-template-columns: minmax(0, 0.45fr) minmax(420px, 1.25fr) minmax(280px, 0.68fr); gap: clamp(28px, 6vw, 90px); align-items: end; }
+  .about-hero__copy > span { align-self: start; color: rgba(201, 211, 223, 0.6); }
+  .about-hero h1 { max-width: 12ch; font-size: clamp(3.1rem, 2rem + 4vw, 6.2rem); font-weight: 540; line-height: 0.95; }
+  .about-hero p { max-width: 45ch; padding-bottom: 8px; color: rgba(226, 234, 243, 0.76); font-size: clamp(1rem, 1.25vw, 1.18rem); }
+  .about-culture { margin-top: -1px; padding-bottom: clamp(82px, 10vw, 138px); background: linear-gradient(180deg, #070b12, #060a11); }
+  .about-culture figure { position: relative; aspect-ratio: 16 / 8.4; overflow: hidden; border-radius: 8px; background: #07101a; }
+  .about-culture img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.88) contrast(1.02); }
+  .about-culture figcaption { position: absolute; inset: auto auto 20px 20px; border: 1px solid rgba(238, 245, 250, 0.22); border-radius: 999px; background: rgba(5, 8, 14, 0.7); color: rgba(238, 245, 250, 0.76); padding: 8px 12px; backdrop-filter: blur(10px); }
+  .about-story { padding-bottom: clamp(96px, 12vw, 168px); background: #060a11; }
+  .story-list { border-top: 1px solid rgba(89, 106, 130, 0.36); }
+  .story-row { display: grid; grid-template-columns: minmax(170px, 0.42fr) minmax(300px, 1fr) minmax(280px, 0.72fr); gap: clamp(28px, 6vw, 88px); align-items: start; border-bottom: 1px solid rgba(89, 106, 130, 0.3); padding-block: clamp(46px, 6vw, 78px); }
+  .story-row__label { display: flex; align-items: baseline; gap: 18px; }
+  .story-row__label span { color: rgba(201, 211, 223, 0.42); }
+  .story-row__label p { color: rgba(226, 234, 243, 0.76); font-size: 0.86rem; }
+  .story-row h2 { max-width: 16ch; font-size: clamp(2rem, 3.3vw, 3.9rem); font-weight: 540; line-height: 1; }
+  .story-row__body { max-width: 44ch; color: var(--steel); font-size: 0.96rem; }
+  .team-section { padding-block: clamp(92px, 11vw, 160px); background: radial-gradient(ellipse 56% 30% at 88% 4%, rgba(70, 134, 183, 0.16), transparent 78%), #05080e; }
+  .team-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; margin-bottom: 42px; }
+  .team-heading h2 { max-width: 12ch; font-size: clamp(2.5rem, 4.5vw, 5rem); font-weight: 520; }
+  .team-heading span { color: rgba(201, 211, 223, 0.46); }
+  .team-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(10px, 1.5vw, 22px); }
+  .person figure { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 8px; background: #07101a; }
+  .person img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.84); transition: transform 650ms var(--ease-out), filter 400ms var(--ease-out); }
+  .person > div { padding-top: 18px; }
+  .person h3 { margin-bottom: 4px; font-size: 1.05rem; font-weight: 560; }
+  .person p { color: var(--steel); font-size: 0.8rem; }
+  @media (hover: hover) and (pointer: fine) { .person:hover img { transform: scale(1.025); filter: saturate(1); } }
+  @media (max-width: 1000px) { .about-hero__copy, .story-row { grid-template-columns: minmax(150px, 0.4fr) 1fr; } .about-hero p, .story-row__body { grid-column: 2; } .team-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 760px) { .about-hero__copy, .story-row { grid-template-columns: 1fr; } .about-hero p, .story-row__body { grid-column: auto; } .about-culture figure { aspect-ratio: 4 / 5; } .about-culture img { object-position: 52% center; } .story-row { gap: 20px; } .team-heading { align-items: flex-start; flex-direction: column; } .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 440px) { .team-grid { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .person img { transition: none; } }
+</style>

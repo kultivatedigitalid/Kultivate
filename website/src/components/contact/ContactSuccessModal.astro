@@ -16,11 +16,11 @@ const { locale } = Astro.props;
     <h2 id="contact-success-title">{locale === 'id' ? 'Terima kasih.' : 'Thank you.'}</h2>
     <p id="contact-success-description">
       {locale === 'id'
-        ? 'Terima kasih sudah mengisi formulir. Tim kami akan menghubungi Anda paling lambat H+1 hari kerja.'
-        : 'Thank you for completing the form. Our team will contact you within one business day.'}
+        ? 'Inquiry Anda sudah kami terima. Tim kami akan meninjau detailnya dan menghubungi Anda melalui informasi yang diberikan.'
+        : 'We received your inquiry. Our team will review the details and contact you using the information provided.'}
     </p>
     <button type="button" class="btn btn-primary" data-success-close>
-      {locale === 'id' ? 'Baik, saya mengerti' : 'Got it'}
+      {locale === 'id' ? 'Tutup' : 'Close'}
     </button>
   </div>
 </dialog>

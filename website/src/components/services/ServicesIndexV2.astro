@@ -1,0 +1,78 @@
+---
+import InteriorHero from '../shared/InteriorHero.astro';
+
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+const copy = locale === 'id'
+  ? {
+      hero: {
+        label: 'LAYANAN SEO',
+        title: 'Layanan SEO untuk prioritas search Anda',
+        description: 'Mulai dari SEO, AEO & GEO, Web Services, atau Content Management berdasarkan prioritas search yang perlu bisnis Anda tangani sekarang'
+      },
+      explore: 'Lihat layanan',
+      services: [
+        { title: 'SEO', result: 'Bangun visibility pada pencarian yang membawa pelanggan ke bisnis Anda', description: 'Kami meninjau cara website dirayapi, disusun, dan dipahami, lalu memperbaiki halaman prioritas dan authority signals berdasarkan produk atau layanan yang perlu ditemukan pelanggan.', image: '/assets/services/seo-focus-v3.webp', alt: 'Beberapa jalur search bergerak menuju satu titik prioritas', slug: 'seo' },
+        { title: 'AEO & GEO', result: 'Bantu AI search memahami kapan expertise Anda relevan', description: 'Kami menyusun hubungan antar entity, konten yang siap menjawab, dan sinyal teknis agar informasi Anda lebih mudah dipahami, diambil, dan dirujuk pada pengalaman AI yang relevan.', image: '/assets/services/aeo-geo-answer-v3.webp', alt: 'Jaringan informasi terhubung menuju satu bidang jawaban', slug: 'aeo-geo' },
+        { title: 'Web Services', result: 'Berikan fondasi teknis yang dibutuhkan pekerjaan search Anda', description: 'Kami memperbaiki website ketika performa, usability, migrasi, atau kekurangan implementasi menghambat halaman prioritas dan orang yang menggunakannya.', image: '/assets/services/web-foundation-v3.webp', alt: 'Lapisan website modular tersusun di atas fondasi teknis', slug: 'web-services' },
+        { title: 'Content Management', result: 'Jaga konten tetap selaras dengan pertanyaan pelanggan', description: 'Kami merencanakan, membuat, menerbitkan, dan memperbarui konten berdasarkan pertanyaan nyata pelanggan, prioritas bisnis, dan halaman yang membutuhkan dukungan berkelanjutan.', image: '/assets/services/content-rhythm-v3.webp', alt: 'Modul content bergerak dalam alur publikasi dan pembaruan', slug: 'content-management' }
+      ]
+    }
+  : {
+      hero: {
+        label: 'SEO SERVICES',
+        title: 'SEO services for your search priorities',
+        description: 'Start with SEO, AEO & GEO, Web Services, or Content Management based on the search priority your business needs to address now'
+      },
+      explore: 'View service',
+      services: [
+        { title: 'SEO', result: 'Build visibility around the searches that lead customers to your business', description: 'We review how your website is crawled, structured, and understood, then improve priority pages and authority signals around the products or services you need people to find.', image: '/assets/services/seo-focus-v3.webp', alt: 'Several search paths moving toward one priority destination', slug: 'seo' },
+        { title: 'AEO & GEO', result: 'Help AI search understand where your expertise is useful', description: 'We organize entity relationships, answer-ready content, and technical signals so your information is easier to interpret, retrieve, and reference in relevant AI experiences.', image: '/assets/services/aeo-geo-answer-v3.webp', alt: 'A connected information network resolving into one answer surface', slug: 'aeo-geo' },
+        { title: 'Web Services', result: 'Give search work the technical foundation it needs to perform', description: 'We improve the website where performance, usability, migrations, or implementation gaps hold back priority pages and the people using them.', image: '/assets/services/web-foundation-v3.webp', alt: 'Modular website layers arranged on a technical foundation', slug: 'web-services' },
+        { title: 'Content Management', result: 'Keep useful content aligned with the questions customers continue to ask', description: 'We plan, create, publish, and refresh content around real customer questions, business priorities, and the pages that need ongoing support.', image: '/assets/services/content-rhythm-v3.webp', alt: 'Content modules moving through a publishing and refresh rhythm', slug: 'content-management' }
+      ]
+    };
+---
+
+<InteriorHero
+  title={copy.hero.title}
+  description={copy.hero.description}
+  label={copy.hero.label}
+  image="/assets/banners/services-v3.webp"
+  imageAlt={locale === 'id' ? 'Empat jalur visual yang mewakili pilihan layanan search Kultivate' : 'Four visual paths representing Kultivate search service options'}
+/>
+
+<section class="services-index" aria-label={copy.hero.label}>
+  <div class="container service-stream">
+    {copy.services.map((service, index) => (
+      <article class="service-row">
+        <figure class="service-row__visual"><img src={service.image} alt={service.alt} width="1440" height="1080" loading="lazy" decoding="async" /></figure>
+        <div class="service-row__copy">
+          <div class="service-row__meta text-mono"><span>0{index + 1}</span></div>
+          <h2>{service.title}</h2>
+          <h3>{service.result}</h3>
+          <p>{service.description}</p>
+          <a href={'/' + locale + '/services/' + service.slug + '/'} class="link-hover-arrow"><span>{copy.explore}</span><span aria-hidden="true">&#8594;</span></a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .services-index { margin-top:-1px; padding:clamp(52px,7vw,96px) 0 clamp(88px,11vw,154px); background:radial-gradient(ellipse 54% 24% at 50% 10%,rgba(70,134,183,.11),transparent 80%),linear-gradient(180deg,#070b12 0%,#060a11 54%,#05080e 100%); }
+  .service-stream { display:flex; flex-direction:column; gap:clamp(110px,14vw,196px); }
+  .service-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(42px,7vw,108px); align-items:center; }
+  .service-row:nth-child(even) .service-row__visual { order:2; }
+  .service-row__visual { aspect-ratio:4 / 3; overflow:hidden; border-radius:8px; background:#07101a; }
+  .service-row__visual img { width:100%; height:100%; object-fit:cover; animation:service-image-drift 18s var(--ease-in-out) infinite alternate; }
+  .service-row:nth-child(even) img { animation-direction:alternate-reverse; }
+  .service-row__copy { min-width:0; }
+  .service-row__meta { display:flex; margin-bottom:22px; color:rgba(201,211,223,.52); }
+  .service-row__copy h2 { max-width:12ch; margin-bottom:22px; font-size:clamp(2.8rem,5vw,5.5rem); font-weight:540; letter-spacing:-.045em; line-height:.94; }
+  .service-row__copy h3 { max-width:29ch; margin-bottom:18px; color:rgba(238,245,250,.92); font-size:clamp(1.28rem,1.4rem + .45vw,2rem); font-weight:540; letter-spacing:-.025em; line-height:1.18; text-wrap:balance; }
+  .service-row__copy > p { max-width:49ch; margin-bottom:22px; color:rgba(201,211,223,.76); font-size:.96rem; line-height:1.62; }
+  @keyframes service-image-drift { from { transform:scale(1.02) translate3d(-.5%,0,0); } to { transform:scale(1.06) translate3d(.6%,-.4%,0); } }
+  @media (max-width:840px) { .service-row { grid-template-columns:1fr; gap:30px; } .service-row:nth-child(even) .service-row__visual { order:initial; } .service-row__copy h3 { max-width:34ch; } }
+  @media (prefers-reduced-motion:reduce) { .service-row__visual img { animation:none; transform:none; } }
+</style>

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import InsightHeader from '../../../components/content/InsightHeader.astro';
+import InsightArticleV2 from '../../../components/insights/InsightArticleV2.astro';
 import FinalCTA from '../../../components/home/FinalCTA.astro';
 import { getCollection, render } from 'astro:content';
 
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props;
-const { Content } = await render(article);
+const { Content, headings } = await render(article);
 const counterpart = (await getCollection('insights', (entry) => entry.data.locale === 'en' && entry.data.translationKey === article.data.translationKey && !entry.data.draft))[0];
 const alternatePath = counterpart ? '/en/insights/' + counterpart.data.slug + '/' : '/en/insights/';
 ---
@@ -28,90 +28,7 @@ const alternatePath = counterpart ? '/en/insights/' + counterpart.data.slug + '/
   title={article.data.seoTitle || article.data.title} 
   description={article.data.seoDescription || article.data.summary}
 >
-  <article class="insight-detail-page section">
-    <div class="container">
-      <div class="article-wrapper">
-        <InsightHeader
-          title={article.data.title}
-          category={article.data.category}
-          author={article.data.author}
-          publishedAt={article.data.publishedAt}
-          updatedAt={article.data.updatedAt}
-          heroImage={article.data.heroImage}
-          heroAlt={article.data.heroAlt}
-          locale={locale}
-        />
-
-        <div class="article-body">
-          <Content />
-        </div>
-
-        {article.data.sources && article.data.sources.length > 0 && (
-          <div class="article-sources card border-subtle">
-            <h3 class="sources-title text-mono">Sumber & Referensi</h3>
-            <ul class="sources-list">
-              {article.data.sources.map(src => (
-                <li>{src}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    </div>
-  </article>
+  <InsightArticleV2 article={article} Content={Content} headings={headings} locale={locale} />
 
   <FinalCTA locale={locale} />
 </BaseLayout>
-
-<style>
-  .insight-detail-page {
-    padding-top: clamp(124px, 14vw, 176px);
-    padding-bottom: var(--spacing-xxl);
-    background: linear-gradient(180deg, #070b12 0%, #05080e 52%, #070b12 100%);
-  }
-
-  .article-wrapper {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .article-body {
-    font-size: 1.125rem;
-    color: var(--mist);
-    line-height: 1.75;
-    margin-top: var(--spacing-xl);
-    margin-bottom: var(--spacing-xxl);
-  }
-
-  .article-body :global(h2) {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--cloud-white);
-    margin-top: var(--spacing-xl);
-    margin-bottom: var(--spacing-md);
-  }
-
-  .article-body :global(p) {
-    margin-bottom: var(--spacing-md);
-  }
-
-  .article-sources {
-    padding: var(--spacing-lg);
-    background-color: var(--deep-navy);
-    margin-top: var(--spacing-xl);
-  }
-
-  .sources-title {
-    font-size: 0.875rem;
-    color: var(--cyan-glow);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .sources-list {
-    list-style-position: inside;
-    font-size: 0.875rem;
-    color: var(--steel);
-  }
-</style>

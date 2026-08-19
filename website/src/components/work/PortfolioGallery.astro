@@ -8,13 +8,13 @@ const items = portfolioItems[locale];
 const copy = locale === 'id'
   ? {
       label: 'PORTOFOLIO',
-      title: 'Karya pilihan kami.',
+      title: 'Karya pilihan kami',
       description: 'Website, SEO, dan social yang saling menguatkan.',
       note: 'Hasil kerja kami'
     }
   : {
       label: 'PORTFOLIO',
-      title: 'Selected work.',
+      title: 'Selected work',
       description: 'Website, SEO, and social designed to reinforce one another.',
       note: 'Our work'
     };
@@ -34,7 +34,7 @@ const copy = locale === 'id'
     {items.map((item, index) => (
       <article class:list={['portfolio-item', 'portfolio-item--' + (index + 1)]} tabindex="0" style={{ '--project-theme': item.theme }}>
         <figure class="portfolio-media">
-          <img src={item.image} alt={item.alt} width="1536" height="1024" loading={index < 3 ? 'eager' : 'lazy'} decoding="async" />
+          <img src={item.image} alt={item.alt} width="1536" height="1024" loading="lazy" decoding="async" />
           <figcaption class="portfolio-caption">
             <strong>{item.brand}</strong>
             <span>{item.descriptor}</span>
@@ -157,4 +157,4 @@ const copy = locale === 'id'
     .portfolio-caption,
     .portfolio-media::after { transition: none; }
   }
-</style>
+</style>

@@ -25,15 +25,15 @@ const problemItems = service.problemsSolved.map(p => ({ title: p, description: '
 
 const scopeItems = [
   {
-    title: 'Cakupan kerja',
+    title: 'Pilihan cakupan',
     items: service.scope
   },
   {
-    title: 'Hasil yang diterima',
+    title: 'Hasil kerja yang umum',
     items: service.deliverables
   },
   {
-    title: 'Dirancang untuk',
+    title: 'Cocok untuk',
     items: service.whoItIsFor
   }
 ];
@@ -51,16 +51,16 @@ const processSteps = service.process.map(p => {
 
 const defaultFaqs = [
   {
-    question: `Berapa lama estimasi pengerjaan proyek ${service.title}?`,
-    answer: `Sebagian besar proyek berjalan 2 sampai 6 minggu. Scope dan kesiapan aset menentukan ritmenya; milestone disepakati sebelum pekerjaan dimulai.`
+    question: `Bagaimana kami menentukan cakupan proyek ${service.title}?`,
+    answer: `Kami mulai dari posisi, prioritas, dan kapasitas internal Anda saat ini. Cakupan hanya berisi pekerjaan yang membutuhkan perhatian.`
   },
   {
-    question: `Apakah layanan ${service.title} dapat digabungkan dengan jasa lainnya?`,
-    answer: `Bisa. Website, SEO, dan social dapat dirancang sebagai satu sistem, atau dimulai dari kebutuhan yang paling mendesak.`
+    question: `Apakah layanan ${service.title} dapat digunakan sendiri?`,
+    answer: `Bisa. Setiap layanan dapat berjalan sendiri atau digabungkan ketika pekerjaannya saling berkaitan. Kami merekomendasikan cakupan terkecil yang tetap berguna untuk prioritas Anda.`
   },
   {
-    question: `Bagaimana sistem pelaporan dan transparansi proyek?`,
-    answer: `Progres, keputusan, dependensi, dan hasil kerja dibuka sepanjang proyek melalui ritme update yang disepakati.`
+    question: `Bagaimana komunikasi selama proyek berlangsung?`,
+    answer: `Sebelum pekerjaan dimulai, kami menyepakati ritme update yang praktis dan menjelaskan keputusan, dependensi, serta hasil kerja dengan bahasa yang jelas.`
   }
 ];
 ---
@@ -79,19 +79,21 @@ const defaultFaqs = [
   />
 
   <ServiceProblems
-    heading="Hasil yang terasa"
+    heading="Bagian yang dapat dibantu"
     problems={problemItems}
+    locale={locale}
   />
 
   <ServiceScope
-    heading="Lingkup kerja"
+    heading="Bagian yang dapat kami tangani"
     scopes={scopeItems}
     locale={locale}
   />
 
   <ServiceProcess
-    heading="Cara kami bekerja"
+    heading="Cara kami mengerjakannya"
     steps={processSteps}
+    locale={locale}
   />
 
   <ServiceFAQ

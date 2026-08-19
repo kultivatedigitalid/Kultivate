@@ -7,11 +7,13 @@ interface Props {
   locale: 'id' | 'en';
 }
 const { title, tagline, description, systemRole, locale } = Astro.props;
-const image = title.includes('Website')
-  ? '/assets/services/website-system-v2.webp'
-  : title.includes('Search')
-    ? '/assets/services/seo-discovery-v2.webp'
-    : '/assets/services/social-distribution-v2.webp';
+const image = title.includes('AEO')
+  ? '/assets/services/aeo-geo-answer-v3.webp'
+  : title.includes('Web')
+    ? '/assets/services/web-foundation-v3.webp'
+    : title.includes('Content')
+      ? '/assets/services/content-rhythm-v3.webp'
+      : '/assets/services/seo-focus-v3.webp';
 ---
 
 <header class="service-hero">
@@ -23,8 +25,8 @@ const image = title.includes('Website')
     <p class="service-tagline">{tagline}</p>
     <p class="service-description">{description}</p>
     <div class="service-actions">
-      <a href={`/${locale}/contact/`} class="btn btn-primary btn-cta">{locale === 'id' ? 'Mulai Proyek' : 'Start a Project'}</a>
-      <a href={`/${locale}/work/`} class="btn btn-secondary">{locale === 'id' ? 'Lihat Portofolio' : 'View Portfolio'}</a>
+      <a href={`/${locale}/contact/`} class="btn btn-primary btn-cta">{locale === 'id' ? 'Konsultasi dengan kami' : 'Consult with us'}</a>
+      <a href={`/${locale}/work/`} class="btn btn-secondary">{locale === 'id' ? 'Lihat portofolio' : 'View portfolio'}</a>
     </div>
   </div>
 </header>
