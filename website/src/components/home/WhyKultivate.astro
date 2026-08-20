@@ -24,16 +24,16 @@ const copy = locale === 'id'
     };
 ---
 
-<section id="why" class="why-kultivate section-padding flow-section" aria-labelledby="why-title" data-scroll-key="home-why">
+<section id="why" class="why-kultivate section-padding" aria-labelledby="why-title">
   <div class="container why-layout">
-    <div class="why-intro" data-reveal>
+    <div class="why-intro">
       <span class="section-kicker">{copy.kicker}</span>
       <h2 id="why-title">{copy.title}</h2>
       <p>{copy.intro}</p>
     </div>
     <div class="reasons-list">
-      {copy.reasons.map(([index, title, description, image, alt], reasonIndex) => (
-        <article class="reason-item" tabindex="0" data-reveal style={`--reveal-delay: ${reasonIndex * 70}ms`}>
+      {copy.reasons.map(([index, title, description, image, alt]) => (
+        <article class="reason-item" tabindex="0">
           <img src={image} alt={alt} width="1536" height="1152" loading="lazy" decoding="async" />
           <span class="reason-veil" aria-hidden="true"></span>
           <div class="reason-copy"><span class="reason-index text-mono">{index}</span><div><h3>{title}</h3><p>{description}</p></div></div>
@@ -46,11 +46,11 @@ const copy = locale === 'id'
 <style>
   .why-kultivate { position:relative; margin-top:-1px; background:radial-gradient(ellipse 72% 86% at 94% 46%,rgba(139,193,237,.54),rgba(70,134,183,.22) 48%,transparent 76%),linear-gradient(180deg,#07101a,#06101a 52%,#070b12); }
   .why-layout { display:grid; grid-template-columns:minmax(300px,.78fr) minmax(520px,1.22fr); gap:clamp(52px,7vw,104px); align-items:start; }
-  .why-intro { position:static; }
+  .why-intro { position:sticky; top:126px; }
   .why-intro h2 { max-width:13ch; margin-bottom:24px; font-size:clamp(2.8rem,1.9rem + 3vw,4.9rem); font-weight:520; letter-spacing:-.04em; line-height:.97; }
   .why-intro p { max-width:38ch; color:var(--steel); }
   .reasons-list { display:flex; flex-direction:column; gap:12px; }
-  .reason-item { position:relative; min-height:220px; display:flex; align-items:flex-end; overflow:hidden; border-radius:8px; outline:none; background:rgba(11,19,34,.72); transition:opacity 340ms var(--ease-out),transform 420ms var(--ease-out); }
+  .reason-item { position:relative; min-height:220px; display:flex; align-items:flex-end; overflow:hidden; border-radius:8px; outline:none; background:rgba(11,19,34,.72); transition:min-height 520ms var(--ease-out),opacity 340ms var(--ease-out),transform 520ms var(--ease-out); }
   .reason-item img,.reason-veil { position:absolute; inset:0; }
   .reason-item img { width:100%; height:100%; object-fit:cover; opacity:.18; transform:translate3d(-2%,0,0) scale(1.045); transition:opacity 460ms var(--ease-out),transform 720ms var(--ease-out); }
   .reason-veil { background:linear-gradient(90deg,rgba(6,10,17,.98),rgba(6,10,17,.82) 48%,rgba(6,10,17,.28)),linear-gradient(180deg,transparent 26%,rgba(6,10,17,.9)); opacity:.88; transition:opacity 420ms var(--ease-out); }
@@ -58,9 +58,8 @@ const copy = locale === 'id'
   .reason-index { padding-top:6px; color:rgba(201,211,223,.5); }
   .reason-item h3 { margin-bottom:10px; font-size:clamp(1.45rem,1.8vw,2.1rem); font-weight:560; line-height:1.08; }
   .reason-item p { max-width:48ch; color:rgba(201,211,223,.72); font-size:.92rem; line-height:1.55; }
-  @media (hover:hover) and (pointer:fine) { .reasons-list:hover .reason-item:not(:hover){opacity:.72;transform:scale(.994)} .reason-item:hover,.reason-item:focus-visible{transform:translateX(-6px)} .reason-item:hover img,.reason-item:focus-visible img{opacity:.9;transform:scale(1.02)} .reason-item:hover .reason-veil,.reason-item:focus-visible .reason-veil{opacity:.96} }
-  @media (min-width:1021px) and (min-height:700px) { .why-intro{position:sticky;top:126px} }
-  @media (max-width:1020px) { .why-layout{grid-template-columns:1fr;gap:44px}.why-intro h2{max-width:11ch} }
+  @media (hover:hover) and (pointer:fine) { .reasons-list:hover .reason-item:not(:hover){min-height:204px;opacity:.72;transform:scale(.994)} .reason-item:hover,.reason-item:focus-visible{min-height:276px;transform:translateX(-6px)} .reason-item:hover img,.reason-item:focus-visible img{opacity:.9;transform:scale(1.02)} .reason-item:hover .reason-veil,.reason-item:focus-visible .reason-veil{opacity:.96} }
+  @media (max-width:1020px) { .why-layout{grid-template-columns:1fr;gap:44px}.why-intro{position:static}.why-intro h2{max-width:11ch} }
   @media (max-width:760px),(hover:none) { .reason-item{min-height:280px}.reason-item img{opacity:.85;transform:none}.reason-veil{opacity:1}.reason-copy{grid-template-columns:36px minmax(0,1fr);gap:12px;padding:24px} }
   @media (prefers-reduced-motion:reduce) { .reason-item,.reason-item img,.reason-veil{transition:none} }
 </style>

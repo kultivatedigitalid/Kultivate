@@ -2,57 +2,60 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import InteriorHero from '../../components/shared/InteriorHero.astro';
 import FinalCTA from '../../components/home/FinalCTA.astro';
+import { siteConfig } from '../../data/site';
 
 const locale = 'en';
+const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURIComponent('Data deletion request')}&body=${encodeURIComponent('Full name:\nEmail address or WhatsApp number used on the form:\nApproximate form submission date:\n\nPlease delete the data I submitted through the Kultivate website form.')}`;
 ---
 
 <BaseLayout
   locale={locale}
   title="Privacy Policy - Kultivate"
-  description="Privacy notice for the current staging website and its planned contact form."
+  description="Kultivate privacy policy regarding visitor personal data protection and form submissions."
 >
   <InteriorHero
     label="PRIVACY"
-    variant="legal-compact"
     title="Privacy without the puzzle"
-    description="What is active now, what is still planned, and how personal data is kept out of an unconfirmed workflow."
-    image="/assets/why/visible-decisions.webp"
+    description="What we collect, why it is needed, and how you stay in control."
+    image="/assets/banners/privacy-minimal.webp"
     imageAlt="Transparent planes moving into exact alignment"
     compact
   />
 
-  <section
-    class="section privacy-content-section flow-section"
-    data-scroll-key="privacy-content"
-  >
+  <section class="section privacy-content-section">
     <div class="container">
       <div class="privacy-card card">
-        <h2>1. Current staging status</h2>
+        <h2>1. Data We Collect</h2>
         <p>
-          The contact form on this staging website is a non-submitting preview. Its submit control is disabled, so the website does not send the displayed form fields to a form processor.
+          We retain the information you submit through the contact form: name, company, email, WhatsApp number, service interest, project summary, target timeline, and budget range.
         </p>
 
-        <h2>2. Planned form fields and purpose</h2>
+        <h2>2. Use and Access</h2>
         <p>
-          If the form is activated after its endpoint and public contact details are confirmed, the planned fields are name, company, email, WhatsApp number, service interest, project summary, target timeline, and budget range. They would be used to review an inquiry, prepare a scope, and communicate about the requested work.
+          We use this data to review your needs, respond to inquiries, prepare a scope of work, and communicate about the project. Access is limited to Kultivate team members who need it for these purposes.
         </p>
 
-        <h2>3. Processing status</h2>
+        <h2>3. Form Processing</h2>
         <p>
-          No public form processor is active in the current staging experience. The processor, retention approach, and relevant privacy terms must be confirmed and documented before submission is enabled.
+          Form submissions are delivered through Formspree as our form processor. Beyond that technical processing, Kultivate does not sell or share form data with other parties for marketing.
         </p>
 
-        <h2>4. Privacy requests</h2>
+        <h2>4. Retention and Deletion</h2>
         <p>
-          The public privacy contact is still being finalized. Please do not enter personal information into the preview form. Contact instructions for questions, corrections, or deletion requests will be published after confirmation.
+          Kultivate retains form data until you request deletion. Use our <a href={privacyRequestHref}>data deletion email template</a> so we can locate the correct information and confirm when the request is complete.
         </p>
 
-        <h2>5. Analytics and cookies</h2>
+        <h2>5. Analytics and Cookies</h2>
         <p>
-          This website currently does not use analytics or tracking cookies. If that changes, this notice and any required consent controls must be updated before tracking is enabled.
+          This website currently does not use analytics or tracking cookies. Cookies required by third-party services are limited to the technical needs of those services.
         </p>
 
-        <p class="last-updated text-mono">Staging status reviewed: August 20, 2026</p>
+        <h2>6. Privacy Contact</h2>
+        <p>
+          Questions, corrections, or deletion requests can be sent to <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+        </p>
+
+        <p class="last-updated text-mono">Effective date: August 13, 2026</p>
       </div>
     </div>
   </section>
@@ -61,39 +64,72 @@ const locale = 'en';
 </BaseLayout>
 
 <style>
+  .privacy-hero {
+    padding-top: var(--spacing-xxl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--slate);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--cyan-glow);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .page-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--cloud-white);
+    line-height: 1.1;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .page-intro {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: var(--mist);
+    max-width: 720px;
+    line-height: 1.5;
+  }
+
   .privacy-content-section {
-    padding-block: clamp(72px, 9vw, 118px);
-    background: linear-gradient(180deg, rgba(7, 11, 18, 0.32), rgba(5, 8, 14, 0.5));
+    padding-top: var(--spacing-xxl);
+    padding-bottom: var(--spacing-xxl);
   }
 
   .privacy-card {
-    max-width: 760px;
-    margin: 0 auto;
     padding: 0;
     background: transparent;
+    max-width: 760px;
+    margin: 0 auto;
   }
 
   .privacy-card h2 {
-    margin: var(--spacing-lg) 0 var(--spacing-sm);
-    color: var(--signal-ice);
     font-size: 1.375rem;
-    font-weight: 650;
+    font-weight: 700;
+    color: var(--cyan-glow);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
   }
 
-  .privacy-card h2:first-of-type { margin-top: 0; }
+  .privacy-card h2:first-of-type {
+    margin-top: 0;
+  }
 
   .privacy-card p {
-    margin-bottom: var(--spacing-md);
-    color: var(--mist);
     font-size: 1rem;
+    color: var(--mist);
     line-height: 1.7;
+    margin-bottom: var(--spacing-md);
   }
 
   .last-updated {
-    margin-top: var(--spacing-xl);
-    border-top: 1px solid var(--slate);
-    padding-top: var(--spacing-md);
-    color: var(--steel);
     font-size: 0.8125rem;
+    color: var(--steel);
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--slate);
   }
 </style>

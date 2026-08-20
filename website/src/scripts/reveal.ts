@@ -24,8 +24,9 @@ export function initRevealSystem() {
   });
 
   items.forEach((item) => {
-    const delay = Number(item.dataset.revealDelay || 0);
-    item.style.setProperty('--reveal-delay', `${Math.min(delay, 4) * 70}ms`);
+    const delay = item.dataset.revealDelay;
+    if (delay) item.style.setProperty('--reveal-delay', `${Math.min(Number(delay), 4) * 70}ms`);
+    else if (!item.style.getPropertyValue('--reveal-delay')) item.style.setProperty('--reveal-delay', '0ms');
 
     if (item.getBoundingClientRect().top > window.innerHeight * 0.86) {
       item.classList.add('reveal-pending');

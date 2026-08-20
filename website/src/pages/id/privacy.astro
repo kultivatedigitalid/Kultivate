@@ -2,57 +2,60 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import InteriorHero from '../../components/shared/InteriorHero.astro';
 import FinalCTA from '../../components/home/FinalCTA.astro';
+import { siteConfig } from '../../data/site';
 
 const locale = 'id';
+const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURIComponent('Permintaan penghapusan data')}&body=${encodeURIComponent('Nama lengkap:\nEmail atau nomor WhatsApp yang digunakan saat mengisi formulir:\nPerkiraan tanggal pengiriman formulir:\n\nMohon hapus data saya yang tersimpan melalui formulir website Kultivate.')}`;
 ---
 
 <BaseLayout
   locale={locale}
   title="Kebijakan Privasi - Kultivate"
-  description="Pemberitahuan privasi untuk website staging saat ini dan formulir kontak yang masih direncanakan."
+  description="Kebijakan privasi perlindungan data pribadi pengunjung dan pengiriman formulir di website Kultivate."
 >
   <InteriorHero
     label="PRIVASI"
-    variant="legal-compact"
     title="Privasi tanpa teka-teki"
-    description="Apa yang aktif sekarang, apa yang masih direncanakan, dan bagaimana data pribadi dijauhkan dari alur yang belum dikonfirmasi."
-    image="/assets/why/visible-decisions.webp"
+    description="Apa yang kami kumpulkan, mengapa dibutuhkan, dan bagaimana Anda tetap memegang kendali."
+    image="/assets/banners/privacy-minimal.webp"
     imageAlt="Bidang transparan yang bergerak menuju susunan yang selaras"
     compact
   />
 
-  <section
-    class="section privacy-content-section flow-section"
-    data-scroll-key="privacy-content"
-  >
+  <section class="section privacy-content-section">
     <div class="container">
       <div class="privacy-card card">
-        <h2>1. Status staging saat ini</h2>
+        <h2>1. Data yang Dikumpulkan</h2>
         <p>
-          Formulir kontak pada website staging ini merupakan preview yang tidak mengirim data. Tombol pengiriman dinonaktifkan, sehingga website tidak meneruskan field yang ditampilkan kepada penyedia pemrosesan formulir.
+          Kami menyimpan data yang Anda kirim melalui formulir kontak: nama, perusahaan, email, nomor WhatsApp, layanan yang diminati, ringkasan kebutuhan, target waktu, dan rentang budget.
         </p>
 
-        <h2>2. Field dan tujuan yang direncanakan</h2>
+        <h2>2. Penggunaan dan Akses</h2>
         <p>
-          Jika formulir diaktifkan setelah endpoint dan detail kontak publik dikonfirmasi, field yang direncanakan mencakup nama, perusahaan, email, nomor WhatsApp, layanan yang diminati, ringkasan kebutuhan, target waktu, dan rentang budget. Data tersebut akan digunakan untuk meninjau inquiry, menyiapkan cakupan, dan berkomunikasi mengenai pekerjaan yang diminta.
+          Data digunakan untuk meninjau kebutuhan, merespons inquiry, menyiapkan lingkup kerja, dan berkomunikasi mengenai proyek. Akses dibatasi kepada tim internal Kultivate yang membutuhkannya untuk proses tersebut.
         </p>
 
-        <h2>3. Status pemrosesan</h2>
+        <h2>3. Pemrosesan Formulir</h2>
         <p>
-          Tidak ada penyedia formulir publik yang aktif pada pengalaman staging saat ini. Penyedia, pendekatan penyimpanan, dan ketentuan privasi yang relevan harus dikonfirmasi serta didokumentasikan sebelum pengiriman diaktifkan.
+          Formulir dikirim melalui Formspree sebagai penyedia pemrosesan formulir. Selain pemrosesan teknis tersebut, Kultivate tidak menjual atau membagikan data formulir kepada pihak lain untuk pemasaran.
         </p>
 
-        <h2>4. Permintaan privasi</h2>
+        <h2>4. Penyimpanan dan Penghapusan</h2>
         <p>
-          Kontak privasi publik masih difinalisasi. Jangan masukkan informasi pribadi ke dalam formulir preview. Petunjuk kontak untuk pertanyaan, koreksi, atau permintaan penghapusan akan dipublikasikan setelah dikonfirmasi.
+          Kultivate menyimpan data formulir sampai Anda meminta penghapusan. Kirim permintaan melalui <a href={privacyRequestHref}>template email penghapusan data</a> agar kami dapat menemukan data yang tepat dan mengonfirmasi penyelesaiannya.
         </p>
 
-        <h2>5. Analytics dan cookie</h2>
+        <h2>5. Analytics dan Cookie</h2>
         <p>
-          Website ini saat ini tidak menggunakan analytics atau cookie pelacakan. Jika hal tersebut berubah, pemberitahuan ini dan kontrol consent yang diperlukan harus diperbarui sebelum tracking diaktifkan.
+          Website ini saat ini tidak menggunakan analytics atau cookie pelacakan. Cookie yang diperlukan oleh layanan pihak ketiga hanya mengikuti kebutuhan teknis layanan tersebut.
         </p>
 
-        <p class="last-updated text-mono">Status staging ditinjau: 20 Agustus 2026</p>
+        <h2>6. Kontak Privasi</h2>
+        <p>
+          Pertanyaan, koreksi, atau permintaan penghapusan data dapat dikirim ke <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+        </p>
+
+        <p class="last-updated text-mono">Berlaku sejak: 13 Agustus 2026</p>
       </div>
     </div>
   </section>
@@ -61,39 +64,72 @@ const locale = 'id';
 </BaseLayout>
 
 <style>
+  .privacy-hero {
+    padding-top: var(--spacing-xxl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--slate);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--cyan-glow);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .page-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--cloud-white);
+    line-height: 1.1;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .page-intro {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: var(--mist);
+    max-width: 720px;
+    line-height: 1.5;
+  }
+
   .privacy-content-section {
-    padding-block: clamp(72px, 9vw, 118px);
-    background: linear-gradient(180deg, rgba(7, 11, 18, 0.32), rgba(5, 8, 14, 0.5));
+    padding-top: var(--spacing-xxl);
+    padding-bottom: var(--spacing-xxl);
   }
 
   .privacy-card {
-    max-width: 760px;
-    margin: 0 auto;
     padding: 0;
     background: transparent;
+    max-width: 760px;
+    margin: 0 auto;
   }
 
   .privacy-card h2 {
-    margin: var(--spacing-lg) 0 var(--spacing-sm);
-    color: var(--signal-ice);
     font-size: 1.375rem;
-    font-weight: 650;
+    font-weight: 700;
+    color: var(--cyan-glow);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
   }
 
-  .privacy-card h2:first-of-type { margin-top: 0; }
+  .privacy-card h2:first-of-type {
+    margin-top: 0;
+  }
 
   .privacy-card p {
-    margin-bottom: var(--spacing-md);
-    color: var(--mist);
     font-size: 1rem;
+    color: var(--mist);
     line-height: 1.7;
+    margin-bottom: var(--spacing-md);
   }
 
   .last-updated {
-    margin-top: var(--spacing-xl);
-    border-top: 1px solid var(--slate);
-    padding-top: var(--spacing-md);
-    color: var(--steel);
     font-size: 0.8125rem;
+    color: var(--steel);
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--slate);
   }
 </style>

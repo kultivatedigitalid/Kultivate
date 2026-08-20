@@ -42,10 +42,10 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
         'Reporting yang berfokus pada visibility, inquiry, dan sinyal bisnis yang relevan.'
       ],
       process: [
-        'Pahami: Tinjau apa yang ditawarkan bisnis Anda, pelanggan yang ingin dijangkau, dan baseline search saat ini.',
-        'Prioritaskan: Pilih peluang dan masalah teknis yang perlu ditangani lebih dahulu.',
-        'Implementasikan: Perbaiki fondasi teknis, halaman prioritas, internal linking, dan authority signals sesuai cakupan.',
-        'Tinjau: Ukur performa search yang relevan dan sepakati prioritas berikutnya.'
+        'Selaraskan bersama: Kami mempelajari apa yang bisnis Anda tawarkan, siapa yang perlu Anda jangkau, dan apa yang baseline search saat ini tunjukkan kepada kita.',
+        'Pilih bersama: Kami menyepakati bersama Anda peluang dan masalah teknis yang paling layak ditangani lebih dahulu.',
+        'Perbaiki bersama: Kami memperbaiki fondasi teknis, halaman prioritas, internal linking, dan authority signals sesuai cakupan yang kita sepakati.',
+        'Tinjau bersama: Kami membahas hasilnya bersama Anda, mengukur perubahan yang relevan, dan menentukan prioritas berikutnya.'
       ]
     },
     {
@@ -77,10 +77,10 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
         'Baseline untuk monitoring visibility di AI search.'
       ],
       process: [
-        'Pahami: Petakan pertanyaan pelanggan, entity, dan sumber yang berkaitan dengan keputusan mereka.',
-        'Strukturkan: Susun konten, halaman, dan schema agar informasi mudah dipahami dan diambil.',
-        'Perkuat: Tambahkan evidence dan perbaiki consistency pada informasi penting.',
-        'Tinjau: Pantau visibility yang relevan dan perbarui prioritas berdasarkan data yang tersedia.'
+        'Selaraskan bersama: Kami memetakan pertanyaan pelanggan, entity, dan sumber yang memengaruhi keputusan mereka bersama tim Anda.',
+        'Strukturkan bersama: Kami menyusun konten, halaman, dan schema agar expertise Anda lebih mudah dipahami dan diambil.',
+        'Perkuat bersama: Kami membantu Anda menambahkan evidence dan menjaga consistency pada informasi yang paling penting.',
+        'Tinjau bersama: Kami meninjau visibility bersama Anda dan memperbarui prioritas berdasarkan data yang tersedia.'
       ]
     },
     {
@@ -112,10 +112,10 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
         'Dokumentasi maintenance dan pengelolaan konten.'
       ],
       process: [
-        'Pahami: Tinjau kebutuhan bisnis, user journey, dan dependensi search Anda.',
-        'Definisikan: Tentukan arsitektur, cakupan, dan acceptance criteria.',
-        'Bangun: Implementasikan pengalaman dan perbaikan teknis yang disepakati.',
-        'Uji: Validasi performa, accessibility, tracking, dan search readiness.'
+        'Selaraskan bersama: Kami memahami kebutuhan bisnis, user journey, dan dependensi search Anda sebelum menentukan solusi.',
+        'Definisikan bersama: Kami menyepakati arsitektur, cakupan, dan acceptance criteria dengan tim Anda.',
+        'Bangun bersama: Kami mengimplementasikan pengalaman dan perbaikan teknis sambil menjaga komunikasi tetap terbuka.',
+        'Uji bersama: Kami memvalidasi performa, accessibility, tracking, dan search readiness bersama Anda sebelum pekerjaan ditutup.'
       ]
     },
     {
@@ -147,10 +147,10 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
         'Backlog pembaruan dan evaluasi performa.'
       ],
       process: [
-        'Pahami: Petakan pelanggan, pertanyaan, search demand, dan konten yang sudah tersedia.',
-        'Rencanakan: Prioritaskan topik dan format yang mendukung kebutuhan pelanggan dan halaman layanan.',
-        'Buat & terbitkan: Produksi, edit, optimalkan, dan periksa kualitas konten.',
-        'Tinjau & perbarui: Evaluasi performa dan perbarui konten sesuai kebutuhan.'
+        'Selaraskan bersama: Kami memetakan pelanggan, pertanyaan, search demand, dan konten yang sudah dimiliki tim Anda.',
+        'Rencanakan bersama: Kami memilih topik dan format yang paling berguna bagi pelanggan serta halaman layanan Anda.',
+        'Buat bersama: Kami memproduksi, mengedit, mengoptimalkan, dan menerbitkan konten dengan checkpoint yang jelas untuk Anda.',
+        'Tinjau bersama: Kami mengevaluasi performanya bersama Anda dan memperbarui konten ketika kebutuhan bisnis berubah.'
       ]
     }
   ],
@@ -184,10 +184,10 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
         'Reporting focused on visibility, inquiries, and relevant business signals.'
       ],
       process: [
-        'Understand: Review what your business offers, who you want to reach, and the current search baseline.',
-        'Prioritize: Select the opportunities and technical issues that need attention first.',
-        'Implement: Improve technical foundations, priority pages, internal links, and authority signals within scope.',
-        'Review: Measure relevant search performance and agree on the next priorities.'
+        'Align together: We learn what your business offers, who you need to reach, and what your current search baseline tells us.',
+        'Choose together: We agree with you on the opportunities and technical issues that deserve attention first.',
+        'Improve together: We strengthen technical foundations, priority pages, internal links, and authority signals within the scope we agree on.',
+        'Review together: We walk through the result with you, measure the changes that matter, and agree on the next priorities.'
       ]
     },
     {
@@ -219,10 +219,10 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
         'A baseline for monitoring AI search visibility.'
       ],
       process: [
-        'Understand: Map customer questions, entities, and sources connected to their decisions.',
-        'Structure: Organize content, pages, and schema so information is easier to understand and retrieve.',
-        'Strengthen: Add evidence and improve consistency around important information.',
-        'Review: Monitor relevant visibility and update priorities from the available data.'
+        'Align together: We map customer questions, entities, and the sources that shape their decisions with your team.',
+        'Structure together: We organize content, pages, and schema so your expertise is easier to understand and retrieve.',
+        'Strengthen together: We help you add evidence and improve consistency around the information that matters most.',
+        'Review together: We review relevant visibility with you and update priorities from the data available.'
       ]
     },
     {
@@ -254,10 +254,10 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
         'Maintenance and content-management documentation.'
       ],
       process: [
-        'Understand: Review your business need, user journey, and search dependencies.',
-        'Define: Set the architecture, scope, and acceptance criteria.',
-        'Build: Implement the agreed experience and technical improvements.',
-        'Test: Validate performance, accessibility, tracking, and search readiness.'
+        'Align together: We learn your business need, user journey, and search dependencies before we define the solution.',
+        'Define together: We agree on the architecture, scope, and acceptance criteria with your team.',
+        'Build together: We implement the experience and technical improvements while keeping communication open with you.',
+        'Test together: We validate performance, accessibility, tracking, and search readiness with you before we close the work.'
       ]
     },
     {
@@ -289,10 +289,10 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
         'A refresh backlog and performance review.'
       ],
       process: [
-        'Understand: Map your customers, their questions, search demand, and existing content.',
-        'Plan: Prioritize topics and formats that support customer needs and service pages.',
-        'Create & publish: Produce, edit, optimize, and quality-check the content.',
-        'Review & refresh: Evaluate performance and update content as needed.'
+        'Align together: We map your customers, their questions, search demand, and the content your team already has.',
+        'Plan together: We choose the topics and formats that will be most useful for customers and your service pages.',
+        'Create together: We produce, edit, optimize, and publish content with clear checkpoints for you.',
+        'Review together: We evaluate performance with you and refresh content as your business needs change.'
       ]
     }
   ]

@@ -10,17 +10,13 @@ const clusters = Array.from({ length: Math.ceil(items.length / 3) }, (_, index) 
 const copy = locale === 'id'
   ? {
       label: 'PORTOFOLIO',
-      title: 'Karya pilihan kami',
-      description: 'Website, SEO, dan social yang saling menguatkan.',
-      note: 'Studi portofolio',
-      disclosure: 'Studi konsep ini menunjukkan arah visual dan komposisi portofolio; tidak ditampilkan sebagai klaim keterlibatan klien.'
+      title: 'Dibuat untuk pertumbuhan',
+      description: 'Pengalaman digital yang dirancang untuk terlihat baik, bekerja lebih baik, dan mendorong bisnis maju.'
     }
   : {
       label: 'PORTFOLIO',
-      title: 'Selected work',
-      description: 'Website, SEO, and social designed to reinforce one another.',
-      note: 'Portfolio studies',
-      disclosure: 'These concept studies demonstrate portfolio art direction and composition; they are not presented as claims of client engagement.'
+      title: 'Made for growth',
+      description: 'Digital experiences designed to look good, work better, and move business forward.'
     };
 ---
 
@@ -28,21 +24,16 @@ const copy = locale === 'id'
   title={copy.title}
   description={copy.description}
   label={copy.label}
-  image="/assets/banners/portfolio.webp"
-  imageAlt={locale === 'id' ? 'Bidang arsitektur biru gelap yang bertemu menuju satu titik' : 'Dark blue architectural planes converging toward one point'}
+  image="/assets/banners/portfolio-minimal.webp"
+  imageAlt={locale === 'id' ? 'Tiga bidang obsidian yang terbuka dari satu garis biru' : 'Three obsidian planes opening from one blue seam'}
   variant="work"
 />
 
 <section
   class="portfolio-section flow-section"
-  aria-label={locale === 'id' ? 'Studi portofolio' : 'Portfolio studies'}
+  aria-label={locale === 'id' ? 'Portofolio Kultivate' : 'Kultivate portfolio'}
   data-scroll-key="work-gallery"
 >
-  <div class="container portfolio-lead" data-reveal>
-    <span class="text-mono">{copy.note}</span>
-    <p>{copy.disclosure}</p>
-  </div>
-
   <div class="portfolio-grid container">
     {clusters.map((cluster, clusterIndex) => (
       <div class="portfolio-cluster" data-work-cluster data-cluster={clusterIndex} data-active="-1">
@@ -115,22 +106,6 @@ const copy = locale === 'id'
       linear-gradient(180deg, rgba(7, 11, 18, 0.24), rgba(5, 8, 14, 0.56) 52%, rgba(7, 11, 18, 0.32));
   }
 
-  .portfolio-lead {
-    display: grid;
-    grid-template-columns: minmax(150px, 0.32fr) minmax(280px, 0.68fr);
-    gap: 28px;
-    align-items: start;
-    margin-bottom: clamp(30px, 4vw, 50px);
-  }
-
-  .portfolio-lead > span { color: rgba(201, 211, 223, 0.5); }
-
-  .portfolio-lead p {
-    max-width: 64ch;
-    color: rgba(201, 211, 223, 0.68);
-    font-size: 0.82rem;
-    line-height: 1.55;
-  }
 
   .portfolio-grid {
     display: flex;
@@ -143,7 +118,7 @@ const copy = locale === 'id'
     display: grid;
     grid-template-columns: 1.42fr 0.84fr 1.06fr;
     gap: clamp(12px, 1.5vw, 22px);
-    transition: grid-template-columns 540ms var(--ease-out);
+    transition: grid-template-columns 780ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .portfolio-cluster[data-cluster='1'] { grid-template-columns: 0.88fr 1.36fr 1fr; }
@@ -180,7 +155,7 @@ const copy = locale === 'id'
     filter: brightness(0.88) saturate(0.9);
     transform: translate3d(-1.6%, 0, 0) scale(1.045);
     transition:
-      transform 760ms var(--ease-out),
+      transform 880ms cubic-bezier(0.16, 1, 0.3, 1),
       filter 420ms var(--ease-out);
   }
 
@@ -198,7 +173,7 @@ const copy = locale === 'id'
     padding: clamp(18px, 2vw, 28px);
     color: var(--cloud-white);
     opacity: 0.82;
-    transition: opacity 260ms var(--ease-out), transform 380ms var(--ease-out);
+    transition: opacity 420ms var(--ease-out), transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .portfolio-caption strong {
@@ -248,7 +223,6 @@ const copy = locale === 'id'
   }
 
   @media (max-width: 700px), (hover: none) {
-    .portfolio-lead { grid-template-columns: 1fr; gap: 12px; }
 
     .portfolio-cluster,
     .portfolio-cluster[data-cluster],

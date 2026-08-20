@@ -6,6 +6,7 @@
 [data-reveal].reveal-pending {
   opacity: 0;
   transform: translate3d(0, var(--motion-distance-md), 0);
+  filter: blur(4px);
 }
 
 [data-reveal='image'].reveal-pending {
@@ -15,9 +16,11 @@
 
 [data-reveal].reveal-visible {
   transition:
-    opacity var(--motion-panel) var(--ease-out) var(--reveal-delay, 0ms),
-    transform var(--motion-panel) var(--ease-out) var(--reveal-delay, 0ms),
-    clip-path 560ms var(--ease-out) var(--reveal-delay, 0ms);
+    opacity var(--motion-reveal) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--motion-reveal) var(--ease-out) var(--reveal-delay, 0ms),
+    clip-path 760ms var(--ease-out) var(--reveal-delay, 0ms),
+    filter 620ms var(--ease-out) var(--reveal-delay, 0ms);
+  filter: none;
 }
 
 [data-ambient] {
@@ -29,11 +32,11 @@
 }
 
 ::view-transition-old(root) {
-  animation: page-out var(--motion-fast) var(--ease-out) both;
+  animation: page-out 240ms var(--ease-out) both;
 }
 
 ::view-transition-new(root) {
-  animation: page-in 220ms var(--ease-out) both;
+  animation: page-in 320ms var(--ease-out) both;
 }
 
 @keyframes page-out {
@@ -57,6 +60,7 @@
     opacity: 1;
     transform: none;
     clip-path: none;
+    filter: none;
     transition: color var(--motion-fast) var(--ease-out), background-color var(--motion-fast) var(--ease-out), border-color var(--motion-fast) var(--ease-out), opacity var(--motion-fast) var(--ease-out);
   }
 

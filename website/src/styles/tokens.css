@@ -42,9 +42,11 @@
   /* Motion */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-fluid: cubic-bezier(0.33, 1, 0.68, 1);
   --motion-fast: 160ms;
   --motion-base: 240ms;
   --motion-panel: 420ms;
+  --motion-reveal: 680ms;
   --motion-cinematic: 720ms;
   --motion-distance-sm: 8px;
   --motion-distance-md: 18px;

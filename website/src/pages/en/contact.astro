@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import InteriorHero from '../../components/shared/InteriorHero.astro';
 import FinalCTA from '../../components/home/FinalCTA.astro';
+import ContactSuccessModal from '../../components/contact/ContactSuccessModal.astro';
+import { siteConfig } from '../../data/site';
 import { useTranslations } from '../../i18n/routes';
 
 const locale = 'en';
@@ -15,21 +17,19 @@ const t = useTranslations(locale);
 >
   <InteriorHero
     label="CONTACT"
-    variant="contact"
     title="Tell us what needs attention"
     description="Share your current position, priorities, and the support you are considering. We will review the context before recommending any work."
-    image="/assets/banners/contact.webp"
+    image="/assets/banners/contact-minimal.webp"
     imageAlt="Blue paths of light joining into one structure"
     compact
   />
 
-  <section class="section contact-section flow-section" data-scroll-key="contact-form">
+  <section class="section contact-section">
     <div class="container">
-      <div class="contact-grid" data-reveal>
+      <div class="contact-grid">
         <!-- Form Column -->
         <div class="contact-form-col card">
-          <form id="contact-form" class="contact-form" data-submission-enabled="false">
-            <p class="form-preview-note" role="note">This form previews the planned fields. Submission is disabled until the endpoint and contact details are confirmed.</p>
+          <form id="contact-form" action={siteConfig.formEndpoint} method="POST" class="contact-form">
             <div class="form-row">
               <div class="form-group">
                 <label for="name" class="form-label">{t('contact.name')} <span class="required">*</span></label>
@@ -97,7 +97,7 @@ const t = useTranslations(locale);
             </div>
 
             <div class="form-actions">
-              <button type="submit" class="btn btn-primary btn-cta w-full" disabled aria-disabled="true">
+              <button type="submit" class="btn btn-primary btn-cta w-full">
                 {t('contact.submit')}
               </button>
             </div>
@@ -105,23 +105,89 @@ const t = useTranslations(locale);
           </form>
         </div>
 
-        <!-- Contact details remain visibly pending until confirmed. -->
+        <!-- Direct Contact Info Column -->
         <div class="contact-info-col">
-          <div class="info-card card contact-pending" role="note">
-            <span class="text-mono">CONTACT DETAILS</span>
-            <h2 class="info-title">Contact details are being finalized</h2>
+          <div class="info-card card">
+            <h2 class="info-title">Prefer a direct message?</h2>
             <p class="info-desc">
-              Public WhatsApp, email, address, and legal details will appear after confirmation.
+              Contact us by WhatsApp or email.
             </p>
+
+            <div class="contact-links">
+              <a href={siteConfig.whatsappLink} target="_blank" rel="noopener noreferrer" class="contact-link-item">
+                <div class="icon-box">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="link-label text-mono">WhatsApp Business</span>
+                  <span class="link-val">{siteConfig.phone}</span>
+                </div>
+              </a>
+
+              <a href={`mailto:${siteConfig.email}`} class="contact-link-item">
+                <div class="icon-box">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <span class="link-label text-mono">Email</span>
+                  <span class="link-val">{siteConfig.email}</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="office-card card border-subtle">
+            <h3 class="office-title text-mono">Our base</h3>
+            <p class="office-address">{siteConfig.address}</p>
+            <span class="office-legal text-mono">{siteConfig.companyLegalName} ({siteConfig.addressClassification})</span>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <ContactSuccessModal locale={locale} />
   <FinalCTA locale={locale} />
 </BaseLayout>
 
 <style>
+  .contact-hero {
+    margin-top: -1px;
+    padding-top: clamp(44px, 6vw, 76px);
+    background: linear-gradient(180deg, #070b12 0%, #05080e 58%, #070b12 100%);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--slate);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--cyan-glow);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .page-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--cloud-white);
+    line-height: 1.1;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .page-intro {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: var(--mist);
+    max-width: 720px;
+    line-height: 1.5;
+  }
+
   .contact-section {
     margin-top: -1px;
     padding-top: clamp(44px, 6vw, 76px);
@@ -217,10 +283,6 @@ const t = useTranslations(locale);
     line-height: 1.4;
   }
 
-  .form-preview-note { border-left: 2px solid rgba(103, 217, 255, 0.48); padding-left: 14px; color: var(--steel); font-size: 0.84rem; }
-
-  .form-actions .btn:disabled { opacity: 0.62; cursor: not-allowed; }
-
   .form-status { min-height: 1.5em; color: var(--error); font-size: 0.875rem; }
 
   .contact-info-col {
@@ -249,7 +311,52 @@ const t = useTranslations(locale);
     margin-bottom: var(--spacing-lg);
   }
 
-  .contact-pending { min-height: 260px; display: flex; flex-direction: column; justify-content: flex-end; border-color: rgba(103, 217, 255, 0.18); background: radial-gradient(circle at 84% 18%, rgba(103, 217, 255, 0.1), transparent 36%), var(--deep-navy); }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
 
-  .contact-pending > .text-mono { margin-bottom: auto; color: rgba(201, 211, 223, 0.5); }
+  .contact-link-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background-color: var(--void-black);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--slate);
+    transition: border-color var(--transition-micro);
+  }
+
+  .contact-link-item:hover {
+    border-color: var(--cyan-glow);
+  }
+
+  .icon-box {
+    color: var(--cyan-glow);
+  }
+
+  .link-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--steel);
+    text-transform: uppercase;
+  }
+
+  .link-val {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--cloud-white);
+  }
+
+  .office-address {
+    font-size: 0.9375rem;
+    color: var(--mist);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .office-legal {
+    font-size: 0.75rem;
+    color: var(--steel);
+  }
 </style>

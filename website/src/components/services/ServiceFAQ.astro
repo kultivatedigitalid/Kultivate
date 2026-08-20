@@ -4,12 +4,12 @@ interface Props { heading: string; faqs: FAQItem[]; }
 const { heading, faqs } = Astro.props;
 ---
 <section class="service-faq flow-section" aria-labelledby="faq-title" data-scroll-key="service-faq">
-  <div class="container faq-layout"><div class="faq-heading" data-reveal><span class="section-kicker">FAQ</span><h2 id="faq-title">{heading}</h2></div><div class="faq-list">{faqs.map(faq => (<details class="faq-item" data-reveal><summary><span>{faq.question}</span><span class="faq-mark" aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>))}</div></div>
+  <div class="container faq-layout"><div class="faq-heading" data-reveal><h2 id="faq-title">{heading}</h2></div><div class="faq-list">{faqs.map(faq => (<details class="faq-item" data-reveal><summary><span>{faq.question}</span><span class="faq-mark" aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>))}</div></div>
 </section>
 <style>
   .service-faq { padding-block: clamp(96px, 13vw, 176px); background: radial-gradient(ellipse 58% 26% at 18% 100%, rgba(23, 107, 255, 0.09), transparent 78%), linear-gradient(180deg, #05080e, #070b12); }
   .faq-layout { display: grid; grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr); gap: clamp(52px, 9vw, 136px); }
-  .faq-heading h2 { max-width: 10ch; font-size: clamp(2.7rem, 4.8vw, 5.3rem); font-weight: 520; line-height: 0.96; }
+  .faq-heading h2 { max-width: 13ch; font-size: clamp(2.7rem, 4.8vw, 5.3rem); font-weight: 520; line-height: 0.96; }
   .faq-list { border-top: 1px solid rgba(89, 106, 130, 0.34); }
   .faq-item { border-bottom: 1px solid rgba(89, 106, 130, 0.34); }
   .faq-item summary { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 28px; cursor: pointer; list-style: none; color: var(--cloud-white); font-size: clamp(1.05rem, 1.5vw, 1.3rem); }

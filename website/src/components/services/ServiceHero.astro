@@ -10,12 +10,12 @@ interface Props {
 }
 const { title, tagline, description, systemRole, locale } = Astro.props;
 const image = title.includes('AEO')
-  ? '/assets/services/aeo-geo-answer-v3.webp'
+  ? '/assets/banners/aeo-geo-minimal.webp'
   : title.includes('Web')
-    ? '/assets/services/web-foundation-v3.webp'
+    ? '/assets/banners/web-services-minimal.webp'
     : title.includes('Content')
-      ? '/assets/services/content-rhythm-v3.webp'
-      : '/assets/services/seo-focus-v3.webp';
+      ? '/assets/banners/content-minimal.webp'
+      : '/assets/banners/seo-minimal.webp';
 const imageAlt = locale === 'id'
   ? `Visual abstrak untuk layanan ${title}`
   : `Abstract visual for ${title} services`;

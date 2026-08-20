@@ -20,32 +20,32 @@ export interface EditorialItem {
 
 export const portfolioItems: Record<Locale, PortfolioItem[]> = {
   id: [
-    { brand: 'Naru', descriptor: 'Energi sehari-hari', image: '/assets/portfolio/naru.webp', alt: 'Studi konsep Naru dengan patung energi kaca biru', theme: '#0b5bd7' },
-    { brand: 'Sora', descriptor: 'Rumah lebih ringan', image: '/assets/portfolio/sora.webp', alt: 'Studi konsep Sora dalam interior rumah bercahaya biru', theme: '#6882c9' },
-    { brand: 'Lumen', descriptor: 'Finansial tanpa friksi', image: '/assets/portfolio/lumen.webp', alt: 'Studi konsep Lumen dengan cakram presisi dan garis cahaya', theme: '#163a80' },
-    { brand: 'Karsa', descriptor: 'Pangan lokal terhubung', image: '/assets/portfolio/karsa.webp', alt: 'Studi konsep Karsa dengan hasil bumi dan kemasan berwarna biru', theme: '#b45b35' },
-    { brand: 'Nadi', descriptor: 'Perawatan yang mengikuti', image: '/assets/portfolio/nadi.webp', alt: 'Studi konsep Nadi dengan wearable kesehatan dan bentuk lembut', theme: '#8a8bd0' },
-    { brand: 'Aruna', descriptor: 'Bergerak dengan yakin', image: '/assets/portfolio/aruna.webp', alt: 'Studi konsep Aruna dengan transportasi elektrik di waktu senja', theme: '#10579f' },
-    { brand: 'Tala', descriptor: 'Mobilitas yang terhubung', image: '/assets/portfolio/tala.webp', alt: 'Studi konsep Tala dengan struktur transit urban berpendar biru', theme: '#176b8f' },
-    { brand: 'Reka', descriptor: 'Ruang yang bekerja', image: '/assets/portfolio/reka.webp', alt: 'Studi konsep Reka dengan susunan bidang arsitektur gelap', theme: '#334b65' },
-    { brand: 'Aksa', descriptor: 'Belajar lebih terarah', image: '/assets/portfolio/aksa.webp', alt: 'Studi konsep Aksa dengan lapisan halaman dan cahaya terarah', theme: '#3158a6' },
-    { brand: 'Veda', descriptor: 'Wellbeing yang terjaga', image: '/assets/portfolio/veda.webp', alt: 'Studi konsep Veda dengan wadah obsidian dalam cahaya biru', theme: '#36536b' },
-    { brand: 'Loka', descriptor: 'Pengalaman yang berkesan', image: '/assets/portfolio/loka.webp', alt: 'Studi konsep Loka dengan lorong arsitektur yang tenang', theme: '#17445b' },
-    { brand: 'Svara', descriptor: 'Suara yang menemukan audiens', image: '/assets/portfolio/svara.webp', alt: 'Studi konsep Svara dengan gelombang metalik biru', theme: '#1f4c87' }
+    { brand: 'Naru', descriptor: 'Energi sehari-hari', image: '/assets/portfolio/naru.webp', alt: 'Hasil kerja Naru dengan patung energi kaca biru', theme: '#0b5bd7' },
+    { brand: 'Sora', descriptor: 'Rumah lebih ringan', image: '/assets/portfolio/sora.webp', alt: 'Hasil kerja Sora dalam interior rumah bercahaya biru', theme: '#6882c9' },
+    { brand: 'Lumen', descriptor: 'Finansial tanpa friksi', image: '/assets/portfolio/lumen.webp', alt: 'Hasil kerja Lumen dengan cakram presisi dan garis cahaya', theme: '#163a80' },
+    { brand: 'Karsa', descriptor: 'Pangan lokal terhubung', image: '/assets/portfolio/karsa.webp', alt: 'Hasil kerja Karsa dengan hasil bumi dan kemasan berwarna biru', theme: '#b45b35' },
+    { brand: 'Nadi', descriptor: 'Perawatan yang mengikuti', image: '/assets/portfolio/nadi.webp', alt: 'Hasil kerja Nadi dengan wearable kesehatan dan bentuk lembut', theme: '#8a8bd0' },
+    { brand: 'Aruna', descriptor: 'Bergerak dengan yakin', image: '/assets/portfolio/aruna.webp', alt: 'Hasil kerja Aruna dengan transportasi elektrik di waktu senja', theme: '#10579f' },
+    { brand: 'Tala', descriptor: 'Mobilitas yang terhubung', image: '/assets/portfolio/tala.webp', alt: 'Hasil kerja Tala dengan struktur transit urban berpendar biru', theme: '#176b8f' },
+    { brand: 'Reka', descriptor: 'Ruang yang bekerja', image: '/assets/portfolio/reka.webp', alt: 'Hasil kerja Reka dengan susunan bidang arsitektur gelap', theme: '#334b65' },
+    { brand: 'Aksa', descriptor: 'Belajar lebih terarah', image: '/assets/portfolio/aksa.webp', alt: 'Hasil kerja Aksa dengan lapisan halaman dan cahaya terarah', theme: '#3158a6' },
+    { brand: 'Veda', descriptor: 'Wellbeing yang terjaga', image: '/assets/portfolio/veda.webp', alt: 'Hasil kerja Veda dengan wadah obsidian dalam cahaya biru', theme: '#36536b' },
+    { brand: 'Loka', descriptor: 'Pengalaman yang berkesan', image: '/assets/portfolio/loka.webp', alt: 'Hasil kerja Loka dengan lorong arsitektur yang tenang', theme: '#17445b' },
+    { brand: 'Svara', descriptor: 'Suara yang menemukan audiens', image: '/assets/portfolio/svara.webp', alt: 'Hasil kerja Svara dengan gelombang metalik biru', theme: '#1f4c87' }
   ],
   en: [
-    { brand: 'Naru', descriptor: 'Everyday energy', image: '/assets/portfolio/naru.webp', alt: 'Naru concept study featuring a blue glass energy sculpture', theme: '#0b5bd7' },
-    { brand: 'Sora', descriptor: 'Home made simple', image: '/assets/portfolio/sora.webp', alt: 'Sora concept study shown in a blue-lit residential interior', theme: '#6882c9' },
-    { brand: 'Lumen', descriptor: 'Frictionless finance', image: '/assets/portfolio/lumen.webp', alt: 'Lumen concept study featuring precision discs and a line of light', theme: '#163a80' },
-    { brand: 'Karsa', descriptor: 'Local food connected', image: '/assets/portfolio/karsa.webp', alt: 'Karsa concept study featuring local produce and blue packaging', theme: '#b45b35' },
-    { brand: 'Nadi', descriptor: 'Care that follows', image: '/assets/portfolio/nadi.webp', alt: 'Nadi concept study featuring a health wearable and soft forms', theme: '#8a8bd0' },
-    { brand: 'Aruna', descriptor: 'Move with confidence', image: '/assets/portfolio/aruna.webp', alt: 'Aruna concept study featuring electric transit at dusk', theme: '#10579f' },
-    { brand: 'Tala', descriptor: 'Connected mobility', image: '/assets/portfolio/tala.webp', alt: 'Tala concept study featuring a blue-lit urban transit structure', theme: '#176b8f' },
-    { brand: 'Reka', descriptor: 'Spaces that work', image: '/assets/portfolio/reka.webp', alt: 'Reka concept study featuring dark architectural planes', theme: '#334b65' },
-    { brand: 'Aksa', descriptor: 'Learning with direction', image: '/assets/portfolio/aksa.webp', alt: 'Aksa concept study featuring layered pages and focused light', theme: '#3158a6' },
-    { brand: 'Veda', descriptor: 'Wellbeing, sustained', image: '/assets/portfolio/veda.webp', alt: 'Veda concept study featuring an obsidian vessel in blue light', theme: '#36536b' },
-    { brand: 'Loka', descriptor: 'A memorable stay', image: '/assets/portfolio/loka.webp', alt: 'Loka concept study featuring a calm architectural passage', theme: '#17445b' },
-    { brand: 'Svara', descriptor: 'Sound finds its audience', image: '/assets/portfolio/svara.webp', alt: 'Svara concept study featuring a metallic blue sound wave', theme: '#1f4c87' }
+    { brand: 'Naru', descriptor: 'Everyday energy', image: '/assets/portfolio/naru.webp', alt: 'Naru project featuring a blue glass energy sculpture', theme: '#0b5bd7' },
+    { brand: 'Sora', descriptor: 'Home made simple', image: '/assets/portfolio/sora.webp', alt: 'Sora project shown in a blue-lit residential interior', theme: '#6882c9' },
+    { brand: 'Lumen', descriptor: 'Frictionless finance', image: '/assets/portfolio/lumen.webp', alt: 'Lumen project featuring precision discs and a line of light', theme: '#163a80' },
+    { brand: 'Karsa', descriptor: 'Local food connected', image: '/assets/portfolio/karsa.webp', alt: 'Karsa project featuring local produce and blue packaging', theme: '#b45b35' },
+    { brand: 'Nadi', descriptor: 'Care that follows', image: '/assets/portfolio/nadi.webp', alt: 'Nadi project featuring a health wearable and soft forms', theme: '#8a8bd0' },
+    { brand: 'Aruna', descriptor: 'Move with confidence', image: '/assets/portfolio/aruna.webp', alt: 'Aruna project featuring electric transit at dusk', theme: '#10579f' },
+    { brand: 'Tala', descriptor: 'Connected mobility', image: '/assets/portfolio/tala.webp', alt: 'Tala project featuring a blue-lit urban transit structure', theme: '#176b8f' },
+    { brand: 'Reka', descriptor: 'Spaces that work', image: '/assets/portfolio/reka.webp', alt: 'Reka project featuring dark architectural planes', theme: '#334b65' },
+    { brand: 'Aksa', descriptor: 'Learning with direction', image: '/assets/portfolio/aksa.webp', alt: 'Aksa project featuring layered pages and focused light', theme: '#3158a6' },
+    { brand: 'Veda', descriptor: 'Wellbeing, sustained', image: '/assets/portfolio/veda.webp', alt: 'Veda project featuring an obsidian vessel in blue light', theme: '#36536b' },
+    { brand: 'Loka', descriptor: 'A memorable stay', image: '/assets/portfolio/loka.webp', alt: 'Loka project featuring a calm architectural passage', theme: '#17445b' },
+    { brand: 'Svara', descriptor: 'Sound finds its audience', image: '/assets/portfolio/svara.webp', alt: 'Svara project featuring a metallic blue sound wave', theme: '#1f4c87' }
   ]
 };
 
