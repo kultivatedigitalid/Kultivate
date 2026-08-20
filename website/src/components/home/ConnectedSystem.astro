@@ -32,25 +32,25 @@ const copy = locale === 'id'
     };
 ---
 
-<section id="system" class="connected-system section-padding" aria-labelledby="system-title">
+<section id="system" class="connected-system section-padding flow-section" aria-labelledby="system-title" data-scroll-key="home-system">
   <div class="system-glow" aria-hidden="true"></div>
   <div class="container">
-    <header class="system-header">
+    <header class="system-header" data-reveal>
       <span class="section-kicker">{copy.kicker}</span>
       <h2 id="system-title">{copy.title}</h2>
       <p>{copy.description}</p>
     </header>
     <div class="flow-frame">
       <ul class="system-flow" aria-label={copy.aria}>
-        {copy.stages.map(([index, stage, channel, question]) => (
-          <li class="system-step">
+        {copy.stages.map(([index, stage, channel, question], stepIndex) => (
+          <li class="system-step" data-reveal style={`--reveal-delay: ${stepIndex * 80}ms`}>
             <span class="stage-index text-mono">{index}</span>
             <div class="stage-heading"><span>{stage}</span><strong>{channel}</strong></div>
             <p>{question}</p>
           </li>
         ))}
       </ul>
-      <div class="feedback-loop">
+      <div class="feedback-loop" data-reveal>
         <span class="loop-label text-mono">{copy.signal}</span>
         <div class="loop-track" aria-hidden="true"></div>
         <p>{copy.loop}</p>
@@ -78,10 +78,8 @@ const copy = locale === 'id'
   .feedback-loop { display:grid; grid-template-columns:160px minmax(140px,1fr) minmax(240px,420px); gap:28px; align-items:center; padding:24px clamp(24px,2.8vw,36px); background:rgba(7,11,18,.92); }
   .loop-label { color:var(--signal-ice); }
   .loop-track { position:relative; height:1px; overflow:hidden; background:rgba(39,50,68,.88); }
-  .loop-track::after { content:''; position:absolute; inset:0 auto 0 -35%; width:35%; background:linear-gradient(90deg,transparent,var(--cyan-glow),transparent); animation:loop-scan 8.5s linear infinite; }
+  .loop-track::after { content:''; position:absolute; inset:0 auto 0 32%; width:35%; background:linear-gradient(90deg,transparent,var(--cyan-glow),transparent);  }
   .feedback-loop p { color:var(--steel); font-size:.8rem; line-height:1.45; }
-  @keyframes loop-scan { to { transform:translate3d(390%,0,0); } }
   @media (max-width:1100px) { .system-flow { grid-template-columns:repeat(3,minmax(0,1fr)); } .step-arrow { display:none; } }
   @media (max-width:780px) { .system-header { grid-template-columns:1fr; gap:20px; } .system-flow { grid-template-columns:1fr; } .system-step { min-height:188px; } .feedback-loop { grid-template-columns:1fr; gap:14px; } }
-  @media (prefers-reduced-motion:reduce) { .loop-track::after { animation:none; opacity:.45; transform:translate3d(185%,0,0); } }
 </style>

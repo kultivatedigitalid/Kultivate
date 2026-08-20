@@ -7,7 +7,11 @@
 }
 
 .section-padding {
-  padding-block: clamp(88px, 9vw, 144px);
+  padding-block: var(--section-space);
+}
+
+.section-padding-compact {
+  padding-block: var(--section-space-compact);
 }
 
 .grid-12 {
@@ -45,12 +49,6 @@
   text-transform: uppercase;
 }
 
-.section-kicker::before {
-  content: '';
-  width: 20px;
-  height: 1px;
-  background: rgba(103, 217, 255, 0.62);
-}
 
 .card {
   border-radius: var(--border-radius-lg);
@@ -105,7 +103,6 @@
   filter: blur(10px);
   opacity: 0;
   pointer-events: none;
-  animation: cta-attention 2800ms var(--ease-in-out) 3;
 }
 
 .btn-secondary {
@@ -221,25 +218,12 @@
   }
 
   .section-padding {
-    padding-block: 80px;
+    padding-block: var(--section-space-mobile);
   }
 
   .grid-12 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--spacing-sm);
-  }
-}
-
-@keyframes cta-attention {
-  0%,
-  100% {
-    opacity: 0;
-    transform: scale(0.94);
-  }
-
-  42% {
-    opacity: 0.72;
-    transform: scale(1.06);
   }
 }
 

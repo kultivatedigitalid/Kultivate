@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import InsightArticleV2 from '../../../components/insights/InsightArticleV2.astro';
 import FinalCTA from '../../../components/home/FinalCTA.astro';
 import { getCollection, render } from 'astro:content';
+import { breadcrumbSchema } from '../../../utils/seo';
 
 const locale = 'id';
 
@@ -21,12 +22,46 @@ const { article } = Astro.props;
 const { Content, headings } = await render(article);
 const counterpart = (await getCollection('insights', (entry) => entry.data.locale === 'en' && entry.data.translationKey === article.data.translationKey && !entry.data.draft))[0];
 const alternatePath = counterpart ? '/en/insights/' + counterpart.data.slug + '/' : '/en/insights/';
+const site = Astro.site ?? new URL('https://kultivate.id');
+const canonicalUrl = new URL(Astro.url.pathname, site).href;
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.data.title,
+  description: article.data.seoDescription || article.data.summary,
+  datePublished: article.data.publishedAt,
+  dateModified: article.data.updatedAt || article.data.publishedAt,
+  inLanguage: 'id-ID',
+  image: new URL(article.data.heroImage, site).href,
+  author: {
+    '@type': 'Person',
+    name: article.data.author,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Kultivate',
+    url: site.href,
+  },
+  mainEntityOfPage: canonicalUrl,
+};
+const breadcrumbs = breadcrumbSchema([
+  { name: 'Beranda', url: new URL('/id/', site).href },
+  { name: 'Wawasan', url: new URL('/id/insights/', site).href },
+  { name: article.data.title, url: canonicalUrl },
+]);
 ---
 
 <BaseLayout 
   locale={locale} 
   title={article.data.seoTitle || article.data.title} 
   description={article.data.seoDescription || article.data.summary}
+  alternatePath={alternatePath}
+  ogType="article"
+  socialImage={article.data.heroImage}
+  socialImageAlt={article.data.heroAlt}
+  publishedTime={article.data.publishedAt}
+  modifiedTime={article.data.updatedAt || article.data.publishedAt}
+  structuredData={[articleSchema, breadcrumbs]}
 >
   <InsightArticleV2 article={article} Content={Content} headings={headings} locale={locale} />
 

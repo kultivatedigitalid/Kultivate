@@ -60,11 +60,11 @@ const presentation = locale === 'id'
     };
 ---
 
-<section id="services" class="services-section section-padding" aria-labelledby="services-title">
+<section id="services" class="services-section section-padding flow-section" aria-labelledby="services-title" data-scroll-key="home-services">
   <div class="container">
-    <header class="services-header">
+    <header class="services-header" data-reveal>
       <span class="section-kicker">{locale === 'id' ? 'Layanan' : 'Services'}</span>
-      <h2 id="services-title">{locale === 'id' ? 'Dukungan untuk kebutuhan bisnis Anda' : 'Supports for your business needs'}</h2>
+      <h2 id="services-title">{locale === 'id' ? 'Dukungan untuk kebutuhan bisnis Anda' : 'Support for your business needs'}</h2>
       <p>
         {locale === 'id'
           ? 'Sesuai prioritas Anda, kami dapat membantu melalui SEO, AEO & GEO, Web Services, Content Management, atau kombinasi yang memang dibutuhkan.'
@@ -73,10 +73,10 @@ const presentation = locale === 'id'
     </header>
 
     <div class="services-grid">
-      {services.map((service) => {
+      {services.map((service, index) => {
         const item = presentation[service.id as keyof typeof presentation];
         return (
-          <a class="service-panel" href={`/${locale}/services/${service.slug}/`} aria-label={service.title}>
+          <a class="service-panel" href={`/${locale}/services/${service.slug}/`} aria-label={service.title} data-reveal style={`--reveal-delay: ${index * 60}ms`}>
             <div class="service-media" aria-hidden="true">
               <img src={item.image} alt="" width="1200" height="768" loading="lazy" decoding="async" />
             </div>

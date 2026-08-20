@@ -9,15 +9,15 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<section id="start" class="final-cta section-padding" aria-labelledby="final-cta-title">
+<section id="start" class="final-cta section-padding flow-section" aria-labelledby="final-cta-title" data-scroll-key="home-cta">
   <div class="cta-visual" aria-hidden="true">
     <span class="cta-aura"></span>
-    <span class="cta-arc"></span>
+    <span class="cta-arc" data-ambient></span>
     <span class="cta-horizon"></span>
   </div>
 
   <div class="container">
-    <div class="cta-content">
+    <div class="cta-content" data-reveal>
       <div>
         <h2 id="final-cta-title">{locale === 'id' ? 'Mulai dari prioritas Anda saat ini' : 'Start with your current priorities'}</h2>
         <p>
@@ -78,7 +78,6 @@ const t = useTranslations(locale);
       0 12px 30px rgba(103, 217, 255, 0.34),
       0 44px 120px rgba(23, 107, 255, 0.28);
     opacity: 0.96;
-    animation: arc-drift 16s var(--ease-in-out) infinite alternate;
   }
 
   .cta-horizon {
@@ -93,7 +92,6 @@ const t = useTranslations(locale);
       0 0 24px rgba(103, 217, 255, 0.22),
       0 0 70px rgba(23, 107, 255, 0.16);
     opacity: 0.82;
-    animation: horizon-drift 13s var(--ease-in-out) infinite alternate;
   }
 
   .cta-content {
@@ -126,24 +124,6 @@ const t = useTranslations(locale);
 
   .cta-content .btn {
     flex: 0 0 auto;
-  }
-
-  @keyframes arc-drift {
-    from {
-      transform: translate3d(-1.5%, -1%, 0) scale(0.99);
-    }
-    to {
-      transform: translate3d(2%, 2%, 0) scale(1.025);
-    }
-  }
-
-  @keyframes horizon-drift {
-    from {
-      transform: translate3d(-2%, 2px, 0) rotate(-4deg);
-    }
-    to {
-      transform: translate3d(3%, -3px, 0) rotate(-2.5deg);
-    }
   }
 
   @media (max-width: 760px) {
@@ -183,10 +163,4 @@ const t = useTranslations(locale);
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .cta-arc,
-    .cta-horizon {
-      animation: none;
-    }
-  }
 </style>

@@ -28,6 +28,8 @@ html {
 
 body {
   min-height: 100dvh;
+  width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
@@ -39,9 +41,12 @@ body {
 
 main {
   display: block;
+  width: 100%;
+  min-width: 0;
   overflow: clip;
 }
 
+.page-flow,
 .home-flow {
   position: relative;
   isolation: isolate;
@@ -74,6 +79,7 @@ h6 {
   font-weight: 600;
   line-height: 1.08;
   text-wrap: balance;
+  min-width: 0;
 }
 
 h1 {
@@ -97,6 +103,7 @@ p {
   font-size: 1rem;
   line-height: 1.65;
   text-wrap: pretty;
+  overflow-wrap: break-word;
 }
 
 a {
@@ -155,29 +162,56 @@ svg {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 1ms !important;
-  }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { scroll-behavior: auto !important; }
+  .js img[loading='lazy'][data-lazy-state='pending'] { opacity: 1; }
 }
 
 /* Progressive lazy-image reveal: images remain visible when JavaScript is unavailable. */
 .js img[loading='lazy'][data-lazy-state='pending'] { opacity: 0; }
-.js img[loading='lazy'][data-lazy-state='loaded'] { animation: lazy-image-reveal 680ms var(--ease-out); }
+.js img[loading='lazy'][data-lazy-state='loaded'] { animation: lazy-image-reveal 480ms var(--ease-out); }
 @keyframes lazy-image-reveal {
   from { opacity: 0; clip-path: inset(0 0 7% 0); }
 }
 
 /* Seamless section flow */
 main { overflow: clip; }
-.home-flow { background: #070b12; }
-.home-flow > * { margin-top: -1px; }
-.home-flow > :first-child { margin-top: 0; }
+
+.page-flow,
+.home-flow {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background:
+    radial-gradient(ellipse 108% 16% at 88% 8%, var(--flow-cyan-low), transparent 72%),
+    radial-gradient(ellipse 116% 18% at 8% 38%, var(--flow-blue-low), transparent 74%),
+    radial-gradient(ellipse 110% 16% at 92% 72%, rgba(103, 217, 255, 0.06), transparent 76%),
+    linear-gradient(180deg, var(--flow-void) 0%, #08111d 28%, #091422 52%, #07101a 76%, var(--flow-void) 100%);
+}
+
+.page-flow > *,
+.home-flow > * {
+  position: relative;
+  margin-top: -1px;
+}
+
+.page-flow > :first-child,
+.home-flow > :first-child {
+  margin-top: 0;
+}
+
+.flow-section {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+}
+
+.flow-section::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -1px;
+  z-index: -1;
+  height: clamp(72px, 9vw, 136px);
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(9, 20, 34, 0.45));
+}

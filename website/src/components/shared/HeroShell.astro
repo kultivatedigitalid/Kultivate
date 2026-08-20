@@ -1,0 +1,206 @@
+---
+import HeroVisual from './HeroVisual.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image: string;
+  imageAlt?: string;
+  label?: string;
+  variant?: 'home' | 'services' | 'work' | 'about' | 'insights' | 'contact' | 'service-detail' | 'editorial-compact' | 'legal-compact';
+  compact?: boolean;
+  depth?: boolean;
+  focalPoint?: string;
+  titleId?: string;
+}
+
+const {
+  title,
+  description,
+  image,
+  imageAlt = '',
+  label,
+  variant = 'work',
+  compact = false,
+  depth = false,
+  focalPoint = '50% 50%',
+  titleId = 'page-title',
+} = Astro.props;
+const hasActions = Astro.slots.has('actions');
+const hasMeta = Astro.slots.has('meta');
+---
+
+<header
+  class:list={['hero-shell', `hero-shell--${variant}`, { 'hero-shell--compact': compact }]}
+  data-hero-shell
+  data-scroll-key="hero"
+  aria-labelledby={titleId}
+>
+  <HeroVisual src={image} alt={imageAlt} depth={depth} focalPoint={focalPoint} />
+
+  <div class="hero-shell__content container">
+    <div class="hero-shell__copy">
+      {label && <span class="hero-shell__label text-mono">{label}</span>}
+      <h1 id={titleId}>{title}</h1>
+      {description && <p class="hero-shell__description">{description}</p>}
+      {hasMeta && <div class="hero-shell__meta"><slot name="meta" /></div>}
+      {hasActions && <div class="hero-shell__actions"><slot name="actions" /></div>}
+    </div>
+  </div>
+
+  <span class="hero-shell__handoff" aria-hidden="true"></span>
+</header>
+
+<style>
+  .hero-shell {
+    position: relative;
+    min-height: clamp(660px, 88svh, 860px);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--void-black);
+    margin-bottom: -1px;
+  }
+
+  .hero-shell--home {
+    min-height: max(700px, 100svh);
+  }
+
+  .hero-shell--compact,
+  .hero-shell--editorial-compact,
+  .hero-shell--legal-compact {
+    min-height: clamp(520px, 72svh, 680px);
+  }
+
+  .hero-shell__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-top: clamp(116px, 14vh, 156px);
+    padding-bottom: clamp(88px, 11vh, 124px);
+  }
+
+  .hero-shell__copy {
+    width: min(100%, 920px);
+    margin-inline: auto;
+    text-align: center;
+    animation: hero-copy-enter var(--motion-cinematic) var(--ease-out) both;
+  }
+
+  .hero-shell__label {
+    display: block;
+    margin-bottom: 22px;
+    color: rgba(226, 234, 243, 0.7);
+  }
+
+  .hero-shell h1 {
+    max-width: 15ch;
+    margin: 0 auto;
+    font-size: clamp(2.75rem, 1.85rem + 4.3vw, 6rem);
+    font-weight: 550;
+    letter-spacing: -0.04em;
+    line-height: 0.96;
+    overflow-wrap: normal;
+  }
+
+  .hero-shell__description {
+    max-width: 60ch;
+    margin: 24px auto 0;
+    color: rgba(226, 234, 243, 0.8);
+    font-size: clamp(1rem, 0.93rem + 0.3vw, 1.18rem);
+    line-height: 1.58;
+  }
+
+  .hero-shell__meta {
+    margin-top: 24px;
+  }
+
+  .hero-shell__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .hero-shell__handoff {
+    position: absolute;
+    z-index: 1;
+    inset: auto 0 -1px;
+    height: clamp(100px, 17vh, 190px);
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent, rgba(7, 11, 18, 0.58) 50%, var(--void-black));
+  }
+
+  .hero-shell--contact .hero-shell__copy,
+  .hero-shell--legal-compact .hero-shell__copy {
+    width: min(100%, 780px);
+  }
+
+  .hero-shell--editorial-compact .hero-shell h1 {
+    max-width: 18ch;
+    font-size: clamp(2.6rem, 1.8rem + 3.5vw, 5.5rem);
+  }
+
+  @keyframes hero-copy-enter {
+    from { opacity: 0; transform: translate3d(0, 18px, 0); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @media (max-width: 760px) {
+    .hero-shell,
+    .hero-shell--home {
+      min-height: max(680px, 100svh);
+    }
+
+    .hero-shell--compact,
+    .hero-shell--editorial-compact,
+    .hero-shell--legal-compact {
+      min-height: clamp(500px, 82svh, 660px);
+    }
+
+    .hero-shell__content {
+      min-width: 0;
+      padding-top: 112px;
+      padding-bottom: 76px;
+    }
+
+    .hero-shell__copy {
+      width: 100%;
+      min-width: 0;
+    }
+
+    .hero-shell h1 {
+      max-width: 12ch;
+      font-size: clamp(2.35rem, 11vw, 3.5rem);
+      line-height: 0.98;
+    }
+
+    .hero-shell__description {
+      width: 100%;
+      max-width: 34ch;
+      margin-top: 20px;
+      font-size: 1rem;
+    }
+
+    .hero-shell__actions {
+      width: min(100%, 320px);
+      flex-direction: column;
+      margin-inline: auto;
+    }
+
+    .hero-shell__actions :global(.btn) {
+      width: 100%;
+      max-width: 100%;
+      white-space: normal;
+      text-align: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-shell__copy {
+      animation: none;
+    }
+  }
+</style>

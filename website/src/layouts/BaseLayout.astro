@@ -2,26 +2,66 @@
 import { siteConfig } from '../data/site';
 import { navigationData } from '../data/navigation';
 import { useTranslations, getAlternateLocalePath } from '../i18n/routes';
+import StructuredData from '../components/seo/StructuredData.astro';
+import {
+  composePageTitle,
+  openGraphLocale,
+  organizationSchema,
+  websiteSchema,
+} from '../utils/seo';
 import '../styles/global.css';
 import '../styles/utilities.css';
+import '../styles/motion.css';
 
 interface Props {
   title?: string;
   description?: string;
   locale: 'id' | 'en';
   alternatePath?: string;
+  robots?: string;
+  ogType?: 'website' | 'article';
+  socialImage?: string;
+  socialImageAlt?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
+  includeAlternates?: boolean;
 }
 
-const { title, description, locale, alternatePath: alternatePathOverride } = Astro.props;
+const {
+  title,
+  description,
+  locale,
+  alternatePath: alternatePathOverride,
+  robots = 'index, follow',
+  ogType = 'website',
+  socialImage = '/assets/banners/portfolio.webp',
+  socialImageAlt = '',
+  publishedTime,
+  modifiedTime,
+  structuredData,
+  includeAlternates = true,
+} = Astro.props;
 const t = useTranslations(locale);
 const currentPath = Astro.url.pathname;
 const currentLocalePath = /^\/(id|en)(\/|$)/.test(currentPath) ? currentPath : `/${locale}/`;
-const pageTitle = title ? title + ' | ' + siteConfig.name : siteConfig.name + ' - ' + siteConfig.tagline;
+const productionSite = Astro.site ?? new URL('https://kultivate.id');
+const pageTitle = composePageTitle(title, siteConfig.name, siteConfig.tagline);
 const pageDescription = description || t('footer.tagline');
-const canonicalUrl = new URL(currentPath, siteConfig.domain).href;
+const canonicalUrl = new URL(currentPath, productionSite).href;
 const alternateLocale = locale === 'id' ? 'en' : 'id';
 const alternatePath = alternatePathOverride || getAlternateLocalePath(currentPath, alternateLocale);
-const alternateUrl = new URL(alternatePath, siteConfig.domain).href;
+const alternateUrl = new URL(alternatePath, productionSite).href;
+const englishUrl = locale === 'en' ? canonicalUrl : alternateUrl;
+const indonesianUrl = locale === 'id' ? canonicalUrl : alternateUrl;
+const socialImageUrl = new URL(socialImage, productionSite).href;
+const isLocaleHomepage = currentPath === '/en/' || currentPath === '/id/';
+const defaultStructuredData = isLocaleHomepage
+  ? [organizationSchema(productionSite.href), websiteSchema(productionSite.href, locale)]
+  : [];
+const pageStructuredData = structuredData
+  ? Array.isArray(structuredData) ? structuredData : [structuredData]
+  : [];
 const navItems = navigationData[locale] || [];
 const skipLabel = locale === 'id' ? 'Lewati ke konten' : 'Skip to content';
 const menuLabel = locale === 'id' ? 'Menu' : 'Menu';
@@ -39,17 +79,28 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <title>{pageTitle}</title>
   <meta name="description" content={pageDescription} />
+  <meta name="robots" content={robots} />
   <link rel="canonical" href={canonicalUrl} />
-  <link rel="alternate" hreflang={locale === 'id' ? 'id-ID' : 'en'} href={canonicalUrl} />
-  <link rel="alternate" hreflang={locale === 'id' ? 'en' : 'id-ID'} href={alternateUrl} />
-  <link rel="alternate" hreflang="x-default" href={new URL('/en/', siteConfig.domain).href} />
-  <meta property="og:type" content="website" />
+  {includeAlternates && <link rel="alternate" hreflang="en" href={englishUrl} />}
+  {includeAlternates && <link rel="alternate" hreflang="id-ID" href={indonesianUrl} />}
+  {includeAlternates && <link rel="alternate" hreflang="x-default" href={englishUrl} />}
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
-  <meta property="og:image" content={new URL('/assets/banners/portfolio.webp', siteConfig.domain).href} />
+  <meta property="og:image" content={socialImageUrl} />
+  {socialImageAlt && <meta property="og:image:alt" content={socialImageAlt} />}
   <meta property="og:site_name" content="Kultivate" />
-  <meta property="og:locale" content={locale === 'id' ? 'id_ID' : 'en_US'} />
+  <meta property="og:locale" content={openGraphLocale(locale)} />
+  {includeAlternates && <meta property="og:locale:alternate" content={openGraphLocale(alternateLocale)} />}
+  {ogType === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+  {ogType === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={pageDescription} />
+  <meta name="twitter:image" content={socialImageUrl} />
+  <StructuredData data={[...defaultStructuredData, ...pageStructuredData]} />
 </head>
 <body>
   <a href="#main-content" class="skip-link">{skipLabel}</a>
@@ -80,6 +131,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
             class={locale === 'en' ? 'lang-btn active' : 'lang-btn'}
             aria-current={locale === 'en' ? 'page' : undefined}
             aria-label="English"
+            data-language-switch={locale === 'id' ? 'true' : undefined}
           >EN</a>
           <span aria-hidden="true">/</span>
           <a
@@ -87,6 +139,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
             class={locale === 'id' ? 'lang-btn active' : 'lang-btn'}
             aria-current={locale === 'id' ? 'page' : undefined}
             aria-label="Bahasa Indonesia"
+            data-language-switch={locale === 'en' ? 'true' : undefined}
           >ID</a>
         </nav>
 
@@ -176,6 +229,12 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
   </footer>
 
   <script>
+    import { initRevealSystem } from '../scripts/reveal';
+    import { initSemanticLanguagePosition } from '../scripts/semantic-position';
+
+    initRevealSystem();
+    initSemanticLanguagePosition();
+
     const header = document.querySelector('#site-header');
     const sentinel = document.querySelector('[data-header-sentinel]');
     if (header && sentinel) {
@@ -192,15 +251,26 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
       if (!(menuButton instanceof HTMLButtonElement) || !(menuPanel instanceof HTMLElement)) return;
       menuButton.setAttribute('aria-expanded', String(isOpen));
       menuPanel.hidden = !isOpen;
+      document.body.toggleAttribute('data-menu-open', isOpen);
       const label = menuButton.querySelector('span');
       if (label) {
         label.textContent = isOpen ? menuButton.dataset.closeLabel || 'Close' : menuButton.dataset.menuLabel || 'Menu';
       }
+      if (isOpen) requestAnimationFrame(() => menuPanel.querySelector('a')?.focus());
     };
 
     menuButton?.addEventListener('click', () => {
       const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
       setMenuState(!isOpen);
+    });
+
+    menuPanel?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMenuState(false));
+    });
+
+    document.addEventListener('pointerdown', (event) => {
+      if (menuButton?.getAttribute('aria-expanded') !== 'true') return;
+      if (event.target instanceof Node && !header?.contains(event.target)) setMenuState(false);
     });
 
     document.addEventListener('keydown', (event) => {
@@ -399,6 +469,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
+  :global(body[data-menu-open]) { overflow: hidden; }
 
   .mobile-nav-panel {
     position: absolute;
@@ -406,6 +477,13 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
     border-bottom: 1px solid rgba(39, 50, 68, 0.6);
     background: rgba(7, 11, 18, 0.98);
     padding: 20px;
+  }
+
+  .mobile-nav-panel:not([hidden]) { animation: mobile-panel-in 220ms var(--ease-out) both; }
+
+  @keyframes mobile-panel-in {
+    from { opacity: 0; transform: translate3d(0, -8px, 0); }
+    to { opacity: 1; transform: none; }
   }
 
   .mobile-nav-list {
@@ -539,8 +617,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
     .header-container {
       min-height: 64px;
     }
-
-    .mobile-nav-panel {
+      .mobile-nav-panel {
       inset-block-start: 64px;
     }
 
@@ -604,6 +681,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
     .logo:hover::after,
     .logo:focus-visible::after { transform: translate(-50%, -50%) scale(1.35); }
     .footer-credit { transition: opacity 120ms ease-out; transform: none; }
+    .mobile-nav-panel:not([hidden]) { animation: none; }
   }
 
   @media (prefers-reduced-transparency: reduce) {

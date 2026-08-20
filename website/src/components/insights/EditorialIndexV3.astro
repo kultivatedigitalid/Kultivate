@@ -1,122 +1,407 @@
 ---
+import HeroShell from '../shared/HeroShell.astro';
 import { editorialItems } from '../../data/editorial';
 
 interface Props { locale: 'id' | 'en'; }
+
 const { locale } = Astro.props;
-const [featured, ...remaining] = editorialItems[locale];
-const topStories = remaining.slice(0, 2);
-const archive = remaining.slice(2);
-const topics = [...new Set(editorialItems[locale].map((article) => article.category))];
+const articles = editorialItems[locale];
+const topics = [...new Set(articles.map((article) => article.category))];
 const copy = locale === 'id'
-  ? { label:'BLOG', title:'Catatan praktis tentang search', description:'Penjelasan yang membantu Anda memahami pilihan, pekerjaan, dan alasan di balik rekomendasi search', topics:'Topik', featured:'Featured story', top:'Top stories', all:'Semua artikel', read:'Baca artikel' }
-  : { label:'BLOG', title:'Practical search notes', description:'Clear explanations to help you understand the choices, work, and reasoning behind search recommendations', topics:'Topics', featured:'Featured story', top:'Top stories', all:'All stories', read:'Read article' };
+  ? {
+      label: 'BLOG',
+      title: 'Catatan praktis tentang search',
+      description: 'Penjelasan yang membantu Anda memahami pilihan, pekerjaan, dan alasan di balik rekomendasi search',
+      heroAlt: 'Bidang informasi biru tersusun dalam kedalaman',
+      topics: 'Topik',
+      allTopic: 'Semua',
+      all: 'Semua artikel',
+      filtered: 'Artikel terpilih',
+      featured: 'Featured story',
+      story: 'Story',
+      read: 'Baca artikel',
+      result: 'artikel ditampilkan'
+    }
+  : {
+      label: 'BLOG',
+      title: 'Practical search notes',
+      description: 'Clear explanations to help you understand the choices, work, and reasoning behind search recommendations',
+      heroAlt: 'Blue information surfaces arranged with depth',
+      topics: 'Topics',
+      allTopic: 'All',
+      all: 'All stories',
+      filtered: 'Filtered stories',
+      featured: 'Featured story',
+      story: 'Story',
+      read: 'Read article',
+      result: 'stories shown'
+    };
 ---
 
-<header class="blog-hero">
-  <img src="/assets/banners/blog.webp" alt={locale === 'id' ? 'Bidang informasi biru tersusun dalam kedalaman' : 'Blue information surfaces arranged with depth'} width="1536" height="1024" decoding="async" fetchpriority="high" />
-  <span class="blog-hero__veil" aria-hidden="true"></span>
-  <div class="container blog-hero__copy">
-    <span class="text-mono">{copy.label}</span>
-    <h1>{copy.title}</h1>
-    <p>{copy.description}</p>
-  </div>
-</header>
+<div class="insights-page page-flow">
+  <HeroShell
+    title={copy.title}
+    description={copy.description}
+    image="/assets/banners/blog.webp"
+    imageAlt={copy.heroAlt}
+    label={copy.label}
+    variant="insights"
+    depth
+    focalPoint="56% 50%"
+  />
 
-<main class="editorial" id="all-stories">
-  <div class="container">
-    <nav class="topic-row" aria-label={copy.topics}>
-      <span class="text-mono">{copy.topics}</span>
-      <ul>{topics.map((topic) => <li>{topic}</li>)}</ul>
-    </nav>
-
-    <section class="featured-block" aria-labelledby="featured-title">
-      <span class="section-label text-mono">{copy.featured}</span>
-      <a href={'/' + locale + '/insights/' + featured.slug + '/'} class="featured-story">
-        <figure><img src={featured.image} alt={featured.alt} width="1536" height="1024" decoding="async" /></figure>
-        <div class="featured-copy">
-          <div class="story-meta text-mono"><span>{featured.category}</span><time>{featured.date}</time></div>
-          <h2 id="featured-title">{featured.title}</h2>
-          <p>{featured.summary}</p>
-          <span class="story-link"><span>{copy.read}</span><span aria-hidden="true">&#8594;</span></span>
+  <main
+    class="editorial flow-section"
+    id="all-stories"
+    data-scroll-key="insights-stories"
+    data-insights-index
+    data-filtered="false"
+  >
+    <div class="container">
+      <nav class="topic-row" aria-label={copy.topics} data-reveal>
+        <span class="text-mono">{copy.topics}</span>
+        <div class="topic-controls">
+          <button type="button" data-topic="" aria-pressed="true">{copy.allTopic}</button>
+          {topics.map((topic) => (
+            <button type="button" data-topic={topic} aria-pressed="false">{topic}</button>
+          ))}
         </div>
-      </a>
-    </section>
+      </nav>
 
-    <section class="top-stories" aria-labelledby="top-stories-title">
-      <h2 id="top-stories-title">{copy.top}</h2>
-      <div class="top-grid">
-        {topStories.map((article) => (
-          <a href={'/' + locale + '/insights/' + article.slug + '/'}>
-            <figure><img src={article.image} alt={article.alt} width="1536" height="1024" loading="lazy" decoding="async" /></figure>
-            <div class="top-copy">
-              <div class="story-meta text-mono"><span>{article.category}</span><time>{article.date}</time></div>
-              <h3>{article.title}</h3>
-              <p>{article.summary}</p>
-            </div>
-          </a>
-        ))}
-      </div>
-    </section>
+      <section class="stories-block" aria-labelledby="stories-title">
+        <header class="stories-heading" data-reveal>
+          <div>
+            <span class="section-label text-mono">{copy.label}</span>
+            <h2 id="stories-title" data-stories-title>{copy.all}</h2>
+          </div>
+          <p class="result-count text-mono" aria-live="polite" data-result-count>
+            {articles.length} {copy.result}
+          </p>
+        </header>
 
-    {archive.length > 0 && (
-      <section class="archive-block" aria-labelledby="archive-title">
-        <h2 id="archive-title">{copy.all}</h2>
-        <div class="archive-grid">
-          {archive.map((article) => (
-            <a href={'/' + locale + '/insights/' + article.slug + '/'} class="archive-card">
-              <figure><img src={article.image} alt={article.alt} width="1536" height="1024" loading="lazy" decoding="async" /></figure>
-              <div class="story-meta text-mono"><span>{article.category}</span><time>{article.date}</time></div>
-              <h3>{article.title}</h3>
-              <p>{article.summary}</p>
+        <div class="story-grid" data-story-grid>
+          {articles.map((article, index) => (
+            <a
+              href={'/' + locale + '/insights/' + article.slug + '/'}
+              class="story-card"
+              data-story-card
+              data-topic-value={article.category}
+              data-rank={index}
+              data-reveal
+              style={`--reveal-delay: ${Math.min(index, 4) * 55}ms`}
+            >
+              <figure>
+                <img
+                  src={article.image}
+                  alt={article.alt}
+                  width="1536"
+                  height="1024"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="story-copy">
+                <div class="story-rank text-mono">{index === 0 ? copy.featured : copy.story}</div>
+                <div class="story-meta text-mono">
+                  <span>{article.category}</span>
+                  <time>{article.date}</time>
+                </div>
+                <h3>{article.title}</h3>
+                <p>{article.summary}</p>
+                <span class="story-link">
+                  <span>{copy.read}</span><span aria-hidden="true">&#8594;</span>
+                </span>
+              </div>
             </a>
           ))}
         </div>
       </section>
-    )}
-  </div>
-</main>
+    </div>
+  </main>
+</div>
+
+<script>
+  const setupInsightsFilters = () => {
+    document.querySelectorAll<HTMLElement>('[data-insights-index]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+
+      const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-topic]'));
+      const cards = Array.from(root.querySelectorAll<HTMLElement>('[data-story-card]'));
+      const title = root.querySelector<HTMLElement>('[data-stories-title]');
+      const count = root.querySelector<HTMLElement>('[data-result-count]');
+      const allTitle = title?.textContent?.trim() ?? '';
+      const filteredTitle = root.closest('.insights-page')?.querySelector<HTMLElement>('[data-filtered-title]')?.textContent?.trim() ?? '';
+      const resultLabel = count?.textContent?.replace(/^\s*\d+\s*/, '').trim() ?? '';
+
+      const applyFilter = (topic: string) => {
+        root.dataset.filtering = 'true';
+        root.dataset.filtered = topic ? 'true' : 'false';
+
+        let visibleCount = 0;
+        cards.forEach((card) => {
+          const matches = !topic || card.dataset.topicValue === topic;
+          card.hidden = !matches;
+          if (matches) visibleCount += 1;
+        });
+
+        buttons.forEach((button) => {
+          button.setAttribute('aria-pressed', String((button.dataset.topic ?? '') === topic));
+        });
+
+        if (title) {
+          title.textContent = topic
+            ? `${filteredTitle || (root.ownerDocument.documentElement.lang === 'id' ? 'Artikel' : 'Stories')}: ${topic}`
+            : allTitle;
+        }
+        if (count) count.textContent = `${visibleCount} ${resultLabel}`;
+
+        requestAnimationFrame(() => {
+          root.dataset.filtering = 'false';
+        });
+      };
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => applyFilter(button.dataset.topic ?? ''));
+      });
+    });
+  };
+
+  setupInsightsFilters();
+  document.addEventListener('astro:page-load', setupInsightsFilters);
+</script>
+
+<span class="visually-hidden" data-filtered-title>{copy.filtered}</span>
 
 <style>
-  .blog-hero { position:relative; min-height:88svh; display:flex; align-items:flex-end; overflow:hidden; isolation:isolate; background:#07101a; }
-  .blog-hero > img,.blog-hero__veil { position:absolute; inset:0; }
-  .blog-hero > img { z-index:-2; width:100%; height:100%; object-fit:cover; animation:blog-hero-drift 22s cubic-bezier(.45,0,.2,1) infinite alternate; }
-  .blog-hero__veil { z-index:-1; background:linear-gradient(90deg,rgba(5,8,14,.96),rgba(5,8,14,.66) 48%,rgba(5,8,14,.18)),linear-gradient(180deg,rgba(5,8,14,.2),transparent 30%,rgba(7,11,18,.46) 62%,#070b12 100%); }
-  .blog-hero__copy { position:relative; z-index:1; max-width:920px; padding-top:150px; padding-bottom:clamp(64px,8vw,106px); }
-  .blog-hero__copy > span { display:block; margin-bottom:22px; color:rgba(201,211,223,.62); }
-  .blog-hero h1 { max-width:12ch; margin-bottom:22px; font-size:clamp(3rem,2rem + 3.8vw,6rem); font-weight:540; letter-spacing:-.045em; line-height:.95; }
-  .blog-hero p { max-width:48ch; color:rgba(226,234,243,.76); font-size:clamp(1rem,.94rem + .28vw,1.16rem); }
-  .editorial { margin-top:-1px; padding:0 0 clamp(96px,12vw,164px); background:linear-gradient(180deg,#070b12 0%,#060a11 54%,#05080e 100%); }
-  .topic-row { display:grid; grid-template-columns:minmax(130px,.34fr) 1.66fr; gap:clamp(28px,6vw,88px); align-items:center; border-block:1px solid rgba(89,106,130,.34); padding-block:22px; }
-  .topic-row > span { color:rgba(201,211,223,.5); }
-  .topic-row ul { display:flex; flex-wrap:wrap; gap:10px 26px; list-style:none; }
-  .topic-row li { color:rgba(226,234,243,.82); font-size:.86rem; }
-  .featured-block { padding-top:clamp(76px,10vw,136px); }
-  .section-label { display:block; margin-bottom:26px; color:rgba(201,211,223,.52); }
-  .featured-story { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(320px,.55fr); gap:clamp(38px,7vw,108px); align-items:end; color:inherit; }
-  .featured-story figure { aspect-ratio:16 / 10; overflow:hidden; border-radius:8px; background:#07101a; }
-  .featured-story img,.top-grid img,.archive-card img { width:100%; height:100%; object-fit:cover; filter:brightness(.78) saturate(.84); transition:transform 620ms var(--ease-out),filter 400ms var(--ease-out); }
-  .featured-copy { padding-bottom:clamp(4px,2vw,24px); }
-  .story-meta { display:flex; justify-content:space-between; gap:16px; color:rgba(201,211,223,.55); }
-  .featured-copy h2 { max-width:15ch; margin:18px 0 16px; font-size:clamp(2rem,3.5vw,4rem); font-weight:540; line-height:.99; }
-  .featured-copy > p { max-width:48ch; color:var(--steel); }
-  .story-link { display:inline-flex; min-height:44px; align-items:center; gap:10px; margin-top:18px; color:var(--mist); font-size:.82rem; }
-  .top-stories { margin-top:clamp(104px,13vw,176px); padding-top:clamp(36px,5vw,62px); border-top:1px solid rgba(89,106,130,.34); }
-  .top-stories > h2 { margin-bottom:30px; font-size:clamp(2rem,3vw,3.2rem); font-weight:540; }
-  .top-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(22px,4vw,58px); }
-  .top-grid > a { min-width:0; display:grid; grid-template-columns:minmax(180px,.78fr) minmax(0,1.22fr); gap:clamp(20px,3vw,38px); color:inherit; }
-  .top-grid figure { aspect-ratio:4 / 3; overflow:hidden; border-radius:8px; background:#07101a; }
-  .top-copy { align-self:center; }
-  .top-copy h3 { margin:16px 0 10px; font-size:clamp(1.3rem,1.8vw,1.85rem); font-weight:540; line-height:1.08; }
-  .top-copy p { color:var(--steel); font-size:.88rem; }
-  .archive-block { margin-top:clamp(104px,14vw,188px); padding-top:clamp(36px,5vw,62px); border-top:1px solid rgba(89,106,130,.34); }
-  .archive-block > h2 { margin-bottom:34px; font-size:clamp(2rem,3vw,3.2rem); font-weight:540; }
-  .archive-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(58px,7vw,96px) clamp(18px,3vw,42px); }
-  .archive-card figure { aspect-ratio:16 / 10; overflow:hidden; border-radius:8px; margin-bottom:20px; background:#07101a; }
-  .archive-card h3 { margin:16px 0 10px; font-size:clamp(1.4rem,2vw,2rem); font-weight:540; line-height:1.08; }
-  .archive-card p { color:var(--steel); font-size:.9rem; }
-  @keyframes blog-hero-drift { from { transform:scale(1.015) translate3d(-.4%,0,0); } to { transform:scale(1.045) translate3d(.7%,-.5%,0); } }
-  @media (hover:hover) and (pointer:fine) { .featured-story:hover img,.top-grid > a:hover img,.archive-card:hover img { transform:scale(1.03); filter:brightness(.92) saturate(.98); } .featured-story:hover .story-link { color:var(--cloud-white); } }
-  @media (max-width:1050px) { .featured-story { grid-template-columns:1fr; } .featured-copy { max-width:720px; } .top-grid > a { grid-template-columns:1fr; } }
-  @media (max-width:760px) { .blog-hero { min-height:100svh; } .blog-hero__copy { padding-top:124px; padding-bottom:60px; } .blog-hero h1 { font-size:clamp(2.7rem,11vw,3.8rem); } .topic-row,.top-grid,.archive-grid { grid-template-columns:1fr; } .top-grid { gap:58px; } .top-grid figure { aspect-ratio:16 / 10; } }
-  @media (prefers-reduced-motion:reduce) { .blog-hero > img { animation:none; transform:none; } .featured-story img,.top-grid img,.archive-card img { transition:none; } }
+  .editorial {
+    position: relative;
+    padding: 0 0 clamp(96px, 11vw, 148px);
+    background: linear-gradient(180deg, rgba(7, 11, 18, 0.24), rgba(6, 10, 17, 0.56) 54%, rgba(5, 8, 14, 0.48));
+  }
+
+  .topic-row {
+    display: grid;
+    grid-template-columns: minmax(130px, 0.34fr) 1.66fr;
+    gap: clamp(28px, 6vw, 88px);
+    align-items: center;
+    border-block: 1px solid rgba(89, 106, 130, 0.34);
+    padding-block: 18px;
+  }
+
+  .topic-row > span { color: rgba(201, 211, 223, 0.5); }
+
+  .topic-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .topic-controls button {
+    min-height: 40px;
+    border: 1px solid rgba(201, 211, 223, 0.16);
+    border-radius: 999px;
+    padding: 8px 15px;
+    background: rgba(7, 11, 18, 0.32);
+    color: rgba(226, 234, 243, 0.74);
+    font: inherit;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition:
+      border-color 180ms var(--ease-out),
+      background-color 180ms var(--ease-out),
+      color 180ms var(--ease-out);
+  }
+
+  .topic-controls button[aria-pressed='true'] {
+    border-color: rgba(207, 247, 255, 0.48);
+    background: rgba(103, 217, 255, 0.1);
+    color: var(--cloud-white);
+  }
+
+  .topic-controls button:focus-visible {
+    outline: 2px solid var(--signal-ice);
+    outline-offset: 3px;
+  }
+
+  .stories-block { padding-top: clamp(68px, 8vw, 110px); }
+
+  .stories-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: clamp(28px, 4vw, 50px);
+  }
+
+  .section-label {
+    display: block;
+    margin-bottom: 16px;
+    color: rgba(201, 211, 223, 0.52);
+  }
+
+  .stories-heading h2 {
+    font-size: clamp(2.2rem, 3.6vw, 4.2rem);
+    font-weight: 540;
+    letter-spacing: -0.04em;
+  }
+
+  .result-count { color: rgba(201, 211, 223, 0.5); }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(54px, 7vw, 92px) clamp(18px, 3vw, 42px);
+    transition: opacity 180ms var(--ease-out);
+  }
+
+  [data-filtering='true'] .story-grid { opacity: 0.48; }
+
+  .story-card {
+    min-width: 0;
+    grid-column: span 4;
+    color: inherit;
+  }
+
+  .story-card[data-rank='0'] {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.55fr);
+    gap: clamp(38px, 7vw, 108px);
+    align-items: end;
+  }
+
+  .story-card[data-rank='1'],
+  .story-card[data-rank='2'] { grid-column: span 6; }
+
+  [data-filtered='true'] .story-card,
+  [data-filtered='true'] .story-card[data-rank] {
+    grid-column: span 4;
+    display: block;
+  }
+
+  .story-card[hidden] { display: none !important; }
+
+  .story-card figure {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #07101a;
+  }
+
+  .story-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.78) saturate(0.84);
+    transform: scale(1.025);
+    transition:
+      transform 620ms var(--ease-out),
+      filter 400ms var(--ease-out);
+  }
+
+  .story-copy { padding-top: 20px; }
+  .story-card[data-rank='0'] .story-copy { padding-block: 0 clamp(4px, 2vw, 24px); }
+
+  .story-rank {
+    margin-bottom: 14px;
+    color: rgba(201, 211, 223, 0.46);
+  }
+
+  [data-filtered='true'] .story-rank { display: none; }
+
+  .story-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    color: rgba(201, 211, 223, 0.55);
+  }
+
+  .story-card h3 {
+    max-width: 24ch;
+    margin: 16px 0 11px;
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    font-weight: 540;
+    line-height: 1.08;
+  }
+
+  .story-card[data-rank='0'] h3 {
+    max-width: 15ch;
+    font-size: clamp(2rem, 3.5vw, 4rem);
+    line-height: 0.99;
+  }
+
+  [data-filtered='true'] .story-card[data-rank] h3 {
+    max-width: 24ch;
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    line-height: 1.08;
+  }
+
+  .story-card p { color: var(--steel); font-size: 0.9rem; }
+
+  .story-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+    color: var(--mist);
+    font-size: 0.82rem;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .story-card:hover img,
+    .story-card:focus-visible img {
+      transform: scale(1.045);
+      filter: brightness(0.92) saturate(0.98);
+    }
+
+    .story-card:hover .story-link,
+    .story-card:focus-visible .story-link { color: var(--cloud-white); }
+  }
+
+  @media (max-width: 1050px) {
+    .story-card[data-rank='0'] { grid-template-columns: 1fr; }
+    .story-card[data-rank='0'] .story-copy { max-width: 720px; padding-top: 20px; }
+
+    [data-filtered='true'] .story-card,
+    [data-filtered='true'] .story-card[data-rank] { grid-column: span 6; }
+  }
+
+  @media (max-width: 760px) {
+    .topic-row { grid-template-columns: 1fr; gap: 14px; }
+    .topic-controls { flex-wrap: nowrap; overflow-x: auto; padding: 2px 2px 8px; }
+    .topic-controls button { flex: none; }
+
+    .stories-heading {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .story-grid { grid-template-columns: 1fr; gap: 58px; }
+
+    .story-card,
+    .story-card[data-rank],
+    [data-filtered='true'] .story-card,
+    [data-filtered='true'] .story-card[data-rank] {
+      grid-column: auto;
+      display: block;
+    }
+
+    .story-card[data-rank='0'] h3,
+    [data-filtered='true'] .story-card[data-rank] h3 {
+      max-width: 24ch;
+      font-size: clamp(1.65rem, 7vw, 2.35rem);
+      line-height: 1.04;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .story-grid,
+    .topic-controls button,
+    .story-card img { transition: none; }
+
+    .story-card img { transform: none; }
+  }
 </style>

@@ -1,4 +1,6 @@
 ---
+import HeroShell from './HeroShell.astro';
+
 interface Props {
   title: string;
   description?: string;
@@ -6,103 +8,29 @@ interface Props {
   imageAlt?: string;
   label?: string;
   compact?: boolean;
+  variant?: 'services' | 'work' | 'about' | 'insights' | 'contact' | 'legal-compact';
+  focalPoint?: string;
 }
 
-const { title, description, image, imageAlt = '', label, compact = false } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  imageAlt = '',
+  label,
+  compact = false,
+  variant = compact ? 'legal-compact' : 'work',
+  focalPoint = '50% 50%',
+} = Astro.props;
 ---
 
-<header class:list={['interior-hero', { 'interior-hero--compact': compact }]}>
-  <img class="interior-hero__image" src={image} alt={imageAlt} width="1536" height="1024" decoding="async" fetchpriority="high" />
-  <div class="interior-hero__veil" aria-hidden="true"></div>
-  <div class="container interior-hero__content">
-    {label && <span class="interior-hero__label text-mono">{label}</span>}
-    <h1>{title}</h1>
-    {description && <p>{description}</p>}
-  </div>
-</header>
-
-<style>
-  .interior-hero {
-    position: relative;
-    min-height: 100svh;
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-    isolation: isolate;
-    background: #07101a;
-    margin-bottom: -1px;
-  }
-
-  .interior-hero::after {
-    content: '';
-    position: absolute;
-    z-index: 0;
-    inset: auto 0 -1px;
-    height: clamp(120px, 20vh, 220px);
-    pointer-events: none;
-    background: linear-gradient(180deg, transparent 0%, rgba(7, 11, 18, 0.48) 48%, #070b12 100%);
-  }
-
-  .interior-hero--compact { min-height: 100svh; }
-
-  .interior-hero__image,
-  .interior-hero__veil { position: absolute; inset: 0; }
-
-  .interior-hero__image {
-    z-index: -2;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scale(1.015);
-    animation: interior-image-drift 22s cubic-bezier(0.45, 0, 0.2, 1) infinite alternate;
-  }
-
-  .interior-hero__veil {
-    z-index: -1;
-    background:
-      linear-gradient(90deg, rgba(5, 8, 14, 0.94) 0%, rgba(5, 8, 14, 0.68) 46%, rgba(5, 8, 14, 0.15) 78%),
-      linear-gradient(180deg, rgba(5, 8, 14, 0.24), transparent 28%, rgba(7, 11, 18, 0.42) 60%, #070b12 100%);
-  }
-
-  .interior-hero__content { position: relative; z-index: 1; padding-top: 150px; padding-bottom: clamp(54px, 7vw, 92px); }
-  .interior-hero__label { display: block; margin-bottom: 22px; color: rgba(226, 234, 243, 0.68); }
-
-  .interior-hero h1 {
-    max-width: 13ch;
-    margin-bottom: 22px;
-    color: var(--cloud-white);
-    font-size: clamp(2.9rem, 1.9rem + 3.6vw, 5.25rem);
-    font-weight: 540;
-    letter-spacing: -0.04em;
-    line-height: 0.96;
-    text-wrap: balance;
-  }
-
-  .interior-hero p {
-    max-width: 56ch;
-    color: rgba(226, 234, 243, 0.78);
-    font-size: clamp(1rem, 0.92rem + 0.28vw, 1.15rem);
-    line-height: 1.58;
-  }
-
-  @keyframes interior-image-drift {
-    from { transform: scale(1.015) translate3d(-0.4%, 0, 0); }
-    to { transform: scale(1.045) translate3d(0.7%, -0.5%, 0); }
-  }
-
-  @media (max-width: 760px) {
-    .interior-hero,
-    .interior-hero--compact { min-height: 100svh; }
-    .interior-hero__veil {
-      background:
-        linear-gradient(90deg, rgba(5, 8, 14, 0.86), rgba(5, 8, 14, 0.28)),
-        linear-gradient(180deg, rgba(5, 8, 14, 0.26), transparent 30%, rgba(7, 11, 18, 0.99) 100%);
-    }
-    .interior-hero__content { padding-top: 124px; padding-bottom: 60px; }
-    .interior-hero h1 { font-size: clamp(2.5rem, 10.5vw, 3.5rem); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .interior-hero__image { animation: none; transform: none; }
-  }
-</style>
+<HeroShell
+  title={title}
+  description={description}
+  image={image}
+  imageAlt={imageAlt}
+  label={label}
+  variant={variant}
+  compact={compact}
+  focalPoint={focalPoint}
+/>

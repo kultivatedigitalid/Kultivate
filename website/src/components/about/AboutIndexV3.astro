@@ -1,5 +1,8 @@
 ---
+import HeroShell from '../shared/HeroShell.astro';
+
 interface Props { locale: 'id' | 'en'; }
+
 const { locale } = Astro.props;
 const copy = locale === 'id'
   ? {
@@ -7,144 +10,431 @@ const copy = locale === 'id'
       title: 'SEO agency yang memulai dari bisnis Anda',
       description: 'Kami membangun arah search berdasarkan apa yang Anda tawarkan, pelanggan yang ingin dijangkau, dan cara mereka mencari',
       heroAlt: 'Lima jalur cahaya biru bergerak menuju arah yang sama',
-      imageAlt: 'Lima profesional Indonesia meninjau riset bersama di ruang kerja',
+      imageAlt: 'Komposisi ilustratif tentang kolaborasi tim di ruang kerja',
+      imageNote: 'Komposisi ilustratif kolaborasi',
       cultureTitle: 'Konteks bersama menghasilkan keputusan search yang lebih baik',
       cultureBody: 'Kami bekerja dekat dengan tim Anda untuk memahami penawaran, pelanggan, dan batasan yang perlu dipertimbangkan sebelum menentukan prioritas.',
       journeyTitle: 'Dari konteks menuju pelaksanaan',
       journeyBody: 'Arah yang jelas bukan hasil dari paket yang sama untuk semua bisnis. Arah tersebut tumbuh dari keputusan yang dapat dipahami dan pekerjaan yang dapat dijalankan.',
+      journeyLabel: 'Cara Kultivate membangun arah kerja',
       sections: [
         ['Pahami cara bisnis Anda bekerja sebelum menentukan kebutuhan SEO', 'Kami mulai dari penawaran, pelanggan, dan target bisnis Anda agar riset search memiliki konteks yang tepat.'],
         ['Gunakan prioritas Anda untuk membentuk cakupan pekerjaan', 'Kami menghubungkan peluang search dengan kapasitas internal dan memilih pekerjaan yang paling relevan untuk dijalankan sekarang.'],
         ['Jaga arah tetap terhubung dengan orang yang mengerjakannya', 'Orang yang menyusun rekomendasi tetap terlibat saat halaman, konten, dan perbaikan teknis bergerak menuju pelaksanaan.']
       ],
-      teamTitle: 'Lima orang di balik pekerjaan kami',
-      teamNote: 'Tim inti'
+      teamTitle: 'Disiplin yang terhubung di sekitar pekerjaan',
+      teamNote: 'Tampilan berbasis peran — bukan profil anggota tim',
+      roles: ['Strategi & Riset SEO', 'Technical SEO', 'Content & On-Page', 'Authority & Outreach', 'Measurement & Growth']
     }
   : {
       label: 'ABOUT US',
       title: 'An SEO agency that starts with your business',
       description: 'We shape your search direction around what you offer, the customers you want to reach, and how they search',
       heroAlt: 'Five blue light paths moving toward a shared direction',
-      imageAlt: 'Five Indonesian professionals reviewing research together in a workspace',
+      imageAlt: 'An illustrative composition of team collaboration in a workspace',
+      imageNote: 'Illustrative collaboration composition',
       cultureTitle: 'Shared context leads to better search decisions',
       cultureBody: 'We work closely with your team to understand the offer, customers, and constraints that need consideration before priorities are set.',
       journeyTitle: 'From context to delivery',
       journeyBody: 'Clear direction does not come from giving every business the same package. It develops through decisions people understand and work teams can carry forward.',
+      journeyLabel: 'How Kultivate builds direction',
       sections: [
         ['Understand how your business works before defining what SEO needs', 'We begin with your offer, customers, and business targets so the search research has the right context.'],
         ['Let your priorities shape the scope of work', 'We connect search opportunities with internal capacity and choose the work that matters most right now.'],
         ['Keep direction connected to the people doing the work', 'The people shaping recommendations stay involved as pages, content, and technical improvements move into delivery.']
       ],
-      teamTitle: 'Five people behind the work',
-      teamNote: 'Core team'
+      teamTitle: 'Disciplines connected around the work',
+      teamNote: 'Role-based view — not individual team profiles',
+      roles: ['SEO Strategy & Research', 'Technical SEO', 'Content & On-Page', 'Authority & Outreach', 'Measurement & Growth']
     };
-
-const team = locale === 'id'
-  ? [
-      ['Mira Santoso', 'Strategi & Riset SEO', '/assets/team/mira-santoso.webp'],
-      ['Raka Pratama', 'Technical SEO', '/assets/team/raka-pratama.webp'],
-      ['Ayu Mahendra', 'Content & On-Page', '/assets/team/ayu-mahendra.webp'],
-      ['Dimas Wirawan', 'Authority & Outreach', '/assets/team/dimas-wirawan.webp'],
-      ['Nadia Putri', 'Measurement & Growth', '/assets/team/nadia-putri.webp']
-    ]
-  : [
-      ['Mira Santoso', 'SEO Strategy & Research', '/assets/team/mira-santoso.webp'],
-      ['Raka Pratama', 'Technical SEO', '/assets/team/raka-pratama.webp'],
-      ['Ayu Mahendra', 'Content & On-Page', '/assets/team/ayu-mahendra.webp'],
-      ['Dimas Wirawan', 'Authority & Outreach', '/assets/team/dimas-wirawan.webp'],
-      ['Nadia Putri', 'Measurement & Growth', '/assets/team/nadia-putri.webp']
-    ];
 ---
 
-<header class="about-hero">
-  <img src="/assets/banners/about-v4.webp" alt={copy.heroAlt} width="1536" height="1024" decoding="async" fetchpriority="high" />
-  <span class="about-hero__veil" aria-hidden="true"></span>
-  <div class="container about-hero__copy">
-    <span class="text-mono">{copy.label}</span>
-    <h1>{copy.title}</h1>
-    <p>{copy.description}</p>
-  </div>
-</header>
+<div class="about-page page-flow">
+  <HeroShell
+    title={copy.title}
+    description={copy.description}
+    image="/assets/banners/about-v4.webp"
+    imageAlt={copy.heroAlt}
+    label={copy.label}
+    variant="about"
+    depth
+    focalPoint="55% 50%"
+  />
 
-<section class="about-culture" aria-labelledby="culture-title">
-  <div class="container culture-layout">
-    <figure><img src="/assets/about/culture-v3.webp" alt={copy.imageAlt} width="1920" height="1080" loading="lazy" decoding="async" /></figure>
-    <div class="culture-copy">
-      <h2 id="culture-title">{copy.cultureTitle}</h2>
-      <p>{copy.cultureBody}</p>
+  <section
+    class="about-culture flow-section"
+    aria-labelledby="culture-title"
+    data-scroll-key="about-culture"
+  >
+    <div class="container culture-layout">
+      <figure data-reveal>
+        <img
+          src="/assets/about/culture-v3.webp"
+          alt={copy.imageAlt}
+          width="1920"
+          height="1080"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="text-mono">{copy.imageNote}</figcaption>
+      </figure>
+      <div class="culture-copy" data-reveal>
+        <span class="culture-index text-mono">01 / CONTEXT</span>
+        <h2 id="culture-title">{copy.cultureTitle}</h2>
+        <p>{copy.cultureBody}</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="about-journey" aria-label={locale === 'id' ? 'Cara Kultivate membangun arah kerja' : 'How Kultivate builds direction'}>
-  <div class="container journey-layout">
-    <div class="journey-intro">
-      <h2>{copy.journeyTitle}</h2>
-      <p>{copy.journeyBody}</p>
+  <section
+    class="about-journey flow-section"
+    aria-label={copy.journeyLabel}
+    data-scroll-key="about-journey"
+    data-journey
+    data-active-step="0"
+  >
+    <div class="container journey-layout">
+      <div class="journey-intro" data-reveal>
+        <span class="text-mono">02 / DIRECTION</span>
+        <h2>{copy.journeyTitle}</h2>
+        <p>{copy.journeyBody}</p>
+        <div class="journey-progress" aria-hidden="true"><span></span></div>
+      </div>
+
+      <div class="journey-steps">
+        {copy.sections.map(([title, description], index) => (
+          <article data-journey-step={index} data-reveal>
+            <span class="journey-index text-mono">0{index + 1}</span>
+            <div>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
-    <div class="journey-steps">
-      {copy.sections.map(([title, description], index) => (
-        <article>
-          <span class="journey-index text-mono">0{index + 1}</span>
-          <div><h3>{title}</h3><p>{description}</p></div>
-        </article>
+  </section>
+
+  <section
+    class="team-section flow-section"
+    aria-labelledby="team-title"
+    data-scroll-key="about-disciplines"
+  >
+    <div class="container team-heading" data-reveal>
+      <div>
+        <span class="text-mono">03 / DISCIPLINES</span>
+        <h2 id="team-title">{copy.teamTitle}</h2>
+      </div>
+      <p>{copy.teamNote}</p>
+    </div>
+
+    <ol class="container discipline-grid">
+      {copy.roles.map((role, index) => (
+        <li data-reveal style={`--reveal-delay: ${index * 65}ms`}>
+          <span class="discipline-index text-mono">0{index + 1}</span>
+          <span class="discipline-orbit" aria-hidden="true"><i></i></span>
+          <h3>{role}</h3>
+        </li>
       ))}
-    </div>
-  </div>
-</section>
+    </ol>
+  </section>
+</div>
 
-<section class="team-section" aria-labelledby="team-title">
-  <div class="container team-heading"><h2 id="team-title">{copy.teamTitle}</h2><span class="text-mono">{copy.teamNote}</span></div>
-  <div class="container team-grid">
-    {team.map(([name, role, image]) => (
-      <article class="person">
-        <figure><img src={image} alt={(locale === 'id' ? 'Foto profil — ' : 'Profile portrait — ') + name} width="1120" height="1400" loading="lazy" decoding="async" /></figure>
-        <div><h3>{name}</h3><p>{role}</p></div>
-      </article>
-    ))}
-  </div>
-</section>
+<script>
+  const setupAboutJourney = () => {
+    document.querySelectorAll<HTMLElement>('[data-journey]').forEach((journey) => {
+      if (journey.dataset.ready === 'true') return;
+      journey.dataset.ready = 'true';
+
+      const steps = Array.from(journey.querySelectorAll<HTMLElement>('[data-journey-step]'));
+      if (!steps.length) return;
+
+      const activate = (step: HTMLElement) => {
+        const index = Number(step.dataset.journeyStep ?? 0);
+        journey.dataset.activeStep = String(index);
+        journey.style.setProperty('--journey-progress', `${(index / Math.max(steps.length - 1, 1)) * 100}%`);
+        steps.forEach((item, itemIndex) => {
+          if (itemIndex === index) item.setAttribute('aria-current', 'step');
+          else item.removeAttribute('aria-current');
+        });
+      };
+
+      if (!('IntersectionObserver' in window)) {
+        activate(steps[0]);
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target instanceof HTMLElement) activate(visible.target);
+      }, { rootMargin: '-28% 0px -42%', threshold: [0.15, 0.45, 0.7] });
+
+      steps.forEach((step) => observer.observe(step));
+      activate(steps[0]);
+    });
+  };
+
+  setupAboutJourney();
+  document.addEventListener('astro:page-load', setupAboutJourney);
+</script>
 
 <style>
-  .about-hero { position:relative; min-height:92svh; display:flex; align-items:flex-end; overflow:hidden; isolation:isolate; background:#07101a; }
-  .about-hero > img,.about-hero__veil { position:absolute; inset:0; }
-  .about-hero > img { z-index:-2; width:100%; height:100%; object-fit:cover; animation:about-hero-drift 24s cubic-bezier(.45,0,.2,1) infinite alternate; }
-  .about-hero__veil { z-index:-1; background:linear-gradient(90deg,rgba(5,8,14,.95),rgba(5,8,14,.64) 52%,rgba(5,8,14,.12)),linear-gradient(180deg,rgba(5,8,14,.18),transparent 32%,rgba(6,10,17,.52) 65%,#060a11 100%); }
-  .about-hero__copy { position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,.34fr) minmax(420px,1.18fr) minmax(280px,.62fr); gap:clamp(28px,6vw,90px); align-items:end; padding-top:150px; padding-bottom:clamp(62px,8vw,104px); }
-  .about-hero__copy > span { align-self:start; color:rgba(201,211,223,.62); }
-  .about-hero h1 { max-width:12ch; font-size:clamp(3.1rem,2rem + 4vw,6.2rem); font-weight:540; letter-spacing:-.045em; line-height:.95; }
-  .about-hero p { max-width:44ch; padding-bottom:8px; color:rgba(226,234,243,.78); font-size:clamp(1rem,1.25vw,1.18rem); }
-  .about-culture { margin-top:-1px; padding:clamp(74px,9vw,128px) 0 clamp(96px,12vw,168px); background:linear-gradient(180deg,#060a11 0%,#07101a 54%,#060a11 100%); }
-  .culture-layout { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(300px,.55fr); gap:clamp(34px,7vw,108px); align-items:end; }
-  .about-culture figure { aspect-ratio:16 / 10; overflow:hidden; border-radius:8px; background:#07101a; }
-  .about-culture img { width:100%; height:100%; object-fit:cover; filter:saturate(.86) contrast(1.02); }
-  .culture-copy { padding-bottom:clamp(8px,3vw,34px); }
-  .culture-copy h2 { max-width:14ch; margin-bottom:20px; font-size:clamp(2.1rem,3.4vw,4.1rem); font-weight:540; line-height:1; }
-  .culture-copy p { max-width:42ch; color:var(--steel); }
-  .about-journey { padding-bottom:clamp(100px,13vw,180px); background:radial-gradient(ellipse 42% 34% at 8% 46%,rgba(70,134,183,.12),transparent 76%),#060a11; }
-  .journey-layout { display:grid; grid-template-columns:minmax(280px,.72fr) minmax(520px,1.28fr); gap:clamp(52px,8vw,126px); align-items:start; }
-  .journey-intro { position:sticky; top:126px; }
-  .journey-intro h2 { max-width:11ch; margin-bottom:22px; font-size:clamp(2.5rem,4vw,4.8rem); font-weight:520; line-height:.98; }
-  .journey-intro p { max-width:39ch; color:var(--steel); }
-  .journey-steps { border-top:1px solid rgba(89,106,130,.34); }
-  .journey-steps article { display:grid; grid-template-columns:48px minmax(0,1fr); gap:clamp(18px,3vw,38px); border-bottom:1px solid rgba(89,106,130,.3); padding-block:clamp(42px,6vw,72px); }
-  .journey-index { padding-top:6px; color:rgba(201,211,223,.43); }
-  .journey-steps h3 { max-width:23ch; margin-bottom:16px; font-size:clamp(1.65rem,2.6vw,3rem); font-weight:540; letter-spacing:-.035em; line-height:1.04; text-wrap:balance; }
-  .journey-steps p { max-width:48ch; color:var(--steel); }
-  .team-section { padding-block:clamp(92px,11vw,160px); background:radial-gradient(ellipse 56% 30% at 88% 4%,rgba(70,134,183,.16),transparent 78%),linear-gradient(180deg,#060a11,#05080e); }
-  .team-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:28px; margin-bottom:42px; }
-  .team-heading h2 { max-width:12ch; font-size:clamp(2.5rem,4.5vw,5rem); font-weight:520; }
-  .team-heading span { color:rgba(201,211,223,.46); }
-  .team-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:clamp(10px,1.5vw,22px); }
-  .person figure { aspect-ratio:4 / 5; overflow:hidden; border-radius:8px; background:#07101a; }
-  .person img { width:100%; height:100%; object-fit:cover; filter:saturate(.84); transition:transform 650ms var(--ease-out),filter 400ms var(--ease-out); }
-  .person > div { padding-top:18px; }
-  .person h3 { margin-bottom:4px; font-size:1.05rem; font-weight:560; }
-  .person p { color:var(--steel); font-size:.8rem; }
-  @keyframes about-hero-drift { from { transform:scale(1.015) translate3d(-.4%,0,0); } to { transform:scale(1.045) translate3d(.6%,-.4%,0); } }
-  @media (hover:hover) and (pointer:fine) { .person:hover img { transform:scale(1.025); filter:saturate(1); } }
-  @media (max-width:1000px) { .about-hero__copy { grid-template-columns:minmax(130px,.34fr) 1fr; } .about-hero p { grid-column:2; } .culture-layout,.journey-layout { grid-template-columns:1fr; } .journey-intro { position:static; } .team-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
-  @media (max-width:760px) { .about-hero { min-height:100svh; } .about-hero__copy { grid-template-columns:1fr; padding-top:124px; padding-bottom:60px; } .about-hero p { grid-column:auto; } .about-hero h1 { font-size:clamp(2.65rem,11vw,3.8rem); } .about-culture figure { aspect-ratio:4 / 5; } .about-culture img { object-position:52% center; } .journey-steps article { grid-template-columns:36px minmax(0,1fr); } .team-heading { align-items:flex-start; flex-direction:column; } .team-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-  @media (max-width:440px) { .team-grid { grid-template-columns:1fr; } }
-  @media (prefers-reduced-motion:reduce) { .about-hero > img { animation:none; transform:none; } .person img { transition:none; } }
+  .about-culture {
+    position: relative;
+    padding-block: clamp(78px, 9vw, 124px);
+    background: linear-gradient(180deg, rgba(6, 10, 17, 0.34), rgba(7, 16, 26, 0.54), rgba(6, 10, 17, 0.28));
+  }
+
+  .culture-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.55fr);
+    gap: clamp(34px, 7vw, 108px);
+    align-items: end;
+  }
+
+  .about-culture figure {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #07101a;
+  }
+
+  .about-culture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.76) contrast(1.02);
+    transition: filter 420ms var(--ease-out), transform 680ms var(--ease-out);
+  }
+
+  .about-culture figcaption {
+    position: absolute;
+    inset: auto 18px 16px;
+    width: fit-content;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(5, 8, 14, 0.74);
+    color: rgba(226, 234, 243, 0.72);
+    backdrop-filter: blur(10px);
+  }
+
+  .culture-copy { padding-bottom: clamp(8px, 3vw, 34px); }
+  .culture-index { display: block; margin-bottom: 20px; color: rgba(201, 211, 223, 0.48); }
+
+  .culture-copy h2 {
+    max-width: 14ch;
+    margin-bottom: 20px;
+    font-size: clamp(2.1rem, 3.4vw, 4.1rem);
+    font-weight: 540;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .culture-copy p { max-width: 42ch; color: var(--steel); }
+
+  .about-journey {
+    position: relative;
+    padding-block: clamp(84px, 10vw, 136px);
+    background:
+      radial-gradient(ellipse 42% 34% at 8% 46%, rgba(70, 134, 183, 0.12), transparent 76%),
+      rgba(6, 10, 17, 0.28);
+  }
+
+  .journey-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.72fr) minmax(520px, 1.28fr);
+    gap: clamp(52px, 8vw, 126px);
+    align-items: start;
+  }
+
+  .journey-intro > .text-mono { display: block; margin-bottom: 20px; color: rgba(201, 211, 223, 0.48); }
+
+  .journey-intro h2 {
+    max-width: 11ch;
+    margin-bottom: 22px;
+    font-size: clamp(2.5rem, 4vw, 4.8rem);
+    font-weight: 520;
+    letter-spacing: -0.04em;
+    line-height: 0.98;
+  }
+
+  .journey-intro p { max-width: 39ch; color: var(--steel); }
+
+  .journey-progress {
+    width: min(100%, 330px);
+    height: 1px;
+    margin-top: 34px;
+    overflow: hidden;
+    background: rgba(89, 106, 130, 0.34);
+  }
+
+  .journey-progress span {
+    display: block;
+    width: var(--journey-progress, 0%);
+    height: 100%;
+    background: var(--signal-ice);
+    transition: width 420ms var(--ease-out);
+  }
+
+  .journey-steps { border-top: 1px solid rgba(89, 106, 130, 0.34); }
+
+  .journey-steps article {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: clamp(18px, 3vw, 38px);
+    border-bottom: 1px solid rgba(89, 106, 130, 0.3);
+    padding-block: clamp(42px, 6vw, 68px);
+    opacity: 0.58;
+    transition: opacity 320ms var(--ease-out), transform 420ms var(--ease-out);
+  }
+
+  .journey-steps article[aria-current='step'] {
+    opacity: 1;
+    transform: translate3d(-6px, 0, 0);
+  }
+
+  .journey-index { padding-top: 6px; color: rgba(201, 211, 223, 0.43); }
+
+  .journey-steps h3 {
+    max-width: 23ch;
+    margin-bottom: 16px;
+    font-size: clamp(1.65rem, 2.6vw, 3rem);
+    font-weight: 540;
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+
+  .journey-steps p { max-width: 48ch; color: var(--steel); }
+
+  .team-section {
+    position: relative;
+    padding-block: clamp(84px, 10vw, 136px);
+    background:
+      radial-gradient(ellipse 56% 30% at 88% 4%, rgba(70, 134, 183, 0.16), transparent 78%),
+      linear-gradient(180deg, rgba(6, 10, 17, 0.26), rgba(5, 8, 14, 0.58));
+  }
+
+  .team-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 0.42fr);
+    gap: 40px;
+    align-items: end;
+    margin-bottom: 42px;
+  }
+
+  .team-heading .text-mono { color: rgba(201, 211, 223, 0.46); }
+
+  .team-heading h2 {
+    max-width: 13ch;
+    margin-top: 18px;
+    font-size: clamp(2.5rem, 4.5vw, 5rem);
+    font-weight: 520;
+    letter-spacing: -0.04em;
+  }
+
+  .team-heading p { color: rgba(201, 211, 223, 0.62); font-size: 0.82rem; }
+
+  .discipline-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(10px, 1.5vw, 22px);
+    list-style: none;
+  }
+
+  .discipline-grid li {
+    min-width: 0;
+    min-height: clamp(260px, 27vw, 380px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(20px, 2.2vw, 28px);
+    border: 1px solid rgba(89, 106, 130, 0.28);
+    border-radius: 8px;
+    background: linear-gradient(155deg, rgba(11, 19, 34, 0.88), rgba(7, 11, 18, 0.96));
+  }
+
+  .discipline-index { color: rgba(201, 211, 223, 0.44); }
+
+  .discipline-orbit {
+    position: relative;
+    width: min(100%, 128px);
+    aspect-ratio: 1;
+    align-self: center;
+    border: 1px solid rgba(103, 217, 255, 0.22);
+    border-radius: 50%;
+  }
+
+  .discipline-orbit::before,
+  .discipline-orbit::after {
+    content: '';
+    position: absolute;
+    border: 1px solid rgba(103, 217, 255, 0.16);
+    border-radius: 50%;
+  }
+
+  .discipline-orbit::before { inset: 21%; }
+  .discipline-orbit::after { inset: 40%; background: rgba(103, 217, 255, 0.2); }
+
+  .discipline-orbit i {
+    position: absolute;
+    width: 7px;
+    aspect-ratio: 1;
+    inset: 12% 18% auto auto;
+    border-radius: 50%;
+    background: var(--signal-ice);
+    box-shadow: 0 0 18px rgba(103, 217, 255, 0.5);
+    transition: transform 420ms var(--ease-out);
+  }
+
+  .discipline-grid h3 {
+    max-width: 14ch;
+    font-size: clamp(1rem, 1.3vw, 1.25rem);
+    font-weight: 560;
+    line-height: 1.16;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .about-culture figure:hover img { filter: saturate(0.92); transform: scale(1.016); }
+    .discipline-grid li:hover .discipline-orbit i { transform: translate3d(-12px, 10px, 0); }
+  }
+
+  @media (min-width: 1001px) and (min-height: 700px) {
+    .journey-intro { position: sticky; top: 126px; }
+  }
+
+  @media (max-width: 1000px) {
+    .culture-layout,
+    .journey-layout { grid-template-columns: 1fr; }
+
+    .discipline-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .discipline-grid li { min-height: 280px; }
+  }
+
+  @media (max-width: 760px) {
+    .about-culture figure { aspect-ratio: 4 / 5; }
+    .about-culture img { object-position: 52% center; }
+    .journey-steps article { grid-template-columns: 36px minmax(0, 1fr); }
+
+    .team-heading { grid-template-columns: 1fr; }
+    .discipline-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .discipline-grid li { min-height: 240px; }
+  }
+
+  @media (max-width: 440px) {
+    .discipline-grid { grid-template-columns: 1fr; }
+    .discipline-grid li { min-height: 220px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-culture img,
+    .journey-progress span,
+    .journey-steps article,
+    .discipline-orbit i { transition: none; }
+
+    .journey-steps article[aria-current='step'] { transform: none; }
+  }
 </style>

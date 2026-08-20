@@ -1,0 +1,139 @@
+---
+interface Props {
+  src: string;
+  alt?: string;
+  priority?: boolean;
+  ambient?: boolean;
+  depth?: boolean;
+  focalPoint?: string;
+}
+
+const {
+  src,
+  alt = '',
+  priority = true,
+  ambient = true,
+  depth = false,
+  focalPoint = '50% 50%',
+} = Astro.props;
+---
+
+<div
+  class="hero-visual"
+  data-hero-visual
+  data-depth={depth ? 'true' : undefined}
+  aria-hidden={alt ? undefined : 'true'}
+>
+  <img
+    src={src}
+    alt={alt}
+    width="1536"
+    height="1024"
+    loading={priority ? 'eager' : 'lazy'}
+    decoding="async"
+    fetchpriority={priority ? 'high' : 'auto'}
+    data-ambient={ambient ? 'true' : undefined}
+    style={`--hero-focal-point: ${focalPoint}`}
+  />
+  <span class="hero-visual__veil" aria-hidden="true"></span>
+  <span class="hero-visual__glow" aria-hidden="true"></span>
+</div>
+
+<script>
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  document.querySelectorAll<HTMLElement>('[data-hero-visual][data-depth="true"]').forEach((visual) => {
+    if (!finePointer.matches || reducedMotion.matches) return;
+    const hero = visual.closest<HTMLElement>('[data-hero-shell]');
+    if (!hero) return;
+
+    let frame = 0;
+    const update = (event: PointerEvent) => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const rect = hero.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width - 0.5) * 8;
+        const y = ((event.clientY - rect.top) / rect.height - 0.5) * 6;
+        visual.style.setProperty('--hero-depth-x', `${x.toFixed(2)}px`);
+        visual.style.setProperty('--hero-depth-y', `${y.toFixed(2)}px`);
+      });
+    };
+
+    hero.addEventListener('pointermove', update, { passive: true });
+    hero.addEventListener('pointerleave', () => {
+      cancelAnimationFrame(frame);
+      visual.style.setProperty('--hero-depth-x', '0px');
+      visual.style.setProperty('--hero-depth-y', '0px');
+    });
+  });
+</script>
+
+<style>
+  .hero-visual {
+    position: absolute;
+    inset: -10px;
+    z-index: -2;
+    overflow: hidden;
+    transform: translate3d(var(--hero-depth-x, 0), var(--hero-depth-y, 0), 0);
+    transition: transform 600ms var(--ease-out);
+  }
+
+  .hero-visual img,
+  .hero-visual__veil,
+  .hero-visual__glow {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-visual img {
+    object-fit: cover;
+    object-position: var(--hero-focal-point);
+    transform: scale(1.02);
+    animation: hero-ambient 20s var(--ease-in-out) infinite alternate;
+  }
+
+  .hero-visual__veil {
+    z-index: 1;
+    background:
+      radial-gradient(ellipse 60% 55% at 50% 46%, rgba(7, 11, 18, 0.08), rgba(7, 11, 18, 0.44) 76%),
+      linear-gradient(180deg, rgba(5, 8, 14, 0.24), rgba(5, 8, 14, 0.04) 34%, rgba(7, 11, 18, 0.42) 76%, #070b12 100%);
+  }
+
+  .hero-visual__glow {
+    z-index: 2;
+    opacity: 0.46;
+    background: radial-gradient(ellipse 48% 34% at 68% 55%, rgba(103, 217, 255, 0.12), transparent 72%);
+  }
+
+  @keyframes hero-ambient {
+    from { transform: scale(1.02) translate3d(-0.25%, 0.2%, 0); }
+    to { transform: scale(1.045) translate3d(0.45%, -0.35%, 0); }
+  }
+
+  @media (max-width: 760px) {
+    .hero-visual {
+      inset: 0;
+      transform: none;
+    }
+
+    .hero-visual img {
+      transform: scale(1.025);
+      animation-duration: 24s;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-visual {
+      transform: none;
+      transition: none;
+    }
+
+    .hero-visual img {
+      animation: none;
+      transform: scale(1.02);
+    }
+  }
+</style>

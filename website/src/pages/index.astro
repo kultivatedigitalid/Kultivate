@@ -1,5 +1,5 @@
 ---
-import { siteConfig } from '../data/site';
+const site = Astro.site ?? new URL('https://kultivate.id');
 ---
 
 <!DOCTYPE html>
@@ -7,7 +7,7 @@ import { siteConfig } from '../data/site';
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="refresh" content="0;url=/en/" />
-  <link rel="canonical" href={new URL('/en/', siteConfig.domain).href} />
+  <link rel="canonical" href={new URL('/en/', site).href} />
   <title>Kultivate - Structured Search Growth</title>
   <meta name="robots" content="noindex, follow" />
   <script is:inline>

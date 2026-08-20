@@ -8,15 +8,15 @@ const copy = locale === 'id'
   : { label: 'Featured Blog', all: 'View all', read: 'Read article' };
 ---
 
-<section id="insights" class="insights-section" aria-labelledby="insights-title">
+<section id="insights" class="insights-section flow-section" aria-labelledby="insights-title" data-scroll-key="home-insights">
   <div class="container insights-shell">
-    <header class="insights-header">
+    <header class="insights-header" data-reveal>
       <h2 id="insights-title" class="featured-label">{copy.label}</h2>
       <a href={'/' + locale + '/insights/'} class="all-insights-link"><span>{copy.all}</span><span aria-hidden="true">&#8594;</span></a>
     </header>
     <div class="insights-rail" aria-label={locale === 'id' ? 'Artikel terbaru, geser secara horizontal' : 'Latest articles, scroll horizontally'}>
-      {articles.map((article) => (
-        <a href={'/' + locale + '/insights/' + article.slug + '/'} class="insight-card">
+      {articles.map((article, index) => (
+        <a href={'/' + locale + '/insights/' + article.slug + '/'} class="insight-card" data-reveal style={`--reveal-delay: ${index * 60}ms`}>
           <figure><img src={article.image} alt={article.alt} width="1536" height="1024" loading="lazy" decoding="async" /></figure>
           <div class="insight-meta text-mono"><span>{article.category}</span><time>{article.date}</time></div>
           <h3>{article.title}</h3>

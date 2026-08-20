@@ -1,50 +1,227 @@
 ---
 import { portfolioItems } from '../../data/editorial';
+
 interface Props { locale: 'id' | 'en'; }
+
 const { locale } = Astro.props;
 const projects = portfolioItems[locale].slice(0, 3);
 const copy = locale === 'id'
-  ? { title: 'Karya kami', all: 'Lihat semua proyek' }
-  : { title: 'Our work', all: 'View all projects' };
+  ? { kicker: 'Portofolio', title: 'Studi karya pilihan', all: 'Lihat semua studi', region: 'Pilihan studi konsep Kultivate' }
+  : { kicker: 'Portfolio', title: 'Selected portfolio studies', all: 'View all studies', region: 'Selected Kultivate concept studies' };
 ---
 
-<section id="work" class="selected-work" aria-labelledby="work-title">
+<section
+  id="work"
+  class="selected-work flow-section"
+  aria-labelledby="work-title"
+  data-scroll-key="home-work"
+  data-work-ratio
+  data-active="0"
+>
   <div class="container work-shell">
-    <header class="work-header">
-      <div><span class="section-kicker">{locale === 'id' ? 'Portofolio' : 'Portfolio'}</span><h2 id="work-title">{copy.title}</h2></div>
-      <a href={`/${locale}/work/`} class="link-hover-arrow"><span>{copy.all}</span><span aria-hidden="true">&#8594;</span></a>
+    <header class="work-header" data-reveal>
+      <div>
+        <span class="section-kicker">{copy.kicker}</span>
+        <h2 id="work-title">{copy.title}</h2>
+      </div>
+      <a href={`/${locale}/work/`} class="link-hover-arrow">
+        <span>{copy.all}</span><span aria-hidden="true">&#8594;</span>
+      </a>
     </header>
-    <div class="projects-grid">
+
+    <div class="projects-grid" aria-label={copy.region}>
       {projects.map((project, index) => (
-        <a class:list={['project', { 'project--featured': index === 0 }]} href={`/${locale}/work/`}>
-          <figure><img src={project.image} alt={project.alt} width="1536" height="1024" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" /></figure>
-          <div><h3>{project.brand}</h3><span>{project.descriptor}</span></div>
+        <a
+          class="project"
+          href={`/${locale}/work/`}
+          data-project-index={index}
+          data-reveal
+          style={`--reveal-delay: ${index * 70}ms`}
+        >
+          <figure>
+            <img
+              src={project.image}
+              alt={project.alt}
+              width="1536"
+              height="1024"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div class="project-caption">
+            <h3>{project.brand}</h3>
+            <span>{project.descriptor}</span>
+          </div>
         </a>
       ))}
     </div>
   </div>
 </section>
 
+<script>
+  const setupWorkRatios = () => {
+    document.querySelectorAll<HTMLElement>('[data-work-ratio]').forEach((section) => {
+      if (section.dataset.ready === 'true') return;
+      section.dataset.ready = 'true';
+
+      const projects = Array.from(section.querySelectorAll<HTMLElement>('[data-project-index]'));
+      const activate = (project: HTMLElement) => {
+        section.dataset.active = project.dataset.projectIndex ?? '0';
+      };
+
+      projects.forEach((project) => {
+        project.addEventListener('pointerenter', () => activate(project));
+        project.addEventListener('focusin', () => activate(project));
+      });
+
+      section.addEventListener('pointerleave', () => {
+        section.dataset.active = '0';
+      });
+      section.addEventListener('focusout', (event) => {
+        const next = event.relatedTarget;
+        if (!(next instanceof Node) || !section.contains(next)) section.dataset.active = '0';
+      });
+    });
+  };
+
+  setupWorkRatios();
+  document.addEventListener('astro:page-load', setupWorkRatios);
+</script>
+
 <style>
-  .selected-work { position: relative; min-height: 720px; height: 100svh; max-height: 960px; overflow: hidden; background: linear-gradient(180deg, #070b12 0%, #060a11 62%, #07101a 100%); }
-  .work-shell { height: 100%; display: flex; flex-direction: column; padding-block: clamp(58px, 7vh, 84px); }
-  .work-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; margin-bottom: clamp(26px, 4vh, 44px); }
-  .work-header > div { max-width: 720px; }
-  .work-header h2 { font-size: clamp(2rem, 3.5vw, 4rem); }
-  .projects-grid { min-height: 0; flex: 1; display: grid; grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 20px); }
-  .project { min-width: 0; display: flex; flex-direction: column; }
-  .project figure { min-height: 0; flex: 1; overflow: hidden; border-radius: 8px; background: #07101a; }
-  .project img { width: 100%; height: 100%; object-fit: cover; transition: transform 650ms var(--ease-out), filter 420ms var(--ease-out); }
-  .project > div { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding-top: 16px; }
-  .project h3 { font-size: 1.08rem; font-weight: 560; }
-  .project span { color: var(--steel); font-size: 0.8rem; text-align: right; }
-  @media (hover: hover) and (pointer: fine) { .project:hover img { transform: scale(1.03); filter: saturate(1.06); } }
-  @media (max-width: 760px) {
-    .selected-work { height: auto; min-height: 100svh; max-height: none; }
-    .work-shell { min-height: 100svh; padding-block: 72px; }
-    .work-header { align-items: flex-start; flex-direction: column; }
-    .projects-grid { width: calc(100% + 20px); grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(270px, 84vw); overflow-x: auto; scroll-snap-type: inline mandatory; padding: 0 20px 14px 0; }
-    .project { min-height: 480px; scroll-snap-align: start; }
+  .selected-work {
+    position: relative;
+    min-height: 720px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 42% 64% at 70% 12%, rgba(23, 107, 255, 0.1), transparent 76%),
+      linear-gradient(180deg, rgba(7, 11, 18, 0.2), rgba(6, 10, 17, 0.5));
   }
-  @media (prefers-reduced-motion: reduce) { .project img { transition: none; } }
-</style>
+
+  .work-shell {
+    min-height: 720px;
+    display: flex;
+    flex-direction: column;
+    padding-block: clamp(72px, 8vw, 116px);
+  }
+
+  .work-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    margin-bottom: clamp(28px, 4vw, 48px);
+  }
+
+  .work-header > div { max-width: 720px; }
+  .work-header h2 { font-size: clamp(2.4rem, 4.8vw, 5.25rem); letter-spacing: -0.04em; }
+
+  .projects-grid {
+    min-height: 440px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+    gap: clamp(10px, 1.25vw, 18px);
+    transition: grid-template-columns 520ms var(--ease-out);
+  }
+
+  [data-active='1'] .projects-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  }
+
+  [data-active='2'] .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 2fr);
+  }
+
+  .project {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    outline: none;
+  }
+
+  .project figure {
+    min-height: 0;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #07101a;
+  }
+
+  .project img {
+    width: 104%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.82) saturate(0.88);
+    transform: translate3d(-1.5%, 0, 0) scale(1.045);
+    transition:
+      transform 760ms var(--ease-out),
+      filter 420ms var(--ease-out);
+  }
+
+  .project:nth-child(2) img { transform: translate3d(-2.4%, 0, 0) scale(1.055); }
+  .project:nth-child(3) img { transform: translate3d(-0.8%, 0, 0) scale(1.05); }
+
+  .project-caption {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    padding-top: 16px;
+  }
+
+  .project h3 { font-size: 1.08rem; font-weight: 560; }
+  .project-caption span { color: var(--steel); font-size: 0.8rem; text-align: right; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .project:hover img,
+    .project:focus-visible img {
+      filter: brightness(0.94) saturate(1);
+      transform: translate3d(-1.5%, 0, 0) scale(1.018);
+    }
+
+    .project:focus-visible figure {
+      outline: 2px solid var(--signal-ice);
+      outline-offset: 3px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .selected-work,
+    .work-shell { min-height: auto; }
+
+    .work-header {
+      align-items: flex-start;
+      flex-direction: column;
+      margin-bottom: 28px;
+    }
+
+    .projects-grid,
+    [data-active='1'] .projects-grid,
+    [data-active='2'] .projects-grid {
+      width: calc(100% + 20px);
+      min-height: 0;
+      grid-template-columns: none;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(270px, 84vw);
+      overflow-x: auto;
+      scroll-snap-type: inline mandatory;
+      padding: 0 20px 14px 0;
+      transition: none;
+    }
+
+    .project { min-height: 470px; scroll-snap-align: start; }
+    .project img,
+    .project:nth-child(2) img,
+    .project:nth-child(3) img { width: 100%; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .projects-grid,
+    .project img { transition: none; }
+
+    .project img,
+    .project:nth-child(2) img,
+    .project:nth-child(3) img { transform: none; }
+  }
+</style>

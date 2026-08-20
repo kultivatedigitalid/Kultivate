@@ -1,24 +1,200 @@
 ---
 interface ProblemItem { title: string; description: string; }
 interface Props { heading: string; problems: ProblemItem[]; locale: 'id' | 'en'; }
+
 const { heading, problems, locale } = Astro.props;
+const copy = locale === 'id'
+  ? {
+      kicker: 'Mulai dari kebutuhan',
+      prompt: 'Pilih situasi yang paling dekat dengan kebutuhan Anda saat ini.',
+      selected: 'Kebutuhan terpilih',
+      scope: 'Lihat cakupan yang dapat ditangani'
+    }
+  : {
+      kicker: 'Start with the need',
+      prompt: 'Choose the situation closest to what needs attention now.',
+      selected: 'Selected need',
+      scope: 'See what we can take care of'
+    };
 ---
-<section class="service-problems" aria-labelledby="problems-title">
+
+<section
+  class="service-problems flow-section"
+  aria-labelledby="problems-title"
+  data-scroll-key="service-needs"
+  data-need-selector
+>
   <div class="container problems-layout">
-    <div class="problems-intro"><span class="section-kicker">{locale === 'id' ? 'Kapan dibutuhkan' : 'When it helps'}</span><h2 id="problems-title">{heading}</h2></div>
-    <ul class="problems-list">{problems.map((item, idx) => (<li><span class="problem-num text-mono">0{idx + 1}</span><div><h3>{item.title}</h3>{item.description && <p>{item.description}</p>}</div></li>))}</ul>
+    <div class="problems-intro" data-reveal>
+      <span class="section-kicker">{copy.kicker}</span>
+      <h2 id="problems-title">{heading}</h2>
+      <p>{copy.prompt}</p>
+    </div>
+
+    <div class="need-interface" data-reveal>
+      <div class="need-options" role="list" aria-label={heading}>
+        {problems.map((item, index) => (
+          <button
+            type="button"
+            role="listitem"
+            data-need-option={index}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+          >
+            <span class="problem-num text-mono">0{index + 1}</span>
+            <span>{item.title}</span>
+          </button>
+        ))}
+      </div>
+
+      <aside class="need-selection" aria-live="polite">
+        <span class="text-mono">{copy.selected}</span>
+        <p data-selected-need>{problems[0]?.title}</p>
+        <a href="#scope-title" class="link-hover-arrow">
+          <span>{copy.scope}</span><span aria-hidden="true">&#8595;</span>
+        </a>
+      </aside>
+    </div>
   </div>
 </section>
+
+<script>
+  const setupNeedSelectors = () => {
+    document.querySelectorAll<HTMLElement>('[data-need-selector]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+
+      const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-need-option]'));
+      const selected = root.querySelector<HTMLElement>('[data-selected-need]');
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+          if (selected) selected.textContent = button.querySelector(':scope > span:last-child')?.textContent?.trim() ?? '';
+        });
+      });
+    });
+  };
+
+  setupNeedSelectors();
+  document.addEventListener('astro:page-load', setupNeedSelectors);
+</script>
+
 <style>
-  .service-problems { padding-block: clamp(96px, 13vw, 176px); background: radial-gradient(ellipse 58% 24% at 72% 0%, rgba(23, 107, 255, 0.1), transparent 78%), linear-gradient(180deg, #070b12, #05080e); }
-  .problems-layout { display: grid; grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr); gap: clamp(52px, 9vw, 136px); align-items: start; }
-  .problems-intro { position: sticky; top: 116px; }
-  .problems-intro h2 { max-width: 10ch; font-size: clamp(2.6rem, 4.7vw, 5.3rem); font-weight: 520; line-height: 0.98; }
-  .problems-list { list-style: none; }
-  .problems-list li { display: grid; grid-template-columns: 54px 1fr; gap: 22px; padding-block: 30px; border-top: 1px solid rgba(89, 106, 130, 0.3); }
-  .problems-list li:last-child { border-bottom: 1px solid rgba(89, 106, 130, 0.3); }
-  .problem-num { padding-top: 5px; color: rgba(201, 211, 223, 0.44); }
-  .problems-list h3 { max-width: 25ch; font-size: clamp(1.25rem, 2vw, 2rem); font-weight: 540; line-height: 1.16; }
-  .problems-list p { margin-top: 10px; color: var(--steel); font-size: 0.92rem; }
-  @media (max-width: 760px) { .problems-layout { grid-template-columns: 1fr; gap: 52px; } .problems-intro { position: static; } }
+  .service-problems {
+    position: relative;
+    padding-block: clamp(82px, 10vw, 138px);
+    background:
+      radial-gradient(ellipse 58% 24% at 72% 0%, rgba(23, 107, 255, 0.1), transparent 78%),
+      linear-gradient(180deg, rgba(7, 11, 18, 0.36), rgba(5, 8, 14, 0.52));
+  }
+
+  .problems-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1.3fr);
+    gap: clamp(52px, 8vw, 118px);
+    align-items: start;
+  }
+
+  .problems-intro h2 {
+    max-width: 11ch;
+    font-size: clamp(2.6rem, 4.7vw, 5.3rem);
+    font-weight: 520;
+    letter-spacing: -0.04em;
+    line-height: 0.98;
+  }
+
+  .problems-intro > p {
+    max-width: 38ch;
+    margin-top: 22px;
+    color: var(--steel);
+  }
+
+  .need-interface {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(230px, 0.85fr);
+    gap: clamp(20px, 3vw, 38px);
+    align-items: stretch;
+  }
+
+  .need-options {
+    border-top: 1px solid rgba(89, 106, 130, 0.34);
+  }
+
+  .need-options button {
+    width: 100%;
+    min-height: 94px;
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+    border: 0;
+    border-bottom: 1px solid rgba(89, 106, 130, 0.34);
+    padding: 18px 16px 18px 0;
+    background: transparent;
+    color: rgba(226, 234, 243, 0.7);
+    font: inherit;
+    line-height: 1.42;
+    text-align: left;
+    cursor: pointer;
+    transition:
+      background-color 220ms var(--ease-out),
+      color 220ms var(--ease-out),
+      transform 320ms var(--ease-out);
+  }
+
+  .need-options button[aria-pressed='true'] {
+    background: linear-gradient(90deg, rgba(103, 217, 255, 0.08), transparent 82%);
+    color: var(--cloud-white);
+    transform: translate3d(6px, 0, 0);
+  }
+
+  .problem-num { color: rgba(201, 211, 223, 0.44); }
+
+  .need-options button:focus-visible {
+    outline: 2px solid var(--signal-ice);
+    outline-offset: 3px;
+  }
+
+  .need-selection {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 28px;
+    border: 1px solid rgba(103, 217, 255, 0.18);
+    border-radius: 8px;
+    padding: clamp(22px, 2.5vw, 32px);
+    background:
+      radial-gradient(circle at 88% 14%, rgba(103, 217, 255, 0.11), transparent 38%),
+      rgba(11, 19, 34, 0.72);
+  }
+
+  .need-selection > .text-mono { color: rgba(201, 211, 223, 0.5); }
+
+  .need-selection p {
+    max-width: 26ch;
+    font-size: clamp(1.25rem, 1.8vw, 1.75rem);
+    font-weight: 520;
+    line-height: 1.16;
+  }
+
+  .need-selection a { align-self: flex-start; }
+
+  @media (min-width: 1001px) and (min-height: 700px) {
+    .problems-intro { position: sticky; top: 116px; }
+  }
+
+  @media (max-width: 1000px) {
+    .problems-layout { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 700px) {
+    .need-interface { grid-template-columns: 1fr; }
+    .need-selection { min-height: 250px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .need-options button { transition: none; }
+    .need-options button[aria-pressed='true'] { transform: none; }
+  }
 </style>

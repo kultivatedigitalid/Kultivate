@@ -1,0 +1,72 @@
+[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal].reveal-pending {
+  opacity: 0;
+  transform: translate3d(0, var(--motion-distance-md), 0);
+}
+
+[data-reveal='image'].reveal-pending {
+  transform: scale(1.015);
+  clip-path: inset(0 0 8% 0);
+}
+
+[data-reveal].reveal-visible {
+  transition:
+    opacity var(--motion-panel) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--motion-panel) var(--ease-out) var(--reveal-delay, 0ms),
+    clip-path 560ms var(--ease-out) var(--reveal-delay, 0ms);
+}
+
+[data-ambient] {
+  transform: translateZ(0);
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: page-out var(--motion-fast) var(--ease-out) both;
+}
+
+::view-transition-new(root) {
+  animation: page-in 220ms var(--ease-out) both;
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal].reveal-pending,
+  [data-reveal].reveal-visible {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: color var(--motion-fast) var(--ease-out), background-color var(--motion-fast) var(--ease-out), border-color var(--motion-fast) var(--ease-out), opacity var(--motion-fast) var(--ease-out);
+  }
+
+  [data-ambient] {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}

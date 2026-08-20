@@ -42,6 +42,21 @@
   /* Motion */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --motion-fast: 160ms;
+  --motion-base: 240ms;
+  --motion-panel: 420ms;
+  --motion-cinematic: 720ms;
+  --motion-distance-sm: 8px;
+  --motion-distance-md: 18px;
   --transition-micro: 180ms var(--ease-out);
   --transition-panel: 420ms var(--ease-out);
+
+  /* Shared page-flow rhythm */
+  --section-space: clamp(72px, 7.5vw, 120px);
+  --section-space-compact: clamp(56px, 6vw, 88px);
+  --section-space-mobile: 64px;
+  --flow-void: #070B12;
+  --flow-navy: #0B1322;
+  --flow-blue-low: rgba(23, 107, 255, 0.12);
+  --flow-cyan-low: rgba(103, 217, 255, 0.08);
 }
