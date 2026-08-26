@@ -11,6 +11,9 @@ interface Props {
   compact?: boolean;
   depth?: boolean;
   focalPoint?: string;
+  textTone?: 'light' | 'dark';
+  scrimStrength?: 'soft' | 'standard' | 'strong';
+  titleDensity?: 'default' | 'long';
   titleId?: string;
 }
 
@@ -24,19 +27,34 @@ const {
   compact = false,
   depth = false,
   focalPoint = '50% 50%',
+  textTone = 'light',
+  scrimStrength = 'standard',
+  titleDensity = 'default',
   titleId = 'page-title',
 } = Astro.props;
 const hasActions = Astro.slots.has('actions');
 const hasMeta = Astro.slots.has('meta');
+const hasBannerMotion = variant === 'home'
+  || variant === 'services'
+  || variant === 'work'
+  || variant === 'about'
+  || variant === 'insights'
+  || variant === 'service-detail';
+const centerBannerVisual = hasBannerMotion && variant !== 'home';
 ---
 
 <header
   class:list={['hero-shell', `hero-shell--${variant}`, { 'hero-shell--compact': compact }]}
   data-hero-shell
+  data-banner-motion={hasBannerMotion ? 'true' : undefined}
+  data-text-tone={textTone}
+  data-scrim-strength={scrimStrength}
+  data-title-density={titleDensity}
   data-scroll-key="hero"
   aria-labelledby={titleId}
 >
-  <HeroVisual src={image} alt={imageAlt} depth={depth} focalPoint={focalPoint} />
+  <HeroVisual src={image} alt={imageAlt} depth={depth} focalPoint={focalPoint} motion={hasBannerMotion} centered={centerBannerVisual} />
+  <span class="hero-shell__readability" aria-hidden="true"></span>
 
   <div class="hero-shell__content container">
     <div class="hero-shell__copy">
@@ -59,11 +77,75 @@ const hasMeta = Astro.slots.has('meta');
     overflow: hidden;
     isolation: isolate;
     background: var(--void-black);
+    --hero-copy-color: var(--cloud-white);
+    --hero-description-color: rgba(238, 244, 249, 0.88);
+    --hero-muted-color: rgba(231, 238, 245, 0.92);
+    --hero-control-color: rgba(238, 244, 249, 0.9);
+    --hero-control-border: rgba(219, 228, 238, 0.32);
+    --hero-control-hover-color: var(--cloud-white);
+    --hero-control-hover-border: rgba(207, 247, 255, 0.56);
+    --hero-strong-color: rgba(248, 251, 253, 0.96);
+    --hero-copy-shadow: 0 1px 18px rgba(0, 0, 0, 0.24);
+    --hero-scrim-rgb: 4 9 15;
+    --hero-scrim-core: 0.72;
+    --hero-scrim-mid: 0.42;
     margin-bottom: -1px;
   }
 
   .hero-shell--home {
     min-height: max(700px, 100svh);
+  }
+
+  .hero-shell[data-text-tone='dark'] {
+    --hero-copy-color: #06111b;
+    --hero-description-color: rgba(6, 17, 27, 0.86);
+    --hero-muted-color: rgba(6, 17, 27, 0.84);
+    --hero-control-color: rgba(6, 17, 27, 0.9);
+    --hero-control-border: rgba(6, 17, 27, 0.3);
+    --hero-control-hover-color: #030a11;
+    --hero-control-hover-border: rgba(6, 17, 27, 0.52);
+    --hero-strong-color: rgba(4, 13, 21, 0.94);
+    --hero-copy-shadow: none;
+    --hero-scrim-rgb: 235 244 249;
+  }
+
+  .hero-shell[data-scrim-strength='soft'] {
+    --hero-scrim-core: 0.58;
+    --hero-scrim-mid: 0.28;
+  }
+
+  .hero-shell[data-scrim-strength='strong'] {
+    --hero-scrim-core: 0.86;
+    --hero-scrim-mid: 0.62;
+  }
+
+  .hero-shell__readability {
+    display: none;
+  }
+
+  .hero-shell--editorial-compact .hero-shell__readability {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        ellipse 62% 76% at 50% 46%,
+        rgb(var(--hero-scrim-rgb) / var(--hero-scrim-core)) 0%,
+        rgb(var(--hero-scrim-rgb) / var(--hero-scrim-mid)) 50%,
+        transparent 79%
+      ),
+      linear-gradient(
+        180deg,
+        rgb(var(--hero-scrim-rgb) / 0.16) 0%,
+        transparent 25%,
+        transparent 70%,
+        rgba(7, 11, 18, 0.36) 100%
+      );
+  }
+  .hero-shell--insights {
+    min-height: max(760px, 100svh);
   }
 
   .hero-shell--compact,
@@ -80,11 +162,14 @@ const hasMeta = Astro.slots.has('meta');
     padding-bottom: clamp(142px, 19vh, 206px);
   }
 
+  .hero-shell--editorial-compact .hero-shell__content {
+    transform: translateY(clamp(18px, 3.5vh, 32px));
+  }
+
   .hero-shell__copy {
     width: min(100%, 920px);
     margin-inline: auto;
     text-align: center;
-    animation: hero-copy-enter 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
 
@@ -92,7 +177,9 @@ const hasMeta = Astro.slots.has('meta');
     max-width: 15ch;
     margin: 0 auto;
     font-size: clamp(2.75rem, 1.85rem + 4.3vw, 6rem);
+    color: var(--hero-copy-color);
     font-weight: 550;
+    text-shadow: var(--hero-copy-shadow);
     letter-spacing: -0.04em;
     line-height: 0.96;
     overflow-wrap: normal;
@@ -101,7 +188,7 @@ const hasMeta = Astro.slots.has('meta');
   .hero-shell__description {
     max-width: 60ch;
     margin: 24px auto 0;
-    color: rgba(226, 234, 243, 0.8);
+    color: var(--hero-description-color);
     font-size: clamp(1rem, 0.93rem + 0.3vw, 1.18rem);
     line-height: 1.58;
   }
@@ -118,10 +205,32 @@ const hasMeta = Astro.slots.has('meta');
     margin-top: 32px;
   }
 
-  .hero-shell__description,
-  .hero-shell__meta,
-  .hero-shell__actions {
-    animation: hero-support-enter 980ms cubic-bezier(0.16, 1, 0.3, 1) 90ms both;
+  .hero-shell[data-banner-motion='true'] h1 {
+    --hero-element-y: 22px;
+    animation: hero-element-enter 640ms cubic-bezier(0.16, 1, 0.3, 1) 20ms both;
+  }
+
+  .hero-shell[data-banner-motion='true'] .hero-shell__description {
+    --hero-element-y: 16px;
+    animation: hero-element-enter 600ms cubic-bezier(0.16, 1, 0.3, 1) 90ms both;
+  }
+
+  .hero-shell[data-banner-motion='true'] .hero-shell__meta {
+    --hero-element-y: 14px;
+    animation: hero-element-enter 560ms cubic-bezier(0.16, 1, 0.3, 1) 145ms both;
+  }
+
+  .hero-shell[data-banner-motion='true'] .hero-shell__actions :global(.btn) {
+    --hero-element-y: 14px;
+    animation: hero-element-enter 560ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
+  }
+
+  .hero-shell[data-banner-motion='true'] .hero-shell__actions :global(.btn:nth-child(2)) {
+    animation-delay: 215ms;
+  }
+
+  .hero-shell[data-banner-motion='true'] .hero-shell__actions :global(.btn:nth-child(3)) {
+    animation-delay: 270ms;
   }
   .hero-shell__handoff {
     position: absolute;
@@ -137,18 +246,18 @@ const hasMeta = Astro.slots.has('meta');
     width: min(100%, 780px);
   }
 
-  .hero-shell--editorial-compact .hero-shell h1 {
+  .hero-shell--editorial-compact h1 {
     max-width: 18ch;
     font-size: clamp(2.6rem, 1.8rem + 3.5vw, 5.5rem);
   }
 
-  @keyframes hero-copy-enter {
-    from { opacity: 0; transform: translate3d(0, 28px, 0) scale(0.992); }
-    to { opacity: 1; transform: none; }
+  .hero-shell--editorial-compact[data-title-density='long'] h1 {
+    max-width: min(100%, 24ch);
+    font-size: clamp(2.35rem, 1.75rem + 2vw, 4rem);
   }
 
-  @keyframes hero-support-enter {
-    from { opacity: 0; transform: translate3d(0, 18px, 0); }
+  @keyframes hero-element-enter {
+    from { opacity: 0; transform: translate3d(0, var(--hero-element-y, 16px), 0); }
     to { opacity: 1; transform: none; }
   }
 
@@ -156,6 +265,10 @@ const hasMeta = Astro.slots.has('meta');
     .hero-shell,
     .hero-shell--home {
       min-height: max(680px, 100svh);
+    }
+
+    .hero-shell--insights {
+      min-height: max(700px, 100svh);
     }
 
     .hero-shell--compact,
@@ -170,15 +283,26 @@ const hasMeta = Astro.slots.has('meta');
       padding-bottom: 128px;
     }
 
+    .hero-shell--editorial-compact .hero-shell__content {
+      transform: translateY(16px);
+    }
+
     .hero-shell__copy {
       width: 100%;
       min-width: 0;
     }
 
     .hero-shell h1 {
-      max-width: 12ch;
-      font-size: clamp(2.35rem, 11vw, 3.5rem);
-      line-height: 0.98;
+      width: 100%;
+      max-width: min(100%, 17ch);
+      font-size: clamp(2rem, 9.3vw, 2.8rem);
+      line-height: 1;
+      overflow-wrap: break-word;
+    }
+
+    .hero-shell--editorial-compact[data-title-density='long'] h1 {
+      max-width: 100%;
+      font-size: clamp(1.65rem, 7vw, 2.1rem);
     }
 
     .hero-shell__description {
@@ -203,11 +327,13 @@ const hasMeta = Astro.slots.has('meta');
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-shell__copy,
-    .hero-shell__description,
-    .hero-shell__meta,
-    .hero-shell__actions {
+    .hero-shell[data-banner-motion='true'] h1,
+    .hero-shell[data-banner-motion='true'] .hero-shell__description,
+    .hero-shell[data-banner-motion='true'] .hero-shell__meta,
+    .hero-shell[data-banner-motion='true'] .hero-shell__actions :global(.btn) {
       animation: none;
+      opacity: 1;
+      transform: none;
     }
   }
 </style>

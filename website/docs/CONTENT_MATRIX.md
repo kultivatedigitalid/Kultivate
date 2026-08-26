@@ -1,7 +1,7 @@
 # Content Matrix
 
 **Brand baseline:** Kultivate Brand Guideline Book v2.0
-**Last updated:** 2026-08-13
+**Last updated:** 2026-08-25
 
 Use status: `MISSING`, `DRAFT`, `REVIEW`, `APPROVED`, `PUBLISHED`.
 
@@ -14,7 +14,7 @@ Use status: `MISSING`, `DRAFT`, `REVIEW`, `APPROVED`, `PUBLISHED`.
 | service-web | /id/services/website-development/ | /en/services/website-development/ | APPROVED | APPROVED | Joshua | Structured Scope | Foundation service page |
 | service-seo | /id/services/seo/ | /en/services/seo/ | APPROVED | APPROVED | Joshua | Structured Scope | Discoverability service page |
 | service-social | /id/services/social-media-management/ | /en/services/social-media-management/ | APPROVED | APPROVED | Joshua | Structured Scope | Distribution service page |
-| about | /id/about/ | /en/about/ | REVIEW | REVIEW | Joshua | Team/legal pending | Story & principles active |
+| about | /id/about/ | /en/about/ | REVIEW | REVIEW | Joshua | 12 generated WebP culture assets; team/legal pending | Two-direction working-process marquee, compact interactive principles with contextual slice imagery, and readable journey copy active; verified founding year remains pending |
 | insights | /id/insights/ | /en/insights/ | REVIEW | REVIEW | Content owner | Six bilingual editorial articles | Latest feature plus three-column article grid |
 | insight-detail | /id/insights/[slug]/ | /en/insights/[slug]/ | REVIEW | REVIEW | Content owner | Six localized detail pages per locale | Draft placeholder remains excluded from production routes |
 | contact | /id/contact/ | /en/contact/ | REVIEW | REVIEW | Joshua | Form & WA/Email | Static form + fallback CTAs |

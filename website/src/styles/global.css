@@ -51,13 +51,6 @@ main {
   position: relative;
   isolation: isolate;
   overflow: clip;
-  background:
-    radial-gradient(ellipse 105% 13% at 82% 4%, rgba(103, 217, 255, 0.09), transparent 72%),
-    radial-gradient(ellipse 112% 16% at 4% 25%, rgba(23, 107, 255, 0.1), transparent 74%),
-    radial-gradient(ellipse 106% 14% at 94% 48%, rgba(103, 217, 255, 0.075), transparent 75%),
-    radial-gradient(ellipse 118% 17% at 8% 72%, rgba(23, 107, 255, 0.09), transparent 76%),
-    radial-gradient(ellipse 104% 13% at 76% 94%, rgba(103, 217, 255, 0.07), transparent 74%),
-    linear-gradient(180deg, #070b12 0%, #08111d 22%, #091422 43%, #07101a 63%, #091522 82%, #070b12 100%);
 }
 
 .home-flow.home-flow > :is(
@@ -66,14 +59,49 @@ main {
   .services-section,
   .connected-system,
   .why-kultivate,
-  .insights-section,
-  .final-cta
+  .insights-section
 ) {
   background: transparent;
 }
 
 .home-flow.home-flow > .brand-band::after,
 .home-flow.home-flow > .flow-section::after {
+  background: none;
+}
+
+.page-flow::before,
+.home-flow::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 0;
+  height: calc(max(700px, 100svh) + clamp(220px, 24vw, 360px));
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    #070b12 0%,
+    #070b12 68%,
+    rgba(7, 11, 18, 0.96) 76%,
+    rgba(8, 20, 32, 0.72) 86%,
+    transparent 100%
+  );
+}
+
+.page-flow::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 0;
+  height: clamp(180px, 22vw, 320px);
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, rgba(7, 11, 18, 0.64) 56%, #070b12 100%);
+}
+
+.page-flow.page-flow > .flow-section:not(.final-cta) {
+  background: transparent;
+}
+
+.page-flow.page-flow > .flow-section::after {
   background: none;
 }
 
@@ -191,10 +219,10 @@ main { overflow: clip; }
   isolation: isolate;
   overflow: clip;
   background:
-    radial-gradient(ellipse 108% 16% at 88% 8%, var(--flow-cyan-low), transparent 72%),
-    radial-gradient(ellipse 116% 18% at 8% 38%, var(--flow-blue-low), transparent 74%),
-    radial-gradient(ellipse 110% 16% at 92% 72%, rgba(103, 217, 255, 0.06), transparent 76%),
-    linear-gradient(180deg, var(--flow-void) 0%, #08111d 28%, #091422 52%, #07101a 76%, var(--flow-void) 100%);
+    radial-gradient(ellipse 84% 14% at 9% 26%, rgba(70, 134, 183, 0.17), transparent 72%),
+    radial-gradient(ellipse 72% 16% at 90% 52%, rgba(103, 217, 255, 0.1), transparent 74%),
+    radial-gradient(ellipse 88% 15% at 18% 78%, rgba(70, 134, 183, 0.14), transparent 76%),
+    linear-gradient(180deg, #070b12 0%, #0a1928 32%, #0d2234 56%, #091725 78%, #070b12 100%);
 }
 
 .home-flow {
@@ -202,15 +230,17 @@ main { overflow: clip; }
   isolation: isolate;
   overflow: clip;
   background:
-    radial-gradient(ellipse 108% 15% at 88% 29%, rgba(103, 217, 255, 0.085), transparent 74%),
-    radial-gradient(ellipse 116% 17% at 6% 49%, rgba(23, 107, 255, 0.095), transparent 76%),
-    radial-gradient(ellipse 110% 16% at 94% 71%, rgba(103, 217, 255, 0.065), transparent 76%),
-    linear-gradient(180deg, var(--flow-void) 0%, var(--flow-void) 18%, #08111d 36%, #091724 52%, #08131f 70%, #070e17 86%, var(--flow-void) 100%);
+    radial-gradient(ellipse 80% 13% at 12% 27%, rgba(70, 134, 183, 0.18), transparent 73%),
+    radial-gradient(ellipse 72% 15% at 91% 46%, rgba(103, 217, 255, 0.11), transparent 75%),
+    radial-gradient(ellipse 88% 16% at 4% 66%, rgba(70, 134, 183, 0.2), transparent 76%),
+    radial-gradient(ellipse 66% 13% at 86% 82%, rgba(103, 217, 255, 0.08), transparent 74%),
+    linear-gradient(180deg, #070b12 0%, #08111d 18%, #0a1b2a 36%, #0e283c 54%, #091b2b 72%, #0c2336 88%, #070b12 100%);
 }
 
 .page-flow > *,
 .home-flow > * {
   position: relative;
+  z-index: 1;
   margin-top: -1px;
 }
 

@@ -5,16 +5,14 @@ interface Props { heading: string; problems: ProblemItem[]; locale: 'id' | 'en';
 const { heading, problems, locale } = Astro.props;
 const copy = locale === 'id'
   ? {
-      kicker: 'Mulai dari kebutuhan',
-      prompt: 'Pilih situasi yang paling dekat dengan kebutuhan Anda saat ini.',
-      selected: 'Kebutuhan terpilih',
-      scope: 'Lihat cakupan yang dapat ditangani'
+      kicker: 'Masalah yang diselesaikan',
+      prompt: 'Pilih masalah yang paling dekat dengan hambatan Anda saat ini.',
+      selected: 'Mengapa ini terjadi'
     }
   : {
-      kicker: 'Start with the need',
-      prompt: 'Choose the situation closest to what needs attention now.',
-      selected: 'Selected need',
-      scope: 'See what we can take care of'
+      kicker: 'Problem to solve',
+      prompt: 'Choose the problem closest to what is getting in the way.',
+      selected: 'Why this happens'
     };
 ---
 
@@ -38,6 +36,7 @@ const copy = locale === 'id'
             type="button"
             role="listitem"
             data-need-option={index}
+            data-need-reason={item.description}
             aria-pressed={index === 0 ? 'true' : 'false'}
           >
             <span class="problem-num text-mono">0{index + 1}</span>
@@ -48,10 +47,7 @@ const copy = locale === 'id'
 
       <aside class="need-selection" aria-live="polite">
         <span class="text-mono">{copy.selected}</span>
-        <p data-selected-need>{problems[0]?.title}</p>
-        <a href="#scope-title" class="link-hover-arrow">
-          <span>{copy.scope}</span><span aria-hidden="true">&#8595;</span>
-        </a>
+        <p data-selected-need>{problems[0]?.description}</p>
       </aside>
     </div>
   </div>
@@ -69,7 +65,7 @@ const copy = locale === 'id'
       buttons.forEach((button) => {
         button.addEventListener('click', () => {
           buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-          if (selected) selected.textContent = button.querySelector(':scope > span:last-child')?.textContent?.trim() ?? '';
+          if (selected) selected.textContent = button.dataset.needReason ?? '';
         });
       });
     });
@@ -159,7 +155,7 @@ const copy = locale === 'id'
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 28px;
     border: 1px solid rgba(103, 217, 255, 0.18);
     border-radius: 8px;
@@ -172,13 +168,11 @@ const copy = locale === 'id'
   .need-selection > .text-mono { color: rgba(201, 211, 223, 0.5); }
 
   .need-selection p {
-    max-width: 26ch;
+    max-width: 31ch;
     font-size: clamp(1.25rem, 1.8vw, 1.75rem);
     font-weight: 520;
     line-height: 1.16;
   }
-
-  .need-selection a { align-self: flex-start; }
 
   @media (min-width: 1001px) and (min-height: 700px) {
     .problems-intro { position: sticky; top: 116px; }

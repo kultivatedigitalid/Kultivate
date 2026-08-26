@@ -2,7 +2,7 @@
 
 
 **Brand baseline:** Kultivate Brand Guideline Book v2.0
-**Last updated:** 2026-08-13
+**Last updated:** 2026-08-24
 
 | ID | Input | Blocks | Owner | Status |
 |---|---|---|---|---|
@@ -19,5 +19,6 @@
 | P-011 | Final Indonesian copy | All pages | Joshua/Approver | REVIEW |
 | P-012 | Reviewed English copy | All pages | Translator/Approver | REVIEW |
 | P-013 | Licensed Sounds Right webfont file and public web usage permission | Display typography | Kultivate | PENDING |
+| P-014 | Approved founding year and public founding story | About | Kultivate | PENDING |
 
 Never invent a pending value to make a page look complete.

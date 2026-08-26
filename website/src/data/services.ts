@@ -5,6 +5,7 @@ export interface ServiceDetail {
   tagline: string;
   description: string;
   problemsSolved: string[];
+  problemCauses: string[];
   whoItIsFor: string[];
   scope: string[];
   deliverables: string[];
@@ -19,6 +20,11 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       slug: 'seo',
       tagline: 'Bantu pelanggan yang tepat menemukan apa yang bisnis Anda tawarkan.',
       description: 'Kami memperbaiki fondasi teknis, halaman prioritas, dan sinyal authority yang terhubung dengan cara pelanggan Anda mencari.',
+      problemCauses: [
+        'Halaman prioritas belum dipetakan ke istilah dan intent yang digunakan pelanggan.',
+        'Crawlability, indexing, kecepatan, atau internal linking menghambat halaman untuk ditemukan.',
+        'Measurement masih berfokus pada traffic tanpa menghubungkan search dengan inquiry.'
+      ],
       problemsSolved: [
         'Halaman prioritas Anda belum muncul untuk pencarian yang terhubung dengan produk atau layanan Anda.',
         'Masalah teknis membuat halaman lebih sulit dirayapi, diindeks, atau digunakan.',
@@ -54,6 +60,11 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       slug: 'aeo-geo',
       tagline: 'Siapkan expertise Anda untuk cara orang mencari dengan AI.',
       description: 'Kami menyusun konten, entity, dan sinyal teknis agar answer engines dapat memahami dan mengambil informasi berguna dari website Anda.',
+      problemCauses: [
+        'Jawaban penting masih terkubur di dalam halaman atau belum memiliki struktur yang mudah diambil.',
+        'Schema dan hubungan topik belum konsisten menjelaskan expertise brand.',
+        'Visibility pada prompt dan sumber yang digunakan pelanggan belum dipantau.'
+      ],
       problemsSolved: [
         'Informasi penting di website Anda sulit dikenali dan diambil oleh answer engines.',
         'Entity, schema, dan hubungan antar topik belum cukup jelas.',
@@ -89,6 +100,11 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       slug: 'web-services',
       tagline: 'Berikan dukungan website yang dibutuhkan pekerjaan search Anda.',
       description: 'Kami membangun, merawat, dan memperbaiki website ketika performa, usability, atau implementasi teknis membatasi prioritas search Anda.',
+      problemCauses: [
+        'Technical debt, template lambat, atau arsitektur yang tidak jelas melemahkan akses dan usability.',
+        'Pekerjaan SEO berada di luar backlog development tanpa ownership implementasi yang jelas.',
+        'Redirect, template, performa, dan tracking belum divalidasi saat perubahan dilakukan.'
+      ],
       problemsSolved: [
         'Masalah website membuat halaman penting lebih sulit dirayapi, diindeks, atau digunakan.',
         'Rekomendasi SEO menunggu dukungan development.',
@@ -124,6 +140,11 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       slug: 'content-management',
       tagline: 'Jaga konten yang berguna tetap akurat, relevan, dan aktual.',
       description: 'Kami merencanakan, membuat, menerbitkan, dan memperbarui konten berdasarkan pertanyaan pelanggan dan prioritas bisnis Anda.',
+      problemCauses: [
+        'Topik berasal dari kalender internal, bukan pertanyaan pelanggan dan search demand.',
+        'Halaman tidak ditinjau saat penawaran, informasi, dan perilaku search berubah.',
+        'Ownership, workflow, dan kapasitas publishing belum ditentukan dengan jelas.'
+      ],
       problemsSolved: [
         'Konten diterbitkan tanpa hubungan yang jelas dengan search demand atau pertanyaan pelanggan.',
         'Halaman lama tidak lagi mencerminkan informasi atau prioritas search saat ini.',
@@ -161,6 +182,11 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       slug: 'seo',
       tagline: 'Help the right customers find what your business offers.',
       description: 'We improve technical foundations, priority pages, and authority signals connected to how your customers search.',
+      problemCauses: [
+        'Priority pages are not mapped to the terms and intent customers use.',
+        'Crawlability, indexing, speed, or internal linking is blocking discovery.',
+        'Measurement focuses on visits without connecting search activity to inquiries.'
+      ],
       problemsSolved: [
         'Your priority pages are not appearing for searches connected to your products or services.',
         'Technical issues are making pages harder to crawl, index, or use.',
@@ -196,6 +222,11 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       slug: 'aeo-geo',
       tagline: 'Prepare your expertise for the way people search with AI.',
       description: 'We organize content, entities, and technical signals so answer engines can understand and retrieve useful information from your website.',
+      problemCauses: [
+        'Key answers are buried in pages or written without a retrievable structure.',
+        'Schema and topic relationships do not consistently identify the brand\'s expertise.',
+        'AI visibility is not monitored across the prompts and sources customers use.'
+      ],
       problemsSolved: [
         'Useful information on your website is difficult for answer engines to identify and retrieve.',
         'Entities, schema, and relationships between topics are unclear.',
@@ -231,6 +262,11 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       slug: 'web-services',
       tagline: 'Give your search work the website support it needs.',
       description: 'We build, maintain, and improve websites where performance, usability, or technical implementation limits your search priorities.',
+      problemCauses: [
+        'Technical debt, slow templates, or unclear architecture weakens access and usability.',
+        'SEO work sits outside the development backlog without clear implementation ownership.',
+        'Redirects, templates, performance, and tracking are not validated around changes.'
+      ],
       problemsSolved: [
         'Website problems make important pages harder to crawl, index, or use.',
         'SEO recommendations are waiting for development support.',
@@ -266,6 +302,11 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       slug: 'content-management',
       tagline: 'Keep useful content accurate, relevant, and current.',
       description: 'We plan, create, publish, and refresh content around your customer questions and business priorities.',
+      problemCauses: [
+        'Topics come from an internal calendar instead of customer questions and demand.',
+        'Pages are not reviewed as offers, information, and search behavior change.',
+        'Ownership, workflow, and publishing capacity are not clearly defined.'
+      ],
       problemsSolved: [
         'Content is published without a clear link to search demand or customer questions.',
         'Older pages no longer reflect current information or search priorities.',

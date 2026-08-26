@@ -12,10 +12,10 @@ const copy = locale === 'id'
       },
       explore: 'Lihat layanan',
       services: [
-        { title: 'SEO', result: 'Bangun visibility pada pencarian yang membawa pelanggan ke bisnis Anda', description: 'Kami meninjau cara website dirayapi, disusun, dan dipahami, lalu memperbaiki halaman prioritas dan authority signals berdasarkan produk atau layanan yang perlu ditemukan pelanggan.', image: '/assets/services/seo-focus-v3.webp', alt: 'Beberapa jalur search bergerak menuju satu titik prioritas', slug: 'seo' },
-        { title: 'AEO & GEO', result: 'Bantu AI search memahami kapan expertise Anda relevan', description: 'Kami menyusun hubungan antar entity, konten yang siap menjawab, dan sinyal teknis agar informasi Anda lebih mudah dipahami, diambil, dan dirujuk pada pengalaman AI yang relevan.', image: '/assets/services/aeo-geo-answer-v3.webp', alt: 'Jaringan informasi terhubung menuju satu bidang jawaban', slug: 'aeo-geo' },
-        { title: 'Web Services', result: 'Berikan fondasi teknis yang dibutuhkan pekerjaan search Anda', description: 'Kami memperbaiki website ketika performa, usability, migrasi, atau kekurangan implementasi menghambat halaman prioritas dan orang yang menggunakannya.', image: '/assets/services/web-foundation-v3.webp', alt: 'Lapisan website modular tersusun di atas fondasi teknis', slug: 'web-services' },
-        { title: 'Content Management', result: 'Jaga konten tetap selaras dengan pertanyaan pelanggan', description: 'Kami merencanakan, membuat, menerbitkan, dan memperbarui konten berdasarkan pertanyaan nyata pelanggan, prioritas bisnis, dan halaman yang membutuhkan dukungan berkelanjutan.', image: '/assets/services/content-rhythm-v3.webp', alt: 'Modul content bergerak dalam alur publikasi dan pembaruan', slug: 'content-management' }
+        { title: 'SEO', result: 'Visibility untuk pencarian bernilai', description: 'Kami meninjau cara website dirayapi, disusun, dan dipahami, lalu memperbaiki halaman prioritas dan authority signals berdasarkan produk atau layanan yang perlu ditemukan pelanggan.', image: '/assets/services/seo-focus-v3.webp', alt: 'Beberapa jalur search bergerak menuju satu titik prioritas', slug: 'seo' },
+        { title: 'AEO & GEO', result: 'Expertise Anda lebih jelas bagi AI', description: 'Kami menyusun hubungan antar entity, konten yang siap menjawab, dan sinyal teknis agar informasi Anda lebih mudah dipahami, diambil, dan dirujuk pada pengalaman AI yang relevan.', image: '/assets/services/aeo-geo-answer-v3.webp', alt: 'Jaringan informasi terhubung menuju satu bidang jawaban', slug: 'aeo-geo' },
+        { title: 'Web Services', result: 'Fondasi teknis untuk search', description: 'Kami memperbaiki website ketika performa, usability, migrasi, atau kekurangan implementasi menghambat halaman prioritas dan orang yang menggunakannya.', image: '/assets/services/web-foundation-v3.webp', alt: 'Lapisan website modular tersusun di atas fondasi teknis', slug: 'web-services' },
+        { title: 'Content Management', result: 'Konten selaras dengan pertanyaan pelanggan', description: 'Kami merencanakan, membuat, menerbitkan, dan memperbarui konten berdasarkan pertanyaan nyata pelanggan, prioritas bisnis, dan halaman yang membutuhkan dukungan berkelanjutan.', image: '/assets/services/content-rhythm-v3.webp', alt: 'Modul content bergerak dalam alur publikasi dan pembaruan', slug: 'content-management' }
       ]
     }
   : {
@@ -26,19 +26,20 @@ const copy = locale === 'id'
       },
       explore: 'View service',
       services: [
-        { title: 'SEO', result: 'Build visibility around the searches that lead customers to your business', description: 'We review how your website is crawled, structured, and understood, then improve priority pages and authority signals around the products or services you need people to find.', image: '/assets/services/seo-focus-v3.webp', alt: 'Several search paths moving toward one priority destination', slug: 'seo' },
-        { title: 'AEO & GEO', result: 'Help AI search understand where your expertise is useful', description: 'We organize entity relationships, answer-ready content, and technical signals so your information is easier to interpret, retrieve, and reference in relevant AI experiences.', image: '/assets/services/aeo-geo-answer-v3.webp', alt: 'A connected information network resolving into one answer surface', slug: 'aeo-geo' },
-        { title: 'Web Services', result: 'Give search work the technical foundation it needs to perform', description: 'We improve the website where performance, usability, migrations, or implementation gaps hold back priority pages and the people using them.', image: '/assets/services/web-foundation-v3.webp', alt: 'Modular website layers arranged on a technical foundation', slug: 'web-services' },
-        { title: 'Content Management', result: 'Keep useful content aligned with the questions customers continue to ask', description: 'We plan, create, publish, and refresh content around real customer questions, business priorities, and the pages that need ongoing support.', image: '/assets/services/content-rhythm-v3.webp', alt: 'Content modules moving through a publishing and refresh rhythm', slug: 'content-management' }
+        { title: 'SEO', result: 'Visibility for valuable searches', description: 'We review how your website is crawled, structured, and understood, then improve priority pages and authority signals around the products or services you need people to find.', image: '/assets/services/seo-focus-v3.webp', alt: 'Several search paths moving toward one priority destination', slug: 'seo' },
+        { title: 'AEO & GEO', result: 'Make expertise clear to AI', description: 'We organize entity relationships, answer-ready content, and technical signals so your information is easier to interpret, retrieve, and reference in relevant AI experiences.', image: '/assets/services/aeo-geo-answer-v3.webp', alt: 'A connected information network resolving into one answer surface', slug: 'aeo-geo' },
+        { title: 'Web Services', result: 'Technical foundations for search', description: 'We improve the website where performance, usability, migrations, or implementation gaps hold back priority pages and the people using them.', image: '/assets/services/web-foundation-v3.webp', alt: 'Modular website layers arranged on a technical foundation', slug: 'web-services' },
+        { title: 'Content Management', result: 'Content aligned with customer questions', description: 'We plan, create, publish, and refresh content around real customer questions, business priorities, and the pages that need ongoing support.', image: '/assets/services/content-rhythm-v3.webp', alt: 'Content modules moving through a publishing and refresh rhythm', slug: 'content-management' }
       ]
     };
 ---
 
+<div class="services-page page-flow">
 <InteriorHero
   title={copy.hero.title}
   description={copy.hero.description}
   label={copy.hero.label}
-  image="/assets/banners/services-minimal.webp"
+  image="/assets/banners/services-gradient.webp"
   imageAlt={locale === 'id' ? 'Empat modul berbeda mengitari satu pusat biru' : 'Four distinct modules arranged around one blue core'}
   variant="services"
 />
@@ -59,6 +60,7 @@ const copy = locale === 'id'
     ))}
   </div>
 </section>
+</div>
 
 <style>
   .services-index { margin-top:-1px; padding:clamp(52px,7vw,96px) 0 clamp(88px,11vw,154px); background:radial-gradient(ellipse 54% 24% at 50% 10%,rgba(70,134,183,.11),transparent 80%),linear-gradient(180deg,#070b12 0%,#060a11 54%,#05080e 100%); }

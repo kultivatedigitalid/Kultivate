@@ -125,3 +125,23 @@
 - English render audit found no selected Indonesian carryover terms.
 - Newly generated raster assets are WebP; largest remaining public asset is below 1.3 MB.
 - Reduced-motion fallbacks remain present for hero, portfolio, service, and CTA ambient motion.
+## About Principles Interaction Audit - 2026-08-24
+
+- `npm run build`: passed with 36 static pages.
+- The initial diagram is centered and retains the four-part circular silhouette from the approved sketch.
+- Desktop focus QA verified the selected quadrant expands to 2.42x while the other three contract; explanatory content fades in without layout shift.
+- Hover, keyboard focus, click/touch enhancement, Escape reset, and reduced-motion fallbacks are implemented.
+- The interaction uses CSS transforms and semantic buttons instead of WebGL, preserving the static-first architecture and accessibility.
+- The generated WebP background remains decorative behind a multi-layer blue-black readability scrim.
+- Post-change Impeccable detector returned no findings for `AboutOrbit3D.astro`.
+## About Collage and Principles Revision Audit - 2026-08-25
+
+- `npm run build`: passed with 36 static pages.
+- Impeccable post-change detector returned no findings for both About components.
+- The desktop pie idle size is 260 px, reduced from the previous 380 px maximum, while the active slice remains approximately 442 px.
+- Contextual imagery, slice expansion, and explanatory copy share the same hover/focus/touch state; desktop and mobile detail bounds remain inside the active slice.
+- Mobile QA at 390 px confirms the active slice shifts into the viewport, its copy fits vertically, and document width remains 390 px with no horizontal overflow.
+- The culture marquee contains two rows of six unique WebP images; the upper row moves right and the lower row moves left.
+- Focus/hover QA confirms the active marquee row pauses, retains a 24.48 px image gap at 1440 px, and enlarges the image in the requested outward direction.
+- Journey heading QA confirms a 24.48 px regular text treatment with no horizontal overflow.
+- Reduced-motion fallbacks stop marquee motion and remove transform transitions.

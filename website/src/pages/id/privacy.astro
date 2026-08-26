@@ -13,6 +13,7 @@ const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURICompon
   title="Kebijakan Privasi - Kultivate"
   description="Kebijakan privasi perlindungan data pribadi pengunjung dan pengiriman formulir di website Kultivate."
 >
+  <div class="privacy-page page-flow">
   <InteriorHero
     label="PRIVASI"
     title="Privasi tanpa teka-teki"
@@ -22,7 +23,7 @@ const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURICompon
     compact
   />
 
-  <section class="section privacy-content-section">
+  <section class="section privacy-content-section flow-section">
     <div class="container">
       <div class="privacy-card card">
         <h2>1. Data yang Dikumpulkan</h2>
@@ -59,6 +60,7 @@ const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURICompon
       </div>
     </div>
   </section>
+  </div>
 
   <FinalCTA locale={locale} />
 </BaseLayout>

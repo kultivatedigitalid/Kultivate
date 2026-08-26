@@ -1,0 +1,571 @@
+---
+interface Props { locale: 'id' | 'en'; }
+
+const { locale } = Astro.props;
+const copy = locale === 'id'
+  ? {
+      kicker: 'Prinsip kami',
+      title: 'Empat hal yang kami pegang',
+      intro: 'Inilah cara kami menjaga pekerjaan tetap dekat dengan bisnis Anda, bukan sekadar terlihat bagus dari sisi agency.',
+      hint: 'Arahkan kursor pada satu segmen',
+      groupLabel: 'Empat prinsip kerja Kultivate',
+      items: [
+        {
+          position: 'top-left',
+          name: 'Visi Kami',
+          image: '/assets/about/collage/collage-01.webp',
+          description: 'Kami ingin owner dan tim memahami digital tanpa lapisan jargon. Hasilnya adalah satu gambaran jelas tentang bagaimana bisnis ditemukan dan dipilih.'
+        },
+        {
+          position: 'top-right',
+          name: 'Tujuan Kami',
+          image: '/assets/about/collage/collage-02.webp',
+          description: 'Kami membantu bisnis hadir saat pelanggan yang tepat mencari, lalu membuat pengalaman setelah klik cukup jelas untuk mendorong keputusan.'
+        },
+        {
+          position: 'bottom-left',
+          name: 'Cara Kami',
+          image: '/assets/about/collage/collage-03.webp',
+          description: 'Kami mendengarkan cara bisnis Anda bekerja lebih dulu. Konteks pelanggan, kapasitas tim, dan hambatan hari ini menentukan prioritas.'
+        },
+        {
+          position: 'bottom-right',
+          name: 'Cerita Kami',
+          image: '/assets/about/collage/collage-04.webp',
+          description: 'Kultivate adalah digital agency Indonesia untuk Website Development, SEO, dan Social Media Management. Kami dibangun untuk mendekatkan strategi dengan eksekusi.'
+        }
+      ]
+    }
+  : {
+      kicker: 'Our principles',
+      title: 'Four things we hold onto',
+      intro: 'This is how we keep the work close to your business, not just polished from an agency point of view.',
+      hint: 'Hover over a segment',
+      groupLabel: 'Four Kultivate working principles',
+      items: [
+        {
+          position: 'top-left',
+          name: 'Our Vision',
+          image: '/assets/about/collage/collage-01.webp',
+          description: 'We want owners and teams to understand digital without layers of jargon. The result is one clear picture of how a business is discovered and chosen.'
+        },
+        {
+          position: 'top-right',
+          name: 'Our Goal',
+          image: '/assets/about/collage/collage-02.webp',
+          description: 'We help businesses show up when the right customer is looking, then make the experience after the click clear enough to support a decision.'
+        },
+        {
+          position: 'bottom-left',
+          name: 'Our Approach',
+          image: '/assets/about/collage/collage-03.webp',
+          description: 'We listen to how your business works first. Customer context, team capacity, and today’s obstacles determine the priority.'
+        },
+        {
+          position: 'bottom-right',
+          name: 'Our Story',
+          image: '/assets/about/collage/collage-04.webp',
+          description: 'Kultivate is an Indonesian digital agency for Website Development, SEO, and Social Media Management. We were built to bring strategy and execution closer together.'
+        }
+      ]
+    };
+---
+
+<section
+  class="about-orbit flow-section"
+  aria-labelledby="about-orbit-title"
+  data-scroll-key="about-principles"
+  data-principles-root
+  data-active="-1"
+>
+  <span class="orbit-atmosphere" aria-hidden="true"></span>
+
+  <div class="container orbit-content">
+    <header class="orbit-heading" data-reveal>
+      <span class="section-kicker">{copy.kicker}</span>
+      <h2 id="about-orbit-title">{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </header>
+
+    <div class="principles-stage" data-principles-stage data-reveal="image">
+      <div class="principles-hub" role="group" aria-label={copy.groupLabel}>
+        {copy.items.map((item, index) => (
+          <button
+            type="button"
+            class:list={['principle-segment', `principle-segment--${item.position}`]}
+            data-principle-index={index}
+            aria-expanded="false"
+            aria-controls={`principle-detail-${locale}-${index}`}
+            aria-label={item.name}
+          >
+            <span class="principle-shape" aria-hidden="true">
+              <img class="principle-media" src={item.image} alt="" width="1280" height="853" loading="lazy" decoding="async" />
+              <span class="principle-shade"></span>
+            </span>
+            <span class="principle-label">{item.name}</span>
+          </button>
+        ))}
+      </div>
+
+      <div class="principle-details" aria-live="polite">
+        {copy.items.map((item, index) => (
+          <article
+            id={`principle-detail-${locale}-${index}`}
+            class:list={['principle-detail', `principle-detail--${item.position}`]}
+            data-principle-detail={index}
+            aria-hidden="true"
+          >
+
+            <h3>{item.name}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+
+      <p class="orbit-hint text-mono">{copy.hint}</p>
+    </div>
+    <div class="principles-mobile-list" aria-label={copy.groupLabel}>
+      {copy.items.map((item, index) => (
+        <article>
+          <img src={item.image} alt="" width="1280" height="853" loading="lazy" decoding="async" />
+          <div>
+
+            <h3>{item.name}</h3>
+            <p>{item.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const setupAboutPrinciples = () => {
+    document.querySelectorAll<HTMLElement>('[data-principles-root]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+
+      const stage = root.querySelector<HTMLElement>('[data-principles-stage]');
+      const options = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-principle-index]'));
+      const details = Array.from(root.querySelectorAll<HTMLElement>('[data-principle-detail]'));
+      if (!stage || !options.length || !details.length) return;
+
+      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let active = -1;
+
+      const keepVisible = (detail: HTMLElement) => {
+        const rect = detail.getBoundingClientRect();
+        const topGuard = Math.min(112, window.innerHeight * 0.16) + 16;
+        const bottomGuard = 44;
+        const availableHeight = window.innerHeight - topGuard - bottomGuard;
+        let offset = 0;
+
+        if (rect.height > availableHeight) offset = rect.top + rect.height / 2 - window.innerHeight / 2;
+        else if (rect.top < topGuard) offset = rect.top - topGuard;
+        else if (rect.bottom > window.innerHeight - bottomGuard) offset = rect.bottom - window.innerHeight + bottomGuard;
+
+        if (Math.abs(offset) > 2) {
+          window.scrollBy({ top: offset, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+        }
+      };
+
+      const setActive = (index: number, followViewport = false) => {
+        active = index >= 0 && index < options.length ? index : -1;
+        root.dataset.active = String(active);
+
+        options.forEach((option, optionIndex) => {
+          option.setAttribute('aria-expanded', String(optionIndex === active));
+        });
+
+        details.forEach((detail, detailIndex) => {
+          detail.setAttribute('aria-hidden', String(detailIndex !== active));
+        });
+
+        if (active >= 0 && followViewport) {
+          requestAnimationFrame(() => keepVisible(details[active]));
+        }
+      };
+
+      options.forEach((option, index) => {
+        option.addEventListener('pointerenter', () => {
+          if (finePointer.matches) setActive(index, true);
+        });
+
+        option.addEventListener('focus', () => {
+          requestAnimationFrame(() => {
+            if (option.matches(':focus-visible')) setActive(index, true);
+          });
+        });
+      });
+
+      stage.addEventListener('pointerleave', () => {
+        if (!finePointer.matches) return;
+        const focused = document.activeElement;
+        if (focused instanceof HTMLElement && focused.matches(':focus-visible') && stage.contains(focused)) return;
+        setActive(-1);
+      });
+
+      stage.addEventListener('pointercancel', () => setActive(-1));
+
+      root.addEventListener('focusout', (event) => {
+        const next = event.relatedTarget;
+        if (!(next instanceof Node) || !root.contains(next)) setActive(-1);
+      });
+
+      root.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        setActive(-1);
+        if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+      });
+
+      window.addEventListener('blur', () => setActive(-1));
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) setActive(-1);
+      });
+      finePointer.addEventListener('change', () => setActive(-1));
+
+      setActive(-1);
+    });
+  };
+
+  setupAboutPrinciples();
+  document.addEventListener('astro:page-load', setupAboutPrinciples);
+</script>
+
+<style>
+  .about-orbit {
+    position: relative;
+    isolation: isolate;
+    margin-top: -1px;
+    padding: clamp(58px, 7vw, 102px) 0 clamp(28px, 3vw, 44px);
+    overflow: visible;
+    background: transparent;
+  }
+
+  .orbit-atmosphere {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 44% 36% at 50% 52%, rgba(70, 134, 183, 0.11), transparent 76%),
+      linear-gradient(180deg, transparent 0%, rgba(6, 14, 23, 0.12) 48%, transparent 100%);
+  }
+
+  .orbit-content { position: relative; z-index: 1; }
+
+  .orbit-heading {
+    width: min(100%, 780px);
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .orbit-heading h2 {
+    max-width: 13ch;
+    margin: 18px auto 22px;
+    font-size: clamp(2.7rem, 4.8vw, 5.4rem);
+    font-weight: 520;
+    letter-spacing: -0.04em;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .orbit-heading p {
+    max-width: 58ch;
+    margin-inline: auto;
+    color: rgba(226, 234, 243, 0.79);
+    line-height: 1.7;
+    text-wrap: pretty;
+  }
+
+  .principles-stage {
+    --hub-size: clamp(190px, 19vw, 260px);
+    --shape-gap: 11px;
+
+
+    --expanded-width: clamp(400px, 39vw, 560px);
+    --expanded-height: clamp(330px, 30vw, 430px);
+    --hub-shift-x: 0px;
+    position: relative;
+    min-height: clamp(760px, 62vw, 880px);
+    margin-top: clamp(30px, 3vw, 48px);
+    isolation: isolate;
+  }
+
+  .principles-hub,
+  .principle-details {
+    position: absolute;
+    width: var(--hub-size);
+    height: var(--hub-size);
+    inset: 50% auto auto 50%;
+    transform: translate3d(calc(-50% + var(--hub-shift-x)), -50%, 0);
+    transition: transform 720ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .principles-hub { z-index: 3; }
+  .principle-details { z-index: 5; pointer-events: none; }
+
+  .principle-segment {
+    position: absolute;
+    width: calc(50% - var(--shape-gap) / 2);
+    height: calc(50% - var(--shape-gap) / 2);
+    border: 0;
+    padding: 0;
+    color: var(--cloud-white);
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .principle-segment--top-left { inset: 0 auto auto 0; }
+  .principle-segment--top-right { inset: 0 0 auto auto; }
+  .principle-segment--bottom-left { inset: auto auto 0 0; }
+  .principle-segment--bottom-right { inset: auto 0 0 auto; }
+
+  .principle-shape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    border: 1px solid rgba(129, 221, 255, 0.27);
+    background: linear-gradient(145deg, rgba(34, 124, 184, 0.92), rgba(10, 45, 77, 0.9));
+    box-shadow: inset 0 1px 0 rgba(207, 247, 255, 0.2), inset 0 -12px 28px rgba(3, 9, 17, 0.28);
+    transition:
+      width 720ms cubic-bezier(0.16, 1, 0.3, 1),
+      height 720ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 720ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 300ms ease,
+      filter 360ms ease,
+      border-color 260ms ease;
+    will-change: width, height, transform;
+  }
+
+  .principle-media,
+  .principle-shade {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .principle-media {
+    object-fit: cover;
+    opacity: 0;
+    filter: saturate(0.78) brightness(0.74);
+    transform: scale(1.045);
+    transition: opacity 360ms ease, filter 420ms ease, transform 880ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .principle-shade {
+    background: linear-gradient(145deg, rgba(5, 11, 18, 0.32), rgba(4, 9, 15, 0.92));
+    opacity: 0.42;
+    transition: opacity 360ms ease;
+  }
+
+  .principle-segment--top-left .principle-shape { inset: auto 0 0 auto; border-radius: 100% 7px 7px 7px; transform-origin: right bottom; }
+  .principle-segment--top-right .principle-shape { inset: auto auto 0 0; border-radius: 7px 100% 7px 7px; transform-origin: left bottom; }
+  .principle-segment--bottom-left .principle-shape { inset: 0 0 auto auto; border-radius: 7px 7px 7px 100%; transform-origin: right top; }
+  .principle-segment--bottom-right .principle-shape { inset: 0 auto auto 0; border-radius: 7px 7px 100% 7px; transform-origin: left top; }
+
+  .principle-label {
+    position: absolute;
+    z-index: 2;
+    width: max-content;
+    max-width: 150px;
+    color: rgba(232, 239, 247, 0.86);
+    font-size: clamp(0.78rem, 1vw, 0.94rem);
+    font-weight: 570;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: color 220ms ease, opacity 260ms ease, transform 360ms var(--ease-out);
+  }
+
+  .principle-segment--top-left .principle-label,
+  .principle-segment--bottom-left .principle-label { right: calc(100% + 17px); text-align: right; }
+  .principle-segment--top-right .principle-label,
+  .principle-segment--bottom-right .principle-label { left: calc(100% + 17px); text-align: left; }
+  .principle-segment--top-left .principle-label,
+  .principle-segment--top-right .principle-label { bottom: 25%; }
+  .principle-segment--bottom-left .principle-label,
+  .principle-segment--bottom-right .principle-label { top: 25%; }
+
+  .about-orbit[data-active]:not([data-active='-1']) .principle-segment:not([aria-expanded='true']) .principle-shape {
+    transform: scale(0.72);
+    opacity: 0.46;
+    filter: saturate(0.68) brightness(0.78);
+  }
+
+  .about-orbit[data-active]:not([data-active='-1']) .principle-segment:not([aria-expanded='true']) .principle-label { opacity: 0.42; }
+  .principle-segment[aria-expanded='true'] { z-index: 3; }
+
+  .principle-segment[aria-expanded='true'] .principle-shape {
+    width: var(--expanded-width);
+    height: var(--expanded-height);
+    transform: none;
+    opacity: 1;
+    filter: saturate(1) brightness(1);
+    border-color: rgba(174, 233, 255, 0.45);
+  }
+
+  .principle-segment[aria-expanded='true'] .principle-media {
+    opacity: 0.72;
+    filter: saturate(0.96) brightness(0.78);
+    transform: scale(1.012);
+  }
+
+  .principle-segment[aria-expanded='true'] .principle-shade { opacity: 0.78; }
+  .principle-segment[aria-expanded='true'] .principle-label { opacity: 0; }
+  .principle-segment:focus-visible { outline: 2px solid var(--signal-ice); outline-offset: 5px; }
+
+  .principle-detail {
+    position: absolute;
+    display: flex;
+    width: var(--expanded-width);
+    height: var(--expanded-height);
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(36px, 4vw, 56px);
+    color: var(--cloud-white);
+    opacity: 0;
+    visibility: hidden;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.42);
+    transform: scale(0.97);
+    transition: opacity 300ms ease, transform 620ms cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 320ms;
+  }
+
+  .principle-detail--top-left { right: calc(50% + var(--shape-gap) / 2); bottom: calc(50% + var(--shape-gap) / 2); justify-content: flex-end; padding: clamp(72px, 6vw, 96px) clamp(32px, 3vw, 46px) clamp(32px, 3vw, 46px) clamp(112px, 9vw, 148px); transform-origin: right bottom; }
+  .principle-detail--top-right { left: calc(50% + var(--shape-gap) / 2); bottom: calc(50% + var(--shape-gap) / 2); justify-content: flex-end; padding: clamp(72px, 6vw, 96px) clamp(112px, 9vw, 148px) clamp(32px, 3vw, 46px) clamp(32px, 3vw, 46px); transform-origin: left bottom; }
+  .principle-detail--bottom-left { right: calc(50% + var(--shape-gap) / 2); top: calc(50% + var(--shape-gap) / 2); justify-content: flex-start; padding: clamp(32px, 3vw, 46px) clamp(32px, 3vw, 46px) clamp(72px, 6vw, 96px) clamp(112px, 9vw, 148px); transform-origin: right top; }
+  .principle-detail--bottom-right { left: calc(50% + var(--shape-gap) / 2); top: calc(50% + var(--shape-gap) / 2); justify-content: flex-start; padding: clamp(32px, 3vw, 46px) clamp(112px, 9vw, 148px) clamp(72px, 6vw, 96px) clamp(32px, 3vw, 46px); transform-origin: left top; }
+
+  .principle-detail[aria-hidden='false'] {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    transition-delay: 0s;
+  }
+
+
+  .principle-detail h3 {
+    max-width: 15ch;
+    margin: 0 0 11px;
+    font-size: clamp(1.55rem, 2.3vw, 2.6rem);
+    font-weight: 560;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  .principle-detail p {
+    max-width: 42ch;
+    color: rgba(244, 247, 251, 0.92);
+    font-size: clamp(0.82rem, 0.96vw, 0.94rem);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  .orbit-hint {
+    position: absolute;
+    z-index: 6;
+    inset: auto 50% 16px auto;
+    color: rgba(201, 211, 223, 0.6);
+    font-size: 0.72rem;
+    text-align: center;
+    transform: translateX(50%);
+    transition: opacity 220ms ease;
+  }
+
+  .about-orbit[data-active]:not([data-active='-1']) .orbit-hint { opacity: 0; }
+
+  .principles-mobile-list { display: none; }
+  .principles-mobile-list article {
+    display: grid;
+    grid-template-columns: minmax(120px, 0.8fr) minmax(0, 1.2fr);
+    gap: 22px;
+    align-items: center;
+    padding-block: 24px;
+    border-top: 1px solid rgba(89, 106, 130, 0.32);
+  }
+  .principles-mobile-list article:last-child { border-bottom: 1px solid rgba(89, 106, 130, 0.32); }
+  .principles-mobile-list img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; filter: brightness(0.74) saturate(0.82); }
+  .principles-mobile-list h3 { margin: 0 0 8px; font-size: 1.3rem; font-weight: 560; letter-spacing: -0.025em; }
+  .principles-mobile-list p { color: rgba(226, 234, 243, 0.78); font-size: 0.88rem; line-height: 1.58; text-wrap: pretty; }
+
+  @media (max-width: 900px) {
+    .principles-stage {
+      --hub-size: clamp(174px, 27vw, 226px);
+
+
+      --expanded-width: clamp(340px, 48vw, 430px);
+      --expanded-height: clamp(292px, 39vw, 360px);
+      min-height: 760px;
+    }
+    .principle-detail p { font-size: clamp(0.76rem, 1.28vw, 0.88rem); }
+    .principle-detail--top-left { padding: 52px 28px 28px 76px; }
+    .principle-detail--top-right { padding: 52px 76px 28px 28px; }
+    .principle-detail--bottom-left { padding: 28px 28px 52px 76px; }
+    .principle-detail--bottom-right { padding: 28px 76px 52px 28px; }
+  }
+
+  @media (max-width: 640px) {
+    .about-orbit { padding: 68px 0 46px; }
+    .orbit-heading { text-align: left; }
+    .orbit-heading h2,
+    .orbit-heading p { margin-inline: 0; }
+    .orbit-heading h2 { max-width: 12ch; }
+    .principles-stage {
+      --hub-size: 150px;
+      --shape-gap: 8px;
+
+
+      --expanded-width: min(84vw, 340px);
+      --expanded-height: min(78vw, 310px);
+      min-height: 720px;
+      margin-top: 28px;
+    }
+
+    .about-orbit[data-active='0'] .principles-stage,
+    .about-orbit[data-active='2'] .principles-stage {
+      --hub-shift-x: calc(12px + var(--expanded-width) + var(--shape-gap) / 2 - 50vw);
+    }
+
+    .about-orbit[data-active='1'] .principles-stage,
+    .about-orbit[data-active='3'] .principles-stage {
+      --hub-shift-x: calc(50vw - 12px - var(--expanded-width) - var(--shape-gap) / 2);
+    }
+
+    .about-orbit[data-active]:not([data-active='-1']) .principle-label { opacity: 0; }
+    .principles-hub,
+    .principle-details { top: 47%; }
+    .principle-label { max-width: 76px; font-size: 0.68rem; white-space: normal; }
+    .principle-segment--top-left .principle-label,
+    .principle-segment--bottom-left .principle-label { right: calc(100% + 10px); }
+    .principle-segment--top-right .principle-label,
+    .principle-segment--bottom-right .principle-label { left: calc(100% + 10px); }
+    .principle-detail { justify-content: center; padding: 22px; }
+    .principle-detail h3 { margin: 8px 0; font-size: clamp(1.2rem, 5.6vw, 1.55rem); }
+    .principle-detail p { font-size: 0.72rem; line-height: 1.42; }
+
+    .orbit-hint { bottom: 18px; width: min(100%, 260px); }
+    .principles-mobile-list article { grid-template-columns: 1fr; gap: 16px; }
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .principles-stage { min-height: 270px; }
+    .principle-segment { pointer-events: none; cursor: default; }
+    .orbit-hint { display: none; }
+    .principles-mobile-list { display: grid; margin-top: 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .principles-hub,
+    .principle-shape,
+    .principle-media,
+    .principle-shade,
+    .principle-label,
+    .principle-detail,
+    .orbit-hint { transition: none; }
+  }
+</style>

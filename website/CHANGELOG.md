@@ -1,5 +1,42 @@
 # Changelog
 
+## [0.5.2] - 2026-08-25
+
+### Added
+
+- Added 12 generated, optimized WebP working-process images to the About culture section.
+- Added two continuously rotating photo rows with opposite directions, pause-on-hover/focus, and directional image enlargement.
+- Added one contextual image to each expanded About principle slice.
+
+### Refined
+
+- Reduced the principles pie idle size while preserving its previous desktop active size.
+- Synchronized slice imagery and copy to one hover, focus, or touch state and kept the revealed copy inside the slice at desktop and mobile sizes.
+- Returned the principles section to the continuous page background and removed the isolated full-section image field.
+- Restyled â€œA clear path, built with youâ€ as readable regular text and replaced the progress width animation with a transform.
+
+### Verified
+
+- Production build passes with 36 generated static pages.
+- Desktop and 390 px mobile QA confirm fitted slice copy, no horizontal overflow, paused marquee interaction, and reduced-motion coverage.
+
+## [0.5.1] - 2026-08-24
+
+### Added
+
+- Added a generated image field with a directional gradient scrim behind the About principles interaction.
+- Added bilingual, explicit company-purpose copy for Our Story while keeping the unverified founding year unpublished.
+
+### Refined
+
+- Rebuilt the About principles visual as a centered four-part diagram that expands and contracts smoothly from each inner corner.
+- Added resilient hover, focus, touch, Escape, and reduced-motion behavior without introducing WebGL or a continuous render loop.
+
+### Verified
+
+- Production build passes with 36 generated static pages.
+- Desktop interaction QA confirms the active quadrant expands to 2.42x and its detail content becomes readable without layout shift.
+
 ## [0.5.0] - 2026-08-13
 
 ### Added

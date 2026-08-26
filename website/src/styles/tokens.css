@@ -59,6 +59,9 @@
   --section-space-mobile: 64px;
   --flow-void: #070B12;
   --flow-navy: #0B1322;
+  --flow-slate: #102B42;
+  --flow-blue-mid: #174564;
   --flow-blue-low: rgba(23, 107, 255, 0.12);
   --flow-cyan-low: rgba(103, 217, 255, 0.08);
+  --flow-highlight: rgba(70, 134, 183, 0.2);
 }

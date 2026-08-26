@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InteriorHero from '../../components/shared/InteriorHero.astro';
 import FinalCTA from '../../components/home/FinalCTA.astro';
 import ContactSuccessModal from '../../components/contact/ContactSuccessModal.astro';
 import { siteConfig } from '../../data/site';
@@ -15,17 +14,14 @@ const t = useTranslations(locale);
   title="Consult with Kultivate"
   description="Tell us what needs attention. We will review the context before recommending any work."
 >
-  <InteriorHero
-    label="CONTACT"
-    title="Tell us what needs attention"
-    description="Share your current position, priorities, and the support you are considering. We will review the context before recommending any work."
-    image="/assets/banners/contact-minimal.webp"
-    imageAlt="Blue paths of light joining into one structure"
-    compact
-  />
-
-  <section class="section contact-section">
+  <div class="contact-page page-flow">
+    <section class="section contact-section flow-section" aria-labelledby="contact-title">
     <div class="container">
+      <header class="contact-intro">
+        <h1 id="contact-title">Tell us what needs attention.</h1>
+        <p>Share your priorities, current challenges, and the support you are considering. We will review the context before recommending the right next step.</p>
+      </header>
+
       <div class="contact-grid">
         <!-- Form Column -->
         <div class="contact-form-col card">
@@ -97,7 +93,7 @@ const t = useTranslations(locale);
             </div>
 
             <div class="form-actions">
-              <button type="submit" class="btn btn-primary btn-cta w-full">
+              <button type="submit" class="btn btn-primary btn-cta">
                 {t('contact.submit')}
               </button>
             </div>
@@ -149,76 +145,123 @@ const t = useTranslations(locale);
         </div>
       </div>
     </div>
-  </section>
+    </section>
+  </div>
 
   <ContactSuccessModal locale={locale} />
   <FinalCTA locale={locale} />
 </BaseLayout>
 
 <style>
-  .contact-hero {
-    margin-top: -1px;
-    padding-top: clamp(44px, 6vw, 76px);
-    background: linear-gradient(180deg, #070b12 0%, #05080e 58%, #070b12 100%);
-    padding-bottom: var(--spacing-xl);
-    border-bottom: 1px solid var(--slate);
-  }
-
-  .section-label {
-    display: inline-block;
-    font-size: 0.75rem;
-    color: var(--cyan-glow);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .page-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    color: var(--cloud-white);
-    line-height: 1.1;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .page-intro {
-    font-size: clamp(1.125rem, 2vw, 1.375rem);
-    color: var(--mist);
-    max-width: 720px;
-    line-height: 1.5;
-  }
-
   .contact-section {
-    margin-top: -1px;
-    padding-top: clamp(44px, 6vw, 76px);
-    background: linear-gradient(180deg, #070b12 0%, #05080e 58%, #070b12 100%);
-    padding-bottom: var(--spacing-xxl);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    margin-top: 0;
+    padding-top: clamp(132px, 14vw, 184px);
+    padding-bottom: clamp(96px, 11vw, 148px);
+    background: transparent;
+  }
+
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 0;
+    height: clamp(620px, 72vw, 920px);
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 62% 48% at 14% 12%, rgba(70, 134, 183, 0.3), transparent 72%),
+      radial-gradient(ellipse 50% 42% at 86% 18%, rgba(103, 217, 255, 0.14), transparent 74%),
+      radial-gradient(ellipse 44% 32% at 58% 42%, rgba(23, 107, 255, 0.1), transparent 76%),
+      linear-gradient(180deg, rgba(9, 28, 44, 0.88) 0%, rgba(8, 21, 34, 0.62) 38%, transparent 100%);
+  }
+
+  .contact-section > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    gap: clamp(32px, 6vw, 96px);
+    align-items: end;
+    margin-bottom: clamp(52px, 7vw, 88px);
+  }
+
+  .contact-intro h1 {
+    max-width: 15ch;
+    margin: 0;
+    color: var(--cloud-white);
+    font-family: var(--font-sans);
+    font-size: clamp(2.75rem, 1.85rem + 4.3vw, 6rem);
+    font-weight: 550;
+    letter-spacing: -0.04em;
+    line-height: 0.96;
+    overflow-wrap: normal;
+    text-wrap: balance;
+  }
+
+  .contact-intro p {
+    max-width: 48ch;
+    margin: 0;
+    color: rgba(226, 234, 243, 0.8);
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 0.93rem + 0.3vw, 1.18rem);
+    line-height: 1.58;
+    text-wrap: pretty;
   }
 
   .contact-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    min-width: 0;
     gap: var(--spacing-xxl);
+  }
+
+  @media (max-width: 760px) {
+    .contact-section {
+      padding-top: 112px;
+    }
+
+    .contact-intro {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      margin-bottom: 44px;
+    }
+
+    .contact-intro h1 {
+      max-width: 15ch;
+      font-size: clamp(2.35rem, 11vw, 3.5rem);
+      line-height: 0.98;
+    }
   }
 
   @media (min-width: 992px) {
     .contact-grid {
-      grid-template-columns: 3fr 2fr;
+      grid-template-columns: minmax(0, 3fr) minmax(280px, 2fr);
     }
   }
 
   .contact-form-col {
-    padding: var(--spacing-xl);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: clamp(22px, 4vw, 48px);
     background-color: var(--deep-navy);
   }
 
   .contact-form {
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
   }
 
   .form-row {
+    min-width: 0;
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
@@ -231,6 +274,7 @@ const t = useTranslations(locale);
   }
 
   .form-group {
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xs);
@@ -250,6 +294,8 @@ const t = useTranslations(locale);
   .form-select,
   .form-textarea {
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
     padding: 12px var(--spacing-sm);
     background-color: var(--void-black);
     border: 1px solid var(--slate);
@@ -257,6 +303,10 @@ const t = useTranslations(locale);
     color: var(--cloud-white);
     font-family: var(--font-sans);
     font-size: 0.9375rem;
+  }
+
+  .form-textarea {
+    resize: vertical;
   }
 
   .form-input:focus,
@@ -283,9 +333,20 @@ const t = useTranslations(locale);
     line-height: 1.4;
   }
 
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .form-actions .btn {
+    width: auto;
+    max-width: 100%;
+  }
+
   .form-status { min-height: 1.5em; color: var(--error); font-size: 0.875rem; }
 
   .contact-info-col {
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
@@ -328,6 +389,10 @@ const t = useTranslations(locale);
     transition: border-color var(--transition-micro);
   }
 
+  .contact-link-item > div:last-child {
+    min-width: 0;
+  }
+
   .contact-link-item:hover {
     border-color: var(--cyan-glow);
   }
@@ -344,6 +409,7 @@ const t = useTranslations(locale);
   }
 
   .link-val {
+    overflow-wrap: anywhere;
     font-size: 0.9375rem;
     font-weight: 600;
     color: var(--cloud-white);

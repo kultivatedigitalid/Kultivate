@@ -6,6 +6,8 @@ interface Props {
   ambient?: boolean;
   depth?: boolean;
   focalPoint?: string;
+  motion?: boolean;
+  centered?: boolean;
 }
 
 const {
@@ -15,6 +17,8 @@ const {
   ambient = true,
   depth = false,
   focalPoint = '50% 50%',
+  motion = false,
+  centered = false,
 } = Astro.props;
 ---
 
@@ -22,6 +26,8 @@ const {
   class="hero-visual"
   data-hero-visual
   data-depth={depth ? 'true' : undefined}
+  data-motion={motion ? 'true' : undefined}
+  data-centered={centered ? 'true' : undefined}
   aria-hidden={alt ? undefined : 'true'}
 >
   <img
@@ -33,16 +39,36 @@ const {
     decoding="async"
     fetchpriority={priority ? 'high' : 'auto'}
     data-ambient={ambient ? 'true' : undefined}
+    data-load-reveal={motion ? 'true' : undefined}
     style={`--hero-focal-point: ${focalPoint}`}
   />
-  <span class="hero-visual__veil" aria-hidden="true"></span>
-  <span class="hero-visual__glow" aria-hidden="true"></span>
 </div>
 
 <script>
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  const bindImageLoadReveals = () => {
+    document.querySelectorAll<HTMLImageElement>('[data-hero-visual] img[data-load-reveal="true"]').forEach((image) => {
+      if (image.dataset.loadRevealBound === 'true') return;
+      image.dataset.loadRevealBound = 'true';
+      const revealImage = () => {
+        if (reducedMotion.matches) return;
+        image.animate(
+          [{ opacity: 0.32 }, { opacity: 1 }],
+          { duration: 560, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+        );
+      };
+      if (image.complete && image.naturalWidth > 0) {
+        requestAnimationFrame(revealImage);
+      } else {
+        image.addEventListener('load', revealImage, { once: true });
+      }
+    });
+  };
+
+  bindImageLoadReveals();
+  document.addEventListener('astro:page-load', bindImageLoadReveals);
   document.querySelectorAll<HTMLElement>('[data-hero-visual][data-depth="true"]').forEach((visual) => {
     if (!finePointer.matches || reducedMotion.matches) return;
     const hero = visual.closest<HTMLElement>('[data-hero-shell]');
@@ -77,11 +103,14 @@ const {
     overflow: hidden;
     transform: translate3d(var(--hero-depth-x, 0), var(--hero-depth-y, 0), 0);
     transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+    --hero-art-shift-y: 0%;
   }
 
-  .hero-visual img,
-  .hero-visual__veil,
-  .hero-visual__glow {
+  .hero-visual[data-centered='true'] {
+    --hero-art-shift-y: -5%;
+  }
+
+  .hero-visual img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -91,28 +120,25 @@ const {
   .hero-visual img {
     object-fit: cover;
     object-position: var(--hero-focal-point);
-    transform: scale(1.02);
+    transform: scale(1.02) translate3d(0, var(--hero-art-shift-y), 0);
     animation: hero-ambient 20s var(--ease-in-out) infinite alternate;
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 68%, rgba(0, 0, 0, 0.92) 78%, rgba(0, 0, 0, 0.48) 91%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 0%, #000 68%, rgba(0, 0, 0, 0.92) 78%, rgba(0, 0, 0, 0.48) 91%, transparent 100%);
   }
 
-  .hero-visual__veil {
-    z-index: 1;
-    background:
-      radial-gradient(ellipse 60% 55% at 50% 46%, rgba(7, 11, 18, 0.08), rgba(7, 11, 18, 0.44) 76%),
-      linear-gradient(180deg, rgba(5, 8, 14, 0.24), rgba(5, 8, 14, 0.04) 34%, rgba(7, 11, 18, 0.42) 76%, #070b12 100%);
+  .hero-visual[data-motion='true'] img[data-ambient='true'] {
+    animation: hero-ambient-active 15s var(--ease-in-out) infinite alternate both;
   }
 
-  .hero-visual__glow {
-    z-index: 2;
-    opacity: 0.46;
-    background: radial-gradient(ellipse 48% 34% at 68% 55%, rgba(103, 217, 255, 0.12), transparent 72%);
+  @keyframes hero-ambient-active {
+    from { transform: scale(1.025) translate3d(-0.55%, calc(var(--hero-art-shift-y) + 0.35%), 0); }
+    to { transform: scale(1.055) translate3d(0.75%, calc(var(--hero-art-shift-y) - 0.55%), 0); }
   }
+
 
   @keyframes hero-ambient {
-    from { transform: scale(1.02) translate3d(-0.25%, 0.2%, 0); }
-    to { transform: scale(1.045) translate3d(0.45%, -0.35%, 0); }
+    from { transform: scale(1.02) translate3d(-0.25%, calc(var(--hero-art-shift-y) + 0.2%), 0); }
+    to { transform: scale(1.045) translate3d(0.45%, calc(var(--hero-art-shift-y) - 0.35%), 0); }
   }
 
   @media (max-width: 760px) {
@@ -121,13 +147,22 @@ const {
       transform: none;
     }
 
+    .hero-visual[data-centered='true'] {
+      --hero-art-shift-y: -2.75%;
+    }
+
     .hero-visual img {
-      transform: scale(1.025);
+      transform: scale(1.025) translate3d(0, var(--hero-art-shift-y), 0);
       animation-duration: 24s;
+    }
+
+    .hero-visual[data-motion='true'] img[data-ambient='true'] {
+      animation-duration: 18s;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
+
     .hero-visual {
       transform: none;
       transition: none;
@@ -135,7 +170,7 @@ const {
 
     .hero-visual img {
       animation: none;
-      transform: scale(1.02);
+      transform: scale(1.02) translate3d(0, var(--hero-art-shift-y), 0);
     }
   }
 </style>

@@ -21,7 +21,10 @@ export async function getStaticPaths() {
 const { service } = Astro.props;
 
 // Format data for subcomponents
-const problemItems = service.problemsSolved.map(p => ({ title: p, description: '' }));
+const problemItems = service.problemsSolved.map((problem, index) => ({
+  title: problem,
+  description: service.problemCauses[index] ?? ''
+}));
 
 const scopeItems = [
   {
@@ -70,6 +73,7 @@ const defaultFaqs = [
   title={`${service.title} - Layanan Kultivate`} 
   description={service.description}
 >
+  <div class="service-detail-page page-flow">
   <ServiceHero
     title={service.title}
     tagline={service.tagline}
@@ -79,7 +83,7 @@ const defaultFaqs = [
   />
 
   <ServiceProblems
-    heading="Mulai dari kebutuhan Anda"
+    heading="Apa yang menghambat"
     problems={problemItems}
     locale={locale}
   />
@@ -97,9 +101,11 @@ const defaultFaqs = [
   />
 
   <ServiceFAQ
-    heading="Pertanyaan yang Sering Diajukan"
+    heading="Pertanyaan umum"
     faqs={defaultFaqs}
   />
+
+  </div>
 
   <FinalCTA locale={locale} />
 </BaseLayout>

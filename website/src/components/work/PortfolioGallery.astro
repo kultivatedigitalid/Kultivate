@@ -20,11 +20,12 @@ const copy = locale === 'id'
     };
 ---
 
+<div class="work-page page-flow">
 <InteriorHero
   title={copy.title}
   description={copy.description}
   label={copy.label}
-  image="/assets/banners/portfolio-minimal.webp"
+  image="/assets/banners/portfolio-gradient.webp"
   imageAlt={locale === 'id' ? 'Tiga bidang obsidian yang terbuka dari satu garis biru' : 'Three obsidian planes opening from one blue seam'}
   variant="work"
 />
@@ -65,6 +66,7 @@ const copy = locale === 'id'
     ))}
   </div>
 </section>
+</div>
 
 <script>
   const setupPortfolioClusters = () => {

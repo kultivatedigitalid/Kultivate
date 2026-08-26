@@ -19,7 +19,7 @@ const t = useTranslations(locale);
   <div class="container">
     <div class="cta-content" data-reveal>
       <div>
-        <h2 id="final-cta-title">{locale === 'id' ? 'Mulai dari prioritas Anda saat ini' : 'Start with your current priorities'}</h2>
+        <h2 id="final-cta-title">{locale === 'id' ? 'Mulai dari prioritas Anda' : 'Start with your priorities'}</h2>
         <p>
           {locale === 'id'
             ? 'Ceritakan bagian yang membutuhkan perhatian. Kami akan memahami konteksnya sebelum merekomendasikan pekerjaan.'
@@ -39,11 +39,22 @@ const t = useTranslations(locale);
     min-height: 460px;
     display: flex;
     align-items: center;
-    overflow: hidden;
+    overflow: visible;
+    isolation: isolate;
     background:
       radial-gradient(ellipse 62% 92% at 76% 24%, rgba(73, 111, 255, 0.24), transparent 68%),
       radial-gradient(ellipse 52% 64% at 42% 76%, rgba(103, 217, 255, 0.13), transparent 72%),
       linear-gradient(180deg, transparent 0%, rgba(11, 19, 34, 0.82) 20%, rgba(7, 11, 18, 0.84) 100%);
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: clamp(-220px, -18vw, -140px) 0 auto;
+    z-index: 0;
+    height: clamp(180px, 22vw, 300px);
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 0%, rgba(7, 11, 18, 0.58) 54%, #070b12 100%);
   }
 
   .cta-visual {

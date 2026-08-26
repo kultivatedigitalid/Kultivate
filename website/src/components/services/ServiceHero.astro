@@ -8,14 +8,14 @@ interface Props {
   systemRole: string;
   locale: 'id' | 'en';
 }
-const { title, tagline, description, systemRole, locale } = Astro.props;
+const { title, tagline, locale } = Astro.props;
 const image = title.includes('AEO')
-  ? '/assets/banners/aeo-geo-minimal.webp'
+  ? '/assets/banners/aeo-geo-gradient.webp'
   : title.includes('Web')
-    ? '/assets/banners/web-services-minimal.webp'
+    ? '/assets/banners/web-services-gradient.webp'
     : title.includes('Content')
-      ? '/assets/banners/content-minimal.webp'
-      : '/assets/banners/seo-minimal.webp';
+      ? '/assets/banners/content-gradient.webp'
+      : '/assets/banners/seo-gradient.webp';
 const imageAlt = locale === 'id'
   ? `Visual abstrak untuk layanan ${title}`
   : `Abstract visual for ${title} services`;
@@ -26,23 +26,6 @@ const imageAlt = locale === 'id'
   description={tagline}
   image={image}
   imageAlt={imageAlt}
-  label={systemRole}
   variant="service-detail"
   focalPoint="55% 50%"
->
-  <Fragment slot="meta">
-    <p class="service-hero-description">{description}</p>
-  </Fragment>
-  <Fragment slot="actions">
-    <a href={`/${locale}/contact/`} class="btn btn-primary btn-cta">{locale === 'id' ? 'Konsultasi dengan kami' : 'Consult with us'}</a>
-    <a href={`/${locale}/work/`} class="btn btn-secondary">{locale === 'id' ? 'Lihat portofolio' : 'View portfolio'}</a>
-  </Fragment>
-</HeroShell>
-
-<style>
-  .service-hero-description {
-    max-width: 54ch;
-    margin-inline: auto;
-    color: rgba(226, 234, 243, 0.72);
-  }
-</style>
+/>
