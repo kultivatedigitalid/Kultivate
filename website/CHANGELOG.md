@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.6.0] - 2026-08-26
+
+### Added
+
+- Added cause, business impact, and inspection focus to the interactive problem lens on every bilingual service page.
+- Added working-artifact authority sections and expanded six-question qualification FAQs.
+- Added a five-question browser-only Website Growth Roadmap to both Services hubs.
+- Added three guided learning paths across the six existing bilingual Insights articles.
+- Added a clear three-step after-submit explanation to Contact.
+
+### Refined
+
+- Reclassified all seeded Work entries as Concept Study with page-level and card-level disclosure.
+- Replaced illustrative client-brand labels with business-context markers on the homepage.
+- Replaced unverified individual team profiles and founding-year copy with role-level delivery bios and verified-safe firm language.
+- Identified generated About process imagery as editorial illustration in public alt text.
+- Preserved the Phase 1 dark editorial design system, static output, responsive behavior, and reduced-motion policy.
+
+### Verified
+
+- Production build passes with 36 generated static pages and zero missing internal links.
+- Desktop and 390 px mobile QA report zero document overflow across every Phase 2 page.
+- Roadmap, service lens, learning paths, proof states, role bios, and after-submit interaction checks pass with an empty runtime exception list.
+- English built-output parity checks pass for every Phase 2 surface.
+- No illustrative client names, team identities, or unverified founding year appear in the built output.
+
 ## [0.5.2] - 2026-08-25
 
 ### Added

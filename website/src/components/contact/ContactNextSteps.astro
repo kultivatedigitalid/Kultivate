@@ -1,0 +1,47 @@
+---
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+const copy = locale === 'id'
+  ? {
+      label: 'Setelah dikirim',
+      title: 'Konteks Anda dibaca lebih dulu',
+      steps: [
+        'Kami meninjau tujuan, hambatan, dan kesiapan—bukan sekadar pilihan layanan.',
+        'Jika ada kecocokan, kami menghubungi Anda untuk discovery singkat dan menyepakati langkah berikutnya.',
+        'Jika belum tepat, kami akan menyampaikannya dengan jelas tanpa memaksakan scope.'
+      ],
+      note: 'Tidak ada rekomendasi otomatis sebelum konteksnya dipahami.'
+    }
+  : {
+      label: 'After submission',
+      title: 'We read the context first',
+      steps: [
+        'We review the objective, constraint, and readiness—not only the selected service.',
+        'If there is a fit, we contact you for a short discovery and agree on the next useful step.',
+        'If the fit is not right yet, we will say so clearly without forcing a scope.'
+      ],
+      note: 'No recommendation is automated before the context is understood.'
+    };
+---
+
+<section class="next-steps-card" aria-labelledby="contact-next-title">
+  <span class="text-mono">{copy.label}</span>
+  <h2 id="contact-next-title">{copy.title}</h2>
+  <ol>
+    {copy.steps.map((step, index) => (
+      <li><span class="text-mono">0{index + 1}</span><p>{step}</p></li>
+    ))}
+  </ol>
+  <p class="next-note">{copy.note}</p>
+</section>
+
+<style>
+  .next-steps-card { padding: var(--spacing-xl); background: var(--deep-navy); }
+  .next-steps-card > .text-mono { color: rgba(201, 211, 223, 0.5); }
+  .next-steps-card h2 { margin: 12px 0 22px; font-size: 1.25rem; font-weight: 650; line-height: 1.2; }
+  .next-steps-card ol { display: grid; gap: 16px; list-style: none; }
+  .next-steps-card li { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 10px; }
+  .next-steps-card li > span { padding-top: 3px; color: rgba(201, 211, 223, 0.46); font-size: 0.66rem; }
+  .next-steps-card li p { color: rgba(226, 234, 243, 0.76); font-size: 0.86rem; line-height: 1.55; }
+  .next-note { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(89, 106, 130, 0.34); color: var(--steel); font-size: 0.78rem; line-height: 1.5; }
+</style>

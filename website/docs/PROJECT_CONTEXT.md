@@ -1,12 +1,12 @@
 # Project Context
 
-**Context version:** 2.0  
-**Last updated:** 2026-08-13  
+**Context version:** 2.0
+**Last updated:** 2026-08-26
 **Governing brand source:** Kultivate Brand Guideline Book v2.0
 
 ## Brand
 
-Kultivate (PT Karya Lintas Generasi) is a digital agency offering Website Development, SEO, and Social Media Management. The strategic message connects the services as one digital growth system.
+Kultivate (PT Karya Lintas Generasi) is a digital agency offering SEO, AEO & GEO, Web Services, and Content Management. The strategic message begins with business context and connects only the expertise required for the current priority.
 
 ## Brand foundation
 
@@ -38,14 +38,19 @@ Kultivate (PT Karya Lintas Generasi) is a digital agency offering Website Develo
 - Bilingual ID/EN.
 - Astro static output.
 - Image-led black and blue hero with calm, low-luminance CTA treatment.
-- All three homepage services visible together on desktop, with a left-to-right image reveal on hover or keyboard focus.
+- All four homepage services remain visible as one responsive set, with restrained image response on hover or keyboard focus.
 - Four Insights cards form a user-controlled horizontal rail on the homepage; six bilingual articles each have a public detail route.
 - Homepage headings, section labels, service roles, and strategic titles follow the active locale; technical channel keywords may remain English where clearer.
 - Interactive elements use explicit pointer hover, 100-220 ms press feedback, and immediate keyboard focus states.
-- Connected System explains how Search opens the path, Website clarifies value, Social sustains familiarity, and inquiry follows as the next step.
+- Connected System routes four different needs toward SEO, AEO & GEO, Web Services, or Content Management while making business position and internal capacity the starting point.
 - Homepage sections share one continuous blue-navy background field with transparent-edge section layers.
 - Final CTA uses a centered composition and a restrained luminous navy horizon with reduced-motion support.
-- Copy stays concise and locale-aware. Draft content-collection placeholders remain excluded from production routes; the 12 user-authorized seeded portfolio showcases contain no fabricated metrics, testimonials, or client logos.
+- Copy stays concise and locale-aware. Draft content-collection placeholders remain excluded from production routes; the 12 seeded portfolio visuals are explicitly labeled Concept Study and contain no fabricated metrics, testimonials, or client relationships.
+- Phase 2 adds business-impact and inspection context to service problems, visible working artifacts, expanded qualification FAQs, and clear post-submit expectations.
+- The Services hub includes a five-question rule-based Website Growth Roadmap that runs entirely in the browser and stores or transmits no answers.
+- Insights organizes the six existing articles into three guided learning paths without creating a course platform or gated account.
+- Individual team biographies remain blocked by P-009; the public About page uses role-level firm bios and identifies generated working-process imagery as editorial illustration.
+- Homepage context markers are not client logos, and Work entries remain concept studies until P-006 through P-008 are approved.
 - Lazy loading below the fold.
 - AI documentation continuity is blocking.
 

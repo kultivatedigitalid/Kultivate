@@ -1,0 +1,112 @@
+---
+interface Props {
+  locale: 'id' | 'en';
+  serviceTitle: string;
+}
+
+const { locale, serviceTitle } = Astro.props;
+const copy = locale === 'id'
+  ? {
+      kicker: 'Artefak kerja',
+      title: 'Keputusan yang dapat dilihat, diperiksa, dan diteruskan',
+      intro: `Setiap proyek ${serviceTitle} meninggalkan alasan dan catatan kerja yang jelas—bukan hanya daftar tugas yang selesai.`,
+      items: [
+        ['Brief konteks bisnis', 'Tujuan, audiens, batasan, dan dependensi yang menjadi dasar keputusan.'],
+        ['Peta prioritas', 'Urutan pekerjaan berdasarkan dampak, kebutuhan, dan kapasitas implementasi.'],
+        ['Acceptance criteria', 'Definisi selesai yang disepakati sebelum pekerjaan masuk ke produksi.'],
+        ['Catatan review', 'Temuan, keputusan, dan langkah berikutnya yang dapat digunakan tim Anda.']
+      ],
+      note: 'Bentuk akhirnya menyesuaikan cakupan. Yang selalu dipertahankan adalah konteks dan alasan di balik keputusan.'
+    }
+  : {
+      kicker: 'Working artifacts',
+      title: 'Decisions you can see, review, and carry forward',
+      intro: `Every ${serviceTitle} engagement leaves a clear record of the reasoning and work—not only a list of completed tasks.`,
+      items: [
+        ['Business context brief', 'The goals, audience, constraints, and dependencies behind each decision.'],
+        ['Priority map', 'A sequence of work based on impact, need, and implementation capacity.'],
+        ['Acceptance criteria', 'A shared definition of done before work moves into production.'],
+        ['Review record', 'Findings, decisions, and next steps your team can continue using.']
+      ],
+      note: 'The final format follows the scope. The context and reasoning behind decisions always remain visible.'
+    };
+---
+
+<section class="service-evidence flow-section" aria-labelledby="evidence-title" data-scroll-key="service-evidence">
+  <div class="container evidence-layout">
+    <header data-reveal>
+      <span class="section-kicker">{copy.kicker}</span>
+      <h2 id="evidence-title">{copy.title}</h2>
+      <p>{copy.intro}</p>
+    </header>
+
+    <div class="evidence-stream" role="list">
+      {copy.items.map(([title, description], index) => (
+        <article role="listitem" data-reveal style={`--reveal-delay: ${index * 65}ms`}>
+          <span class="artifact-index text-mono">0{index + 1}</span>
+          <div>
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </div>
+        </article>
+      ))}
+      <p class="evidence-note text-mono" data-reveal>{copy.note}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-evidence {
+    padding-block: clamp(90px, 11vw, 152px);
+    background:
+      radial-gradient(ellipse 42% 32% at 82% 12%, rgba(103, 217, 255, 0.075), transparent 76%),
+      linear-gradient(180deg, rgba(5, 8, 14, 0.52), rgba(7, 11, 18, 0.38));
+  }
+
+  .evidence-layout {
+    display: grid;
+    grid-template-columns: minmax(270px, 0.72fr) minmax(0, 1.28fr);
+    gap: clamp(54px, 9vw, 136px);
+    align-items: start;
+  }
+
+  .evidence-layout > header { position: sticky; top: 116px; }
+  .evidence-layout h2 {
+    max-width: 12ch;
+    font-size: clamp(2.55rem, 4.7vw, 5.2rem);
+    font-weight: 520;
+    letter-spacing: -0.04em;
+    line-height: 0.98;
+  }
+
+  .evidence-layout header > p {
+    max-width: 42ch;
+    margin-top: 24px;
+    color: var(--steel);
+    line-height: 1.68;
+  }
+
+  .evidence-stream { border-top: 1px solid rgba(89, 106, 130, 0.34); }
+  .evidence-stream article {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 18px;
+    padding-block: clamp(28px, 4vw, 46px);
+    border-bottom: 1px solid rgba(89, 106, 130, 0.34);
+  }
+
+  .artifact-index { padding-top: 4px; color: rgba(201, 211, 223, 0.46); }
+  .evidence-stream h3 {
+    margin-bottom: 10px;
+    font-size: clamp(1.28rem, 2vw, 1.9rem);
+    font-weight: 550;
+    letter-spacing: -0.025em;
+  }
+  .evidence-stream article p { max-width: 54ch; color: var(--steel); line-height: 1.62; }
+  .evidence-note { max-width: 64ch; margin-top: 24px; color: rgba(201, 211, 223, 0.54); line-height: 1.6; }
+
+  @media (max-width: 860px) {
+    .evidence-layout { grid-template-columns: 1fr; }
+    .evidence-layout > header { position: static; }
+  }
+</style>

@@ -4,6 +4,7 @@ import ServiceHero from '../../../components/services/ServiceHero.astro';
 import ServiceProblems from '../../../components/services/ServiceProblems.astro';
 import ServiceScope from '../../../components/services/ServiceScope.astro';
 import ServiceProcess from '../../../components/services/ServiceProcess.astro';
+import ServiceEvidence from '../../../components/services/ServiceEvidence.astro';
 import ServiceFAQ from '../../../components/services/ServiceFAQ.astro';
 import FinalCTA from '../../../components/home/FinalCTA.astro';
 import { servicesData } from '../../../data/services';
@@ -21,9 +22,63 @@ export async function getStaticPaths() {
 const { service } = Astro.props;
 
 // Format data for subcomponents
+const businessLens: Record<string, { impacts: string[]; inspections: string[] }> = {
+  seo: {
+    impacts: [
+      'Pelanggan dengan intent tinggi dapat berhenti sebelum memahami penawaran Anda.',
+      'Friction teknis melemahkan pengalaman pengguna dan kepercayaan search terhadap halaman prioritas.',
+      'Tim sulit membedakan traffic yang ramai dari visibility yang benar-benar membantu pipeline.'
+    ],
+    inspections: [
+      'Hubungan penawaran, search intent, peran halaman, dan jalur menuju inquiry.',
+      'Crawl, indexation, performa, internal linking, dan konsistensi template.',
+      'Event, sumber inquiry, baseline, dan cara keputusan dilaporkan.'
+    ]
+  },
+  'aeo-geo': {
+    impacts: [
+      'Jawaban yang berguna tidak muncul ketika pelanggan meminta ringkasan atau rekomendasi.',
+      'Expertise brand lebih sulit dipercaya dan dirujuk ketika entity serta evidence tidak konsisten.',
+      'Tim tidak mengetahui pertanyaan dan sumber mana yang perlu diperkuat terlebih dahulu.'
+    ],
+    inspections: [
+      'Pertanyaan pelanggan, format jawaban, information gain, dan struktur halaman.',
+      'Entity, schema, sumber pendukung, konsistensi klaim, dan citation readiness.',
+      'Sampel prompt, kemunculan brand, sumber rujukan, dan perubahan yang dapat dipantau.'
+    ]
+  },
+  'web-services': {
+    impacts: [
+      'Friction pada website membuat pelanggan dan mesin pencari kesulitan mencapai halaman penting.',
+      'Perubahan komersial tertunda karena rekomendasi tidak memiliki jalur implementasi yang jelas.',
+      'Redesign atau migrasi dapat menghilangkan visibility, data, dan kepercayaan yang sudah dibangun.'
+    ],
+    inspections: [
+      'User journey, arsitektur, performa, accessibility, dan search readiness.',
+      'Ownership, backlog, dependensi teknis, dan acceptance criteria.',
+      'Redirect, template, analytics, pre-launch QA, dan post-launch checks.'
+    ]
+  },
+  'content-management': {
+    impacts: [
+      'Waktu produksi konten tidak membantu pertanyaan yang dekat dengan keputusan pelanggan.',
+      'Informasi lama melemahkan kepercayaan dan menambah pekerjaan bagi tim penjualan atau layanan.',
+      'Publishing terhenti ketika ownership, ritme, dan kapasitas tidak jelas.'
+    ],
+    inspections: [
+      'Demand, pertanyaan pelanggan, hubungan dengan layanan, dan peran setiap halaman.',
+      'Akurasi, content decay, overlap, performa, dan kebutuhan pembaruan.',
+      'Workflow, approval, CMS, kapasitas produksi, dan quality assurance.'
+    ]
+  }
+};
+
+const activeLens = businessLens[service.id];
 const problemItems = service.problemsSolved.map((problem, index) => ({
   title: problem,
-  description: service.problemCauses[index] ?? ''
+  description: service.problemCauses[index] ?? '',
+  impact: activeLens?.impacts[index] ?? '',
+  inspect: activeLens?.inspections[index] ?? ''
 }));
 
 const scopeItems = [
@@ -54,16 +109,28 @@ const processSteps = service.process.map(p => {
 
 const defaultFaqs = [
   {
-    question: `Bagaimana kami menentukan cakupan proyek ${service.title}?`,
-    answer: `Kami mulai dari posisi, prioritas, dan kapasitas internal Anda saat ini. Cakupan hanya berisi pekerjaan yang membutuhkan perhatian.`
+    question: 'Bagaimana kami menentukan cakupan proyek ' + service.title + '?',
+    answer: 'Kami mulai dari posisi, prioritas, risiko, dan kapasitas internal Anda saat ini. Cakupan hanya memuat pekerjaan yang memiliki alasan bisnis dan ownership yang jelas.'
   },
   {
-    question: `Apakah layanan ${service.title} dapat digunakan sendiri?`,
-    answer: `Bisa. Setiap layanan dapat berjalan sendiri atau digabungkan ketika pekerjaannya saling berkaitan. Kami merekomendasikan cakupan terkecil yang tetap berguna untuk prioritas Anda.`
+    question: 'Apakah layanan ' + service.title + ' dapat digunakan sendiri?',
+    answer: 'Bisa. Setiap layanan dapat berjalan sendiri atau digabungkan ketika dependensinya memang saling berkaitan. Kami merekomendasikan cakupan terkecil yang tetap berguna.'
   },
   {
-    question: `Bagaimana komunikasi selama proyek berlangsung?`,
-    answer: `Sebelum pekerjaan dimulai, kami menyepakati ritme update yang praktis dan menjelaskan keputusan, dependensi, serta hasil kerja dengan bahasa yang jelas.`
+    question: 'Apa yang perlu disiapkan oleh tim kami?',
+    answer: 'Biasanya kami membutuhkan akses yang relevan, satu pengambil keputusan, konteks penawaran, dan waktu untuk checkpoint. Detailnya ditentukan setelah discovery, bukan diasumsikan sebelumnya.'
+  },
+  {
+    question: 'Bagaimana komunikasi dan approval berlangsung?',
+    answer: 'Kami menyepakati ritme update, pemilik keputusan, checkpoint, dan acceptance criteria sebelum eksekusi agar tidak ada pekerjaan yang bergerak tanpa konteks.'
+  },
+  {
+    question: 'Bagaimana hasil dievaluasi?',
+    answer: 'Ukuran keberhasilan ditentukan dari baseline dan tujuan proyek. Kami tidak menjanjikan ranking atau hasil komersial tertentu; kami menjelaskan perubahan, evidence yang tersedia, dan faktor di luar kendali proyek.'
+  },
+  {
+    question: 'Apa yang terjadi setelah pekerjaan selesai?',
+    answer: 'Tim Anda menerima hasil kerja beserta konteks, catatan keputusan, dan prioritas berikutnya. Dukungan lanjutan hanya direkomendasikan jika memang ada kebutuhan yang jelas.'
   }
 ];
 ---
@@ -99,6 +166,8 @@ const defaultFaqs = [
     steps={processSteps}
     locale={locale}
   />
+
+  <ServiceEvidence locale={locale} serviceTitle={service.title} />
 
   <ServiceFAQ
     heading="Pertanyaan umum"

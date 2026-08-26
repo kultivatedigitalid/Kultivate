@@ -6,8 +6,8 @@ interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
 const projects = portfolioItems[locale].slice(0, 3);
 const copy = locale === 'id'
-  ? { kicker: 'Portofolio', title: 'Karya kami', all: 'Lihat semua proyek', region: 'Pilihan karya Kultivate' }
-  : { kicker: 'Portfolio', title: 'Our work', all: 'View all projects', region: 'Selected Kultivate work' };
+  ? { kicker: 'Eksplorasi', title: 'Arah pilihan', all: 'Lihat semua studi konsep', region: 'Pilihan studi konsep Kultivate', status: 'Concept study' }
+  : { kicker: 'Explorations', title: 'Selected directions', all: 'View all concept studies', region: 'Selected Kultivate concept studies', status: 'Concept study' };
 ---
 
 <section
@@ -49,8 +49,11 @@ const copy = locale === 'id'
             />
           </figure>
           <div class="project-caption">
-            <h3>{project.brand}</h3>
-            <span>{project.descriptor}</span>
+            <div>
+              <span class="project-status text-mono">{copy.status}</span>
+              <h3>{project.brand}</h3>
+            </div>
+            <span class="project-descriptor">{project.descriptor}</span>
           </div>
         </a>
       ))}
@@ -175,8 +178,10 @@ const copy = locale === 'id'
     padding-top: 16px;
   }
 
+  .project-caption > div { display: grid; gap: 5px; }
   .project h3 { font-size: 1.08rem; font-weight: 560; }
-  .project-caption span { color: var(--steel); font-size: 0.8rem; text-align: right; }
+  .project-caption .project-status { color: var(--signal-ice); font-size: 0.59rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .project-caption .project-descriptor { color: var(--steel); font-size: 0.8rem; text-align: right; }
 
   @media (hover: hover) and (pointer: fine) {
     .project:hover img,

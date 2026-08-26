@@ -4,6 +4,7 @@ import ServiceHero from '../../../components/services/ServiceHero.astro';
 import ServiceProblems from '../../../components/services/ServiceProblems.astro';
 import ServiceScope from '../../../components/services/ServiceScope.astro';
 import ServiceProcess from '../../../components/services/ServiceProcess.astro';
+import ServiceEvidence from '../../../components/services/ServiceEvidence.astro';
 import ServiceFAQ from '../../../components/services/ServiceFAQ.astro';
 import FinalCTA from '../../../components/home/FinalCTA.astro';
 import { servicesData } from '../../../data/services';
@@ -21,9 +22,63 @@ export async function getStaticPaths() {
 const { service } = Astro.props;
 
 // Format data for subcomponents
+const businessLens: Record<string, { impacts: string[]; inspections: string[] }> = {
+  seo: {
+    impacts: [
+      'High-intent customers may leave before they understand what your business offers.',
+      'Technical friction weakens user experience and search confidence in priority pages.',
+      'The team cannot separate busy traffic from visibility that genuinely supports the pipeline.'
+    ],
+    inspections: [
+      'The relationship between the offer, search intent, page roles, and the path to inquiry.',
+      'Crawling, indexation, performance, internal linking, and template consistency.',
+      'Events, inquiry sources, baselines, and how decisions are reported.'
+    ]
+  },
+  'aeo-geo': {
+    impacts: [
+      'Useful answers may be absent when customers ask for summaries or recommendations.',
+      'Brand expertise is harder to trust and reference when entities and evidence are inconsistent.',
+      'The team cannot see which questions and sources deserve attention first.'
+    ],
+    inspections: [
+      'Customer questions, answer formats, information gain, and page structure.',
+      'Entities, schema, supporting sources, claim consistency, and citation readiness.',
+      'Prompt samples, brand appearances, cited sources, and changes that can be monitored.'
+    ]
+  },
+  'web-services': {
+    impacts: [
+      'Website friction makes it harder for customers and search systems to reach important pages.',
+      'Commercial changes stall when recommendations have no clear implementation path.',
+      'A redesign or migration can remove visibility, data, and trust already built.'
+    ],
+    inspections: [
+      'User journeys, architecture, performance, accessibility, and search readiness.',
+      'Ownership, backlog, technical dependencies, and acceptance criteria.',
+      'Redirects, templates, analytics, pre-launch QA, and post-launch checks.'
+    ]
+  },
+  'content-management': {
+    impacts: [
+      'Content production time does not support questions close to customer decisions.',
+      'Outdated information weakens trust and creates extra work for sales or service teams.',
+      'Publishing stalls when ownership, rhythm, and capacity are unclear.'
+    ],
+    inspections: [
+      'Demand, customer questions, service relationships, and the role of each page.',
+      'Accuracy, content decay, overlap, performance, and refresh needs.',
+      'Workflow, approvals, CMS, production capacity, and quality assurance.'
+    ]
+  }
+};
+
+const activeLens = businessLens[service.id];
 const problemItems = service.problemsSolved.map((problem, index) => ({
   title: problem,
-  description: service.problemCauses[index] ?? ''
+  description: service.problemCauses[index] ?? '',
+  impact: activeLens?.impacts[index] ?? '',
+  inspect: activeLens?.inspections[index] ?? ''
 }));
 
 const scopeItems = [
@@ -52,16 +107,28 @@ const processSteps = service.process.map(p => {
 
 const defaultFaqs = [
   {
-    question: `How do you decide the scope of a ${service.title} project?`,
-    answer: `We begin with your current position, priorities, and internal capacity. The scope covers the work that needs attention and leaves out work that does not.`
+    question: 'How do you decide the scope of a ' + service.title + ' project?',
+    answer: 'We begin with your current position, priorities, risks, and internal capacity. The scope only includes work with a clear business reason and owner.'
   },
   {
-    question: `Can ${service.title} be used on its own?`,
-    answer: `Yes. Each service can stand on its own or be combined with others when the work overlaps. We recommend the smallest useful scope for your priorities.`
+    question: 'Can ' + service.title + ' be used on its own?',
+    answer: 'Yes. Each service can stand on its own or combine with another when the dependencies genuinely overlap. We recommend the smallest useful scope.'
   },
   {
-    question: `How will we communicate during the project?`,
-    answer: `We agree on a practical update rhythm before work begins and explain decisions, dependencies, and deliverables in plain language.`
+    question: 'What will our team need to provide?',
+    answer: 'We usually need relevant access, one decision owner, offer context, and time for checkpoints. The exact inputs follow discovery rather than assumptions.'
+  },
+  {
+    question: 'How do communication and approvals work?',
+    answer: 'We agree on the update rhythm, decision owners, checkpoints, and acceptance criteria before execution so work never moves without context.'
+  },
+  {
+    question: 'How will the outcome be evaluated?',
+    answer: 'Success measures follow the baseline and project objective. We do not promise rankings or a specific commercial result; we explain changes, available evidence, and factors outside the project.'
+  },
+  {
+    question: 'What happens when the work is complete?',
+    answer: 'Your team receives the deliverables with their context, decision record, and next priorities. Ongoing support is only recommended where there is a clear need.'
   }
 ];
 ---
@@ -97,6 +164,8 @@ const defaultFaqs = [
     steps={processSteps}
     locale={locale}
   />
+
+  <ServiceEvidence locale={locale} serviceTitle={service.title} />
 
   <ServiceFAQ
     heading="Common questions"

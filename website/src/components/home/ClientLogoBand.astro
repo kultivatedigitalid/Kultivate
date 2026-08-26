@@ -3,27 +3,35 @@ interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
 const copy = locale === 'id'
   ? {
-      label: 'BENTUK KOLABORASI',
+      label: 'KONTEKS BISNIS',
       title: 'Untuk prioritas bisnis yang berbeda',
-      note: 'Pendekatan kami menyesuaikan posisi setiap bisnis, kapasitas yang tersedia, dan ritme pekerjaan'
+      note: 'Pendekatan kami menyesuaikan posisi, kapasitas, dan ritme kerja setiap bisnis. Penanda di bawah menggambarkan konteks kerja—bukan daftar klien.',
+      region: 'Konteks bisnis yang dapat dilayani Kultivate'
     }
   : {
-      label: 'WAYS OF WORKING',
+      label: 'BUSINESS CONTEXTS',
       title: 'Built for different business priorities',
-      note: 'Our approach adapts to where each business stands, the capacity available, and the pace of the work'
+      note: 'Our approach adapts to each business position, capacity, and pace. The markers below represent working contexts—not a client list.',
+      region: 'Business contexts Kultivate can support'
     };
 
-const brands = [
-  { name: 'Avara', path: 'M5 35 18 7h6l13 28h-8l-2.8-7H15.8L13 35H5Zm13.3-14h5.4L21 14.3 18.3 21Z' },
-  { name: 'Nolume', path: 'M6 35V7h7l16 17.2V7h7v28h-7L13 17.9V35H6Z' },
-  { name: 'Tandemry', path: 'M4 7h34v7H24.5v21h-7V14H4V7Z' },
-  { name: 'Kavelo', path: 'M7 7h7v10.6L27.5 7H37L21.2 20.3 38 35h-10L14 22.6V35H7V7Z' },
-  { name: 'Orbyn', path: 'M21 4C11.6 4 4 11.6 4 21s7.6 17 17 17 17-7.6 17-17S30.4 4 21 4Zm0 7.2a9.8 9.8 0 1 1 0 19.6 9.8 9.8 0 0 1 0-19.6Zm12.2-5.7a4.3 4.3 0 1 1 0 8.6 4.3 4.3 0 0 1 0-8.6Z' },
-  { name: 'Serein', path: 'M34.5 10.2C31.8 6.8 27 5 21.6 5 13.4 5 7 9.4 7 15.3c0 6 5 8.1 13.7 9.8 5.2 1 7.2 1.8 7.2 3.7 0 1.9-2.5 3.1-6.2 3.1-4.4 0-8.2-1.5-11.2-4.4L5 32.7C8.8 36.3 14.4 38 21.3 38 30.2 38 36 33.7 36 27.6c0-6.1-5.1-8.2-13.8-9.8-5.1-.9-7.1-1.6-7.1-3.4 0-1.7 2.3-2.8 5.9-2.8 3.9 0 7 1.2 9.5 3.7l4-5.1Z' },
-  { name: 'Marlowe', path: 'M4 35V7h7.4L21 24.1 30.6 7H38v28h-7V18.7l-7.6 13.1h-4.8L11 18.7V35H4Z' },
-  { name: 'Ostra', path: 'M21 3 39 34H3L21 3Zm0 13.4L13.9 29h14.2L21 16.4Z' },
-  { name: 'Velin', path: 'M3 7h8l10 19.6L31 7h8L24.7 35h-7.4L3 7Z' }
+const markPaths = [
+  'M5 35 18 7h6l13 28h-8l-2.8-7H15.8L13 35H5Zm13.3-14h5.4L21 14.3 18.3 21Z',
+  'M6 35V7h7l16 17.2V7h7v28h-7L13 17.9V35H6Z',
+  'M4 7h34v7H24.5v21h-7V14H4V7Z',
+  'M7 7h7v10.6L27.5 7H37L21.2 20.3 38 35h-10L14 22.6V35H7V7Z',
+  'M21 4C11.6 4 4 11.6 4 21s7.6 17 17 17 17-7.6 17-17S30.4 4 21 4Zm0 7.2a9.8 9.8 0 1 1 0 19.6 9.8 9.8 0 0 1 0-19.6Zm12.2-5.7a4.3 4.3 0 1 1 0 8.6 4.3 4.3 0 0 1 0-8.6Z',
+  'M34.5 10.2C31.8 6.8 27 5 21.6 5 13.4 5 7 9.4 7 15.3c0 6 5 8.1 13.7 9.8 5.2 1 7.2 1.8 7.2 3.7 0 1.9-2.5 3.1-6.2 3.1-4.4 0-8.2-1.5-11.2-4.4L5 32.7C8.8 36.3 14.4 38 21.3 38 30.2 38 36 33.7 36 27.6c0-6.1-5.1-8.2-13.8-9.8-5.1-.9-7.1-1.6-7.1-3.4 0-1.7 2.3-2.8 5.9-2.8 3.9 0 7 1.2 9.5 3.7l4-5.1Z',
+  'M4 35V7h7.4L21 24.1 30.6 7H38v28h-7V18.7l-7.6 13.1h-4.8L11 18.7V35H4Z',
+  'M21 3 39 34H3L21 3Zm0 13.4L13.9 29h14.2L21 16.4Z',
+  'M3 7h8l10 19.6L31 7h8L24.7 35h-7.4L3 7Z'
 ];
+
+const contexts = locale === 'id'
+  ? ['Owner-led', 'Tim internal', 'High-consideration', 'Multi-service', 'Sedang bertumbuh', 'Technical debt', 'Demand baru', 'Migrasi website', 'Content scale']
+  : ['Owner-led', 'In-house teams', 'High-consideration', 'Multi-service', 'Scaling businesses', 'Technical debt', 'New demand', 'Website migration', 'Content scale'];
+
+const brands = markPaths.map((path, index) => ({ name: contexts[index], path }));
 ---
 
 <section class="brand-band" aria-labelledby="brand-band-title">
@@ -33,7 +41,7 @@ const brands = [
     <p>{copy.note}</p>
   </div>
 
-  <div class="brand-marquee" aria-label={locale === 'id' ? 'Rangkaian logo brand' : 'Brand logo showcase'}>
+  <div class="brand-marquee" aria-label={copy.region}>
     <div class="brand-track">
       {[0, 1].map((group) => (
         <ul class="brand-group" aria-hidden={group === 1 ? 'true' : undefined}>
