@@ -145,3 +145,19 @@
 - Focus/hover QA confirms the active marquee row pauses, retains a 24.48 px image gap at 1440 px, and enlarges the image in the requested outward direction.
 - Journey heading QA confirms a 24.48 px regular text treatment with no horizontal overflow.
 - Reduced-motion fallbacks stop marquee motion and remove transform transitions.
+## Phase 2 Features and Expertise Audit - 2026-08-26
+
+- Production build passes with 36 generated static pages.
+- Internal-link scan covers 36 HTML pages with zero missing local targets.
+- CDP browser QA at 1440 x 900 and 390 x 844 covers Services, SEO detail, Insights, Work, About, and Contact.
+- Every audited desktop and mobile page reports document scroll width equal to client width; the intentionally offscreen About marquee does not create document overflow.
+- Website Growth Roadmap exposes five labeled questions and 15 choices, returns exactly one local result, and links to the selected service route without sending or storing answers.
+- Service problem selection updates cause, business impact, and inspection focus; each page renders four working artifacts and six qualification FAQs.
+- Guided learning paths expose three pathways plus All, filter six articles to two per path, combine correctly with topic filters, and keep Indonesian result labels localized.
+- Work renders 12 visible Concept Study labels and one page-level disclosure; no client relationship or performance metric is claimed.
+- About renders four role-level delivery bios, no public individual profile cards, no unverified founding year, and 12 editorial-illustration alt labels.
+- Contact renders three explicit after-submit steps.
+- Runtime exception list is empty during the interaction run.
+- English built-output parity checks pass for every Phase 2 surface.
+- Visual inspection passed for the desktop Roadmap result, desktop learning-path chooser, and 390 px mobile Roadmap form.
+- The in-app browser connection was unavailable because the Windows sandbox helper could not apply OneDrive read ACLs; local Edge CDP was used for equivalent render and interaction QA.

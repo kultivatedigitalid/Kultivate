@@ -11,8 +11,8 @@ const copy = locale === 'id'
       description: 'Kami mulai dari apa yang dibutuhkan bisnis Anda untuk tumbuh.',
       heroAlt: 'Lima bentuk berbeda yang berkumpul mengitari satu pusat biru',
       cultureTitle: 'Kami percaya digital seharusnya terasa lebih terarah',
-      cultureBody: 'Kultivate dibangun pada 2020 untuk menyatukan website, search, content, dan social ke dalam satu arah yang mudah dipahami. Kami bekerja dekat dengan owner dan tim internal. Kami mendengarkan konteksnya, mempertanyakan hal yang belum jelas, lalu mengubahnya menjadi keputusan yang benar-benar bisa dijalankan.',
-      cultureLabel: 'Kolase cara tim Kultivate bekerja',
+      cultureBody: 'Kultivate dibangun untuk menyatukan cara bisnis dipahami, ditemukan, dan digunakan ke dalam satu arah yang mudah dijalankan. Kami bekerja dekat dengan owner dan tim internal, mendengarkan konteksnya, mempertanyakan hal yang belum jelas, lalu mengubahnya menjadi keputusan yang dapat dipahami bersama.',
+      cultureLabel: 'Kolase ilustrasi editorial tentang proses kerja Kultivate',
       partnershipTitle: 'Dibangun untuk tetap berguna',
       partnershipBody: 'Hasil yang baik seharusnya tetap masuk akal bagi tim Anda, berguna dalam pekerjaan sehari-hari, dan bisa berkembang bersama bisnis. Nilainya tidak seharusnya berhenti saat handover.',
       partnershipLabel: 'Hal yang Kultivate tinggalkan bersama setiap pekerjaan',
@@ -22,16 +22,17 @@ const copy = locale === 'id'
         ['Gunakan setiap hari', 'Website, content, dan sistem kerja disusun mengikuti kapasitas nyata tim Anda, bukan sekadar terlihat sempurna saat presentasi.'],
         ['Terus bergerak', 'Konteks dan prioritas tetap bersama tim Anda, sehingga langkah berikutnya tidak perlu dimulai lagi dari nol.']
       ],
-      teamTitle: 'Tim di balik pekerjaan kami',
-      teamNote: 'Tim inti'
+      teamTitle: 'Peran yang menjaga pekerjaan tetap utuh',
+      teamNote: 'Delivery roles',
+      teamIntro: 'Orang yang terlibat menyesuaikan kebutuhan proyek. Empat tanggung jawab ini tetap memiliki owner yang jelas dari discovery sampai review.'
     }
   : {
       title: 'SEO Agency for Your Priorities',
       description: 'We start with what your business needs to grow.',
       heroAlt: 'Five distinct forms gathered around one blue center',
       cultureTitle: 'We believe digital should feel more directed',
-      cultureBody: 'Kultivate was built in 2020 to bring websites, search, content, and social into one direction people can understand. We work closely with owners and in-house teams. We listen to the context, question what is unclear, and turn it into decisions people can genuinely act on.',
-      cultureLabel: 'A collage showing how the Kultivate team works',
+      cultureBody: 'Kultivate was built to bring the way a business is understood, found, and used into one direction people can act on. We work closely with owners and in-house teams, listen to the context, question what is unclear, and turn it into decisions people can understand together.',
+      cultureLabel: 'A collage of editorial illustrations about the Kultivate working process',
       partnershipTitle: 'Built to stay useful',
       partnershipBody: 'A good outcome should make sense to your team, work in the day to day, and grow with the business. Its value should not stop at handover.',
       partnershipLabel: 'What Kultivate leaves behind with every engagement',
@@ -41,8 +42,9 @@ const copy = locale === 'id'
         ['Use it every day', 'Websites, content, and working systems are shaped around your team’s real capacity, not presentation-day perfection.'],
         ['Keep moving', 'Clear context and priorities stay with your team, so the next step never needs to start from zero.']
       ],
-      teamTitle: 'The people behind the work',
-      teamNote: 'Core team'
+      teamTitle: 'The roles that keep the work connected',
+      teamNote: 'Delivery roles',
+      teamIntro: 'The people involved follow the needs of the engagement. These four responsibilities keep a clear owner from discovery through review.'
     };
 
 const collageImages = [
@@ -65,20 +67,18 @@ const marqueeRows = [collageImages.slice(0, 6), collageImages.slice(6)].map((row
   ...row.map((item) => ({ item, duplicate: true }))
 ]);
 
-const team = locale === 'id'
+const deliveryRoles = locale === 'id'
   ? [
-      ['Mira Santoso', 'Strategi & Riset SEO', '/assets/team/mira-santoso.webp'],
-      ['Raka Pratama', 'Technical SEO', '/assets/team/raka-pratama.webp'],
-      ['Ayu Mahendra', 'Content & On-Page', '/assets/team/ayu-mahendra.webp'],
-      ['Dimas Wirawan', 'Authority & Outreach', '/assets/team/dimas-wirawan.webp'],
-      ['Nadia Putri', 'Measurement & Growth', '/assets/team/nadia-putri.webp']
+      ['Strategy & discovery', 'Menerjemahkan tujuan, audiens, batasan, dan economics bisnis menjadi prioritas yang dapat diuji.', 'Terlibat pada framing masalah, scope, dan keputusan utama.'],
+      ['Technical delivery', 'Menjaga implementasi, performa, accessibility, search readiness, dan acceptance criteria.', 'Terlibat dari feasibility sampai QA dan handover.'],
+      ['Content & authority', 'Menyusun informasi agar berguna bagi pelanggan, konsisten dengan expertise, dan mudah dipelihara.', 'Terlibat pada research, structure, evidence, dan editorial review.'],
+      ['Project stewardship', 'Menjaga ownership, checkpoint, dependensi, dan catatan keputusan tetap jelas bagi semua pihak.', 'Terlibat sepanjang ritme komunikasi dan review.']
     ]
   : [
-      ['Mira Santoso', 'SEO Strategy & Research', '/assets/team/mira-santoso.webp'],
-      ['Raka Pratama', 'Technical SEO', '/assets/team/raka-pratama.webp'],
-      ['Ayu Mahendra', 'Content & On-Page', '/assets/team/ayu-mahendra.webp'],
-      ['Dimas Wirawan', 'Authority & Outreach', '/assets/team/dimas-wirawan.webp'],
-      ['Nadia Putri', 'Measurement & Growth', '/assets/team/nadia-putri.webp']
+      ['Strategy & discovery', 'Turns goals, audience, constraints, and business economics into priorities the team can test.', 'Involved in problem framing, scope, and major decisions.'],
+      ['Technical delivery', 'Owns implementation quality, performance, accessibility, search readiness, and acceptance criteria.', 'Involved from feasibility through QA and handover.'],
+      ['Content & authority', 'Shapes information to help customers, reflect expertise, and remain maintainable.', 'Involved in research, structure, evidence, and editorial review.'],
+      ['Project stewardship', 'Keeps ownership, checkpoints, dependencies, and decision records clear for everyone.', 'Involved throughout communication and review.']
     ];
 ---
 
@@ -106,7 +106,7 @@ const team = locale === 'id'
                 <figure>
                   <img
                     src={item[0]}
-                    alt={duplicate ? '' : item[locale === 'id' ? 1 : 2]}
+                    alt={duplicate ? '' : (locale === 'id' ? 'Ilustrasi editorial: ' + item[1] : 'Editorial illustration: ' + item[2])}
                     width="1280"
                     height="853"
                     loading="lazy"
@@ -141,14 +141,21 @@ const team = locale === 'id'
 
   <section class="team-section flow-section" aria-labelledby="team-title" data-scroll-key="about-team">
     <div class="container team-heading" data-reveal>
-      <h2 id="team-title">{copy.teamTitle}</h2>
+      <div>
+        <h2 id="team-title">{copy.teamTitle}</h2>
+        <p>{copy.teamIntro}</p>
+      </div>
       <span class="text-mono">{copy.teamNote}</span>
     </div>
     <div class="container team-grid">
-      {team.map(([name, role, image], index) => (
-        <article class="person" data-reveal style={`--reveal-delay: ${index * 70}ms`}>
-          <figure><img src={image} alt={(locale === 'id' ? 'Foto profil: ' : 'Profile portrait: ') + name} width="1120" height="1400" loading="lazy" decoding="async" /></figure>
-          <div><h3>{name}</h3><p>{role}</p></div>
+      {deliveryRoles.map(([role, responsibility, involvement], index) => (
+        <article class="delivery-role" data-reveal style={{ '--reveal-delay': (index * 70) + 'ms' }}>
+          <span class="role-index text-mono">0{index + 1}</span>
+          <div>
+            <h3>{role}</h3>
+            <p>{responsibility}</p>
+            <small>{involvement}</small>
+          </div>
         </article>
       ))}
     </div>
@@ -313,17 +320,18 @@ const team = locale === 'id'
     text-wrap: pretty;
   }
   .team-section { padding-block: clamp(96px, 11vw, 160px); background: transparent; }
-  .team-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; margin-bottom: 42px; }
-  .team-heading h2 { max-width: 12ch; font-size: clamp(2.5rem, 4.5vw, 5rem); font-weight: 520; letter-spacing: -0.04em; }
-  .team-heading span { color: rgba(201, 211, 223, 0.52); }
-  .team-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(10px, 1.5vw, 22px); }
-  .person { min-width: 0; }
-  .person figure { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 8px; background: #07101a; }
-  .person img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.84); transition: transform 820ms var(--ease-out), filter 520ms var(--ease-out); }
-  .person > div { padding-top: 16px; }
-  .person h3 { margin-bottom: 5px; font-size: clamp(1rem, 1.25vw, 1.22rem); font-weight: 580; }
-  .person p { color: var(--steel); font-size: 0.8rem; }
-
+  .team-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 36px; margin-bottom: 42px; }
+  .team-heading > div { max-width: 820px; }
+  .team-heading h2 { max-width: 14ch; font-size: clamp(2.5rem, 4.5vw, 5rem); font-weight: 520; letter-spacing: -0.04em; line-height: 0.98; }
+  .team-heading p { max-width: 52ch; margin-top: 22px; color: var(--steel); line-height: 1.66; }
+  .team-heading > span { flex: none; color: rgba(201, 211, 223, 0.52); }
+  .team-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid rgba(89, 106, 130, 0.34); }
+  .delivery-role { min-width: 0; display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; padding: clamp(30px, 4vw, 48px); border-bottom: 1px solid rgba(89, 106, 130, 0.34); }
+  .delivery-role:nth-child(odd) { border-right: 1px solid rgba(89, 106, 130, 0.34); }
+  .role-index { padding-top: 4px; color: rgba(201, 211, 223, 0.46); }
+  .delivery-role h3 { margin-bottom: 13px; font-size: clamp(1.25rem, 1.9vw, 1.72rem); font-weight: 570; letter-spacing: -0.025em; }
+  .delivery-role p { max-width: 45ch; color: rgba(226, 234, 243, 0.76); line-height: 1.62; }
+  .delivery-role small { display: block; max-width: 47ch; margin-top: 18px; color: var(--steel); font-size: 0.78rem; line-height: 1.52; }
   @media (hover: hover) and (pointer: fine) {
     .collage-row:hover .collage-track,
     .collage-row:focus-within .collage-track { animation-play-state: paused; }
@@ -337,14 +345,14 @@ const team = locale === 'id'
     .collage-item:hover img,
     .collage-item:focus-visible img { filter: grayscale(0) brightness(0.98) saturate(1.03); transform: scale(1.018); }
     .collage-item:focus-visible figure { outline: 2px solid var(--signal-ice); outline-offset: 3px; }
-    .person:hover img { transform: scale(1.03); filter: saturate(1); }
+
   }
 
   @media (max-width: 1000px) {
     .culture-copy { grid-template-columns: 1fr; gap: 22px; }
     .culture-copy p { max-width: 58ch; }
     .partnership-statement { max-width: 29ch; }
-    .team-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
   @media (max-width: 760px) {
@@ -358,13 +366,12 @@ const team = locale === 'id'
     .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
-  @media (max-width: 440px) { .team-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 440px) { .team-grid { grid-template-columns: 1fr; } .delivery-role:nth-child(odd) { border-right: 0; } }
 
   @media (prefers-reduced-motion: reduce) {
     .collage-track { animation: none; transform: none; }
     .collage-item,
-    .collage-item img,
-    .person img { transition: none; }
+    .collage-item img { transition: none; }
     .collage-item { transform: none; }
   }
 </style>

@@ -45,17 +45,18 @@ This rule is mandatory for every AI, developer, designer, or reviewer working on
 
 ## 1. Project Summary
 
-Kultivate is a digital agency offering three connected services:
+Kultivate is a digital agency offering four services that may work independently or together:
 
-- Website Development
 - Search Engine Optimization (SEO)
-- Social Media Management
+- Answer Engine Optimization and Generative Engine Optimization (AEO & GEO)
+- Web Services
+- Content Management
 
-The website must explain these services as a connected digital growth system without presenting unverified guarantees. Its three primary jobs are:
+The website must begin with business context before presenting expertise and must not present unverified guarantees. Its three primary jobs are:
 
 1. Generate qualified inquiry.
-2. Build credibility using real work, process, deliverables, and verified proof.
-3. Explain the relationship between Website Development, SEO, and Social Media Management while supporting organic discovery.
+2. Build credibility using transparent process, working artifacts, educational content, and verified proof.
+3. Help visitors choose a practical starting point across SEO, AEO & GEO, Web Services, and Content Management.
 
 ### Selected direction
 
@@ -149,12 +150,14 @@ Use consistent locale-prefixed URLs:
 /en/work/[slug]/
 /id/services/
 /en/services/
-/id/services/website-development/
-/en/services/website-development/
 /id/services/seo/
 /en/services/seo/
-/id/services/social-media-management/
-/en/services/social-media-management/
+/id/services/aeo-geo/
+/en/services/aeo-geo/
+/id/services/web-services/
+/en/services/web-services/
+/id/services/content-management/
+/en/services/content-management/
 /id/about/
 /en/about/
 /id/insights/
@@ -214,7 +217,7 @@ Approved Indonesian headline:
 Supporting copy limit:
 - Maximum 24-32 words per language.
 - Maximum two lines on desktop where practical.
-- Explain the three services as one connected system.
+- Explain how four service options respond to different business priorities.
 
 Primary CTA:
 - Start a Project / Mulai Proyek
@@ -235,55 +238,48 @@ Purpose:
 Structure:
 - One featured project with a large visual.
 - Two supporting projects.
-- Each item shows project name, category/service, short context, and View Case Study.
+- Each item shows a title, short direction, and a visible evidence status.
 
 Rules:
 - Use real project visuals only after approval.
 - Avoid fake performance metrics.
-- Placeholder project cards must be visibly marked in development and excluded from production.
+- Exploratory entries may be public only when explicitly labeled Concept Study and accompanied by a disclosure that no client relationship or performance result is claimed.
 
-#### 4. Three Services
+#### 4. Four Service Options
 
-Use three wide cards or columns:
+Use four restrained service entries:
 
-1. Website Development - Foundation
-2. SEO - Discoverability
-3. Social Media Management - Distribution
+1. SEO - traditional search visibility.
+2. AEO & GEO - AI search understanding and retrievability.
+3. Web Services - technical implementation and experience support.
+4. Content Management - useful publishing and refresh rhythm.
 
 Copy limit:
 - Title.
-- One short sentence, 18-24 words.
+- One short sentence, 18-30 words.
 - One text link.
 
 Interaction and layout:
-- All three services remain visible together in one desktop viewport-width section; no horizontal scroll is required to discover a service.
-- On hover or keyboard focus, the matching abstract image reveals from left to right in 300-600 ms.
+- All four services remain visible as one responsive set without autoplay.
+- Hover and keyboard focus may reveal supporting imagery or emphasis within 300-600 ms.
 - A dark directional scrim keeps every label and description legible.
-- On touch devices, service imagery is visible by default and no hover is required.
+- Touch devices show the information without requiring hover.
 
 Avoid:
-- Long lists of tools.
-- More than three cards.
-- Separate glowing background for every card.
+- Tool lists before the business problem is understood.
+- Claiming every visitor needs every service.
+- Separate glowing background for every entry.
 
 #### 5. Connected System
 
 Purpose:
-- Answer how Website, SEO, and Social move a user from attention to action.
-- Explain the role and user question answered at every stage.
-- Show how behavior and inquiries feed the next improvement cycle.
-
-Flow:
-
-```text
-Discover / Search -> Understand / Website -> Remember / Social -> Act / Inquiry
-                                      |
-                                      -> Continuous Feedback -> next cycle
-```
+- Help a visitor start from the current business need rather than from an agency skill list.
+- Explain when SEO, AEO & GEO, Web Services, or Content Management becomes useful.
+- Make position, goal, capacity, and unnecessary work part of the recommendation logic.
 
 Presentation:
-- Four responsive stages with localized stage names and user questions; technical channel keywords remain English where clearer.
-- A visible feedback line closes the loop and uses one slow linear pulse to explain direction.
+- Four responsive stages with localized need states and service roles; technical channel keywords may remain English where clearer.
+- A visible priority line explains that the starting point and combination depend on client context.
 - Desktop uses four columns, tablet two, and mobile one; no text or arrow may overlap.
 
 #### 6. Why Kultivate
@@ -315,6 +311,7 @@ Keep the homepage version short. Detailed dependencies, approval, and deliverabl
 - Display category, title, date, and reading time only if accurate.
 - Use concise titles and no long excerpt.
 - Never autoplay or fabricate article metadata.
+- On the Insights index, organize the existing articles into guided learning paths by visitor situation; do not create a gated course, account, or certificate.
 
 #### 9. Final CTA
 
@@ -372,28 +369,28 @@ Every metric must include baseline, period, method, and source.
 
 ### Services Hub
 
-**Primary job:** explain the three-service architecture and route visitors to the right service.
+**Primary job:** explain the four service options and help visitors choose a starting point from their current context.
 
 Sections:
 - Short proposition.
-- Three service summaries.
-- Connected-system diagram.
-- How to choose a starting point.
-- Related work.
+- Four service summaries.
+- Rule-based Website Growth Roadmap with five questions.
+- Immediate result with a relevant service route.
+- Clear statement that diagnostic answers remain in the browser.
 - CTA.
 
 ### Individual Service Page
 
 Required anatomy:
 1. Service proposition.
-2. Problems solved.
+2. Problems solved with cause, business impact, and inspection focus.
 3. Who it is for.
 4. Scope.
 5. Deliverables.
 6. Process and dependencies.
-7. Related work.
-8. Verified outcomes or process proof.
-9. FAQ.
+7. Working artifacts such as context brief, priority map, acceptance criteria, and review record.
+8. Verified outcomes or an explicit non-metric or concept-study status.
+9. Qualification and objection FAQ.
 10. CTA.
 
 Do not publish exact price, timeline, or guarantee unless approved.
@@ -407,7 +404,7 @@ Sections:
 - Connected Digital Growth philosophy.
 - Principles.
 - Process overview.
-- Team only when approved assets and roles exist.
+- Role-level firm bios may explain delivery ownership; individual names, biographies, and portraits require approved assets and roles.
 - Location/contact only when public details are confirmed.
 - CTA.
 
@@ -988,3 +985,17 @@ No AI or developer may invent these values to finish a page.
 ## 20. Brand Guideline v2.0 Consistency Notice
 
 This blueprint is synchronized with Kultivate Brand Guideline Book v2.0. Any future change to color, typography, layout, imagery, motion, website direction, bilingual behavior, or documentation governance must update the governing Brand Guideline source, this blueprint, `docs/BRAND_IMPLEMENTATION.md`, the decision log, QA checklist, and changelog in the same task.
+---
+
+## 21. Phase 2 Features and Expertise Positioning
+
+Phase 2 extends existing pages and does not replace the Phase 1 visual direction.
+
+- Services detail pages expose business impact, inspection focus, working artifacts, and expanded qualification FAQs.
+- The Services hub hosts a local rule-based diagnostic; it is educational and never represented as AI advice.
+- Insights uses three guided learning paths built from the six existing articles.
+- Work uses explicit evidence states. Verified Case, Non-metric Outcome, and Concept Study must never share ambiguous presentation.
+- About uses role-level delivery ownership until verified individual team data is approved.
+- Homepage context markers must never be interpreted or labeled as client logos.
+- Course platforms, accounts, payments, memberships, client portals, AI advisors, and gamification remain out of scope.
+- Industry-context modules and downloadable toolkits remain conditional on approved examples and content.

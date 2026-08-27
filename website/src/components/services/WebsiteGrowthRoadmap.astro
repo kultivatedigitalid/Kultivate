@@ -1,0 +1,217 @@
+---
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+
+const copy = locale === 'id'
+  ? {
+      kicker: 'Website Growth Roadmap',
+      title: 'Temukan langkah pertama yang paling berguna',
+      intro: 'Jawab lima pertanyaan singkat. Hasil ini tidak dikirim atau disimpan—hanya digunakan di browser Anda.',
+      questions: [
+        ['Seberapa mudah pelanggan memahami penawaran utama Anda?', ['Masih sulit dijelaskan', 'Sebagian sudah jelas', 'Sudah jelas dan teruji']],
+        ['Seberapa yakin Anda terhadap kesehatan teknis website?', ['Belum pernah diperiksa', 'Ada masalah yang diketahui', 'Stabil dan dipantau']],
+        ['Seberapa baik pelanggan yang tepat menemukan website?', ['Belum konsisten', 'Ada visibility, belum terarah', 'Terarah ke halaman prioritas']],
+        ['Seberapa teratur tim memperbarui konten dan informasi?', ['Reaktif', 'Ada ritme, belum konsisten', 'Terjadwal dan memiliki owner']],
+        ['Prioritas bisnis yang paling dekat saat ini?', ['Perbaiki fondasi website', 'Perkuat visibility', 'Bangun sistem konten']]
+      ],
+      check: 'Lihat roadmap saya',
+      reset: 'Ulangi jawaban',
+      resultLabel: 'Arah awal Anda',
+      serviceLabel: 'Layanan yang paling relevan untuk ditinjau lebih dulu',
+      viewService: 'Lihat konteks layanan',
+      stages: [
+        ['Rapikan fondasi sebelum menambah channel', 'Mulai dari masalah yang memengaruhi pemahaman, akses, dan measurement. Setelah fondasi stabil, visibility dan content dapat bekerja lebih efektif.', ['Perjelas penawaran dan halaman prioritas', 'Validasi technical health dan tracking', 'Tetapkan owner serta acceptance criteria']],
+        ['Selaraskan sistem dengan prioritas bisnis', 'Fondasi sudah terbentuk, tetapi arah antar halaman, search, dan workflow masih perlu disatukan agar pekerjaan tidak berjalan terpisah.', ['Hubungkan demand dengan peran halaman', 'Prioritaskan backlog berdasarkan dampak', 'Bangun ritme review yang dapat dipertahankan']],
+        ['Optimalkan berdasarkan evidence', 'Sistem Anda relatif matang. Fokus berikutnya adalah memperkuat area bernilai, menguji perubahan, dan menjaga pembelajaran tetap terdokumentasi.', ['Perdalam visibility pada intent bernilai', 'Uji friction di jalur menuju inquiry', 'Gunakan review record untuk menentukan iterasi']]
+      ],
+      services: {
+        foundation: ['Web Services', 'web-services'],
+        visibility: ['SEO', 'seo'],
+        content: ['Content Management', 'content-management']
+      }
+    }
+  : {
+      kicker: 'Website Growth Roadmap',
+      title: 'Find the first move worth making',
+      intro: 'Answer five short questions. Nothing is sent or stored—the result only runs in your browser.',
+      questions: [
+        ['How easily can customers understand your core offer?', ['It is still hard to explain', 'Some of it is clear', 'It is clear and tested']],
+        ['How confident are you in the technical health of the website?', ['It has not been reviewed', 'Known issues remain', 'It is stable and monitored']],
+        ['How well do the right customers find the website?', ['Not consistently', 'Some visibility, little direction', 'Directed to priority pages']],
+        ['How consistently does the team update content and information?', ['Reactive', 'A rhythm exists but slips', 'Scheduled with a clear owner']],
+        ['Which business priority is closest right now?', ['Improve the website foundation', 'Strengthen visibility', 'Build the content system']]
+      ],
+      check: 'Show my roadmap',
+      reset: 'Change answers',
+      resultLabel: 'Your starting direction',
+      serviceLabel: 'The most relevant service to review first',
+      viewService: 'View service context',
+      stages: [
+        ['Strengthen the foundation before adding channels', 'Begin with the issues affecting understanding, access, and measurement. Once the foundation is stable, visibility and content can work more effectively.', ['Clarify the offer and priority pages', 'Validate technical health and tracking', 'Set ownership and acceptance criteria']],
+        ['Align the system with the business priority', 'The foundation is taking shape, but pages, search, and workflow still need one direction so the work does not run in silos.', ['Connect demand with page roles', 'Prioritize the backlog by impact', 'Build a review rhythm the team can sustain']],
+        ['Optimize from evidence', 'Your system is relatively mature. The next move is to strengthen high-value areas, test changes, and keep the learning documented.', ['Deepen visibility around valuable intent', 'Test friction on the path to inquiry', 'Use review records to choose each iteration']]
+      ],
+      services: {
+        foundation: ['Web Services', 'web-services'],
+        visibility: ['SEO', 'seo'],
+        content: ['Content Management', 'content-management']
+      }
+    };
+---
+
+<section
+  class="roadmap flow-section"
+  aria-labelledby="roadmap-title"
+  data-scroll-key="services-roadmap"
+  data-roadmap
+  data-locale={locale}
+  data-services={JSON.stringify(copy.services)}
+>
+  <div class="container roadmap-heading" data-reveal>
+    <span class="section-kicker">{copy.kicker}</span>
+    <h2 id="roadmap-title">{copy.title}</h2>
+    <p>{copy.intro}</p>
+  </div>
+
+  <div class="container roadmap-layout">
+    <form class="roadmap-form" data-roadmap-form>
+      {copy.questions.map(([question, options], questionIndex) => (
+        <fieldset>
+          <legend><span class="text-mono">0{questionIndex + 1}</span>{question}</legend>
+          <div class="roadmap-options">
+            {options.map((option, optionIndex) => {
+              const value = questionIndex === 4
+                ? ['foundation', 'visibility', 'content'][optionIndex]
+                : String(optionIndex);
+              return (
+                <label>
+                  <input
+                    type="radio"
+                    name={`roadmap-${questionIndex}`}
+                    value={value}
+                    data-score={questionIndex === 4 ? '1' : String(optionIndex)}
+                    required
+                  />
+                  <span>{option}</span>
+                </label>
+              );
+            })}
+          </div>
+        </fieldset>
+      ))}
+      <button type="submit" class="btn btn-primary roadmap-submit">{copy.check}</button>
+    </form>
+
+    <aside class="roadmap-result" aria-live="polite" aria-atomic="true" data-roadmap-result data-reveal>
+      <div class="result-placeholder" data-result-placeholder>
+        <span class="text-mono">{copy.resultLabel}</span>
+        <p>{locale === 'id' ? 'Hasil akan muncul setelah lima jawaban terisi.' : 'Your result will appear after all five answers.'}</p>
+      </div>
+      {copy.stages.map(([title, description, priorities], index) => (
+        <div class="result-panel" data-result-panel={index} hidden>
+          <span class="text-mono">{copy.resultLabel}</span>
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <ol>{priorities.map((priority) => <li>{priority}</li>)}</ol>
+          <div class="result-service">
+            <span class="text-mono">{copy.serviceLabel}</span>
+            <strong data-service-name></strong>
+            <a href={`/${locale}/services/`} class="link-hover-arrow" data-service-link>
+              <span>{copy.viewService}</span><span aria-hidden="true">&#8594;</span>
+            </a>
+          </div>
+          <button type="button" class="roadmap-reset" data-roadmap-reset>{copy.reset}</button>
+        </div>
+      ))}
+    </aside>
+  </div>
+</section>
+
+<script>
+  const setupRoadmaps = () => {
+    document.querySelectorAll<HTMLElement>('[data-roadmap]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+
+      const form = root.querySelector<HTMLFormElement>('[data-roadmap-form]');
+      const placeholder = root.querySelector<HTMLElement>('[data-result-placeholder]');
+      const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-result-panel]'));
+      const services = JSON.parse(root.dataset.services ?? '{}') as Record<string, [string, string]>;
+      if (!form) return;
+
+      const showResult = () => {
+        const checked = Array.from(form.querySelectorAll<HTMLInputElement>('input[type="radio"]:checked'));
+        if (checked.length !== 5) return;
+        const score = checked.reduce((total, input) => total + Number(input.dataset.score ?? 0), 0);
+        const stage = score <= 3 ? 0 : score <= 7 ? 1 : 2;
+        const serviceKey = checked[4]?.value ?? 'foundation';
+        const [serviceName, serviceSlug] = services[serviceKey] ?? services.foundation;
+
+        if (placeholder) placeholder.hidden = true;
+        panels.forEach((panel, index) => {
+          panel.hidden = index !== stage;
+          if (index !== stage) return;
+          const name = panel.querySelector<HTMLElement>('[data-service-name]');
+          const link = panel.querySelector<HTMLAnchorElement>('[data-service-link]');
+          if (name) name.textContent = serviceName;
+          if (link) link.href = `/${root.dataset.locale}/services/${serviceSlug}/`;
+        });
+      };
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        showResult();
+      });
+
+      root.querySelectorAll<HTMLButtonElement>('[data-roadmap-reset]').forEach((button) => {
+        button.addEventListener('click', () => {
+          form.reset();
+          panels.forEach((panel) => { panel.hidden = true; });
+          if (placeholder) placeholder.hidden = false;
+          form.querySelector<HTMLInputElement>('input')?.focus();
+        });
+      });
+    });
+  };
+
+  setupRoadmaps();
+  document.addEventListener('astro:page-load', setupRoadmaps);
+</script>
+
+<style>
+  .roadmap {
+    padding-block: clamp(90px, 11vw, 154px);
+    background:
+      radial-gradient(ellipse 48% 30% at 18% 8%, rgba(70, 134, 183, 0.13), transparent 76%),
+      linear-gradient(180deg, rgba(5, 8, 14, 0.58), rgba(7, 16, 26, 0.76));
+  }
+  .roadmap-heading { display: grid; grid-template-columns: 0.42fr 1fr 0.7fr; gap: clamp(28px, 6vw, 90px); align-items: end; }
+  .roadmap-heading h2 { max-width: 13ch; font-size: clamp(2.55rem, 4.8vw, 5.3rem); font-weight: 520; letter-spacing: -0.04em; line-height: 0.98; }
+  .roadmap-heading > p { max-width: 43ch; color: var(--steel); line-height: 1.68; }
+  .roadmap-layout { display: grid; grid-template-columns: minmax(0, 1.24fr) minmax(300px, 0.76fr); gap: clamp(48px, 8vw, 118px); align-items: start; margin-top: clamp(66px, 8vw, 108px); }
+  .roadmap-form { border-top: 1px solid rgba(89, 106, 130, 0.34); }
+  .roadmap-form fieldset { min-width: 0; border: 0; border-bottom: 1px solid rgba(89, 106, 130, 0.34); padding-block: 30px; }
+  .roadmap-form legend { width: 100%; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; color: var(--cloud-white); font-size: clamp(1.02rem, 1.35vw, 1.24rem); font-weight: 530; }
+  .roadmap-form legend span { padding-top: 3px; color: rgba(201, 211, 223, 0.48); font-size: 0.72rem; }
+  .roadmap-options { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0 56px; }
+  .roadmap-options label { position: relative; cursor: pointer; }
+  .roadmap-options input { position: absolute; inline-size: 1px; block-size: 1px; opacity: 0; }
+  .roadmap-options span { min-height: 40px; display: flex; align-items: center; border: 1px solid rgba(201, 211, 223, 0.17); border-radius: 999px; padding: 8px 14px; color: rgba(226, 234, 243, 0.72); font-size: 0.82rem; transition: border-color 180ms var(--ease-out), background-color 180ms var(--ease-out), color 180ms var(--ease-out); }
+  .roadmap-options input:checked + span { border-color: rgba(207, 247, 255, 0.5); background: rgba(103, 217, 255, 0.11); color: var(--cloud-white); }
+  .roadmap-options input:focus-visible + span { outline: 2px solid var(--signal-ice); outline-offset: 3px; }
+  .roadmap-submit { margin-top: 32px; }
+  .roadmap-result { position: sticky; top: 116px; min-height: 410px; border: 1px solid rgba(103, 217, 255, 0.18); border-radius: 8px; padding: clamp(26px, 3.5vw, 42px); background: radial-gradient(circle at 90% 8%, rgba(103, 217, 255, 0.11), transparent 38%), rgba(11, 19, 34, 0.76); }
+  .roadmap-result .text-mono { color: rgba(201, 211, 223, 0.5); }
+  .result-placeholder p { max-width: 26ch; margin-top: 30px; color: rgba(226, 234, 243, 0.72); font-size: clamp(1.3rem, 2vw, 1.8rem); line-height: 1.2; }
+  .result-panel h3 { max-width: 18ch; margin: 26px 0 16px; font-size: clamp(1.65rem, 2.6vw, 2.55rem); font-weight: 540; letter-spacing: -0.035em; line-height: 1.04; }
+  .result-panel > p { color: var(--steel); line-height: 1.62; }
+  .result-panel ol { display: grid; gap: 11px; margin: 24px 0 0; padding: 22px 0 0 22px; border-top: 1px solid rgba(89, 106, 130, 0.3); color: rgba(226, 234, 243, 0.8); }
+  .result-service { display: grid; gap: 9px; margin-top: 30px; padding-top: 22px; border-top: 1px solid rgba(89, 106, 130, 0.3); }
+  .result-service strong { font-size: 1.15rem; font-weight: 560; }
+  .result-service a { width: fit-content; margin-top: 5px; }
+  .roadmap-reset { margin-top: 28px; border: 0; padding: 0; background: transparent; color: rgba(201, 211, 223, 0.64); font: inherit; font-size: 0.82rem; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+  .roadmap-reset:focus-visible { outline: 2px solid var(--signal-ice); outline-offset: 4px; }
+  @media (max-width: 900px) { .roadmap-heading { grid-template-columns: 1fr; } .roadmap-layout { grid-template-columns: 1fr; } .roadmap-result { position: static; min-height: 320px; } }
+  @media (max-width: 620px) { .roadmap-options { margin-left: 0; } .roadmap-options label { width: 100%; } .roadmap-options span { border-radius: 7px; } }
+  @media (prefers-reduced-motion: reduce) { .roadmap-options span { transition: none; } }
+</style>

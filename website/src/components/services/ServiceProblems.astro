@@ -1,5 +1,10 @@
 ---
-interface ProblemItem { title: string; description: string; }
+interface ProblemItem {
+  title: string;
+  description: string;
+  impact: string;
+  inspect: string;
+}
 interface Props { heading: string; problems: ProblemItem[]; locale: 'id' | 'en'; }
 
 const { heading, problems, locale } = Astro.props;
@@ -7,12 +12,16 @@ const copy = locale === 'id'
   ? {
       kicker: 'Masalah yang diselesaikan',
       prompt: 'Pilih masalah yang paling dekat dengan hambatan Anda saat ini.',
-      selected: 'Mengapa ini terjadi'
+      cause: 'Mengapa ini terjadi',
+      impact: 'Dampak bisnis',
+      inspect: 'Yang kami periksa'
     }
   : {
       kicker: 'Problem to solve',
       prompt: 'Choose the problem closest to what is getting in the way.',
-      selected: 'Why this happens'
+      cause: 'Why this happens',
+      impact: 'Business impact',
+      inspect: 'What we examine'
     };
 ---
 
@@ -37,6 +46,8 @@ const copy = locale === 'id'
             role="listitem"
             data-need-option={index}
             data-need-reason={item.description}
+            data-need-impact={item.impact}
+            data-need-inspect={item.inspect}
             aria-pressed={index === 0 ? 'true' : 'false'}
           >
             <span class="problem-num text-mono">0{index + 1}</span>
@@ -46,8 +57,18 @@ const copy = locale === 'id'
       </div>
 
       <aside class="need-selection" aria-live="polite">
-        <span class="text-mono">{copy.selected}</span>
-        <p data-selected-need>{problems[0]?.description}</p>
+        <div class="selection-block">
+          <span class="text-mono">{copy.cause}</span>
+          <p data-selected-need>{problems[0]?.description}</p>
+        </div>
+        <div class="selection-block">
+          <span class="text-mono">{copy.impact}</span>
+          <p data-selected-impact>{problems[0]?.impact}</p>
+        </div>
+        <div class="selection-block">
+          <span class="text-mono">{copy.inspect}</span>
+          <p data-selected-inspect>{problems[0]?.inspect}</p>
+        </div>
       </aside>
     </div>
   </div>
@@ -61,11 +82,15 @@ const copy = locale === 'id'
 
       const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-need-option]'));
       const selected = root.querySelector<HTMLElement>('[data-selected-need]');
+      const impact = root.querySelector<HTMLElement>('[data-selected-impact]');
+      const inspect = root.querySelector<HTMLElement>('[data-selected-inspect]');
 
       buttons.forEach((button) => {
         button.addEventListener('click', () => {
           buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
           if (selected) selected.textContent = button.dataset.needReason ?? '';
+          if (impact) impact.textContent = button.dataset.needImpact ?? '';
+          if (inspect) inspect.textContent = button.dataset.needInspect ?? '';
         });
       });
     });
@@ -156,7 +181,7 @@ const copy = locale === 'id'
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 28px;
+    gap: 24px;
     border: 1px solid rgba(103, 217, 255, 0.18);
     border-radius: 8px;
     padding: clamp(22px, 2.5vw, 32px);
@@ -165,13 +190,26 @@ const copy = locale === 'id'
       rgba(11, 19, 34, 0.72);
   }
 
-  .need-selection > .text-mono { color: rgba(201, 211, 223, 0.5); }
+  .selection-block + .selection-block {
+    border-top: 1px solid rgba(89, 106, 130, 0.3);
+    padding-top: 22px;
+  }
 
-  .need-selection p {
-    max-width: 31ch;
-    font-size: clamp(1.25rem, 1.8vw, 1.75rem);
+  .selection-block > .text-mono { color: rgba(201, 211, 223, 0.5); }
+
+  .selection-block p {
+    max-width: 38ch;
+    margin-top: 9px;
+    color: rgba(226, 234, 243, 0.82);
+    font-size: clamp(0.92rem, 1vw, 1.02rem);
+    line-height: 1.55;
+  }
+
+  .selection-block:first-child p {
+    color: var(--cloud-white);
+    font-size: clamp(1.16rem, 1.5vw, 1.48rem);
     font-weight: 520;
-    line-height: 1.16;
+    line-height: 1.2;
   }
 
   @media (min-width: 1001px) and (min-height: 700px) {

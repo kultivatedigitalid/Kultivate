@@ -1,9 +1,9 @@
 # KULTIVATE BRAND GUIDELINE - IMPLEMENTATION COMPANION
 
-**Version:** 2.0  
-**Date:** 10 August 2026  
-**Status:** Approved strategic baseline / pending asset completion  
-**Governing visual source:** `Kultivate_Brand_Guideline_Book_v2.0_2026-08-06.pdf`  
+**Version:** 2.0
+**Date:** 10 August 2026
+**Status:** Approved strategic baseline / pending asset completion
+**Governing visual source:** `Kultivate_Brand_Guideline_Book_v2.0_2026-08-06.pdf`
 **Direction:** Dark Editorial / Static-first / Bilingual / AI-readable
 
 ---
@@ -38,7 +38,7 @@ Use these status labels:
 
 **Connected Digital Growth**
 
-Kultivate connects Website Development, SEO, and Social Media Management into one system across foundation, discoverability, distribution, inquiry, and optimization.
+Kultivate begins with business context and applies SEO, AEO & GEO, Web Services, and Content Management only where they support the current priority.
 
 ### Personality
 
@@ -75,25 +75,29 @@ The inquiry should provide objective, needs, timeline, and material readiness.
 
 1. Get higher-value projects, reduce reliance on referral, and strengthen credibility.
 2. Make Kultivate easier to understand and distinct without overclaiming.
-3. Generate qualified inquiry, show proof, and explain the three services as a connected system.
+3. Generate qualified inquiry, show proof with an explicit evidence state, and explain four service options through business context.
 
 ---
 
 ## 2. About Kultivate
 
-Kultivate is a digital agency that helps businesses build and develop their digital presence through Website Development, Search Engine Optimization (SEO), and Social Media Management. Each service may stand alone or operate as part of a connected digital growth system.
+Kultivate is a digital agency that helps businesses improve how they are understood, found, and used through SEO, AEO & GEO, Web Services, and Content Management. Each service may stand alone or combine with another when a real dependency exists.
 
-### Website Development - Foundation
+### SEO - Traditional Search Visibility
 
-Build a clear, responsive, performant, accessible, and extensible website system that becomes the center of information, credibility, and conversion.
+Strengthen technical foundations, information architecture, search intent alignment, priority pages, authority signals, measurement, and iteration.
 
-### SEO - Discoverability
+### AEO & GEO - AI Search Understanding
 
-Strengthen technical foundations, information architecture, search intent alignment, content structure, on-page optimization, measurement, and iteration.
+Improve answer structure, entity clarity, source quality, schema, retrievability, and the monitoring of relevant AI search experiences.
 
-### Social Media Management - Distribution
+### Web Services - Technical Delivery
 
-Build a consistent content, communication, distribution, publishing, and reporting system according to the agreed scope.
+Build, maintain, migrate, and improve websites where performance, usability, accessibility, or implementation limits a priority.
+
+### Content Management - Useful Publishing Rhythm
+
+Plan, create, publish, and refresh content around customer questions, business priorities, ownership, and maintainable workflows.
 
 ### Pending public facts
 
@@ -119,7 +123,7 @@ Become a digital partner that turns separate channels into a directed growth sys
 
 ### Mission
 
-Build the foundation, improve discoverability, and maintain distribution through clear scope, purposeful craft, inspectable evidence, and continuous optimization.
+Understand the business context, choose the smallest useful intervention, and improve visibility, technical delivery, and content through clear scope, purposeful craft, inspectable evidence, and continuous review.
 
 ### Values
 
@@ -129,7 +133,7 @@ Explain objective, scope, deliverables, dependencies, decisions, and next steps 
 
 #### 2. Connected Thinking
 
-Connect website, SEO, and social media through shared messaging, content architecture, analytics, and next action.
+Connect SEO, AEO & GEO, Web Services, and Content Management only where messaging, information architecture, implementation, evidence, and the next action genuinely depend on one another.
 
 #### 3. Craft with Purpose
 
@@ -153,16 +157,18 @@ Use restraint, generous spacing, and direct language. Do not use excessive glow,
 
 ### Positioning statement
 
-For growing businesses that need a more directed digital presence, Kultivate is a digital agency that connects Website Development, SEO, and Social Media Management into one digital growth system.
+For growing businesses that need a more directed digital presence, Kultivate is a digital agency that understands the business logic first, then applies SEO, AEO & GEO, Web Services, and Content Management with clear ownership and evidence.
 
 ### Messaging pillars
 
 | Pillar | Role | Safe message |
 |---|---|---|
-| Build the foundation | Website | Clear, fast, accessible, and ready to become the hub of information and conversion. |
-| Be discoverable | SEO | Technical foundation, content structure, search intent, and measurement. |
-| Stay connected | Social | Consistent distribution, communication, and content system. |
-| Learn and optimize | Iteration | Each channel feeds the next decision with evidence and insights. |
+| Understand first | Strategy | Business logic, customer questions, constraints, capacity, and the reason to act. |
+| Be discoverable | SEO | Technical foundation, search intent, priority pages, authority, and measurement. |
+| Be retrievable | AEO & GEO | Answer structure, entity clarity, source quality, schema, and AI-search monitoring. |
+| Make it work | Web Services | Responsive, accessible, performant implementation with explicit acceptance criteria. |
+| Keep it useful | Content Management | Customer-led planning, publishing ownership, refresh rhythm, and quality review. |
+| Learn and optimize | Iteration | Each decision leaves a context brief, priority map, and review record. |
 
 ### Not Kultivate's positioning
 
@@ -256,11 +262,11 @@ Both are required for the MVP.
 
 ### Hero baseline
 
-**Indonesian display heading:** Bangun satu sistem. Tumbuh lebih terarah.  
-**English display heading:** Build one system. Grow with direction.  
+**Indonesian display heading:** Bangun satu sistem. Tumbuh lebih terarah.
+**English display heading:** Build one system. Grow with direction.
 
-**English support:** Website, SEO, and social media moving in one clear direction.  
-**Indonesian support:** Website, SEO, dan social media yang bergerak dalam satu arah.
+**English support:** Start with the business need. Apply the expertise that helps.
+**Indonesian support:** Mulai dari kebutuhan bisnis. Gunakan expertise yang benar-benar membantu.
 
 ---
 
@@ -541,7 +547,9 @@ Motion clarifies state and interaction. It is not a substitute for content or pr
 - restrained reveal only when it improves hierarchy;
 - left-to-right service image reveal on hover or keyboard focus, with text readable before and during motion;
 - three-up Insights layout without overflow on desktop; user-controlled scroll-snap carousel below 900 px without autoplay;
-- slow transform-only decorative motion in Insights visuals with a reduced-motion fallback.
+- slow transform-only decorative motion in Insights visuals with a reduced-motion fallback;
+- state changes for the Website Growth Roadmap, service problem lens, evidence panels, and learning-path filters;
+- native disclosure interaction for qualification FAQs.
 
 ### Non-negotiables
 
@@ -572,7 +580,7 @@ Motion clarifies state and interaction. It is not a substitute for content or pr
 
 1. Hero.
 2. Selected Work.
-3. Three Services.
+3. Four Service Options.
 4. Connected System.
 5. Why Kultivate.
 6. Process.
@@ -682,3 +690,15 @@ A task is not complete while design, structure, copy, asset, technical decision,
 - Privacy policy matching actual integrations.
 
 Never invent a pending value to make a page or document look complete.
+---
+
+## 19. Phase 2 Authority and Conversion Rules
+
+- Lead with the business problem, impact, workflow, and constraints before listing skills.
+- Use working artifacts as authority signals: context brief, priority map, acceptance criteria, and review record.
+- Educational features must be free to access, ungated, and useful without a sales call.
+- The Website Growth Roadmap is deterministic browser-side guidance, not AI advice, and does not store or transmit answers.
+- Proof must carry one visible state: Verified Case, Non-metric Outcome, or Concept Study.
+- Generated concept imagery must not imply a client relationship, verified team member, or performance outcome.
+- Role-level firm bios are allowed; individual team profiles require approved names, roles, biographies, photographs, and permission.
+- Premium positioning is expressed through reasoning, process, evidence, education, human credibility, and execution quality rather than aggressive pricing or scarcity.
