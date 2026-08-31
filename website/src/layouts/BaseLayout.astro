@@ -12,6 +12,7 @@ import {
 import '../styles/global.css';
 import '../styles/utilities.css';
 import '../styles/motion.css';
+import '../styles/flow-polish.css';
 
 interface Props {
   title?: string;
@@ -201,9 +202,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
           <span class="footer-col-title">{t('footer.services')}</span>
           <ul>
             <li><a href={'/' + locale + '/services/seo/'}>SEO</a></li>
-            <li><a href={'/' + locale + '/services/aeo-geo/'}>AEO &amp; GEO</a></li>
             <li><a href={'/' + locale + '/services/web-services/'}>Web Services</a></li>
-            <li><a href={'/' + locale + '/services/content-management/'}>Content Management</a></li>
           </ul>
         </div>
         <div class="footer-links-col">
@@ -508,13 +507,30 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
   }
 
   .footer {
-    margin-top: auto;
-    border-top: 1px solid rgba(39, 50, 68, 0.55);
-    background: rgba(7, 11, 18, 0.76);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    margin-top: -1px;
+    border-top: 0;
+    background:
+      radial-gradient(ellipse 54% 90% at 76% 0%, rgba(23, 107, 255, 0.08), transparent 68%),
+      linear-gradient(180deg, #070b12 0%, #060a10 100%);
     padding-top: clamp(72px, 8vw, 104px);
   }
 
+  .footer::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(103, 217, 255, 0.18), transparent);
+    pointer-events: none;
+  }
+
   .footer-container {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: minmax(260px, 1.2fr) 2fr;
     gap: clamp(48px, 8vw, 120px);
@@ -586,6 +602,8 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
   }
 
   .footer-bottom {
+    position: relative;
+    z-index: 1;
     border-top: 1px solid rgba(39, 50, 68, 0.42);
     padding-block: 22px;
   }

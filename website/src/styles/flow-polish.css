@@ -1,0 +1,74 @@
+:root {
+  --flow-surface-dark: #070b12;
+  --flow-surface-mid: #0b2031;
+  --flow-surface-light: #12344b;
+  --relief-canvas: #edf2f6;
+  --relief-card: #f8fafc;
+  --relief-ink: #101a26;
+  --relief-muted: #566575;
+  --relief-line: rgba(16, 35, 52, 0.14);
+}
+
+/* The entire main canvas owns the color journey, including sections outside local wrappers. */
+main {
+  background:
+    radial-gradient(ellipse 82% 15% at 8% 24%, rgba(70, 134, 183, 0.2), transparent 74%),
+    radial-gradient(ellipse 70% 16% at 92% 49%, rgba(103, 217, 255, 0.11), transparent 76%),
+    radial-gradient(ellipse 86% 15% at 16% 75%, rgba(70, 134, 183, 0.17), transparent 76%),
+    linear-gradient(
+      180deg,
+      var(--flow-surface-dark) 0%,
+      #08121e 18%,
+      #0a1c2c 36%,
+      var(--flow-surface-mid) 55%,
+      var(--flow-surface-light) 73%,
+      #0b2132 88%,
+      var(--flow-surface-dark) 100%
+    );
+  background-repeat: no-repeat;
+}
+
+.page-flow {
+  background: transparent;
+}
+
+.page-flow::before,
+.page-flow::after {
+  display: none;
+}
+
+
+.page-flow > .flow-section,
+.home-flow > .flow-section {
+  border-block: 0;
+  box-shadow: none;
+}
+
+/* Internal banners hand off to the page canvas through one shared, overlapping veil. */
+.page-flow > .hero-shell:not(.hero-shell--home) + .flow-section {
+  position: relative;
+  isolation: isolate;
+  margin-top: -2px;
+}
+
+.page-flow > .hero-shell:not(.hero-shell--home) + .flow-section::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 0;
+  height: clamp(180px, 26vh, 290px);
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    #070b12 0%,
+    rgba(7, 11, 18, 0.94) 18%,
+    rgba(8, 18, 30, 0.62) 54%,
+    rgba(9, 28, 44, 0.18) 82%,
+    transparent 100%
+  );
+}
+
+.page-flow > .hero-shell:not(.hero-shell--home) + .flow-section > * {
+  position: relative;
+  z-index: 1;
+}

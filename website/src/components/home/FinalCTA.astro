@@ -36,6 +36,7 @@ const t = useTranslations(locale);
 <style>
   .final-cta {
     position: relative;
+    margin-top: -2px;
     min-height: 460px;
     display: flex;
     align-items: center;
@@ -50,11 +51,11 @@ const t = useTranslations(locale);
   .final-cta::before {
     content: '';
     position: absolute;
-    inset: clamp(-220px, -18vw, -140px) 0 auto;
+    inset: clamp(-260px, -21vw, -170px) 0 auto;
     z-index: 0;
-    height: clamp(180px, 22vw, 300px);
+    height: clamp(240px, 29vw, 390px);
     pointer-events: none;
-    background: linear-gradient(180deg, transparent 0%, rgba(7, 11, 18, 0.58) 54%, #070b12 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(7, 11, 18, 0.16) 26%, rgba(7, 11, 18, 0.68) 64%, #070b12 100%);
   }
 
   .cta-visual {

@@ -9,22 +9,14 @@ const items = portfolioItems[locale];
 const clusters = Array.from({ length: Math.ceil(items.length / 3) }, (_, index) => items.slice(index * 3, index * 3 + 3));
 const copy = locale === 'id'
   ? {
-      label: 'EKSPLORASI',
-      title: 'Arah visual untuk konteks yang berbeda',
-      description: 'Studi konsep untuk memperlihatkan keluasan art direction dan kualitas eksekusi Kultivate.',
-      proofLabel: 'Status evidence',
-      proofTitle: 'Concept study—bukan hasil proyek klien',
-      proofNote: 'Setiap nama dan visual di halaman ini bersifat eksploratif. Tidak ada metrik, testimonial, atau hubungan klien yang diklaim.',
-      status: 'Concept study'
+      label: 'PORTOFOLIO',
+      title: 'Dibuat untuk pertumbuhan',
+      description: 'Pengalaman digital yang dirancang untuk terlihat baik, bekerja lebih baik, dan mendorong bisnis maju.'
     }
   : {
-      label: 'EXPLORATIONS',
-      title: 'Visual directions for different contexts',
-      description: 'Concept studies showing the range of Kultivate art direction and execution quality.',
-      proofLabel: 'Evidence status',
-      proofTitle: 'Concept study—not a client result',
-      proofNote: 'Every name and visual on this page is exploratory. No metric, testimonial, or client relationship is claimed.',
-      status: 'Concept study'
+      label: 'PORTFOLIO',
+      title: 'Made for growth',
+      description: 'Digital experiences designed to look good, work better, and move business forward.'
     };
 ---
 
@@ -43,14 +35,6 @@ const copy = locale === 'id'
   aria-label={locale === 'id' ? 'Portofolio Kultivate' : 'Kultivate portfolio'}
   data-scroll-key="work-gallery"
 >
-  <div class="proof-disclosure container" data-reveal>
-    <span class="text-mono">{copy.proofLabel}</span>
-    <div>
-      <h2>{copy.proofTitle}</h2>
-      <p>{copy.proofNote}</p>
-    </div>
-  </div>
-
   <div class="portfolio-grid container">
     {clusters.map((cluster, clusterIndex) => (
       <div class="portfolio-cluster" data-work-cluster data-cluster={clusterIndex} data-active="-1">
@@ -72,11 +56,8 @@ const copy = locale === 'id'
                 decoding="async"
               />
               <figcaption class="portfolio-caption">
-                <div>
-                  <span class="concept-status text-mono">{copy.status}</span>
-                  <strong>{item.brand}</strong>
-                </div>
-                <span class="project-descriptor">{item.descriptor}</span>
+                <strong>{item.brand}</strong>
+                <span>{item.descriptor}</span>
               </figcaption>
             </figure>
           </article>
@@ -127,19 +108,6 @@ const copy = locale === 'id'
       linear-gradient(180deg, rgba(7, 11, 18, 0.24), rgba(5, 8, 14, 0.56) 52%, rgba(7, 11, 18, 0.32));
   }
 
-
-  .proof-disclosure {
-    display: grid;
-    grid-template-columns: minmax(160px, 0.38fr) minmax(0, 1.62fr);
-    gap: clamp(28px, 7vw, 100px);
-    align-items: start;
-    margin-bottom: clamp(48px, 6vw, 82px);
-    padding-block: 22px;
-    border-block: 1px solid rgba(89, 106, 130, 0.34);
-  }
-  .proof-disclosure > span { color: rgba(201, 211, 223, 0.5); }
-  .proof-disclosure h2 { margin-bottom: 10px; font-size: clamp(1.35rem, 2vw, 1.9rem); font-weight: 540; letter-spacing: -0.025em; }
-  .proof-disclosure p { max-width: 66ch; color: var(--steel); line-height: 1.62; }
 
   .portfolio-grid {
     display: flex;
@@ -210,20 +178,12 @@ const copy = locale === 'id'
     transition: opacity 420ms var(--ease-out), transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .portfolio-caption > div { display: grid; gap: 7px; }
   .portfolio-caption strong {
     font-size: clamp(1.05rem, 1.45vw, 1.45rem);
     font-weight: 590;
   }
 
-  .portfolio-caption .concept-status {
-    color: var(--signal-ice);
-    font-size: 0.61rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .portfolio-caption .project-descriptor {
+  .portfolio-caption span {
     max-width: 18ch;
     color: rgba(226, 234, 243, 0.76);
     font-size: 0.82rem;
@@ -265,7 +225,6 @@ const copy = locale === 'id'
   }
 
   @media (max-width: 700px), (hover: none) {
-    .proof-disclosure { grid-template-columns: 1fr; gap: 16px; }
 
     .portfolio-cluster,
     .portfolio-cluster[data-cluster],

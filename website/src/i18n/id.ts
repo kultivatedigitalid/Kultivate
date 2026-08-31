@@ -10,7 +10,7 @@ export const idTranslations = {
   'nav.explore_service': 'Pelajari Layanan',
   
   // Footer
-  'footer.tagline': 'Dukungan SEO yang disesuaikan dengan kebutuhan bisnis Anda.',
+  'footer.tagline': 'Dukungan SEO dan website yang disesuaikan dengan kebutuhan bisnis Anda.',
   'footer.services': 'Layanan',
   'footer.about': 'Tentang',
   'footer.legal': 'Hukum',

@@ -20,12 +20,7 @@ const copy = locale === 'id'
       featured: 'Featured story',
       story: 'Story',
       read: 'Baca artikel',
-      result: 'artikel ditampilkan',
-      pathsLabel: 'Jalur belajar',
-      pathsTitle: 'Mulai dari situasi Anda',
-      pathsIntro: 'Pilih jalur untuk membaca insight dalam urutan yang lebih berguna.',
-      allPaths: 'Semua insight',
-      startHere: 'Mulai di sini'
+      result: 'artikel ditampilkan'
     }
   : {
       label: 'BLOG',
@@ -39,58 +34,8 @@ const copy = locale === 'id'
       featured: 'Featured story',
       story: 'Story',
       read: 'Read article',
-      result: 'stories shown',
-      pathsLabel: 'Learning paths',
-      pathsTitle: 'Start from your situation',
-      pathsIntro: 'Choose a path to read the insights in a more useful sequence.',
-      allPaths: 'All insights',
-      startHere: 'Start here'
+      result: 'stories shown'
     };
-
-const pathways = locale === 'id'
-  ? [
-      {
-        id: 'website-decisions',
-        title: 'Keputusan Website',
-        description: 'Untuk memperjelas penawaran, user journey, dan fondasi pengalaman.',
-        slugs: ['website-sebagai-pusat-sistem', 'kecepatan-dan-positioning']
-      },
-      {
-        id: 'trust-conversion',
-        title: 'Trust & Conversion',
-        description: 'Untuk menyambungkan discovery dengan keyakinan dan langkah berikutnya.',
-        slugs: ['setelah-ditemukan', 'arah-sebelum-channel']
-      },
-      {
-        id: 'search-demand',
-        title: 'Search & Demand',
-        description: 'Untuk menghubungkan intent, struktur, dan sistem content.',
-        slugs: ['seo-sebelum-keyword', 'konten-dimulai-dari-sistem']
-      }
-    ]
-  : [
-      {
-        id: 'website-decisions',
-        title: 'Website Decisions',
-        description: 'Clarify the offer, user journey, and experience foundation.',
-        slugs: ['website-as-the-system-center', 'speed-and-positioning']
-      },
-      {
-        id: 'trust-conversion',
-        title: 'Trust & Conversion',
-        description: 'Connect discovery with confidence and the next useful step.',
-        slugs: ['what-happens-after-discovery', 'direction-before-channels']
-      },
-      {
-        id: 'search-demand',
-        title: 'Search & Demand',
-        description: 'Connect intent, structure, and the content system.',
-        slugs: ['seo-before-keywords', 'content-starts-with-a-system']
-      }
-    ];
-
-const getPathway = (slug: string) => pathways.find((pathway) => pathway.slugs.includes(slug));
-const isPathStart = (slug: string) => pathways.some((pathway) => pathway.slugs[0] === slug);
 ---
 
 <div class="insights-page page-flow">
@@ -113,26 +58,6 @@ const isPathStart = (slug: string) => pathways.some((pathway) => pathway.slugs[0
     data-filtered="false"
   >
     <div class="container">
-      <section class="pathway-chooser" aria-labelledby="pathways-title" data-reveal>
-        <header class="pathway-intro">
-          <span class="text-mono">{copy.pathsLabel}</span>
-          <h2 id="pathways-title">{copy.pathsTitle}</h2>
-          <p>{copy.pathsIntro}</p>
-        </header>
-        <div class="pathway-options">
-          <button type="button" data-pathway="" aria-pressed="true">
-            <span>{copy.allPaths}</span>
-            <small>{articles.length} {copy.result}</small>
-          </button>
-          {pathways.map((pathway) => (
-            <button type="button" data-pathway={pathway.id} aria-pressed="false">
-              <span>{pathway.title}</span>
-              <small>{pathway.description}</small>
-            </button>
-          ))}
-        </div>
-      </section>
-
       <nav class="topic-row" aria-label={copy.topics} data-reveal>
         <span class="text-mono">{copy.topics}</span>
         <div class="topic-controls">
@@ -161,7 +86,6 @@ const isPathStart = (slug: string) => pathways.some((pathway) => pathway.slugs[0
               class="story-card"
               data-story-card
               data-topic-value={article.category}
-              data-pathway-value={getPathway(article.slug)?.id}
               data-rank={index}
               data-reveal
               style={`--reveal-delay: ${Math.min(index, 4) * 55}ms`}
@@ -178,7 +102,6 @@ const isPathStart = (slug: string) => pathways.some((pathway) => pathway.slugs[0
               </figure>
               <div class="story-copy">
                 <div class="story-rank text-mono">{index === 0 ? copy.featured : copy.story}</div>
-                {isPathStart(article.slug) && <span class="pathway-start text-mono">{copy.startHere}</span>}
                 <div class="story-meta text-mono">
                   <span>{article.category}</span>
                   <time>{article.date}</time>
@@ -203,68 +126,43 @@ const isPathStart = (slug: string) => pathways.some((pathway) => pathway.slugs[0
       if (root.dataset.ready === 'true') return;
       root.dataset.ready = 'true';
 
-      const topicButtons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-topic]'));
-      const pathwayButtons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-pathway]'));
+      const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-topic]'));
       const cards = Array.from(root.querySelectorAll<HTMLElement>('[data-story-card]'));
       const title = root.querySelector<HTMLElement>('[data-stories-title]');
       const count = root.querySelector<HTMLElement>('[data-result-count]');
       const allTitle = title?.textContent?.trim() ?? '';
-      const filteredTitle = root.ownerDocument.querySelector<HTMLElement>('[data-filtered-title]')?.textContent?.trim() ?? '';
+      const filteredTitle = root.closest('.insights-page')?.querySelector<HTMLElement>('[data-filtered-title]')?.textContent?.trim() ?? '';
       const resultLabel = count?.textContent?.replace(/^\s*\d+\s*/, '').trim() ?? '';
-      let activeTopic = '';
-      let activePathway = '';
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      const applyFilters = () => {
+      const applyFilter = (topic: string) => {
         root.dataset.filtering = 'true';
-        root.dataset.filtered = activeTopic || activePathway ? 'true' : 'false';
+        root.dataset.filtered = topic ? 'true' : 'false';
 
         let visibleCount = 0;
         cards.forEach((card) => {
-          const matchesTopic = !activeTopic || card.dataset.topicValue === activeTopic;
-          const matchesPathway = !activePathway || card.dataset.pathwayValue === activePathway;
-          const matches = matchesTopic && matchesPathway;
+          const matches = !topic || card.dataset.topicValue === topic;
           card.hidden = !matches;
           if (matches) visibleCount += 1;
         });
 
-        topicButtons.forEach((button) => {
-          button.setAttribute('aria-pressed', String((button.dataset.topic ?? '') === activeTopic));
-        });
-        pathwayButtons.forEach((button) => {
-          button.setAttribute('aria-pressed', String((button.dataset.pathway ?? '') === activePathway));
+        buttons.forEach((button) => {
+          button.setAttribute('aria-pressed', String((button.dataset.topic ?? '') === topic));
         });
 
         if (title) {
-          const activePathLabel = pathwayButtons
-            .find((button) => (button.dataset.pathway ?? '') === activePathway)
-            ?.querySelector('span')?.textContent?.trim();
-          const filterLabel = activeTopic || activePathLabel;
-          title.textContent = filterLabel
-            ? (filteredTitle || (root.ownerDocument.documentElement.lang.startsWith('id') ? 'Artikel' : 'Stories')) + ': ' + filterLabel
+          title.textContent = topic
+            ? `${filteredTitle || (root.ownerDocument.documentElement.lang === 'id' ? 'Artikel' : 'Stories')}: ${topic}`
             : allTitle;
         }
-        if (count) count.textContent = visibleCount + ' ' + resultLabel;
+        if (count) count.textContent = `${visibleCount} ${resultLabel}`;
 
         requestAnimationFrame(() => {
           root.dataset.filtering = 'false';
         });
       };
 
-      topicButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          activeTopic = button.dataset.topic ?? '';
-          applyFilters();
-        });
-      });
-
-      pathwayButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          activePathway = button.dataset.pathway ?? '';
-          activeTopic = '';
-          applyFilters();
-          root.querySelector<HTMLElement>('[data-stories-title]')?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
-        });
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => applyFilter(button.dataset.topic ?? ''));
       });
     });
   };
@@ -281,39 +179,6 @@ const isPathStart = (slug: string) => pathways.some((pathway) => pathway.slugs[0
     padding: 0 0 clamp(96px, 11vw, 148px);
     background: linear-gradient(180deg, rgba(7, 11, 18, 0.24), rgba(6, 10, 17, 0.56) 54%, rgba(5, 8, 14, 0.48));
   }
-
-  .pathway-chooser {
-    display: grid;
-    grid-template-columns: minmax(240px, 0.6fr) minmax(0, 1.4fr);
-    gap: clamp(44px, 8vw, 118px);
-    padding: clamp(72px, 9vw, 122px) 0;
-  }
-
-  .pathway-intro > .text-mono { display: block; margin-bottom: 18px; color: rgba(201, 211, 223, 0.5); }
-  .pathway-intro h2 { max-width: 12ch; font-size: clamp(2.25rem, 3.8vw, 4.3rem); font-weight: 530; letter-spacing: -0.04em; line-height: 1; }
-  .pathway-intro p { max-width: 38ch; margin-top: 22px; color: var(--steel); line-height: 1.62; }
-  .pathway-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid rgba(89, 106, 130, 0.34); }
-  .pathway-options button {
-    min-height: 146px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 22px;
-    border: 0;
-    border-bottom: 1px solid rgba(89, 106, 130, 0.34);
-    padding: 24px;
-    background: transparent;
-    color: rgba(226, 234, 243, 0.78);
-    font: inherit;
-    text-align: left;
-    cursor: pointer;
-    transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out), transform 320ms var(--ease-out);
-  }
-  .pathway-options button:nth-child(odd) { border-right: 1px solid rgba(89, 106, 130, 0.34); }
-  .pathway-options button > span { font-size: clamp(1.08rem, 1.45vw, 1.36rem); font-weight: 540; }
-  .pathway-options button small { max-width: 34ch; color: var(--steel); font-size: 0.78rem; line-height: 1.48; }
-  .pathway-options button[aria-pressed='true'] { background: linear-gradient(135deg, rgba(103, 217, 255, 0.1), rgba(23, 107, 255, 0.025)); color: var(--cloud-white); transform: translate3d(0, -3px, 0); }
-  .pathway-options button:focus-visible { outline: 2px solid var(--signal-ice); outline-offset: -2px; }
 
   .topic-row {
     display: grid;
@@ -444,17 +309,6 @@ const isPathStart = (slug: string) => pathways.some((pathway) => pathway.slugs[0
 
   [data-filtered='true'] .story-rank { display: none; }
 
-  .pathway-start {
-    width: fit-content;
-    display: block;
-    margin: -4px 0 14px;
-    border: 1px solid rgba(103, 217, 255, 0.3);
-    border-radius: 999px;
-    padding: 5px 9px;
-    color: var(--signal-ice);
-    font-size: 0.65rem;
-  }
-
   .story-meta {
     display: flex;
     justify-content: space-between;
@@ -514,9 +368,6 @@ const isPathStart = (slug: string) => pathways.some((pathway) => pathway.slugs[0
   }
 
   @media (max-width: 760px) {
-    .pathway-chooser { grid-template-columns: 1fr; gap: 34px; }
-    .pathway-options { grid-template-columns: 1fr; }
-    .pathway-options button:nth-child(odd) { border-right: 0; }
     .topic-row { grid-template-columns: 1fr; gap: 14px; }
     .topic-controls { flex-wrap: nowrap; overflow-x: auto; padding: 2px 2px 8px; }
     .topic-controls button { flex: none; }
@@ -546,11 +397,36 @@ const isPathStart = (slug: string) => pathways.some((pathway) => pathway.slugs[0
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .pathway-options button,
     .story-grid,
     .topic-controls button,
     .story-card img { transition: none; }
 
     .story-card img { transform: none; }
+  }
+  /* Matches the pill CTA used by Blog cards on Home. */
+  .story-link {
+    width: fit-content;
+    gap: 9px;
+    border: 1px solid rgba(201, 211, 223, 0.36);
+    border-radius: 999px;
+    padding: 8px 15px;
+    font-family: var(--font-mono);
+    font-size: 0.61rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: border-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 180ms var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .story-card:hover .story-link,
+    .story-card:focus-visible .story-link {
+      border-color: rgba(207, 247, 255, 0.72);
+      color: var(--cloud-white);
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .story-link { transition: none; }
   }
 </style>

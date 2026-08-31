@@ -1,0 +1,977 @@
+---
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+
+const copy = locale === 'id'
+  ? {
+      title: 'Our Core Expertise',
+      interaction: 'Arahkan atau fokuskan node untuk melihat perannya.',
+      expertise: [
+        ['strategy', 'Business Strategy', 'Mendefinisikan masalah, economics, prioritas, dan trade-off sebelum menentukan scope.', 50, 7],
+        ['ux', 'UX', 'Mengurangi friction dan menyusun journey berdasarkan kebutuhan serta konteks pengguna.', 78, 18],
+        ['ui', 'UI', 'Membuat informasi, tindakan, dan state mudah dipahami dalam interface yang konsisten.', 91, 48],
+        ['development', 'Web Development', 'Mengubah keputusan menjadi sistem yang cepat, accessible, maintainable, dan terukur.', 76, 79],
+        ['seo', 'SEO', 'Menghubungkan demand pencarian bernilai dengan struktur dan halaman prioritas.', 50, 91],
+        ['aeo', 'AEO / GEO', 'Menyusun expertise agar answer engines dapat memahami, mengambil, dan merujuknya.', 23, 79],
+        ['content', 'Content', 'Menjaga pertanyaan pelanggan dijawab dengan informasi yang berguna dan aktual.', 9, 48],
+        ['analytics', 'Analytics & Conversion', 'Mengukur perilaku, menemukan friction, dan memilih iterasi berdasarkan evidence.', 23, 18]
+      ]
+    }
+  : {
+      title: 'Our Core Expertise',
+      interaction: 'Hover or focus a node to see its role.',
+      expertise: [
+        ['strategy', 'Business Strategy', 'Defines the problem, economics, priorities, and trade-offs before the scope is chosen.', 50, 7],
+        ['ux', 'UX', 'Reduces friction and shapes the journey around real user needs and context.', 78, 18],
+        ['ui', 'UI', 'Makes information, actions, and states understandable through a consistent interface.', 91, 48],
+        ['development', 'Web Development', 'Turns decisions into a fast, accessible, maintainable, and measurable system.', 76, 79],
+        ['seo', 'SEO', 'Connects valuable search demand with site structure and priority pages.', 50, 91],
+        ['aeo', 'AEO / GEO', 'Structures expertise so answer engines can understand, retrieve, and reference it.', 23, 79],
+        ['content', 'Content', 'Keeps customer questions answered with useful and current information.', 9, 48],
+        ['analytics', 'Analytics & Conversion', 'Measures behavior, finds friction, and selects iterations from evidence.', 23, 18]
+      ]
+    };
+---
+
+<section class="knowledge-ecosystem flow-section" aria-labelledby="ecosystem-title" data-knowledge-ecosystem>
+  <div class="container ecosystem-shell">
+    <header class="ecosystem-header" data-reveal>
+      <h2 id="ecosystem-title">{copy.title}</h2>
+      <p id="ecosystem-hint" class="text-mono">{copy.interaction}</p>
+    </header>
+
+    <div class="ecosystem-stage" role="group" aria-labelledby="ecosystem-title ecosystem-hint" data-reveal="image">
+      <div class="atom-orbits" aria-hidden="true">
+        {copy.expertise.map((_, index) => (
+          <span style={`--ring-angle: ${index * 45 - 90}deg`}></span>
+        ))}
+      </div>
+
+      <div class="atom-system">
+        {copy.expertise.map(([id, name], index) => (
+          <button
+            type="button"
+            class="expertise-node"
+            style={`--node-angle: ${index * 45 - 90}deg`}
+            data-node-id={id}
+            tabindex="-1"
+          >
+            <span class="node-dot" aria-hidden="true"></span>
+            <span class="node-label">{name}</span>
+          </button>
+      ))}
+      </div>
+
+      <button
+        type="button"
+        class="ecosystem-core"
+        data-ecosystem-trigger
+        aria-expanded="false"
+        aria-describedby="ecosystem-hint"
+      >
+        <span class="core-pulse" aria-hidden="true"></span>
+        <strong>Kultivate</strong>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const setupKnowledgeEcosystems = () => {
+    document.querySelectorAll<HTMLElement>('[data-knowledge-ecosystem]').forEach((root) => {
+      if (root.dataset.ready === 'true') return;
+      root.dataset.ready = 'true';
+
+      const trigger = root.querySelector<HTMLButtonElement>('[data-ecosystem-trigger]');
+      const stage = root.querySelector<HTMLElement>('.ecosystem-stage');
+      const nodes = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-node-id]'));
+      if (!trigger || !stage) return;
+      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      let collapseTimer: number | undefined;
+
+      const setNodeAvailability = (available: boolean) => {
+        nodes.forEach((node) => {
+          node.tabIndex = available ? 0 : -1;
+        });
+      };
+
+      const setExpanded = (expanded: boolean) => {
+        if (collapseTimer) window.clearTimeout(collapseTimer);
+
+        if (expanded) {
+          delete root.dataset.phase;
+          root.dataset.expanded = 'true';
+          trigger.setAttribute('aria-expanded', 'true');
+          setNodeAvailability(true);
+          return;
+        }
+
+        if (root.dataset.expanded !== 'true') return;
+        root.dataset.phase = 'collapsing';
+        trigger.setAttribute('aria-expanded', 'false');
+        setNodeAvailability(false);
+        collapseTimer = window.setTimeout(() => {
+          root.dataset.expanded = 'false';
+          delete root.dataset.phase;
+        }, 1260);
+      };
+
+      trigger.addEventListener('pointerenter', () => setExpanded(true));
+      trigger.addEventListener('focus', () => setExpanded(true));
+      trigger.addEventListener('click', () => {
+        if (finePointer) {
+          setExpanded(true);
+          return;
+        }
+        setExpanded(root.dataset.expanded !== 'true');
+      });
+
+      stage.addEventListener('pointerleave', () => {
+        if (finePointer || !root.contains(document.activeElement)) setExpanded(false);
+      });
+
+      root.addEventListener('focusout', (event) => {
+        const next = event.relatedTarget;
+        if (!(next instanceof Node) || !root.contains(next)) setExpanded(false);
+      });
+
+      root.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        setExpanded(false);
+        trigger.focus();
+      });
+    });
+  };
+
+  setupKnowledgeEcosystems();
+  document.addEventListener('astro:page-load', setupKnowledgeEcosystems);
+</script>
+
+<style>
+  .knowledge-ecosystem {
+    height: 100svh;
+    min-height: 660px;
+    display: grid;
+    place-items: center;
+    margin-top: -1px;
+    padding: 84px 0 12px;
+    background: transparent;
+  }
+
+  .ecosystem-shell {
+    height: 100%;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(300px, 0.76fr) minmax(520px, 1.24fr);
+    gap: clamp(54px, 8vw, 124px);
+    align-items: center;
+  }
+
+  .ecosystem-copy h2 {
+    max-width: 11ch;
+    margin-top: 18px;
+    font-size: clamp(2.7rem, 4.5vw, 5.2rem);
+    font-weight: 520;
+    letter-spacing: -0.046em;
+    line-height: 0.96;
+  }
+
+  .ecosystem-copy > p {
+    max-width: 48ch;
+    margin-top: 24px;
+    color: rgba(226, 234, 243, 0.76);
+    line-height: 1.68;
+  }
+
+  .ecosystem-detail {
+    min-height: 154px;
+    margin-top: clamp(34px, 5vh, 56px);
+    padding-top: 18px;
+    border-top: 1px solid rgba(89, 106, 130, 0.34);
+  }
+
+  .ecosystem-detail > .text-mono { color: rgba(201, 211, 223, 0.48); font-size: 0.65rem; }
+  .ecosystem-detail h3 { margin-top: 13px; font-size: clamp(1.2rem, 1.6vw, 1.55rem); font-weight: 560; }
+  .ecosystem-detail p { max-width: 46ch; margin-top: 9px; color: var(--steel); font-size: 0.88rem; line-height: 1.55; }
+
+  .ecosystem-stage {
+    position: relative;
+    width: min(100%, 690px);
+    aspect-ratio: 1;
+    justify-self: end;
+    isolation: isolate;
+  }
+
+  .ecosystem-links { position: absolute; inset: 2%; width: 96%; height: 96%; overflow: visible; }
+  .ecosystem-links line { stroke: rgba(103, 217, 255, 0.18); stroke-width: 0.18; vector-effect: non-scaling-stroke; }
+  .ecosystem-links circle {
+    fill: none;
+    stroke: rgba(201, 211, 223, 0.16);
+    stroke-width: 0.18;
+    stroke-dasharray: 1.2 1.8;
+    transform-origin: 50px 50px;
+    animation: orbit-drift 24s linear infinite;
+    vector-effect: non-scaling-stroke;
+  }
+  .ecosystem-links circle:last-child { animation-direction: reverse; animation-duration: 32s; }
+
+  .ecosystem-core {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    z-index: 2;
+    width: clamp(150px, 16vw, 214px);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(207, 247, 255, 0.38);
+    border-radius: 50%;
+    padding: 28px;
+    background:
+      radial-gradient(circle at 38% 32%, rgba(103, 217, 255, 0.32), rgba(23, 107, 255, 0.12) 42%, rgba(7, 16, 26, 0.94) 74%);
+    text-align: center;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 70px rgba(23, 107, 255, 0.18);
+  }
+
+  .ecosystem-core strong { position: relative; z-index: 1; max-width: 13ch; font-size: clamp(0.82rem, 1.15vw, 1.08rem); font-weight: 560; line-height: 1.24; }
+  .core-pulse { position: absolute; inset: 10%; border: 1px solid rgba(103, 217, 255, 0.22); border-radius: 50%; animation: core-breathe 5s ease-in-out infinite; }
+
+  .expertise-node {
+    position: absolute;
+    inset: var(--node-y) auto auto var(--node-x);
+    z-index: 3;
+    width: clamp(92px, 10vw, 142px);
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(201, 211, 223, 0.2);
+    border-radius: 999px;
+    padding: 9px 12px;
+    background: rgba(7, 16, 26, 0.88);
+    color: rgba(226, 234, 243, 0.76);
+    font-size: clamp(0.65rem, 0.82vw, 0.8rem);
+    line-height: 1.15;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 12px 30px rgba(2, 8, 15, 0.18);
+    transition: border-color 180ms var(--ease-out), background-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 280ms var(--ease-out);
+  }
+
+  .node-dot { flex: 0 0 5px; width: 5px; height: 5px; border-radius: 50%; background: var(--cyan-glow); box-shadow: 0 0 12px rgba(103, 217, 255, 0.66); }
+  .expertise-node[aria-pressed='true'] { z-index: 4; border-color: rgba(207, 247, 255, 0.66); background: rgba(19, 52, 77, 0.98); color: var(--cloud-white); transform: translate(-50%, -50%) scale(1.055); }
+
+  .ecosystem-mobile { display: none; }
+
+  @keyframes orbit-drift { to { transform: rotate(360deg); } }
+  @keyframes core-breathe { 50% { opacity: 0.52; transform: scale(1.06); } }
+
+  @media (hover: hover) and (pointer: fine) {
+    .expertise-node:hover { border-color: rgba(103, 217, 255, 0.54); color: var(--cloud-white); transform: translate(-50%, -50%) scale(1.055); }
+  }
+
+  @media (max-width: 980px) {
+    .knowledge-ecosystem { height: auto; min-height: 0; padding-block: clamp(76px, 10vw, 118px); }
+    .ecosystem-shell { height: auto; min-height: 0; grid-template-columns: 1fr; gap: 48px; }
+    .ecosystem-copy h2 { max-width: 13ch; }
+    .ecosystem-detail,
+    .ecosystem-stage { display: none; }
+    .ecosystem-mobile { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid rgba(89, 106, 130, 0.34); }
+    .ecosystem-mobile article { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 12px; padding: 24px; border-bottom: 1px solid rgba(89, 106, 130, 0.34); }
+    .ecosystem-mobile article:nth-child(odd) { border-right: 1px solid rgba(89, 106, 130, 0.34); }
+    .ecosystem-mobile .text-mono { padding-top: 3px; color: rgba(201, 211, 223, 0.42); font-size: 0.65rem; }
+    .ecosystem-mobile h3 { font-size: 1.08rem; font-weight: 560; }
+    .ecosystem-mobile p { margin-top: 8px; color: var(--steel); font-size: 0.82rem; line-height: 1.5; }
+  }
+
+  @media (max-width: 600px) {
+    .ecosystem-mobile { grid-template-columns: 1fr; }
+    .ecosystem-mobile article:nth-child(odd) { border-right: 0; }
+  }
+
+  @media (max-height: 720px) and (min-width: 981px) {
+    .ecosystem-shell { min-height: 580px; }
+    .ecosystem-copy h2 { font-size: clamp(2.5rem, 4vw, 4.25rem); }
+    .ecosystem-copy > p { margin-top: 18px; font-size: 0.92rem; }
+    .ecosystem-detail { min-height: 128px; margin-top: 28px; }
+    .ecosystem-stage { width: min(100%, 600px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ecosystem-links circle,
+    .core-pulse { animation: none; }
+    .expertise-node { transition: none; }
+  }
+  /* Atomic reveal: the ecosystem stays quiet until Kultivate is engaged. */
+  .knowledge-ecosystem {
+    height: 100svh;
+    min-height: 680px;
+    padding: 84px 0 clamp(72px, 8vw, 108px);
+    margin-bottom: clamp(56px, 7vw, 100px);
+  }
+
+  .ecosystem-shell {
+    height: 100%;
+    min-height: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: clamp(24px, 4vh, 42px);
+    align-items: stretch;
+  }
+
+  .ecosystem-header {
+    position: relative;
+    z-index: 6;
+    text-align: center;
+  }
+
+  .ecosystem-header h2 {
+    max-width: none;
+    margin: 0;
+    font-size: clamp(2rem, 3.2vw, 3.8rem);
+    font-weight: 520;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .ecosystem-header p {
+    max-width: none;
+    margin: 14px auto 0;
+    color: rgba(201, 211, 223, 0.52);
+    font-size: 0.66rem;
+  }
+
+  .ecosystem-stage {
+    position: relative;
+    display: block;
+    width: min(100%, 1050px);
+    height: 100%;
+    min-height: 0;
+    max-height: 580px;
+    aspect-ratio: auto;
+    justify-self: center;
+    margin-inline: auto;
+    overflow: visible;
+    isolation: isolate;
+  }
+
+  .atom-orbits,
+  .atom-system {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 1px;
+    height: 1px;
+    transform-origin: center;
+  }
+
+  .atom-orbits { z-index: 1; }
+
+  .atom-orbits span {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: min(62vw, 660px);
+    height: min(17vw, 184px);
+    border: 1px solid rgba(103, 217, 255, 0.24);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--ring-angle)) scale(0.14);
+    box-shadow: 0 0 30px rgba(23, 107, 255, 0.06);
+  }
+
+  .atom-orbits span:nth-child(2) {
+    width: min(68vw, 720px);
+    height: min(14vw, 154px);
+    border-color: rgba(201, 211, 223, 0.16);
+  }
+
+  .atom-orbits span:nth-child(3) {
+    width: min(56vw, 600px);
+    height: min(20vw, 216px);
+    border-color: rgba(103, 217, 255, 0.16);
+  }
+
+  .atom-system { z-index: 2; }
+
+  .expertise-node {
+    --node-radius: clamp(170px, 18vw, 230px);
+    position: absolute;
+    inset: auto;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    width: max-content;
+    max-width: 160px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    color: rgba(226, 234, 243, 0.8);
+    font-size: clamp(0.7rem, 0.82vw, 0.82rem);
+    line-height: 1.2;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) rotate(var(--node-angle)) translateX(0) rotate(calc(-1 * var(--node-angle))) scale(0.22);
+    transition: color 220ms ease, opacity 260ms ease, transform 440ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .expertise-node:nth-child(even) {
+    --node-radius: clamp(190px, 21vw, 265px);
+  }
+
+  .node-dot {
+    flex: 0 0 9px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--cyan-glow);
+    box-shadow: 0 0 0 5px rgba(103, 217, 255, 0.07), 0 0 20px rgba(103, 217, 255, 0.58);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+  }
+
+  .node-label {
+    opacity: 0;
+    transform: translate3d(0, 5px, 0);
+  }
+
+  .ecosystem-core {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    z-index: 5;
+    width: clamp(148px, 15vw, 198px);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(207, 247, 255, 0.34);
+    border-radius: 50%;
+    padding: 24px;
+    background: radial-gradient(circle at 38% 30%, rgba(103, 217, 255, 0.3), rgba(23, 107, 255, 0.1) 44%, rgba(7, 16, 26, 0.96) 76%);
+    color: var(--cloud-white);
+    text-align: center;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 72px rgba(23, 107, 255, 0.18);
+    transition: border-color 260ms ease, box-shadow 360ms ease, transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ecosystem-core strong {
+    position: relative;
+    z-index: 1;
+    max-width: none;
+    font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+    font-weight: 560;
+    letter-spacing: -0.025em;
+  }
+
+  .core-pulse {
+    position: absolute;
+    inset: 12%;
+    border: 1px solid rgba(103, 217, 255, 0.2);
+    border-radius: 50%;
+    animation: core-breathe 4.8s ease-in-out infinite;
+  }
+
+  .knowledge-ecosystem[data-expanded='true'] .atom-system {
+    animation: atom-system-spin 1550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .knowledge-ecosystem[data-expanded='true'] .atom-orbits span {
+    animation: atom-ring-release 1550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .knowledge-ecosystem[data-expanded='true'] .expertise-node {
+    pointer-events: auto;
+    animation: atom-node-release 1550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .knowledge-ecosystem[data-expanded='true'] .node-label {
+    animation: atom-label-reveal 360ms ease 1220ms both;
+  }
+
+  .knowledge-ecosystem[data-expanded='true'] .ecosystem-core {
+    border-color: rgba(207, 247, 255, 0.62);
+    transform: translate(-50%, -50%) scale(0.96);
+    box-shadow: 0 0 96px rgba(23, 107, 255, 0.28);
+  }
+
+  @keyframes atom-system-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes atom-ring-release {
+    0%, 14% { opacity: 0; transform: translate(-50%, -50%) rotate(calc(var(--ring-angle) - 90deg)) scale(0.14); }
+    28% { opacity: 0.56; }
+    100% { opacity: 0.62; transform: translate(-50%, -50%) rotate(calc(var(--ring-angle) + 360deg)) scale(1); }
+  }
+
+  @keyframes atom-node-release {
+    0%, 14% {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(var(--node-angle)) translateX(0) rotate(calc(-1 * var(--node-angle))) scale(0.22);
+    }
+    28% { opacity: 1; }
+    76%, 100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(var(--node-angle)) translateX(var(--node-radius)) rotate(calc(-1 * var(--node-angle))) scale(1);
+    }
+  }
+
+  @keyframes atom-label-reveal {
+    from { opacity: 0; transform: translate3d(0, 6px, 0); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .ecosystem-core:hover {
+      border-color: rgba(207, 247, 255, 0.72);
+      box-shadow: 0 0 104px rgba(23, 107, 255, 0.32);
+    }
+
+    .expertise-node:hover,
+    .expertise-node:focus-visible {
+      border-color: transparent;
+      background: transparent;
+      color: var(--cloud-white);
+      transform: translate(-50%, -50%) rotate(var(--node-angle)) translateX(var(--node-radius)) rotate(calc(-1 * var(--node-angle))) scale(1.04);
+    }
+
+    .expertise-node:hover .node-dot,
+    .expertise-node:focus-visible .node-dot {
+      transform: scale(1.28);
+      box-shadow: 0 0 0 7px rgba(103, 217, 255, 0.1), 0 0 28px rgba(103, 217, 255, 0.72);
+    }
+  }
+
+  @media (max-width: 980px) {
+    .knowledge-ecosystem {
+      height: 100svh;
+      min-height: 680px;
+      padding: 78px 0 68px;
+      margin-bottom: 64px;
+    }
+
+    .ecosystem-shell {
+      height: 100%;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .ecosystem-header h2 { font-size: clamp(1.9rem, 8vw, 3rem); }
+    .ecosystem-stage {
+      display: block;
+      width: min(100%, 560px);
+      height: auto;
+      min-height: 0;
+      max-height: none;
+      aspect-ratio: 1;
+      justify-self: center;
+    }
+
+    .ecosystem-core { width: clamp(118px, 31vw, 148px); }
+    .expertise-node {
+      --node-radius: clamp(100px, 29vw, 132px);
+      max-width: 108px;
+      font-size: 0.66rem;
+    }
+    .expertise-node:nth-child(even) {
+      --node-radius: clamp(112px, 33vw, 148px);
+    }
+
+    .atom-orbits span { width: min(88vw, 420px); height: min(28vw, 128px); }
+    .atom-orbits span:nth-child(2) { width: min(94vw, 452px); height: min(24vw, 112px); }
+    .atom-orbits span:nth-child(3) { width: min(80vw, 388px); height: min(34vw, 152px); }
+  }
+
+  @media (max-width: 600px) {
+    .knowledge-ecosystem {
+      min-height: 640px;
+      padding-bottom: 62px;
+    }
+
+    .ecosystem-header p { margin-top: 10px; font-size: 0.6rem; }
+    .node-dot { flex-basis: 7px; width: 7px; height: 7px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .core-pulse,
+    .atom-system,
+    .atom-orbits span,
+    .expertise-node,
+    .node-label { animation: none !important; }
+
+    .knowledge-ecosystem[data-expanded='true'] .atom-orbits span {
+      opacity: 0.62;
+      transform: translate(-50%, -50%) rotate(var(--ring-angle)) scale(1);
+    }
+
+    .knowledge-ecosystem[data-expanded='true'] .expertise-node {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(var(--node-angle)) translateX(var(--node-radius)) rotate(calc(-1 * var(--node-angle))) scale(1);
+    }
+
+    .knowledge-ecosystem[data-expanded='true'] .node-label {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  /* One orbit per discipline: each ellipse ends at its matching node. */
+  .atom-orbits span:nth-child(n) {
+    --ring-radius: clamp(170px, 18vw, 230px);
+    width: calc(var(--ring-radius) * 2);
+    height: calc(var(--ring-radius) * 1.42);
+    border-color: rgba(103, 217, 255, 0.14);
+  }
+
+  .atom-orbits span:nth-child(even) {
+    --ring-radius: clamp(190px, 21vw, 265px);
+    border-color: rgba(201, 211, 223, 0.12);
+  }
+
+  .ecosystem-core {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    isolation: isolate;
+  }
+
+  .ecosystem-core::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border: 1px solid rgba(207, 247, 255, 0.34);
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 30%, rgba(103, 217, 255, 0.3), rgba(23, 107, 255, 0.1) 44%, rgba(7, 16, 26, 0.96) 76%);
+    box-shadow: 0 0 72px rgba(23, 107, 255, 0.18);
+    transform: scale(1);
+    transition: border-color 260ms ease, box-shadow 360ms ease, transform 1100ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ecosystem-core strong {
+    display: block;
+    width: auto;
+    max-width: 78%;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: clamp(1rem, 1.45vw, 1.3rem);
+    text-overflow: clip;
+    transform: none;
+  }
+
+  .core-pulse {
+    transition: transform 1100ms cubic-bezier(0.16, 1, 0.3, 1), opacity 360ms ease;
+  }
+
+  .knowledge-ecosystem[data-expanded='true'] .ecosystem-core {
+    transform: translate(-50%, -50%);
+    box-shadow: none;
+  }
+
+  .knowledge-ecosystem[data-expanded='true'] .ecosystem-core::before {
+    border-color: rgba(207, 247, 255, 0.62);
+    box-shadow: 0 0 96px rgba(23, 107, 255, 0.28);
+    transform: scale(0.76);
+  }
+
+  .knowledge-ecosystem[data-expanded='true'] .core-pulse {
+    animation: none;
+    opacity: 0.72;
+    transform: scale(0.76);
+  }
+
+  .knowledge-ecosystem[data-phase='collapsing'] .atom-system {
+    animation: atom-system-spin 1550ms cubic-bezier(0.16, 1, 0.3, 1) reverse both;
+  }
+
+  .knowledge-ecosystem[data-phase='collapsing'] .atom-orbits span {
+    animation: atom-ring-release 1550ms cubic-bezier(0.16, 1, 0.3, 1) reverse both;
+  }
+
+  .knowledge-ecosystem[data-phase='collapsing'] .expertise-node {
+    pointer-events: none;
+    animation: atom-node-release 1550ms cubic-bezier(0.16, 1, 0.3, 1) reverse both;
+  }
+
+  .knowledge-ecosystem[data-phase='collapsing'] .node-label {
+    animation: atom-label-reveal 300ms ease reverse both;
+  }
+
+  .knowledge-ecosystem[data-phase='collapsing'] .ecosystem-core::before,
+  .knowledge-ecosystem[data-phase='collapsing'] .core-pulse {
+    transform: scale(1);
+  }
+
+  @keyframes atom-ring-release {
+    0%, 14% {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(calc(var(--ring-angle) - 90deg)) scale(0.14);
+    }
+    28% { opacity: 0.32; }
+    100% {
+      opacity: 0.38;
+      transform: translate(-50%, -50%) rotate(calc(var(--ring-angle) + 360deg)) scale(1);
+    }
+  }
+
+  @media (max-width: 980px) {
+    .ecosystem-core { width: clamp(132px, 34vw, 154px); }
+    .ecosystem-core strong { max-width: 76%; font-size: clamp(0.94rem, 4.2vw, 1.08rem); }
+
+    .atom-orbits span:nth-child(n) {
+      --ring-radius: clamp(100px, 29vw, 132px);
+      width: calc(var(--ring-radius) * 2);
+      height: calc(var(--ring-radius) * 1.42);
+    }
+
+    .atom-orbits span:nth-child(even) {
+      --ring-radius: clamp(112px, 33vw, 148px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .knowledge-ecosystem[data-phase='collapsing'] .atom-system,
+    .knowledge-ecosystem[data-phase='collapsing'] .atom-orbits span,
+    .knowledge-ecosystem[data-phase='collapsing'] .expertise-node,
+    .knowledge-ecosystem[data-phase='collapsing'] .node-label {
+      animation: none !important;
+    }
+  }
+  /* Final atom geometry: one shared radius keeps every dot on its ring endpoint. */
+  .knowledge-ecosystem {
+    --atom-radius: clamp(150px, 16vw, 195px);
+  }
+
+  .atom-orbits span:nth-child(n) {
+    --ring-radius: var(--atom-radius);
+    width: calc(var(--ring-radius) * 2);
+    height: calc(var(--ring-radius) * 0.78);
+    border-color: rgba(103, 217, 255, 0.15);
+  }
+
+  .atom-orbits span:nth-child(even) {
+    --ring-radius: var(--atom-radius);
+    border-color: rgba(201, 211, 223, 0.12);
+  }
+
+  .expertise-node,
+  .expertise-node:nth-child(even) {
+    --node-radius: var(--atom-radius);
+    width: 44px;
+    max-width: none;
+    height: 44px;
+    min-height: 44px;
+    display: block;
+    overflow: visible;
+  }
+
+  .node-dot {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 9px;
+    height: 9px;
+    transform: translate(-50%, -50%);
+  }
+
+  .node-label {
+    position: absolute;
+    width: max-content;
+    max-width: 150px;
+    opacity: 0;
+    white-space: nowrap;
+  }
+
+  .expertise-node:nth-child(1) .node-label {
+    left: 50%;
+    bottom: calc(50% + 15px);
+    transform: translateX(-50%);
+  }
+
+  .expertise-node:nth-child(2) .node-label {
+    left: calc(50% + 15px);
+    bottom: calc(50% + 12px);
+    text-align: left;
+  }
+
+  .expertise-node:nth-child(3) .node-label {
+    left: calc(50% + 16px);
+    top: 50%;
+    text-align: left;
+    transform: translateY(-50%);
+  }
+
+  .expertise-node:nth-child(4) .node-label {
+    left: calc(50% + 15px);
+    top: calc(50% + 12px);
+    text-align: left;
+  }
+
+  .expertise-node:nth-child(5) .node-label {
+    left: 50%;
+    top: calc(50% + 15px);
+    transform: translateX(-50%);
+  }
+
+  .expertise-node:nth-child(6) .node-label {
+    right: calc(50% + 15px);
+    top: calc(50% + 12px);
+    text-align: right;
+  }
+
+  .expertise-node:nth-child(7) .node-label {
+    right: calc(50% + 16px);
+    top: 50%;
+    text-align: right;
+    transform: translateY(-50%);
+  }
+
+  .expertise-node:nth-child(8) .node-label {
+    right: calc(50% + 15px);
+    bottom: calc(50% + 12px);
+    text-align: right;
+  }
+
+  .knowledge-ecosystem[data-expanded='true']:not([data-phase='collapsing']) .atom-system {
+    animation: atom-system-expand 1260ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .knowledge-ecosystem[data-expanded='true']:not([data-phase='collapsing']) .atom-orbits span {
+    animation: atom-ring-expand 1260ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .knowledge-ecosystem[data-expanded='true']:not([data-phase='collapsing']) .expertise-node {
+    animation: atom-node-expand 1260ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .knowledge-ecosystem[data-expanded='true']:not([data-phase='collapsing']) .node-label {
+    animation: atom-label-expand 280ms ease 960ms both;
+  }
+
+  .knowledge-ecosystem[data-phase='collapsing'] .atom-system {
+    animation: atom-system-return 1260ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .knowledge-ecosystem[data-phase='collapsing'] .atom-orbits span {
+    animation: atom-ring-return 1260ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .knowledge-ecosystem[data-phase='collapsing'] .expertise-node {
+    pointer-events: none;
+    animation: atom-node-return 1260ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .knowledge-ecosystem[data-phase='collapsing'] .node-label {
+    animation: atom-label-return 220ms ease both;
+  }
+
+  @keyframes atom-system-expand {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes atom-system-return {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+
+  @keyframes atom-ring-expand {
+    0%, 12% {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(calc(var(--ring-angle) - 90deg)) scale(0.14);
+    }
+    28% { opacity: 0.28; }
+    100% {
+      opacity: 0.42;
+      transform: translate(-50%, -50%) rotate(calc(var(--ring-angle) + 360deg)) scale(1);
+    }
+  }
+
+  @keyframes atom-ring-return {
+    0% {
+      opacity: 0.42;
+      transform: translate(-50%, -50%) rotate(calc(var(--ring-angle) + 360deg)) scale(1);
+    }
+    72% { opacity: 0.26; }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(calc(var(--ring-angle) - 90deg)) scale(0.14);
+    }
+  }
+
+  @keyframes atom-node-expand {
+    0%, 12% {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(var(--node-angle)) translateX(0) rotate(calc(-1 * var(--node-angle))) scale(0.22);
+    }
+    28% { opacity: 1; }
+    76%, 100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(var(--node-angle)) translateX(var(--node-radius)) rotate(calc(-1 * var(--node-angle))) scale(1);
+    }
+  }
+
+  @keyframes atom-node-return {
+    0%, 20% {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(var(--node-angle)) translateX(var(--node-radius)) rotate(calc(-1 * var(--node-angle))) scale(1);
+    }
+    74% { opacity: 0.88; }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(var(--node-angle)) translateX(0) rotate(calc(-1 * var(--node-angle))) scale(0.22);
+    }
+  }
+
+  @keyframes atom-label-expand {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes atom-label-return {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @media (max-width: 980px) {
+    .knowledge-ecosystem { --atom-radius: clamp(92px, 25vw, 112px); }
+    .node-label { max-width: 106px; white-space: normal; font-size: 0.6rem; }
+
+    .expertise-node:nth-child(2) .node-label,
+    .expertise-node:nth-child(3) .node-label,
+    .expertise-node:nth-child(4) .node-label {
+      right: calc(50% + 14px);
+      left: auto;
+      text-align: right;
+    }
+
+    .expertise-node:nth-child(6) .node-label,
+    .expertise-node:nth-child(7) .node-label,
+    .expertise-node:nth-child(8) .node-label {
+      right: auto;
+      left: calc(50% + 14px);
+      text-align: left;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .knowledge-ecosystem[data-expanded='true']:not([data-phase='collapsing']) .atom-system,
+    .knowledge-ecosystem[data-expanded='true']:not([data-phase='collapsing']) .atom-orbits span,
+    .knowledge-ecosystem[data-expanded='true']:not([data-phase='collapsing']) .expertise-node,
+    .knowledge-ecosystem[data-expanded='true']:not([data-phase='collapsing']) .node-label,
+    .knowledge-ecosystem[data-phase='collapsing'] .atom-system,
+    .knowledge-ecosystem[data-phase='collapsing'] .atom-orbits span,
+    .knowledge-ecosystem[data-phase='collapsing'] .expertise-node,
+    .knowledge-ecosystem[data-phase='collapsing'] .node-label {
+      animation: none !important;
+    }
+  }
+</style>

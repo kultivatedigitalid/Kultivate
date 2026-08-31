@@ -1,8 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import FinalCTA from '../../components/home/FinalCTA.astro';
 import ContactSuccessModal from '../../components/contact/ContactSuccessModal.astro';
-import ContactNextSteps from '../../components/contact/ContactNextSteps.astro';
 import { siteConfig } from '../../data/site';
 import { useTranslations } from '../../i18n/routes';
 
@@ -54,9 +52,7 @@ const t = useTranslations(locale);
               <select id="service" name="service" required class="form-select">
                 <option value="">-- Pilih Layanan --</option>
                 <option value="seo">{t('contact.service_seo')}</option>
-                <option value="aeo-geo">{t('contact.service_system')}</option>
                 <option value="web-services">{t('contact.service_web')}</option>
-                <option value="content-management">{t('contact.service_social')}</option>
               </select>
             </div>
 
@@ -138,8 +134,6 @@ const t = useTranslations(locale);
             </div>
           </div>
 
-          <ContactNextSteps locale="id" />
-
           <div class="office-card card border-subtle">
             <h3 class="office-title text-mono">Basis kami</h3>
             <p class="office-address">{siteConfig.address}</p>
@@ -152,7 +146,6 @@ const t = useTranslations(locale);
   </div>
 
   <ContactSuccessModal locale={locale} />
-  <FinalCTA locale={locale} />
 </BaseLayout>
 
 <style>

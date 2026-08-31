@@ -10,7 +10,7 @@ export const enTranslations = {
   'nav.explore_service': 'Explore Service',
   
   // Footer
-  'footer.tagline': 'SEO support shaped around what your business needs.',
+  'footer.tagline': 'SEO and website support shaped around what your business needs.',
   'footer.services': 'Services',
   'footer.about': 'About',
   'footer.legal': 'Legal',

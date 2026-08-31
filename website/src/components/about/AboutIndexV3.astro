@@ -1,6 +1,7 @@
 ---
 import HeroShell from '../shared/HeroShell.astro';
 import AboutOrbit3D from './AboutOrbit3D.astro';
+import KnowledgeEcosystem from './KnowledgeEcosystem.astro';
 
 interface Props { locale: 'id' | 'en'; }
 
@@ -13,18 +14,14 @@ const copy = locale === 'id'
       cultureTitle: 'Kami percaya digital seharusnya terasa lebih terarah',
       cultureBody: 'Kultivate dibangun untuk menyatukan cara bisnis dipahami, ditemukan, dan digunakan ke dalam satu arah yang mudah dijalankan. Kami bekerja dekat dengan owner dan tim internal, mendengarkan konteksnya, mempertanyakan hal yang belum jelas, lalu mengubahnya menjadi keputusan yang dapat dipahami bersama.',
       cultureLabel: 'Kolase ilustrasi editorial tentang proses kerja Kultivate',
-      partnershipTitle: 'Dibangun untuk tetap berguna',
-      partnershipBody: 'Hasil yang baik seharusnya tetap masuk akal bagi tim Anda, berguna dalam pekerjaan sehari-hari, dan bisa berkembang bersama bisnis. Nilainya tidak seharusnya berhenti saat handover.',
+      partnershipTitle: 'Kami ingin tim Anda membawa pulang lebih dari sekadar deliverable.',
       partnershipLabel: 'Hal yang Kultivate tinggalkan bersama setiap pekerjaan',
-      partnershipClosing: 'Kami ingin tim Anda pulang dengan lebih dari sebuah deliverable. Anda juga membawa konteks, keyakinan, dan kemampuan untuk mengambil langkah berikutnya.',
+      partnershipClosing: 'Melangkah dengan konteks yang jelas, keyakinan penuh, dan kemampuan untuk bertindak tegas.',
       promises: [
         ['Pahami alasannya', 'Alasan di balik setiap struktur, prioritas, dan rekomendasi dibuat jelas, agar keputusan tidak terasa seperti instruksi dari agency.'],
         ['Gunakan setiap hari', 'Website, content, dan sistem kerja disusun mengikuti kapasitas nyata tim Anda, bukan sekadar terlihat sempurna saat presentasi.'],
         ['Terus bergerak', 'Konteks dan prioritas tetap bersama tim Anda, sehingga langkah berikutnya tidak perlu dimulai lagi dari nol.']
-      ],
-      teamTitle: 'Peran yang menjaga pekerjaan tetap utuh',
-      teamNote: 'Delivery roles',
-      teamIntro: 'Orang yang terlibat menyesuaikan kebutuhan proyek. Empat tanggung jawab ini tetap memiliki owner yang jelas dari discovery sampai review.'
+      ]
     }
   : {
       title: 'SEO Agency for Your Priorities',
@@ -33,18 +30,14 @@ const copy = locale === 'id'
       cultureTitle: 'We believe digital should feel more directed',
       cultureBody: 'Kultivate was built to bring the way a business is understood, found, and used into one direction people can act on. We work closely with owners and in-house teams, listen to the context, question what is unclear, and turn it into decisions people can understand together.',
       cultureLabel: 'A collage of editorial illustrations about the Kultivate working process',
-      partnershipTitle: 'Built to stay useful',
-      partnershipBody: 'A good outcome should make sense to your team, work in the day to day, and grow with the business. Its value should not stop at handover.',
+      partnershipTitle: 'We want your team to leave with more than a deliverable.',
       partnershipLabel: 'What Kultivate leaves behind with every engagement',
-      partnershipClosing: 'We want your team to leave with more than a deliverable. You should also have the context, confidence, and ability to take the next step.',
+      partnershipClosing: 'Move forward with clear context, real confidence, and the capability to act decisively.',
       promises: [
         ['Know the why', 'Clear reasoning sits behind every structure, priority, and recommendation, so decisions never feel like agency instructions.'],
         ['Use it every day', 'Websites, content, and working systems are shaped around your team’s real capacity, not presentation-day perfection.'],
         ['Keep moving', 'Clear context and priorities stay with your team, so the next step never needs to start from zero.']
-      ],
-      teamTitle: 'The roles that keep the work connected',
-      teamNote: 'Delivery roles',
-      teamIntro: 'The people involved follow the needs of the engagement. These four responsibilities keep a clear owner from discovery through review.'
+      ]
     };
 
 const collageImages = [
@@ -67,19 +60,6 @@ const marqueeRows = [collageImages.slice(0, 6), collageImages.slice(6)].map((row
   ...row.map((item) => ({ item, duplicate: true }))
 ]);
 
-const deliveryRoles = locale === 'id'
-  ? [
-      ['Strategy & discovery', 'Menerjemahkan tujuan, audiens, batasan, dan economics bisnis menjadi prioritas yang dapat diuji.', 'Terlibat pada framing masalah, scope, dan keputusan utama.'],
-      ['Technical delivery', 'Menjaga implementasi, performa, accessibility, search readiness, dan acceptance criteria.', 'Terlibat dari feasibility sampai QA dan handover.'],
-      ['Content & authority', 'Menyusun informasi agar berguna bagi pelanggan, konsisten dengan expertise, dan mudah dipelihara.', 'Terlibat pada research, structure, evidence, dan editorial review.'],
-      ['Project stewardship', 'Menjaga ownership, checkpoint, dependensi, dan catatan keputusan tetap jelas bagi semua pihak.', 'Terlibat sepanjang ritme komunikasi dan review.']
-    ]
-  : [
-      ['Strategy & discovery', 'Turns goals, audience, constraints, and business economics into priorities the team can test.', 'Involved in problem framing, scope, and major decisions.'],
-      ['Technical delivery', 'Owns implementation quality, performance, accessibility, search readiness, and acceptance criteria.', 'Involved from feasibility through QA and handover.'],
-      ['Content & authority', 'Shapes information to help customers, reflect expertise, and remain maintainable.', 'Involved in research, structure, evidence, and editorial review.'],
-      ['Project stewardship', 'Keeps ownership, checkpoints, dependencies, and decision records clear for everyone.', 'Involved throughout communication and review.']
-    ];
 ---
 
 <div class="about-page page-flow">
@@ -127,7 +107,6 @@ const deliveryRoles = locale === 'id'
     <div class="container partnership-intro" data-reveal>
       <h2>{copy.partnershipTitle}</h2>
       <p class="partnership-statement">{copy.partnershipClosing}</p>
-      <p class="partnership-context">{copy.partnershipBody}</p>
     </div>
     <div class="container partnership-promises">
       {copy.promises.map(([title, description], index) => (
@@ -139,27 +118,7 @@ const deliveryRoles = locale === 'id'
     </div>
   </section>
 
-  <section class="team-section flow-section" aria-labelledby="team-title" data-scroll-key="about-team">
-    <div class="container team-heading" data-reveal>
-      <div>
-        <h2 id="team-title">{copy.teamTitle}</h2>
-        <p>{copy.teamIntro}</p>
-      </div>
-      <span class="text-mono">{copy.teamNote}</span>
-    </div>
-    <div class="container team-grid">
-      {deliveryRoles.map(([role, responsibility, involvement], index) => (
-        <article class="delivery-role" data-reveal style={{ '--reveal-delay': (index * 70) + 'ms' }}>
-          <span class="role-index text-mono">0{index + 1}</span>
-          <div>
-            <h3>{role}</h3>
-            <p>{responsibility}</p>
-            <small>{involvement}</small>
-          </div>
-        </article>
-      ))}
-    </div>
-  </section>
+  <KnowledgeEcosystem locale={locale} />
 </div>
 
 
@@ -263,33 +222,25 @@ const deliveryRoles = locale === 'id'
   }
 
   .partnership-intro h2 {
-    margin-bottom: clamp(26px, 3vw, 42px);
-    color: rgba(226, 234, 243, 0.72);
-    font-size: clamp(1rem, 1.2vw, 1.16rem);
-    font-weight: 580;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
+    max-width: 23ch;
+    margin: 0 auto;
+    color: var(--cloud-white);
+    font-size: clamp(2.35rem, 4.2vw, 4.8rem);
+    font-weight: 530;
+    letter-spacing: -0.038em;
+    line-height: 1.02;
     text-wrap: balance;
   }
 
   .partnership-statement {
-    max-width: 31ch;
-    margin-inline: auto;
-    color: var(--cloud-white);
-    font-size: clamp(2rem, 3.9vw, 4.35rem);
-    font-weight: 510;
-    letter-spacing: -0.038em;
-    line-height: 1.04;
+    max-width: 56ch;
+    margin: clamp(24px, 3vw, 36px) auto 0;
+    color: rgba(226, 234, 243, 0.82);
+    font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+    font-weight: 560;
+    letter-spacing: -0.015em;
+    line-height: 1.5;
     text-wrap: balance;
-  }
-
-  .partnership-context {
-    max-width: 59ch;
-    margin: clamp(30px, 4vw, 52px) auto 0;
-    color: rgba(226, 234, 243, 0.76);
-    font-size: clamp(1rem, 1.16vw, 1.12rem);
-    line-height: 1.72;
-    text-wrap: pretty;
   }
 
   .partnership-promises {
@@ -351,7 +302,7 @@ const deliveryRoles = locale === 'id'
   @media (max-width: 1000px) {
     .culture-copy { grid-template-columns: 1fr; gap: 22px; }
     .culture-copy p { max-width: 58ch; }
-    .partnership-statement { max-width: 29ch; }
+    .partnership-statement { max-width: 46ch; }
     .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
@@ -359,7 +310,7 @@ const deliveryRoles = locale === 'id'
     .culture-collage { --collage-gap: 16px; padding-inline: 12px; }
     .collage-row { padding-block: 14px; }
     .collage-item { flex-basis: min(70vw, 270px); }
-    .partnership-statement { max-width: 24ch; }
+    .partnership-statement { max-width: 34ch; }
     .partnership-promises { grid-template-columns: 1fr; gap: 36px; }
     .partnership-promises h3 { margin-bottom: 10px; }
     .team-heading { align-items: flex-start; flex-direction: column; }
