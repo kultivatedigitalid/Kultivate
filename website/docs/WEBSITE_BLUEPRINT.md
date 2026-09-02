@@ -152,12 +152,8 @@ Use consistent locale-prefixed URLs:
 /en/services/
 /id/services/seo/
 /en/services/seo/
-/id/services/aeo-geo/
-/en/services/aeo-geo/
 /id/services/web-services/
 /en/services/web-services/
-/id/services/content-management/
-/en/services/content-management/
 /id/about/
 /en/about/
 /id/insights/

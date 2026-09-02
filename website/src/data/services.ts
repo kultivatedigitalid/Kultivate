@@ -18,88 +18,51 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       id: 'seo',
       title: 'SEO',
       slug: 'seo',
-      tagline: 'Bantu pelanggan yang tepat menemukan apa yang bisnis Anda tawarkan.',
-      description: 'Kami memperbaiki fondasi teknis, halaman prioritas, dan sinyal authority yang terhubung dengan cara pelanggan Anda mencari.',
+      tagline: 'Bantu pelanggan yang tepat menemukan dan memahami apa yang bisnis Anda tawarkan.',
+      description: 'Kami memperkuat fondasi teknis, halaman prioritas, konten, entity, dan authority signals agar bisnis Anda dapat ditemukan melalui search tradisional maupun pengalaman pencarian berbasis AI.',
       problemCauses: [
-        'Halaman prioritas belum dipetakan ke istilah dan intent yang digunakan pelanggan.',
-        'Crawlability, indexing, kecepatan, atau internal linking menghambat halaman untuk ditemukan.',
-        'Measurement masih berfokus pada traffic tanpa menghubungkan search dengan inquiry.'
+        'Halaman prioritas belum dipetakan ke istilah, pertanyaan, dan intent yang digunakan pelanggan.',
+        'Crawlability, indexing, kecepatan, internal linking, atau struktur halaman menghambat discovery.',
+        'Jawaban penting, entity, schema, dan evidence belum tersusun agar mudah dipahami atau dirujuk oleh search dan answer engines.'
       ],
       problemsSolved: [
         'Halaman prioritas Anda belum muncul untuk pencarian yang terhubung dengan produk atau layanan Anda.',
-        'Masalah teknis membuat halaman lebih sulit dirayapi, diindeks, atau digunakan.',
-        'Traffic organik belum memiliki hubungan yang jelas dengan inquiry atau prioritas bisnis.'
+        'Masalah teknis membuat halaman lebih sulit dirayapi, diindeks, dipahami, atau digunakan.',
+        'Expertise bisnis belum terlihat jelas dalam hasil search, AI answers, atau sumber yang memengaruhi keputusan pelanggan.'
       ],
       whoItIsFor: [
         'Bisnis yang mengandalkan pelanggan untuk menemukan produk atau layanan melalui search.',
         'Tim marketing yang membutuhkan prioritas SEO yang jelas dan dukungan implementasi.',
-        'Website baru, website existing, atau website yang sedang migrasi dan membutuhkan fondasi search lebih kuat.'
+        'Brand yang ingin menyiapkan expertise untuk Google AI Overviews dan pengalaman generative search.',
+        'Website baru, existing, atau yang sedang migrasi dan membutuhkan fondasi search lebih kuat.'
       ],
       scope: [
-        'SEO audit, technical SEO, dan evaluasi performa search.',
-        'Keyword research yang terhubung dengan search intent dan prioritas bisnis.',
-        'Perbaikan on-page, internal linking, dan optimasi halaman prioritas.',
-        'Authority signals, measurement, dan rencana perbaikan yang diprioritaskan.'
+        'SEO strategy, audit, keyword research, search intent, dan page mapping.',
+        'Technical SEO untuk crawlability, indexation, performance, schema, dan internal linking.',
+        'On-page SEO, content strategy, content structure, dan optimasi halaman prioritas.',
+        'AEO & GEO untuk answer-ready content, entity signals, retrievability, dan citation readiness.',
+        'Authority signals, AI search visibility monitoring, analytics, dan prioritas optimasi.'
       ],
       deliverables: [
-        'Audit yang diprioritaskan dengan rekomendasi yang jelas.',
-        'Keyword dan page mapping berdasarkan search intent.',
-        'Rekomendasi dan dukungan implementasi sesuai cakupan yang disepakati.',
-        'Reporting yang berfokus pada visibility, inquiry, dan sinyal bisnis yang relevan.'
+        'Audit dan roadmap SEO yang diprioritaskan berdasarkan kebutuhan bisnis.',
+        'Keyword, question, prompt, dan page mapping berdasarkan search intent.',
+        'Rekomendasi on-page, technical SEO, schema, entity, dan answer-ready content.',
+        'Dukungan implementasi sesuai cakupan yang disepakati.',
+        'Reporting untuk visibility, AI search presence, inquiry, dan sinyal bisnis yang relevan.'
       ],
       process: [
-        'Selaraskan bersama: Kami mempelajari apa yang bisnis Anda tawarkan, siapa yang perlu Anda jangkau, dan apa yang baseline search saat ini tunjukkan kepada kita.',
-        'Pilih bersama: Kami menyepakati bersama Anda peluang dan masalah teknis yang paling layak ditangani lebih dahulu.',
-        'Perbaiki bersama: Kami memperbaiki fondasi teknis, halaman prioritas, internal linking, dan authority signals sesuai cakupan yang kita sepakati.',
-        'Tinjau bersama: Kami membahas hasilnya bersama Anda, mengukur perubahan yang relevan, dan menentukan prioritas berikutnya.'
-      ]
-    },
-    {
-      id: 'aeo-geo',
-      title: 'AEO & GEO',
-      slug: 'aeo-geo',
-      tagline: 'Siapkan expertise Anda untuk cara orang mencari dengan AI.',
-      description: 'Kami menyusun konten, entity, dan sinyal teknis agar answer engines dapat memahami dan mengambil informasi berguna dari website Anda.',
-      problemCauses: [
-        'Jawaban penting masih terkubur di dalam halaman atau belum memiliki struktur yang mudah diambil.',
-        'Schema dan hubungan topik belum konsisten menjelaskan expertise brand.',
-        'Visibility pada prompt dan sumber yang digunakan pelanggan belum dipantau.'
-      ],
-      problemsSolved: [
-        'Informasi penting di website Anda sulit dikenali dan diambil oleh answer engines.',
-        'Entity, schema, dan hubungan antar topik belum cukup jelas.',
-        'Tim Anda belum memiliki gambaran yang jelas tentang kemunculan brand di berbagai pengalaman AI search.'
-      ],
-      whoItIsFor: [
-        'Brand yang sedang menyiapkan visibility di Google AI Overviews dan platform generative search.',
-        'Bisnis dengan expertise kuat yang membutuhkan struktur jawaban dan entity signals lebih jelas.',
-        'Tim SEO dan content yang memperluas pekerjaan search saat ini ke AI discovery.'
-      ],
-      scope: [
-        'Riset pertanyaan dan prompt yang terhubung dengan pelanggan Anda.',
-        'Evaluasi content structure, schema, entity, dan retrievability.',
-        'Evaluasi kualitas sumber dan citation readiness.',
-        'Monitoring visibility pada pengalaman search dan AI answer yang relevan.'
-      ],
-      deliverables: [
-        'AEO & GEO opportunity map yang diprioritaskan.',
-        'Rekomendasi untuk answer-ready content dan entity signals yang lebih jelas.',
-        'Technical brief untuk schema dan implementasi pendukung.',
-        'Baseline untuk monitoring visibility di AI search.'
-      ],
-      process: [
-        'Selaraskan bersama: Kami memetakan pertanyaan pelanggan, entity, dan sumber yang memengaruhi keputusan mereka bersama tim Anda.',
-        'Strukturkan bersama: Kami menyusun konten, halaman, dan schema agar expertise Anda lebih mudah dipahami dan diambil.',
-        'Perkuat bersama: Kami membantu Anda menambahkan evidence dan menjaga consistency pada informasi yang paling penting.',
-        'Tinjau bersama: Kami meninjau visibility bersama Anda dan memperbarui prioritas berdasarkan data yang tersedia.'
+        'Selaraskan bersama: Kami mempelajari penawaran, pelanggan, pertanyaan, search intent, dan baseline visibility bisnis Anda.',
+        'Pilih bersama: Kami menentukan peluang SEO, AEO & GEO, content, dan masalah teknis yang paling layak ditangani lebih dahulu.',
+        'Perbaiki bersama: Kami memperkuat fondasi teknis, halaman prioritas, struktur jawaban, entity, internal linking, dan authority signals sesuai scope.',
+        'Tinjau bersama: Kami membahas hasil search dan AI visibility, mengukur perubahan yang relevan, lalu menentukan prioritas berikutnya.'
       ]
     },
     {
       id: 'web-services',
       title: 'Web Services',
       slug: 'web-services',
-      tagline: 'Berikan dukungan website yang dibutuhkan pekerjaan search Anda.',
-      description: 'Kami membangun, merawat, dan memperbaiki website ketika performa, usability, atau implementasi teknis membatasi prioritas search Anda.',
+      tagline: 'Berikan dukungan website yang dibutuhkan pekerjaan search dan bisnis Anda.',
+      description: 'Kami merancang, membangun, merawat, dan memperbaiki website ketika performa, usability, atau implementasi teknis membatasi pertumbuhan.',
       problemCauses: [
         'Technical debt, template lambat, atau arsitektur yang tidak jelas melemahkan akses dan usability.',
         'Pekerjaan SEO berada di luar backlog development tanpa ownership implementasi yang jelas.',
@@ -107,71 +70,33 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       ],
       problemsSolved: [
         'Masalah website membuat halaman penting lebih sulit dirayapi, diindeks, atau digunakan.',
-        'Rekomendasi SEO menunggu dukungan development.',
+        'Rekomendasi SEO dan kebutuhan bisnis menunggu dukungan development.',
         'Migrasi, redesign, atau maintenance rutin menempatkan performa search dalam risiko.'
       ],
       whoItIsFor: [
         'Bisnis yang membutuhkan website baru dengan fondasi search yang jelas.',
-        'Tim yang membutuhkan dukungan implementasi untuk technical SEO.',
+        'Tim yang membutuhkan dukungan UX, design, development, atau technical SEO.',
         'Website yang sedang migrasi, redesign, atau membutuhkan maintenance berkelanjutan.'
       ],
       scope: [
-        'Website development dan implementasi landing page.',
-        'Perbaikan teknis, performa, schema, dan accessibility.',
-        'Dukungan migrasi SEO, redirects, dan quality assurance.',
-        'Website maintenance dan implementasi analytics.'
+        'UX dan website strategy, information architecture, serta user flow.',
+        'Web design, development, dan implementasi landing page.',
+        'Perbaikan teknis, performance, schema, dan accessibility.',
+        'Dukungan migrasi SEO, redirects, analytics, dan quality assurance.',
+        'Website maintenance dan optimasi berkelanjutan.'
       ],
       deliverables: [
         'Website atau update implementasi yang siap produksi.',
-        'Perbaikan teknis dan catatan QA.',
-        'Rencana migrasi atau redirect bila diperlukan.',
-        'Dokumentasi maintenance dan pengelolaan konten.'
+        'Arsitektur, interface, dan komponen sesuai scope yang disepakati.',
+        'Perbaikan teknis, performance, accessibility, dan catatan QA.',
+        'Rencana migrasi, redirect, atau analytics bila diperlukan.',
+        'Dokumentasi maintenance dan pengelolaan website.'
       ],
       process: [
         'Selaraskan bersama: Kami memahami kebutuhan bisnis, user journey, dan dependensi search Anda sebelum menentukan solusi.',
-        'Definisikan bersama: Kami menyepakati arsitektur, cakupan, dan acceptance criteria dengan tim Anda.',
+        'Definisikan bersama: Kami menyepakati arsitektur, scope, interface direction, dan acceptance criteria dengan tim Anda.',
         'Bangun bersama: Kami mengimplementasikan pengalaman dan perbaikan teknis sambil menjaga komunikasi tetap terbuka.',
-        'Uji bersama: Kami memvalidasi performa, accessibility, tracking, dan search readiness bersama Anda sebelum pekerjaan ditutup.'
-      ]
-    },
-    {
-      id: 'content-management',
-      title: 'Content Management',
-      slug: 'content-management',
-      tagline: 'Jaga konten yang berguna tetap akurat, relevan, dan aktual.',
-      description: 'Kami merencanakan, membuat, menerbitkan, dan memperbarui konten berdasarkan pertanyaan pelanggan dan prioritas bisnis Anda.',
-      problemCauses: [
-        'Topik berasal dari kalender internal, bukan pertanyaan pelanggan dan search demand.',
-        'Halaman tidak ditinjau saat penawaran, informasi, dan perilaku search berubah.',
-        'Ownership, workflow, dan kapasitas publishing belum ditentukan dengan jelas.'
-      ],
-      problemsSolved: [
-        'Konten diterbitkan tanpa hubungan yang jelas dengan search demand atau pertanyaan pelanggan.',
-        'Halaman lama tidak lagi mencerminkan informasi atau prioritas search saat ini.',
-        'Proses content belum konsisten atau kapasitas publishing masih terbatas.'
-      ],
-      whoItIsFor: [
-        'Tim marketing yang membutuhkan dukungan strategi dan eksekusi konten.',
-        'Brand dengan library konten yang perlu dievaluasi dan diperbarui.',
-        'Bisnis yang ingin mengembangkan topical authority melalui konten yang terawat.'
-      ],
-      scope: [
-        'Content audit, topic planning, dan editorial roadmap.',
-        'Content briefs, writing, editing, dan on-page optimization.',
-        'CMS publishing dan content quality assurance.',
-        'Content refresh, consolidation, dan performance review.'
-      ],
-      deliverables: [
-        'Content roadmap yang terhubung dengan pertanyaan pelanggan dan prioritas bisnis.',
-        'Brief dan content asset sesuai cakupan yang disepakati.',
-        'Catatan optimasi dan publishing.',
-        'Backlog pembaruan dan evaluasi performa.'
-      ],
-      process: [
-        'Selaraskan bersama: Kami memetakan pelanggan, pertanyaan, search demand, dan konten yang sudah dimiliki tim Anda.',
-        'Rencanakan bersama: Kami memilih topik dan format yang paling berguna bagi pelanggan serta halaman layanan Anda.',
-        'Buat bersama: Kami memproduksi, mengedit, mengoptimalkan, dan menerbitkan konten dengan checkpoint yang jelas untuk Anda.',
-        'Tinjau bersama: Kami mengevaluasi performanya bersama Anda dan memperbarui konten ketika kebutuhan bisnis berubah.'
+        'Uji bersama: Kami memvalidasi performance, accessibility, tracking, dan search readiness sebelum pekerjaan ditutup.'
       ]
     }
   ],
@@ -180,88 +105,51 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       id: 'seo',
       title: 'SEO',
       slug: 'seo',
-      tagline: 'Help the right customers find what your business offers.',
-      description: 'We improve technical foundations, priority pages, and authority signals connected to how your customers search.',
+      tagline: 'Help the right customers find and understand what your business offers.',
+      description: 'We strengthen technical foundations, priority pages, content, entities, and authority signals so your business can be discovered across traditional search and AI-powered search experiences.',
       problemCauses: [
-        'Priority pages are not mapped to the terms and intent customers use.',
-        'Crawlability, indexing, speed, or internal linking is blocking discovery.',
-        'Measurement focuses on visits without connecting search activity to inquiries.'
+        'Priority pages are not mapped to the terms, questions, and intent customers use.',
+        'Crawlability, indexing, speed, internal linking, or page structure is blocking discovery.',
+        'Key answers, entities, schema, and evidence are not structured for search and answer engines to understand or reference.'
       ],
       problemsSolved: [
         'Your priority pages are not appearing for searches connected to your products or services.',
-        'Technical issues are making pages harder to crawl, index, or use.',
-        'Organic traffic is growing without a clear connection to inquiries or business priorities.'
+        'Technical issues are making pages harder to crawl, index, understand, or use.',
+        'Your expertise is not clearly represented across search results, AI answers, or the sources that shape customer decisions.'
       ],
       whoItIsFor: [
         'Businesses that depend on customers finding their products or services through search.',
         'Marketing teams that need clear SEO priorities and implementation support.',
+        'Brands preparing their expertise for Google AI Overviews and generative search experiences.',
         'New, established, or migrating websites that need stronger search foundations.'
       ],
       scope: [
-        'SEO audits, technical SEO, and search performance reviews.',
-        'Keyword research connected to customer intent and business priorities.',
-        'On-page improvements, internal linking, and priority-page optimization.',
-        'Authority signals, measurement, and a prioritized improvement plan.'
+        'SEO strategy, audits, keyword research, search intent, and page mapping.',
+        'Technical SEO for crawlability, indexation, performance, schema, and internal linking.',
+        'On-page SEO, content strategy, content structure, and priority-page optimization.',
+        'AEO & GEO for answer-ready content, entity signals, retrievability, and citation readiness.',
+        'Authority signals, AI search visibility monitoring, analytics, and optimization priorities.'
       ],
       deliverables: [
-        'A prioritized audit with clear recommendations.',
-        'Keyword and page mapping based on search intent.',
-        'Agreed recommendations and implementation support.',
-        'Reporting focused on visibility, inquiries, and relevant business signals.'
+        'A prioritized SEO audit and roadmap tied to business needs.',
+        'Keyword, question, prompt, and page mapping based on search intent.',
+        'On-page, technical SEO, schema, entity, and answer-ready content recommendations.',
+        'Implementation support within the agreed scope.',
+        'Reporting for visibility, AI search presence, inquiries, and relevant business signals.'
       ],
       process: [
-        'Align together: We learn what your business offers, who you need to reach, and what your current search baseline tells us.',
-        'Choose together: We agree with you on the opportunities and technical issues that deserve attention first.',
-        'Improve together: We strengthen technical foundations, priority pages, internal links, and authority signals within the scope we agree on.',
-        'Review together: We walk through the result with you, measure the changes that matter, and agree on the next priorities.'
-      ]
-    },
-    {
-      id: 'aeo-geo',
-      title: 'AEO & GEO',
-      slug: 'aeo-geo',
-      tagline: 'Prepare your expertise for the way people search with AI.',
-      description: 'We organize content, entities, and technical signals so answer engines can understand and retrieve useful information from your website.',
-      problemCauses: [
-        'Key answers are buried in pages or written without a retrievable structure.',
-        'Schema and topic relationships do not consistently identify the brand\'s expertise.',
-        'AI visibility is not monitored across the prompts and sources customers use.'
-      ],
-      problemsSolved: [
-        'Useful information on your website is difficult for answer engines to identify and retrieve.',
-        'Entities, schema, and relationships between topics are unclear.',
-        'Your team lacks a clear view of how the brand appears across AI search experiences.'
-      ],
-      whoItIsFor: [
-        'Brands preparing for visibility across Google AI Overviews and generative search platforms.',
-        'Businesses with strong expertise that needs clearer answer structure and entity signals.',
-        'SEO and content teams extending existing search work into AI discovery.'
-      ],
-      scope: [
-        'Research into the questions and prompts connected to your customers.',
-        'Reviews of content structure, schema, entities, and retrievability.',
-        'Source quality and citation-readiness reviews.',
-        'Visibility monitoring across relevant search and AI answer experiences.'
-      ],
-      deliverables: [
-        'A prioritized AEO & GEO opportunity map.',
-        'Recommendations for answer-ready content and clearer entity signals.',
-        'A technical brief for schema and supporting implementation.',
-        'A baseline for monitoring AI search visibility.'
-      ],
-      process: [
-        'Align together: We map customer questions, entities, and the sources that shape their decisions with your team.',
-        'Structure together: We organize content, pages, and schema so your expertise is easier to understand and retrieve.',
-        'Strengthen together: We help you add evidence and improve consistency around the information that matters most.',
-        'Review together: We review relevant visibility with you and update priorities from the data available.'
+        'Align together: We learn your offer, customers, questions, search intent, and current visibility baseline.',
+        'Choose together: We prioritize the SEO, AEO & GEO, content, and technical opportunities that deserve attention first.',
+        'Improve together: We strengthen technical foundations, priority pages, answer structure, entities, internal links, and authority signals within scope.',
+        'Review together: We review search and AI visibility, measure the changes that matter, and agree on the next priorities.'
       ]
     },
     {
       id: 'web-services',
       title: 'Web Services',
       slug: 'web-services',
-      tagline: 'Give your search work the website support it needs.',
-      description: 'We build, maintain, and improve websites where performance, usability, or technical implementation limits your search priorities.',
+      tagline: 'Give your search work and business the website support they need.',
+      description: 'We design, build, maintain, and improve websites where performance, usability, or technical implementation limits growth.',
       problemCauses: [
         'Technical debt, slow templates, or unclear architecture weakens access and usability.',
         'SEO work sits outside the development backlog without clear implementation ownership.',
@@ -269,71 +157,33 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       ],
       problemsSolved: [
         'Website problems make important pages harder to crawl, index, or use.',
-        'SEO recommendations are waiting for development support.',
+        'SEO recommendations and business needs are waiting for development support.',
         'Migration, redesign, or routine maintenance is putting search performance at risk.'
       ],
       whoItIsFor: [
         'Businesses that need a new website with a clear search foundation.',
-        'Teams that need implementation support for technical SEO.',
+        'Teams that need UX, design, development, or technical SEO support.',
         'Websites preparing for migration, redesign, or ongoing maintenance.'
       ],
       scope: [
-        'Website development and landing-page implementation.',
-        'Technical fixes, performance, schema, and accessibility improvements.',
-        'SEO migration support, redirects, and quality assurance.',
-        'Website maintenance and analytics implementation.'
+        'UX and website strategy, information architecture, and user flows.',
+        'Web design, development, and landing-page implementation.',
+        'Technical improvements, performance, schema, and accessibility.',
+        'SEO migration support, redirects, analytics, and quality assurance.',
+        'Website maintenance and ongoing optimization.'
       ],
       deliverables: [
         'A production-ready website or implementation update.',
-        'Technical improvements and a QA record.',
-        'A migration or redirect plan where required.',
-        'Maintenance and content-management documentation.'
+        'Architecture, interfaces, and components within the agreed scope.',
+        'Technical, performance, and accessibility improvements with a QA record.',
+        'A migration, redirect, or analytics plan where required.',
+        'Website maintenance and management documentation.'
       ],
       process: [
-        'Align together: We learn your business need, user journey, and search dependencies before we define the solution.',
-        'Define together: We agree on the architecture, scope, and acceptance criteria with your team.',
-        'Build together: We implement the experience and technical improvements while keeping communication open with you.',
-        'Test together: We validate performance, accessibility, tracking, and search readiness with you before we close the work.'
-      ]
-    },
-    {
-      id: 'content-management',
-      title: 'Content Management',
-      slug: 'content-management',
-      tagline: 'Keep useful content accurate, relevant, and current.',
-      description: 'We plan, create, publish, and refresh content around your customer questions and business priorities.',
-      problemCauses: [
-        'Topics come from an internal calendar instead of customer questions and demand.',
-        'Pages are not reviewed as offers, information, and search behavior change.',
-        'Ownership, workflow, and publishing capacity are not clearly defined.'
-      ],
-      problemsSolved: [
-        'Content is published without a clear link to search demand or customer questions.',
-        'Older pages no longer reflect current information or search priorities.',
-        'The content process is inconsistent or publishing capacity is limited.'
-      ],
-      whoItIsFor: [
-        'Marketing teams that need content strategy and execution support.',
-        'Brands with a content library that needs review and improvement.',
-        'Businesses that want to develop topical authority through well-maintained content.'
-      ],
-      scope: [
-        'Content audits, topic planning, and editorial roadmaps.',
-        'Content briefs, writing, editing, and on-page optimization.',
-        'CMS publishing and content quality assurance.',
-        'Content refreshes, consolidation, and performance reviews.'
-      ],
-      deliverables: [
-        'A content roadmap connected to customer questions and business priorities.',
-        'Briefs and content assets within the agreed scope.',
-        'Optimization and publishing records.',
-        'A refresh backlog and performance review.'
-      ],
-      process: [
-        'Align together: We map your customers, their questions, search demand, and the content your team already has.',
-        'Plan together: We choose the topics and formats that will be most useful for customers and your service pages.',
-        'Create together: We produce, edit, optimize, and publish content with clear checkpoints for you.',
-        'Review together: We evaluate performance with you and refresh content as your business needs change.'
+        'Align together: We learn your business need, user journey, and search dependencies before defining the solution.',
+        'Define together: We agree on architecture, scope, interface direction, and acceptance criteria with your team.',
+        'Build together: We implement the experience and technical improvements while keeping communication open.',
+        'Test together: We validate performance, accessibility, tracking, and search readiness before closing the work.'
       ]
     }
   ]

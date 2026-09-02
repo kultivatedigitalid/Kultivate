@@ -1,34 +1,67 @@
 ---
 interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
+
 const copy = locale === 'id'
   ? {
-      kicker: 'Satu sistem, dua keahlian',
-      title: 'Search yang kuat membutuhkan website yang kuat',
-      description: 'Kami melihat visibility dan website sebagai satu sistem. Strategi menemukan peluangnya; implementasi memastikan peluang itu benar-benar bekerja.',
-      aria: 'Dua keahlian utama Kultivate',
-      signal: 'Cara kami menentukan titik awal',
-      loop: 'Kami mulai dari hambatan terbesar bisnis Anda—ditemukan atau dikonversi—kemudian menghubungkan kedua disiplin hanya ketika memang dibutuhkan.',
+      kicker: 'Proses kerja',
+      title: 'Dari peluang menuju peningkatan',
+      description: 'Empat tahap yang menghubungkan search dan website tanpa memaksakan seluruh capability ke dalam satu scope.',
+      aria: 'Empat tahap proses kerja Kultivate',
       stages: [
-        ['01', 'Ditemukan oleh pelanggan yang tepat', 'SEO', 'Audit, search intent, struktur halaman, technical SEO, dan authority diarahkan pada demand yang bernilai bagi bisnis.'],
-        ['02', 'Mengubah perhatian menjadi tindakan', 'Web Services', 'Strategy, UX, development, performance, dan maintenance disusun agar website bekerja sebagai aset bisnis.']
+        {
+          index: '01',
+          title: 'Temukan',
+          description: 'Riset demand, keyword, pertanyaan AI, dan audit website menunjukkan hambatan utama.'
+        },
+        {
+          index: '02',
+          title: 'Tentukan',
+          description: 'SEO strategy, information architecture, UX, dan prioritas teknis membentuk arah kerja.'
+        },
+        {
+          index: '03',
+          title: 'Bangun',
+          description: 'On-page SEO, AEO & GEO, content structure, design, dan development dikerjakan dalam satu alur.'
+        },
+        {
+          index: '04',
+          title: 'Tingkatkan',
+          description: 'Performance, analytics, search monitoring, dan maintenance menentukan langkah berikutnya.'
+        }
       ]
     }
   : {
-      kicker: 'One system, two disciplines',
-      title: 'Strong search needs a strong website',
-      description: 'We treat visibility and the website as one system. Strategy finds the opportunity; implementation makes sure that opportunity can perform.',
-      aria: 'Kultivate\'s two core disciplines',
-      signal: 'How we choose the starting point',
-      loop: 'We begin with the biggest business constraint—being found or converting attention—then connect both disciplines only when the work calls for it.',
+      kicker: 'Our process',
+      title: 'From opportunity to improvement',
+      description: 'Four stages connect search and the website without forcing every capability into one scope.',
+      aria: 'Four stages in the Kultivate process',
       stages: [
-        ['01', 'Be found by the right customers', 'SEO', 'Audits, search intent, page structure, technical SEO, and authority are directed at demand with real business value.'],
-        ['02', 'Turn attention into action', 'Web Services', 'Strategy, UX, development, performance, and maintenance shape the website into a working business asset.']
+        {
+          index: '01',
+          title: 'Discover',
+          description: 'Demand research, keywords, AI questions, and a website audit reveal the main constraint.'
+        },
+        {
+          index: '02',
+          title: 'Define',
+          description: 'SEO strategy, information architecture, UX, and technical priorities shape the direction.'
+        },
+        {
+          index: '03',
+          title: 'Build',
+          description: 'On-page SEO, AEO & GEO, content structure, design, and development move in one flow.'
+        },
+        {
+          index: '04',
+          title: 'Improve',
+          description: 'Performance, analytics, search monitoring, and maintenance guide the next step.'
+        }
       ]
     };
 ---
 
-<section id="system" class="connected-system section-padding flow-section" aria-labelledby="system-title" data-scroll-key="home-system">
+<section id="system" class="connected-system flow-section" aria-labelledby="system-title" data-scroll-key="home-system">
   <div class="system-glow" aria-hidden="true"></div>
   <div class="container">
     <header class="system-header" data-reveal>
@@ -36,43 +69,63 @@ const copy = locale === 'id'
       <h2 id="system-title">{copy.title}</h2>
       <p>{copy.description}</p>
     </header>
-    <div class="flow-frame">
-      <ul class="system-flow" aria-label={copy.aria}>
-        {copy.stages.map(([index, stage, channel, question], stepIndex) => (
-          <li class="system-step" data-reveal style={`--reveal-delay: ${stepIndex * 100}ms`}>
-            <span class="stage-index text-mono">{index}</span>
-            <div class="stage-heading"><span>{stage}</span><strong>{channel}</strong></div>
-            <p>{question}</p>
+
+    <div class="system-frame">
+      <ol class="system-flow" aria-label={copy.aria}>
+        {copy.stages.map((item, stepIndex) => (
+          <li class="system-step" data-reveal style={`--reveal-delay: ${stepIndex * 70}ms`}>
+            <span class="stage-index text-mono">{item.index}</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
           </li>
         ))}
-      </ul>
-      <div class="system-note" data-reveal>
-        <span class="loop-label text-mono">{copy.signal}</span>
-        <p>{copy.loop}</p>
-      </div>
+      </ol>
+      <div class="process-signal" aria-hidden="true"><span></span></div>
     </div>
   </div>
 </section>
 
 <style>
-  .connected-system { position:relative; overflow:hidden; background:radial-gradient(ellipse 52% 54% at 92% 24%,rgba(103,217,255,.065),transparent 74%),radial-gradient(ellipse 48% 60% at 12% 82%,rgba(23,107,255,.07),transparent 76%),linear-gradient(180deg,transparent,rgba(11,19,34,.3) 48%,transparent); }
-  .system-glow { position:absolute; inset:14% -18% auto auto; width:66%; height:72%; border-radius:50%; background:radial-gradient(ellipse,rgba(49,117,255,.16),rgba(103,217,255,.035) 44%,transparent 70%); filter:blur(44px); pointer-events:none; }
-  .system-header { position:relative; display:grid; grid-template-columns:minmax(0,.95fr) minmax(320px,.65fr); column-gap:clamp(48px,9vw,132px); align-items:end; margin-bottom:clamp(44px,6vw,72px); }
+  .connected-system {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(68px, 7.5vw, 104px);
+    background:
+      radial-gradient(ellipse 52% 54% at 92% 24%, rgba(103,217,255,.065), transparent 74%),
+      radial-gradient(ellipse 48% 60% at 12% 82%, rgba(23,107,255,.07), transparent 76%),
+      linear-gradient(180deg, transparent, rgba(11,19,34,.3) 48%, transparent);
+  }
+  .system-glow { position:absolute; inset:14% 0 auto auto; width:58%; height:68%; border-radius:50%; background:radial-gradient(ellipse,rgba(49,117,255,.13),rgba(103,217,255,.025) 44%,transparent 70%); filter:blur(44px); pointer-events:none; }
+  .system-header { position:relative; display:grid; grid-template-columns:minmax(0,1fr) minmax(320px,.68fr); gap:18px clamp(44px,8vw,112px); align-items:end; margin-bottom:clamp(34px,4.5vw,52px); }
   .system-header .section-kicker { grid-column:1/-1; }
-  .system-header h2 { max-width:18ch; }
-  .system-header p { max-width:54ch; color:var(--steel); }
-  .flow-frame { position:relative; overflow:hidden; border-radius:var(--border-radius-lg); background:rgba(91,122,151,.28); box-shadow:0 28px 90px rgba(2,8,16,.2); }
-  .system-flow { position:relative; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; list-style:none; }
-  .system-step { position:relative; min-width:0; min-height:clamp(300px,30vw,390px); display:flex; flex-direction:column; justify-content:space-between; padding:clamp(26px,3.2vw,46px); background:linear-gradient(150deg,rgba(17,39,57,.96),rgba(10,23,36,.98)); transition:background-color 260ms ease,transform 300ms var(--ease-out); }
-  .stage-index { color:rgba(201,211,223,.52); }
-  .stage-heading { display:flex; flex-direction:column; gap:14px; margin-block:20px; }
-  .stage-heading span { max-width:34ch; color:var(--steel); font-family:var(--font-mono); font-size:.65rem; letter-spacing:.09em; text-transform:uppercase; line-height:1.35; }
-  .stage-heading strong { max-width:10ch; color:var(--cloud-white); font-family:var(--font-display); font-size:clamp(2.15rem,4vw,4.8rem); font-weight:400; letter-spacing:-.045em; line-height:.92; }
-  .system-step p { max-width:46ch; color:rgba(201,211,223,.74); font-size:.9rem; line-height:1.58; }
-  .system-note { display:grid; grid-template-columns:minmax(180px,.42fr) minmax(280px,1fr); gap:clamp(28px,5vw,76px); align-items:start; padding:clamp(26px,3.2vw,42px) clamp(26px,3.6vw,50px); background:rgba(7,18,29,.94); }
-  .loop-label { color:var(--signal-ice); }
-  .system-note p { max-width:58ch; color:rgba(201,211,223,.78); font-size:.9rem; line-height:1.55; }
+  .system-header h2 { max-width:16ch; }
+  .system-header p { max-width:54ch; padding-bottom:4px; color:var(--steel); }
+  .system-frame { overflow:hidden; border-radius:var(--border-radius-lg); background:rgba(91,122,151,.28); box-shadow:0 24px 72px rgba(2,8,16,.18); }
+  .system-flow { position:relative; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; list-style:none; }
+  .system-step { min-width:0; min-height:clamp(210px,18vw,242px); display:flex; flex-direction:column; justify-content:space-between; padding:clamp(22px,2.3vw,32px); background:linear-gradient(150deg,rgba(17,39,57,.96),rgba(10,23,36,.98)); transition:background-color 260ms ease,transform 300ms var(--ease-out); }
+  .stage-index { color:rgba(201,211,223,.5); }
+  .system-step h3 { margin-bottom:12px; color:var(--cloud-white); font-family:var(--font-display); font-size:clamp(1.5rem,2vw,2.15rem); font-weight:500; letter-spacing:-.035em; line-height:1; }
+  .system-step p { max-width:31ch; color:rgba(201,211,223,.72); font-size:.79rem; line-height:1.5; }
+  .process-signal { position:relative; height:42px; overflow:hidden; border-top:1px solid rgba(91,122,151,.28); background:#091827; }
+  .process-signal::before { content:''; position:absolute; top:50%; right:clamp(22px,2.4vw,34px); left:clamp(22px,2.4vw,34px); height:1px; background:rgba(118,139,166,.28); }
+  .process-signal span { position:absolute; top:calc(50% - 1px); left:-22%; width:22%; height:2px; background:linear-gradient(90deg,transparent,var(--cyan-glow),transparent); filter:drop-shadow(0 0 6px rgba(125,232,255,.72)); animation:process-scan 4.2s ease-in-out infinite; }
+  @keyframes process-scan { 0% { transform:translateX(0); opacity:0; } 12%,82% { opacity:1; } 100% { transform:translateX(555%); opacity:0; } }
   @media (hover:hover) and (pointer:fine) { .system-step:hover { background:linear-gradient(150deg,rgba(20,48,69,.98),rgba(10,26,41,.98)); transform:translateY(-2px); } }
-  @media (max-width:780px) { .system-header { grid-template-columns:1fr; gap:20px; } .system-flow { grid-template-columns:1fr; } .system-step { min-height:270px; } .system-note { grid-template-columns:1fr; gap:14px; } }
-  @media (prefers-reduced-motion:reduce) { .system-step { transition:none; } }
+  @media (max-width:840px) {
+    .system-header { grid-template-columns:1fr; gap:14px; }
+    .system-header .section-kicker { grid-column:auto; }
+    .system-header p { padding-bottom:0; }
+    .system-flow { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .system-step { min-height:210px; }
+  }
+  @media (max-width:420px) {
+    .connected-system { padding-block:56px; }
+    .system-step { min-height:200px; padding:20px 16px; }
+    .system-step h3 { font-size:1.35rem; }
+    .system-step p { font-size:.72rem; line-height:1.45; }
+    .process-signal { height:34px; }
+  }
+  @media (prefers-reduced-motion:reduce) { .system-step { transition:none; } .process-signal span { left:39%; animation:none; opacity:.75; } }
 </style>

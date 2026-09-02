@@ -27,24 +27,12 @@ const businessLens: Record<string, { impacts: string[]; inspections: string[] }>
     impacts: [
       'High-intent customers may leave before they understand what your business offers.',
       'Technical friction weakens user experience and search confidence in priority pages.',
-      'The team cannot separate busy traffic from visibility that genuinely supports the pipeline.'
+      'Unstructured expertise is harder for search and answer engines to understand, retrieve, and reference.'
     ],
     inspections: [
       'The relationship between the offer, search intent, page roles, and the path to inquiry.',
       'Crawling, indexation, performance, internal linking, and template consistency.',
-      'Events, inquiry sources, baselines, and how decisions are reported.'
-    ]
-  },
-  'aeo-geo': {
-    impacts: [
-      'Useful answers may be absent when customers ask for summaries or recommendations.',
-      'Brand expertise is harder to trust and reference when entities and evidence are inconsistent.',
-      'The team cannot see which questions and sources deserve attention first.'
-    ],
-    inspections: [
-      'Customer questions, answer formats, information gain, and page structure.',
-      'Entities, schema, supporting sources, claim consistency, and citation readiness.',
-      'Prompt samples, brand appearances, cited sources, and changes that can be monitored.'
+      'Answer structure, entities, schema, evidence, citation readiness, prompt samples, and visibility baselines.'
     ]
   },
   'web-services': {
@@ -57,18 +45,6 @@ const businessLens: Record<string, { impacts: string[]; inspections: string[] }>
       'User journeys, architecture, performance, accessibility, and search readiness.',
       'Ownership, backlog, technical dependencies, and acceptance criteria.',
       'Redirects, templates, analytics, pre-launch QA, and post-launch checks.'
-    ]
-  },
-  'content-management': {
-    impacts: [
-      'Content production time does not support questions close to customer decisions.',
-      'Outdated information weakens trust and creates extra work for sales or service teams.',
-      'Publishing stalls when ownership, rhythm, and capacity are unclear.'
-    ],
-    inspections: [
-      'Demand, customer questions, service relationships, and the role of each page.',
-      'Accuracy, content decay, overlap, performance, and refresh needs.',
-      'Workflow, approvals, CMS, production capacity, and quality assurance.'
     ]
   }
 };

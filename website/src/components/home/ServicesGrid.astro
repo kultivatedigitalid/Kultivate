@@ -9,13 +9,11 @@ const presentation = locale === 'id'
   ? {
       seo: {
         title: 'SEO',
-        role: 'Search visibility',
         description: 'Kami membantu halaman prioritas Anda ditemukan untuk pencarian yang terhubung dengan produk, layanan, dan pelanggan Anda.',
         image: '/assets/services/seo-focus-v3.webp'
       },
       'web-services': {
         title: 'Web Services',
-        role: 'Technical foundation',
         description: 'Kami membangun dan merawat website yang mendukung performa search, usability, dan pengelolaan konten sehari-hari.',
         image: '/assets/services/web-foundation-v3.webp'
       }
@@ -23,13 +21,11 @@ const presentation = locale === 'id'
   : {
       seo: {
         title: 'SEO',
-        role: 'Search visibility',
         description: 'We help your priority pages appear for searches connected to your products, services, and customers.',
         image: '/assets/services/seo-focus-v3.webp'
       },
       'web-services': {
         title: 'Web Services',
-        role: 'Technical foundation',
         description: 'We build and maintain websites that support search performance, usability, and day-to-day content work.',
         image: '/assets/services/web-foundation-v3.webp'
       }
@@ -58,8 +54,10 @@ const presentation = locale === 'id'
             </div>
             <div class="service-scrim" aria-hidden="true"></div>
             <div class="service-content">
-              <span class="service-role text-mono">{item.role}</span>
-              <div><h3>{item.title}</h3><p>{item.description}</p></div>
+              <div class="service-main">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
               <span class="service-action"><span>{locale === 'id' ? 'Pelajari' : 'Explore'}</span><span aria-hidden="true">&#8594;</span></span>
             </div>
           </a>
@@ -78,21 +76,22 @@ const presentation = locale === 'id'
       radial-gradient(ellipse 62% 72% at 14% 30%, rgba(139, 193, 237, 0.16), transparent 74%),
       radial-gradient(ellipse 56% 72% at 88% 68%, rgba(70, 134, 183, 0.28), transparent 76%),
       linear-gradient(180deg, #07101a 0%, #0b1d2b 48%, #07101a 100%);
+    padding-block: clamp(70px, 8vw, 108px);
   }
   .services-section::before { content: ''; position: absolute; inset: 18% 36% auto 4%; height: 34%; border-radius: 50%; background: rgba(139,193,237,.07); filter: blur(82px); pointer-events: none; }
-  .services-header { position: relative; z-index: 1; max-width: 900px; margin-bottom: clamp(40px, 5.5vw, 64px); }
-  .services-header .section-kicker { color: rgba(201, 211, 223, 0.58); }
-  .services-header h2 { margin-bottom: 16px; color: var(--cloud-white); }
-  .services-header p { max-width: 64ch; color: rgba(201, 211, 223, 0.76); font-size: 0.98rem; }
+  .services-header { position: relative; z-index: 1; display:grid; grid-template-columns:minmax(0,1fr) minmax(320px,.72fr); gap:18px clamp(44px,8vw,112px); align-items:end; margin-bottom: clamp(32px, 4vw, 48px); }
+  .services-header .section-kicker { grid-column:1/-1; color: rgba(201, 211, 223, 0.58); }
+  .services-header h2 { max-width:18ch; color: var(--cloud-white); }
+  .services-header p { max-width: 60ch; padding-bottom:4px; color: rgba(201, 211, 223, 0.76); font-size: 0.98rem; }
   .services-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; overflow: hidden; border-radius: var(--border-radius-lg); background: rgba(91, 122, 151, 0.34); }
-  .service-panel { position: relative; min-width: 0; min-height: clamp(390px, 42vw, 540px); overflow: hidden; background: linear-gradient(155deg, rgba(17, 39, 57, 0.96), rgba(10, 23, 36, 0.98)); isolation: isolate; transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
+  .service-panel { position: relative; min-width: 0; min-height: clamp(270px, 27vw, 340px); overflow: hidden; background: linear-gradient(155deg, rgba(17, 39, 57, 0.96), rgba(10, 23, 36, 0.98)); isolation: isolate; transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
   .service-media, .service-media img, .service-scrim { position: absolute; inset: 0; width: 100%; height: 100%; }
   .service-media { z-index: 0; clip-path: inset(0 100% 0 0); transition: clip-path 480ms var(--ease-out); }
   .service-media img { object-fit: cover; opacity: 0.82; transform: scale(1.035); transition: transform 480ms var(--ease-out); }
   .service-scrim { z-index: 1; background: linear-gradient(0deg, rgba(8, 18, 29, 0.96) 0%, rgba(10, 27, 41, 0.66) 52%, rgba(9, 24, 38, 0.18) 100%), linear-gradient(90deg, rgba(8, 20, 32, 0.58), transparent); }
-  .service-content { position: relative; z-index: 2; min-height: inherit; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(26px, 3.2vw, 44px); transition: transform 220ms var(--ease-out); }
-  .service-role { color: rgba(201, 211, 223, 0.72); }
-  .service-content h3 { margin-bottom: 14px; color: var(--cloud-white); font-family: var(--font-display); font-size: clamp(2.4rem, 4.8vw, 5.4rem); font-weight: 400; letter-spacing: -0.045em; line-height: 0.92; }
+  .service-content { position: relative; z-index: 2; min-height: inherit; display: grid; grid-template-rows: 1fr auto; gap: 20px; padding: clamp(24px, 2.7vw, 36px); transition: transform 220ms var(--ease-out); }
+  .service-main { align-self: end; }
+  .service-content h3 { margin-bottom: 10px; color: var(--cloud-white); font-family: var(--font-display); font-size: clamp(2.25rem, 3.6vw, 4rem); font-weight: 400; letter-spacing: -0.045em; line-height: 0.94; }
   .service-content p { max-width: 42ch; color: rgba(201, 211, 223, 0.84); font-size: 0.92rem; line-height: 1.58; }
   .service-action { display: inline-flex; align-items: center; gap: 8px; color: var(--mist); font-size: 0.82rem; font-weight: 550; }
   .service-action [aria-hidden] { transition: transform 180ms var(--ease-out); }
@@ -108,10 +107,14 @@ const presentation = locale === 'id'
   .service-panel:focus-visible .service-media img { transform: scale(1); transition-duration: 0ms; }
   @media (hover: none), (pointer: coarse) { .service-media { clip-path: inset(0); } .service-media img { opacity: 0.5; transform: none; } }
   @media (max-width: 760px) {
+    .services-section { padding-block:52px; }
+    .services-header { grid-template-columns:1fr; gap:14px; }
+    .services-header .section-kicker { grid-column:auto; }
+    .services-header p { padding-bottom:0; }
     .services-grid { grid-template-columns: 1fr; }
-    .service-panel, .service-content { min-height: 310px; }
+    .service-panel, .service-content { min-height: 224px; }
     .service-content { padding: 24px; }
-    .service-content h3 { font-size: clamp(2.5rem, 12vw, 4rem); }
+    .service-content h3 { font-size: clamp(2.35rem, 10vw, 3.5rem); }
     .service-content p { max-width: 38ch; }
   }
   @media (prefers-reduced-motion: reduce) { .service-panel, .service-media, .service-media img, .service-content, .service-action [aria-hidden] { transition: color 180ms ease, opacity 180ms ease; } }

@@ -10,12 +10,6 @@ const t = useTranslations(locale);
 ---
 
 <section id="start" class="final-cta section-padding flow-section" aria-labelledby="final-cta-title" data-scroll-key="home-cta">
-  <div class="cta-visual" aria-hidden="true">
-    <span class="cta-aura"></span>
-    <span class="cta-arc" data-ambient></span>
-    <span class="cta-horizon"></span>
-  </div>
-
   <div class="container">
     <div class="cta-content" data-reveal>
       <div>
@@ -40,70 +34,11 @@ const t = useTranslations(locale);
     min-height: 460px;
     display: flex;
     align-items: center;
-    overflow: visible;
+    overflow: hidden;
     isolation: isolate;
     background:
-      radial-gradient(ellipse 62% 92% at 76% 24%, rgba(73, 111, 255, 0.24), transparent 68%),
-      radial-gradient(ellipse 52% 64% at 42% 76%, rgba(103, 217, 255, 0.13), transparent 72%),
-      linear-gradient(180deg, transparent 0%, rgba(11, 19, 34, 0.82) 20%, rgba(7, 11, 18, 0.84) 100%);
-  }
-
-  .final-cta::before {
-    content: '';
-    position: absolute;
-    inset: clamp(-260px, -21vw, -170px) 0 auto;
-    z-index: 0;
-    height: clamp(240px, 29vw, 390px);
-    pointer-events: none;
-    background: linear-gradient(180deg, transparent 0%, rgba(7, 11, 18, 0.16) 26%, rgba(7, 11, 18, 0.68) 64%, #070b12 100%);
-  }
-
-  .cta-visual {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .cta-aura {
-    position: absolute;
-    width: min(76vw, 980px);
-    aspect-ratio: 1.9 / 1;
-    inset: -24% auto auto 50%;
-    translate: -50% 0;
-    border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(83, 125, 255, 0.2), rgba(23, 107, 255, 0.06) 44%, transparent 72%);
-    filter: blur(24px);
-    opacity: 0.74;
-  }
-
-  .cta-arc {
-    position: absolute;
-    width: min(92vw, 1200px);
-    aspect-ratio: 2.05 / 1;
-    inset: -58% auto auto 50%;
-    translate: -50% 0;
-    border-radius: 50%;
-    border-bottom: 2px solid rgba(207, 247, 255, 0.88);
-    background: radial-gradient(ellipse at 50% 100%, rgba(10, 22, 42, 0.78), rgba(7, 11, 18, 0.96) 62%);
-    box-shadow:
-      0 12px 30px rgba(103, 217, 255, 0.34),
-      0 44px 120px rgba(23, 107, 255, 0.28);
-    opacity: 0.96;
-  }
-
-  .cta-horizon {
-    position: absolute;
-    width: 86%;
-    height: 2px;
-    inset: 60% auto auto 7%;
-    transform: rotate(-4deg);
-    transform-origin: right center;
-    background: linear-gradient(90deg, transparent, rgba(103, 217, 255, 0.48), rgba(207, 247, 255, 0.72), transparent);
-    box-shadow:
-      0 0 24px rgba(103, 217, 255, 0.22),
-      0 0 70px rgba(23, 107, 255, 0.16);
-    opacity: 0.82;
+      radial-gradient(ellipse 48% 54% at 50% 48%, rgba(81, 155, 204, 0.11), transparent 72%),
+      linear-gradient(180deg, #070b12 0%, #07101a 30%, #060b12 70%, #070b12 100%);
   }
 
   .cta-content {
@@ -126,12 +61,14 @@ const t = useTranslations(locale);
     margin: 0 auto 18px;
     font-family: var(--font-display);
     font-weight: 400;
+    text-shadow: 0 2px 28px rgba(0, 0, 0, 0.34);
   }
 
   .cta-content p {
     max-width: 48ch;
     margin-inline: auto;
     color: rgba(201, 211, 223, 0.86);
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
   }
 
   .cta-content .btn {
@@ -140,7 +77,7 @@ const t = useTranslations(locale);
 
   @media (max-width: 760px) {
     .final-cta {
-      min-height: 540px;
+      min-height: 460px;
     }
 
     .cta-content {
@@ -156,23 +93,6 @@ const t = useTranslations(locale);
       max-width: 36ch;
     }
 
-    .cta-aura {
-      width: 150vw;
-      inset: -4% auto auto 50%;
-      opacity: 0.56;
-    }
-
-    .cta-arc {
-      width: 190vw;
-      inset: -7% auto auto 50%;
-      opacity: 0.72;
-    }
-
-    .cta-horizon {
-      width: 132%;
-      inset: 56% auto auto -16%;
-      opacity: 0.48;
-    }
   }
 
 </style>
