@@ -513,19 +513,10 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
     margin-top: -1px;
     border-top: 0;
     background:
+      linear-gradient(180deg, #070b12 0%, rgba(7, 11, 18, 0.92) 5%, rgba(7, 11, 18, 0) 20%),
       radial-gradient(ellipse 54% 90% at 76% 0%, rgba(23, 107, 255, 0.08), transparent 68%),
       linear-gradient(180deg, #070b12 0%, #060a10 100%);
     padding-top: clamp(72px, 8vw, 104px);
-  }
-
-  .footer::before {
-    content: '';
-    position: absolute;
-    inset: 0 0 auto;
-    z-index: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(103, 217, 255, 0.18), transparent);
-    pointer-events: none;
   }
 
   .footer-container {
