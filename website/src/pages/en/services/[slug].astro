@@ -5,6 +5,7 @@ import ServiceProblems from '../../../components/services/ServiceProblems.astro'
 import ServiceScope from '../../../components/services/ServiceScope.astro';
 import ServiceProcess from '../../../components/services/ServiceProcess.astro';
 import ServiceEvidence from '../../../components/services/ServiceEvidence.astro';
+import ServiceLearningPreview from '../../../components/learning/ServiceLearningPreview.astro';
 import ServiceFAQ from '../../../components/services/ServiceFAQ.astro';
 import FinalCTA from '../../../components/home/FinalCTA.astro';
 import { servicesData } from '../../../data/services';
@@ -142,6 +143,8 @@ const defaultFaqs = [
   />
 
   <ServiceEvidence locale={locale} serviceTitle={service.title} />
+
+  <ServiceLearningPreview locale={locale} serviceId={service.id} />
 
   <ServiceFAQ
     heading="Frequently asked questions"

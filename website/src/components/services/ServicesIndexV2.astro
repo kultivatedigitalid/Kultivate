@@ -40,7 +40,7 @@ const copy = locale === 'id'
   variant="services"
 />
 
-<section class="services-index flow-section" aria-label={copy.hero.label} data-scroll-key="services-list">
+<section id="services-list" class="services-index flow-section" aria-label={copy.hero.label} data-scroll-key="services-list">
   <div class="container service-stream">
     {copy.services.map((service, index) => (
       <article class="service-row" data-reveal>

@@ -1,0 +1,101 @@
+---
+interface Props { locale: 'id' | 'en'; }
+const { locale } = Astro.props;
+
+const copy = locale === 'id'
+  ? {
+      heading: 'Siapa kami',
+      profile: 'Kultivate dibangun untuk membantu bisnis menyatukan cara mereka dipahami, ditemukan, dan digunakan menjadi satu arah digital yang dapat dijalankan. Kami tumbuh dari kebiasaan bekerja dekat dengan owner dan tim internal—mendengarkan konteks, mempertanyakan hal yang belum jelas, lalu menerjemahkannya menjadi keputusan yang mudah dipahami bersama. Visi kami adalah membuat pertumbuhan digital terasa lebih terarah dan dapat dipertanggungjawabkan; misi kami adalah menghubungkan website, SEO, content, dan measurement ke prioritas bisnis yang nyata, sehingga setiap langkah memiliki alasan, pemilik, dan next step yang jelas.',
+      noteHeading: 'Catatan dari CEO',
+      note: 'Bagi saya, website yang baik bukan sekadar terlihat profesional. Ia harus membantu orang memahami bisnis Anda lebih cepat, menemukan alasan untuk percaya, dan tahu langkah berikutnya. Kultivate dibangun untuk bekerja dari konteks itu—bukan memaksakan paket yang sama ke setiap perusahaan. Kami akan terus menjaga cara kerja yang dekat, jelas, dan bisa dijelaskan, supaya rekomendasi yang kami berikan selalu punya alasan bisnis di baliknya.',
+      alts: [
+        'Tim meninjau strategi website bersama',
+        'Workshop customer journey dan prioritas bisnis',
+        'Technical specialist mengaudit fondasi website',
+        'Designer dan developer meninjau prototype responsif',
+        'Percakapan discovery bersama pemilik bisnis',
+        'Tim melakukan quality review sebelum launch'
+      ]
+    }
+  : {
+      heading: 'Who we are',
+      profile: 'Kultivate was built to help businesses bring the way they are understood, found, and used into one digital direction people can act on. We grew around a habit of working closely with owners and in-house teams—listening to context, questioning what is unclear, and translating it into decisions people can understand together. Our vision is to make digital growth feel more directed and accountable; our mission is to connect websites, SEO, content, and measurement to real business priorities so every step has a reason, an owner, and a clear next move.',
+      noteHeading: 'A note from our CEO',
+      note: 'A good website should do more than look professional. It should help people understand your business faster, find a reason to trust it, and know what to do next. Kultivate was built to work from that context rather than force the same package onto every company. We want to keep the work close, clear, and explainable so every recommendation we make has a business reason behind it.',
+      alts: [
+        'A team reviewing website strategy together',
+        'A workshop mapping customer journeys and business priorities',
+        'A technical specialist auditing a website foundation',
+        'A designer and developer reviewing a responsive prototype',
+        'A discovery conversation with a business owner',
+        'A team running a pre-launch quality review'
+      ]
+    };
+
+const images = ['01', '03', '05', '07', '09', '12'];
+---
+
+<section id="who-we-are" class="who-we-are flow-section" aria-labelledby="who-we-are-title">
+  <div class="container">
+    <header class="who-we-are__intro">
+      <span class="section-kicker">KULTIVATE</span>
+      <h2 id="who-we-are-title">{copy.heading}</h2>
+      <p>{copy.profile}</p>
+    </header>
+
+    <div class="who-we-are__mosaic" aria-label={locale === 'id' ? 'Kolase cara kerja tim Kultivate' : 'A collage of how the Kultivate team works'}>
+      {images.map((number, index) => (
+        <figure>
+          <img
+            src={'/assets/about/collage/collage-' + number + '.webp'}
+            alt={copy.alts[index]}
+            width="1280"
+            height="853"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      ))}
+    </div>
+
+    <aside class="ceo-note" aria-labelledby="ceo-note-title">
+      <h3 id="ceo-note-title">{copy.noteHeading}</h3>
+      <blockquote>
+        <p>{copy.note}</p>
+        <footer>Hans Galdino — Founder &amp; CEO</footer>
+      </blockquote>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .who-we-are { padding: clamp(84px, 10vw, 148px) 0; background: transparent; }
+  .who-we-are__intro { display: grid; grid-template-columns: minmax(0, 0.72fr) minmax(320px, 1.28fr); gap: clamp(34px, 7vw, 112px); align-items: start; margin-bottom: clamp(46px, 6vw, 80px); }
+  .who-we-are__intro .section-kicker { grid-column: 1 / -1; margin-bottom: -12px; }
+  .who-we-are__intro h2 { margin: 0; font-size: clamp(2.8rem, 2rem + 3.2vw, 5.8rem); font-weight: 520; letter-spacing: -0.048em; line-height: 0.94; }
+  .who-we-are__intro > p { max-width: 69ch; color: rgba(213, 222, 232, 0.82); font-size: clamp(0.98rem, 0.93rem + 0.18vw, 1.08rem); line-height: 1.72; }
+
+  .who-we-are__mosaic { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(8px, 1.2vw, 16px); }
+  .who-we-are__mosaic figure { min-width: 0; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 4px; background: #09131e; }
+  .who-we-are__mosaic figure:nth-child(1) { grid-column: span 3; }
+  .who-we-are__mosaic figure:nth-child(2) { grid-column: span 5; }
+  .who-we-are__mosaic figure:nth-child(3) { grid-column: span 4; }
+  .who-we-are__mosaic figure:nth-child(4) { grid-column: span 5; }
+  .who-we-are__mosaic figure:nth-child(5) { grid-column: span 3; }
+  .who-we-are__mosaic figure:nth-child(6) { grid-column: span 4; }
+  .who-we-are__mosaic img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+  .ceo-note { display: grid; grid-template-columns: minmax(220px, 0.65fr) minmax(0, 1.35fr); gap: clamp(30px, 7vw, 110px); margin-top: clamp(62px, 8vw, 108px); padding-top: clamp(28px, 4vw, 52px); border-top: 1px solid rgba(126, 153, 178, 0.2); }
+  .ceo-note h3 { max-width: 12ch; font-size: clamp(1.7rem, 1.35rem + 1.1vw, 2.7rem); font-weight: 520; letter-spacing: -0.034em; line-height: 1.02; }
+  .ceo-note blockquote { margin: 0; }
+  .ceo-note blockquote p { max-width: 60ch; color: rgba(232, 238, 245, 0.9); font-size: clamp(1.08rem, 1rem + 0.35vw, 1.3rem); line-height: 1.62; }
+  .ceo-note footer { margin-top: 28px; color: rgba(103, 217, 255, 0.76); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.07em; text-transform: uppercase; }
+
+  @media (max-width: 760px) {
+    .who-we-are__intro { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .who-we-are__intro .section-kicker { grid-column: auto; margin-bottom: 6px; }
+    .who-we-are__mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .who-we-are__mosaic figure:nth-child(n) { grid-column: span 1; aspect-ratio: 4 / 3; }
+    .ceo-note { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  }
+</style>

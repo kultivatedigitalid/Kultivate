@@ -5,7 +5,7 @@ export const idTranslations = {
   'nav.about': 'About Us',
   'nav.insights': 'Blog',
   'nav.contact': 'Kontak',
-  'nav.start_project': 'Konsultasi dengan kami',
+  'nav.start_project': 'Konsultasi Gratis',
   'nav.view_work': 'Lihat Portofolio',
   'nav.explore_service': 'Pelajari Layanan',
   
@@ -32,7 +32,6 @@ export const idTranslations = {
   'contact.service_system': 'AEO & GEO',
   'contact.summary': 'Bagian apa yang membutuhkan bantuan?',
   'contact.timeline': 'Waktu Mulai yang Diinginkan',
-  'contact.budget': 'Estimasi Anggaran (Opsional)',
   'contact.consent': 'Saya menyetujui data saya diproses sesuai dengan Kebijakan Privasi Kultivate.',
   'contact.submit': 'Kirim Inquiry',
   'contact.success': 'Inquiry Anda sudah kami terima. Tim kami akan meninjau detailnya dan menghubungi Anda melalui informasi yang diberikan.',
@@ -43,7 +42,6 @@ export const idTranslations = {
   'contact.placeholder_whatsapp': 'Contoh: 08123456789',
   'contact.placeholder_summary': 'Ceritakan bagian yang membutuhkan perhatian, upaya yang sudah dilakukan, atau dukungan yang dibutuhkan.',
   'contact.placeholder_timeline': 'Pilih waktu mulai yang diinginkan...',
-  'contact.placeholder_budget': 'Pilih estimasi budget...',
 
   // General labels
   'label.featured': 'Unggulan',

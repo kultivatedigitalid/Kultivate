@@ -5,7 +5,7 @@ export const enTranslations = {
   'nav.about': 'About Us',
   'nav.insights': 'Blog',
   'nav.contact': 'Contact',
-  'nav.start_project': 'Consult with us',
+  'nav.start_project': 'Free Consultation',
   'nav.view_work': 'View Portfolio',
   'nav.explore_service': 'Explore Service',
   
@@ -32,7 +32,6 @@ export const enTranslations = {
   'contact.service_system': 'AEO & GEO',
   'contact.summary': 'What would you like help with?',
   'contact.timeline': 'Preferred Start',
-  'contact.budget': 'Estimated Budget (Optional)',
   'contact.consent': 'I consent to my data being processed in accordance with the Kultivate Privacy Policy.',
   'contact.submit': 'Send Inquiry',
   'contact.success': 'We received your inquiry. Our team will review the details and contact you using the information provided.',
@@ -43,7 +42,6 @@ export const enTranslations = {
   'contact.placeholder_whatsapp': 'e.g., +628123456789',
   'contact.placeholder_summary': 'Tell us what needs attention, what you have tried, or where you need support.',
   'contact.placeholder_timeline': 'Select a preferred start time...',
-  'contact.placeholder_budget': 'Select an estimated budget...',
 
   // General labels
   'label.featured': 'Featured',

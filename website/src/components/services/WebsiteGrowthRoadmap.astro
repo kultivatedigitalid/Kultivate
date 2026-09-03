@@ -22,6 +22,8 @@ const copy = locale === 'id'
       supportLabel: 'Layanan pendukung',
       noSupport: 'Mulai dari satu prioritas ini. Layanan tambahan belum perlu dimasukkan ke scope awal.',
       viewService: 'Lihat konteks layanan',
+      consultationCta: 'Lanjutkan ke konsultasi gratis',
+      consultationSupport: 'Konsultasi pertama gratis. Setelah kami memahami konteks dan kebutuhan Anda, kami akan menjelaskan scope yang disarankan beserta harga setiap bagian yang memang diperlukan.',
       reset: 'Coba skenario lain',
       questions: [
         {
@@ -88,7 +90,7 @@ const copy = locale === 'id'
       }
     }
   : {
-      kicker: 'Rekomendasi layanan',
+      kicker: 'Website Growth Roadmap',
       meta: '5 questions · 1–2 minutes',
       initialTitle: 'Find the first move worth making',
       initialBody: 'Answer five short questions to see whether SEO, Web Services, or both are the most useful starting point.',
@@ -98,13 +100,15 @@ const copy = locale === 'id'
       progress: 'Question',
       back: 'Back',
       choose: 'Choose the answer closest to your situation today.',
-      resultLabel: 'Arah yang direkomendasikan',
+      resultLabel: 'Recommended direction',
       problemLabel: 'Problem identified',
       priorityLabel: 'First priority',
       supportLabel: 'Supporting service',
       noSupport: 'Start with this single priority. An additional service does not need to enter the initial scope yet.',
       viewService: 'View service context',
-      reset: 'Coba skenario lain',
+      consultationCta: 'Continue to a free consultation',
+      consultationSupport: 'Your first consultation is free. Once we understand the context and what you actually need, we will explain the recommended scope and the price of each required piece.',
+      reset: 'Try another scenario',
       questions: [
         {
           title: 'Which digital business constraint feels most urgent?',
@@ -177,6 +181,7 @@ const questions = quizBlueprint.map((question, index) => ({
 ---
 
 <section
+  id="website-growth-roadmap"
   class="roadmap flow-section"
   aria-labelledby="quiz-title"
   data-service-quiz
@@ -248,6 +253,10 @@ const questions = quizBlueprint.map((question, index) => ({
           <span class="section-kicker">{copy.resultLabel}</span>
           <h2 data-result-title></h2>
           <div class="service-combination" data-service-combination aria-label={copy.resultLabel}></div>
+          <a class="btn btn-primary btn-cta roadmap-consultation" data-consultation-link href={'/' + locale + '/contact/?source=roadmap'}>
+            <span>{copy.consultationCta}</span>
+          </a>
+          <p class="consultation-support">{copy.consultationSupport}</p>
           <a class="link-hover-arrow" data-service-link href={'/' + locale + '/services/'}>
             <span>{copy.viewService}</span><span aria-hidden="true">→</span>
           </a>
@@ -266,7 +275,7 @@ const questions = quizBlueprint.map((question, index) => ({
             <span class="text-mono">{copy.supportLabel}</span>
             <p data-support-reason></p>
           </div>
-          <button type="button" class="quiz-reset btn btn-primary btn-cta" data-quiz-reset>{copy.reset}</button>
+          <button type="button" class="quiz-reset" data-quiz-reset>{copy.reset}</button>
         </div>
       </section>
     </div>
@@ -275,6 +284,7 @@ const questions = quizBlueprint.map((question, index) => ({
 
 <script>
   import { recommendServices } from '../../scripts/service-recommendation.mjs';
+  import { trackFunnelEvent } from '../../scripts/funnel-analytics';
 
   const setupServiceQuiz = () => {
     document.querySelectorAll<HTMLElement>('[data-service-quiz]').forEach((root) => {
@@ -392,6 +402,7 @@ const questions = quizBlueprint.map((question, index) => ({
         const priorityReason = root.querySelector<HTMLElement>('[data-priority-reason]');
         const supportReason = root.querySelector<HTMLElement>('[data-support-reason]');
         const link = root.querySelector<HTMLAnchorElement>('[data-service-link]');
+        const consultationLink = root.querySelector<HTMLAnchorElement>('[data-consultation-link]');
 
         if (resultTitle) resultTitle.textContent = primary.name;
         if (priorityReason) priorityReason.textContent = primary.reason;
@@ -401,6 +412,10 @@ const questions = quizBlueprint.map((question, index) => ({
             : quizCopy.noSupport;
         }
         if (link) link.href = '/' + root.dataset.locale + '/services/' + primary.slug + '/';
+        if (consultationLink) {
+          consultationLink.href = '/' + root.dataset.locale + '/contact/?source=roadmap&service=' + primary.slug;
+          consultationLink.dataset.recommendedService = primary.slug;
+        }
 
         if (combination) {
           combination.replaceChildren();
@@ -421,6 +436,9 @@ const questions = quizBlueprint.map((question, index) => ({
           });
         }
 
+        trackFunnelEvent('roadmap_complete', { locale: root.dataset.locale ?? '' });
+        trackFunnelEvent('roadmap_result', { recommended_service: primary.slug });
+
         transitionView(views.calculating, () => {
           root.dataset.quizState = 'calculating';
           window.setTimeout(() => {
@@ -432,6 +450,7 @@ const questions = quizBlueprint.map((question, index) => ({
       };
 
       root.querySelector<HTMLButtonElement>('[data-quiz-start]')?.addEventListener('click', () => {
+        trackFunnelEvent('roadmap_start', { locale: root.dataset.locale ?? '' });
         transitionView(views.questions, () => {
           root.dataset.quizState = 'questions';
           renderQuestion(0, false);
@@ -459,6 +478,13 @@ const questions = quizBlueprint.map((question, index) => ({
 
       backButton?.addEventListener('click', () => {
         if (currentQuestion > 0) transitionQuestion(currentQuestion - 1);
+      });
+
+      root.querySelector<HTMLAnchorElement>('[data-consultation-link]')?.addEventListener('click', (event) => {
+        const link = event.currentTarget as HTMLAnchorElement;
+        trackFunnelEvent('roadmap_consultation_click', {
+          recommended_service: link.dataset.recommendedService ?? ''
+        });
       });
 
       root.querySelector<HTMLButtonElement>('[data-quiz-reset]')?.addEventListener('click', () => {
@@ -607,6 +633,8 @@ const questions = quizBlueprint.map((question, index) => ({
   .service-combination { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
   .service-combination span { border: 1px solid rgba(201, 211, 223, 0.22); border-radius: 999px; padding: 7px 11px; color: rgba(226, 234, 243, 0.72); font-size: 0.72rem; }
   .service-combination span[data-priority='primary'] { border-color: rgba(207, 247, 255, 0.52); background: rgba(103, 217, 255, 0.1); color: var(--signal-ice); }
+  .roadmap-consultation { width: fit-content; max-width: 100%; margin-bottom: 14px; }
+  .consultation-support { max-width: 48ch; margin-bottom: 18px; color: rgba(201, 211, 223, 0.72); font-size: clamp(0.78rem, 0.72rem + 0.18vw, 0.9rem); line-height: 1.55; }
 
   .result-explanation { min-width: 0; display: grid; gap: clamp(15px, 2.4vh, 24px); }
   .result-block { padding-top: 16px; border-top: 1px solid rgba(89, 106, 130, 0.32); }
@@ -614,7 +642,7 @@ const questions = quizBlueprint.map((question, index) => ({
   .result-block p,
   .result-block li { color: rgba(226, 234, 243, 0.78); font-size: clamp(0.82rem, 1vw, 0.96rem); line-height: 1.52; }
   .result-block ul { display: grid; gap: 5px; padding-left: 18px; }
-  .quiz-reset { width: fit-content; justify-self: start; margin-top: 4px; }
+  .quiz-reset { width: fit-content; justify-self: start; min-height: 38px; margin-top: 4px; color: rgba(201, 211, 223, 0.68); font-size: 0.82rem; text-decoration: underline; text-decoration-color: rgba(201, 211, 223, 0.28); text-underline-offset: 5px; }
 
   .is-leaving { opacity: 0; transform: translate3d(0, -10px, 0); filter: blur(4px); }
   .is-entering { opacity: 0; transform: translate3d(0, 10px, 0); filter: blur(4px); }
@@ -635,9 +663,10 @@ const questions = quizBlueprint.map((question, index) => ({
     .question-panel legend { max-width: 19ch; font-size: clamp(1.8rem, 8vw, 2.7rem); }
     .answer-grid { grid-template-columns: 1fr; gap: 8px; margin-top: 22px; }
     .answer-option { min-height: 58px; padding: 11px 13px; font-size: 0.88rem; }
-    .quiz-result { grid-template-columns: 1fr; gap: 20px; align-content: center; padding: 22px 20px; }
+    .quiz-result { grid-template-columns: 1fr; gap: 20px; align-content: start; padding: 22px 20px; overflow-y: auto; }
     .result-primary h2 { margin: 14px 0; font-size: clamp(2.5rem, 12vw, 4rem); }
     .service-combination { margin-bottom: 14px; }
+    .consultation-support { margin-bottom: 13px; }
     .result-explanation { gap: 12px; }
     .result-block { padding-top: 11px; }
     .result-block:nth-child(1) li:nth-child(3) { display: none; }

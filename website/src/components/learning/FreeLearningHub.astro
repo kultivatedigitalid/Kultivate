@@ -1,0 +1,168 @@
+---
+import VideoLessonCard from './VideoLessonCard.astro';
+import { getLearningLessons, type LearningCategory, type LearningLocale } from '../../data/learning';
+
+interface Props { locale: LearningLocale; }
+const { locale } = Astro.props;
+
+const pathways: Array<{ id: LearningCategory; title: string; description: string }> = locale === 'id'
+  ? [
+      {
+        id: 'seo',
+        title: 'Ditemukan dengan konteks yang tepat',
+        description: 'Pelajari hubungan antara demand, struktur halaman, technical SEO, serta AEO & GEO tanpa memisahkannya dari keputusan bisnis.'
+      },
+      {
+        id: 'web-services',
+        title: 'Mengubah perhatian menjadi tindakan',
+        description: 'Pelajari kapan website perlu diperbaiki, dibangun ulang, atau dimigrasikan agar pengalaman, trust, dan next step bekerja lebih baik.'
+      }
+    ]
+  : [
+      {
+        id: 'seo',
+        title: 'Get found in the right context',
+        description: 'Learn how demand, page structure, technical SEO, and AEO & GEO connect to business decisions.'
+      },
+      {
+        id: 'web-services',
+        title: 'Turn attention into action',
+        description: 'Learn when to fix, rebuild, or migrate a website so experience, trust, and the next step work better.'
+      }
+    ];
+
+const copy = locale === 'id'
+  ? {
+      kicker: 'FREE LEARNING',
+      title: 'Pelajari fondasinya sebelum menentukan scope',
+      body: 'Delapan materi ini membantu Anda melihat masalah dengan lebih jernih. Gunakan jalur yang paling dekat dengan prioritas hari ini, lalu bawa hasilnya ke roadmap.',
+      services: 'Layanan',
+      roadmap: 'Website Growth Roadmap',
+      unsure: 'Belum yakin mulai dari mana? Temukan prioritas Anda'
+    }
+  : {
+      kicker: 'FREE LEARNING',
+      title: 'Understand the foundations before defining scope',
+      body: 'These eight lessons help you see the problem more clearly. Follow the path closest to today’s priority, then take what you learn into the roadmap.',
+      services: 'Services',
+      roadmap: 'Website Growth Roadmap',
+      unsure: 'Not sure where to start? Find your priority'
+    };
+---
+
+<section id="free-learning" class="free-learning-hub flow-section" aria-labelledby="free-learning-title" data-free-learning>
+  <div class="container">
+    <nav class="learning-jumps text-mono" aria-label={locale === 'id' ? 'Bagian halaman layanan' : 'Services page sections'}>
+      <a href="#services-list">{copy.services}</a>
+      <span aria-hidden="true">/</span>
+      <a href="#free-learning" aria-current="location">Free Learning</a>
+      <span aria-hidden="true">/</span>
+      <a href="#website-growth-roadmap" data-learning-roadmap-link>{copy.roadmap}</a>
+    </nav>
+
+    <header class="learning-header">
+      <span class="section-kicker">{copy.kicker}</span>
+      <h2 id="free-learning-title">{copy.title}</h2>
+      <p>{copy.body}</p>
+    </header>
+
+    <div class="learning-pathways">
+      {pathways.map((pathway) => (
+        <section class="learning-pathway" aria-labelledby={'pathway-' + pathway.id}>
+          <header class="pathway-header">
+            <span class="pathway-index text-mono">{pathway.id === 'seo' ? '01' : '02'}</span>
+            <div>
+              <h3 id={'pathway-' + pathway.id}>{pathway.title}</h3>
+              <p>{pathway.description}</p>
+            </div>
+          </header>
+          <div class="pathway-lessons">
+            {getLearningLessons(pathway.id).map((lesson, index) => (
+              <VideoLessonCard lesson={lesson} locale={locale} context="hub" index={index} />
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <a class="learning-roadmap-link link-hover-arrow" href="#website-growth-roadmap" data-learning-roadmap-link>
+      <span>{copy.unsure}</span><span aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<script>
+  import { trackFunnelEvent } from '../../scripts/funnel-analytics';
+
+  const setupLearningHub = () => {
+    document.querySelectorAll<HTMLElement>('[data-free-learning]').forEach((root) => {
+      if (root.dataset.learningReady === 'true') return;
+      root.dataset.learningReady = 'true';
+
+      const recordView = () => {
+        if (root.dataset.viewTracked === 'true') return;
+        root.dataset.viewTracked = 'true';
+        trackFunnelEvent('free_learning_view');
+      };
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          if (!entries.some((entry) => entry.isIntersecting)) return;
+          recordView();
+          observer.disconnect();
+        }, { threshold: 0.15 });
+        observer.observe(root);
+      } else {
+        recordView();
+      }
+
+      root.querySelectorAll('[data-learning-roadmap-link]').forEach((link) => {
+        link.addEventListener('click', () => {
+          trackFunnelEvent('free_learning_to_roadmap_click');
+        });
+      });
+    });
+  };
+
+  setupLearningHub();
+  document.addEventListener('astro:page-load', setupLearningHub);
+</script>
+
+<style>
+  .free-learning-hub {
+    position: relative;
+    margin-top: -2px;
+    padding: clamp(64px, 8vw, 112px) 0 clamp(88px, 11vw, 156px);
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 58% 20% at 50% 2%, rgba(64, 133, 181, 0.1), transparent 76%),
+      linear-gradient(180deg, #05080e 0%, rgba(7, 16, 26, 0.94) 52%, rgba(7, 11, 18, 0) 100%);
+  }
+
+  .learning-jumps { display: flex; flex-wrap: wrap; gap: 10px 14px; margin-bottom: clamp(58px, 8vw, 104px); color: rgba(169, 194, 211, 0.62); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .learning-jumps a { color: inherit; }
+  .learning-jumps a[aria-current='location'] { color: var(--signal-ice); }
+
+  .learning-header { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.65fr); gap: clamp(34px, 7vw, 104px); align-items: end; margin-bottom: clamp(72px, 10vw, 132px); }
+  .learning-header .section-kicker { grid-column: 1 / -1; margin-bottom: -14px; }
+  .learning-header h2 { max-width: 15ch; margin: 0; font-size: clamp(2.7rem, 2rem + 3vw, 5.8rem); font-weight: 520; letter-spacing: -0.048em; line-height: 0.94; text-wrap: balance; }
+  .learning-header > p { max-width: 48ch; color: rgba(201, 211, 223, 0.78); line-height: 1.68; }
+
+  .learning-pathways { display: grid; gap: clamp(100px, 13vw, 184px); }
+  .learning-pathway { min-width: 0; }
+  .pathway-header { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: clamp(18px, 3vw, 44px); margin-bottom: 26px; }
+  .pathway-index { padding-top: 8px; color: rgba(103, 217, 255, 0.7); font-size: 0.65rem; }
+  .pathway-header h3 { max-width: 20ch; margin-bottom: 13px; font-size: clamp(2rem, 1.55rem + 1.8vw, 3.5rem); font-weight: 520; letter-spacing: -0.04em; line-height: 1; text-wrap: balance; }
+  .pathway-header p { max-width: 62ch; color: rgba(201, 211, 223, 0.7); line-height: 1.62; }
+  .pathway-lessons { margin-left: 72px; }
+
+  .learning-roadmap-link { width: fit-content; max-width: 100%; margin: clamp(78px, 10vw, 132px) 0 0 auto; font-size: clamp(1rem, 0.92rem + 0.4vw, 1.25rem); }
+
+  @media (max-width: 760px) {
+    .learning-header { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .learning-header .section-kicker { grid-column: auto; margin-bottom: 6px; }
+    .pathway-header { grid-template-columns: 42px minmax(0, 1fr); }
+    .pathway-lessons { margin-left: 0; }
+    .learning-roadmap-link { margin-left: 0; }
+  }
+</style>

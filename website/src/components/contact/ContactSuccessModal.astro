@@ -68,12 +68,48 @@ const { locale } = Astro.props;
 </style>
 
 <script>
+  import { trackFunnelEvent } from '../../scripts/funnel-analytics';
+
   const form = document.querySelector<HTMLFormElement>('#contact-form');
   const modal = document.querySelector<HTMLDialogElement>('#contact-success');
   const closeButton = modal?.querySelector<HTMLButtonElement>('[data-success-close]');
   const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
   const submitLabel = submitButton?.textContent?.trim() || '';
   const status = form?.querySelector<HTMLElement>('[data-form-status]');
+  const allowedServices = new Set(['seo', 'web-services']);
+  const query = new URLSearchParams(window.location.search);
+  const source = query.get('source') === 'roadmap' ? 'roadmap' : 'contact';
+  const requestedService = query.get('service');
+  const serviceSelect = form?.querySelector<HTMLSelectElement>('#service');
+  let formStarted = false;
+
+  if (serviceSelect && requestedService && allowedServices.has(requestedService)) {
+    serviceSelect.value = requestedService;
+  }
+
+  if (form && source === 'roadmap') {
+    const sourceInput = document.createElement('input');
+    sourceInput.type = 'hidden';
+    sourceInput.name = 'source';
+    sourceInput.value = 'roadmap';
+    form.append(sourceInput);
+  }
+
+  const recordFormStart = () => {
+    if (formStarted) return;
+    formStarted = true;
+    trackFunnelEvent('consultation_form_start', { source });
+  };
+
+  form?.addEventListener('focusin', recordFormStart, { once: true });
+  document.querySelectorAll<HTMLAnchorElement>('[data-whatsapp-link]').forEach((link) => {
+    link.addEventListener('click', () => {
+      trackFunnelEvent('consultation_whatsapp_click', {
+        page: window.location.pathname,
+        source
+      });
+    });
+  });
 
   closeButton?.addEventListener('click', () => modal?.close());
   modal?.addEventListener('click', (event) => {
@@ -83,6 +119,12 @@ const { locale } = Astro.props;
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!submitButton || !modal) return;
+
+    recordFormStart();
+    trackFunnelEvent('consultation_form_submit', {
+      source,
+      service: allowedServices.has(serviceSelect?.value ?? '') ? serviceSelect?.value ?? '' : ''
+    });
 
     submitButton.disabled = true;
     submitButton.textContent = modal.dataset.sending || 'Sending...';

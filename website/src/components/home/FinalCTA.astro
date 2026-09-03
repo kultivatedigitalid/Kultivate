@@ -13,11 +13,11 @@ const t = useTranslations(locale);
   <div class="container">
     <div class="cta-content" data-reveal>
       <div>
-        <h2 id="final-cta-title">{locale === 'id' ? 'Mulai dari prioritas Anda' : 'Start with your priorities'}</h2>
+        <h2 id="final-cta-title">{locale === 'id' ? 'Sudah tahu prioritasnya? Bahas bersama kami.' : 'Know the priority? Talk it through with us.'}</h2>
         <p>
           {locale === 'id'
-            ? 'Ceritakan bagian yang membutuhkan perhatian. Kami akan memahami konteksnya sebelum merekomendasikan pekerjaan.'
-            : 'Tell us what needs attention. We will review the context before recommending any work.'}
+            ? 'Konsultasi pertama gratis. Kami akan memahami konteks dan kebutuhan Anda lebih dulu, lalu menjelaskan scope dan harga setelah bagian yang benar-benar diperlukan sudah jelas.'
+            : 'Your first consultation is free. We will understand the context and what you need first, then explain the scope and pricing once the required pieces are clear.'}
         </p>
       </div>
       <a href={'/' + locale + '/contact/'} class="btn btn-primary btn-cta">
@@ -63,7 +63,7 @@ const t = useTranslations(locale);
   }
 
   .cta-content h2 {
-    max-width: 13ch;
+    max-width: 18ch;
     margin: 0 auto 18px;
     font-family: var(--font-display);
     font-weight: 400;
