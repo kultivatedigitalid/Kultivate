@@ -34,20 +34,37 @@ const pathways: Array<{ id: LearningCategory; title: string; description: string
 const copy = locale === 'id'
   ? {
       kicker: 'FREE LEARNING',
-      title: 'Pelajari fondasinya sebelum menentukan scope',
-      body: 'Delapan materi ini membantu Anda melihat masalah dengan lebih jernih. Gunakan jalur yang paling dekat dengan prioritas hari ini, lalu bawa hasilnya ke roadmap.',
+      title: 'Mulai dari pemahaman, bukan asumsi',
+      body: 'Materi gratis ini disusun berdasarkan dua layanan utama kami. Mulai dari pengantar yang paling relevan, lalu lanjutkan sesuai masalah yang sedang Anda hadapi.',
+      introduction: 'Pengantar materi gratis',
+      continue: 'Lanjutkan pembelajaran',
       services: 'Layanan',
       roadmap: 'Website Growth Roadmap',
       unsure: 'Belum yakin mulai dari mana? Temukan prioritas Anda'
     }
   : {
       kicker: 'FREE LEARNING',
-      title: 'Understand the foundations before defining scope',
-      body: 'These eight lessons help you see the problem more clearly. Follow the path closest to today’s priority, then take what you learn into the roadmap.',
+      title: 'Start with understanding, not assumptions',
+      body: 'These free materials are organized around our two core services. Begin with the most relevant introduction, then continue with the problem you are trying to solve.',
+      introduction: 'Introduction to the free material',
+      continue: 'Continue learning',
       services: 'Services',
       roadmap: 'Website Growth Roadmap',
       unsure: 'Not sure where to start? Find your priority'
     };
+
+const pathwayGroups = pathways.map((pathway) => {
+  const lessons = getLearningLessons(pathway.id);
+  const featured = lessons.find((lesson) => lesson.featured) ?? lessons[0];
+
+  return {
+    ...pathway,
+    featured,
+    remaining: lessons.filter((lesson) => lesson.id !== featured.id)
+  };
+});
+
+const lessonCount = (count: number) => locale === 'id' ? `${count} materi` : `${count} lessons`;
 ---
 
 <section id="free-learning" class="free-learning-hub flow-section" aria-labelledby="free-learning-title" data-free-learning>
@@ -67,19 +84,44 @@ const copy = locale === 'id'
     </header>
 
     <div class="learning-pathways">
-      {pathways.map((pathway) => (
+      {pathwayGroups.map((pathway, pathwayIndex) => (
         <section class="learning-pathway" aria-labelledby={'pathway-' + pathway.id}>
           <header class="pathway-header">
-            <span class="pathway-index text-mono">{pathway.id === 'seo' ? '01' : '02'}</span>
-            <div>
+            <div class="pathway-title">
+              <span class="pathway-index text-mono">{String(pathwayIndex + 1).padStart(2, '0')} / {pathway.id === 'seo' ? 'SEO' : 'WEB SERVICES'}</span>
               <h3 id={'pathway-' + pathway.id}>{pathway.title}</h3>
               <p>{pathway.description}</p>
             </div>
+            <span class="pathway-count text-mono">{lessonCount(pathway.remaining.length + 1)}</span>
           </header>
-          <div class="pathway-lessons">
-            {getLearningLessons(pathway.id).map((lesson, index) => (
-              <VideoLessonCard lesson={lesson} locale={locale} context="hub" index={index} />
-            ))}
+
+          <div class="pathway-featured" data-reveal>
+            <VideoLessonCard
+              lesson={pathway.featured}
+              locale={locale}
+              context="hub"
+              index={0}
+              display="featured"
+              eyebrow={copy.introduction}
+            />
+          </div>
+
+          <div class="pathway-library">
+            <div class="pathway-library__header">
+              <span class="text-mono">{copy.continue}</span>
+              <span class="text-mono">{lessonCount(pathway.remaining.length)}</span>
+            </div>
+            <div class="pathway-lessons">
+              {pathway.remaining.map((lesson, index) => (
+                <VideoLessonCard
+                  lesson={lesson}
+                  locale={locale}
+                  context="hub"
+                  index={index + 1}
+                  display="standard"
+                />
+              ))}
+            </div>
           </div>
         </section>
       ))}
@@ -131,38 +173,171 @@ const copy = locale === 'id'
 <style>
   .free-learning-hub {
     position: relative;
+    scroll-margin-top: 82px;
     margin-top: -2px;
-    padding: clamp(64px, 8vw, 112px) 0 clamp(88px, 11vw, 156px);
+    padding: clamp(70px, 8vw, 112px) 0 clamp(96px, 11vw, 154px);
     overflow: hidden;
-    background:
-      radial-gradient(ellipse 58% 20% at 50% 2%, rgba(64, 133, 181, 0.1), transparent 76%),
-      linear-gradient(180deg, #05080e 0%, rgba(7, 16, 26, 0.94) 52%, rgba(7, 11, 18, 0) 100%);
+    background: transparent;
   }
 
-  .learning-jumps { display: flex; flex-wrap: wrap; gap: 10px 14px; margin-bottom: clamp(58px, 8vw, 104px); color: rgba(169, 194, 211, 0.62); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .free-learning-hub::before {
+    content: '';
+    position: absolute;
+    inset: 4% 0 5%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 62% 20% at 88% 20%, rgba(103, 217, 255, 0.065), transparent 76%),
+      radial-gradient(ellipse 70% 18% at 10% 72%, rgba(70, 134, 183, 0.09), transparent 78%);
+  }
+
+  .free-learning-hub > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .learning-jumps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    margin-bottom: clamp(62px, 8vw, 102px);
+    color: rgba(169, 194, 211, 0.56);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
   .learning-jumps a { color: inherit; }
   .learning-jumps a[aria-current='location'] { color: var(--signal-ice); }
 
-  .learning-header { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.65fr); gap: clamp(34px, 7vw, 104px); align-items: end; margin-bottom: clamp(72px, 10vw, 132px); }
-  .learning-header .section-kicker { grid-column: 1 / -1; margin-bottom: -14px; }
-  .learning-header h2 { max-width: 15ch; margin: 0; font-size: clamp(2.7rem, 2rem + 3vw, 5.8rem); font-weight: 520; letter-spacing: -0.048em; line-height: 0.94; text-wrap: balance; }
-  .learning-header > p { max-width: 48ch; color: rgba(201, 211, 223, 0.78); line-height: 1.68; }
+  .learning-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1.16fr) minmax(280px, 0.64fr);
+    gap: clamp(34px, 7vw, 104px);
+    align-items: end;
+    margin-bottom: clamp(78px, 10vw, 126px);
+  }
 
-  .learning-pathways { display: grid; gap: clamp(100px, 13vw, 184px); }
-  .learning-pathway { min-width: 0; }
-  .pathway-header { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: clamp(18px, 3vw, 44px); margin-bottom: 26px; }
-  .pathway-index { padding-top: 8px; color: rgba(103, 217, 255, 0.7); font-size: 0.65rem; }
-  .pathway-header h3 { max-width: 20ch; margin-bottom: 13px; font-size: clamp(2rem, 1.55rem + 1.8vw, 3.5rem); font-weight: 520; letter-spacing: -0.04em; line-height: 1; text-wrap: balance; }
-  .pathway-header p { max-width: 62ch; color: rgba(201, 211, 223, 0.7); line-height: 1.62; }
-  .pathway-lessons { margin-left: 72px; }
+  .learning-header .section-kicker {
+    grid-column: 1 / -1;
+    margin-bottom: -12px;
+  }
 
-  .learning-roadmap-link { width: fit-content; max-width: 100%; margin: clamp(78px, 10vw, 132px) 0 0 auto; font-size: clamp(1rem, 0.92rem + 0.4vw, 1.25rem); }
+  .learning-header h2 {
+    max-width: 14ch;
+    margin: 0;
+    font-size: clamp(2.8rem, 2rem + 3vw, 5.7rem);
+    font-weight: 520;
+    letter-spacing: -0.048em;
+    line-height: 0.94;
+    text-wrap: balance;
+  }
+
+  .learning-header > p {
+    max-width: 48ch;
+    color: rgba(201, 211, 223, 0.76);
+    line-height: 1.68;
+  }
+
+  .learning-pathways {
+    display: grid;
+    gap: clamp(116px, 14vw, 190px);
+  }
+
+  .learning-pathway {
+    min-width: 0;
+    border-top: 1px solid rgba(89, 106, 130, 0.34);
+    padding-top: clamp(30px, 4vw, 48px);
+  }
+
+  .pathway-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 32px;
+    align-items: start;
+    margin-bottom: clamp(42px, 6vw, 72px);
+  }
+
+  .pathway-title { min-width: 0; }
+
+  .pathway-index {
+    display: block;
+    margin-bottom: 18px;
+    color: rgba(103, 217, 255, 0.72);
+    font-size: 0.64rem;
+  }
+
+  .pathway-header h3 {
+    max-width: 18ch;
+    margin-bottom: 15px;
+    font-size: clamp(2.15rem, 1.55rem + 2vw, 3.8rem);
+    font-weight: 520;
+    letter-spacing: -0.04em;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .pathway-header p {
+    max-width: 64ch;
+    color: rgba(201, 211, 223, 0.7);
+    line-height: 1.62;
+  }
+
+  .pathway-count {
+    padding-top: 3px;
+    color: rgba(201, 211, 223, 0.48);
+    white-space: nowrap;
+  }
+
+  .pathway-featured {
+    width: min(100%, 1180px);
+  }
+
+  .pathway-library {
+    margin-top: clamp(58px, 7vw, 88px);
+  }
+
+  .pathway-library__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    border-block: 1px solid rgba(89, 106, 130, 0.28);
+    padding-block: 16px;
+    color: rgba(201, 211, 223, 0.52);
+  }
+
+  .pathway-lessons {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(24px, 3vw, 42px);
+    padding-top: clamp(30px, 4vw, 46px);
+  }
+
+  .learning-roadmap-link {
+    width: fit-content;
+    max-width: 100%;
+    margin: clamp(84px, 10vw, 132px) 0 0 auto;
+    font-size: clamp(1rem, 0.92rem + 0.4vw, 1.25rem);
+  }
+
+  @media (max-width: 980px) {
+    .pathway-lessons {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pathway-lessons > :global(:last-child) {
+      grid-column: 1 / -1;
+      width: min(100%, calc(50% - 12px));
+    }
+  }
 
   @media (max-width: 760px) {
     .learning-header { grid-template-columns: minmax(0, 1fr); gap: 24px; }
     .learning-header .section-kicker { grid-column: auto; margin-bottom: 6px; }
-    .pathway-header { grid-template-columns: 42px minmax(0, 1fr); }
-    .pathway-lessons { margin-left: 0; }
+    .pathway-header { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    .pathway-count { padding-top: 0; }
+    .pathway-lessons { grid-template-columns: minmax(0, 1fr); }
+    .pathway-lessons > :global(:last-child) { grid-column: auto; width: auto; }
     .learning-roadmap-link { margin-left: 0; }
   }
 </style>

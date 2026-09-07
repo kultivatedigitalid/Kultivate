@@ -132,6 +132,8 @@ const defaultFaqs = [
     locale={locale}
   />
 
+  <ServiceLearningPreview locale={locale} serviceId={service.id} />
+
   <ServiceScope
     heading="Bagian yang dapat kami tangani"
     scopes={scopeItems}
@@ -145,8 +147,6 @@ const defaultFaqs = [
   />
 
   <ServiceEvidence locale={locale} serviceTitle={service.title} />
-
-  <ServiceLearningPreview locale={locale} serviceId={service.id} />
 
   <ServiceFAQ
     heading="Pertanyaan yang sering diajukan"

@@ -6,18 +6,32 @@ interface Props {
   locale: LearningLocale;
   context?: 'hub' | 'service';
   index?: number;
+  display?: 'featured' | 'standard';
+  eyebrow?: string;
 }
 
-const { lesson, locale, context = 'hub', index = 0 } = Astro.props;
+const {
+  lesson,
+  locale,
+  context = 'hub',
+  index = 0,
+  display = lesson.featured ? 'featured' : 'standard',
+  eyebrow
+} = Astro.props;
 const categoryLabel = lesson.category === 'seo' ? 'SEO' : 'Web Services';
 const hasVideo = lesson.videoId.trim().length > 0;
 const title = lesson.title[locale];
 const playLabel = locale === 'id' ? 'Putar: ' + title : 'Play: ' + title;
+const lessonLabel = locale === 'id'
+  ? 'Materi ' + String(index + 1).padStart(2, '0')
+  : 'Lesson ' + String(index + 1).padStart(2, '0');
+const takeawayLabel = locale === 'id' ? 'HASIL BELAJAR' : 'TAKEAWAY';
+const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
 ---
 
 <article
   id={'lesson-' + lesson.id}
-  class:list={['lesson-card', { 'lesson-card--featured': lesson.featured }]}
+  class:list={['lesson-card', 'lesson-card--' + display]}
   data-video-lesson
   data-video-id={hasVideo ? lesson.videoId : undefined}
   data-lesson-id={lesson.id}
@@ -32,13 +46,15 @@ const playLabel = locale === 'id' ? 'Putar: ' + title : 'Play: ' + title;
       </button>
     ) : (
       <div class="lesson-card__graphic" aria-hidden="true">
-        <span>{String(index + 1).padStart(2, '0')}</span>
-        <i></i><i></i><i></i>
+        <span class="lesson-card__graphic-index">{String(index + 1).padStart(2, '0')}</span>
+        <span class="lesson-card__graphic-word">{visualWord}</span>
+        <span class="lesson-card__graphic-lines"><i></i><i></i><i></i></span>
       </div>
     )}
   </div>
 
   <div class="lesson-card__body">
+    <span class="lesson-card__rank text-mono">{eyebrow ?? lessonLabel}</span>
     <div class="lesson-card__meta text-mono">
       <span>{categoryLabel}</span>
       {lesson.duration && <span>{lesson.duration}</span>}
@@ -46,7 +62,7 @@ const playLabel = locale === 'id' ? 'Putar: ' + title : 'Play: ' + title;
     <h3>{title}</h3>
     <p>{lesson.summary[locale]}</p>
     <div class="lesson-card__outcome">
-      <span class="text-mono">{locale === 'id' ? 'HASIL BELAJAR' : 'TAKEAWAY'}</span>
+      <span class="text-mono">{takeawayLabel}</span>
       <p>{lesson.outcome[locale]}</p>
     </div>
   </div>
@@ -89,20 +105,22 @@ const playLabel = locale === 'id' ? 'Putar: ' + title : 'Play: ' + title;
 <style>
   .lesson-card {
     min-width: 0;
+    color: inherit;
+  }
+
+  .lesson-card--featured {
     display: grid;
-    grid-template-columns: minmax(180px, 0.72fr) minmax(0, 1.28fr);
-    gap: clamp(22px, 3.5vw, 48px);
-    align-items: start;
-    padding-block: clamp(24px, 3.4vw, 42px);
-    border-top: 1px solid rgba(126, 153, 178, 0.18);
+    grid-template-columns: minmax(0, 1.14fr) minmax(320px, 0.86fr);
+    gap: clamp(34px, 6vw, 82px);
+    align-items: end;
   }
 
   .lesson-card__visual {
     position: relative;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 10;
     overflow: hidden;
-    border-radius: 6px;
-    background: linear-gradient(145deg, rgba(13, 35, 54, 0.96), rgba(5, 12, 20, 0.98));
+    border-radius: 8px;
+    background: #07101a;
   }
 
   .lesson-card__play,
@@ -113,39 +131,175 @@ const playLabel = locale === 'id' ? 'Putar: ' + title : 'Play: ' + title;
     border: 0;
   }
 
-  .lesson-card__play { position: relative; display: grid; place-items: center; color: var(--cloud-white); cursor: pointer; }
-  .lesson-card__play img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.62; }
-  .lesson-card__signal { position: relative; z-index: 1; width: 58px; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid rgba(214, 239, 250, 0.52); border-radius: 50%; background: rgba(4, 11, 18, 0.62); }
-  .lesson-card__signal span { width: 0; height: 0; margin-left: 4px; border-block: 7px solid transparent; border-left: 11px solid currentColor; }
-  .lesson-card__play:focus-visible { outline: 2px solid var(--cyan-glow); outline-offset: -3px; }
+  .lesson-card__play {
+    position: relative;
+    display: grid;
+    place-items: center;
+    color: var(--cloud-white);
+    cursor: pointer;
+  }
 
-  .lesson-card__graphic { position: relative; padding: 16px; }
-  .lesson-card__graphic > span { color: rgba(213, 230, 241, 0.48); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; }
-  .lesson-card__graphic i { position: absolute; left: 15%; right: 15%; height: 1px; background: linear-gradient(90deg, transparent, rgba(103, 217, 255, 0.54), transparent); }
-  .lesson-card__graphic i:nth-of-type(1) { top: 44%; }
-  .lesson-card__graphic i:nth-of-type(2) { top: 57%; left: 24%; right: 7%; opacity: 0.64; }
-  .lesson-card__graphic i:nth-of-type(3) { top: 70%; left: 8%; right: 34%; opacity: 0.36; }
+  .lesson-card__play img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.76) saturate(0.84);
+    transform: scale(1.025);
+    transition: transform 620ms var(--ease-out), filter 400ms var(--ease-out);
+  }
+
+  .lesson-card__signal {
+    position: relative;
+    z-index: 1;
+    width: 58px;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(214, 239, 250, 0.52);
+    border-radius: 50%;
+    background: rgba(4, 11, 18, 0.62);
+  }
+
+  .lesson-card__signal span {
+    width: 0;
+    height: 0;
+    margin-left: 4px;
+    border-block: 7px solid transparent;
+    border-left: 11px solid currentColor;
+  }
+
+  .lesson-card__play:focus-visible {
+    outline: 2px solid var(--cyan-glow);
+    outline-offset: -3px;
+  }
+
+  .lesson-card__graphic {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: clamp(16px, 2.4vw, 28px);
+    background:
+      radial-gradient(circle at 76% 24%, rgba(103, 217, 255, 0.23), transparent 24%),
+      linear-gradient(145deg, rgba(17, 48, 70, 0.96), rgba(5, 12, 20, 0.98) 66%);
+  }
+
+  .lesson-card__graphic::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.32;
+    background-image:
+      linear-gradient(rgba(207, 247, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(207, 247, 255, 0.07) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(135deg, transparent 4%, #000 44%, transparent 92%);
+  }
+
+  .lesson-card__graphic-index {
+    color: rgba(213, 230, 241, 0.58);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .lesson-card__graphic-word {
+    position: absolute;
+    right: clamp(18px, 3vw, 38px);
+    bottom: clamp(11px, 2vw, 24px);
+    color: rgba(226, 244, 252, 0.13);
+    font-size: clamp(2.4rem, 6vw, 6.8rem);
+    font-weight: 650;
+    letter-spacing: -0.07em;
+    line-height: 0.8;
+  }
+
+  .lesson-card__graphic-lines {
+    position: absolute;
+    inset: 26% 7% 18% 9%;
+  }
+
+  .lesson-card__graphic-lines i {
+    position: absolute;
+    left: 4%;
+    right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(103, 217, 255, 0.7), transparent);
+  }
+
+  .lesson-card__graphic-lines i:nth-child(1) { top: 24%; }
+  .lesson-card__graphic-lines i:nth-child(2) { top: 51%; left: 18%; right: 0; opacity: 0.68; }
+  .lesson-card__graphic-lines i:nth-child(3) { top: 78%; left: 0; right: 30%; opacity: 0.42; }
 
   .lesson-card__body { min-width: 0; }
+  .lesson-card--standard .lesson-card__body { padding-top: 20px; }
+
+  .lesson-card__rank {
+    display: block;
+    margin-bottom: 13px;
+    color: rgba(201, 211, 223, 0.46);
+  }
+
   .lesson-card__meta { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 14px; color: rgba(169, 194, 211, 0.62); font-size: 0.64rem; }
   .lesson-card__meta span + span::before { content: '·'; margin-right: 18px; }
-  .lesson-card h3 { max-width: 27ch; margin-bottom: 14px; font-size: clamp(1.35rem, 1.05rem + 1vw, 2rem); font-weight: 540; letter-spacing: -0.026em; line-height: 1.1; text-wrap: balance; }
+
+  .lesson-card h3 {
+    max-width: 24ch;
+    margin-bottom: 14px;
+    font-size: clamp(1.38rem, 1.05rem + 1vw, 2rem);
+    font-weight: 540;
+    letter-spacing: -0.026em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  .lesson-card--featured h3 {
+    max-width: 15ch;
+    font-size: clamp(2rem, 3.35vw, 3.9rem);
+    letter-spacing: -0.04em;
+    line-height: 0.99;
+  }
+
   .lesson-card__body > p { max-width: 55ch; color: rgba(201, 211, 223, 0.76); font-size: 0.94rem; line-height: 1.62; }
-  .lesson-card__outcome { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 18px; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(126, 153, 178, 0.12); }
+
+  .lesson-card__outcome {
+    display: grid;
+    gap: 8px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(126, 153, 178, 0.16);
+  }
+
   .lesson-card__outcome > span { color: rgba(103, 217, 255, 0.7); font-size: 0.59rem; }
   .lesson-card__outcome p { max-width: 44ch; color: rgba(226, 234, 243, 0.86); font-size: 0.88rem; line-height: 1.5; }
 
   @media (hover: hover) and (pointer: fine) {
     .lesson-card__play:hover .lesson-card__signal { border-color: var(--cyan-glow); background: rgba(8, 24, 37, 0.78); }
+    .lesson-card__play:hover img { transform: scale(1.045); filter: brightness(0.9) saturate(0.98); }
+  }
+
+  @media (max-width: 900px) {
+    .lesson-card--featured {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+    }
+
+    .lesson-card--featured .lesson-card__body {
+      max-width: 720px;
+      padding-top: 22px;
+    }
   }
 
   @media (max-width: 620px) {
-    .lesson-card { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-    .lesson-card__visual { max-width: 480px; }
-    .lesson-card__outcome { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    .lesson-card__visual { max-width: 540px; }
+    .lesson-card--featured h3 { max-width: 22ch; font-size: clamp(1.8rem, 8vw, 2.55rem); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .lesson-card__play * { transition: none !important; }
+    .lesson-card__play *,
+    .lesson-card__play img { transition: none !important; }
+    .lesson-card__play img { transform: none; }
   }
 </style>
