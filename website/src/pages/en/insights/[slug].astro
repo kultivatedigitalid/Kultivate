@@ -4,6 +4,7 @@ import InsightArticleV2 from '../../../components/insights/InsightArticleV2.astr
 import FinalCTA from '../../../components/home/FinalCTA.astro';
 import { getCollection, render } from 'astro:content';
 import { breadcrumbSchema } from '../../../utils/seo';
+import { founderPersonEntity } from '../../../data/founder';
 
 const locale = 'en';
 
@@ -34,8 +35,7 @@ const articleSchema = {
   inLanguage: 'en',
   image: new URL(article.data.heroImage, site).href,
   author: {
-    '@type': 'Person',
-    name: article.data.author,
+    ...founderPersonEntity(site.href, locale),
   },
   publisher: {
     '@type': 'Organization',

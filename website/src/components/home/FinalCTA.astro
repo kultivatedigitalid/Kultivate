@@ -1,11 +1,14 @@
 ---
 import { useTranslations } from '../../i18n/routes';
+import type { FunnelEventName } from '../../scripts/funnel-analytics';
 
 interface Props {
   locale: 'id' | 'en';
+  analyticsEvent?: FunnelEventName;
+  analyticsContext?: string;
 }
 
-const { locale } = Astro.props;
+const { locale, analyticsEvent, analyticsContext = '' } = Astro.props;
 const t = useTranslations(locale);
 ---
 
@@ -20,12 +23,38 @@ const t = useTranslations(locale);
             : 'Your first consultation is free. We will understand the context and what you need first, then explain the scope and pricing once the required pieces are clear.'}
         </p>
       </div>
-      <a href={'/' + locale + '/contact/'} class="btn btn-primary btn-cta">
+      <a
+        href={'/' + locale + '/contact/'}
+        class="btn btn-primary btn-cta"
+        data-final-cta-event={analyticsEvent}
+        data-final-cta-context={analyticsContext || undefined}
+      >
         <span>{t('nav.start_project')}</span>
       </a>
     </div>
   </div>
 </section>
+
+<script>
+  import { trackFunnelEvent, type FunnelEventName } from '../../scripts/funnel-analytics';
+
+  const setupFinalCtaTracking = () => {
+    document.querySelectorAll<HTMLElement>('[data-final-cta-event]').forEach((link) => {
+      if (link.dataset.finalTrackingReady === 'true') return;
+      link.dataset.finalTrackingReady = 'true';
+      link.addEventListener('click', () => {
+        const eventName = link.dataset.finalCtaEvent as FunnelEventName | undefined;
+        if (!eventName) return;
+        trackFunnelEvent(eventName, link.dataset.finalCtaContext
+          ? { context: link.dataset.finalCtaContext }
+          : {});
+      });
+    });
+  };
+
+  setupFinalCtaTracking();
+  document.addEventListener('astro:page-load', setupFinalCtaTracking);
+</script>
 
 <style>
   .final-cta {

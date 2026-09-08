@@ -4,9 +4,9 @@ import type { LearningLesson, LearningLocale } from '../../data/learning';
 interface Props {
   lesson: LearningLesson;
   locale: LearningLocale;
-  context?: 'hub' | 'service';
+  context?: 'hub' | 'service' | 'learn';
   index?: number;
-  display?: 'featured' | 'standard';
+  display?: 'featured' | 'standard' | 'player';
   eyebrow?: string;
 }
 
@@ -82,10 +82,15 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
         if (!videoId) return;
 
         const context = card.dataset.learningContext;
-        trackFunnelEvent(
-          context === 'service' ? 'service_learning_video_click' : 'free_learning_video_click',
-          { lesson_id: card.dataset.lessonId ?? '', category: card.dataset.category ?? '' }
-        );
+        const eventName = context === 'learn'
+          ? 'learn_lesson_start'
+          : context === 'service'
+            ? 'service_learning_video_click'
+            : 'free_learning_video_click';
+        trackFunnelEvent(eventName, {
+          lesson_id: card.dataset.lessonId ?? '',
+          category: card.dataset.category ?? ''
+        });
 
         const iframe = document.createElement('iframe');
         iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(videoId) + '?autoplay=1&rel=0';
@@ -235,6 +240,7 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
 
   .lesson-card__body { min-width: 0; }
   .lesson-card--standard .lesson-card__body { padding-top: 20px; }
+  .lesson-card--player .lesson-card__body { padding-top: 24px; }
 
   .lesson-card__rank {
     display: block;
@@ -260,6 +266,17 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
     font-size: clamp(2rem, 3.35vw, 3.9rem);
     letter-spacing: -0.04em;
     line-height: 0.99;
+  }
+
+  .lesson-card--player h3 {
+    max-width: 19ch;
+    font-size: clamp(2rem, 3vw, 3.25rem);
+    letter-spacing: -0.038em;
+    line-height: 1;
+  }
+
+  .lesson-card--player .lesson-card__visual {
+    aspect-ratio: 16 / 9;
   }
 
   .lesson-card__body > p { max-width: 55ch; color: rgba(201, 211, 223, 0.76); font-size: 0.94rem; line-height: 1.62; }

@@ -1,0 +1,367 @@
+---
+import HeroShell from '../shared/HeroShell.astro';
+import VideoLessonCard from '../learning/VideoLessonCard.astro';
+import {
+  getLearningLessonsForSeries,
+  type LearningLocale,
+  type LearningSeries,
+} from '../../data/learning';
+
+interface Props {
+  locale: LearningLocale;
+  series: LearningSeries;
+}
+
+const { locale, series } = Astro.props;
+const lessons = getLearningLessonsForSeries(series.id);
+const relatedServicePath = `/${locale}/services/${series.category}/`;
+const learnPath = `/${locale}/learn/`;
+const copy = locale === 'id'
+  ? {
+      back: 'Kembali ke Learn',
+      series: `Series ${String(series.order).padStart(2, '0')}`,
+      lessonCount: `${lessons.length} materi`,
+      modules: 'Materi dalam series',
+      current: 'Sedang dibuka',
+      lesson: 'Materi',
+      previous: 'Materi sebelumnya',
+      next: 'Materi berikutnya',
+      related: 'Layanan terkait',
+      relatedBody: series.category === 'seo'
+        ? 'Butuh bantuan menerapkan keputusan search ini ke konteks bisnis Anda? Lihat cara kami menangani SEO.'
+        : 'Butuh bantuan menerapkan keputusan website ini ke konteks bisnis Anda? Lihat cara kami menangani Web Services.',
+      relatedCta: series.category === 'seo' ? 'Pelajari layanan SEO' : 'Pelajari Web Services',
+      heroAlt: 'Bidang informasi abstrak tersusun dalam kedalaman biru',
+    }
+  : {
+      back: 'Back to Learn',
+      series: `Series ${String(series.order).padStart(2, '0')}`,
+      lessonCount: `${lessons.length} lessons`,
+      modules: 'Lessons in this series',
+      current: 'Current',
+      lesson: 'Lesson',
+      previous: 'Previous lesson',
+      next: 'Next lesson',
+      related: 'Related service',
+      relatedBody: series.category === 'seo'
+        ? 'Need help applying these search decisions to your business context? See how we approach SEO.'
+        : 'Need help applying these website decisions to your business context? See how we approach Web Services.',
+      relatedCta: series.category === 'seo' ? 'Explore SEO services' : 'Explore Web Services',
+      heroAlt: 'Abstract information surfaces arranged in blue depth',
+    };
+---
+
+<div
+  class="learn-series-page page-flow"
+  data-learn-series
+  data-series-id={series.id}
+  data-locale={locale}
+>
+  <HeroShell
+    title={series.title[locale]}
+    description={series.description[locale]}
+    image="/assets/banners/insights-gradient.webp"
+    imageAlt={copy.heroAlt}
+    variant="editorial-compact"
+    compact
+    depth
+    titleDensity="long"
+  >
+    <div slot="meta" class="learn-series-hero__meta text-mono">
+      <span>{copy.series}</span>
+      <span aria-hidden="true">/</span>
+      <span>{copy.lessonCount}</span>
+    </div>
+    <a slot="actions" class="btn btn-secondary" href={learnPath}>{copy.back}</a>
+  </HeroShell>
+
+  <section class="learn-workspace flow-section" aria-labelledby="series-modules-title">
+    <div class="container learn-workspace__layout">
+      <aside class="learn-modules" aria-labelledby="series-modules-title" data-reveal>
+        <span class="text-mono">{copy.series}</span>
+        <h2 id="series-modules-title">{copy.modules}</h2>
+        <ol>
+          {lessons.map((lesson, index) => (
+            <li>
+              <button
+                type="button"
+                data-lesson-select={lesson.id}
+                aria-controls={`series-panel-${lesson.id}`}
+                aria-current={index === 0 ? 'step' : undefined}
+              >
+                <span class="learn-modules__index text-mono">{String(index + 1).padStart(2, '0')}</span>
+                <span class="learn-modules__title">{lesson.title[locale]}</span>
+                <span class="learn-modules__current text-mono" data-current-label hidden={index !== 0}>
+                  {copy.current}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ol>
+      </aside>
+
+      <div class="learn-player" data-reveal="content">
+        {lessons.map((lesson, index) => (
+          <section
+            id={`series-panel-${lesson.id}`}
+            class="learn-player__panel"
+            data-lesson-panel={lesson.id}
+            hidden={index !== 0}
+            aria-labelledby={`lesson-heading-${lesson.id}`}
+          >
+            <span id={`lesson-heading-${lesson.id}`} class="sr-only">
+              {copy.lesson} {index + 1}: {lesson.title[locale]}
+            </span>
+            <VideoLessonCard
+              lesson={lesson}
+              locale={locale}
+              context="learn"
+              index={index}
+              display="player"
+            />
+
+            <nav class="learn-player__controls" aria-label={locale === 'id' ? 'Navigasi materi' : 'Lesson navigation'}>
+              {index > 0 ? (
+                <button type="button" class="link-hover-arrow" data-lesson-step={lessons[index - 1].id} data-step-direction="previous">
+                  <span aria-hidden="true">&#8592;</span><span>{copy.previous}</span>
+                </button>
+              ) : <span></span>}
+              {index < lessons.length - 1 ? (
+                <button type="button" class="link-hover-arrow" data-lesson-step={lessons[index + 1].id} data-step-direction="next">
+                  <span>{copy.next}</span><span aria-hidden="true">&#8594;</span>
+                </button>
+              ) : <span></span>}
+            </nav>
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="learn-related flow-section" aria-labelledby="learn-related-title">
+    <div class="container learn-related__layout" data-reveal>
+      <div>
+        <span class="text-mono">{copy.related}</span>
+        <h2 id="learn-related-title">{series.category === 'seo' ? 'SEO' : 'Web Services'}</h2>
+      </div>
+      <div>
+        <p>{copy.relatedBody}</p>
+        <a
+          class="link-hover-arrow"
+          href={relatedServicePath}
+          data-learn-service-link
+        >
+          <span>{copy.relatedCta}</span><span aria-hidden="true">&#8594;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  import { trackFunnelEvent } from '../../scripts/funnel-analytics';
+
+  const setupLearnSeries = () => {
+    document.querySelectorAll<HTMLElement>('[data-learn-series]').forEach((root) => {
+      if (root.dataset.seriesReady === 'true') return;
+      root.dataset.seriesReady = 'true';
+
+      const seriesId = root.dataset.seriesId ?? '';
+      const selectors = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-lesson-select]'));
+      const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-lesson-panel]'));
+
+      const openLesson = (lessonId: string, source: 'module' | 'previous' | 'next') => {
+        selectors.forEach((button) => {
+          const isCurrent = button.dataset.lessonSelect === lessonId;
+          if (isCurrent) button.setAttribute('aria-current', 'step');
+          else button.removeAttribute('aria-current');
+          const label = button.querySelector<HTMLElement>('[data-current-label]');
+          if (label) label.hidden = !isCurrent;
+        });
+
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.lessonPanel !== lessonId;
+        });
+
+        history.replaceState(null, '', `#lesson-${lessonId}`);
+        trackFunnelEvent(source === 'next' ? 'learn_next_lesson' : 'learn_lesson_start', {
+          series_id: seriesId,
+          lesson_id: lessonId,
+          source,
+        });
+      };
+
+      selectors.forEach((button) => {
+        button.addEventListener('click', () => {
+          const lessonId = button.dataset.lessonSelect;
+          if (lessonId) openLesson(lessonId, 'module');
+        });
+      });
+
+      root.querySelectorAll<HTMLButtonElement>('[data-lesson-step]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const lessonId = button.dataset.lessonStep;
+          const source = button.dataset.stepDirection === 'next' ? 'next' : 'previous';
+          if (lessonId) openLesson(lessonId, source);
+        });
+      });
+
+      root.querySelector<HTMLElement>('[data-learn-service-link]')?.addEventListener('click', () => {
+        trackFunnelEvent('learn_to_service_click', { series_id: seriesId });
+      });
+
+      const hashLesson = window.location.hash.replace('#lesson-', '');
+      if (hashLesson && panels.some((panel) => panel.dataset.lessonPanel === hashLesson)) {
+        openLesson(hashLesson, 'module');
+      }
+
+      trackFunnelEvent('learn_series_open', {
+        series_id: seriesId,
+        locale: root.dataset.locale ?? '',
+      });
+    });
+  };
+
+  setupLearnSeries();
+  document.addEventListener('astro:page-load', setupLearnSeries);
+</script>
+
+<style>
+  .learn-series-hero__meta {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    color: rgba(226, 234, 243, 0.72);
+    font-size: 0.64rem;
+  }
+
+  .learn-workspace {
+    padding: clamp(92px, 10vw, 142px) 0 clamp(108px, 12vw, 168px);
+  }
+
+  .learn-workspace__layout {
+    display: grid;
+    grid-template-columns: minmax(230px, 0.34fr) minmax(0, 1fr);
+    gap: clamp(48px, 8vw, 118px);
+    align-items: start;
+  }
+
+  .learn-modules {
+    position: sticky;
+    top: 110px;
+  }
+
+  .learn-modules > .text-mono,
+  .learn-related .text-mono {
+    color: rgba(103, 217, 255, 0.7);
+    font-size: 0.62rem;
+  }
+
+  .learn-modules h2 {
+    max-width: 12ch;
+    margin: 14px 0 30px;
+    font-size: clamp(1.8rem, 2.4vw, 2.65rem);
+    font-weight: 530;
+    letter-spacing: -0.034em;
+    line-height: 1.03;
+  }
+
+  .learn-modules ol {
+    list-style: none;
+    border-top: 1px solid rgba(126, 153, 178, 0.2);
+  }
+
+  .learn-modules li {
+    border-bottom: 1px solid rgba(126, 153, 178, 0.2);
+  }
+
+  .learn-modules button {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 10px 12px;
+    padding: 18px 0;
+    color: rgba(201, 211, 223, 0.66);
+    text-align: left;
+    transition: color 180ms var(--ease-out), padding-left 180ms var(--ease-out);
+  }
+
+  .learn-modules button[aria-current='step'] {
+    padding-left: 10px;
+    color: var(--cloud-white);
+  }
+
+  .learn-modules__index { color: rgba(103, 217, 255, 0.64); font-size: 0.6rem; }
+  .learn-modules__title { font-size: 0.92rem; line-height: 1.42; }
+  .learn-modules__current {
+    grid-column: 2;
+    color: rgba(103, 217, 255, 0.72);
+    font-size: 0.56rem;
+  }
+
+  .learn-player { min-width: 0; }
+  .learn-player__panel[hidden] { display: none; }
+
+  .learn-player__controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: clamp(36px, 5vw, 58px);
+    padding-top: 22px;
+    border-top: 1px solid rgba(126, 153, 178, 0.2);
+  }
+
+  .learn-player__controls > :last-child { justify-self: end; }
+  .learn-player__controls button { color: rgba(226, 234, 243, 0.82); }
+
+  .learn-related {
+    padding: clamp(76px, 9vw, 122px) 0 clamp(100px, 12vw, 164px);
+  }
+
+  .learn-related__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.75fr) minmax(300px, 0.65fr);
+    gap: clamp(40px, 10vw, 154px);
+    align-items: end;
+    border-top: 1px solid rgba(126, 153, 178, 0.22);
+    padding-top: clamp(38px, 5vw, 64px);
+  }
+
+  .learn-related h2 {
+    margin-top: 12px;
+    font-size: clamp(2.4rem, 5vw, 5.4rem);
+    font-weight: 520;
+    letter-spacing: -0.05em;
+  }
+
+  .learn-related p {
+    max-width: 48ch;
+    margin-bottom: 24px;
+    color: rgba(201, 211, 223, 0.76);
+    line-height: 1.65;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .learn-modules button:hover { color: var(--cloud-white); padding-left: 6px; }
+  }
+
+  @media (max-width: 860px) {
+    .learn-workspace__layout,
+    .learn-related__layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 42px;
+    }
+
+    .learn-modules { position: static; }
+    .learn-modules h2 { max-width: none; }
+  }
+
+  @media (max-width: 560px) {
+    .learn-player__controls { gap: 12px; }
+    .learn-player__controls button { max-width: 15ch; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .learn-modules button { transition: none; }
+  }
+</style>

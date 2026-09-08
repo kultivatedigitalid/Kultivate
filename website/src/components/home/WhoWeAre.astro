@@ -6,6 +6,7 @@ const copy = locale === 'id'
   ? {
       heading: 'Kami hadir untuk kebutuhan Anda',
       profile: 'Kultivate bekerja dekat dengan owner dan tim internal untuk memahami konteks sebelum menentukan arah. Kami menyatukan website, SEO, content, dan measurement ke dalam keputusan yang jelas—agar pertumbuhan digital memiliki alasan, pemilik, dan langkah berikutnya.',
+      cta: 'Kenali kami lebih dekat',
       collageLabel: 'Kolase cara kerja tim Kultivate',
       alts: [
         'Tim meninjau strategi website bersama',
@@ -19,6 +20,7 @@ const copy = locale === 'id'
   : {
       heading: 'We are here for your needs',
       profile: 'Kultivate works closely with owners and in-house teams to understand the context before choosing a direction. We connect websites, SEO, content, and measurement through clear decisions—so digital growth has a reason, an owner, and a next step.',
+      cta: 'Get to know us better',
       collageLabel: 'A collage of how the Kultivate team works',
       alts: [
         'A team reviewing website strategy together',
@@ -54,9 +56,29 @@ const images = ['01', '03', '05', '08', '09', '12'];
       ))}
     </div>
 
-    <p class="who-we-are__profile" data-reveal>{copy.profile}</p>
+    <div class="who-we-are__profile-block" data-reveal>
+      <p class="who-we-are__profile">{copy.profile}</p>
+      <a class="link-hover-arrow" href={'/' + locale + '/about/'} data-home-about-link>
+        <span>{copy.cta}</span><span aria-hidden="true">&#8594;</span>
+      </a>
+    </div>
   </div>
 </section>
+
+<script>
+  import { trackFunnelEvent } from '../../scripts/funnel-analytics';
+
+  const setupHomeAboutTracking = () => {
+    document.querySelectorAll<HTMLElement>('[data-home-about-link]').forEach((link) => {
+      if (link.dataset.trackingReady === 'true') return;
+      link.dataset.trackingReady = 'true';
+      link.addEventListener('click', () => trackFunnelEvent('home_about_click'));
+    });
+  };
+
+  setupHomeAboutTracking();
+  document.addEventListener('astro:page-load', setupHomeAboutTracking);
+</script>
 
 <style>
   .who-we-are {
@@ -110,13 +132,20 @@ const images = ['01', '03', '05', '08', '09', '12'];
     filter: saturate(0.78) contrast(1.04);
   }
 
-  .who-we-are__profile {
+  .who-we-are__profile-block {
     max-width: 62ch;
     margin: clamp(36px, 4.5vw, 58px) auto 0;
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .who-we-are__profile {
+    margin: 0;
     color: rgba(224, 232, 241, 0.88);
     font-size: clamp(1.04rem, 0.98rem + 0.22vw, 1.2rem);
     line-height: 1.72;
-    text-align: center;
   }
 
   @media (max-width: 600px) {
@@ -139,8 +168,12 @@ const images = ['01', '03', '05', '08', '09', '12'];
       grid-column: span 2;
     }
 
-    .who-we-are__profile {
+    .who-we-are__profile-block {
       margin-top: 30px;
+      gap: 16px;
+    }
+
+    .who-we-are__profile {
       font-size: 0.98rem;
       line-height: 1.64;
     }

@@ -2,6 +2,7 @@
 import HeroShell from '../shared/HeroShell.astro';
 import AboutOrbit3D from './AboutOrbit3D.astro';
 import KnowledgeEcosystem from './KnowledgeEcosystem.astro';
+import FounderWelcomeVideo from './FounderWelcomeVideo.astro';
 
 interface Props { locale: 'id' | 'en'; }
 
@@ -100,6 +101,8 @@ const marqueeRows = [collageImages.slice(0, 6), collageImages.slice(6)].map((row
       ))}
     </div>
   </section>
+
+  <FounderWelcomeVideo locale={locale} />
 
   <AboutOrbit3D locale={locale} />
 

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LearnSeriesPage from '../../../components/learn/LearnSeriesPage.astro';
+import FinalCTA from '../../../components/home/FinalCTA.astro';
+import { getLearningSeries } from '../../../data/learning';
+import { breadcrumbSchema } from '../../../utils/seo';
+
+export function getStaticPaths() {
+  return getLearningSeries().map((series) => ({
+    params: { series: series.slug },
+    props: { series },
+  }));
+}
+
+const { series } = Astro.props;
+const site = Astro.site ?? new URL('https://kultivate.id');
+---
+
+<BaseLayout
+  locale="en"
+  title={`${series.title.en} — Learn`}
+  description={series.description.en}
+  alternatePath={`/id/learn/${series.slug}/`}
+  structuredData={breadcrumbSchema([
+    { name: 'Home', url: new URL('/en/', site).href },
+    { name: 'Learn', url: new URL('/en/learn/', site).href },
+    { name: series.title.en, url: new URL(`/en/learn/${series.slug}/`, site).href },
+  ])}
+>
+  <LearnSeriesPage locale="en" series={series} />
+  <FinalCTA locale="en" analyticsEvent="learn_to_priorities_click" analyticsContext={series.slug} />
+</BaseLayout>

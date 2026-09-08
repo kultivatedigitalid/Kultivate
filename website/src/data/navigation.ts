@@ -8,6 +8,7 @@ export const navigationData: Record<'id' | 'en', NavItem[]> = {
     { label: 'Home', route: '/id/' },
     { label: 'Portofolio', route: '/id/work/' },
     { label: 'Layanan', route: '/id/services/' },
+    { label: 'Learn', route: '/id/learn/' },
     { label: 'About Us', route: '/id/about/' },
     { label: 'Blog', route: '/id/insights/' }
   ],
@@ -15,6 +16,7 @@ export const navigationData: Record<'id' | 'en', NavItem[]> = {
     { label: 'Home', route: '/en/' },
     { label: 'Portfolio', route: '/en/work/' },
     { label: 'Services', route: '/en/services/' },
+    { label: 'Learn', route: '/en/learn/' },
     { label: 'About Us', route: '/en/about/' },
     { label: 'Blog', route: '/en/insights/' }
   ]

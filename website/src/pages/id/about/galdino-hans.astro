@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FounderProfile from '../../../components/about/FounderProfile.astro';
+import FinalCTA from '../../../components/home/FinalCTA.astro';
+import { founderCopy, founderIdentity, founderPersonSchema } from '../../../data/founder';
+import { breadcrumbSchema } from '../../../utils/seo';
+
+const locale = 'id';
+const insights = (await getCollection('insights', ({ data }) =>
+  data.locale === locale && !data.draft && data.author === founderIdentity.name
+))
+  .sort((a, b) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime())
+  .slice(0, 3);
+const site = Astro.site ?? new URL('https://kultivate.id');
+---
+
+<BaseLayout
+  locale="id"
+  title={`${founderIdentity.name}, ${founderIdentity.role}`}
+  description={founderCopy.id.metaDescription}
+  alternatePath="/en/about/galdino-hans/"
+  structuredData={[
+    founderPersonSchema(site.href, locale),
+    breadcrumbSchema([
+      { name: 'Home', url: new URL('/id/', site).href },
+      { name: 'About Us', url: new URL('/id/about/', site).href },
+      { name: founderIdentity.name, url: new URL('/id/about/galdino-hans/', site).href },
+    ]),
+  ]}
+>
+  <FounderProfile locale="id" insights={insights} />
+  <FinalCTA locale="id" />
+</BaseLayout>

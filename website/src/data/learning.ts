@@ -1,24 +1,113 @@
 export type LearningCategory = 'seo' | 'web-services';
 export type LearningLocale = 'id' | 'en';
+export type LearningSeriesId =
+  | 'search-demand-discovery'
+  | 'technical-ai-search'
+  | 'website-decisions-conversion'
+  | 'website-quality-migration';
+
+export interface LearningSeries {
+  id: LearningSeriesId;
+  slug: string;
+  category: LearningCategory;
+  order: number;
+  title: Record<LearningLocale, string>;
+  description: Record<LearningLocale, string>;
+  lessonIds: string[];
+  teachingThumbnail: string;
+}
 
 export interface LearningLesson {
   id: string;
   category: LearningCategory;
+  seriesId: LearningSeriesId;
+  order: number;
   title: Record<LearningLocale, string>;
   summary: Record<LearningLocale, string>;
   outcome: Record<LearningLocale, string>;
   duration: string;
   videoId: string;
-  poster?: string;
+  poster: string;
+  teachingThumbnail: string;
   featured?: boolean;
 }
 
 // Video IDs and durations stay empty until the corresponding assets are verified.
 // The UI intentionally omits video controls and duration metadata in that state.
+// Teaching thumbnails and posters remain empty until real founder assets are approved.
+export const learningSeries: LearningSeries[] = [
+  {
+    id: 'search-demand-discovery',
+    slug: 'search-demand-discovery',
+    category: 'seo',
+    order: 1,
+    title: {
+      en: 'Search Demand & Discovery',
+      id: 'Demand Search & Discovery',
+    },
+    description: {
+      en: 'Understand how high-intent buyers search and how service pages can support discovery and decisions.',
+      id: 'Pahami cara calon pelanggan dengan intent tinggi mencari dan bagaimana halaman layanan mendukung proses ditemukan serta pengambilan keputusan.',
+    },
+    lessonIds: ['high-intent-service-discovery', 'service-page-search-decision'],
+    teachingThumbnail: '',
+  },
+  {
+    id: 'technical-ai-search',
+    slug: 'technical-ai-search',
+    category: 'seo',
+    order: 2,
+    title: {
+      en: 'Technical & AI Search',
+      id: 'Technical & AI Search',
+    },
+    description: {
+      en: 'Review the technical foundations and information signals that support traditional and AI-assisted search.',
+      id: 'Tinjau fondasi teknis dan sinyal informasi yang mendukung search tradisional maupun berbasis AI.',
+    },
+    lessonIds: ['technical-seo-owner-checklist', 'aeo-geo-expertise'],
+    teachingThumbnail: '',
+  },
+  {
+    id: 'website-decisions-conversion',
+    slug: 'website-decisions-conversion',
+    category: 'web-services',
+    order: 3,
+    title: {
+      en: 'Website Decisions & Conversion',
+      id: 'Keputusan Website & Conversion',
+    },
+    description: {
+      en: 'Decide whether to rebuild or improve, then find the friction that stops attention becoming action.',
+      id: 'Tentukan kapan website perlu dibangun ulang atau diperbaiki, lalu temukan friction yang menghambat perhatian menjadi tindakan.',
+    },
+    lessonIds: ['rebuild-or-targeted-fixes', 'reduce-inquiry-friction'],
+    teachingThumbnail: '',
+  },
+  {
+    id: 'website-quality-migration',
+    slug: 'website-quality-migration',
+    category: 'web-services',
+    order: 4,
+    title: {
+      en: 'Website Quality & Migration',
+      id: 'Kualitas Website & Migrasi',
+    },
+    description: {
+      en: 'Connect performance, accessibility, trust, and migration planning without losing the value already built.',
+      id: 'Hubungkan performa, accessibility, trust, dan perencanaan migrasi tanpa kehilangan nilai yang sudah dibangun.',
+    },
+    lessonIds: ['performance-accessibility-trust', 'redesign-migration-search-visibility'],
+    teachingThumbnail: '',
+  },
+];
+
 export const learningLessons: LearningLesson[] = [
   {
     id: 'high-intent-service-discovery',
     category: 'seo',
+    seriesId: 'search-demand-discovery',
+    order: 1,
     title: {
       en: 'How buyers actually find high-intent services',
       id: 'Bagaimana calon pelanggan menemukan layanan dengan intent tinggi'
@@ -33,11 +122,15 @@ export const learningLessons: LearningLesson[] = [
     },
     duration: '',
     videoId: '',
+    poster: '',
+    teachingThumbnail: '',
     featured: true
   },
   {
     id: 'technical-seo-owner-checklist',
     category: 'seo',
+    seriesId: 'technical-ai-search',
+    order: 1,
     title: {
       en: 'Technical SEO: what owners need to inspect first',
       id: 'Technical SEO: apa yang perlu diperiksa owner lebih dulu'
@@ -51,11 +144,15 @@ export const learningLessons: LearningLesson[] = [
       id: 'Bedakan risiko teknis yang mendesak dari pekerjaan yang masih bisa menunggu.'
     },
     duration: '',
-    videoId: ''
+    videoId: '',
+    poster: '',
+    teachingThumbnail: ''
   },
   {
     id: 'service-page-search-decision',
     category: 'seo',
+    seriesId: 'search-demand-discovery',
+    order: 2,
     title: {
       en: 'How to structure a service page for search and decision-making',
       id: 'Cara menyusun halaman layanan untuk search dan pengambilan keputusan'
@@ -69,11 +166,15 @@ export const learningLessons: LearningLesson[] = [
       id: 'Susun outline halaman yang mendukung proses ditemukan dan next step yang meyakinkan.'
     },
     duration: '',
-    videoId: ''
+    videoId: '',
+    poster: '',
+    teachingThumbnail: ''
   },
   {
     id: 'aeo-geo-expertise',
     category: 'seo',
+    seriesId: 'technical-ai-search',
+    order: 2,
     title: {
       en: 'AEO & GEO: making expertise easier to understand and reference',
       id: 'AEO & GEO: membuat expertise lebih mudah dipahami dan dirujuk'
@@ -87,11 +188,15 @@ export const learningLessons: LearningLesson[] = [
       id: 'Temukan gap konten dan bukti yang membuat expertise sulit diambil atau dikutip.'
     },
     duration: '',
-    videoId: ''
+    videoId: '',
+    poster: '',
+    teachingThumbnail: ''
   },
   {
     id: 'rebuild-or-targeted-fixes',
     category: 'web-services',
+    seriesId: 'website-decisions-conversion',
+    order: 1,
     title: {
       en: 'When a website needs a rebuild vs targeted fixes',
       id: 'Kapan website perlu dibangun ulang atau cukup diperbaiki secara terarah'
@@ -106,11 +211,15 @@ export const learningLessons: LearningLesson[] = [
     },
     duration: '',
     videoId: '',
+    poster: '',
+    teachingThumbnail: '',
     featured: true
   },
   {
     id: 'reduce-inquiry-friction',
     category: 'web-services',
+    seriesId: 'website-decisions-conversion',
+    order: 2,
     title: {
       en: 'How to reduce friction before the inquiry',
       id: 'Cara mengurangi friction sebelum inquiry'
@@ -124,11 +233,15 @@ export const learningLessons: LearningLesson[] = [
       id: 'Temukan bagian yang menghilangkan perhatian sebelum pengunjung mengambil next step.'
     },
     duration: '',
-    videoId: ''
+    videoId: '',
+    poster: '',
+    teachingThumbnail: ''
   },
   {
     id: 'performance-accessibility-trust',
     category: 'web-services',
+    seriesId: 'website-quality-migration',
+    order: 1,
     title: {
       en: 'Performance, accessibility, and trust',
       id: 'Performance, accessibility, dan trust'
@@ -142,11 +255,15 @@ export const learningLessons: LearningLesson[] = [
       id: 'Prioritaskan perbaikan experience dengan mempertimbangkan pengguna dan kualitas teknis.'
     },
     duration: '',
-    videoId: ''
+    videoId: '',
+    poster: '',
+    teachingThumbnail: ''
   },
   {
     id: 'redesign-migration-search-visibility',
     category: 'web-services',
+    seriesId: 'website-quality-migration',
+    order: 2,
     title: {
       en: 'Planning a redesign or migration without losing search visibility',
       id: 'Merencanakan redesign atau migrasi tanpa kehilangan search visibility'
@@ -160,9 +277,33 @@ export const learningLessons: LearningLesson[] = [
       id: 'Buat checklist migrasi yang menjaga nilai yang sudah ada dan memperjelas tanggung jawab.'
     },
     duration: '',
-    videoId: ''
+    videoId: '',
+    poster: '',
+    teachingThumbnail: ''
   }
 ];
 
 export const getLearningLessons = (category?: LearningCategory) =>
-  category ? learningLessons.filter((lesson) => lesson.category === category) : learningLessons;
+  (category ? learningLessons.filter((lesson) => lesson.category === category) : learningLessons)
+    .slice()
+    .sort((a, b) => {
+      const seriesA = learningSeries.find((series) => series.id === a.seriesId)?.order ?? 0;
+      const seriesB = learningSeries.find((series) => series.id === b.seriesId)?.order ?? 0;
+      return seriesA - seriesB || a.order - b.order;
+    });
+
+export const getLearningSeries = () =>
+  learningSeries.slice().sort((a, b) => a.order - b.order);
+
+export const getLearningSeriesBySlug = (slug: string) =>
+  learningSeries.find((series) => series.slug === slug);
+
+export const getLearningLessonsForSeries = (seriesId: LearningSeriesId) => {
+  const series = learningSeries.find((item) => item.id === seriesId);
+  if (!series) return [];
+
+  return series.lessonIds
+    .map((lessonId) => learningLessons.find((lesson) => lesson.id === lessonId))
+    .filter((lesson): lesson is LearningLesson => Boolean(lesson))
+    .sort((a, b) => a.order - b.order);
+};

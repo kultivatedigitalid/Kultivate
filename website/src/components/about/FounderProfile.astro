@@ -1,0 +1,366 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import HeroShell from '../shared/HeroShell.astro';
+import { founderCopy, founderIdentity, type FounderLocale } from '../../data/founder';
+
+interface Props {
+  locale: FounderLocale;
+  insights: CollectionEntry<'insights'>[];
+}
+
+const { locale, insights } = Astro.props;
+const copy = founderCopy[locale];
+const aboutPath = `/${locale}/about/`;
+const learnPath = `/${locale}/learn/`;
+const dateFormatter = new Intl.DateTimeFormat(locale === 'id' ? 'id-ID' : 'en-US', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
+---
+
+<article class="founder-profile page-flow" data-founder-profile data-locale={locale}>
+  <HeroShell
+    title={founderIdentity.name}
+    description={copy.heroDescription}
+    image="/assets/banners/about-gradient.webp"
+    imageAlt=""
+    variant="editorial-compact"
+    compact
+    depth
+  >
+    <div slot="meta" class="founder-profile__role text-mono">{founderIdentity.role}</div>
+    <a slot="actions" class="btn btn-secondary" href={aboutPath}>{copy.backAbout}</a>
+  </HeroShell>
+
+  <section class="founder-intro flow-section" aria-labelledby="founder-intro-title">
+    <div class="container founder-intro__layout">
+      <figure class="founder-portrait-placeholder" role="img" aria-label={copy.portraitAlt} data-reveal="image">
+        <span class="founder-portrait-placeholder__mark" aria-hidden="true">GH</span>
+        <figcaption class="text-mono">{copy.portraitLabel}</figcaption>
+      </figure>
+
+      <div class="founder-intro__copy" data-reveal>
+        <span class="section-kicker">{founderIdentity.role}</span>
+        <h2 id="founder-intro-title">{copy.introductionTitle}</h2>
+        <p>{copy.introductionBody}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder-story flow-section" aria-labelledby="founder-story-title">
+    <div class="container founder-story__layout" data-reveal>
+      <span class="founder-story__number text-mono">01</span>
+      <h2 id="founder-story-title">{copy.storyTitle}</h2>
+      <p>{copy.storyBody}</p>
+    </div>
+  </section>
+
+  <section class="founder-philosophy flow-section" aria-labelledby="founder-philosophy-title">
+    <div class="container founder-philosophy__layout">
+      <div data-reveal>
+        <span class="text-mono">02</span>
+        <h2 id="founder-philosophy-title">{copy.philosophyTitle}</h2>
+      </div>
+      <blockquote data-reveal="content">
+        <p>“{copy.philosophyQuote}”</p>
+        <footer>{founderIdentity.name}, {founderIdentity.role}</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="founder-expertise flow-section" aria-labelledby="founder-expertise-title">
+    <div class="container">
+      <header class="founder-section-header" data-reveal>
+        <div>
+          <span class="text-mono">03</span>
+          <h2 id="founder-expertise-title">{copy.expertiseTitle}</h2>
+        </div>
+        <p>{copy.expertiseIntro}</p>
+      </header>
+
+      <ol class="founder-expertise__list">
+        {copy.expertise.map((item, index) => (
+          <li data-reveal>
+            <span class="text-mono">{String(index + 1).padStart(2, '0')}</span>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="founder-experience flow-section" aria-labelledby="founder-experience-title">
+    <div class="container founder-experience__layout">
+      <header data-reveal>
+        <span class="text-mono">04</span>
+        <h2 id="founder-experience-title">{copy.experienceTitle}</h2>
+        <p>{copy.experienceIntro}</p>
+      </header>
+
+      <dl data-reveal="content">
+        {copy.experience.map(([term, description]) => (
+          <div>
+            <dt>{term}</dt>
+            <dd>{description}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="founder-insights flow-section" aria-labelledby="founder-insights-title">
+    <div class="container">
+      <header class="founder-section-header" data-reveal>
+        <div>
+          <span class="text-mono">05</span>
+          <h2 id="founder-insights-title">{copy.insightsTitle}</h2>
+        </div>
+        <p>{copy.insightsBody}</p>
+      </header>
+
+      <div class="founder-insights__grid">
+        {insights.map((insight) => (
+          <article class="founder-insight" data-reveal>
+            <a href={`/${locale}/insights/${insight.data.slug}/`}>
+              <figure>
+                <img
+                  src={insight.data.heroImage}
+                  alt={insight.data.heroAlt}
+                  width="720"
+                  height="405"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="founder-insight__meta text-mono">
+                <span>{insight.data.category}</span>
+                <time datetime={insight.data.publishedAt}>{dateFormatter.format(new Date(insight.data.publishedAt))}</time>
+              </div>
+              <h3>{insight.data.title}</h3>
+              <p>{insight.data.summary}</p>
+              <span class="founder-insight__link">{copy.readInsight} <span aria-hidden="true">&#8594;</span></span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="founder-learn flow-section" aria-labelledby="founder-learn-title">
+    <div class="container founder-learn__layout" data-reveal>
+      <div>
+        <span class="text-mono">LEARN</span>
+        <h2 id="founder-learn-title">{copy.learnTitle}</h2>
+      </div>
+      <div>
+        <p>{copy.learnBody}</p>
+        <a class="link-hover-arrow" href={learnPath}>
+          <span>{copy.learnCta}</span><span aria-hidden="true">&#8594;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</article>
+
+<script>
+  import { trackFunnelEvent } from '../../scripts/funnel-analytics';
+
+  const setupFounderProfileTracking = () => {
+    document.querySelectorAll<HTMLElement>('[data-founder-profile]').forEach((root) => {
+      if (root.dataset.profileTrackingReady === 'true') return;
+      root.dataset.profileTrackingReady = 'true';
+      trackFunnelEvent('founder_profile_view', { locale: root.dataset.locale ?? '' });
+    });
+  };
+
+  setupFounderProfileTracking();
+  document.addEventListener('astro:page-load', setupFounderProfileTracking);
+</script>
+
+<style>
+  .founder-profile__role {
+    color: rgba(226, 234, 243, 0.76);
+    font-size: 0.65rem;
+  }
+
+  .founder-intro,
+  .founder-story,
+  .founder-philosophy,
+  .founder-expertise,
+  .founder-experience,
+  .founder-insights,
+  .founder-learn {
+    padding: clamp(90px, 10vw, 148px) 0;
+  }
+
+  .founder-intro__layout {
+    display: grid;
+    grid-template-columns: minmax(270px, 0.68fr) minmax(0, 0.92fr);
+    gap: clamp(48px, 10vw, 154px);
+    align-items: center;
+  }
+
+  .founder-portrait-placeholder {
+    aspect-ratio: 4 / 5;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 22px;
+    overflow: hidden;
+    border-radius: 8px;
+    color: rgba(226, 234, 243, 0.56);
+    background:
+      radial-gradient(circle at 48% 38%, rgba(103, 217, 255, 0.17), transparent 27%),
+      linear-gradient(155deg, rgba(18, 47, 67, 0.96), rgba(5, 12, 20, 1) 68%);
+  }
+
+  .founder-portrait-placeholder__mark {
+    color: rgba(226, 244, 252, 0.2);
+    font-size: clamp(4rem, 9vw, 8rem);
+    font-weight: 600;
+    letter-spacing: -0.08em;
+  }
+
+  .founder-portrait-placeholder figcaption { max-width: 24ch; padding-inline: 20px; text-align: center; }
+  .founder-intro__copy { max-width: 680px; }
+  .founder-intro__copy h2,
+  .founder-story h2,
+  .founder-philosophy h2,
+  .founder-section-header h2,
+  .founder-experience h2,
+  .founder-learn h2 {
+    font-size: clamp(2.35rem, 4.5vw, 5rem);
+    font-weight: 520;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+  }
+
+  .founder-intro__copy .section-kicker { display: block; margin-bottom: 18px; }
+  .founder-intro__copy p,
+  .founder-story p,
+  .founder-section-header > p,
+  .founder-experience header p,
+  .founder-learn p {
+    color: rgba(201, 211, 223, 0.76);
+    line-height: 1.68;
+  }
+  .founder-intro__copy p { max-width: 51ch; margin-top: 24px; }
+
+  .founder-story__layout {
+    display: grid;
+    grid-template-columns: 64px minmax(250px, 0.75fr) minmax(300px, 0.65fr);
+    gap: clamp(26px, 6vw, 84px);
+    align-items: start;
+    padding-top: clamp(38px, 5vw, 62px);
+    border-top: 1px solid rgba(126, 153, 178, 0.22);
+  }
+  .founder-story__number,
+  .founder-philosophy .text-mono,
+  .founder-section-header .text-mono,
+  .founder-experience .text-mono,
+  .founder-learn .text-mono { color: rgba(103, 217, 255, 0.7); font-size: 0.62rem; }
+
+  .founder-philosophy { background: rgba(4, 10, 17, 0.34); }
+  .founder-philosophy__layout {
+    display: grid;
+    grid-template-columns: minmax(230px, 0.5fr) minmax(0, 1fr);
+    gap: clamp(48px, 10vw, 154px);
+    align-items: start;
+  }
+  .founder-philosophy h2 { max-width: 8ch; margin-top: 16px; }
+  .founder-philosophy blockquote p {
+    max-width: 29ch;
+    color: var(--cloud-white);
+    font-size: clamp(1.75rem, 3.5vw, 3.75rem);
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+  .founder-philosophy blockquote footer {
+    margin-top: 28px;
+    color: rgba(201, 211, 223, 0.62);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+  }
+
+  .founder-section-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.58fr);
+    gap: clamp(42px, 9vw, 128px);
+    align-items: end;
+    margin-bottom: clamp(56px, 8vw, 96px);
+  }
+  .founder-section-header h2 { max-width: 12ch; margin-top: 16px; }
+
+  .founder-expertise__list { list-style: none; border-top: 1px solid rgba(126, 153, 178, 0.22); }
+  .founder-expertise__list li {
+    display: grid;
+    grid-template-columns: 64px minmax(220px, 0.72fr) minmax(280px, 1fr);
+    gap: clamp(22px, 5vw, 72px);
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(126, 153, 178, 0.22);
+  }
+  .founder-expertise__list .text-mono { color: rgba(103, 217, 255, 0.6); font-size: 0.6rem; }
+  .founder-expertise__list h3 { font-size: clamp(1.3rem, 2vw, 2rem); font-weight: 530; }
+  .founder-expertise__list p { color: rgba(201, 211, 223, 0.7); line-height: 1.6; }
+
+  .founder-experience__layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.68fr) minmax(0, 1fr);
+    gap: clamp(48px, 10vw, 150px);
+  }
+  .founder-experience h2 { max-width: 10ch; margin: 16px 0 24px; }
+  .founder-experience header p { max-width: 45ch; }
+  .founder-experience dl { border-top: 1px solid rgba(126, 153, 178, 0.22); }
+  .founder-experience dl div { padding: 24px 0; border-bottom: 1px solid rgba(126, 153, 178, 0.22); }
+  .founder-experience dt { margin-bottom: 8px; color: var(--cloud-white); font-weight: 550; }
+  .founder-experience dd { color: rgba(201, 211, 223, 0.7); line-height: 1.58; }
+
+  .founder-insights__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 52px); }
+  .founder-insight a { display: block; color: inherit; }
+  .founder-insight figure { aspect-ratio: 16 / 10; overflow: hidden; border-radius: 6px; background: #07101a; }
+  .founder-insight img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms var(--ease-out), filter 350ms var(--ease-out); }
+  .founder-insight__meta { display: flex; justify-content: space-between; gap: 14px; margin-top: 20px; color: rgba(169, 194, 211, 0.6); font-size: 0.58rem; }
+  .founder-insight h3 { margin-top: 14px; font-size: clamp(1.35rem, 2vw, 2rem); font-weight: 530; letter-spacing: -0.028em; line-height: 1.08; }
+  .founder-insight p { margin-top: 12px; color: rgba(201, 211, 223, 0.7); font-size: 0.9rem; line-height: 1.58; }
+  .founder-insight__link { display: inline-flex; gap: 8px; margin-top: 20px; color: rgba(103, 217, 255, 0.78); font-size: 0.82rem; }
+
+  .founder-learn__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(300px, 0.6fr);
+    gap: clamp(48px, 10vw, 154px);
+    align-items: end;
+    padding-top: clamp(38px, 5vw, 62px);
+    border-top: 1px solid rgba(126, 153, 178, 0.22);
+  }
+  .founder-learn h2 { max-width: 12ch; margin-top: 16px; }
+  .founder-learn p { max-width: 46ch; margin-bottom: 24px; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .founder-insight a:hover img { transform: scale(1.035); filter: brightness(1.06); }
+  }
+
+  @media (max-width: 900px) {
+    .founder-intro__layout,
+    .founder-philosophy__layout,
+    .founder-section-header,
+    .founder-experience__layout,
+    .founder-learn__layout { grid-template-columns: minmax(0, 1fr); gap: 34px; }
+    .founder-portrait-placeholder { width: min(100%, 520px); }
+    .founder-story__layout { grid-template-columns: 46px minmax(0, 1fr); }
+    .founder-story__layout p { grid-column: 2; }
+    .founder-insights__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 640px) {
+    .founder-expertise__list li { grid-template-columns: 40px minmax(0, 1fr); gap: 14px; }
+    .founder-expertise__list li p { grid-column: 2; }
+    .founder-insights__grid { grid-template-columns: minmax(0, 1fr); gap: 58px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .founder-insight img { transition: none; }
+  }
+</style>

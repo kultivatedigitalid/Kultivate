@@ -1,5 +1,6 @@
 ---
 import HeroShell from '../shared/HeroShell.astro';
+import { founderIdentity, founderProfilePath } from '../../data/founder';
 
 interface Props {
   title: string;
@@ -51,7 +52,15 @@ const formatDate = (value: string) =>
 >
   <Fragment slot="meta">
     <div class="article-byline text-mono">
-      <span>{locale === 'id' ? 'Oleh' : 'By'} <strong>{author}</strong></span>
+      <span>
+        {locale === 'id' ? 'Oleh' : 'By'}
+        {' '}
+        {author === founderIdentity.name ? (
+          <a href={founderProfilePath(locale)} data-article-author-profile><strong>{author}</strong></a>
+        ) : (
+          <strong>{author}</strong>
+        )}
+      </span>
       <time datetime={publishedAt}>{formatDate(publishedAt)}</time>
       {updatedAt && (
         <time datetime={updatedAt}>
@@ -69,6 +78,21 @@ const formatDate = (value: string) =>
   </Fragment>
 </HeroShell>
 
+<script>
+  import { trackFunnelEvent } from '../../scripts/funnel-analytics';
+
+  const setupArticleAuthorTracking = () => {
+    document.querySelectorAll<HTMLElement>('[data-article-author-profile]').forEach((link) => {
+      if (link.dataset.authorTrackingReady === 'true') return;
+      link.dataset.authorTrackingReady = 'true';
+      link.addEventListener('click', () => trackFunnelEvent('article_author_profile_click'));
+    });
+  };
+
+  setupArticleAuthorTracking();
+  document.addEventListener('astro:page-load', setupArticleAuthorTracking);
+</script>
+
 <style>
   .article-byline {
     display: flex;
@@ -81,6 +105,13 @@ const formatDate = (value: string) =>
   .article-byline strong {
     color: var(--hero-strong-color, rgba(238, 245, 250, 0.9));
     font-weight: 560;
+  }
+
+  .article-byline a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 42%, transparent);
+    text-underline-offset: 4px;
   }
 
   .back-link {

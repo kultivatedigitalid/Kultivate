@@ -1,0 +1,179 @@
+---
+import type { LearningLocale, LearningSeries } from '../../data/learning';
+
+interface Props {
+  locale: LearningLocale;
+  series: LearningSeries;
+}
+
+const { locale, series } = Astro.props;
+const copy = locale === 'id'
+  ? {
+      count: `${series.lessonIds.length} materi`,
+      cta: 'Mulai series',
+      placeholder: 'Placeholder foto mengajar',
+      alt: `Placeholder untuk foto mengajar pada series ${series.title[locale]}`,
+    }
+  : {
+      count: `${series.lessonIds.length} lessons`,
+      cta: 'Start series',
+      placeholder: 'Teaching photo placeholder',
+      alt: `Placeholder for a future teaching photo for ${series.title[locale]}`,
+    };
+---
+
+<article class="learn-series-card" data-reveal>
+  <a href={'/' + locale + '/learn/' + series.slug + '/'} aria-label={copy.cta + ': ' + series.title[locale]}>
+    <figure>
+      {series.teachingThumbnail ? (
+        <img
+          src={series.teachingThumbnail}
+          alt={copy.alt}
+          width="1280"
+          height="800"
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div class="learn-series-card__placeholder" role="img" aria-label={copy.alt}>
+          <span class="series-signal" aria-hidden="true"></span>
+          <span class="text-mono">{copy.placeholder}</span>
+        </div>
+      )}
+    </figure>
+
+    <div class="learn-series-card__copy">
+      <div class="learn-series-card__meta text-mono">
+        <span>{String(series.order).padStart(2, '0')}</span>
+        <span>{copy.count}</span>
+      </div>
+      <h3>{series.title[locale]}</h3>
+      <p>{series.description[locale]}</p>
+      <span class="learn-series-card__link">
+        <span>{copy.cta}</span><span aria-hidden="true">&#8594;</span>
+      </span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .learn-series-card { min-width: 0; }
+
+  .learn-series-card > a {
+    display: block;
+    color: inherit;
+  }
+
+  .learn-series-card figure {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #07101a;
+  }
+
+  .learn-series-card figure img,
+  .learn-series-card__placeholder {
+    width: 100%;
+    height: 100%;
+  }
+
+  .learn-series-card figure img {
+    object-fit: cover;
+    filter: brightness(0.78) saturate(0.84);
+    transform: scale(1.025);
+    transition: transform 620ms var(--ease-out), filter 400ms var(--ease-out);
+  }
+
+  .learn-series-card__placeholder {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 16px;
+    padding: 24px;
+    color: rgba(226, 234, 243, 0.6);
+    text-align: center;
+    background:
+      radial-gradient(circle at 72% 30%, rgba(103, 217, 255, 0.15), transparent 28%),
+      linear-gradient(145deg, rgba(14, 37, 56, 0.96), rgba(5, 12, 20, 0.99));
+  }
+
+  .series-signal {
+    width: 54px;
+    height: 1px;
+    background: rgba(103, 217, 255, 0.72);
+    box-shadow: 0 0 16px rgba(103, 217, 255, 0.22);
+  }
+
+  .learn-series-card__placeholder .text-mono {
+    max-width: 24ch;
+    font-size: 0.6rem;
+    line-height: 1.5;
+  }
+
+  .learn-series-card__copy { padding-top: 20px; }
+
+  .learn-series-card__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    color: rgba(201, 211, 223, 0.52);
+    font-size: 0.62rem;
+  }
+
+  .learn-series-card h3 {
+    max-width: 22ch;
+    margin: 16px 0 12px;
+    font-size: clamp(1.55rem, 2.3vw, 2.35rem);
+    font-weight: 540;
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+  }
+
+  .learn-series-card p {
+    max-width: 50ch;
+    color: rgba(226, 234, 243, 0.72);
+    font-size: 0.92rem;
+    line-height: 1.62;
+  }
+
+  .learn-series-card__link {
+    width: fit-content;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 18px;
+    border: 1px solid rgba(201, 211, 223, 0.34);
+    border-radius: 999px;
+    padding: 8px 15px;
+    color: var(--mist);
+    font-family: var(--font-mono);
+    font-size: 0.61rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: border-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 180ms var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .learn-series-card > a:hover figure img,
+    .learn-series-card > a:focus-visible figure img {
+      transform: scale(1.045);
+      filter: brightness(0.92) saturate(0.98);
+    }
+
+    .learn-series-card > a:hover .learn-series-card__link,
+    .learn-series-card > a:focus-visible .learn-series-card__link {
+      border-color: rgba(207, 247, 255, 0.7);
+      color: var(--cloud-white);
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .learn-series-card figure img,
+    .learn-series-card__link {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>

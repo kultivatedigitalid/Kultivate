@@ -64,6 +64,8 @@ const pageStructuredData = structuredData
   ? Array.isArray(structuredData) ? structuredData : [structuredData]
   : [];
 const navItems = navigationData[locale] || [];
+const isCurrentNavRoute = (route: string) =>
+  currentPath === route || (route !== `/${locale}/` && currentPath.startsWith(route));
 const skipLabel = locale === 'id' ? 'Lewati ke konten' : 'Skip to content';
 const menuLabel = locale === 'id' ? 'Menu' : 'Menu';
 const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
@@ -117,7 +119,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
         <ul class="nav-list">
           {navItems.map((item) => (
             <li>
-              <a href={item.route} aria-current={currentPath === item.route ? 'page' : undefined}>
+              <a href={item.route} aria-current={isCurrentNavRoute(item.route) ? 'page' : undefined}>
                 {item.label}
               </a>
             </li>
@@ -166,7 +168,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
         <ul class="mobile-nav-list">
           {navItems.map((item) => (
             <li>
-              <a href={item.route} aria-current={currentPath === item.route ? 'page' : undefined}>
+              <a href={item.route} aria-current={isCurrentNavRoute(item.route) ? 'page' : undefined}>
                 {item.label}
               </a>
             </li>
@@ -209,6 +211,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
           <span class="footer-col-title">{t('footer.about')}</span>
           <ul>
             <li><a href={'/' + locale + '/work/'}>{t('nav.work')}</a></li>
+            <li><a href={'/' + locale + '/learn/'}>Learn</a></li>
             <li><a href={'/' + locale + '/about/'}>{t('nav.about')}</a></li>
             <li><a href={'/' + locale + '/insights/'}>{t('nav.insights')}</a></li>
           </ul>

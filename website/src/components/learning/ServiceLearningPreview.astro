@@ -1,6 +1,5 @@
 ---
-import VideoLessonCard from './VideoLessonCard.astro';
-import { getLearningLessons, type LearningCategory, type LearningLocale } from '../../data/learning';
+import { getLearningSeries, type LearningCategory, type LearningLocale } from '../../data/learning';
 
 interface Props {
   locale: LearningLocale;
@@ -8,172 +7,79 @@ interface Props {
 }
 
 const { locale, serviceId } = Astro.props;
-const lessons = getLearningLessons(serviceId);
-const featuredLesson = lessons.find((lesson) => lesson.featured) ?? lessons[0];
-const remainingLessons = lessons.filter((lesson) => lesson.id !== featuredLesson.id);
+const series = getLearningSeries().find((item) => item.category === serviceId);
 const serviceLabel = serviceId === 'seo' ? 'SEO' : 'Web Services';
 const copy = locale === 'id'
   ? {
-      kicker: 'FREE LEARNING',
-      title: `Materi gratis untuk ${serviceLabel}`,
-      body: 'Mulai dari pengantar, lalu pilih materi yang paling dekat dengan masalah yang baru Anda identifikasi. Tidak ada formulir atau jawaban yang perlu dikirim.',
-      introduction: 'Pengantar materi gratis',
-      continue: 'Lanjutkan pembelajaran',
-      all: 'Lihat semua materi gratis',
-      roadmap: 'Temukan prioritas melalui roadmap'
+      kicker: 'LEARN',
+      title: `Pahami konteks ${serviceLabel} sebelum menentukan arah`,
+      body: 'Mulai dari series singkat yang paling dekat dengan masalah di atas. Materinya membantu Anda memahami pertanyaan penting sebelum memilih scope pekerjaan.',
+      cta: series ? `Mulai ${series.title.id}` : 'Jelajahi Learn',
     }
   : {
-      kicker: 'FREE LEARNING',
-      title: `Free learning for ${serviceLabel}`,
-      body: 'Start with the introduction, then choose the material closest to the problem you just identified. There is no form to complete and no answers to send.',
-      introduction: 'Introduction to the free material',
-      continue: 'Continue learning',
-      all: 'View all free learning',
-      roadmap: 'Find your priority with the roadmap'
+      kicker: 'LEARN',
+      title: `Understand the ${serviceLabel} context before choosing a direction`,
+      body: 'Start with the short series closest to the problems above. It helps you understand the important questions before choosing a scope of work.',
+      cta: series ? `Start ${series.title.en}` : 'Explore Learn',
     };
+const destination = series ? `/${locale}/learn/${series.slug}/` : `/${locale}/learn/`;
 ---
 
-<section class="service-learning flow-section" aria-labelledby="service-learning-title">
+<aside class="service-learning-link flow-section" aria-labelledby={`service-learning-${serviceId}`}>
   <div class="container">
-    <header class="service-learning__header">
-      <span class="section-kicker">{copy.kicker}</span>
-      <h2 id="service-learning-title">{copy.title}</h2>
-      <p>{copy.body}</p>
-    </header>
-
-    <div class="service-learning__featured" data-reveal>
-      <VideoLessonCard
-        lesson={featuredLesson}
-        locale={locale}
-        context="service"
-        index={0}
-        display="featured"
-        eyebrow={copy.introduction}
-      />
-    </div>
-
-    <div class="service-learning__library">
-      <div class="service-learning__library-header">
-        <span class="text-mono">{copy.continue}</span>
-        <span class="text-mono">{remainingLessons.length}</span>
+    <div class="service-learning-link__layout" data-reveal>
+      <div>
+        <span class="section-kicker">{copy.kicker}</span>
+        <h2 id={`service-learning-${serviceId}`}>{copy.title}</h2>
       </div>
-      <div class="service-learning__lessons">
-        {remainingLessons.map((lesson, index) => (
-          <VideoLessonCard
-            lesson={lesson}
-            locale={locale}
-            context="service"
-            index={index + 1}
-            display="standard"
-          />
-        ))}
+      <div>
+        <p>{copy.body}</p>
+        <a class="link-hover-arrow" href={destination}>
+          <span>{copy.cta}</span><span aria-hidden="true">&#8594;</span>
+        </a>
       </div>
-    </div>
-
-    <div class="service-learning__links">
-      <a class="link-hover-arrow" href={'/' + locale + '/services/#free-learning'}>
-        <span>{copy.all}</span><span aria-hidden="true">→</span>
-      </a>
-      <a class="link-hover-arrow" href={'/' + locale + '/services/#website-growth-roadmap'}>
-        <span>{copy.roadmap}</span><span aria-hidden="true">→</span>
-      </a>
     </div>
   </div>
-</section>
+</aside>
 
 <style>
-  .service-learning {
-    position: relative;
-    padding: clamp(92px, 11vw, 154px) 0;
-    background: transparent;
+  .service-learning-link {
+    padding: clamp(62px, 7vw, 96px) 0;
   }
 
-  .service-learning::before {
-    content: '';
-    position: absolute;
-    inset: 8% 0 9%;
-    z-index: -1;
-    pointer-events: none;
-    background: radial-gradient(ellipse 58% 24% at 82% 42%, rgba(103, 217, 255, 0.065), transparent 76%);
-  }
-
-  .service-learning__header {
+  .service-learning-link__layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.7fr);
-    gap: clamp(28px, 6vw, 92px);
+    grid-template-columns: minmax(0, 0.85fr) minmax(280px, 0.58fr);
+    gap: clamp(38px, 9vw, 132px);
     align-items: end;
-    margin-bottom: clamp(58px, 8vw, 94px);
+    padding: clamp(32px, 5vw, 58px) 0;
+    border-block: 1px solid rgba(126, 153, 178, 0.22);
   }
 
-  .service-learning__header .section-kicker {
-    grid-column: 1 / -1;
-    margin-bottom: -12px;
+  .service-learning-link .section-kicker {
+    display: block;
+    margin-bottom: 16px;
   }
 
-  .service-learning__header h2 {
-    max-width: 15ch;
-    margin: 0;
-    font-size: clamp(2.5rem, 1.8rem + 2.5vw, 4.9rem);
+  .service-learning-link h2 {
+    max-width: 17ch;
+    font-size: clamp(2rem, 3.5vw, 3.85rem);
     font-weight: 520;
-    letter-spacing: -0.045em;
-    line-height: 0.98;
-    text-wrap: balance;
+    letter-spacing: -0.04em;
+    line-height: 1;
   }
 
-  .service-learning__header > p {
-    max-width: 48ch;
+  .service-learning-link p {
+    max-width: 50ch;
+    margin-bottom: 24px;
     color: rgba(201, 211, 223, 0.76);
     line-height: 1.65;
   }
 
-  .service-learning__featured {
-    width: min(100%, 1180px);
-  }
-
-  .service-learning__library {
-    margin-top: clamp(58px, 7vw, 88px);
-  }
-
-  .service-learning__library-header {
-    display: flex;
-    justify-content: space-between;
-    gap: 24px;
-    border-block: 1px solid rgba(89, 106, 130, 0.28);
-    padding-block: 16px;
-    color: rgba(201, 211, 223, 0.52);
-  }
-
-  .service-learning__lessons {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(24px, 3vw, 42px);
-    padding-top: clamp(30px, 4vw, 46px);
-  }
-
-  .service-learning__links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 18px 34px;
-    margin-top: clamp(48px, 6vw, 72px);
-  }
-
-  @media (max-width: 980px) {
-    .service-learning__lessons {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .service-learning__lessons > :global(:last-child) {
-      grid-column: 1 / -1;
-      width: min(100%, calc(50% - 12px));
-    }
-  }
-
   @media (max-width: 760px) {
-    .service-learning__header { grid-template-columns: minmax(0, 1fr); gap: 22px; }
-    .service-learning__header .section-kicker { grid-column: auto; margin-bottom: 5px; }
-    .service-learning__lessons { grid-template-columns: minmax(0, 1fr); }
-    .service-learning__lessons > :global(:last-child) { grid-column: auto; width: auto; }
-    .service-learning__links { justify-content: flex-start; }
+    .service-learning-link__layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 26px;
+    }
   }
 </style>

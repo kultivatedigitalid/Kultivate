@@ -1,4 +1,6 @@
 ---
+import { founderIdentity } from '../../data/founder';
+
 interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
 
@@ -6,13 +8,13 @@ const temporaryCeoImage = '/assets/about/collage/collage-07.webp';
 const copy = locale === 'id'
   ? {
       heading: 'Catatan dari CEO',
-      note: 'Bagi saya, website yang baik bukan sekadar terlihat profesional. Ia harus membantu orang memahami bisnis Anda lebih cepat, menemukan alasan untuk percaya, dan tahu langkah berikutnya. Kultivate dibangun untuk bekerja dari konteks itu—bukan memaksakan paket yang sama ke setiap perusahaan. Kami akan terus menjaga cara kerja yang dekat, jelas, dan bisa dijelaskan, supaya rekomendasi yang kami berikan selalu punya alasan bisnis di baliknya.',
+      note: 'Website yang baik harus membantu orang memahami bisnis Anda, mempercayainya, dan tahu langkah berikutnya. Kultivate selalu mulai dari konteks Anda, agar setiap rekomendasi memiliki alasan bisnis yang jelas.',
       imageAlt: 'Placeholder sementara untuk foto profil CEO Kultivate',
       interaction: 'Fokuskan gambar untuk menampilkan nama dan jabatan CEO'
     }
   : {
       heading: 'A note from our CEO',
-      note: 'A good website should do more than look professional. It should help people understand your business faster, find a reason to trust it, and know what to do next. Kultivate was built to work from that context rather than force the same package onto every company. We want to keep the work close, clear, and explainable so every recommendation we make has a business reason behind it.',
+      note: 'A good website should help people understand your business, trust it, and know what to do next. Kultivate starts with your context first, so every recommendation has a clear business reason behind it.',
       imageAlt: 'Temporary placeholder for the Kultivate CEO profile image',
       interaction: 'Focus the image to reveal the CEO name and role'
     };
@@ -37,8 +39,8 @@ const copy = locale === 'id'
         />
         <span class="ceo-portrait__veil" aria-hidden="true"></span>
         <figcaption id="ceo-identity">
-          <strong>Hans Galdino</strong>
-          <span>Founder &amp; CEO</span>
+          <strong>{founderIdentity.name}</strong>
+          <span>{founderIdentity.role}</span>
         </figcaption>
         <span id="ceo-portrait-hint" class="sr-only">{copy.interaction}</span>
       </figure>

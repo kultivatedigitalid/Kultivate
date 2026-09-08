@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LearnIndex from '../../../components/learn/LearnIndex.astro';
+import FinalCTA from '../../../components/home/FinalCTA.astro';
+---
+
+<BaseLayout
+  locale="id"
+  title="Learn"
+  description="Empat series praktis tentang search, website, dan keputusan digital yang lebih jelas."
+  alternatePath="/en/learn/"
+>
+  <LearnIndex locale="id" />
+  <FinalCTA locale="id" analyticsEvent="learn_to_priorities_click" analyticsContext="learn-index" />
+</BaseLayout>

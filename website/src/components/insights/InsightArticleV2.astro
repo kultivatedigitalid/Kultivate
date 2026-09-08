@@ -1,5 +1,6 @@
 ---
 import ArticleHeaderV2 from './ArticleHeaderV2.astro';
+import FounderAuthorCard from './FounderAuthorCard.astro';
 import { editorialItems } from '../../data/editorial';
 
 interface Props {
@@ -66,6 +67,8 @@ const copy = locale === 'id'
           )}
         </div>
       </div>
+
+      <FounderAuthorCard locale={locale} />
 
       <section
         class="related-posts"

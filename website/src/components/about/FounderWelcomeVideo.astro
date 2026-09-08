@@ -1,0 +1,227 @@
+---
+import { founderIdentity, founderProfilePath } from '../../data/founder';
+
+interface Props {
+  locale: 'id' | 'en';
+  videoSrc?: string;
+  poster?: string;
+  captionsSrc?: string;
+}
+
+const {
+  locale,
+  videoSrc = '',
+  poster = '',
+  captionsSrc = '',
+} = Astro.props;
+
+const copy = locale === 'id'
+  ? {
+      title: 'Sambutan dari founder',
+      body: 'Video sambutan sedang diproduksi. Area ini telah disiapkan untuk monolog founder dengan ritme yang natural dan minim distraksi.',
+      placeholder: 'Placeholder produksi video sambutan founder',
+      placeholderLabel: 'Video founder segera hadir',
+      cta: 'Kenali founder kami',
+      captions: 'Subtitle Bahasa Indonesia',
+    }
+  : {
+      title: 'A welcome from our founder',
+      body: 'The welcome video is in production. This space is prepared for a natural founder monologue with a calm, minimally edited rhythm.',
+      placeholder: 'Production placeholder for the founder welcome video',
+      placeholderLabel: 'Founder video coming soon',
+      cta: 'Get to know our founder',
+      captions: 'English captions',
+    };
+---
+
+<section class="founder-welcome flow-section" aria-labelledby="founder-welcome-title" data-scroll-key="about-founder-welcome">
+  <div class="container founder-welcome__layout">
+    <header class="founder-welcome__intro" data-reveal>
+      <h2 id="founder-welcome-title">{copy.title}</h2>
+      <p>{copy.body}</p>
+    </header>
+
+    <div class="founder-welcome__media" data-reveal="image">
+      {videoSrc ? (
+        <video
+          controls
+          preload="metadata"
+          playsinline
+          poster={poster || undefined}
+          aria-label={copy.title}
+        >
+          <source src={videoSrc} />
+          {captionsSrc && (
+            <track
+              kind="captions"
+              src={captionsSrc}
+              srclang={locale}
+              label={copy.captions}
+              default
+            />
+          )}
+        </video>
+      ) : (
+        <div class="founder-welcome__placeholder" role="img" aria-label={copy.placeholder}>
+          <span class="founder-welcome__signal" aria-hidden="true"></span>
+          <span class="text-mono">{copy.placeholderLabel}</span>
+        </div>
+      )}
+    </div>
+
+    <div class="founder-welcome__footer" data-reveal>
+      <div>
+        <strong>{founderIdentity.name}</strong>
+        <span class="text-mono">{founderIdentity.role}</span>
+      </div>
+      <a class="link-hover-arrow" href={founderProfilePath(locale)} data-about-founder-profile>
+        <span>{copy.cta}</span><span aria-hidden="true">&#8594;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { trackFunnelEvent } from '../../scripts/funnel-analytics';
+
+  const setupFounderWelcomeTracking = () => {
+    document.querySelectorAll<HTMLElement>('[data-about-founder-profile]').forEach((link) => {
+      if (link.dataset.trackingReady === 'true') return;
+      link.dataset.trackingReady = 'true';
+      link.addEventListener('click', () => trackFunnelEvent('about_founder_profile_click'));
+    });
+  };
+
+  setupFounderWelcomeTracking();
+  document.addEventListener('astro:page-load', setupFounderWelcomeTracking);
+</script>
+
+<style>
+  .founder-welcome {
+    padding: clamp(86px, 10vw, 142px) 0;
+    background: transparent;
+  }
+
+  .founder-welcome__layout {
+    display: grid;
+    gap: clamp(34px, 5vw, 60px);
+  }
+
+  .founder-welcome__intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
+    gap: clamp(32px, 7vw, 104px);
+    align-items: end;
+  }
+
+  .founder-welcome__intro h2 {
+    max-width: 14ch;
+    font-size: clamp(2.4rem, 4vw, 4.7rem);
+    font-weight: 530;
+    letter-spacing: -0.038em;
+    line-height: 0.99;
+  }
+
+  .founder-welcome__intro p {
+    max-width: 50ch;
+    color: rgba(226, 234, 243, 0.76);
+    line-height: 1.7;
+  }
+
+  .founder-welcome__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #07101a;
+  }
+
+  .founder-welcome__media video,
+  .founder-welcome__placeholder {
+    width: 100%;
+    height: 100%;
+  }
+
+  .founder-welcome__media video {
+    display: block;
+    object-fit: cover;
+    background: #05080e;
+  }
+
+  .founder-welcome__placeholder {
+    position: relative;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 22px;
+    padding: 28px;
+    color: rgba(226, 234, 243, 0.7);
+    text-align: center;
+    background:
+      radial-gradient(ellipse 36% 54% at 50% 48%, rgba(103, 217, 255, 0.12), transparent 72%),
+      linear-gradient(145deg, rgba(15, 38, 57, 0.92), rgba(5, 12, 20, 0.98));
+  }
+
+  .founder-welcome__signal {
+    width: clamp(70px, 8vw, 106px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(207, 247, 255, 0.32);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(103, 217, 255, 0.14), rgba(7, 16, 26, 0.1) 68%);
+  }
+
+  .founder-welcome__placeholder .text-mono {
+    color: rgba(226, 234, 243, 0.62);
+    font-size: 0.66rem;
+  }
+
+  .founder-welcome__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    border-top: 1px solid rgba(89, 106, 130, 0.34);
+    padding-top: 24px;
+  }
+
+  .founder-welcome__footer > div {
+    display: grid;
+    gap: 5px;
+  }
+
+  .founder-welcome__footer strong {
+    font-size: 1.1rem;
+    font-weight: 560;
+  }
+
+  .founder-welcome__footer .text-mono {
+    color: rgba(201, 211, 223, 0.56);
+    font-size: 0.62rem;
+  }
+
+  @media (max-width: 760px) {
+    .founder-welcome__intro {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .founder-welcome__media {
+      aspect-ratio: 4 / 3;
+    }
+
+    .founder-welcome__footer {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .founder-welcome *,
+    .founder-welcome *::before,
+    .founder-welcome *::after {
+      scroll-behavior: auto;
+    }
+  }
+</style>
