@@ -7,18 +7,17 @@ interface Props {
 }
 
 const { locale, series } = Astro.props;
+const categoryLabel = series.category === 'seo' ? 'SEARCH' : 'WEB';
 const copy = locale === 'id'
   ? {
       count: `${series.lessonIds.length} materi`,
-      cta: 'Mulai series',
-      placeholder: 'Placeholder foto mengajar',
-      alt: `Placeholder untuk foto mengajar pada series ${series.title[locale]}`,
+      cta: 'Buka course',
+      alt: `Cover course ${series.title[locale]}`,
     }
   : {
       count: `${series.lessonIds.length} lessons`,
-      cta: 'Start series',
-      placeholder: 'Teaching photo placeholder',
-      alt: `Placeholder for a future teaching photo for ${series.title[locale]}`,
+      cta: 'Open course',
+      alt: `Course cover for ${series.title[locale]}`,
     };
 ---
 
@@ -36,8 +35,8 @@ const copy = locale === 'id'
         />
       ) : (
         <div class="learn-series-card__placeholder" role="img" aria-label={copy.alt}>
-          <span class="series-signal" aria-hidden="true"></span>
-          <span class="text-mono">{copy.placeholder}</span>
+          <span class="series-signal" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="series-word" aria-hidden="true">{categoryLabel}</span>
         </div>
       )}
     </figure>
@@ -65,7 +64,7 @@ const copy = locale === 'id'
   }
 
   .learn-series-card figure {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: 8px;
     background: #07101a;
@@ -85,29 +84,41 @@ const copy = locale === 'id'
   }
 
   .learn-series-card__placeholder {
+    position: relative;
     display: grid;
-    place-content: center;
-    justify-items: center;
-    gap: 16px;
+    place-items: center;
     padding: 24px;
-    color: rgba(226, 234, 243, 0.6);
-    text-align: center;
+    overflow: hidden;
     background:
-      radial-gradient(circle at 72% 30%, rgba(103, 217, 255, 0.15), transparent 28%),
+      radial-gradient(circle at 72% 30%, rgba(103, 217, 255, 0.18), transparent 28%),
       linear-gradient(145deg, rgba(14, 37, 56, 0.96), rgba(5, 12, 20, 0.99));
   }
 
   .series-signal {
-    width: 54px;
-    height: 1px;
-    background: rgba(103, 217, 255, 0.72);
-    box-shadow: 0 0 16px rgba(103, 217, 255, 0.22);
+    position: absolute;
+    inset: 18% 9%;
+    display: grid;
+    align-content: space-around;
   }
 
-  .learn-series-card__placeholder .text-mono {
-    max-width: 24ch;
-    font-size: 0.6rem;
-    line-height: 1.5;
+  .series-signal i {
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(103, 217, 255, 0.72), transparent);
+  }
+
+  .series-signal i:nth-child(2) { margin-left: 13%; opacity: 0.7; }
+  .series-signal i:nth-child(3) { margin-right: 21%; opacity: 0.45; }
+
+  .series-word {
+    position: absolute;
+    right: clamp(18px, 3vw, 36px);
+    bottom: clamp(12px, 2vw, 24px);
+    color: rgba(226, 244, 252, 0.13);
+    font-size: clamp(2.5rem, 6vw, 6.2rem);
+    font-weight: 650;
+    letter-spacing: -0.07em;
+    line-height: 0.8;
   }
 
   .learn-series-card__copy { padding-top: 20px; }

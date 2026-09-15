@@ -7,28 +7,23 @@ const { locale } = Astro.props;
 const temporaryCeoImage = '/assets/about/collage/collage-07.webp';
 const copy = locale === 'id'
   ? {
-      heading: 'Catatan dari CEO',
       note: 'Website yang baik harus membantu orang memahami bisnis Anda, mempercayainya, dan tahu langkah berikutnya. Kultivate selalu mulai dari konteks Anda, agar setiap rekomendasi memiliki alasan bisnis yang jelas.',
-      imageAlt: 'Placeholder sementara untuk foto profil CEO Kultivate',
-      interaction: 'Fokuskan gambar untuk menampilkan nama dan jabatan CEO'
+      imageAlt: 'Portrait anonim untuk catatan CEO Kultivate',
     }
   : {
-      heading: 'A note from our CEO',
       note: 'A good website should help people understand your business, trust it, and know what to do next. Kultivate starts with your context first, so every recommendation has a clear business reason behind it.',
-      imageAlt: 'Temporary placeholder for the Kultivate CEO profile image',
-      interaction: 'Focus the image to reveal the CEO name and role'
+      imageAlt: 'Anonymous portrait for the Kultivate CEO note',
     };
 ---
 
-<section id="ceo-note" class="ceo-note-section flow-section" aria-labelledby="ceo-note-title">
+<section
+  id="ceo-note"
+  class="ceo-note-section flow-section"
+  aria-label={locale === 'id' ? 'Catatan CEO Kultivate' : 'Kultivate CEO note'}
+>
   <div class="container">
     <div class="ceo-note__layout">
-      <figure
-        class="ceo-portrait"
-        tabindex="0"
-        aria-describedby="ceo-portrait-hint ceo-identity"
-        data-reveal="image"
-      >
+      <figure class="ceo-portrait" data-reveal="image">
         <img
           src={temporaryCeoImage}
           alt={copy.imageAlt}
@@ -37,18 +32,12 @@ const copy = locale === 'id'
           loading="lazy"
           decoding="async"
         />
-        <span class="ceo-portrait__veil" aria-hidden="true"></span>
-        <figcaption id="ceo-identity">
-          <strong>{founderIdentity.name}</strong>
-          <span>{founderIdentity.role}</span>
-        </figcaption>
-        <span id="ceo-portrait-hint" class="sr-only">{copy.interaction}</span>
       </figure>
 
       <div class="ceo-note__copy" data-reveal>
-        <h2 id="ceo-note-title">{copy.heading}</h2>
         <blockquote>
-          <p>{copy.note}</p>
+          <p>“{copy.note}”</p>
+          <footer>— {founderIdentity.name}</footer>
         </blockquote>
       </div>
     </div>
@@ -57,95 +46,46 @@ const copy = locale === 'id'
 
 <style>
   .ceo-note-section {
-    padding-block: clamp(64px, 7vw, 104px);
+    padding-block: clamp(64px, 7vw, 96px);
     background: transparent;
   }
 
   .ceo-note__layout {
     display: grid;
-    grid-template-columns: minmax(320px, 0.88fr) minmax(0, 1.12fr);
-    gap: clamp(48px, 8vw, 120px);
+    grid-template-columns: minmax(250px, 360px) minmax(0, 1fr);
+    gap: clamp(46px, 8vw, 112px);
     align-items: center;
+    width: min(100%, 1080px);
+    margin-inline: auto;
   }
 
   .ceo-portrait {
     position: relative;
-    min-width: 0;
+    width: min(100%, 360px);
     aspect-ratio: 4 / 5;
     overflow: hidden;
     border-radius: 8px;
-    outline: none;
     background: #09131e;
   }
 
-  .ceo-portrait img,
-  .ceo-portrait__veil {
+  .ceo-portrait::after {
+    content: '';
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 52%, rgba(4, 10, 17, 0.42) 100%);
   }
 
   .ceo-portrait img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: 58% center;
-    filter: brightness(0.72) saturate(0.68);
-    transform: scale(1.025);
-    transition:
-      transform 520ms var(--ease-out),
-      filter 420ms var(--ease-out);
-  }
-
-  .ceo-portrait__veil {
-    background: linear-gradient(180deg, transparent 42%, rgba(4, 10, 17, 0.24) 64%, rgba(4, 10, 17, 0.94) 100%);
-    opacity: 0.72;
-    transition: opacity 320ms var(--ease-out);
-  }
-
-  .ceo-portrait figcaption {
-    position: absolute;
-    inset: auto clamp(22px, 3vw, 36px) clamp(22px, 3vw, 34px);
-    z-index: 1;
-    display: grid;
-    gap: 4px;
-    color: var(--cloud-white);
-    opacity: 0;
-    transform: translate3d(0, 10px, 0);
-    transition:
-      opacity 280ms var(--ease-out),
-      transform 380ms var(--ease-out);
-  }
-
-  .ceo-portrait figcaption strong {
-    font-size: clamp(1.3rem, 1.05rem + 0.7vw, 1.85rem);
-    font-weight: 580;
-    letter-spacing: -0.025em;
-  }
-
-  .ceo-portrait figcaption span {
-    color: rgba(229, 238, 247, 0.76);
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .ceo-portrait:focus-visible {
-    outline: 2px solid var(--signal-ice);
-    outline-offset: 5px;
+    filter: brightness(0.78) saturate(0.72);
   }
 
   .ceo-note__copy {
-    max-width: 680px;
-  }
-
-  .ceo-note__copy h2 {
-    max-width: 15ch;
-    margin-bottom: clamp(24px, 3vw, 36px);
-    font-size: clamp(2.35rem, 1.7rem + 2.3vw, 4.4rem);
-    font-weight: 520;
-    letter-spacing: -0.035em;
-    line-height: 0.98;
+    max-width: 690px;
   }
 
   .ceo-note__copy blockquote {
@@ -153,51 +93,31 @@ const copy = locale === 'id'
   }
 
   .ceo-note__copy blockquote p {
-    max-width: 58ch;
-    color: rgba(224, 232, 241, 0.86);
-    font-size: clamp(1.02rem, 0.96rem + 0.2vw, 1.16rem);
-    line-height: 1.72;
+    max-width: 32ch;
+    color: var(--cloud-white);
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(1.6rem, 2.35vw, 2.65rem);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    text-wrap: balance;
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    .ceo-portrait:hover img,
-    .ceo-portrait:focus-visible img {
-      filter: brightness(0.82) saturate(0.78);
-      transform: scale(1);
-    }
-
-    .ceo-portrait:hover .ceo-portrait__veil,
-    .ceo-portrait:focus-visible .ceo-portrait__veil {
-      opacity: 1;
-    }
-
-    .ceo-portrait:hover figcaption,
-    .ceo-portrait:focus-visible figcaption {
-      opacity: 1;
-      transform: none;
-    }
+  .ceo-note__copy blockquote footer {
+    margin-top: clamp(22px, 3vw, 30px);
+    color: rgba(226, 234, 243, 0.72);
+    font-size: 0.94rem;
   }
 
-  @media (hover: none), (pointer: coarse) {
-    .ceo-portrait figcaption {
-      opacity: 1;
-      transform: none;
-    }
-
-    .ceo-portrait__veil {
-      opacity: 1;
-    }
-  }
-
-  @media (max-width: 860px) {
+  @media (max-width: 800px) {
     .ceo-note__layout {
       grid-template-columns: minmax(0, 1fr);
-      gap: 40px;
+      gap: 38px;
     }
 
     .ceo-portrait {
-      width: min(100%, 620px);
-      aspect-ratio: 16 / 10;
+      width: min(72vw, 330px);
     }
 
     .ceo-note__copy {
@@ -210,35 +130,10 @@ const copy = locale === 'id'
       padding-block: 56px;
     }
 
-    .ceo-note__layout {
-      gap: 32px;
-    }
-
     .ceo-portrait {
-      aspect-ratio: 4 / 3;
+      width: min(78vw, 300px);
     }
 
-    .ceo-portrait figcaption {
-      opacity: 1;
-      transform: none;
-    }
-
-    .ceo-note__copy h2 {
-      margin-bottom: 22px;
-      font-size: clamp(2.15rem, 10vw, 3rem);
-    }
-
-    .ceo-note__copy blockquote p {
-      font-size: 0.96rem;
-      line-height: 1.65;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .ceo-portrait img,
-    .ceo-portrait__veil,
-    .ceo-portrait figcaption {
-      transition: none;
-    }
+    .ceo-note__copy blockquote p { font-size: clamp(1.55rem, 7.6vw, 2.2rem); }
   }
 </style>

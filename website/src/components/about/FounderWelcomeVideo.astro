@@ -17,30 +17,27 @@ const {
 
 const copy = locale === 'id'
   ? {
-      title: 'Sambutan dari founder',
-      body: 'Video sambutan sedang diproduksi. Area ini telah disiapkan untuk monolog founder dengan ritme yang natural dan minim distraksi.',
-      placeholder: 'Placeholder produksi video sambutan founder',
-      placeholderLabel: 'Video founder segera hadir',
+      title: 'Melihat cara kami bekerja dari dekat',
+      body: 'Ruang ini mempertemukan penjelasan langsung, proses mengajar, dan potongan suasana kerja founder—agar Anda dapat memahami bukan hanya apa yang Kultivate kerjakan, tetapi bagaimana sebuah keputusan dibentuk.',
+      support: 'Video akan dibuat dengan ritme natural, minim distraksi, dan fokus pada proses berpikir di balik pekerjaan.',
+      placeholder: 'Visual film founder Kultivate',
+      placeholderLabel: 'Founder film',
       cta: 'Kenali founder kami',
       captions: 'Subtitle Bahasa Indonesia',
     }
   : {
-      title: 'A welcome from our founder',
-      body: 'The welcome video is in production. This space is prepared for a natural founder monologue with a calm, minimally edited rhythm.',
-      placeholder: 'Production placeholder for the founder welcome video',
-      placeholderLabel: 'Founder video coming soon',
+      title: 'A closer look at how we work',
+      body: 'This space brings together direct explanations, teaching moments, and the founder’s working environment—so you can understand not only what Kultivate does, but how a decision takes shape.',
+      support: 'The film will use a natural, minimally edited rhythm that keeps the thinking behind the work in focus.',
+      placeholder: 'Kultivate founder film visual',
+      placeholderLabel: 'Founder film',
       cta: 'Get to know our founder',
       captions: 'English captions',
     };
 ---
 
-<section class="founder-welcome flow-section" aria-labelledby="founder-welcome-title" data-scroll-key="about-founder-welcome">
+<section id="founder-welcome" class="founder-welcome flow-section" aria-labelledby="founder-welcome-title" data-scroll-key="about-founder-welcome">
   <div class="container founder-welcome__layout">
-    <header class="founder-welcome__intro" data-reveal>
-      <h2 id="founder-welcome-title">{copy.title}</h2>
-      <p>{copy.body}</p>
-    </header>
-
     <div class="founder-welcome__media" data-reveal="image">
       {videoSrc ? (
         <video
@@ -63,20 +60,28 @@ const copy = locale === 'id'
         </video>
       ) : (
         <div class="founder-welcome__placeholder" role="img" aria-label={copy.placeholder}>
-          <span class="founder-welcome__signal" aria-hidden="true"></span>
+          <span class="founder-welcome__signal" aria-hidden="true"><i></i></span>
           <span class="text-mono">{copy.placeholderLabel}</span>
         </div>
       )}
     </div>
 
-    <div class="founder-welcome__footer" data-reveal>
-      <div>
-        <strong>{founderIdentity.name}</strong>
-        <span class="text-mono">{founderIdentity.role}</span>
-      </div>
-      <a class="link-hover-arrow" href={founderProfilePath(locale)} data-about-founder-profile>
-        <span>{copy.cta}</span><span aria-hidden="true">&#8594;</span>
-      </a>
+    <div class="founder-welcome__content" data-reveal>
+      <header class="founder-welcome__intro">
+        <h2 id="founder-welcome-title">{copy.title}</h2>
+        <p>{copy.body}</p>
+        <p class="founder-welcome__support">{copy.support}</p>
+      </header>
+
+      <footer class="founder-welcome__footer">
+        <div>
+          <strong>{founderIdentity.name}</strong>
+          <span class="text-mono">{founderIdentity.role}</span>
+        </div>
+        <a class="link-hover-arrow" href={founderProfilePath(locale)} data-about-founder-profile>
+          <span>{copy.cta}</span><span aria-hidden="true">&#8594;</span>
+        </a>
+      </footer>
     </div>
   </div>
 </section>
@@ -98,40 +103,24 @@ const copy = locale === 'id'
 
 <style>
   .founder-welcome {
-    padding: clamp(86px, 10vw, 142px) 0;
+    display: grid;
+    align-items: center;
+    min-height: clamp(620px, 82svh, 820px);
+    padding: clamp(58px, 7vw, 88px) 0;
     background: transparent;
   }
 
   .founder-welcome__layout {
     display: grid;
-    gap: clamp(34px, 5vw, 60px);
-  }
-
-  .founder-welcome__intro {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
-    gap: clamp(32px, 7vw, 104px);
-    align-items: end;
-  }
-
-  .founder-welcome__intro h2 {
-    max-width: 14ch;
-    font-size: clamp(2.4rem, 4vw, 4.7rem);
-    font-weight: 530;
-    letter-spacing: -0.038em;
-    line-height: 0.99;
-  }
-
-  .founder-welcome__intro p {
-    max-width: 50ch;
-    color: rgba(226, 234, 243, 0.76);
-    line-height: 1.7;
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.76fr);
+    gap: clamp(44px, 7vw, 104px);
+    align-items: center;
   }
 
   .founder-welcome__media {
     position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
+    width: min(100%, 660px);
+    aspect-ratio: 4 / 3;
     overflow: hidden;
     border-radius: 8px;
     background: #07101a;
@@ -154,35 +143,83 @@ const copy = locale === 'id'
     display: grid;
     place-content: center;
     justify-items: center;
-    gap: 22px;
+    gap: 20px;
     padding: 28px;
-    color: rgba(226, 234, 243, 0.7);
+    color: rgba(226, 234, 243, 0.66);
     text-align: center;
     background:
-      radial-gradient(ellipse 36% 54% at 50% 48%, rgba(103, 217, 255, 0.12), transparent 72%),
-      linear-gradient(145deg, rgba(15, 38, 57, 0.92), rgba(5, 12, 20, 0.98));
+      radial-gradient(ellipse 46% 58% at 50% 48%, rgba(103, 217, 255, 0.13), transparent 72%),
+      linear-gradient(145deg, rgba(15, 38, 57, 0.94), rgba(5, 12, 20, 0.99));
+  }
+
+  .founder-welcome__placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 9%;
+    border: 1px solid rgba(207, 247, 255, 0.09);
+    border-radius: 4px;
   }
 
   .founder-welcome__signal {
-    width: clamp(70px, 8vw, 106px);
+    position: relative;
+    z-index: 1;
+    width: 64px;
     aspect-ratio: 1;
-    border: 1px solid rgba(207, 247, 255, 0.32);
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(207, 247, 255, 0.38);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(103, 217, 255, 0.14), rgba(7, 16, 26, 0.1) 68%);
+    background: rgba(7, 16, 26, 0.42);
+  }
+
+  .founder-welcome__signal i {
+    width: 0;
+    height: 0;
+    margin-left: 4px;
+    border-block: 7px solid transparent;
+    border-left: 11px solid rgba(226, 244, 252, 0.86);
   }
 
   .founder-welcome__placeholder .text-mono {
-    color: rgba(226, 234, 243, 0.62);
-    font-size: 0.66rem;
+    position: relative;
+    z-index: 1;
+    font-size: 0.62rem;
+  }
+
+  .founder-welcome__content {
+    display: grid;
+    align-content: center;
+    gap: clamp(40px, 6vw, 68px);
+  }
+
+  .founder-welcome__intro h2 {
+    max-width: 11ch;
+    font-size: clamp(2.35rem, 3.7vw, 4.35rem);
+    font-weight: 530;
+    letter-spacing: -0.04em;
+    line-height: 0.98;
+  }
+
+  .founder-welcome__intro p {
+    max-width: 49ch;
+    margin-top: 24px;
+    color: rgba(226, 234, 243, 0.76);
+    line-height: 1.68;
+  }
+
+  .founder-welcome__intro .founder-welcome__support {
+    margin-top: 14px;
+    color: rgba(201, 211, 223, 0.58);
+    font-size: 0.9rem;
   }
 
   .founder-welcome__footer {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    gap: 28px;
+    gap: 26px;
     border-top: 1px solid rgba(89, 106, 130, 0.34);
-    padding-top: 24px;
+    padding-top: 22px;
   }
 
   .founder-welcome__footer > div {
@@ -191,37 +228,59 @@ const copy = locale === 'id'
   }
 
   .founder-welcome__footer strong {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 560;
   }
 
   .founder-welcome__footer .text-mono {
     color: rgba(201, 211, 223, 0.56);
-    font-size: 0.62rem;
+    font-size: 0.6rem;
   }
 
-  @media (max-width: 760px) {
-    .founder-welcome__intro {
-      grid-template-columns: 1fr;
-      gap: 20px;
+  @media (max-width: 900px) {
+    .founder-welcome {
+      min-height: 0;
+    }
+
+    .founder-welcome__layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 38px;
     }
 
     .founder-welcome__media {
-      aspect-ratio: 4 / 3;
+      width: min(100%, 620px);
+    }
+
+    .founder-welcome__content {
+      max-width: 680px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .founder-welcome {
+      padding: 46px 0;
+    }
+
+    .founder-welcome__layout {
+      gap: 30px;
+    }
+
+    .founder-welcome__media {
+      aspect-ratio: 5 / 4;
+    }
+
+    .founder-welcome__content {
+      gap: 30px;
+    }
+
+    .founder-welcome__support {
+      display: none;
     }
 
     .founder-welcome__footer {
       align-items: flex-start;
       flex-direction: column;
-      gap: 20px;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .founder-welcome *,
-    .founder-welcome *::before,
-    .founder-welcome *::after {
-      scroll-behavior: auto;
+      gap: 16px;
     }
   }
 </style>

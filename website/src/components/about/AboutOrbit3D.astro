@@ -88,6 +88,8 @@ const copy = locale === 'id'
     </header>
 
     <div class="principles-stage" data-principles-stage data-reveal="image">
+      <p class="orbit-hint text-mono">{copy.hint}</p>
+
       <div class="principles-hub" role="group" aria-label={copy.groupLabel}>
         {copy.items.map((item, index) => (
           <button
@@ -121,8 +123,6 @@ const copy = locale === 'id'
           </article>
         ))}
       </div>
-
-      <p class="orbit-hint text-mono">{copy.hint}</p>
     </div>
     <div class="principles-mobile-list" aria-label={copy.groupLabel}>
       {copy.items.map((item, index) => (
@@ -469,7 +469,7 @@ const copy = locale === 'id'
   .orbit-hint {
     position: absolute;
     z-index: 6;
-    inset: auto 50% 16px auto;
+    inset: calc(50% - var(--hub-size) / 2 - 44px) 50% auto auto;
     color: rgba(201, 211, 223, 0.6);
     font-size: 0.72rem;
     text-align: center;

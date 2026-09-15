@@ -26,6 +26,8 @@ const lessonLabel = locale === 'id'
   ? 'Materi ' + String(index + 1).padStart(2, '0')
   : 'Lesson ' + String(index + 1).padStart(2, '0');
 const takeawayLabel = locale === 'id' ? 'HASIL BELAJAR' : 'TAKEAWAY';
+const completeLabel = locale === 'id' ? 'Tandai materi selesai' : 'Mark lesson complete';
+const completedLabel = locale === 'id' ? 'Materi selesai' : 'Lesson complete';
 const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
 ---
 
@@ -45,10 +47,10 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
         <span class="lesson-card__signal" aria-hidden="true"><span></span></span>
       </button>
     ) : (
-      <div class="lesson-card__graphic" aria-hidden="true">
+      <div class="lesson-card__graphic" role="img" aria-label={locale === 'id' ? `Placeholder video untuk ${title}` : `Video placeholder for ${title}`}>
         <span class="lesson-card__graphic-index">{String(index + 1).padStart(2, '0')}</span>
-        <span class="lesson-card__graphic-word">{visualWord}</span>
-        <span class="lesson-card__graphic-lines"><i></i><i></i><i></i></span>
+        <span class="lesson-card__graphic-word" aria-hidden="true">{visualWord}</span>
+        <span class="lesson-card__graphic-lines" aria-hidden="true"><i></i><i></i><i></i></span>
       </div>
     )}
   </div>
@@ -65,6 +67,13 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
       <span class="text-mono">{takeawayLabel}</span>
       <p>{lesson.outcome[locale]}</p>
     </div>
+    {display === 'player' && (
+      <button type="button" class="lesson-card__complete" data-lesson-complete={lesson.id} aria-pressed="false">
+        <span data-complete-default>{completeLabel}</span>
+        <span data-complete-active hidden>{completedLabel}</span>
+        <span aria-hidden="true">&#10003;</span>
+      </button>
+    )}
   </div>
 </article>
 
@@ -217,7 +226,7 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
     color: rgba(226, 244, 252, 0.13);
     font-size: clamp(2.4rem, 6vw, 6.8rem);
     font-weight: 650;
-    letter-spacing: -0.07em;
+    letter-spacing: -0.04em;
     line-height: 0.8;
   }
 
@@ -240,7 +249,12 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
 
   .lesson-card__body { min-width: 0; }
   .lesson-card--standard .lesson-card__body { padding-top: 20px; }
-  .lesson-card--player .lesson-card__body { padding-top: 24px; }
+  .lesson-card--player .lesson-card__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(230px, 0.58fr);
+    gap: 0 clamp(28px, 5vw, 66px);
+    padding-top: 22px;
+  }
 
   .lesson-card__rank {
     display: block;
@@ -269,14 +283,23 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
   }
 
   .lesson-card--player h3 {
+    grid-column: 1;
     max-width: 19ch;
-    font-size: clamp(2rem, 3vw, 3.25rem);
+    font-size: clamp(1.8rem, 2.7vw, 2.9rem);
     letter-spacing: -0.038em;
     line-height: 1;
   }
 
-  .lesson-card--player .lesson-card__visual {
-    aspect-ratio: 16 / 9;
+  .lesson-card--player .lesson-card__visual { aspect-ratio: 16 / 9; }
+  .lesson-card--player .lesson-card__rank { grid-column: 1; }
+  .lesson-card--player .lesson-card__meta { grid-column: 2; grid-row: 1; justify-self: end; }
+  .lesson-card--player .lesson-card__body > p { grid-column: 1; }
+
+  .lesson-card--player .lesson-card__outcome {
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    align-self: start;
+    margin-top: 0;
   }
 
   .lesson-card__body > p { max-width: 55ch; color: rgba(201, 211, 223, 0.76); font-size: 0.94rem; line-height: 1.62; }
@@ -292,21 +315,41 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
   .lesson-card__outcome > span { color: rgba(103, 217, 255, 0.7); font-size: 0.59rem; }
   .lesson-card__outcome p { max-width: 44ch; color: rgba(226, 234, 243, 0.86); font-size: 0.88rem; line-height: 1.5; }
 
+  .lesson-card__complete {
+    grid-column: 1 / -1;
+    width: fit-content;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    border: 1px solid rgba(201, 211, 223, 0.38);
+    border-radius: 999px;
+    padding: 9px 16px;
+    color: var(--cloud-white);
+    font-family: var(--font-mono);
+    font-size: 0.61rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: border-color 180ms var(--ease-out), background-color 180ms var(--ease-out);
+  }
+
+  .lesson-card__complete[aria-pressed='true'] {
+    border-color: rgba(103, 217, 255, 0.7);
+    background: rgba(103, 217, 255, 0.1);
+  }
+
   @media (hover: hover) and (pointer: fine) {
     .lesson-card__play:hover .lesson-card__signal { border-color: var(--cyan-glow); background: rgba(8, 24, 37, 0.78); }
     .lesson-card__play:hover img { transform: scale(1.045); filter: brightness(0.9) saturate(0.98); }
   }
 
   @media (max-width: 900px) {
-    .lesson-card--featured {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 0;
-    }
-
-    .lesson-card--featured .lesson-card__body {
-      max-width: 720px;
-      padding-top: 22px;
-    }
+    .lesson-card--featured { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .lesson-card--featured .lesson-card__body { max-width: 720px; padding-top: 22px; }
+    .lesson-card--player .lesson-card__body { display: block; }
+    .lesson-card--player .lesson-card__meta { justify-self: auto; }
+    .lesson-card--player .lesson-card__outcome { margin-top: 22px; }
   }
 
   @media (max-width: 620px) {
@@ -318,5 +361,6 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
     .lesson-card__play *,
     .lesson-card__play img { transition: none !important; }
     .lesson-card__play img { transform: none; }
+    .lesson-card__complete { transition: none; }
   }
 </style>

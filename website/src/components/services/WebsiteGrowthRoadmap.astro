@@ -1,8 +1,12 @@
 ---
 import { quizBlueprint } from '../../scripts/service-recommendation.mjs';
 
-interface Props { locale: 'id' | 'en'; }
-const { locale } = Astro.props;
+interface Props {
+  locale: 'id' | 'en';
+  origin?: 'learn';
+  seriesId?: string;
+}
+const { locale, origin, seriesId } = Astro.props;
 
 const copy = locale === 'id'
   ? {
@@ -187,6 +191,8 @@ const questions = quizBlueprint.map((question, index) => ({
   data-service-quiz
   data-load-state="pending"
   data-locale={locale}
+  data-origin={origin}
+  data-series-id={seriesId}
   data-quiz-copy={JSON.stringify({ progress: copy.progress, noSupport: copy.noSupport, services: copy.services })}
 >
   <div class="container quiz-shell">
@@ -293,6 +299,22 @@ const questions = quizBlueprint.map((question, index) => ({
         return;
       }
       root.dataset.ready = 'true';
+
+      const incomingParams = new URLSearchParams(window.location.search);
+      const learnContext = {
+        origin: root.dataset.origin ?? (incomingParams.get('source') === 'learn' ? 'learn' : ''),
+        series_id: root.dataset.seriesId ?? incomingParams.get('series') ?? '',
+        lesson_id: incomingParams.get('lesson') ?? '',
+        resource_id: incomingParams.get('resource') ?? '',
+      };
+      const withLearnContext = (detail: Record<string, string> = {}) => ({
+        ...detail,
+        ...Object.fromEntries(Object.entries(learnContext).filter(([, value]) => value.length > 0)),
+      });
+
+      if (learnContext.origin === 'learn') {
+        trackFunnelEvent('learn_roadmap_view', withLearnContext({ locale: root.dataset.locale ?? '' }));
+      }
 
       const quizCopy = JSON.parse(root.dataset.quizCopy ?? '{}');
       const views = {
@@ -413,7 +435,11 @@ const questions = quizBlueprint.map((question, index) => ({
         }
         if (link) link.href = '/' + root.dataset.locale + '/services/' + primary.slug + '/';
         if (consultationLink) {
-          consultationLink.href = '/' + root.dataset.locale + '/contact/?source=roadmap&service=' + primary.slug;
+          const consultationParams = new URLSearchParams({ source: 'roadmap', service: primary.slug });
+          Object.entries(learnContext).forEach(([key, value]) => {
+            if (value) consultationParams.set(key, value);
+          });
+          consultationLink.href = '/' + root.dataset.locale + '/contact/?' + consultationParams.toString();
           consultationLink.dataset.recommendedService = primary.slug;
         }
 
@@ -436,8 +462,8 @@ const questions = quizBlueprint.map((question, index) => ({
           });
         }
 
-        trackFunnelEvent('roadmap_complete', { locale: root.dataset.locale ?? '' });
-        trackFunnelEvent('roadmap_result', { recommended_service: primary.slug });
+        trackFunnelEvent('roadmap_complete', withLearnContext({ locale: root.dataset.locale ?? '' }));
+        trackFunnelEvent('roadmap_result', withLearnContext({ recommended_service: primary.slug }));
 
         transitionView(views.calculating, () => {
           root.dataset.quizState = 'calculating';
@@ -450,7 +476,7 @@ const questions = quizBlueprint.map((question, index) => ({
       };
 
       root.querySelector<HTMLButtonElement>('[data-quiz-start]')?.addEventListener('click', () => {
-        trackFunnelEvent('roadmap_start', { locale: root.dataset.locale ?? '' });
+        trackFunnelEvent('roadmap_start', withLearnContext({ locale: root.dataset.locale ?? '' }));
         transitionView(views.questions, () => {
           root.dataset.quizState = 'questions';
           renderQuestion(0, false);
@@ -482,9 +508,12 @@ const questions = quizBlueprint.map((question, index) => ({
 
       root.querySelector<HTMLAnchorElement>('[data-consultation-link]')?.addEventListener('click', (event) => {
         const link = event.currentTarget as HTMLAnchorElement;
-        trackFunnelEvent('roadmap_consultation_click', {
+        trackFunnelEvent('roadmap_consultation_click', withLearnContext({
           recommended_service: link.dataset.recommendedService ?? ''
-        });
+        }));
+        if (learnContext.origin === 'learn') {
+          trackFunnelEvent('learn_consultation_click', withLearnContext({ recommended_service: link.dataset.recommendedService ?? '' }));
+        }
       });
 
       root.querySelector<HTMLButtonElement>('[data-quiz-reset]')?.addEventListener('click', () => {
@@ -508,12 +537,44 @@ const questions = quizBlueprint.map((question, index) => ({
     min-height: 640px;
     display: grid;
     place-items: center;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     margin-top: -2px;
     padding: clamp(38px, 5vh, 56px) 0 8px;
     background: transparent;
   }
 
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    background:
+      radial-gradient(
+        ellipse 66% 70% at 50% 46%,
+        rgba(215, 225, 231, 0.68) 0%,
+        rgba(151, 175, 188, 0.48) 45%,
+        rgba(83, 117, 137, 0.22) 70%,
+        rgba(83, 117, 137, 0) 90%
+      ),
+      radial-gradient(ellipse 82% 62% at 50% 58%, rgba(62, 96, 117, 0.28), rgba(62, 96, 117, 0) 78%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 11%, #000 89%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 11%, #000 89%, transparent 100%);
+    filter: blur(18px);
+    transform: scale(1.05);
+    transition: opacity 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .roadmap:has(.quiz-intro:not([hidden]))::before {
+    opacity: 1;
+  }
+
   .quiz-shell {
+    position: relative;
+    z-index: 1;
     height: 100%;
     min-height: 0;
   }
@@ -555,34 +616,52 @@ const questions = quizBlueprint.map((question, index) => ({
   .quiz-intro {
     display: grid;
     place-items: center;
+    border-radius: 0;
     padding: clamp(38px, 7vh, 76px) clamp(24px, 6vw, 84px);
+    background: transparent;
+    color: #081522;
     text-align: center;
   }
 
   .quiz-intro__content { width: min(100%, 860px); display: grid; justify-items: center; }
-  .quiz-intro .quiz-meta { margin-bottom: 24px; }
+  .quiz-intro .quiz-meta { margin-bottom: 24px; color: #3a5364; }
 
   .quiz-intro h2 {
     max-width: 14ch;
-    font-size: clamp(3rem, 5.3vw, 6.2rem);
+    color: #081522;
+    font-size: clamp(3rem, 5.3vw, 6rem);
     font-weight: 520;
-    letter-spacing: -0.048em;
+    letter-spacing: -0.04em;
     line-height: 0.93;
   }
 
-  .quiz-intro p { max-width: 54ch; margin-top: 24px; color: rgba(226, 234, 243, 0.76); font-size: clamp(1rem, 1.2vw, 1.14rem); }
-  .quiz-intro .btn { margin-top: 30px; }
-  .quiz-intro small { max-width: 46ch; margin-top: 16px; color: var(--steel); font-size: 0.74rem; line-height: 1.5; }
+  .quiz-intro p { max-width: 54ch; margin-top: 24px; color: #263d4c; font-size: clamp(1rem, 1.2vw, 1.14rem); }
+  .quiz-intro .btn {
+    margin-top: 30px;
+    border: 0;
+    background: #0b2234;
+    color: var(--cloud-white);
+  }
+  .quiz-intro small { max-width: 46ch; margin-top: 16px; color: #435b6b; font-size: 0.74rem; line-height: 1.5; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .quiz-intro .btn:hover {
+      background: #123a54;
+      transform: translateY(-2px);
+    }
+  }
 
   .quiz-questions {
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
+    border-radius: 12px;
     padding: clamp(24px, 4vh, 38px) clamp(24px, 6vw, 84px) 24px;
+    background: rgba(244, 247, 251, 0.2);
   }
 
   .quiz-progress { width: min(100%, 760px); display: grid; grid-template-columns: auto minmax(120px, 320px); gap: 24px; align-items: center; justify-content: center; margin-inline: auto; }
-  .quiz-progress > span { color: rgba(201, 211, 223, 0.58); font-size: 0.7rem; }
-  .progress-track { height: 2px; overflow: hidden; background: rgba(201, 211, 223, 0.16); }
+  .quiz-progress > span { color: rgba(244, 247, 251, 0.76); font-size: 0.7rem; }
+  .progress-track { height: 2px; overflow: hidden; background: rgba(244, 247, 251, 0.24); }
   .progress-track span { display: block; width: 20%; height: 100%; background: var(--signal-ice); transition: width 360ms cubic-bezier(0.16, 1, 0.3, 1); }
 
   .question-stage { min-height: 0; display: grid; align-items: center; transition: opacity 320ms cubic-bezier(0.16, 1, 0.3, 1), transform 380ms cubic-bezier(0.16, 1, 0.3, 1), filter 300ms ease; }
@@ -599,7 +678,7 @@ const questions = quizBlueprint.map((question, index) => ({
     text-wrap: balance;
   }
   .question-panel legend:focus { outline: none; }
-  .question-hint { margin: 14px auto 0; color: var(--steel); font-size: 0.82rem; }
+  .question-hint { margin: 14px auto 0; color: rgba(244, 247, 251, 0.82); font-size: 0.82rem; }
   .answer-grid { width: min(100%, 920px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: clamp(24px, 4vh, 38px) auto 0; }
 
   .answer-option {
@@ -618,7 +697,7 @@ const questions = quizBlueprint.map((question, index) => ({
   .answer-option[aria-pressed='true'] { background: rgba(103, 217, 255, 0.16); color: var(--cloud-white); transform: scale(0.985); }
 
   .quiz-controls { display: flex; justify-content: space-between; padding-top: 10px; }
-  .quiz-back { min-height: 38px; color: rgba(201, 211, 223, 0.7); font-size: 0.82rem; }
+  .quiz-back { min-height: 38px; color: rgba(244, 247, 251, 0.82); font-size: 0.82rem; }
   .quiz-back:disabled { opacity: 0; pointer-events: none; }
 
   .quiz-result {

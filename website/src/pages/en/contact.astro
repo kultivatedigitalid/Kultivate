@@ -234,8 +234,11 @@ const t = useTranslations(locale);
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    padding: clamp(22px, 4vw, 48px);
-    background-color: var(--deep-navy);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    background: transparent;
   }
 
   .contact-form {
@@ -281,25 +284,42 @@ const t = useTranslations(locale);
     width: 100%;
     min-width: 0;
     max-width: 100%;
-    padding: 12px var(--spacing-sm);
-    background-color: var(--void-black);
-    border: 1px solid var(--slate);
-    border-radius: var(--border-radius-sm);
+    padding: 14px 16px;
+    background: rgba(7, 16, 26, 0.18);
+    border: 0;
+    border-radius: 10px;
     color: var(--cloud-white);
     font-family: var(--font-sans);
     font-size: 0.9375rem;
+    transition: background-color var(--transition-micro);
   }
 
   .form-textarea {
     resize: vertical;
   }
 
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: rgba(201, 211, 223, 0.76);
+    opacity: 1;
+  }
+
   .form-input:focus,
   .form-select:focus,
   .form-textarea:focus {
     outline: none;
-    border-color: var(--electric-blue);
+    background: rgba(7, 16, 26, 0.34);
+    box-shadow: none;
   }
+
+  .form-input:focus-visible,
+  .form-select:focus-visible,
+  .form-textarea:focus-visible {
+    outline: 2px solid rgba(207, 247, 255, 0.34);
+    outline-offset: 2px;
+  }
+
+  .form-select option { background: var(--deep-navy); color: var(--cloud-white); }
 
   .checkbox-group {
     flex-direction: row;
@@ -334,13 +354,17 @@ const t = useTranslations(locale);
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-lg);
+    gap: clamp(48px, 6vw, 76px);
+    padding: clamp(6px, 1vw, 12px) 0;
   }
 
   .info-card,
   .office-card {
-    padding: var(--spacing-xl);
-    background-color: var(--deep-navy);
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .info-title,
@@ -367,11 +391,12 @@ const t = useTranslations(locale);
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
-    padding: var(--spacing-sm);
-    background-color: var(--void-black);
-    border-radius: var(--border-radius-sm);
-    border: 1px solid var(--slate);
-    transition: border-color var(--transition-micro);
+    min-height: 54px;
+    padding: 10px 0;
+    background: transparent;
+    border-radius: 0;
+    border: 0;
+    transition: color var(--transition-micro), transform var(--transition-micro);
   }
 
   .contact-link-item > div:last-child {
@@ -379,7 +404,8 @@ const t = useTranslations(locale);
   }
 
   .contact-link-item:hover {
-    border-color: var(--cyan-glow);
+    background: transparent;
+    transform: translate3d(4px, 0, 0);
   }
 
   .icon-box {

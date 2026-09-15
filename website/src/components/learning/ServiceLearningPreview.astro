@@ -13,13 +13,13 @@ const copy = locale === 'id'
   ? {
       kicker: 'LEARN',
       title: `Pahami konteks ${serviceLabel} sebelum menentukan arah`,
-      body: 'Mulai dari series singkat yang paling dekat dengan masalah di atas. Materinya membantu Anda memahami pertanyaan penting sebelum memilih scope pekerjaan.',
+      body: 'Mulai dari course yang paling dekat dengan masalah di atas. Materinya membantu Anda memahami pertanyaan penting sebelum memilih scope pekerjaan.',
       cta: series ? `Mulai ${series.title.id}` : 'Jelajahi Learn',
     }
   : {
       kicker: 'LEARN',
       title: `Understand the ${serviceLabel} context before choosing a direction`,
-      body: 'Start with the short series closest to the problems above. It helps you understand the important questions before choosing a scope of work.',
+      body: 'Start with the course closest to the problems above. It helps you understand the important questions before choosing a scope of work.',
       cta: series ? `Start ${series.title.en}` : 'Explore Learn',
     };
 const destination = series ? `/${locale}/learn/${series.slug}/` : `/${locale}/learn/`;

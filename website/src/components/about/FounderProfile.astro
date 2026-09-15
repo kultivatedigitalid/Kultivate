@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import HeroShell from '../shared/HeroShell.astro';
 import { founderCopy, founderIdentity, type FounderLocale } from '../../data/founder';
 
 interface Props {
@@ -20,81 +19,85 @@ const dateFormatter = new Intl.DateTimeFormat(locale === 'id' ? 'id-ID' : 'en-US
 ---
 
 <article class="founder-profile page-flow" data-founder-profile data-locale={locale}>
-  <HeroShell
-    title={founderIdentity.name}
-    description={copy.heroDescription}
-    image="/assets/banners/about-gradient.webp"
-    imageAlt=""
-    variant="editorial-compact"
-    compact
-    depth
-  >
-    <div slot="meta" class="founder-profile__role text-mono">{founderIdentity.role}</div>
-    <a slot="actions" class="btn btn-secondary" href={aboutPath}>{copy.backAbout}</a>
-  </HeroShell>
+  <section class="founder-intro flow-section" aria-labelledby="founder-name">
+    <div class="container">
+      <div class="founder-intro__layout">
+        <figure class="founder-portrait" aria-label={copy.portraitAlt} data-reveal="image">
+          {founderIdentity.portrait ? (
+            <img
+              src={founderIdentity.portrait}
+              alt={copy.portraitAlt}
+              width="960"
+              height="1200"
+              loading="eager"
+              decoding="async"
+            />
+          ) : (
+            <div class="founder-portrait__graphic" role="img" aria-label={copy.portraitAlt}>
+              <span aria-hidden="true">GW</span>
+            </div>
+          )}
+          <figcaption>
+            <strong>{copy.portraitLabel}</strong>
+            <span class="text-mono">{founderIdentity.role}</span>
+          </figcaption>
+        </figure>
 
-  <section class="founder-intro flow-section" aria-labelledby="founder-intro-title">
-    <div class="container founder-intro__layout">
-      <figure class="founder-portrait-placeholder" role="img" aria-label={copy.portraitAlt} data-reveal="image">
-        <span class="founder-portrait-placeholder__mark" aria-hidden="true">GH</span>
-        <figcaption class="text-mono">{copy.portraitLabel}</figcaption>
-      </figure>
+        <div class="founder-intro__copy" data-reveal>
+          <span class="section-kicker">{founderIdentity.role}</span>
+          <h1 id="founder-name">{founderIdentity.name}</h1>
+          <h2>{copy.introductionTitle}</h2>
+          <p>{copy.introductionBody}</p>
+          <p>{copy.introductionDetail}</p>
+        </div>
+      </div>
 
-      <div class="founder-intro__copy" data-reveal>
-        <span class="section-kicker">{founderIdentity.role}</span>
-        <h2 id="founder-intro-title">{copy.introductionTitle}</h2>
-        <p>{copy.introductionBody}</p>
+      <div class="founder-intro__after" data-reveal>
+        <a class="founder-intro__back link-hover-arrow" href={aboutPath}>
+          <span aria-hidden="true">&#8592;</span><span>{copy.backAbout}</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="founder-story flow-section" aria-labelledby="founder-story-title">
-    <div class="container founder-story__layout" data-reveal>
-      <span class="founder-story__number text-mono">01</span>
-      <h2 id="founder-story-title">{copy.storyTitle}</h2>
-      <p>{copy.storyBody}</p>
+  <section class="founder-story founder-section founder-section--light flow-section" aria-labelledby="founder-story-title">
+    <div class="container founder-story__layout">
+      <h2 id="founder-story-title" data-reveal>{copy.storyTitle}</h2>
+      <p data-reveal="content">{copy.storyBody}</p>
     </div>
   </section>
 
-  <section class="founder-philosophy flow-section" aria-labelledby="founder-philosophy-title">
+  <section class="founder-philosophy founder-section flow-section" aria-labelledby="founder-philosophy-title">
     <div class="container founder-philosophy__layout">
-      <div data-reveal>
-        <span class="text-mono">02</span>
-        <h2 id="founder-philosophy-title">{copy.philosophyTitle}</h2>
-      </div>
+      <h2 id="founder-philosophy-title" data-reveal>{copy.philosophyTitle}</h2>
       <blockquote data-reveal="content">
         <p>“{copy.philosophyQuote}”</p>
-        <footer>{founderIdentity.name}, {founderIdentity.role}</footer>
+        <footer>— {founderIdentity.name}</footer>
       </blockquote>
     </div>
   </section>
 
-  <section class="founder-expertise flow-section" aria-labelledby="founder-expertise-title">
+  <section class="founder-expertise founder-section founder-section--light flow-section" aria-labelledby="founder-expertise-title">
     <div class="container">
       <header class="founder-section-header" data-reveal>
-        <div>
-          <span class="text-mono">03</span>
-          <h2 id="founder-expertise-title">{copy.expertiseTitle}</h2>
-        </div>
+        <h2 id="founder-expertise-title">{copy.expertiseTitle}</h2>
         <p>{copy.expertiseIntro}</p>
       </header>
 
-      <ol class="founder-expertise__list">
-        {copy.expertise.map((item, index) => (
+      <ul class="founder-expertise__list">
+        {copy.expertise.map((item) => (
           <li data-reveal>
-            <span class="text-mono">{String(index + 1).padStart(2, '0')}</span>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </li>
         ))}
-      </ol>
+      </ul>
     </div>
   </section>
 
-  <section class="founder-experience flow-section" aria-labelledby="founder-experience-title">
+  <section class="founder-experience founder-section flow-section" aria-labelledby="founder-experience-title">
     <div class="container founder-experience__layout">
       <header data-reveal>
-        <span class="text-mono">04</span>
         <h2 id="founder-experience-title">{copy.experienceTitle}</h2>
         <p>{copy.experienceIntro}</p>
       </header>
@@ -110,18 +113,15 @@ const dateFormatter = new Intl.DateTimeFormat(locale === 'id' ? 'id-ID' : 'en-US
     </div>
   </section>
 
-  <section class="founder-insights flow-section" aria-labelledby="founder-insights-title">
+  <section class="founder-insights founder-section founder-section--light flow-section" aria-labelledby="founder-insights-title">
     <div class="container">
       <header class="founder-section-header" data-reveal>
-        <div>
-          <span class="text-mono">05</span>
-          <h2 id="founder-insights-title">{copy.insightsTitle}</h2>
-        </div>
+        <h2 id="founder-insights-title">{copy.insightsTitle}</h2>
         <p>{copy.insightsBody}</p>
       </header>
 
       <div class="founder-insights__grid">
-        {insights.map((insight) => (
+        {insights.slice(0, 3).map((insight) => (
           <article class="founder-insight" data-reveal>
             <a href={`/${locale}/insights/${insight.data.slug}/`}>
               <figure>
@@ -139,7 +139,6 @@ const dateFormatter = new Intl.DateTimeFormat(locale === 'id' ? 'id-ID' : 'en-US
                 <time datetime={insight.data.publishedAt}>{dateFormatter.format(new Date(insight.data.publishedAt))}</time>
               </div>
               <h3>{insight.data.title}</h3>
-              <p>{insight.data.summary}</p>
               <span class="founder-insight__link">{copy.readInsight} <span aria-hidden="true">&#8594;</span></span>
             </a>
           </article>
@@ -148,12 +147,9 @@ const dateFormatter = new Intl.DateTimeFormat(locale === 'id' ? 'id-ID' : 'en-US
     </div>
   </section>
 
-  <section class="founder-learn flow-section" aria-labelledby="founder-learn-title">
+  <section class="founder-learn founder-section flow-section" aria-labelledby="founder-learn-title">
     <div class="container founder-learn__layout" data-reveal>
-      <div>
-        <span class="text-mono">LEARN</span>
-        <h2 id="founder-learn-title">{copy.learnTitle}</h2>
-      </div>
+      <h2 id="founder-learn-title">{copy.learnTitle}</h2>
       <div>
         <p>{copy.learnBody}</p>
         <a class="link-hover-arrow" href={learnPath}>
@@ -180,187 +176,457 @@ const dateFormatter = new Intl.DateTimeFormat(locale === 'id' ? 'id-ID' : 'en-US
 </script>
 
 <style>
-  .founder-profile__role {
-    color: rgba(226, 234, 243, 0.76);
-    font-size: 0.65rem;
+  .founder-profile {
+    background:
+      radial-gradient(ellipse 70% 18% at 10% 8%, rgba(70, 134, 183, 0.24), transparent 72%),
+      radial-gradient(ellipse 58% 17% at 88% 28%, rgba(103, 217, 255, 0.11), transparent 74%),
+      radial-gradient(ellipse 76% 19% at 18% 58%, rgba(70, 134, 183, 0.17), transparent 75%),
+      linear-gradient(180deg, #091c2c 0%, #0b2537 24%, #0a1e2e 52%, #0d293c 76%, #07101a 100%);
   }
 
-  .founder-intro,
-  .founder-story,
-  .founder-philosophy,
-  .founder-expertise,
-  .founder-experience,
-  .founder-insights,
-  .founder-learn {
-    padding: clamp(90px, 10vw, 148px) 0;
+  .founder-profile::before {
+    height: clamp(640px, 72vw, 920px);
+    background:
+      radial-gradient(ellipse 62% 48% at 14% 12%, rgba(70, 134, 183, 0.3), transparent 72%),
+      radial-gradient(ellipse 50% 42% at 86% 18%, rgba(103, 217, 255, 0.14), transparent 74%),
+      radial-gradient(ellipse 44% 32% at 58% 42%, rgba(23, 107, 255, 0.1), transparent 76%),
+      linear-gradient(180deg, rgba(9, 28, 44, 0.88) 0%, rgba(8, 21, 34, 0.62) 38%, transparent 100%);
+  }
+
+  .founder-intro {
+    display: grid;
+    align-items: center;
+    min-height: min(820px, 92svh);
+    padding: clamp(92px, 9vw, 116px) 0 clamp(48px, 5vw, 66px);
+  }
+
+  .founder-intro__back {
+    width: fit-content;
+    color: rgba(226, 234, 243, 0.7);
+    font-size: 0.82rem;
+  }
+
+  .founder-intro__after {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: clamp(28px, 3vw, 40px);
+    padding-top: 18px;
+    border-top: 1px solid rgba(169, 194, 211, 0.2);
   }
 
   .founder-intro__layout {
     display: grid;
-    grid-template-columns: minmax(270px, 0.68fr) minmax(0, 0.92fr);
-    gap: clamp(48px, 10vw, 154px);
+    grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1fr);
+    gap: clamp(40px, 7vw, 104px);
     align-items: center;
   }
 
-  .founder-portrait-placeholder {
+  .founder-portrait {
+    position: relative;
+    width: min(100%, 450px);
     aspect-ratio: 4 / 5;
-    display: grid;
-    place-content: center;
-    justify-items: center;
-    gap: 22px;
     overflow: hidden;
     border-radius: 8px;
-    color: rgba(226, 234, 243, 0.56);
-    background:
-      radial-gradient(circle at 48% 38%, rgba(103, 217, 255, 0.17), transparent 27%),
-      linear-gradient(155deg, rgba(18, 47, 67, 0.96), rgba(5, 12, 20, 1) 68%);
+    background: #07101a;
   }
 
-  .founder-portrait-placeholder__mark {
+  .founder-portrait > img,
+  .founder-portrait__graphic {
+    width: 100%;
+    height: 100%;
+  }
+
+  .founder-portrait > img {
+    object-fit: cover;
+    filter: brightness(0.84) saturate(0.78);
+  }
+
+  .founder-portrait__graphic {
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at 46% 36%, rgba(103, 217, 255, 0.2), transparent 24%),
+      linear-gradient(155deg, rgba(20, 54, 76, 0.98), rgba(5, 12, 20, 1) 70%);
+  }
+
+  .founder-portrait__graphic::after {
+    content: '';
+    position: absolute;
+    inset: 8%;
+    border: 1px solid rgba(207, 247, 255, 0.09);
+    border-radius: 4px;
+  }
+
+  .founder-portrait__graphic > span {
     color: rgba(226, 244, 252, 0.2);
-    font-size: clamp(4rem, 9vw, 8rem);
+    font-size: clamp(4rem, 8vw, 7rem);
     font-weight: 600;
     letter-spacing: -0.08em;
   }
 
-  .founder-portrait-placeholder figcaption { max-width: 24ch; padding-inline: 20px; text-align: center; }
-  .founder-intro__copy { max-width: 680px; }
-  .founder-intro__copy h2,
+  .founder-portrait figcaption {
+    position: absolute;
+    inset: auto 28px 26px;
+    z-index: 1;
+    display: grid;
+    gap: 4px;
+  }
+
+  .founder-portrait figcaption strong {
+    font-size: 1.05rem;
+    font-weight: 560;
+  }
+
+  .founder-portrait figcaption .text-mono {
+    color: rgba(226, 234, 243, 0.62);
+    font-size: 0.58rem;
+  }
+
+  .founder-intro__copy {
+    max-width: 690px;
+  }
+
+  .founder-intro__copy .section-kicker {
+    display: block;
+    margin-bottom: 18px;
+  }
+
+  .founder-intro__copy h1 {
+    font-size: clamp(3rem, 6vw, 6.4rem);
+    font-weight: 540;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+  }
+
+  .founder-intro__copy h2 {
+    max-width: 16ch;
+    margin-top: clamp(28px, 4vw, 42px);
+    font-size: clamp(1.65rem, 2.4vw, 2.65rem);
+    font-weight: 520;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+  }
+
+  .founder-intro__copy p {
+    max-width: 56ch;
+    margin-top: 18px;
+    color: rgba(226, 234, 243, 0.76);
+    line-height: 1.66;
+  }
+
+  .founder-intro__copy p + p {
+    margin-top: 12px;
+    color: rgba(201, 211, 223, 0.66);
+  }
+
+  .founder-section {
+    display: grid;
+    align-items: center;
+    min-height: min(680px, 78svh);
+    padding: clamp(48px, 5vw, 70px) 0;
+  }
+
+  .founder-section--light {
+    background:
+      radial-gradient(ellipse 70% 70% at 88% 20%, rgba(103, 217, 255, 0.08), transparent 68%),
+      rgba(15, 42, 61, 0.7);
+  }
+
+  .founder-story__layout,
+  .founder-philosophy__layout,
+  .founder-experience__layout,
+  .founder-learn__layout,
+  .founder-section-header {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.72fr) minmax(0, 0.82fr);
+    gap: clamp(32px, 6vw, 92px);
+    align-items: start;
+  }
+
   .founder-story h2,
   .founder-philosophy h2,
   .founder-section-header h2,
   .founder-experience h2,
   .founder-learn h2 {
-    font-size: clamp(2.35rem, 4.5vw, 5rem);
+    max-width: 13ch;
+    font-size: clamp(2.4rem, 4.4vw, 4.9rem);
     font-weight: 520;
-    letter-spacing: -0.045em;
+    letter-spacing: -0.04em;
     line-height: 0.98;
   }
 
-  .founder-intro__copy .section-kicker { display: block; margin-bottom: 18px; }
-  .founder-intro__copy p,
   .founder-story p,
   .founder-section-header > p,
   .founder-experience header p,
   .founder-learn p {
-    color: rgba(201, 211, 223, 0.76);
+    max-width: 52ch;
+    color: rgba(226, 234, 243, 0.76);
     line-height: 1.68;
   }
-  .founder-intro__copy p { max-width: 51ch; margin-top: 24px; }
 
-  .founder-story__layout {
-    display: grid;
-    grid-template-columns: 64px minmax(250px, 0.75fr) minmax(300px, 0.65fr);
-    gap: clamp(26px, 6vw, 84px);
-    align-items: start;
-    padding-top: clamp(38px, 5vw, 62px);
-    border-top: 1px solid rgba(126, 153, 178, 0.22);
-  }
-  .founder-story__number,
-  .founder-philosophy .text-mono,
-  .founder-section-header .text-mono,
-  .founder-experience .text-mono,
-  .founder-learn .text-mono { color: rgba(103, 217, 255, 0.7); font-size: 0.62rem; }
-
-  .founder-philosophy { background: rgba(4, 10, 17, 0.34); }
-  .founder-philosophy__layout {
-    display: grid;
-    grid-template-columns: minmax(230px, 0.5fr) minmax(0, 1fr);
-    gap: clamp(48px, 10vw, 154px);
-    align-items: start;
-  }
-  .founder-philosophy h2 { max-width: 8ch; margin-top: 16px; }
   .founder-philosophy blockquote p {
     max-width: 29ch;
     color: var(--cloud-white);
-    font-size: clamp(1.75rem, 3.5vw, 3.75rem);
-    letter-spacing: -0.035em;
-    line-height: 1.1;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(1.85rem, 3.4vw, 3.65rem);
+    font-style: italic;
+    letter-spacing: -0.032em;
+    line-height: 1.08;
     text-wrap: balance;
   }
+
   .founder-philosophy blockquote footer {
-    margin-top: 28px;
-    color: rgba(201, 211, 223, 0.62);
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
+    margin-top: 26px;
+    color: rgba(201, 211, 223, 0.64);
+    font-size: 0.88rem;
   }
 
   .founder-section-header {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.58fr);
-    gap: clamp(42px, 9vw, 128px);
     align-items: end;
-    margin-bottom: clamp(56px, 8vw, 96px);
+    margin-bottom: clamp(30px, 4vw, 44px);
   }
-  .founder-section-header h2 { max-width: 12ch; margin-top: 16px; }
 
-  .founder-expertise__list { list-style: none; border-top: 1px solid rgba(126, 153, 178, 0.22); }
+  .founder-expertise__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    list-style: none;
+    border-top: 1px solid rgba(169, 194, 211, 0.24);
+  }
+
   .founder-expertise__list li {
-    display: grid;
-    grid-template-columns: 64px minmax(220px, 0.72fr) minmax(280px, 1fr);
-    gap: clamp(22px, 5vw, 72px);
-    padding: 30px 0;
-    border-bottom: 1px solid rgba(126, 153, 178, 0.22);
+    min-width: 0;
+    padding: 22px clamp(18px, 2.5vw, 32px) 2px 0;
   }
-  .founder-expertise__list .text-mono { color: rgba(103, 217, 255, 0.6); font-size: 0.6rem; }
-  .founder-expertise__list h3 { font-size: clamp(1.3rem, 2vw, 2rem); font-weight: 530; }
-  .founder-expertise__list p { color: rgba(201, 211, 223, 0.7); line-height: 1.6; }
 
-  .founder-experience__layout {
-    display: grid;
-    grid-template-columns: minmax(280px, 0.68fr) minmax(0, 1fr);
-    gap: clamp(48px, 10vw, 150px);
+  .founder-expertise__list li + li {
+    border-left: 1px solid rgba(169, 194, 211, 0.2);
+    padding-left: clamp(18px, 2.5vw, 32px);
   }
-  .founder-experience h2 { max-width: 10ch; margin: 16px 0 24px; }
-  .founder-experience header p { max-width: 45ch; }
-  .founder-experience dl { border-top: 1px solid rgba(126, 153, 178, 0.22); }
-  .founder-experience dl div { padding: 24px 0; border-bottom: 1px solid rgba(126, 153, 178, 0.22); }
-  .founder-experience dt { margin-bottom: 8px; color: var(--cloud-white); font-weight: 550; }
-  .founder-experience dd { color: rgba(201, 211, 223, 0.7); line-height: 1.58; }
 
-  .founder-insights__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 52px); }
-  .founder-insight a { display: block; color: inherit; }
-  .founder-insight figure { aspect-ratio: 16 / 10; overflow: hidden; border-radius: 6px; background: #07101a; }
-  .founder-insight img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms var(--ease-out), filter 350ms var(--ease-out); }
-  .founder-insight__meta { display: flex; justify-content: space-between; gap: 14px; margin-top: 20px; color: rgba(169, 194, 211, 0.6); font-size: 0.58rem; }
-  .founder-insight h3 { margin-top: 14px; font-size: clamp(1.35rem, 2vw, 2rem); font-weight: 530; letter-spacing: -0.028em; line-height: 1.08; }
-  .founder-insight p { margin-top: 12px; color: rgba(201, 211, 223, 0.7); font-size: 0.9rem; line-height: 1.58; }
-  .founder-insight__link { display: inline-flex; gap: 8px; margin-top: 20px; color: rgba(103, 217, 255, 0.78); font-size: 0.82rem; }
+  .founder-expertise__list h3 {
+    max-width: 15ch;
+    font-size: clamp(1.35rem, 2vw, 1.95rem);
+    font-weight: 530;
+    line-height: 1.06;
+  }
+
+  .founder-expertise__list p {
+    margin-top: 13px;
+    color: rgba(226, 234, 243, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .founder-experience header p {
+    margin-top: 18px;
+  }
+
+  .founder-experience dl {
+    border-top: 1px solid rgba(126, 153, 178, 0.24);
+  }
+
+  .founder-experience dl div {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(126, 153, 178, 0.24);
+  }
+
+  .founder-experience dt {
+    margin-bottom: 7px;
+    color: var(--cloud-white);
+    font-size: 1.08rem;
+    font-weight: 550;
+  }
+
+  .founder-experience dd {
+    max-width: 55ch;
+    color: rgba(201, 211, 223, 0.7);
+    line-height: 1.56;
+  }
+
+  .founder-insights__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(24px, 3vw, 42px);
+  }
+
+  .founder-insight a {
+    display: block;
+    color: inherit;
+  }
+
+  .founder-insight figure {
+    aspect-ratio: 16 / 8;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #07101a;
+  }
+
+  .founder-insight img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 500ms var(--ease-out), filter 350ms var(--ease-out);
+  }
+
+  .founder-insight__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 18px;
+    color: rgba(169, 194, 211, 0.62);
+    font-size: 0.56rem;
+  }
+
+  .founder-insight h3 {
+    margin-top: 12px;
+    font-size: clamp(1.22rem, 1.7vw, 1.72rem);
+    font-weight: 530;
+    line-height: 1.08;
+  }
+
+  .founder-insight__link {
+    display: inline-flex;
+    gap: 8px;
+    margin-top: 18px;
+    color: rgba(103, 217, 255, 0.82);
+    font-size: 0.8rem;
+  }
 
   .founder-learn__layout {
-    display: grid;
-    grid-template-columns: minmax(0, 0.8fr) minmax(300px, 0.6fr);
-    gap: clamp(48px, 10vw, 154px);
     align-items: end;
-    padding-top: clamp(38px, 5vw, 62px);
-    border-top: 1px solid rgba(126, 153, 178, 0.22);
+    border-top: 1px solid rgba(126, 153, 178, 0.24);
+    padding-top: clamp(28px, 4vw, 44px);
   }
-  .founder-learn h2 { max-width: 12ch; margin-top: 16px; }
-  .founder-learn p { max-width: 46ch; margin-bottom: 24px; }
+
+  .founder-learn p {
+    margin-bottom: 22px;
+  }
 
   @media (hover: hover) and (pointer: fine) {
-    .founder-insight a:hover img { transform: scale(1.035); filter: brightness(1.06); }
+    .founder-insight a:hover img {
+      transform: scale(1.035);
+      filter: brightness(1.06);
+    }
   }
 
   @media (max-width: 900px) {
+    .founder-intro,
+    .founder-section {
+      min-height: 0;
+    }
+
     .founder-intro__layout,
+    .founder-story__layout,
     .founder-philosophy__layout,
-    .founder-section-header,
     .founder-experience__layout,
-    .founder-learn__layout { grid-template-columns: minmax(0, 1fr); gap: 34px; }
-    .founder-portrait-placeholder { width: min(100%, 520px); }
-    .founder-story__layout { grid-template-columns: 46px minmax(0, 1fr); }
-    .founder-story__layout p { grid-column: 2; }
-    .founder-insights__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .founder-learn__layout,
+    .founder-section-header {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 26px;
+    }
+
+    .founder-portrait {
+      width: min(78vw, 430px);
+    }
+
+    .founder-expertise__list {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .founder-expertise__list li {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(169, 194, 211, 0.2);
+    }
+
+    .founder-expertise__list li + li {
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    .founder-insights__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   @media (max-width: 640px) {
-    .founder-expertise__list li { grid-template-columns: 40px minmax(0, 1fr); gap: 14px; }
-    .founder-expertise__list li p { grid-column: 2; }
-    .founder-insights__grid { grid-template-columns: minmax(0, 1fr); gap: 58px; }
+    .founder-intro {
+      padding: 64px 0 34px;
+    }
+
+    .founder-intro__after {
+      justify-content: flex-start;
+      margin-top: 22px;
+      padding-top: 16px;
+    }
+
+    .founder-intro__layout {
+      gap: 26px;
+    }
+
+    .founder-portrait {
+      width: 100%;
+      height: 220px;
+      max-height: none;
+      aspect-ratio: auto;
+    }
+
+    .founder-portrait figcaption {
+      inset: auto 20px 18px;
+    }
+
+    .founder-intro__copy h1 {
+      font-size: clamp(2.7rem, 13vw, 3.6rem);
+    }
+
+    .founder-intro__copy h2 {
+      margin-top: 20px;
+      font-size: clamp(1.45rem, 7vw, 1.9rem);
+    }
+
+    .founder-intro__copy p {
+      margin-top: 12px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .founder-intro__copy p + p {
+      margin-top: 9px;
+    }
+
+    .founder-section {
+      padding: 44px 0;
+    }
+
+    .founder-section-header {
+      margin-bottom: 28px;
+    }
+
+    .founder-expertise__list li {
+      padding: 18px 0;
+    }
+
+    .founder-insights__grid {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 0 max(0px, calc((100vw - 100%) / 2)) 10px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+    }
+
+    .founder-insight {
+      flex: 0 0 min(82vw, 320px);
+      scroll-snap-align: start;
+    }
+
+    .founder-insight figure {
+      aspect-ratio: 16 / 9;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .founder-insight img { transition: none; }
+    .founder-insight img {
+      transition: none;
+    }
   }
 </style>

@@ -28,5 +28,5 @@ const site = Astro.site ?? new URL('https://kultivate.id');
   ])}
 >
   <LearnSeriesPage locale="id" series={series} />
-  <FinalCTA locale="id" analyticsEvent="learn_to_priorities_click" analyticsContext={series.slug} />
+  <FinalCTA locale="id" analyticsEvent="learn_consultation_click" analyticsContext={series.id} surface="learn" />
 </BaseLayout>
