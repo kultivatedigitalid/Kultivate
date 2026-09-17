@@ -1,5 +1,19 @@
 # Content Matrix
 
+## Service content update · 15 September 2026
+
+Source: client-supplied `Kultivate Services.docx`. Public adaptation is centralized in `src/data/services.ts` for ID/EN: summaries, business problems, impacts, inspections, audiences, scope, deliverables, six-phase processes, principles, and specific FAQs.
+
+| Public service | EN and ID route suffix |
+|---|---|
+| SEO | `/services/seo/` |
+| Web Services | `/services/web-services/` |
+| Visual Strategy | `/services/visual-strategy/` |
+| Social Media Management | `/services/social-media-management/` |
+
+Home, directory, details, footer, consultation options, recommendation weights, recommendation copy, contact prefill, and metadata use the current four-service model. The earlier standalone AEO & GEO / Content Management service model below is historical. Existing Learn content and portfolio proof restrictions remain in place.
+
+
 **Brand baseline:** Kultivate Brand Guideline Book v2.0
 **Last updated:** 2026-08-26
 

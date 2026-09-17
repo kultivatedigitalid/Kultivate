@@ -1,5 +1,14 @@
 # KULTIVATE BRAND GUIDELINE - IMPLEMENTATION COMPANION
 
+## Current direction · 16 September 2026
+
+The latest client request takes precedence over the earlier baseline below. Public services are **SEO, Web Services, Visual Strategy, and Social Media Management**, with `Kultivate Services.docx` as the newest content source. Both locales have four service details and a four-service diagnostic.
+
+Use toned-down blue-grey gradients with long fades into the surrounding navy, plus the exact ThreeUI Ribbon Field anchored to the document and repeated down the page between background colors and foreground content. Harmonize light-section components with slate surfaces and restrained image contrast. This supersedes earlier dark-only and no-WebGL restrictions for this specific integration. Home services use the supplied sketch and fit a desktop/laptop viewport; mobile stacks vertically. Existing portfolio detail templates remain inactive.
+
+Implementation, source provenance, and validation: [September experiments](EXPERIMENTS_2026-09-15.md).
+
+
 **Version:** 2.0
 **Date:** 10 August 2026
 **Status:** Approved strategic baseline / pending asset completion
@@ -38,7 +47,7 @@ Use these status labels:
 
 **Connected Digital Growth**
 
-Kultivate begins with business context and applies SEO, AEO & GEO, Web Services, and Content Management only where they support the current priority.
+Kultivate begins with business context and applies SEO, Web Services, Visual Strategy, and Social Media Management only where they support the current priority.
 
 ### Personality
 
@@ -81,7 +90,7 @@ The inquiry should provide objective, needs, timeline, and material readiness.
 
 ## 2. About Kultivate
 
-Kultivate is a digital agency that helps businesses improve how they are understood, found, and used through SEO, AEO & GEO, Web Services, and Content Management. Each service may stand alone or combine with another when a real dependency exists.
+Kultivate is a digital agency that helps businesses improve how they are understood, found, and used through SEO, Web Services, Visual Strategy, and Social Media Management. Each service may stand alone or combine with another when a real dependency exists.
 
 ### SEO - Traditional Search Visibility
 
@@ -133,7 +142,7 @@ Explain objective, scope, deliverables, dependencies, decisions, and next steps 
 
 #### 2. Connected Thinking
 
-Connect SEO, AEO & GEO, Web Services, and Content Management only where messaging, information architecture, implementation, evidence, and the next action genuinely depend on one another.
+Connect SEO, Web Services, Visual Strategy, and Social Media Management only where messaging, information architecture, implementation, evidence, and the next action genuinely depend on one another.
 
 #### 3. Craft with Purpose
 
@@ -157,7 +166,7 @@ Use restraint, generous spacing, and direct language. Do not use excessive glow,
 
 ### Positioning statement
 
-For growing businesses that need a more directed digital presence, Kultivate is a digital agency that understands the business logic first, then applies SEO, AEO & GEO, Web Services, and Content Management with clear ownership and evidence.
+For growing businesses that need a more directed digital presence, Kultivate is a digital agency that understands the business logic first, then applies SEO, Web Services, Visual Strategy, and Social Media Management with clear ownership and evidence.
 
 ### Messaging pillars
 

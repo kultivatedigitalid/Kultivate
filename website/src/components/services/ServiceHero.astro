@@ -2,20 +2,22 @@
 import HeroShell from '../shared/HeroShell.astro';
 
 interface Props {
+  serviceId: string;
   title: string;
   tagline: string;
   description: string;
   systemRole: string;
   locale: 'id' | 'en';
 }
-const { title, tagline, locale } = Astro.props;
-const image = title.includes('AEO')
-  ? '/assets/banners/aeo-geo-gradient.webp'
-  : title.includes('Web')
-    ? '/assets/banners/web-services-gradient.webp'
-    : title.includes('Content')
-      ? '/assets/banners/content-gradient.webp'
-      : '/assets/banners/seo-gradient.webp';
+const { title, tagline, locale, serviceId } = Astro.props;
+// Hero artwork is separate from the process imagery used by service cards.
+const banners: Record<string, string> = {
+  'seo': '/assets/banners/seo-gradient.webp',
+  'web-services': '/assets/banners/web-services-gradient.webp',
+  'social-media-management': '/assets/banners/aeo-geo-gradient.webp',
+  'visual-strategy': '/assets/banners/insights-gradient.webp',
+};
+const image = banners[serviceId] ?? banners.seo;
 const imageAlt = locale === 'id'
   ? `Visual abstrak untuk layanan ${title}`
   : `Abstract visual for ${title} services`;

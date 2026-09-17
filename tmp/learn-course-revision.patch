@@ -1,0 +1,294 @@
+diff --git a/website/src/components/learn/LearnSeriesPage.astro b/website/src/components/learn/LearnSeriesPage.astro
+--- a/website/src/components/learn/LearnSeriesPage.astro
++++ b/website/src/components/learn/LearnSeriesPage.astro
+@@ -13,8 +13,9 @@ interface Props {
+ 
+ const { locale, series } = Astro.props;
+ const lessons = getLearningLessonsForSeries(series.id);
+ const relatedServicePath = `/${locale}/services/${series.category}/`;
++const roadmapPath = `/${locale}/services/#website-growth-roadmap`;
+ const learnPath = `/${locale}/learn/`;
+ const copy = locale === 'id'
+   ? {
+@@ -30,6 +31,9 @@ const copy = locale === 'id'
+         ? 'Butuh bantuan menerapkan keputusan search ini ke konteks bisnis Anda? Lihat cara kami menangani SEO.'
+         : 'Butuh bantuan menerapkan keputusan website ini ke konteks bisnis Anda? Lihat cara kami menangani Web Services.',
+       relatedCta: series.category === 'seo' ? 'Pelajari layanan SEO' : 'Pelajari Web Services',
++      roadmapTitle: 'Lanjutkan dari insight ke prioritas',
++      roadmapBody: 'Gunakan Website Growth Roadmap untuk melihat apakah SEO, Web Services, atau keduanya menjadi langkah berikutnya yang paling berguna.',
++      roadmapCta: 'Buka Website Growth Roadmap',
+     }
+   : {
+       back: 'Back to Learn',
+@@ -46,6 +50,9 @@ const copy = locale === 'id'
+         ? 'Need help applying these search decisions to your business context? See how we approach SEO.'
+         : 'Need help applying these website decisions to your business context? See how we approach Web Services.',
+       relatedCta: series.category === 'seo' ? 'Explore SEO services' : 'Explore Web Services',
++      roadmapTitle: 'Turn the insight into a priority',
++      roadmapBody: 'Use the Website Growth Roadmap to see whether SEO, Web Services, or both should become your most useful next move.',
++      roadmapCta: 'Open the Website Growth Roadmap',
+     };
+ ---
+ 
+@@ -58,21 +65,10 @@ const copy = locale === 'id'
+ >
+   <section class="learn-workspace flow-section" aria-labelledby="course-title">
+     <div class="container">
+-      <div class="learn-workspace__bar" data-reveal>
+-        <a class="link-hover-arrow" href={learnPath}>
+-          <span aria-hidden="true">&#8592;</span><span>{copy.back}</span>
+-        </a>
+-        <div class="text-mono">
+-          <span>{copy.course}</span>
+-          <span aria-hidden="true">/</span>
+-          <span>{copy.lessonCount}</span>
+-        </div>
+-      </div>
+-
+       <div class="learn-workspace__layout">
+-        <aside class="learn-modules" aria-labelledby="series-modules-title" data-reveal>
++        <aside class="learn-modules" aria-labelledby="course-title" data-reveal>
+           <span class="text-mono">{copy.modules}</span>
+-          <h2 id="series-modules-title">{series.title[locale]}</h2>
++          <h1 id="course-title">{series.title[locale]}</h1>
+           <div class="learn-progress" aria-label={copy.progress}>
+             <div class="learn-progress__meta text-mono">
+               <span>{copy.progress}</span>
+@@ -101,12 +97,11 @@ const copy = locale === 'id'
+         </aside>
+ 
+         <div class="learn-player" data-reveal="content">
+-          <header class="learn-player__intro">
+-            <span class="text-mono">{copy.course}</span>
+-            <h1 id="course-title">{series.title[locale]}</h1>
+-            <p>{series.description[locale]}</p>
+-          </header>
++          <div class="learn-player__topbar">
++            <a class="link-hover-arrow" href={learnPath}>
++              <span aria-hidden="true">&#8592;</span><span>{copy.back}</span>
++            </a>
++          </div>
+ 
+           {lessons.map((lesson, index) => (
+             <section
+@@ -126,6 +121,16 @@ const copy = locale === 'id'
+                 index={index}
+                 display="player"
+               />
++
++              {index === lessons.length - 1 && (
++                <aside class="learn-roadmap-cta" aria-labelledby={`roadmap-cta-${series.id}`}>
++                  <div>
++                    <h2 id={`roadmap-cta-${series.id}`}>{copy.roadmapTitle}</h2>
++                    <p>{copy.roadmapBody}</p>
++                  </div>
++                  <a class="btn btn-primary" href={roadmapPath} data-learn-roadmap-link>
++                    <span>{copy.roadmapCta}</span><span aria-hidden="true">&#8594;</span>
++                  </a>
++                </aside>
++              )}
+ 
+               <nav class="learn-player__controls" aria-label={locale === 'id' ? 'Navigasi materi' : 'Lesson navigation'}>
+                 {index > 0 ? (
+@@ -257,6 +262,10 @@ const copy = locale === 'id'
+         trackFunnelEvent('learn_to_service_click', { series_id: seriesId });
+       });
+ 
++      root.querySelector<HTMLElement>('[data-learn-roadmap-link]')?.addEventListener('click', () => {
++        trackFunnelEvent('learn_to_service_click', { series_id: seriesId, target: 'website-growth-roadmap' });
++      });
++
+       root.querySelectorAll<HTMLButtonElement>('[data-lesson-complete]').forEach((button) => {
+         button.addEventListener('click', () => {
+           const lessonId = button.dataset.lessonComplete;
+@@ -290,31 +299,15 @@ const copy = locale === 'id'
+ </script>
+ 
+ <style>
++  .learn-series-page {
++    background:
++      radial-gradient(ellipse 68% 34% at 78% 16%, rgba(103, 217, 255, 0.13), transparent 72%),
++      linear-gradient(180deg, rgba(244, 247, 251, 0.2), rgba(244, 247, 251, 0.14) 62%, rgba(244, 247, 251, 0.06)),
++      #0b1723;
++  }
++
+   .learn-workspace {
+-    padding: clamp(96px, 10vw, 126px) 0 clamp(48px, 6vw, 72px);
+-  }
+-
+-  .learn-workspace__bar {
+-    display: flex;
+-    align-items: center;
+-    justify-content: space-between;
+-    gap: 24px;
+-    margin-bottom: clamp(30px, 4vw, 46px);
+-    padding-bottom: 18px;
+-    border-bottom: 1px solid rgba(126, 153, 178, 0.22);
+-  }
+-
+-  .learn-workspace__bar > .text-mono {
+-    display: flex;
+-    gap: 10px;
+-    color: rgba(201, 211, 223, 0.58);
+-    font-size: 0.6rem;
+-  }
+-
+-  .learn-workspace__bar .link-hover-arrow {
+-    color: rgba(226, 234, 243, 0.74);
+-    font-size: 0.82rem;
++    padding: clamp(118px, 11vw, 148px) 0 clamp(48px, 6vw, 72px);
+   }
+ 
+   .learn-workspace__layout {
+@@ -329,13 +322,12 @@ const copy = locale === 'id'
+   }
+ 
+   .learn-modules > .text-mono,
+-  .learn-player__intro > .text-mono,
+   .learn-related .text-mono {
+     color: rgba(103, 217, 255, 0.72);
+     font-size: 0.6rem;
+   }
+ 
+-  .learn-modules h2 {
++  .learn-modules h1 {
+     max-width: 15ch;
+     margin: 13px 0 26px;
+     font-size: clamp(1.55rem, 2.2vw, 2.3rem);
+@@ -371,18 +363,11 @@ const copy = locale === 'id'
+   .learn-modules button[aria-current='step'] {
+     padding-left: 10px;
+     color: var(--cloud-white);
+-    background: linear-gradient(90deg, rgba(103, 217, 255, 0.11), transparent 84%);
+-  }
+-
+-  .learn-modules button[aria-current='step']::before {
+-    content: '';
+-    position: absolute;
+-    inset: 0 auto 0 0;
+-    width: 2px;
+-    background: rgba(103, 217, 255, 0.86);
++    background: rgba(5, 18, 29, 0.28);
++    box-shadow: inset 0 0 0 1px rgba(103, 217, 255, 0.2);
+   }
+ 
+   .learn-modules__index {
+@@ -404,17 +389,16 @@ const copy = locale === 'id'
+     min-width: 0;
+   }
+ 
+-  .learn-player__intro {
+-    display: grid;
+-    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.56fr);
+-    gap: 10px clamp(30px, 5vw, 72px);
+-    align-items: end;
+-    margin-bottom: 28px;
++  .learn-player__topbar {
++    min-height: 44px;
++    display: flex;
++    align-items: center;
++    justify-content: flex-end;
++    margin-bottom: 16px;
+   }
+ 
+-  .learn-player__intro > .text-mono {
+-    grid-column: 1 / -1;
++  .learn-player__topbar .link-hover-arrow {
++    color: rgba(238, 245, 250, 0.84);
++    font-size: 0.82rem;
+   }
+ 
+   .learn-modules__done {
+@@ -423,21 +407,6 @@ const copy = locale === 'id'
+     font-size: 0.72rem;
+   }
+ 
+-  .learn-player__intro h1 {
+-    max-width: 13ch;
+-    font-size: clamp(2.2rem, 3.8vw, 4.3rem);
+-    font-weight: 530;
+-    letter-spacing: -0.04em;
+-    line-height: 0.96;
+-  }
+-
+-  .learn-player__intro p {
+-    max-width: 48ch;
+-    color: rgba(226, 234, 243, 0.7);
+-    font-size: 0.9rem;
+-    line-height: 1.58;
+-  }
+-
+   .learn-player__panel[hidden] {
+     display: none;
+   }
+@@ -458,6 +427,34 @@ const copy = locale === 'id'
+     color: rgba(226, 234, 243, 0.82);
+   }
+ 
++  .learn-roadmap-cta {
++    display: grid;
++    grid-template-columns: minmax(0, 1fr) auto;
++    gap: 24px 40px;
++    align-items: center;
++    margin-top: 32px;
++    border-radius: 12px;
++    padding: clamp(22px, 3vw, 32px);
++    background: rgba(5, 15, 24, 0.34);
++  }
++
++  .learn-roadmap-cta h2 {
++    max-width: 18ch;
++    font-size: clamp(1.55rem, 2.4vw, 2.35rem);
++    font-weight: 540;
++    letter-spacing: -0.03em;
++  }
++
++  .learn-roadmap-cta p {
++    max-width: 58ch;
++    margin-top: 10px;
++    color: rgba(226, 234, 243, 0.78);
++    font-size: 0.9rem;
++  }
++
+   .learn-related {
+     padding: clamp(28px, 4vw, 52px) 0 clamp(88px, 10vw, 132px);
+   }
+@@ -495,23 +492,20 @@ const copy = locale === 'id'
+ 
+   @media (max-width: 920px) {
+     .learn-workspace__layout,
+-    .learn-related__layout,
+-    .learn-player__intro {
++    .learn-related__layout {
+       grid-template-columns: minmax(0, 1fr);
+       gap: 34px;
+     }
+ 
+-    .learn-player__intro {
+-      gap: 16px;
+-    }
+-
+     .learn-modules {
+       position: static;
+     }
+ 
+-    .learn-modules h2 {
++    .learn-modules h1 {
+       max-width: none;
+     }
++
++    .learn-roadmap-cta {
++      grid-template-columns: minmax(0, 1fr);
++    }
+   }
+ 
+   @media (max-width: 560px) {
+-    .learn-workspace__bar {
+-      align-items: flex-start;
+-      flex-direction: column;
+-      gap: 12px;
+-    }
+-
+     .learn-player__controls {
+       gap: 12px;
+     }

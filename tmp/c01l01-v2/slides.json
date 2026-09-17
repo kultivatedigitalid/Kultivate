@@ -1,0 +1,116 @@
+[
+  {
+    "n": 1,
+    "title": "Gimana pencarian bisa buka peluang bisnis",
+    "purpose": "Bantu kita tahu posisi lesson dan apa yang mau dipelajari.",
+    "visual": "Judul besar dan struktur seri. Satu lesson fokus ke satu keputusan atau cara memahami masalah.",
+    "chapter": "Metadata dan Posisi kita di Kultivate Learn",
+    "codes": [],
+    "source": "Framework dan penjelasan Kultivate. "
+  },
+  {
+    "n": 2,
+    "title": "Traffic naik, peluangnya belum jelas",
+    "purpose": "Bantu kita lihat kenapa kunjungan yang naik masih perlu dicek hubungannya sama bisnis.",
+    "visual": "Dua sisi: yang udah kelihatan dan yang masih perlu dicek. Tanpa angka performa.",
+    "chapter": "Bab 1",
+    "codes": [],
+    "source": "Framework dan penjelasan Kultivate. "
+  },
+  {
+    "n": 3,
+    "title": "Demand dan traffic",
+    "purpose": "Bedain kebutuhan orang dengan kunjungan ke website.",
+    "visual": "Dua definisi besar dan satu pertanyaan soal kecocokan kebutuhan.",
+    "chapter": "Bab 1",
+    "codes": [],
+    "source": "Framework dan penjelasan Kultivate. "
+  },
+  {
+    "n": 4,
+    "title": "Empat momen pencarian",
+    "purpose": "Kenalin Discover, Learn, Compare/Validate, dan Act tanpa bikin urutannya terasa wajib.",
+    "visual": "Empat simpul dengan panah maju dan panah balik. Label Kultivate framework.",
+    "chapter": "Bab 2",
+    "codes": [
+      "S4"
+    ],
+    "source": "Framework dan penjelasan Kultivate. S4"
+  },
+  {
+    "n": 5,
+    "title": "Jawaban yang calon pembeli butuhkan",
+    "purpose": "Bantu kita lihat pertanyaan yang beda di tiap momen.",
+    "visual": "Tabel native empat baris. Momen dan pertanyaannya bisa langsung dibandingkan.",
+    "chapter": "Bab 2",
+    "codes": [],
+    "source": "Framework dan penjelasan Kultivate. "
+  },
+  {
+    "n": 6,
+    "title": "Dari muncul di search sampai peluang yang cocok",
+    "purpose": "Bedain kemunculan, kunjungan relevan, inquiry, dan peluang yang udah dicek.",
+    "visual": "Alur empat bagian, masing-masing dengan hal yang perlu kita cek. Ini bukan funnel terukur.",
+    "chapter": "Bab 3",
+    "codes": [
+      "S2"
+    ],
+    "source": "Framework dan penjelasan Kultivate. S2"
+  },
+  {
+    "n": 7,
+    "title": "Klik kontak belum tentu jadi inquiry",
+    "purpose": "Bantu kita bedain tindakan di website dengan pesan yang beneran masuk.",
+    "visual": "Tiga tindakan berurutan dan satu catatan soal key event.",
+    "chapter": "Bab 3",
+    "codes": [
+      "S3"
+    ],
+    "source": "Framework dan penjelasan Kultivate. S3"
+  },
+  {
+    "n": 8,
+    "title": "Contoh perawatan AC kantor",
+    "purpose": "Bikin Discover dan Learn lebih kebayang lewat satu contoh bisnis jasa.",
+    "visual": "Dua momen awal, contoh pencarian, lalu info yang dibutuhkan. Label hipotetis terlihat.",
+    "chapter": "Bab 4",
+    "codes": [],
+    "source": "Contoh hipotetis Kultivate."
+  },
+  {
+    "n": 9,
+    "title": "Inquiry masuk, cocoknya tetap perlu dicek",
+    "purpose": "Lanjutin contoh ke Compare/Validate dan Act.",
+    "visual": "Dua momen berikutnya dan catatan kalo permintaan masuk masih perlu dicek.",
+    "chapter": "Bab 4",
+    "codes": [],
+    "source": "Contoh hipotetis Kultivate."
+  },
+  {
+    "n": 10,
+    "title": "Yang kita lihat dan yang masih kita duga",
+    "purpose": "Bantu kita bedain observasi, hipotesis, dan langkah cek berikutnya.",
+    "visual": "Tiga baris yang masing-masing punya label jelas.",
+    "chapter": "Bab 4",
+    "codes": [],
+    "source": "Contoh hipotetis Kultivate."
+  },
+  {
+    "n": 11,
+    "title": "Sekarang coba di layanan Anda",
+    "purpose": "Sambungin contoh ke worksheet dan ke keputusan sederhana yang bisa kita ambil.",
+    "visual": "Langkah worksheet di kiri, dua kondisi yang perlu dicek dulu di kanan.",
+    "chapter": "Bab 4 dan Worksheet",
+    "codes": [],
+    "source": "Framework dan penjelasan Kultivate. "
+  },
+  {
+    "n": 12,
+    "title": "Search bisa bantu orang ambil keputusan",
+    "purpose": "Tutup dengan satu ide utama dan ajakan lanjut belajar.",
+    "visual": "Takeaway besar, lalu Lesson 02 dan catatan kalo worksheet boleh dicoba.",
+    "chapter": "Bab 4 bagian penutup",
+    "codes": [],
+    "source": "Framework dan penjelasan Kultivate. "
+  }
+]

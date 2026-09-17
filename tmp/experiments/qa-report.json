@@ -1,0 +1,453 @@
+{
+  "pages": [
+    {
+      "locale": "en",
+      "name": "home",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "en",
+      "name": "about",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "en",
+      "name": "services",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "en",
+      "name": "learn",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "en",
+      "name": "blog",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "en",
+      "name": "work",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "en",
+      "name": "visual",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "en",
+      "name": "social",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "id",
+      "name": "home",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "id",
+      "name": "about",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "id",
+      "name": "services",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "id",
+      "name": "learn",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "id",
+      "name": "blog",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "id",
+      "name": "work",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "id",
+      "name": "visual",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    },
+    {
+      "locale": "id",
+      "name": "social",
+      "width": 1440,
+      "doc": 1440,
+      "main": 1,
+      "brokenImages": []
+    }
+  ],
+  "homeSizes": [
+    {
+      "width": 1440,
+      "height": 828,
+      "locale": "en",
+      "viewport": 900,
+      "cards": [
+        {
+          "height": 322,
+          "textOverflow": false
+        },
+        {
+          "height": 322,
+          "textOverflow": false
+        },
+        {
+          "height": 152,
+          "textOverflow": false
+        },
+        {
+          "height": 152,
+          "textOverflow": false
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 828,
+      "locale": "id",
+      "viewport": 900,
+      "cards": [
+        {
+          "height": 322,
+          "textOverflow": false
+        },
+        {
+          "height": 322,
+          "textOverflow": false
+        },
+        {
+          "height": 152,
+          "textOverflow": false
+        },
+        {
+          "height": 152,
+          "textOverflow": false
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 696,
+      "locale": "en",
+      "viewport": 768,
+      "cards": [
+        {
+          "height": 320,
+          "textOverflow": false
+        },
+        {
+          "height": 320,
+          "textOverflow": false
+        },
+        {
+          "height": 151,
+          "textOverflow": false
+        },
+        {
+          "height": 151,
+          "textOverflow": false
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 696,
+      "locale": "id",
+      "viewport": 768,
+      "cards": [
+        {
+          "height": 320,
+          "textOverflow": false
+        },
+        {
+          "height": 320,
+          "textOverflow": false
+        },
+        {
+          "height": 151,
+          "textOverflow": false
+        },
+        {
+          "height": 151,
+          "textOverflow": false
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "height": 648,
+      "locale": "en",
+      "viewport": 720,
+      "cards": [
+        {
+          "height": 309,
+          "textOverflow": false
+        },
+        {
+          "height": 309,
+          "textOverflow": false
+        },
+        {
+          "height": 146,
+          "textOverflow": false
+        },
+        {
+          "height": 146,
+          "textOverflow": false
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "height": 648,
+      "locale": "id",
+      "viewport": 720,
+      "cards": [
+        {
+          "height": 309,
+          "textOverflow": false
+        },
+        {
+          "height": 309,
+          "textOverflow": false
+        },
+        {
+          "height": 146,
+          "textOverflow": false
+        },
+        {
+          "height": 146,
+          "textOverflow": false
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 696,
+      "locale": "en",
+      "viewport": 768,
+      "cards": [
+        {
+          "height": 284,
+          "textOverflow": false
+        },
+        {
+          "height": 284,
+          "textOverflow": false
+        },
+        {
+          "height": 133,
+          "textOverflow": false
+        },
+        {
+          "height": 133,
+          "textOverflow": false
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 696,
+      "locale": "id",
+      "viewport": 768,
+      "cards": [
+        {
+          "height": 284,
+          "textOverflow": false
+        },
+        {
+          "height": 284,
+          "textOverflow": false
+        },
+        {
+          "height": 133,
+          "textOverflow": false
+        },
+        {
+          "height": 133,
+          "textOverflow": false
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "motion": "pointer, pause, resume, reduced motion passed",
+      "before": [
+        0.17891816419999207,
+        0.7291210487959238
+      ],
+      "after": [
+        0.7899043418833899,
+        0.18651547516806768
+      ]
+    },
+    {
+      "locale": "en",
+      "quiz": "visual-strategy",
+      "contactPrefill": "passed"
+    },
+    {
+      "locale": "id",
+      "quiz": "social-media-management",
+      "contactPrefill": "passed"
+    },
+    "Blog filters passed",
+    "Service FAQ passed",
+    "Mobile menu and escape passed"
+  ],
+  "errors": [],
+  "failedLocal": [],
+  "mobile": [
+    {
+      "locale": "en",
+      "name": "home",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "en",
+      "name": "about",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "en",
+      "name": "services",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "en",
+      "name": "learn",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "en",
+      "name": "blog",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "en",
+      "name": "work",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "en",
+      "name": "visual",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "en",
+      "name": "social",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "id",
+      "name": "home",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "id",
+      "name": "about",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "id",
+      "name": "services",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "id",
+      "name": "learn",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "id",
+      "name": "blog",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "id",
+      "name": "work",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "id",
+      "name": "visual",
+      "width": 390,
+      "doc": 390
+    },
+    {
+      "locale": "id",
+      "name": "social",
+      "width": 390,
+      "doc": 390
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,138 @@
+[Normal] KULTIVATE / LEARN PLANNING
+[Title] Kultivate Learn — Content Planning for 6 Courses / 36 Lessons
+[Normal] Course-by-course and lesson-by-lesson plan using the trust-led explanation framework.
+[TABLE]
+Kultivate  |  SEO Agency  |  Indonesia primary, English secondary
+[Normal] Planning version: 11 September 2026
+[Small Note] Prepared for content strategy, Learn curriculum planning, and trust-led consultation funnel design.
+[Heading 1] Planning principles
+[List Bullet] Primary audience: CEO/Owner, Marketing, IT Lead, Procurement. Indonesia primary; English secondary.
+[List Bullet] Primary objective: build trust and problem awareness, then move the right learner toward Growth Roadmap and a free first consultation within roughly one month when intent exists.
+[List Bullet] One lesson = one decision or mental model. Default video duration 6–12 minutes.
+[List Bullet] Free: problem, framework, high-level diagnostic, trade-offs, “what good looks like”, worksheet/checklist. Paid/service boundary: contextual research, prioritization, implementation, QA, stakeholder coordination, ongoing measurement.
+[List Bullet] Proof policy: no fabricated Kultivate results. Use official sources, verified public cases, public-site teardown, or clearly labeled hypothetical examples until real client evidence exists.
+[Heading 2] CTA ladder
+[TABLE]
+Intent level | Typical lesson moment | Primary CTA | Secondary CTA
+Low | Lessons 1–2 / learner still forming problem | Continue to next lesson | Related public example / optional worksheet
+Medium | Lessons 2–4 / can self-diagnose | Worksheet / scorecard | Growth Priority diagnostic
+High | Lessons 4–6 / active gap becomes clear | Growth Roadmap | Free first consultation
+Very high | Diagnostic result + active project <1–3 months | Free consultation | Relevant service scope page
+[Heading 2] Trust-proof ladder for launch
+[TABLE]
+Level | Use now? | Example
+Source proof | Yes | Google/Search Central, web.dev, public datasets, official platform documentation.
+Reasoning/process proof | Yes | Decision matrices, scope checklists, page-review heuristics, migration checklist.
+Public case / teardown | Yes | Verified public case or public website, with clear source attribution.
+Hypothetical scenario | Yes, clearly labeled | Illustrative B2B company; never present fictional numbers/logos as client proof.
+Kultivate client case | Later | Only with verified evidence and permission; include timeframe, limitations, and trade-offs.
+[Heading 1] Course 01 — SEO for Business Growth: From Search to Sales
+[TABLE]
+Priority | Primary audience | Purpose | Lead magnet | Final CTA
+P1 / Launch | Owner / Founder, Marketing Lead, SEO Lead | Connect SEO to business opportunity, demand, service discovery, decisions, inquiry, and revenue signals — not rankings alone. | Search-to-Sales Mapping Worksheet | Get a Free SEO Growth Consultation
+[Small Note] Progressive data: Role, website URL, priority product/service, organic challenge, primary goal, timeline.
+[TABLE]
+Lesson | Business problem / hook | Teaching spine / model | Proof / example treatment | Self-diagnostic + next step
+01 How Search Creates Business Opportunities | Traffic/ranking is not the business outcome. Where does search influence discovery, evaluation and inquiry? | Discover -> Learn -> Compare/Validate -> Act. Demand vs traffic; commercial intent; visibility vs pipeline. | Hypothetical B2B service journey; source-backed examples of search behavior. | Ask 4 buying-stage questions. CTA: Lesson 02 + optional Search-to-Sales worksheet.
+02 Map Customer Demand Before Choosing Keywords | Teams often start with keywords before understanding what customers are trying to solve. | Offer -> customer problem -> buying question -> demand theme -> intent category. | Use one Kultivate-like service and show how one offer produces multiple problem/question themes. | Inventory 5 customer questions. CTA: worksheet / continue to intent lesson.
+03 Search Intent Across the Buying Journey | A keyword can look relevant but deserve a different page — or no page at all. | Learn / compare / evaluate / act; page-type decision rule; mismatch examples. | Compare one informational query, one service query, one branded validation query. | Classify 5 queries. CTA: Growth diagnostic becomes optional.
+04 Turn Business Services Into Searchable Pages | A service page fails when search engines and buyers cannot tell who it is for, what problem it solves, or why to trust it. | Service-page anatomy: problem, scope, audience/use case, evidence, process, FAQs, next action + IA/internal links. | Annotated public/service-page teardown; label observations vs recommendations. | Score one service page. CTA: worksheet + Growth Roadmap if active gap.
+05 What Makes a Service Page Rank and Help Someone Decide | Discoverability without decision support creates traffic that does not convert; persuasion without search relevance is hard to discover. | Balance: intent match + clarity + evidence + differentiation + friction reduction + next action. | Weak vs strong illustrative structures, no fabricated performance numbers. | Run decision-friction checklist. CTA: Roadmap / consultation for page-specific review.
+06 Measure SEO Beyond Rankings: Visibility -> Inquiry -> Pipeline | If rankings move but business signals do not, what should a decision-maker actually look at? | Measurement hierarchy: visibility -> qualified visits -> engaged actions -> inquiries -> pipeline; attribution caveats. | Simple dashboard mock example; explain assisted conversions and limits. | Identify 3 metrics + 1 attribution limitation. CTA: free SEO Growth Consultation after roadmap.
+[Heading 1] Course 02 — Your Website as a Business & Sales System
+[TABLE]
+Priority | Primary audience | Purpose | Lead magnet | Final CTA
+P1 / Launch | Owner / Founder, Marketing Lead, Business Lead | Teach that a website is an operating asset that reduces uncertainty, supports discovery, builds trust, and moves the right visitor toward the next action. | Website Business Job Canvas + Website Priority Scorecard | Get a Free Website Growth Consultation
+[Small Note] Progressive data: Role, URL, business model, primary website job, inquiry/conversion problem, redesign status, timeline.
+[TABLE]
+Lesson | Business problem / hook | Teaching spine / model | Proof / example treatment | Self-diagnostic + next step
+01 What Job Should Your Website Perform? | Many redesign conversations start with appearance before defining the site’s business job. | Jobs: discovery, education, qualification, lead generation, transaction, support, credibility; choose primary/secondary jobs. | Show 3 hypothetical businesses with different website jobs. | Choose primary job + success signal. CTA: Lesson 02.
+02 Map the Visitor Decision Journey | Visitors leave when the site asks for action before answering the uncertainty that blocks the decision. | Awareness -> evaluation -> action; question/evidence/friction at each stage. | Walk through a service buyer deciding whether to contact an agency. | List 3 unanswered questions on current site. CTA: Business Job Canvas.
+03 Information Architecture That Makes the Business Easier to Understand | If the site structure mirrors the org chart instead of the buyer’s mental model, offers become hard to understand. | Audience + offer + use case + proof -> page hierarchy/navigation. | Before/after hypothetical sitemap; explain why pages move/merge. | Ask whether each main nav item helps a buyer decide. CTA: scorecard.
+04 Trust Is a System: Proof, Clarity, and Expectations | A testimonial block cannot compensate for unclear process, authorship, scope, or what happens next. | Evidence hierarchy: verifiable facts, authorship, process transparency, case evidence, policies, expectations. | Analyze a public site’s trust signals without judging unsupported business quality. | Identify missing proof/expectation signals. CTA: Growth Roadmap.
+05 Find Conversion Friction Before Redesigning Everything | A full redesign can be an expensive answer to a smaller clarity or flow problem. | Friction categories: confusion, dead end, over-choice, weak CTA, form effort, inconsistent expectation. | Annotated hypothetical inquiry flow showing 5 friction points. | Run friction audit. CTA: Website Priority Scorecard / consultation if active project.
+06 Rebuild, Redesign, or Fix? Choose the Smallest Reliable Intervention | “We need a new website” is a proposed solution, not a diagnosis. | Decision matrix: business change, technical debt, content model, maintainability, search risk, cost of delay. | Three scenarios: targeted fix vs redesign vs migration/rebuild. | Score current constraints. CTA: free Website Growth Consultation.
+[Heading 1] Course 03 — How to Scope & Evaluate a Digital Project
+[TABLE]
+Priority | Primary audience | Purpose | Lead magnet | Final CTA
+P1 / Launch | Procurement, Owner / Founder, IT Lead | Help buyers create a clearer brief, compare vendors fairly, expose dependencies, and reduce delivery risk before budget commitment. | Website / SEO Vendor Evaluation Scorecard + Scope Checklist | Book a Free Project Scope Review
+[Small Note] Progressive data: Role, project type, vendor-selection stage, timeline, current site/stack, procurement constraints, scope readiness.
+[TABLE]
+Lesson | Business problem / hook | Teaching spine / model | Proof / example treatment | Self-diagnostic + next step
+01 Start With the Business Problem, Not the Deliverable List | A brief can lock into “redesign/SEO/landing page” before the team agrees on the outcome. | Problem statement = desired outcome + evidence/symptom + constraints + affected users/stakeholders. | Rewrite three weak deliverable briefs into problem statements. | Write one problem statement. CTA: Lesson 02 / scope checklist.
+02 What a Good Website or SEO Scope Should Contain | Two proposals can use the same service name while containing very different work and assumptions. | Scope anatomy: goals, workstreams/pages, ownership, content, technical requirements, integrations, measurement, QA, exclusions. | Side-by-side illustrative scopes; highlight missing ownership/QA. | Check 8 scope areas. CTA: vendor scorecard.
+03 How to Compare Agency Proposals Without Comparing Only Price | Lowest price may simply mean different assumptions, exclusions, QA, or ownership. | Weighted criteria: understanding, approach, evidence, scope completeness, risk handling, implementation ownership, measurement. | Illustrative vendor comparison table with identical price or different scope. | Set weights based on project risk. CTA: scorecard / project scope review.
+04 Timeline, Dependencies, and the Hidden Work That Delays Projects | Delivery dates often fail because approvals, access, content, legal, environments, integrations, and QA are not in the visible timeline. | Dependency map + critical path + readiness questions. | Hypothetical launch delayed by content/access/legal dependencies. | Name 3 dependencies outside agency control. CTA: diagnostic.
+05 Define Acceptance Criteria Before Development Starts | “Looks good” and “SEO-ready” cannot be tested consistently. | Acceptance categories: behavior, content, responsive UI, analytics, performance, accessibility, search readiness. | Turn vague requirements into observable checks. | Write 3 acceptance criteria. CTA: scope checklist / review.
+06 Vendor and Project Risk: Red Flags Before You Sign | A proposal can look complete while hiding lock-in, no migration plan, unsupported stack, missing measurement, or vague maintenance. | Red-flag checklist + questions to ask; distinguish technical vs legal/commercial review. | Illustrative red-flag proposal excerpts. | Flag risks. CTA: free Project Scope Review.
+[Heading 1] Course 04 — UX That Moves Visitors Toward Action
+[TABLE]
+Priority | Primary audience | Purpose | Lead magnet | Final CTA
+P2 / Expansion | Owner, Marketing Lead, Product / Digital Lead | Tie UX to clarity, decision load, trust, hierarchy, CTA and forms rather than aesthetics alone. | UX Friction Checklist + Decision Journey Audit | Request a Website / UX Review
+[Small Note] Progressive data: Role, URL, primary conversion action, known friction, traffic-source mix, redesign status.
+[TABLE]
+Lesson | Business problem / hook | Teaching spine / model | Proof / example treatment | Self-diagnostic + next step
+01 UX Is Decision Design, Not Decoration | A “beautiful” interface can still increase effort, uncertainty, or error. | UX lens: goal, effort, uncertainty, error risk, feedback, next action. | Compare two hypothetical interfaces with same visual quality but different decision clarity. | Identify one high-effort decision. CTA: Lesson 02.
+02 Clarity Before Creativity: Make the Offer Understandable | Creativity does not help if the visitor cannot answer “what is this, for whom, and why now?” | Hierarchy: promise -> audience/problem -> evidence -> detail -> action; progressive disclosure. | Rewrite/annotate a vague hero and supporting section. | 5-second clarity test questions. CTA: friction checklist.
+03 Reduce Choice and Navigation Friction | More options can feel comprehensive but can make the next action less obvious. | Choice architecture: primary path, secondary path, grouping, labels, progressive detail. | Menu/CTA overload teardown. | Count competing primary actions. CTA: self-audit.
+04 Trust and Risk Reduction Before the CTA | Users need reassurance at the point uncertainty appears, not only at the bottom of the page. | Risk map: uncertainty -> evidence/reassurance -> expectation -> action. | Public/hypothetical example of proof placement. | List top 3 perceived risks before inquiry. CTA: Decision Journey Audit / roadmap.
+05 Forms and Inquiry Flows That Qualify Without Blocking | Every field has a qualification benefit and a friction cost. | Progressive profiling: ask only what is needed now; defer company detail when value has not been earned. | Compare short vs overloaded B2B inquiry flow. | Label each form field “needed now / later / remove”. CTA: review.
+06 How to Review a Page Like a UX Team | Random feedback creates random redesign. A structured heuristic creates comparable decisions. | Heuristic: goal, audience, hierarchy, comprehension, evidence, interaction, accessibility, next action. | Run a compact review on a public page. | Score one page. CTA: Website/UX Review.
+[Heading 1] Course 05 — Website Technical & Migration Readiness
+[TABLE]
+Priority | Primary audience | Purpose | Lead magnet | Final CTA
+P2 / Expansion | IT Lead, Procurement, Owner overseeing redesign | Make technical risk visible before redesign, migration, CMS change, or major optimization. | Technical & Migration Readiness Checklist | Book a Free Technical Readiness Consultation
+[Small Note] Progressive data: Role, URL, CMS/stack, planned change, hosting/deployment context, analytics status, migration date, technical ownership.
+[TABLE]
+Lesson | Business problem / hook | Teaching spine / model | Proof / example treatment | Self-diagnostic + next step
+01 Performance Is a Business and Experience Constraint | A performance score is not the goal; slow experiences can affect user behavior and operational quality. | Core Web Vitals + real-user vs lab data + page weight/rendering + business context. | Use verified public web.dev case with explicit “not a promise” caveat. | Identify metric + real-user context. CTA: readiness checklist.
+02 Accessibility and Resilience Are Quality Requirements | Accessibility is not a cosmetic afterthought; semantic structure, keyboard use, labels, errors, and contrast affect robustness. | Quality checklist: semantics, input, keyboard, contrast, labels, error handling, resilience. | Public simple examples of inaccessible vs robust component behavior. | Check 5 basics. CTA: continue technical readiness.
+03 Technical Debt: When the Current Foundation Becomes Expensive | A site can “still work” while every change becomes slower, riskier, and more manual. | Debt indicators + cost-of-change framework + ownership/maintainability questions. | Hypothetical stack with fragile templates/dependencies/manual deploy. | Identify debt signals. CTA: diagnostic if rebuild is being considered.
+04 Migration Planning: URLs, Redirects, Content, and Search Equity | A visual redesign can become a search migration even when the team does not call it one. | Inventory -> URL mapping -> redirect/canonical/meta/internal links -> sitemap -> staging validation -> launch monitoring. | Illustrative URL migration map; explain failure modes. | Ask whether every old URL has an owner/outcome. CTA: checklist / consultation.
+05 Analytics, Consent, and Measurement Must Survive the Change | A redesign can improve UI and simultaneously break measurement continuity. | Measurement inventory -> baseline/export -> event map -> consent/tool assumptions -> QA. | Before/after analytics event map example. | List business-critical events. CTA: readiness diagnostic.
+06 Launch Readiness and Post-Launch QA | “Code deployed” is not the same as “launch is safe.” | Go/no-go categories: functional, responsive, accessibility, performance, analytics, indexability, redirects, monitoring, rollback, ownership. | Launch checklist + severity example. | Run go/no-go questions. CTA: free Technical Readiness Consultation.
+[Heading 1] Course 06 — AI Search, AEO & GEO for Business
+[TABLE]
+Priority | Primary audience | Purpose | Lead magnet | Final CTA
+P2 / Expansion | Owner, Marketing Lead, SEO Lead | Explain AI-assisted search without hype: clear expertise, entities, evidence, retrievable answers, and source credibility across evolving search experiences. | AI Search Readiness Scorecard | Get an SEO & AI Search Consultation
+[Small Note] Progressive data: Role, URL, industry, priority expertise/topics, SEO maturity, content ownership, AI-search concern.
+[TABLE]
+Lesson | Business problem / hook | Teaching spine / model | Proof / example treatment | Self-diagnostic + next step
+01 What Changes — and What Does Not — in AI-Assisted Search | Interfaces change quickly; durable search fundamentals still matter. | Separate durable foundations from volatile platform behavior; label uncertainty explicitly. | Current examples from official search/AI documentation; include last-reviewed date. | List what is durable vs needs monitoring. CTA: Lesson 02.
+02 Make Expertise Easy to Understand | If a human or system cannot clearly connect brand, expert, service, topic and evidence, authority is harder to interpret. | Entity/content clarity: organization, author, service/topic relationships, definitions, IA. | Map a hypothetical company/entity graph in plain language. | Check whether author/org/service relationships are explicit. CTA: readiness scorecard.
+03 Answer-Ready Content Without Writing for Robots | Short answer blocks alone do not create authority; useful content needs explanation, evidence, and context. | Answer -> explanation -> evidence -> example -> source/context; FAQ decision rules. | Rewrite a thin FAQ into a useful passage. | Review one page for answer + evidence. CTA: related lesson / scorecard.
+04 Evidence, Sources, and Citation Readiness | Claims without named expertise, first-hand evidence, references, or consistent business facts are harder to trust. | Evidence hierarchy + source checklist + original-data opportunities. | Compare unsupported assertion vs sourced explanation. | Inventory available evidence. CTA: Growth Roadmap.
+05 Technical Foundations Still Matter | AI visibility does not remove crawlability, rendering, internal links, canonicals, structured data, or performance constraints. | Owner-level technical foundation checklist; explain dependencies without deep implementation tutorial. | Illustrative “great content but inaccessible to retrieval” scenario. | Run foundation checklist. CTA: SEO/AI diagnostic.
+06 Measure AI Search Without Pretending Attribution Is Perfect | AI-search measurement is incomplete; pretending otherwise damages trust. | Query sets, citations/mentions, landing behavior, branded demand, assisted inquiries + limitations. | Sample monitoring sheet with caveat labels, no false precision. | Choose 3 signals and state what each cannot prove. CTA: free SEO & AI Search Consultation.
+[Heading 1] 30-day content-to-consultation operating plan
+[TABLE]
+Week | What the learner experiences | Kultivate production / funnel focus
+Week 1 | Course 01 or 02 entry lessons; clear problem awareness; no pressure. | Publish/embed first lessons, transcript/summary, source links, analytics for start/complete. Promote “continue learning”.
+Week 2 | Learner reaches framework + self-application. | Release worksheet/scorecard and track resource interaction. Surface related lesson/course based on role.
+Week 3 | Learner can identify a meaningful gap. | Offer shared Growth Priority diagnostic and role-aware recommendation. Collect role, URL, problem, goal, intent, timeline progressively.
+Week 4 | High-intent learners receive contextual route. | Roadmap -> free first consultation. Nurture low-intent users with the next Learn track instead of generic sales automation.
+[Heading 1] Qualification logic
+[TABLE]
+Signal | Consult now | Nurture | Filter / expectation reset
+Intent | Planning / comparing / ready to execute | Learning only | Wants guaranteed outcome or tactics outside approved/ethical scope
+Timeline | <1 month or 1–3 months | 3+ months / no timeline | Impossible deadline with no trade-off
+Context | Can share URL, goal, current problem, relevant constraints | Not enough context yet | Refuses minimum context but expects custom diagnosis
+Role | Decision-maker or meaningful stakeholder | Influencer/learner not yet aligned internally | No authority and only seeks free implementation
+Service fit | SEO/AEO/GEO, website strategy/UX/technical/migration within Kultivate scope | Potential future fit | Outside service scope / black-hat / unsupported guarantee
+[Heading 1] Per-lesson production deliverables
+[List Bullet] Research sheet: current sources, claim log, date checked, what is fact vs interpretation.
+[List Bullet] 6–12 minute founder-led video script with timestamps and visual cues.
+[List Bullet] Website module: short intro, embedded YouTube video, structured written summary/transcript, key framework, self-diagnostic, sources, next lesson/CTA.
+[List Bullet] 1 useful diagram/table or annotated example where it genuinely improves understanding.
+[List Bullet] 2–5 self-diagnostic questions; no email required for basic learning.
+[List Bullet] Course-level resource/worksheet (not a separate lead magnet for every lesson).
+[List Bullet] CTA mapped to learner intent: next lesson -> resource -> diagnostic/Growth Roadmap -> free consultation.
+[List Bullet] Claim audit: no guaranteed ranking/revenue/AI citation, no fabricated clients/results, all quantitative claims sourced and caveated.
+[Heading 1] Recommended build order
+[Normal] 1.  Produce Course 01, 02, and 03 first (18 lessons) because they connect most directly to active buying decisions.
+[Normal] 2.  Create the three P1 resources in parallel: Search-to-Sales Map, Website Business Job/Scorecard, Vendor Evaluation Scorecard.
+[Normal] 3.  Build one shared Growth Priority diagnostic with role-aware branching rather than six overlapping quizzes.
+[Normal] 4.  Add Course 04, 05, and 06 after the content/CTA analytics loop is stable.
+[Normal] 5.  Use real completion, resource, roadmap, consultation, and lead-quality data to reorder or rewrite lessons.
+[Heading 1] Internal curriculum source
+[Normal] This plan preserves the approved six-course / 36-lesson architecture and the existing free-vs-execution boundaries from “Kultivate Learn — Free Course Content & Consultation Funnel Plan” (9 Sep 2026). It adds the trust/explanation treatment, proof policy, per-lesson hooks, self-diagnostics, and CTA progression requested for the new research phase.

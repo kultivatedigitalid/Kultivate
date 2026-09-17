@@ -66,7 +66,7 @@ main {
 }
 
 .home-flow.home-flow > .brand-band::after,
-.home-flow.home-flow > .flow-section::after {
+.home-flow.home-flow > .flow-section:not(.light-field)::after {
   background: none;
 }
 
@@ -102,7 +102,7 @@ main {
   background: transparent;
 }
 
-.page-flow.page-flow > .flow-section::after {
+.page-flow.page-flow > .flow-section:not(.light-field):not(.portfolio-section)::after {
   background: none;
 }
 

@@ -1,0 +1,935 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/fycncq",
+    "id": "fycncq",
+    "slide": 9,
+    "layoutId": "c45448a7-d810-4712-a386-51b8f2dc8ecc",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "4d7715bf-104f-4a99-b21e-a2ce1757e964",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#070B12",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Arial"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "c45448a7-d810-4712-a386-51b8f2dc8ecc",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "4d7715bf-104f-4a99-b21e-a2ce1757e964",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "4d7715bf-104f-4a99-b21e-a2ce1757e964",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/y9wbitgv",
+      "id": "1",
+      "name": "KULTIVATE LEARN",
+      "bbox": [
+        64,
+        32,
+        420,
+        28
+      ],
+      "geometry": "rect",
+      "text": "KULTIVATE LEARN",
+      "textPreview": "KULTIVATE LEARN",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "KULTIVATE LEARN"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "KULTIVATE LEARN",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "KULTIVATE LEARN",
+              "fontSize": 18,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/lc7ut8zm",
+      "id": "2",
+      "name": "COURSE 01  /  LESSON 01",
+      "bbox": [
+        800,
+        32,
+        416,
+        28
+      ],
+      "geometry": "rect",
+      "text": "COURSE 01  /  LESSON 01",
+      "textPreview": "COURSE 01  /  LESSON 01",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "alignment": "right",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "COURSE 01  /  LESSON 01"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "COURSE 01  /  LESSON 01",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "COURSE 01  /  LESSON 01",
+              "fontSize": 18,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kbytk3y1",
+      "id": "3",
+      "name": "slide-title",
+      "bbox": [
+        64,
+        99,
+        1148,
+        122
+      ],
+      "geometry": "rect",
+      "text": "Kecocokan diperiksa sebelum menjadi peluang",
+      "textPreview": "Kecocokan diperiksa sebelum menjadi peluang",
+      "resolvedFontSize": 49,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 49,
+        "typeface": "Arial",
+        "color": "#F4F7FB",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Kecocokan diperiksa sebelum menjadi peluang"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Kecocokan diperiksa sebelum menjadi peluang",
+          "resolvedTextStyle": {
+            "fontSize": 49,
+            "typeface": "Arial",
+            "color": "#F4F7FB",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Kecocokan diperiksa sebelum menjadi peluang",
+              "fontSize": 49,
+              "typeface": "Arial",
+              "color": "#F4F7FB",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7ypcvyhc",
+      "id": "4",
+      "name": "Contoh hipotetis",
+      "bbox": [
+        64,
+        220,
+        1110,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Contoh hipotetis",
+      "textPreview": "Contoh hipotetis",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 22,
+        "typeface": "Arial",
+        "color": "#67D9FF",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Contoh hipotetis"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Contoh hipotetis",
+          "resolvedTextStyle": {
+            "fontSize": 22,
+            "typeface": "Arial",
+            "color": "#67D9FF",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Contoh hipotetis",
+              "fontSize": 22,
+              "typeface": "Arial",
+              "color": "#67D9FF",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6dgbmdgr",
+      "id": "5",
+      "name": "separator",
+      "bbox": [
+        64,
+        663,
+        1152,
+        0
+      ],
+      "geometry": "line",
+      "lineColor": "#273244",
+      "lineWidth": 1
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/t07ux8zi",
+      "id": "6",
+      "name": "SEO for Business Growth: From Searc",
+      "bbox": [
+        64,
+        679,
+        1020,
+        25
+      ],
+      "geometry": "rect",
+      "text": "SEO for Business Growth: From Search to Sales",
+      "textPreview": "SEO for Business Growth: From Search to Sales",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "SEO for Business Growth: From Search to Sales"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "SEO for Business Growth: From Search to Sales",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "SEO for Business Growth: From Search to Sales",
+              "fontSize": 16,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/8zyto3yx",
+      "id": "7",
+      "name": "09",
+      "bbox": [
+        1160,
+        675,
+        56,
+        27
+      ],
+      "geometry": "rect",
+      "text": "09",
+      "textPreview": "09",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 20,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "alignment": "right",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "09"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "09",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "09",
+              "fontSize": 20,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/nilsjeh8",
+      "id": "8",
+      "name": "03  COMPARE / VALIDATE",
+      "bbox": [
+        65,
+        304,
+        575,
+        34
+      ],
+      "geometry": "rect",
+      "text": "03  COMPARE / VALIDATE",
+      "textPreview": "03  COMPARE / VALIDATE",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 22,
+        "typeface": "Arial",
+        "color": "#67D9FF",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "03  COMPARE / VALIDATE"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "03  COMPARE / VALIDATE",
+          "resolvedTextStyle": {
+            "fontSize": 22,
+            "typeface": "Arial",
+            "color": "#67D9FF",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "03  COMPARE / VALIDATE",
+              "fontSize": 22,
+              "typeface": "Arial",
+              "color": "#67D9FF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mhcba9gn",
+      "id": "9",
+      "name": "Area layanan\nCakupan pekerjaan\nBukt",
+      "bbox": [
+        65,
+        369,
+        529,
+        165
+      ],
+      "geometry": "rect",
+      "text": "Area layanan\nCakupan pekerjaan\nBukti relevan",
+      "textPreview": "Area layanan | Cakupan pekerjaan | Bukti relevan",
+      "resolvedFontSize": 36,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 36,
+        "typeface": "Arial",
+        "color": "#F4F7FB",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Area layanan"
+          },
+          {
+            "index": 2,
+            "text": "Cakupan pekerjaan"
+          },
+          {
+            "index": 3,
+            "text": "Bukti relevan"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Area layanan",
+          "resolvedTextStyle": {
+            "fontSize": 36,
+            "typeface": "Arial",
+            "color": "#F4F7FB",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Area layanan",
+              "fontSize": 36,
+              "typeface": "Arial",
+              "color": "#F4F7FB",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "Cakupan pekerjaan",
+          "resolvedTextStyle": {
+            "fontSize": 36,
+            "typeface": "Arial",
+            "color": "#F4F7FB",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Cakupan pekerjaan",
+              "fontSize": 36,
+              "typeface": "Arial",
+              "color": "#F4F7FB",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 3,
+          "text": "Bukti relevan",
+          "resolvedTextStyle": {
+            "fontSize": 36,
+            "typeface": "Arial",
+            "color": "#F4F7FB",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Bukti relevan",
+              "fontSize": 36,
+              "typeface": "Arial",
+              "color": "#F4F7FB",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4nyd0jeh",
+      "id": "10",
+      "name": "04  ACT",
+      "bbox": [
+        734,
+        304,
+        470,
+        34
+      ],
+      "geometry": "rect",
+      "text": "04  ACT",
+      "textPreview": "04  ACT",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 22,
+        "typeface": "Arial",
+        "color": "#67D9FF",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "04  ACT"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "04  ACT",
+          "resolvedTextStyle": {
+            "fontSize": 22,
+            "typeface": "Arial",
+            "color": "#67D9FF",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "04  ACT",
+              "fontSize": 22,
+              "typeface": "Arial",
+              "color": "#67D9FF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5o7etov2",
+      "id": "11",
+      "name": "Kirim kebutuhan\nPahami tindak lanju",
+      "bbox": [
+        734,
+        369,
+        470,
+        155
+      ],
+      "geometry": "rect",
+      "text": "Kirim kebutuhan\nPahami tindak lanjut",
+      "textPreview": "Kirim kebutuhan | Pahami tindak lanjut",
+      "resolvedFontSize": 36,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 36,
+        "typeface": "Arial",
+        "color": "#F4F7FB",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Kirim kebutuhan"
+          },
+          {
+            "index": 2,
+            "text": "Pahami tindak lanjut"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Kirim kebutuhan",
+          "resolvedTextStyle": {
+            "fontSize": 36,
+            "typeface": "Arial",
+            "color": "#F4F7FB",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Kirim kebutuhan",
+              "fontSize": 36,
+              "typeface": "Arial",
+              "color": "#F4F7FB",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "Pahami tindak lanjut",
+          "resolvedTextStyle": {
+            "fontSize": 36,
+            "typeface": "Arial",
+            "color": "#F4F7FB",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Pahami tindak lanjut",
+              "fontSize": 36,
+              "typeface": "Arial",
+              "color": "#F4F7FB",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ilgvytwb",
+      "id": "12",
+      "name": "separator",
+      "bbox": [
+        65,
+        559,
+        1136,
+        0
+      ],
+      "geometry": "line",
+      "lineColor": "#273244",
+      "lineWidth": 2
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/jmpwrydw",
+      "id": "13",
+      "name": "Permintaan masuk masih perlu diperi",
+      "bbox": [
+        65,
+        591,
+        1136,
+        67
+      ],
+      "geometry": "rect",
+      "text": "Permintaan masuk masih perlu diperiksa kecocokannya",
+      "textPreview": "Permintaan masuk masih perlu diperiksa kecocokannya",
+      "resolvedFontSize": 31,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 31,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Permintaan masuk masih perlu diperiksa kecocokannya"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Permintaan masuk masih perlu diperiksa kecocokannya",
+          "resolvedTextStyle": {
+            "fontSize": 31,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Permintaan masuk masih perlu diperiksa kecocokannya",
+              "fontSize": 31,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

@@ -1,0 +1,130 @@
+{
+  "pages": [
+    {
+      "name": "about",
+      "width": 1440
+    },
+    {
+      "name": "work",
+      "width": 1440
+    },
+    {
+      "name": "learn",
+      "width": 1440
+    },
+    {
+      "name": "learn-cta",
+      "width": 1440
+    },
+    {
+      "name": "blog",
+      "width": 1440
+    },
+    {
+      "name": "services",
+      "width": 1440
+    },
+    {
+      "name": "about",
+      "width": 390
+    },
+    {
+      "name": "work",
+      "width": 390
+    },
+    {
+      "name": "learn",
+      "width": 390
+    },
+    {
+      "name": "learn-cta",
+      "width": 390
+    },
+    {
+      "name": "blog",
+      "width": 390
+    },
+    {
+      "name": "services",
+      "width": 390
+    }
+  ],
+  "geometry": [
+    {
+      "width": 1440,
+      "locale": "en",
+      "height": 828,
+      "title": "Deep Expertise in Digital Growth",
+      "doc": 1440,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "locale": "id",
+      "height": 828,
+      "title": "Keahlian mendalam untuk pertumbuhan digital",
+      "doc": 1440,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "locale": "en",
+      "height": 648,
+      "title": "Deep Expertise in Digital Growth",
+      "doc": 1280,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "locale": "id",
+      "height": 648,
+      "title": "Keahlian mendalam untuk pertumbuhan digital",
+      "doc": 1280,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "height": 1397,
+      "title": "Deep Expertise in Digital Growth",
+      "doc": 390,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "locale": "id",
+      "height": 1522.515625,
+      "title": "Keahlian mendalam untuk pertumbuhan digital",
+      "doc": 390,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "portfolioRowGaps": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "width": 390,
+      "portfolioRowGaps": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "layers": {
+    "background": "0",
+    "ribbon": "1",
+    "content": "2",
+    "position": "fixed"
+  },
+  "quizFieldFade": true,
+  "blogFilter": true,
+  "reducedMotion": true,
+  "passed": true
+}

@@ -4,7 +4,7 @@ import ServiceHero from '../../../components/services/ServiceHero.astro';
 import ServiceProblems from '../../../components/services/ServiceProblems.astro';
 import ServiceScope from '../../../components/services/ServiceScope.astro';
 import ServiceProcess from '../../../components/services/ServiceProcess.astro';
-import ServiceEvidence from '../../../components/services/ServiceEvidence.astro';
+import ServicePrinciples from '../../../components/services/ServicePrinciples.astro';
 import ServiceLearningPreview from '../../../components/learning/ServiceLearningPreview.astro';
 import ServiceFAQ from '../../../components/services/ServiceFAQ.astro';
 import FinalCTA from '../../../components/home/FinalCTA.astro';
@@ -23,39 +23,11 @@ export async function getStaticPaths() {
 const { service } = Astro.props;
 
 // Format data for subcomponents
-const businessLens: Record<string, { impacts: string[]; inspections: string[] }> = {
-  seo: {
-    impacts: [
-      'Pelanggan dengan intent tinggi dapat berhenti sebelum memahami penawaran Anda.',
-      'Friction teknis melemahkan pengalaman pengguna dan kepercayaan search terhadap halaman prioritas.',
-      'Expertise yang tidak terstruktur lebih sulit dipahami, diambil, dan dirujuk oleh search maupun answer engines.'
-    ],
-    inspections: [
-      'Hubungan penawaran, search intent, peran halaman, dan jalur menuju inquiry.',
-      'Crawl, indexation, performa, internal linking, dan konsistensi template.',
-      'Struktur jawaban, entity, schema, evidence, citation readiness, prompt samples, dan baseline visibility.'
-    ]
-  },
-  'web-services': {
-    impacts: [
-      'Friction pada website membuat pelanggan dan mesin pencari kesulitan mencapai halaman penting.',
-      'Perubahan komersial tertunda karena rekomendasi tidak memiliki jalur implementasi yang jelas.',
-      'Redesign atau migrasi dapat menghilangkan visibility, data, dan kepercayaan yang sudah dibangun.'
-    ],
-    inspections: [
-      'User journey, arsitektur, performa, accessibility, dan search readiness.',
-      'Ownership, backlog, dependensi teknis, dan acceptance criteria.',
-      'Redirect, template, analytics, pre-launch QA, dan post-launch checks.'
-    ]
-  }
-};
-
-const activeLens = businessLens[service.id];
 const problemItems = service.problemsSolved.map((problem, index) => ({
   title: problem,
   description: service.problemCauses[index] ?? '',
-  impact: activeLens?.impacts[index] ?? '',
-  inspect: activeLens?.inspections[index] ?? ''
+  impact: service.impacts[index] ?? '',
+  inspect: service.inspections[index] ?? ''
 }));
 
 const scopeItems = [
@@ -120,6 +92,7 @@ const defaultFaqs = [
   <div class="service-detail-page page-flow">
   <ServiceHero
     title={service.title}
+    serviceId={service.id}
     tagline={service.tagline}
     description={service.description}
     systemRole="LAYANAN KULTIVATE"
@@ -132,7 +105,7 @@ const defaultFaqs = [
     locale={locale}
   />
 
-  <ServiceLearningPreview locale={locale} serviceId={service.id} />
+  {['seo', 'web-services'].includes(service.id) && <ServiceLearningPreview locale={locale} serviceId={service.id} />}
 
   <ServiceScope
     heading="Bagian yang dapat kami tangani"
@@ -146,11 +119,11 @@ const defaultFaqs = [
     locale={locale}
   />
 
-  <ServiceEvidence locale={locale} serviceTitle={service.title} />
+  <ServicePrinciples locale={locale} service={service} />
 
   <ServiceFAQ
     heading="Pertanyaan yang sering diajukan"
-    faqs={defaultFaqs}
+    faqs={[...service.faqs, ...defaultFaqs.slice(2, 5)]}
   />
 
   </div>

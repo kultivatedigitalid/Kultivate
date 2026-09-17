@@ -10,7 +10,7 @@ export const enTranslations = {
   'nav.explore_service': 'Explore Service',
   
   // Footer
-  'footer.tagline': 'SEO and website support shaped around what your business needs.',
+  'footer.tagline': 'Search, websites, visual strategy, and social media. Built around your business.',
   'footer.services': 'Services',
   'footer.about': 'About',
   'footer.legal': 'Legal',
@@ -28,8 +28,8 @@ export const enTranslations = {
   'contact.service_interest': 'Service of Interest',
   'contact.service_web': 'Web Services',
   'contact.service_seo': 'SEO',
-  'contact.service_social': 'Content Management',
-  'contact.service_system': 'AEO & GEO',
+  'contact.service_social': 'Social Media Management',
+  'contact.service_visual': 'Visual Strategy',
   'contact.summary': 'What would you like help with?',
   'contact.timeline': 'Preferred Start',
   'contact.consent': 'I consent to my data being processed in accordance with the Kultivate Privacy Policy.',

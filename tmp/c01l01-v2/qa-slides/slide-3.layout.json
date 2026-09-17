@@ -1,0 +1,851 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/1m9v48",
+    "id": "1m9v48",
+    "slide": 3,
+    "layoutId": "2affe2ed-9517-43a4-935c-747b56d48fc6",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "882846a6-5245-43f2-b4c4-0d6616240f97",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#070B12",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Arial"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "2affe2ed-9517-43a4-935c-747b56d48fc6",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "882846a6-5245-43f2-b4c4-0d6616240f97",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "882846a6-5245-43f2-b4c4-0d6616240f97",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/lwrixobe",
+      "id": "1",
+      "name": "KULTIVATE LEARN",
+      "bbox": [
+        64,
+        32,
+        420,
+        28
+      ],
+      "geometry": "rect",
+      "text": "KULTIVATE LEARN",
+      "textPreview": "KULTIVATE LEARN",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "KULTIVATE LEARN"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "KULTIVATE LEARN",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "KULTIVATE LEARN",
+              "fontSize": 18,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/y9gjm9c3",
+      "id": "2",
+      "name": "COURSE 01  /  LESSON 01",
+      "bbox": [
+        800,
+        32,
+        416,
+        28
+      ],
+      "geometry": "rect",
+      "text": "COURSE 01  /  LESSON 01",
+      "textPreview": "COURSE 01  /  LESSON 01",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "alignment": "right",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "COURSE 01  /  LESSON 01"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "COURSE 01  /  LESSON 01",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "COURSE 01  /  LESSON 01",
+              "fontSize": 18,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ja90veto",
+      "id": "3",
+      "name": "slide-title",
+      "bbox": [
+        64,
+        99,
+        1148,
+        122
+      ],
+      "geometry": "rect",
+      "text": "Demand dan traffic",
+      "textPreview": "Demand dan traffic",
+      "resolvedFontSize": 49,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 49,
+        "typeface": "Arial",
+        "color": "#F4F7FB",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Demand dan traffic"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Demand dan traffic",
+          "resolvedTextStyle": {
+            "fontSize": 49,
+            "typeface": "Arial",
+            "color": "#F4F7FB",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Demand dan traffic",
+              "fontSize": 49,
+              "typeface": "Arial",
+              "color": "#F4F7FB",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/w7y1kzux",
+      "id": "4",
+      "name": "separator",
+      "bbox": [
+        64,
+        663,
+        1152,
+        0
+      ],
+      "geometry": "line",
+      "lineColor": "#273244",
+      "lineWidth": 1
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/x87it4bi",
+      "id": "5",
+      "name": "SEO for Business Growth: From Searc",
+      "bbox": [
+        64,
+        679,
+        1020,
+        25
+      ],
+      "geometry": "rect",
+      "text": "SEO for Business Growth: From Search to Sales",
+      "textPreview": "SEO for Business Growth: From Search to Sales",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "SEO for Business Growth: From Search to Sales"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "SEO for Business Growth: From Search to Sales",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "SEO for Business Growth: From Search to Sales",
+              "fontSize": 16,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/a5gji9cr",
+      "id": "6",
+      "name": "03",
+      "bbox": [
+        1160,
+        675,
+        56,
+        27
+      ],
+      "geometry": "rect",
+      "text": "03",
+      "textPreview": "03",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 20,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "alignment": "right",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "03"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "03",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "03",
+              "fontSize": 20,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/b6p0rutc",
+      "id": "7",
+      "name": "Demand",
+      "bbox": [
+        65,
+        300,
+        480,
+        72
+      ],
+      "geometry": "rect",
+      "text": "Demand",
+      "textPreview": "Demand",
+      "resolvedFontSize": 57,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 57,
+        "typeface": "Arial",
+        "color": "#67D9FF",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Demand"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Demand",
+          "resolvedTextStyle": {
+            "fontSize": 57,
+            "typeface": "Arial",
+            "color": "#67D9FF",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Demand",
+              "fontSize": 57,
+              "typeface": "Arial",
+              "color": "#67D9FF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/g321w3uh",
+      "id": "8",
+      "name": "Kebutuhan orang akan solusi",
+      "bbox": [
+        65,
+        386,
+        500,
+        82
+      ],
+      "geometry": "rect",
+      "text": "Kebutuhan orang akan solusi",
+      "textPreview": "Kebutuhan orang akan solusi",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 32,
+        "typeface": "Arial",
+        "color": "#F4F7FB",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Kebutuhan orang akan solusi"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Kebutuhan orang akan solusi",
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Arial",
+            "color": "#F4F7FB",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Kebutuhan orang akan solusi",
+              "fontSize": 32,
+              "typeface": "Arial",
+              "color": "#F4F7FB",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/h4b258bm",
+      "id": "9",
+      "name": "Traffic",
+      "bbox": [
+        687,
+        300,
+        485,
+        72
+      ],
+      "geometry": "rect",
+      "text": "Traffic",
+      "textPreview": "Traffic",
+      "resolvedFontSize": 57,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 57,
+        "typeface": "Arial",
+        "color": "#F4F7FB",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Traffic"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Traffic",
+          "resolvedTextStyle": {
+            "fontSize": 57,
+            "typeface": "Arial",
+            "color": "#F4F7FB",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Traffic",
+              "fontSize": 57,
+              "typeface": "Arial",
+              "color": "#F4F7FB",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/l4juxgfm",
+      "id": "10",
+      "name": "Kunjungan ke website",
+      "bbox": [
+        687,
+        386,
+        490,
+        82
+      ],
+      "geometry": "rect",
+      "text": "Kunjungan ke website",
+      "textPreview": "Kunjungan ke website",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 32,
+        "typeface": "Arial",
+        "color": "#F4F7FB",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Kunjungan ke website"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Kunjungan ke website",
+          "resolvedTextStyle": {
+            "fontSize": 32,
+            "typeface": "Arial",
+            "color": "#F4F7FB",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Kunjungan ke website",
+              "fontSize": 32,
+              "typeface": "Arial",
+              "color": "#F4F7FB",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/k3atobe1",
+      "id": "11",
+      "name": "separator",
+      "bbox": [
+        65,
+        520,
+        1130,
+        0
+      ],
+      "geometry": "line",
+      "lineColor": "#273244",
+      "lineWidth": 2
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/j21cv6xg",
+      "id": "12",
+      "name": "Relevansi",
+      "bbox": [
+        65,
+        558,
+        215,
+        40
+      ],
+      "geometry": "rect",
+      "text": "Relevansi",
+      "textPreview": "Relevansi",
+      "resolvedFontSize": 25,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 25,
+        "typeface": "Arial",
+        "color": "#67D9FF",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Relevansi"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Relevansi",
+          "resolvedTextStyle": {
+            "fontSize": 25,
+            "typeface": "Arial",
+            "color": "#67D9FF",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Relevansi",
+              "fontSize": 25,
+              "typeface": "Arial",
+              "color": "#67D9FF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/y1sbm1wb",
+      "id": "13",
+      "name": "Kebutuhannya cocok sama layanan kit",
+      "bbox": [
+        295,
+        554,
+        900,
+        76
+      ],
+      "geometry": "rect",
+      "text": "Kebutuhannya cocok sama layanan kita nggak?",
+      "textPreview": "Kebutuhannya cocok sama layanan kita nggak?",
+      "resolvedFontSize": 33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 33,
+        "typeface": "Arial",
+        "color": "#F4F7FB",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Kebutuhannya cocok sama layanan kita nggak?"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Kebutuhannya cocok sama layanan kita nggak?",
+          "resolvedTextStyle": {
+            "fontSize": 33,
+            "typeface": "Arial",
+            "color": "#F4F7FB",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Kebutuhannya cocok sama layanan kita nggak?",
+              "fontSize": 33,
+              "typeface": "Arial",
+              "color": "#F4F7FB",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

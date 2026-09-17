@@ -52,6 +52,7 @@ const { Content } = await render(project);
             <p>{project.data.challenge}</p>
           </section>
 
+          <div class="case-method light-field">
           <section class="case-section card">
             <h2 class="case-section-title">Pendekatan (Approach)</h2>
             <p>{project.data.approach}</p>
@@ -70,6 +71,8 @@ const { Content } = await render(project);
               ))}
             </ul>
           </section>
+
+          </div>
 
           {project.data.proofStatus === 'verified' ? (
             <section class="case-section card">
@@ -172,4 +175,10 @@ const { Content } = await render(project);
     line-height: 1.7;
     margin-top: var(--spacing-lg);
   }
+
+  .case-method { padding-block:160px; }
+  .case-method::after { left:calc((100% - 100vw)/2); right:calc((100% - 100vw)/2); }
+  .case-method .case-section { background:transparent; border:0; box-shadow:none; }
+  .case-method :is(.case-section-title,p,.deliverable-item) { color:#12334d; }
+
 </style>

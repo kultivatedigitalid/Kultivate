@@ -1,0 +1,458 @@
+[Normal] KULTIVATE
+[Normal] Learn
+[Normal] Free Course Content &
+Consultation Funnel Plan
+[Normal] Research, curriculum architecture, data capture, CTA system, and implementation brief
+[TABLE]
+BRIEF — 1 PARAGRAF / Kultivate Learn akan dikembangkan sebagai education-to-consultation funnel yang memberikan ilmu secara terbuka dan cukup dalam agar owner, procurement, IT lead, dan marketing lead dapat memahami masalah bisnis, menilai opsi, serta mengetahui seperti apa solusi yang baik, sementara research mendalam, diagnosis kontekstual, prioritization, design, development, technical implementation, QA, dan ongoing optimization tetap ditangani Kultivate. Struktur awal direkomendasikan menjadi enam learning tracks dengan 36 lessons: SEO for Business Growth, Website as a Business & Sales System, How to Scope & Evaluate a Digital Project, UX That Moves Visitors Toward Action, Website Technical & Migration Readiness, dan AI Search/AEO/GEO for Business; tiga track pertama diprioritaskan untuk launch karena paling dekat dengan buying intent. Course tetap dapat dipelajari tanpa gate, kemudian data konsumen dikumpulkan secara progresif melalui worksheet, scorecard, diagnostic, dan Growth Roadmap, lalu diarahkan ke konsultasi awal gratis dengan CTA yang muncul setelah user sudah memahami konteks masalahnya.
+[Heading 3] Output dokumen
+[List Bullet] Benchmark funnel edukasi Alex Hormozi/Acquisition.com dan referensi lain.
+[List Bullet] Audit arah Learn pada branch staging Kultivate.
+[List Bullet] Prinsip content-to-consultation funnel dan batas free knowledge vs execution.
+[List Bullet] 6 course / 36 lesson lengkap dengan syllabus, free scope, execution boundary, lead magnet, CTA, data capture, dan funnel.
+[List Bullet] Sistem case study, data capture, analytics, content production, dan rollout implementation.
+[Normal] Prepared for internal planning • Version 1.0 • 9 September 2026
+[Normal] EXECUTIVE SUMMARY
+[Heading 1] What Learn should do for Kultivate
+[Normal] Learn tidak seharusnya berfungsi sebagai perpustakaan video yang berdiri sendiri. Fungsi utamanya adalah membangun credibility, membantu calon client memahami masalah bisnisnya, mengumpulkan first-party intent data secara bertahap, dan membawa user yang sudah teredukasi ke konsultasi yang lebih berkualitas.
+[TABLE]
+Core principle / Teach the problem, framework, diagnostic logic, trade-offs, and what “good” looks like. Kultivate monetizes contextual research, prioritization, implementation, accountability, and continuous improvement — bukan kelangkaan informasi.
+[Heading 2] Recommended architecture
+[TABLE]
+Priority | Learning track | Primary audience | Primary conversion
+P1 | SEO for Business Growth: From Search to Sales | Owner, Marketing Lead | SEO Growth Consultation
+P1 | Your Website as a Business & Sales System | Owner, Marketing Lead | Website Growth Consultation
+P1 | How to Scope & Evaluate a Digital Project | Procurement, Owner, IT Lead | Project Scope Review
+P2 | UX That Moves Visitors Toward Action | Owner, Marketing, Product | UX / Website Review
+P2 | Website Technical & Migration Readiness | IT Lead, Procurement | Technical Consultation
+P2 | AI Search, AEO & GEO for Business | Owner, Marketing, SEO | SEO / AI Search Consultation
+[Heading 2] Recommended launch shape
+[List Bullet] Launch 3 priority tracks first: 18 lessons total.
+[List Bullet] Each lesson: approximately 6–12 minutes; each track: approximately 45–75 minutes.
+[List Bullet] Each track includes 1 worksheet/scorecard, 1 diagnostic moment, 1 case-study lesson or companion asset, and 1 consultation CTA.
+[List Bullet] Course access stays ungated; stronger value exchange (download, scorecard, diagnostic, personalized roadmap) is where data capture begins.
+[List Bullet] Primary success metric is not video views. Measure progression toward qualified consultation: lesson completion → diagnostic → roadmap → consultation.
+[Normal] RESEARCH
+[Heading 1] Benchmark findings
+[Heading 2] 1. Acquisition.com / Alex Hormozi
+[Normal] Acquisition.com provides free advanced training in multiple formats: videos, eBooks, guides, templates, downloads, courses, and a personalized Scaling Roadmap. Current course structure includes Offer Creation, Lead Generation, Scaling, and other business-growth material; the free material is substantial rather than only promotional teaser content.
+[TABLE]
+Observed pattern | What it means for Kultivate
+Deep free education | It is acceptable to give away frameworks, checklists, and practical knowledge when the paid value is contextual execution.
+Course-specific downloads | Use worksheets and scorecards as genuine learning tools and natural points for optional data capture.
+Scaling Roadmap | A diagnostic can bridge generic education and personalized service without hard-selling too early.
+Workshop requires qualification call | The conversion event occurs after the user understands the problem and needs personalized help.
+Different courses solve different constraints | Do not make every Learn track repeat the same intro to SEO/web. Each track should answer a distinct buying problem.
+[Normal] For example, the Offer Creation course visibly includes modules such as market selection, pricing/value, offer creation, bonuses, guarantees, scarcity/urgency, and naming; downloadable checklists are attached to several modules. The Lead Generation course covers lead magnets, early-client acquisition, content, cold outreach, paid ads, referral, employees, agencies, affiliates, and a roadmap. The Scaling course is structured by business stage. The key lesson is the funnel logic: free education → diagnostic/personalized roadmap → qualified call/workshop → deeper relationship.
+[Heading 2] 2. Ahrefs Academy
+[Normal] Ahrefs shows that high-value technical education can remain free and ungated. Its beginner SEO course currently presents 14 lessons across 5 modules with a stated total length of about 2 hours and no sign-up requirement. It covers SEO basics, keyword research, search intent, on-page SEO, link building, and technical SEO. For Kultivate, this supports a stronger lesson depth than the current two-lessons-per-series structure while still keeping the content accessible.
+[Heading 2] 3. Growth.Design
+[Normal] Growth.Design is useful as a format benchmark rather than a direct service-funnel benchmark. Its free UX case studies use story-driven breakdowns, while its paid masterclass explicitly uses a Learn → Practice → Apply sequence and includes scorecards, checklists, cheat sheets, examples, and case studies. For Kultivate, the relevant adaptation is Learn → Diagnose → Decide, with implementation handled by Kultivate.
+[Heading 2] 4. Google Search Central and web.dev
+[Normal] Google’s SEO Starter Guide frames SEO as helping search engines understand content and helping users find a site and decide whether to visit it. Google also emphasizes useful, original, current, people-first content. This supports making Learn genuinely educational rather than thin lead-generation pages. web.dev case studies also provide strong public examples for connecting technical website decisions to business outcomes: Tokopedia reported a 35% CTR increase and 8% conversion increase after performance work, while Rakuten 24 reported materially higher conversion and revenue per visitor in its Core Web Vitals case study. These are useful educational examples, not promises of equivalent results for Kultivate clients.
+[Normal] CURRENT STATE
+[Heading 1] Kultivate Learn on staging
+[Normal] The staging branch already contains the foundation of a Learn product. The current data model defines four series and eight lessons, split between SEO and Web Services. Topics include Search Demand & Discovery, Technical & AI Search, Website Decisions & Conversion, and Website Quality & Migration.
+[TABLE]
+Current series | Current lessons | Recommended treatment
+Search Demand & Discovery | High-intent service discovery; service-page structure | Expand into flagship SEO for Business Growth course.
+Technical & AI Search | Technical SEO owner checklist; AEO/GEO expertise | Separate technical decision-making from AI Search so each can go deeper.
+Website Decisions & Conversion | Rebuild vs targeted fixes; inquiry friction | Expand into Website as Business & Sales System plus UX track.
+Website Quality & Migration | Performance/accessibility/trust; redesign/migration visibility | Expand into technical readiness and migration course.
+[Normal] The current Learn series page already links users to related service pages and tracks events such as learn_view, learn_series_open, learn_lesson_start/next, and learn_to_service_click. The underlying funnel mechanics therefore do not need to be rebuilt from zero; the major gap is the content and conversion architecture: deeper curriculum, audience segmentation, progressive data capture, diagnostics, and a consultation CTA at the point of highest intent.
+[Heading 2] Main gaps to address
+[List Bullet] Depth: two lessons per series is too light to establish strong expertise for a decision-maker.
+[List Bullet] Audience: Owner, Procurement, IT Lead, and Marketing Lead need different framing and proof.
+[List Bullet] Outcome framing: several existing lessons are technically valid but should connect more explicitly to business decisions, risk, revenue, and project readiness.
+[List Bullet] Conversion: current end-state points to a service page; the stronger end-state is a contextual diagnostic/roadmap followed by free first consultation.
+[List Bullet] Data: current learning analytics capture behavior, but not yet the buyer profile, business problem, urgency, or project intent.
+[List Bullet] Case studies: portfolio proof should be complemented by educational case studies that reveal diagnosis, trade-offs, and reasoning.
+[Normal] STRATEGY
+[Heading 1] Operating principles for Learn
+[Heading 3] 1. Knowledge can be free
+[Normal] Explain what the problem is, why it matters, the framework, how to inspect it, trade-offs, and what good execution looks like.
+[Heading 3] 2. Execution remains the service
+[Normal] Research, data collection, prioritization, implementation, QA, stakeholder alignment, maintenance, and accountability are where Kultivate creates paid value.
+[Heading 3] 3. Business problem before channel
+[Normal] Course framing should begin with revenue, discovery, trust, conversion, technical risk, procurement risk, or migration risk — not with tool features.
+[Heading 3] 4. Decision-makers, not practitioners
+[Normal] Teach enough technical detail to make a good decision. Avoid turning Owner/Procurement into a full-time SEO specialist or developer.
+[Heading 3] 5. Open learning, progressive data
+[Normal] Do not gate the first lesson or basic course. Ask for data only when offering proportionally greater value: a template, scorecard, diagnostic, or personalized roadmap.
+[Heading 3] 6. Evidence over hype
+[Normal] Use real case studies, measurable examples, clear caveats, and explicit assumptions. Do not promise ranking, conversion, or revenue outcomes.
+[Heading 3] 7. Every lesson must move the buyer
+[Normal] A lesson should increase understanding, improve self-diagnosis, clarify a decision, or reveal an execution dependency.
+[Heading 2] Audience jobs-to-be-done
+[TABLE]
+Audience | What they need from Learn | Buying signal to capture
+Owner / Founder | Is this a business priority? What outcome can change? Where should we invest first? | Business goal, current bottleneck, revenue/inquiry dependence, timeline.
+Procurement | What should the scope contain? How can proposals be compared? What are the vendor/project risks? | Project type, vendor-selection stage, budget readiness, procurement timeline.
+IT / Tech Lead | What technical constraints, dependencies, migration risks, and acceptance criteria matter? | Stack/CMS, technical debt, migration status, analytics/deployment constraints.
+Marketing / SEO Lead | Where is search demand, how should pages map to intent, and what needs implementation support? | Organic visibility, priority services, content/SEO maturity, implementation ownership.
+[Normal] COURSE 01  •  P1 — LAUNCH
+[Heading 1] SEO for Business Growth: From Search to Sales
+[TABLE]
+Primary audience | Purpose
+Owner / Founder, Marketing Lead, SEO Lead | Connect SEO to business opportunity, demand, service discovery, decision-making, inquiry, and revenue signals — not ranking alone.
+[Heading 2] Lesson plan
+[TABLE]
+# | Lesson | What the user should understand | Teach for free | Execution boundary
+01 | How Search Creates Business Opportunities | How discovery, evaluation, and decision moments happen before an inquiry. Connect search visibility to qualified demand without treating traffic as revenue. | Funnel model, demand vs traffic, commercial intent, simple opportunity examples. | Actual market sizing, keyword dataset, competitor research, attribution model, and prioritized opportunity estimate.
+02 | Map Customer Demand Before Choosing Keywords | Translate offers, customer problems, buying questions, and comparison language into demand themes. | Demand-mapping framework, customer-question inventory, intent categories, worksheet. | Full keyword/question/prompt research, search-volume analysis, SERP review, competitor gap analysis, opportunity scoring.
+03 | Search Intent Across the Buying Journey | Separate learn, compare, evaluate, and act intents; decide when a query deserves content, a service page, or no page. | Intent framework, examples, page-type decision logic, common intent mismatches. | Query-by-query classification, SERP validation, page mapping at scale, prioritization by commercial value.
+04 | Turn Business Services Into Searchable Pages | How service architecture, information hierarchy, language, evidence, and internal links help users and search engines understand an offer. | Service-page anatomy, IA principles, proof types, content checklist. | Business-specific IA, copywriting, entity/schema plan, design, development, internal-link implementation.
+05 | What Makes a Service Page Rank and Help Someone Decide | Balance discoverability with trust, clarity, proof, FAQs, differentiation, and next action. | Page critique framework, decision friction checklist, examples of weak vs strong structure. | Content audit, SERP comparison, rewrite, design iteration, CRO testing, technical implementation.
+06 | Measure SEO Beyond Rankings: Visibility → Inquiry → Pipeline | Choose meaningful indicators and understand attribution limitations. | Measurement hierarchy, Search Console/analytics concepts, inquiry and assisted-conversion thinking, reporting questions. | Tracking architecture, GA/GTM/Search Console setup, CRM integration, dashboarding, baseline, attribution analysis, reporting cadence.
+[Heading 2] Conversion design
+[TABLE]
+Element | Recommendation
+Lead magnet | Search-to-Sales Mapping Worksheet
+CTA | Get a Free SEO Growth Consultation
+Data to capture | Role, website URL, priority product/service, current organic challenge, primary goal, timeline.
+Funnel | Course → Search-to-Sales worksheet → SEO opportunity diagnostic → prioritized Growth Roadmap → free consultation → scoped execution.
+[Heading 3] CTA timing
+[List Bullet] Soft CTA after a high-value lesson: offer the worksheet/scorecard, not consultation immediately.
+[List Bullet] Diagnostic CTA after the user has enough context to answer meaningful questions.
+[List Bullet] Consultation CTA after the diagnostic/result or at course completion, framed around applying priorities to their specific business.
+[List Bullet] Service-page link remains available as a secondary path for users who want to self-educate further before contacting Kultivate.
+[Normal] COURSE 02  •  P1 — LAUNCH
+[Heading 1] Your Website as a Business & Sales System
+[TABLE]
+Primary audience | Purpose
+Owner / Founder, Marketing Lead, Business Lead | Teach that a website is an operating asset that should reduce uncertainty, support discovery, create trust, and move the right visitor toward the next business action.
+[Heading 2] Lesson plan
+[TABLE]
+# | Lesson | What the user should understand | Teach for free | Execution boundary
+01 | What Job Should Your Website Perform? | Define the website’s business job: discovery, education, qualification, lead generation, transaction, support, or credibility. | Business-job framework, examples, prioritization questions. | Stakeholder discovery, analytics review, customer research, final website strategy and KPI model.
+02 | Map the Visitor Decision Journey | Understand what a visitor needs to know before taking action and where uncertainty accumulates. | Decision-journey canvas, awareness/evaluation/action stages, friction categories. | User research, behavior analytics, session analysis, journey mapping from real customer evidence.
+03 | Information Architecture That Makes the Business Easier to Understand | Connect offers, audiences, use cases, proof, and navigation into a coherent structure. | IA principles, page hierarchy examples, navigation decision rules. | Card sorting/research where needed, sitemap design, content inventory, URL strategy, implementation.
+04 | Trust Is a System: Proof, Clarity, and Expectations | Use evidence, authorship, process transparency, case studies, policies, and response expectations to reduce risk. | Trust-signal checklist, evidence hierarchy, common credibility gaps. | Proof collection, case-study production, content design, legal/compliance coordination, visual implementation.
+05 | Find Conversion Friction Before Redesigning Everything | Identify confusion, dead ends, over-choice, weak CTAs, form friction, and inconsistent expectations. | Friction audit, CTA hierarchy, form and navigation checklist, examples. | Analytics diagnosis, usability testing, prototype testing, CRO experiments, copy/design changes.
+06 | Rebuild, Redesign, or Fix? Choose the Smallest Reliable Intervention | Decide when targeted fixes are enough and when structural limits justify rebuild/migration. | Decision matrix: business change, technical debt, content model, maintainability, search risk, cost of delay. | Technical audit, codebase/CMS assessment, migration planning, effort estimate, final scope and implementation.
+[Heading 2] Conversion design
+[TABLE]
+Element | Recommendation
+Lead magnet | Website Business Job Canvas + Website Priority Scorecard
+CTA | Get a Free Website Growth Consultation
+Data to capture | Role, website URL, business model, primary website job, current conversion/inquiry problem, redesign status, timeline.
+Funnel | Course → Business Job Canvas → Website Priority Scorecard → Website Growth Roadmap → free consultation → redesign/fix/maintenance scope.
+[Heading 3] CTA timing
+[List Bullet] Soft CTA after a high-value lesson: offer the worksheet/scorecard, not consultation immediately.
+[List Bullet] Diagnostic CTA after the user has enough context to answer meaningful questions.
+[List Bullet] Consultation CTA after the diagnostic/result or at course completion, framed around applying priorities to their specific business.
+[List Bullet] Service-page link remains available as a secondary path for users who want to self-educate further before contacting Kultivate.
+[Normal] COURSE 03  •  P1 — LAUNCH
+[Heading 1] How to Scope & Evaluate a Digital Project
+[TABLE]
+Primary audience | Purpose
+Procurement, Owner / Founder, IT Lead | Help buyers create a clearer brief, compare vendors fairly, identify hidden dependencies, and reduce delivery risk before committing budget.
+[Heading 2] Lesson plan
+[TABLE]
+# | Lesson | What the user should understand | Teach for free | Execution boundary
+01 | Start With the Business Problem, Not the Deliverable List | Separate desired outcome from assumed solution so the scope does not prematurely lock into “redesign”, “SEO”, or “landing page”. | Problem statement template, outcome vs deliverable examples, constraint questions. | Discovery workshop, stakeholder interviews, feasibility analysis, final solution recommendation.
+02 | What a Good Website or SEO Scope Should Contain | Define goals, pages/workstreams, responsibilities, content, technical requirements, integrations, measurement, QA, and exclusions. | Scope anatomy, RACI-lite ownership checklist, example acceptance areas. | Detailed requirements, technical specification, estimate, delivery plan, dependency mapping.
+03 | How to Compare Agency Proposals Without Comparing Only Price | Evaluate understanding, approach, evidence, scope completeness, risk handling, implementation ownership, and measurement. | Vendor comparison scorecard, weighted criteria, red flags. | Bid-specific analysis, technical due diligence, proposal reconciliation, commercial negotiation support.
+04 | Timeline, Dependencies, and the Hidden Work That Delays Projects | Understand content approvals, access, data, legal review, environments, integrations, QA, and stakeholder response time. | Dependency checklist, critical-path concept, readiness questions. | Project plan, sprint/phase sequencing, stakeholder coordination, production management.
+05 | Define Acceptance Criteria Before Development Starts | Translate “looks good” and “SEO-ready” into observable checks for behavior, content, responsive UI, analytics, performance, accessibility, and search readiness. | Acceptance-criteria examples, QA categories, sign-off checklist. | Project-specific test cases, automated/manual QA, cross-browser/device validation, defect triage.
+06 | Vendor and Project Risk: Red Flags Before You Sign | Identify unclear ownership, missing migration plans, no measurement, lock-in, unsupported stacks, unrealistic guarantees, and vague maintenance. | Risk checklist and questions to ask vendors. | Contract/commercial/legal review remains with qualified parties; technical due diligence and project-specific risk assessment by Kultivate when scoped.
+[Heading 2] Conversion design
+[TABLE]
+Element | Recommendation
+Lead magnet | Website / SEO Vendor Evaluation Scorecard + Scope Checklist
+CTA | Book a Free Project Scope Review
+Data to capture | Role, project type, current vendor-selection stage, expected timeline, current website/stack, procurement constraints, approximate scope readiness.
+Funnel | Course → vendor scorecard → scope readiness diagnostic → free scope review → clarified scope/acceptance criteria → proposal/execution.
+[Heading 3] CTA timing
+[List Bullet] Soft CTA after a high-value lesson: offer the worksheet/scorecard, not consultation immediately.
+[List Bullet] Diagnostic CTA after the user has enough context to answer meaningful questions.
+[List Bullet] Consultation CTA after the diagnostic/result or at course completion, framed around applying priorities to their specific business.
+[List Bullet] Service-page link remains available as a secondary path for users who want to self-educate further before contacting Kultivate.
+[Normal] COURSE 04  •  P2 — EXPANSION
+[Heading 1] UX That Moves Visitors Toward Action
+[TABLE]
+Primary audience | Purpose
+Owner, Marketing Lead, Product / Digital Lead | Teach practical UX reasoning around clarity, decision load, trust, content hierarchy, CTA, and forms so website decisions are tied to user behavior rather than aesthetics alone.
+[Heading 2] Lesson plan
+[TABLE]
+# | Lesson | What the user should understand | Teach for free | Execution boundary
+01 | UX Is Decision Design, Not Decoration | Explain how interface choices reduce effort, uncertainty, and errors across a business journey. | Core UX principles, business examples, usability vs aesthetics distinction. | User research, behavioral analysis, product/website strategy, interface design.
+02 | Clarity Before Creativity: Make the Offer Understandable | Use hierarchy, messaging order, information scent, and progressive detail so people know where they are and what matters. | Clarity audit, hierarchy checklist, examples. | Copywriting, content hierarchy redesign, visual design, content testing.
+03 | Reduce Choice and Navigation Friction | Recognize overloaded menus, competing CTAs, duplicated routes, and ambiguous labels. | Choice architecture framework, navigation checklist. | IA research, navigation redesign, testing, implementation.
+04 | Trust and Risk Reduction Before the CTA | Place proof, process, pricing expectations, case evidence, reassurance, and next-step clarity where uncertainty occurs. | Risk-reversal mapping, proof placement principles, examples. | Proof strategy, case-study production, interface/copy changes, experimentation.
+05 | Forms and Inquiry Flows That Qualify Without Blocking | Balance business qualification with user effort; decide which fields are necessary now vs later. | Form-friction checklist, progressive profiling principle, response expectation design. | Form design/build, CRM routing, validation, privacy implementation, automation, testing.
+06 | How to Review a Page Like a UX Team | Use a structured heuristic: goal, audience, hierarchy, comprehension, evidence, interaction, accessibility, next action. | Reusable page-review scorecard and walkthrough method. | Full heuristic review, user testing, analytics validation, prototype iteration, prioritized redesign.
+[Heading 2] Conversion design
+[TABLE]
+Element | Recommendation
+Lead magnet | UX Friction Checklist + Decision Journey Audit
+CTA | Request a Website / UX Review
+Data to capture | Role, URL, primary conversion action, known friction, traffic source mix, redesign status.
+Funnel | Course → UX friction checklist → self-audit → website/UX review → prioritized experience fixes → implementation/testing.
+[Heading 3] CTA timing
+[List Bullet] Soft CTA after a high-value lesson: offer the worksheet/scorecard, not consultation immediately.
+[List Bullet] Diagnostic CTA after the user has enough context to answer meaningful questions.
+[List Bullet] Consultation CTA after the diagnostic/result or at course completion, framed around applying priorities to their specific business.
+[List Bullet] Service-page link remains available as a secondary path for users who want to self-educate further before contacting Kultivate.
+[Normal] COURSE 05  •  P2 — EXPANSION
+[Heading 1] Website Technical & Migration Readiness
+[TABLE]
+Primary audience | Purpose
+IT Lead, Procurement, Owner overseeing a redesign | Make technical risk visible to decision-makers before a redesign, migration, CMS change, or major optimization project.
+[Heading 2] Lesson plan
+[TABLE]
+# | Lesson | What the user should understand | Teach for free | Execution boundary
+01 | Performance Is a Business and Experience Constraint | Understand Core Web Vitals, real-user performance, page weight, rendering, and why metrics must be connected to actual user/business context. | Metric concepts, common causes, performance budget idea, public case-study interpretation. | RUM/lab audit, profiling, code changes, image/script optimization, infrastructure changes, monitoring.
+02 | Accessibility and Resilience Are Quality Requirements | Understand semantic structure, keyboard use, contrast, labels, error handling, and why inclusive access improves robustness. | Accessibility basics, review checklist, procurement questions. | Formal audit where appropriate, remediation, component changes, testing with assistive technologies.
+03 | Technical Debt: When the Current Foundation Becomes Expensive | Recognize fragile templates, duplicated logic, abandoned dependencies, manual deployment, poor content modeling, and unclear ownership. | Technical-debt indicators, maintainability questions, cost-of-change framework. | Codebase audit, dependency review, architecture recommendation, refactor/rebuild estimate.
+04 | Migration Planning: URLs, Redirects, Content, and Search Equity | Understand why URL mapping, redirects, canonicals, metadata, internal links, sitemaps, and launch validation matter. | Migration checklist, ownership map, risk categories. | Full crawl/inventory, redirect map, technical config, staging validation, launch monitoring.
+05 | Analytics, Consent, and Measurement Must Survive the Change | Plan measurement continuity before redesign or platform migration. | Measurement inventory, event/goal checklist, baseline/export questions. | GTM/GA/analytics implementation, consent configuration, event mapping, QA, dashboard validation subject to chosen tools and legal requirements.
+06 | Launch Readiness and Post-Launch QA | Coordinate functional QA, responsive behavior, accessibility, performance, analytics, indexability, redirects, monitoring, rollback, and ownership. | Launch checklist, severity model, go/no-go questions. | Project-specific test plan, QA execution, monitoring, defect triage, rollback/incident handling.
+[Heading 2] Conversion design
+[TABLE]
+Element | Recommendation
+Lead magnet | Technical & Migration Readiness Checklist
+CTA | Book a Free Technical Readiness Consultation
+Data to capture | Role, URL, CMS/stack, planned change, hosting/deployment context, analytics status, migration date, technical ownership.
+Funnel | Course → readiness checklist → migration/technical diagnostic → consultation → risk register and plan → implementation/QA.
+[Heading 3] CTA timing
+[List Bullet] Soft CTA after a high-value lesson: offer the worksheet/scorecard, not consultation immediately.
+[List Bullet] Diagnostic CTA after the user has enough context to answer meaningful questions.
+[List Bullet] Consultation CTA after the diagnostic/result or at course completion, framed around applying priorities to their specific business.
+[List Bullet] Service-page link remains available as a secondary path for users who want to self-educate further before contacting Kultivate.
+[Normal] COURSE 06  •  P2 — EXPANSION
+[Heading 1] AI Search, AEO & GEO for Business
+[TABLE]
+Primary audience | Purpose
+Owner, Marketing Lead, SEO Lead | Explain AI-assisted search without hype: how clear expertise, entities, evidence, retrievable answers, and source credibility support visibility across evolving search experiences.
+[Heading 2] Lesson plan
+[TABLE]
+# | Lesson | What the user should understand | Teach for free | Execution boundary
+01 | What Changes — and What Does Not — in AI-Assisted Search | Separate durable SEO foundations from changing interfaces such as AI answers/overviews/modes. | Conceptual landscape, durable principles, uncertainty/caveats. | Platform-specific monitoring, query set design, visibility benchmarking, strategy updates as products change.
+02 | Make Expertise Easy to Understand | Use clear entities, service/topic relationships, author/organization context, definitions, and information architecture. | Entity/content clarity framework, author/expertise checklist. | Entity mapping, structured data design, site architecture/copy changes, implementation.
+03 | Answer-Ready Content Without Writing for Robots | Structure concise answers, supporting explanation, evidence, examples, and source context while keeping content useful for humans. | Answer structure templates, passage clarity, FAQ decision rules. | Content research, editing, expert review, publishing workflow, performance evaluation.
+04 | Evidence, Sources, and Citation Readiness | Understand why first-hand evidence, named expertise, references, original data, and consistent business facts improve trust and retrievability. | Evidence hierarchy, source checklist, case-study/data ideas. | Evidence production, original research, digital PR/authority work, content governance.
+05 | Technical Foundations Still Matter | Connect crawlability, indexability, rendering, internal links, canonicals, structured data, and performance to content retrieval. | Technical foundation checklist and owner-level interpretation. | Crawl/technical audit, schema implementation, rendering fixes, platform configuration.
+06 | Measure AI Search Without Pretending Attribution Is Perfect | Create a practical monitoring approach using query sets, citations/mentions, landing-page behavior, branded demand, and assisted inquiry signals. | Measurement framework, limitations, reporting questions. | Monitoring setup, tool selection, data collection, dashboards, analysis, ongoing iteration.
+[Heading 2] Conversion design
+[TABLE]
+Element | Recommendation
+Lead magnet | AI Search Readiness Scorecard
+CTA | Get an SEO & AI Search Consultation
+Data to capture | Role, website URL, industry, priority expertise/topics, current SEO maturity, content ownership, AI-search concern.
+Funnel | Course → AI Search readiness scorecard → content/evidence gap diagnostic → consultation → prioritized SEO/AEO/GEO plan → implementation and monitoring.
+[Heading 3] CTA timing
+[List Bullet] Soft CTA after a high-value lesson: offer the worksheet/scorecard, not consultation immediately.
+[List Bullet] Diagnostic CTA after the user has enough context to answer meaningful questions.
+[List Bullet] Consultation CTA after the diagnostic/result or at course completion, framed around applying priorities to their specific business.
+[List Bullet] Service-page link remains available as a secondary path for users who want to self-educate further before contacting Kultivate.
+[Normal] CREDIBILITY
+[Heading 1] Case Study Learning System
+[Normal] Portfolio proves that work exists; educational case studies prove how Kultivate thinks. Learn should therefore include a case-study layer that exposes diagnosis, evidence, choices, trade-offs, implementation constraints, and result interpretation.
+[Heading 2] Case study structure
+[TABLE]
+Step | What to show
+1. Business Context | Who the business serves, what the website/search function needed to support, and relevant constraints.
+2. Problem | Observable business/user/technical problem, not a vague “website looked old”.
+3. Evidence | Analytics, search data, technical findings, user observations, stakeholder input, or public source evidence.
+4. Diagnosis | Why the problem is happening; distinguish symptom from root cause.
+5. Options | Reasonable alternatives, including why “do nothing” or a smaller intervention may be valid.
+6. Decision | What was prioritized and why.
+7. Execution | What changed at strategy, content, UX, SEO, development, measurement, or process level.
+8. Result | Observed outcome with timeframe and limitations. Never imply causality beyond the evidence.
+9. Trade-off | What the chosen solution did not solve or what risk/cost was accepted.
+10. Next Priority | What should be measured or improved next.
+[Heading 2] Initial case-study backlog
+[TABLE]
+Case-study idea | Best track | Purpose
+Tokopedia: performance as a business metric (public web.dev case) | Technical / Website | Show how technical performance can connect to CTR and conversion while clearly caveating context.
+Rakuten 24: Core Web Vitals and business outcomes (public web.dev case) | Technical / Website | Teach real-user measurement, controlled comparison, and why results are context-specific.
+Landing-page decision overload breakdown using public examples | UX | Teach CTA hierarchy, information overload, and choice architecture.
+Service page teardown: from vague company page to decision-support page | SEO / Website | Show intent, evidence, IA, copy, and CTA working together.
+Redesign migration scenario: what can go wrong with URLs and redirects | Technical / SEO | Teach pre-launch risk without exposing implementation as trivial.
+Procurement case: two proposals with the same price but different risk | Procurement | Teach scope completeness, ownership, acceptance criteria, and hidden dependencies.
+Internal Kultivate case: search visibility problem → page mapping → implementation | SEO | Use only after verified client permission/data.
+Internal Kultivate case: website friction → prioritization → targeted fixes | Website / UX | Use only after verified evidence; include before/after reasoning and limitations.
+[Normal] BOUNDARY
+[Heading 1] What to give away vs what Kultivate executes
+[TABLE]
+Rule of thumb / If the information helps the buyer understand, diagnose at a high level, evaluate a vendor, or make a better decision, give it away. If it requires business-specific research, access, implementation skill, stakeholder coordination, testing, or ongoing accountability, it is part of execution.
+[TABLE]
+Area | Teach openly | Execution Kultivate
+SEO Strategy | Intent, demand mapping, page-type logic, prioritization principles, measurement concepts. | Keyword/prompt dataset, SERP/competitor research, page mapping, forecast assumptions, roadmap, implementation, reporting.
+Technical SEO | Crawl/index concepts, common risks, owner checklist, migration principles. | Crawls, log/technical analysis, fixes, schema, redirects, validation, monitoring.
+Content / Service Pages | Page anatomy, evidence, information hierarchy, intent alignment. | Research, expert interviews, copywriting, editing, design, CMS implementation, internal linking.
+UX | Heuristics, friction categories, decision journey, CTA/form principles. | User research, analytics/session analysis, prototypes, usability tests, UI design, experiments.
+Web Development | Architecture decision criteria, quality checklist, performance/accessibility concepts. | Technical discovery, system design, coding, integrations, deployment, QA, maintenance.
+Procurement | Scope anatomy, vendor scorecard, acceptance-criteria examples, red flags. | Project-specific scope, technical due diligence, estimate, delivery plan, implementation.
+AEO / GEO | Entity/evidence/answer-readiness concepts, measurement limitations. | Entity mapping, structured data, content changes, monitoring query set, data collection, iteration.
+[Normal] FIRST-PARTY DATA
+[Heading 1] Progressive data capture design
+[Normal] The goal is not to maximize form fields. The goal is to understand who is learning, what problem they have, how close they are to buying, and which content created the transition. Data requests should be proportional to the value being delivered.
+[TABLE]
+Stage | User value | Data request | Why
+Open Learn | Course, lesson, public case study | No form | Reduce friction and build trust.
+Download | Worksheet, checklist, scorecard | Email + optional role | Useful low-friction relationship point; allow anonymous preview where feasible.
+Diagnostic | Personalized score/result | Role, URL, primary challenge, goal | Creates segmentation and contextual recommendation.
+Growth Roadmap | Prioritized next steps | Company, role, project intent, timeline, selected constraints | Qualification without asking for a full sales form too early.
+Consultation | Human review and contextual recommendation | Contact details + project context required to schedule/prepare | Qualified handoff to business development / founder / specialist.
+[Heading 2] Recommended profile fields
+[TABLE]
+Field | Use
+Role | Owner/Founder; Procurement; IT/Tech Lead; Marketing/SEO; Other.
+Website URL | Allows contextual audit/consultation and separates learners without an active site.
+Primary challenge | Visibility; low inquiry; unclear positioning; UX/conversion; rebuild; migration; performance; vendor scope; AI search; other.
+Primary goal | Increase qualified discovery; improve inquiry; reduce risk; prepare project; improve performance; understand next priority.
+Current intent | Learning; evaluating options; planning a project; comparing vendors; ready to execute.
+Timeline | No timeline; 3+ months; 1–3 months; <1 month / active project.
+Company / team context | Use later in funnel, not before basic learning.
+Email / contact | Request only when the user wants a saved result, roadmap, follow-up, or consultation.
+[Heading 2] Segmentation examples
+[List Bullet] Owner + visibility problem + “ready to execute” → SEO Growth Consultation CTA.
+[List Bullet] Procurement + comparing vendors → Project Scope Review CTA and vendor scorecard follow-up.
+[List Bullet] IT Lead + redesign/migration in 1–3 months → Technical Readiness Consultation CTA.
+[List Bullet] Marketing Lead + AI search curiosity + learning stage → continue to AEO/GEO lessons before asking for consultation.
+[List Bullet] Any role + no active project → keep nurturing through Learn/Insights rather than forcing a sales conversation.
+[Normal] CONVERSION
+[Heading 1] CTA and funnel system
+[Heading 2] CTA hierarchy
+[TABLE]
+Level | Example | When to use
+1 — Continue learning | Next lesson / See related case study | Default. Keeps trust high.
+2 — Apply the framework | Download worksheet / Use the scorecard | After a lesson with an actionable framework.
+3 — Diagnose your context | Check your website/search readiness | After the user has enough knowledge to answer meaningful inputs.
+4 — Get prioritized help | Get your Website/Search Growth Roadmap | After diagnostic; personalized but still useful without sales pressure.
+5 — Consultation | Book a free first consultation | At course completion, roadmap result, high-intent diagnostic result, or explicit project-readiness signal.
+[Heading 2] Consultation positioning
+[TABLE]
+Recommended promise / The first consultation is free. Kultivate uses the conversation to understand the business problem, current context, and required work; pricing is then defined based on the pieces and scope actually needed.
+[Normal] Do not position consultation as “the only place we reveal the answer.” The course should already explain the answer at framework level. Consultation adds context: what matters for this specific business, what should happen first, what can wait, what evidence is missing, and what execution is required.
+[Heading 2] Example CTA copy directions
+[TABLE]
+Context | CTA direction
+SEO course completion | You know the framework. Now see which search priorities matter for your business.
+Website course completion | Turn the scorecard into a prioritized website plan.
+Procurement course completion | Pressure-test your scope before committing budget.
+UX diagnostic | See which friction points deserve attention first.
+Migration diagnostic | Review the migration risks before launch planning is locked.
+AI Search course | Find the content, evidence, and technical gaps that make your expertise harder to retrieve.
+[Normal] MEASUREMENT
+[Heading 1] Learning & funnel analytics
+[Normal] Reuse the existing Learn funnel events already present in staging, then add events that measure depth, intent, and conversion. Event names below are a recommended implementation vocabulary; final naming should follow the analytics standard used by the site.
+[TABLE]
+Event | Purpose
+learn_view (existing) | Learn index viewed.
+learn_series_open (existing) | Track which course/series is selected.
+learn_lesson_start / learn_next_lesson (existing) | Track lesson progression.
+learn_lesson_complete (new) | Measure genuine completion instead of only starts.
+learn_resource_view / download (new) | Track worksheet/checklist interest.
+learn_diagnostic_start / complete (new) | Measure self-diagnosis intent and completion.
+learn_roadmap_view (new) | Measure transition from generic learning to personalized priorities.
+learn_consultation_click (new) | Primary high-intent conversion event.
+learn_consultation_submit (new) | Qualified funnel conversion if form/scheduling integration allows.
+learn_to_service_click (existing) | Keep as secondary behavior signal.
+[Heading 2] Dashboard questions
+[List Bullet] Which course produces the highest diagnostic completion rate?
+[List Bullet] Which lesson has the largest drop-off and is it because of length, relevance, or experience?
+[List Bullet] Which roles consume which tracks?
+[List Bullet] What business problems are most frequently selected?
+[List Bullet] Which resource/diagnostic moves users toward consultation?
+[List Bullet] What percentage of consultation leads have completed at least one course?
+[List Bullet] Do qualified clients arrive with clearer scopes or faster sales conversations after Learn exposure?
+[List Bullet] Which topics attract learners but rarely connect to service intent? Those may still be valuable for credibility/SEO, but should be measured differently.
+[Normal] PRODUCTION
+[Heading 1] Content production standard
+[Heading 2] Lesson format — 6 to 12 minutes
+[TABLE]
+Segment | Purpose | Typical length
+1. Business hook | State the decision/problem in the audience’s language; avoid generic “today we learn SEO”. | 30–60 sec
+2. Context | Explain why the issue matters and when it does not matter. | 1–2 min
+3. Framework | Teach the model, checklist, or decision rule. | 2–4 min
+4. Example / case | Show a realistic or verified public/client example. | 1–3 min
+5. Self-diagnostic | Give 2–5 questions the learner can apply immediately. | 1–2 min
+6. Next step | Continue learning, use a worksheet, diagnose, or consult depending on intent. | 15–45 sec
+[Heading 2] Content quality rules
+[List Bullet] One lesson = one decision or mental model. Do not overload a lesson with a full practitioner workflow.
+[List Bullet] Use the vocabulary of the target role. Owner copy should emphasize opportunity/risk; Procurement copy should emphasize scope/acceptance; IT copy can use technical language.
+[List Bullet] Every claim with a number needs a source and contextual caveat.
+[List Bullet] Never imply guaranteed ranking, conversion, revenue, AI citation, or performance outcomes.
+[List Bullet] Show trade-offs. Good content should explain when Kultivate would not recommend a rebuild, SEO workstream, or additional complexity.
+[List Bullet] Prefer founder/specialist explanations, natural teaching documentation, real diagrams, annotated website examples, and verified work over generic stock/AI visuals.
+[List Bullet] Provide transcripts or written summaries for accessibility and SEO; structured lesson summaries also help users scan before watching.
+[List Bullet] Update technical lessons periodically because search/AI products, browser metrics, analytics tools, and platform behavior can change.
+[Heading 2] Worksheet / lead magnet standard
+[List Bullet] Must be useful even if the user never contacts Kultivate.
+[List Bullet] Maximum 1–3 pages for first version; designed to be completed in 5–15 minutes.
+[List Bullet] Includes decision questions, score, next-action interpretation, and where expert help is actually needed.
+[List Bullet] Should not require proprietary tools to be useful.
+[List Bullet] Data capture is optional until the user wants to save results, receive a personalized interpretation, or continue to a Growth Roadmap.
+[Normal] IMPLEMENTATION
+[Heading 1] Recommended rollout plan
+[Heading 2] Phase 1 — Conversion foundation
+[TABLE]
+Workstream | Scope
+Course content | Produce 3 priority tracks / 18 lessons: SEO → Sales, Website → Business System, Scope & Evaluate Project.
+Resources | 3 lead magnets: Search-to-Sales Map, Website Business Job/Scorecard, Vendor Evaluation Scorecard.
+Diagnostic | Create one shared Growth Priority diagnostic with role-aware branching; avoid building six separate complex quizzes initially.
+CTA | Add course-level consultation CTA and diagnostic/roadmap step before it.
+Data | Capture role, URL, challenge, goal, intent, timeline progressively.
+Analytics | Extend existing events with completion, resource, diagnostic, roadmap, consultation events.
+Case study | Publish at least 3 educational case studies: public performance case, UX/page teardown, procurement scope scenario.
+[Heading 2] Phase 2 — Depth and segmentation
+[TABLE]
+Workstream | Scope
+Course content | Add UX, Technical/Migration, and AI Search tracks / 18 more lessons.
+Segmentation | Personalize recommended next course/CTA by role and diagnostic result.
+Case studies | Add verified Kultivate client cases when permission/data is available.
+Resources | Add migration checklist, UX friction checklist, and AI Search readiness scorecard.
+Nurture | If email/newsletter capability is approved, send useful lesson/resource follow-up based on selected interests; do not default everyone into generic sales automation.
+[Heading 2] Phase 3 — Optimization
+[List Bullet] Analyze course completion, diagnostic completion, and consultation quality by track/role.
+[List Bullet] Rewrite or reorder lessons with high drop-off or weak progression.
+[List Bullet] Promote high-converting lessons through Insights, service pages, founder profile, and external channels.
+[List Bullet] Build deeper role-specific paths only after data shows meaningful demand.
+[List Bullet] Refresh search/AI/technical lessons on a defined review cadence and record “last reviewed” date.
+[Heading 2] What not to build first
+[List Bullet] Full LMS accounts, badges, certificates, or gamification unless a real learning-retention need emerges.
+[List Bullet] Hard gate before lesson 1.
+[List Bullet] Dozens of tiny courses that fragment the buyer journey.
+[List Bullet] Six separate diagnostics with overlapping questions.
+[List Bullet] Automated “AI audit” that produces overconfident technical/SEO conclusions without verified data.
+[List Bullet] A course library optimized for practitioner keywords but disconnected from Kultivate’s actual service scope.
+[Normal] HANDOFF
+[Heading 1] Implementation brief for the website team
+[TABLE]
+One-paragraph implementation brief / Revise Kultivate Learn on the staging branch from the current four-series/eight-lesson structure into a scalable education-to-consultation system built around six learning tracks and 36 planned lessons, while prioritizing the first 18 lessons across SEO for Business Growth, Website as a Business & Sales System, and How to Scope & Evaluate a Digital Project. Preserve open access to learning content, existing bilingual patterns, related-service navigation, and current funnel analytics, but add course completion, resource, diagnostic, roadmap, and consultation events; introduce progressive data capture through useful worksheets/scorecards and a role-aware Growth Priority diagnostic; and replace the current service-link-only end state with a contextual path from lesson → resource → diagnostic → personalized Growth Roadmap → free first consultation. The UI should clearly segment content by problem and audience without feeling like a generic LMS, keep founder-led teaching/evidence prominent, support transcripts/summaries, and ensure every CTA communicates that the knowledge is free while Kultivate handles contextual research, prioritization, design, development, technical implementation, QA, and ongoing optimization.
+[Heading 2] Definition of done — content/funnel layer
+[List Bullet] Course architecture supports at least the six defined tracks without hardcoding only four current series.
+[List Bullet] Course/lesson metadata can store audience, business problem, learning outcome, resource CTA, diagnostic CTA, and related service.
+[List Bullet] User can complete lessons without submitting personal data.
+[List Bullet] Resource and diagnostic surfaces are optional progressive conversion points.
+[List Bullet] Consultation CTA is attributable to course, lesson, role/diagnostic path where consented/technically appropriate.
+[List Bullet] Bilingual ID/EN structure is preserved.
+[List Bullet] Existing service pages remain the source of service scope truth; Learn should not invent services outside approved scope.
+[List Bullet] Analytics events are documented and testable.
+[List Bullet] Accessibility, responsive behavior, keyboard navigation, and reduced-motion behavior are included in QA.
+[List Bullet] No fake founder imagery, fabricated results, fabricated case studies, or unsupported performance promises.
+[Normal] REFERENCES
+[Heading 1] Research sources and repository references
+[Normal] Accessed / verified for this plan on 9 September 2026 unless otherwise noted. URLs are included so the research can be rechecked when content is produced.
+[Normal] Acquisition.com — Free Trainings — https://www.acquisition.com/training
+[Normal] Acquisition.com — Offer Creation Course — https://www.acquisition.com/training/offers
+[Normal] Acquisition.com — Value Equation / Pricing & Value Checklist — https://www.acquisition.com/training/offers4
+[Normal] Acquisition.com — Lead Generation Course example — https://www.acquisition.com/training/leads4
+[Normal] Acquisition.com — Scaling Course stages — https://www.acquisition.com/training/scalingstart
+[Normal] Ahrefs Academy — SEO Course for Beginners — https://ahrefs.com/academy/seo-training-course
+[Normal] Growth.Design — UX Case Studies — https://growth.design/case-studies
+[Normal] Growth.Design — Landing Page UX Psychology case study — https://growth.design/case-studies/landing-page-ux-psychology
+[Normal] Growth.Design — C.L.E.A.R. Design Masterclass — https://growth.design/courses/clear-ui
+[Normal] Google Search Central — SEO Starter Guide — https://developers.google.com/search/docs/fundamentals/seo-starter-guide
+[Normal] Google Search Central — Creating Helpful, Reliable, People-First Content — https://developers.google.com/search/docs/fundamentals/creating-helpful-content
+[Normal] web.dev — Tokopedia performance case study — https://web.dev/case-studies/tokopedia
+[Normal] web.dev — Rakuten 24 Core Web Vitals case study — https://web.dev/case-studies/rakuten
+[Normal] Kultivate staging — learning.ts — https://github.com/kultivatedigitalid/Kultivate/blob/staging/website/src/data/learning.ts
+[Normal] Kultivate staging — services.ts — https://github.com/kultivatedigitalid/Kultivate/blob/staging/website/src/data/services.ts
+[Normal] Kultivate staging — LearnIndex.astro — https://github.com/kultivatedigitalid/Kultivate/blob/staging/website/src/components/learn/LearnIndex.astro
+[Normal] Kultivate staging — LearnSeriesPage.astro — https://github.com/kultivatedigitalid/Kultivate/blob/staging/website/src/components/learn/LearnSeriesPage.astro
+[Heading 2] Research caution
+[Normal] External benchmark content is used to understand funnel structure, education depth, learning format, and public case-study framing. Kultivate should not copy another company’s proprietary course content, wording, visual identity, frameworks, or claims. All Kultivate lessons should be written from its own service scope, verified expertise, client evidence, and current technical guidance.

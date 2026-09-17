@@ -1,49 +1,111 @@
-export const serviceKeys = ['seo', 'web'];
+export const serviceKeys = ['seo', 'web', 'visual', 'social'];
 
 export const quizBlueprint = [
   {
-    id: 'goal',
-    answers: {
-      visibility: { seo: 4, web: 0 },
-      clarity: { seo: 1, web: 4 },
-      ai: { seo: 4, web: 1 },
-      publishing: { seo: 3, web: 1 }
+    "id": "goal",
+    "answers": {
+      "visibility": {
+        "seo": 6,
+        "web": 2
+      },
+      "clarity": {
+        "web": 6,
+        "visual": 2
+      },
+      "recognition": {
+        "visual": 6
+      },
+      "publishing": {
+        "social": 6
+      }
     }
   },
   {
-    id: 'foundation',
-    answers: {
-      fragile: { seo: 0, web: 4 },
-      unclear: { seo: 1, web: 3 },
-      stable: { seo: 2, web: 1 },
-      unknown: { seo: 1, web: 3 }
+    "id": "foundation",
+    "answers": {
+      "fragile": {
+        "web": 4
+      },
+      "unclear": {
+        "web": 3,
+        "visual": 1
+      },
+      "stable": {
+        "seo": 1,
+        "visual": 1,
+        "social": 1
+      },
+      "unknown": {
+        "web": 2,
+        "seo": 1,
+        "visual": 1,
+        "social": 1
+      }
     }
   },
   {
-    id: 'discovery',
-    answers: {
-      google: { seo: 4, web: 0 },
-      answers: { seo: 4, web: 1 },
-      referral: { seo: 2, web: 2 },
-      mixed: { seo: 2, web: 2 }
+    "id": "discovery",
+    "answers": {
+      "google": {
+        "seo": 4,
+        "web": 1
+      },
+      "social": {
+        "social": 4
+      },
+      "referral": {
+        "visual": 3,
+        "web": 2
+      },
+      "mixed": {
+        "seo": 1,
+        "web": 1,
+        "visual": 1,
+        "social": 1
+      }
     }
   },
   {
-    id: 'capacity',
-    answers: {
-      managed: { seo: 3, web: 1 },
-      direction: { seo: 3, web: 1 },
-      development: { seo: 1, web: 4 },
-      focused: { seo: 2, web: 2 }
+    "id": "capacity",
+    "answers": {
+      "managed": {
+        "seo": 1,
+        "social": 3
+      },
+      "direction": {
+        "visual": 3,
+        "seo": 1
+      },
+      "development": {
+        "web": 4
+      },
+      "focused": {
+        "seo": 1,
+        "web": 1,
+        "visual": 1,
+        "social": 1
+      }
     }
   },
   {
-    id: 'outcome',
-    answers: {
-      pipeline: { seo: 4, web: 1 },
-      referenced: { seo: 4, web: 1 },
-      conversion: { seo: 1, web: 4 },
-      cadence: { seo: 3, web: 1 }
+    "id": "outcome",
+    "answers": {
+      "pipeline": {
+        "seo": 5,
+        "web": 1
+      },
+      "recognition": {
+        "visual": 5,
+        "social": 1
+      },
+      "conversion": {
+        "web": 5,
+        "visual": 1
+      },
+      "cadence": {
+        "social": 5,
+        "visual": 1
+      }
     }
   }
 ];

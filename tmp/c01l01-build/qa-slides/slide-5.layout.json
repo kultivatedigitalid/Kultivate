@@ -1,0 +1,784 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/kp9l33",
+    "id": "kp9l33",
+    "slide": 5,
+    "layoutId": "c45448a7-d810-4712-a386-51b8f2dc8ecc",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "4d7715bf-104f-4a99-b21e-a2ce1757e964",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#070B12",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Arial"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "c45448a7-d810-4712-a386-51b8f2dc8ecc",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "4d7715bf-104f-4a99-b21e-a2ce1757e964",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "4d7715bf-104f-4a99-b21e-a2ce1757e964",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mtcr2l0n",
+      "id": "1",
+      "name": "KULTIVATE LEARN",
+      "bbox": [
+        64,
+        32,
+        420,
+        28
+      ],
+      "geometry": "rect",
+      "text": "KULTIVATE LEARN",
+      "textPreview": "KULTIVATE LEARN",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "KULTIVATE LEARN"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "KULTIVATE LEARN",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "KULTIVATE LEARN",
+              "fontSize": 18,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9wnqdgzy",
+      "id": "2",
+      "name": "COURSE 01  /  LESSON 01",
+      "bbox": [
+        800,
+        32,
+        416,
+        28
+      ],
+      "geometry": "rect",
+      "text": "COURSE 01  /  LESSON 01",
+      "textPreview": "COURSE 01  /  LESSON 01",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 18,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "alignment": "right",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "COURSE 01  /  LESSON 01"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "COURSE 01  /  LESSON 01",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "COURSE 01  /  LESSON 01",
+              "fontSize": 18,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ove94vid",
+      "id": "3",
+      "name": "slide-title",
+      "bbox": [
+        64,
+        99,
+        1148,
+        122
+      ],
+      "geometry": "rect",
+      "text": "Informasi mengikuti keputusan pembeli",
+      "textPreview": "Informasi mengikuti keputusan pembeli",
+      "resolvedFontSize": 49,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 49,
+        "typeface": "Arial",
+        "color": "#F4F7FB",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Informasi mengikuti keputusan pembeli"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Informasi mengikuti keputusan pembeli",
+          "resolvedTextStyle": {
+            "fontSize": 49,
+            "typeface": "Arial",
+            "color": "#F4F7FB",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Informasi mengikuti keputusan pembeli",
+              "fontSize": 49,
+              "typeface": "Arial",
+              "color": "#F4F7FB",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/zql876hw",
+      "id": "4",
+      "name": "Kultivate framework",
+      "bbox": [
+        64,
+        220,
+        1110,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Kultivate framework",
+      "textPreview": "Kultivate framework",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 22,
+        "typeface": "Arial",
+        "color": "#67D9FF",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Kultivate framework"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Kultivate framework",
+          "resolvedTextStyle": {
+            "fontSize": 22,
+            "typeface": "Arial",
+            "color": "#67D9FF",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Kultivate framework",
+              "fontSize": 22,
+              "typeface": "Arial",
+              "color": "#67D9FF",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/epc7y10b",
+      "id": "5",
+      "name": "separator",
+      "bbox": [
+        64,
+        663,
+        1152,
+        0
+      ],
+      "geometry": "line",
+      "lineColor": "#273244",
+      "lineWidth": 1
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/1s3q9gz2",
+      "id": "6",
+      "name": "SEO for Business Growth: From Searc",
+      "bbox": [
+        64,
+        679,
+        1020,
+        25
+      ],
+      "geometry": "rect",
+      "text": "SEO for Business Growth: From Search to Sales",
+      "textPreview": "SEO for Business Growth: From Search to Sales",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "SEO for Business Growth: From Search to Sales"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "SEO for Business Growth: From Search to Sales",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "SEO for Business Growth: From Search to Sales",
+              "fontSize": 16,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0rup0bih",
+      "id": "7",
+      "name": "05",
+      "bbox": [
+        1160,
+        675,
+        56,
+        27
+      ],
+      "geometry": "rect",
+      "text": "05",
+      "textPreview": "05",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 20,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "alignment": "right",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "05"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "05",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "05",
+              "fontSize": 20,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "table",
+      "scope": "slide",
+      "aid": "tb/2x8f698r",
+      "id": "8",
+      "bbox": [
+        64,
+        290,
+        1152,
+        280
+      ],
+      "text": "Discover | Masalah apa yang perlu ditangani?\nLearn | Bagaimana solusi bekerja?\nCompare/Validate | Cocok dan bisa dipercaya?\nAct | Bagaimana memulai?",
+      "textPreview": "Discover | Masalah apa yang perlu ditangani? | Learn | Bagaimana solusi bekerja? | Compare/Validate | Cocok dan bisa dipercaya? | Act | B...",
+      "rows": 4,
+      "cols": 2,
+      "cells": [
+        {
+          "index": 1,
+          "row": 1,
+          "column": 1,
+          "bbox": [
+            64,
+            290,
+            370,
+            70
+          ],
+          "text": "Discover",
+          "textPreview": "Discover",
+          "fillColor": "#070B12",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Discover",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Discover"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "row": 1,
+          "column": 2,
+          "bbox": [
+            434,
+            290,
+            782,
+            70
+          ],
+          "text": "Masalah apa yang perlu ditangani?",
+          "textPreview": "Masalah apa yang perlu ditangani?",
+          "fillColor": "#070B12",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Masalah apa yang perlu ditangani?",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Masalah apa yang perlu ditangani?"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "row": 2,
+          "column": 1,
+          "bbox": [
+            64,
+            360,
+            370,
+            70
+          ],
+          "text": "Learn",
+          "textPreview": "Learn",
+          "fillColor": "#070B12",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Learn",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Learn"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "row": 2,
+          "column": 2,
+          "bbox": [
+            434,
+            360,
+            782,
+            70
+          ],
+          "text": "Bagaimana solusi bekerja?",
+          "textPreview": "Bagaimana solusi bekerja?",
+          "fillColor": "#070B12",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Bagaimana solusi bekerja?",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Bagaimana solusi bekerja?"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "row": 3,
+          "column": 1,
+          "bbox": [
+            64,
+            430,
+            370,
+            70
+          ],
+          "text": "Compare/Validate",
+          "textPreview": "Compare/Validate",
+          "fillColor": "#070B12",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Compare/Validate",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Compare/Validate"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "row": 3,
+          "column": 2,
+          "bbox": [
+            434,
+            430,
+            782,
+            70
+          ],
+          "text": "Cocok dan bisa dipercaya?",
+          "textPreview": "Cocok dan bisa dipercaya?",
+          "fillColor": "#070B12",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Cocok dan bisa dipercaya?",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Cocok dan bisa dipercaya?"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "row": 4,
+          "column": 1,
+          "bbox": [
+            64,
+            500,
+            370,
+            70
+          ],
+          "text": "Act",
+          "textPreview": "Act",
+          "fillColor": "#070B12",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Act",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Act"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "row": 4,
+          "column": 2,
+          "bbox": [
+            434,
+            500,
+            782,
+            70
+          ],
+          "text": "Bagaimana memulai?",
+          "textPreview": "Bagaimana memulai?",
+          "fillColor": "#070B12",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Bagaimana memulai?",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Bagaimana memulai?"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/q1s7u10f",
+      "id": "9",
+      "name": "Satu halaman dapat membantu lebih d",
+      "bbox": [
+        64,
+        603,
+        1152,
+        39
+      ],
+      "geometry": "rect",
+      "text": "Satu halaman dapat membantu lebih dari satu momen",
+      "textPreview": "Satu halaman dapat membantu lebih dari satu momen",
+      "resolvedFontSize": 26,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 26,
+        "typeface": "Arial",
+        "color": "#C9D3DF",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Satu halaman dapat membantu lebih dari satu momen"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Satu halaman dapat membantu lebih dari satu momen",
+          "resolvedTextStyle": {
+            "fontSize": 26,
+            "typeface": "Arial",
+            "color": "#C9D3DF",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Satu halaman dapat membantu lebih dari satu momen",
+              "fontSize": 26,
+              "typeface": "Arial",
+              "color": "#C9D3DF",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

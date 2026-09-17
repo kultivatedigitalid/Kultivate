@@ -33,7 +33,7 @@ const copy = locale === 'id'
         : 'Butuh bantuan menerapkan keputusan website ini ke konteks bisnis Anda? Lihat cara kami menangani Web Services.',
       relatedCta: series.category === 'seo' ? 'Pelajari layanan SEO' : 'Pelajari Web Services',
       roadmapTitle: 'Lanjutkan dari insight ke prioritas',
-      roadmapBody: 'Gunakan Website Growth Roadmap untuk melihat apakah SEO, Web Services, atau keduanya menjadi langkah berikutnya yang paling berguna.',
+      roadmapBody: 'Gunakan Growth Roadmap untuk menemukan prioritas berikutnya di search, website, visual strategy, atau social media.',
       roadmapCta: 'Buka Website Growth Roadmap',
     }
   : {
@@ -52,7 +52,7 @@ const copy = locale === 'id'
         : 'Need help applying these website decisions to your business context? See how we approach Web Services.',
       relatedCta: series.category === 'seo' ? 'Explore SEO services' : 'Explore Web Services',
       roadmapTitle: 'Turn the insight into a priority',
-      roadmapBody: 'Use the Website Growth Roadmap to see whether SEO, Web Services, or both should become your most useful next move.',
+      roadmapBody: 'Use the Growth Roadmap to find your next priority in search, websites, visual strategy, or social media.',
       roadmapCta: 'Open the Website Growth Roadmap',
     };
 ---
@@ -154,7 +154,7 @@ const copy = locale === 'id'
     </div>
   </section>
 
-  <section class="learn-related flow-section" aria-labelledby="learn-related-title">
+  <section class="learn-related flow-section light-field" aria-labelledby="learn-related-title">
     <div class="container learn-related__layout" data-reveal>
       <div>
         <span class="text-mono">{copy.related}</span>
@@ -586,4 +586,8 @@ const copy = locale === 'id'
     }
     .learn-progress__track span { transition: none; }
   }
+
+  .learn-related { padding-block:200px; }
+  .learn-related :is(h2,p,.text-mono,.link-hover-arrow) { color:#12334d; }
+
 </style>

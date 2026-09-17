@@ -1,5 +1,14 @@
 # KULTIVATE WEBSITE BLUEPRINT
 
+## Current direction · 15 September 2026
+
+The latest client request takes precedence over the earlier baseline below. Public services are **SEO, Web Services, Visual Strategy, and Social Media Management**, with `Kultivate Services.docx` as the newest content source. Both locales have four service details and a four-service diagnostic.
+
+Use icy white/blue gradients that fade into the surrounding navy, plus the exact ThreeUI Ribbon Field as an additional motion layer. This supersedes earlier dark-only and no-WebGL restrictions for this specific integration. Home services use the supplied sketch and fit a desktop/laptop viewport; mobile stacks vertically. Existing portfolio detail templates remain inactive.
+
+Implementation, source provenance, and validation: [September experiments](EXPERIMENTS_2026-09-15.md).
+
+
 **Version:** 2.0  
 **Date:** 10 August 2026  
 **Status:** Brand Guideline Book v2.0 aligned planning baseline / pending production inputs  
@@ -56,7 +65,7 @@ The website must begin with business context before presenting expertise and mus
 
 1. Generate qualified inquiry.
 2. Build credibility using transparent process, working artifacts, educational content, and verified proof.
-3. Help visitors choose a practical starting point across SEO, AEO & GEO, Web Services, and Content Management.
+3. Help visitors choose a practical starting point across SEO, Web Services, Visual Strategy, and Social Media Management.
 
 ### Selected direction
 

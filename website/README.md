@@ -1,5 +1,14 @@
 # Kultivate Website Repository Context
 
+## Current direction · 15 September 2026
+
+The latest client request takes precedence over the earlier baseline below. Public services are **SEO, Web Services, Visual Strategy, and Social Media Management**, with `Kultivate Services.docx` as the newest content source. Both locales have four service details and a four-service diagnostic.
+
+Use muted blue-grey gradients with long fades into the surrounding navy. The exact ThreeUI Ribbon Field repeats down the document behind content, moving with the page during scroll. This supersedes earlier dark-only and no-WebGL restrictions for this specific integration. Home services use the supplied sketch and fit a desktop/laptop viewport; mobile stacks vertically. Existing portfolio detail templates remain inactive.
+
+Implementation, source provenance, and validation: [September experiments](docs/EXPERIMENTS_2026-09-15.md).
+
+
 **Context pack version:** 2.0  
 **Aligned source:** Kultivate Brand Guideline Book v2.0  
 **Framework:** Astro static output  

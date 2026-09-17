@@ -76,7 +76,7 @@ const { locale } = Astro.props;
   const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
   const submitLabel = submitButton?.textContent?.trim() || '';
   const status = form?.querySelector<HTMLElement>('[data-form-status]');
-  const allowedServices = new Set(['seo', 'web-services']);
+  const allowedServices = new Set(Array.from(form?.querySelectorAll<HTMLOptionElement>('#service option') ?? []).map(option => option.value).filter(Boolean));
   const query = new URLSearchParams(window.location.search);
   const source = query.get('source') === 'roadmap' ? 'roadmap' : 'contact';
   const requestedService = query.get('service');

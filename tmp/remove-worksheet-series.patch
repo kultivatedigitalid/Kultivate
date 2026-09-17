@@ -1,0 +1,86 @@
+diff --git a/website/src/components/learn/LearnSeriesPage.astro b/website/src/components/learn/LearnSeriesPage.astro
+--- a/website/src/components/learn/LearnSeriesPage.astro
++++ b/website/src/components/learn/LearnSeriesPage.astro
+@@ -8,1 +8,0 @@
+-import { getLearningResourceForSeries } from '../../data/learning-content';
+@@ -17,2 +16,0 @@
+-const resource = getLearningResourceForSeries(series.id);
+-const resourcePath = resource ? `/${locale}/learn/resources/${resource.slug}/` : '';
+@@ -32,4 +29,0 @@
+-      resourceLabel: 'WORKSHEET PRAKTIS',
+-      resourceTitle: 'Ubah materi menjadi keputusan yang dapat dijalankan',
+-      resourceBody: 'Isi worksheet ini untuk merangkum bukti, menilai prioritas, dan membawa hasilnya ke diskusi internal atau Growth Roadmap.',
+-      resourceCta: 'Buka worksheet',
+@@ -52,4 +45,0 @@
+-      resourceLabel: 'PRACTICAL WORKSHEET',
+-      resourceTitle: 'Turn the lessons into an actionable decision',
+-      resourceBody: 'Use this worksheet to summarize evidence, assess priorities, and bring the result into an internal discussion or the Growth Roadmap.',
+-      resourceCta: 'Open worksheet',
+@@ -160,17 +149,0 @@
+-  {resource && (
+-    <section class="learn-resource flow-section" aria-labelledby="learn-resource-title">
+-      <div class="container learn-resource__layout" data-reveal>
+-        <div>
+-          <span class="text-mono">{copy.resourceLabel}</span>
+-          <h2 id="learn-resource-title">{copy.resourceTitle}</h2>
+-        </div>
+-        <div>
+-          <h3>{resource.title[locale]}</h3>
+-          <p>{copy.resourceBody}</p>
+-          <a class="link-hover-arrow" href={resourcePath} data-learn-resource-link data-resource-id={resource.id}>
+-            <span>{copy.resourceCta}</span><span aria-hidden="true">&#8594;</span>
+-          </a>
+-        </div>
+-      </div>
+-    </section>
+-  )}
+-
+@@ -304,5 +276,0 @@
+-      root.querySelector<HTMLElement>('[data-learn-resource-link]')?.addEventListener('click', (event) => {
+-        const link = event.currentTarget as HTMLElement;
+-        trackFunnelEvent('learn_resource_click', { series_id: seriesId, resource_id: link.dataset.resourceId ?? '' });
+-      });
+-
+@@ -367,2 +334,1 @@
+-  .learn-related .text-mono,
+-  .learn-resource .text-mono {
++  .learn-related .text-mono {
+@@ -517,35 +483,0 @@
+-  .learn-resource {
+-    padding: clamp(50px, 7vw, 92px) 0;
+-  }
+-
+-  .learn-resource__layout {
+-    display: grid;
+-    grid-template-columns: minmax(0, 0.75fr) minmax(300px, 0.65fr);
+-    gap: clamp(40px, 9vw, 132px);
+-    align-items: end;
+-    padding-block: clamp(36px, 5vw, 58px);
+-    border-block: 1px solid rgba(126, 153, 178, 0.22);
+-  }
+-
+-  .learn-resource h2 {
+-    max-width: 15ch;
+-    margin-top: 12px;
+-    font-size: clamp(2.2rem, 4vw, 4.5rem);
+-    font-weight: 520;
+-    letter-spacing: -0.04em;
+-    line-height: 0.98;
+-  }
+-
+-  .learn-resource h3 {
+-    margin-bottom: 13px;
+-    font-size: clamp(1.35rem, 1.1rem + 0.7vw, 2rem);
+-    font-weight: 540;
+-    letter-spacing: -0.03em;
+-  }
+-
+-  .learn-resource p {
+-    max-width: 50ch;
+-    margin-bottom: 22px;
+-    color: rgba(201, 211, 223, 0.76);
+-    line-height: 1.65;
+-  }
+-
+@@ -570,1 +501,0 @@
+-    .learn-resource__layout,

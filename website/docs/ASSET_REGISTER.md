@@ -1,5 +1,13 @@
 # Asset Register
 
+## Added dependencies and assets · 15 September 2026
+
+- ThreeUI Ribbon Field source: `https://threeui.com/source-code/ribbon-field.json`, revision `fa86582fc870`. Three registered files are unmodified; hashes, provenance and MIT license are under `src/vendor/threeui/`.
+- Shared CSS includes a Fragment Mono font path although the source bundle lists no assets. Added the official Google Fonts Latin WOFF2 at that same path, with OFL license; see the vendor README for exact URL.
+- Existing SEO, Web, social-distribution, and purposeful-craft imagery is reused. Client sketch / WhatsApp references and the raw service document are not copied into public assets.
+- React 19 and `@astrojs/react` provide the island runtime. The registered ribbon component itself uses raw WebGL and does not import Three.js.
+
+
 | Asset ID | File/path | Type | Purpose | Owner/source | Permission | Locale | Status | Notes |
 |---|---|---|---|---|---|---|---|---|
 | A-001 | `references/dark-grid.png` | Reference only | Modular editorial direction | Client-provided | Direction only | N/A | REFERENCE | Do not publish or copy directly. |
@@ -48,3 +56,6 @@ Add every production asset before merge. Record ownership, license, public usage
 | A-042 | public/assets/portfolio/aruna.webp | Production raster | Aruna concept-study visual | OpenAI ImageGen for Kultivate | Project-generated / project use | Both | CONCEPT STUDY | Explicitly disclosed as exploratory; no client relationship or performance claim. |
 
 Phase 2 adds no new media assets. Existing About collage images are now described in public alt text as editorial illustrations, and all 12 portfolio visuals use the Concept Study proof state.
+## 16 September service banner reuse
+
+No new raster assets were generated. Detail heroes use existing banner artwork independently of card/process imagery: SEO → `seo-gradient.webp`; Web Services → `web-services-gradient.webp`; Social Media Management → `aeo-geo-gradient.webp` (orb); Visual Strategy → `insights-gradient.webp` (folded surface). All paths are under `/assets/banners/` and both locales share the mapping.

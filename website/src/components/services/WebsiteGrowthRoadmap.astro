@@ -13,7 +13,7 @@ const copy = locale === 'id'
       kicker: 'Rekomendasi layanan',
       meta: '5 pertanyaan · 1–2 menit',
       initialTitle: 'Temukan titik awal yang paling berguna',
-      initialBody: 'Jawab lima pertanyaan singkat untuk melihat apakah SEO, Web Services, atau keduanya menjadi titik awal yang paling berguna.',
+      initialBody: 'Jawab lima pertanyaan singkat untuk menemukan prioritas di SEO, website, visual strategy, atau social media.',
       start: 'Temukan solusi Anda',
       privacy: 'Jawaban diproses di browser dan tidak dikirim atau disimpan.',
       calculating: 'Menyusun roadmap Anda…',
@@ -35,7 +35,7 @@ const copy = locale === 'id'
           answers: [
             ['visibility', 'Pelanggan yang tepat belum menemukan kami', 'Visibility untuk demand bernilai belum konsisten.'],
             ['clarity', 'Penawaran sulit dipahami atau dibandingkan', 'Website belum menjelaskan penawaran dan langkah berikutnya dengan cukup jelas.'],
-            ['ai', 'Cara pelanggan mencari terus berubah', 'Website belum cukup jelas untuk menjawab kebutuhan pencarian yang terus berkembang.'],
+            ['recognition', 'Brand sulit dikenali atau terasa tidak konsisten', 'Pesan dan sistem visual belum membantu orang memahami dan mengingat bisnis.'],
             ['publishing', 'Konten berjalan reaktif dan tidak konsisten', 'Produksi dan pembaruan konten belum memiliki sistem yang dapat dipertahankan.']
           ]
         },
@@ -52,8 +52,8 @@ const copy = locale === 'id'
           title: 'Dari mana demand yang ingin diperkuat?',
           answers: [
             ['google', 'Google dan organic search', 'Demand utama berada pada pencarian organik bernilai.'],
-            ['answers', 'Cara pencarian baru di luar hasil tradisional', 'Informasi bisnis perlu lebih mudah ditemukan, dipahami, dan dipercaya.'],
-            ['referral', 'Referral atau social sudah ada, search masih lemah', 'Demand yang sudah ada belum ditopang website dan search yang kuat.'],
+            ['social', 'Social media dan jaringan profesional', 'Expertise bisnis perlu hadir secara konsisten di hadapan audiens yang relevan.'],
+            ['referral', 'Referral, presentasi, dan percakapan sales', 'Materi bisnis perlu menjelaskan penawaran dengan lebih jelas dan konsisten.'],
             ['mixed', 'Belum yakin—channel masih bercampur', 'Channel acquisition belum memiliki prioritas dan hubungan yang jelas.']
           ]
         },
@@ -61,7 +61,7 @@ const copy = locale === 'id'
           title: 'Dukungan seperti apa yang realistis bagi tim?',
           answers: [
             ['managed', 'Partner untuk menjalankan pekerjaan berkelanjutan', 'Tim membutuhkan ownership eksternal untuk menjaga ritme eksekusi.'],
-            ['direction', 'Tim bisa eksekusi jika roadmap-nya jelas', 'Tim memiliki kapasitas, tetapi membutuhkan prioritas dan sistem editorial yang jelas.'],
+            ['direction', 'Tim bisa eksekusi dengan arah dan sistem visual yang jelas', 'Tim membutuhkan panduan pesan dan visual untuk membuat materi secara konsisten.'],
             ['development', 'Tim siap berkolaborasi dengan technical delivery', 'Ada kesiapan internal untuk menjalankan perubahan teknis secara terstruktur.'],
             ['focused', 'Mulai dari scope kecil dan fokus', 'Scope awal perlu dibatasi pada intervensi dengan dampak paling langsung.']
           ]
@@ -70,13 +70,15 @@ const copy = locale === 'id'
           title: 'Outcome apa yang paling berarti dalam 3–6 bulan ke depan?',
           answers: [
             ['pipeline', 'Lebih banyak inquiry organik yang relevan', 'Peluang organic search perlu terhubung lebih jelas dengan pipeline bisnis.'],
-            ['referenced', 'Informasi bisnis lebih mudah ditemukan dan dipercaya', 'Expertise perlu disusun lebih jelas agar berguna dalam berbagai pengalaman pencarian.'],
+            ['recognition', 'Brand lebih mudah dipahami dan dikenali', 'Pesan dan visual perlu membangun pemahaman serta pengenalan yang konsisten.'],
             ['conversion', 'Journey website yang lebih cepat, jelas, dan menghasilkan tindakan', 'Friction pada experience dan conversion perlu dikurangi dengan perubahan website yang terukur.'],
             ['cadence', 'Sistem konten yang dapat dijaga oleh tim', 'Bisnis membutuhkan ritme, ownership, dan standar konten yang dapat dipertahankan.']
           ]
         }
       ],
       services: {
+        visual: { name:'Visual Strategy', slug:'visual-strategy', reason:'Pola jawaban menunjukkan bahwa pesan dan sistem visual perlu diperjelas agar bisnis lebih mudah dipahami, dikenali, dan diingat.', support:'Visual Strategy menyatukan cara pesan bisnis ditampilkan di setiap titik kontak.' },
+        social: { name:'Social Media Management', slug:'social-media-management', reason:'Pola jawaban menunjukkan kebutuhan untuk mengubah expertise bisnis menjadi konten yang relevan dan kehadiran pasar yang konsisten.', support:'Social Media Management membawa expertise kepada audiens yang relevan dengan ritme yang dapat dijaga.' },
         seo: {
           name: 'SEO',
           slug: 'seo',
@@ -94,10 +96,10 @@ const copy = locale === 'id'
       }
     }
   : {
-      kicker: 'Website Growth Roadmap',
+      kicker: 'Your Growth Roadmap',
       meta: '5 questions · 1–2 minutes',
       initialTitle: 'Find the first move worth making',
-      initialBody: 'Answer five short questions to see whether SEO, Web Services, or both are the most useful starting point.',
+      initialBody: 'Answer five short questions to find your next priority in search, websites, visual strategy, or social media.',
       start: 'Find your solution',
       privacy: 'Answers run in your browser and are never sent or stored.',
       calculating: 'Creating your roadmap…',
@@ -119,7 +121,7 @@ const copy = locale === 'id'
           answers: [
             ['visibility', 'The right customers do not find us', 'Visibility around valuable demand is not yet consistent.'],
             ['clarity', 'Our offer is hard to understand or compare', 'The website does not explain the offer and next step clearly enough.'],
-            ['ai', 'The way customers search is changing', 'The website is not yet clear enough for evolving search behavior.'],
+            ['recognition', 'Our brand is hard to recognise or feels inconsistent', 'The message and visual system do not help people understand and remember the business.'],
             ['publishing', 'Content is reactive and inconsistent', 'Content production and refreshes lack a sustainable operating system.']
           ]
         },
@@ -136,8 +138,8 @@ const copy = locale === 'id'
           title: 'Where should stronger demand come from?',
           answers: [
             ['google', 'Google and organic search', 'The main opportunity sits in valuable organic search demand.'],
-            ['answers', 'Emerging search experiences beyond traditional results', 'Business information needs to be easier to find, understand, and trust.'],
-            ['referral', 'Referral or social works, but search is weak', 'Existing demand is not supported by a strong website and search presence.'],
+            ['social', 'Social media and professional networks', 'Business expertise needs a consistent presence in front of relevant audiences.'],
+            ['referral', 'Referrals, presentations, and sales conversations', 'Business materials need to explain the offer clearly and consistently.'],
             ['mixed', 'We are unsure—the channels are mixed', 'Acquisition channels lack a clear priority and relationship.']
           ]
         },
@@ -145,7 +147,7 @@ const copy = locale === 'id'
           title: 'What support can the team realistically sustain?',
           answers: [
             ['managed', 'A partner to run ongoing work', 'The team needs external ownership to maintain execution rhythm.'],
-            ['direction', 'We can execute with a clear roadmap', 'The team has capacity but needs clear priorities and an editorial system.'],
+            ['direction', 'We can execute with clear direction and a visual system', 'The team needs message and visual guidance to produce consistent materials.'],
             ['development', 'We are ready to collaborate on technical delivery', 'The team is ready to implement technical change in a structured way.'],
             ['focused', 'Start with a small, focused scope', 'The first scope should stay focused on the intervention with the most direct impact.']
           ]
@@ -154,13 +156,15 @@ const copy = locale === 'id'
           title: 'Which outcome would matter most in the next 3–6 months?',
           answers: [
             ['pipeline', 'More relevant enquiries from organic search', 'The organic search opportunity needs a clearer connection to the business pipeline.'],
-            ['referenced', 'Business information that is easier to find and trust', 'Expertise needs clearer structure across changing search experiences.'],
+            ['recognition', 'A brand people understand and recognise', 'The message and visuals need to build clarity and consistent recognition.'],
             ['conversion', 'A faster, clearer website journey that drives action', 'Experience and conversion friction need measurable website changes.'],
             ['cadence', 'A content system the team can maintain', 'The business needs a sustainable content rhythm, ownership model, and quality standard.']
           ]
         }
       ],
       services: {
+        visual: { name:'Visual Strategy', slug:'visual-strategy', reason:'Your answers point to a need for a clearer message and visual system, so the business is easier to understand, recognise, and remember.', support:'Visual Strategy connects how the business communicates across its touchpoints.' },
+        social: { name:'Social Media Management', slug:'social-media-management', reason:'Your answers point to a need to turn business expertise into relevant content and a consistent market presence.', support:'Social Media Management brings expertise to relevant audiences at a sustainable rhythm.' },
         seo: {
           name: 'SEO',
           slug: 'seo',
@@ -552,19 +556,9 @@ const questions = quizBlueprint.map((question, index) => ({
     z-index: 0;
     pointer-events: none;
     opacity: 0;
-    background:
-      radial-gradient(
-        ellipse 66% 70% at 50% 46%,
-        rgba(215, 225, 231, 0.68) 0%,
-        rgba(151, 175, 188, 0.48) 45%,
-        rgba(83, 117, 137, 0.22) 70%,
-        rgba(83, 117, 137, 0) 90%
-      ),
-      radial-gradient(ellipse 82% 62% at 50% 58%, rgba(62, 96, 117, 0.28), rgba(62, 96, 117, 0) 78%);
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 11%, #000 89%, transparent 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, #000 11%, #000 89%, transparent 100%);
-    filter: blur(18px);
-    transform: scale(1.05);
+    background:radial-gradient(ellipse 70% 35% at 35% 45%,#f0f7fa,#cfe5f1 48%,transparent 100%),
+      linear-gradient(180deg,transparent,#9ebed5 22%,#e3f0f7 42%,#b8d4e7 72%,transparent);
+    mask-image:linear-gradient(180deg,transparent,#000 15%,#000 82%,transparent);
     transition: opacity 520ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 

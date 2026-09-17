@@ -1,0 +1,210 @@
+diff --git a/website/src/pages/id/learn/index.astro b/website/src/pages/id/learn/index.astro
+--- a/website/src/pages/id/learn/index.astro
++++ b/website/src/pages/id/learn/index.astro
+@@ -1,7 +1,7 @@
+ ---
+ import BaseLayout from '../../../layouts/BaseLayout.astro';
+ import LearnIndex from '../../../components/learn/LearnIndex.astro';
+-import WebsiteGrowthRoadmap from '../../../components/services/WebsiteGrowthRoadmap.astro';
++import FinalCTA from '../../../components/home/FinalCTA.astro';
+ ---
+ 
+ <BaseLayout
+@@ -11,5 +11,5 @@ import WebsiteGrowthRoadmap from '../../../components/services/WebsiteGrowthRoadmap.astro';
+   alternatePath="/en/learn/"
+ >
+   <LearnIndex locale="id" />
+-  <WebsiteGrowthRoadmap locale="id" origin="learn" />
++  <FinalCTA locale="id" analyticsEvent="learn_consultation_click" analyticsContext="learn-index" />
+ </BaseLayout>
+diff --git a/website/src/pages/en/learn/index.astro b/website/src/pages/en/learn/index.astro
+--- a/website/src/pages/en/learn/index.astro
++++ b/website/src/pages/en/learn/index.astro
+@@ -1,7 +1,7 @@
+ ---
+ import BaseLayout from '../../../layouts/BaseLayout.astro';
+ import LearnIndex from '../../../components/learn/LearnIndex.astro';
+-import WebsiteGrowthRoadmap from '../../../components/services/WebsiteGrowthRoadmap.astro';
++import FinalCTA from '../../../components/home/FinalCTA.astro';
+ ---
+ 
+ <BaseLayout
+@@ -11,5 +11,5 @@ import WebsiteGrowthRoadmap from '../../../components/services/WebsiteGrowthRoadmap.astro';
+   alternatePath="/id/learn/"
+ >
+   <LearnIndex locale="en" />
+-  <WebsiteGrowthRoadmap locale="en" origin="learn" />
++  <FinalCTA locale="en" analyticsEvent="learn_consultation_click" analyticsContext="learn-index" />
+ </BaseLayout>
+diff --git a/website/src/pages/id/learn/[series].astro b/website/src/pages/id/learn/[series].astro
+--- a/website/src/pages/id/learn/[series].astro
++++ b/website/src/pages/id/learn/[series].astro
+@@ -1,7 +1,7 @@
+ ---
+ import BaseLayout from '../../../layouts/BaseLayout.astro';
+ import LearnSeriesPage from '../../../components/learn/LearnSeriesPage.astro';
+-import WebsiteGrowthRoadmap from '../../../components/services/WebsiteGrowthRoadmap.astro';
++import FinalCTA from '../../../components/home/FinalCTA.astro';
+ import { getLearningSeries } from '../../../data/learning';
+ import { breadcrumbSchema } from '../../../utils/seo';
+@@ -28,5 +28,5 @@ const site = Astro.site ?? new URL('https://kultivate.id');
+   ])}
+ >
+   <LearnSeriesPage locale="id" series={series} />
+-  <WebsiteGrowthRoadmap locale="id" origin="learn" seriesId={series.id} />
++  <FinalCTA locale="id" analyticsEvent="learn_consultation_click" analyticsContext={series.id} />
+ </BaseLayout>
+diff --git a/website/src/pages/en/learn/[series].astro b/website/src/pages/en/learn/[series].astro
+--- a/website/src/pages/en/learn/[series].astro
++++ b/website/src/pages/en/learn/[series].astro
+@@ -1,7 +1,7 @@
+ ---
+ import BaseLayout from '../../../layouts/BaseLayout.astro';
+ import LearnSeriesPage from '../../../components/learn/LearnSeriesPage.astro';
+-import WebsiteGrowthRoadmap from '../../../components/services/WebsiteGrowthRoadmap.astro';
++import FinalCTA from '../../../components/home/FinalCTA.astro';
+ import { getLearningSeries } from '../../../data/learning';
+ import { breadcrumbSchema } from '../../../utils/seo';
+@@ -28,5 +28,5 @@ const site = Astro.site ?? new URL('https://kultivate.id');
+   ])}
+ >
+   <LearnSeriesPage locale="en" series={series} />
+-  <WebsiteGrowthRoadmap locale="en" origin="learn" seriesId={series.id} />
++  <FinalCTA locale="en" analyticsEvent="learn_consultation_click" analyticsContext={series.id} />
+ </BaseLayout>
+diff --git a/website/src/components/services/WebsiteGrowthRoadmap.astro b/website/src/components/services/WebsiteGrowthRoadmap.astro
+--- a/website/src/components/services/WebsiteGrowthRoadmap.astro
++++ b/website/src/components/services/WebsiteGrowthRoadmap.astro
+@@ -594,8 +594,8 @@ const questions = quizBlueprint.map((question, index) => ({
+   .quiz-intro h2 {
+     max-width: 14ch;
+-    font-size: clamp(3rem, 5.3vw, 6.2rem);
++    font-size: clamp(3rem, 5.3vw, 6rem);
+     font-weight: 520;
+-    letter-spacing: -0.048em;
++    letter-spacing: -0.04em;
+     line-height: 0.93;
+   }
+@@ -606,12 +606,15 @@ const questions = quizBlueprint.map((question, index) => ({
+   .quiz-questions {
+     display: grid;
+     grid-template-rows: auto minmax(0, 1fr) auto;
++    border-radius: 12px;
+     padding: clamp(24px, 4vh, 38px) clamp(24px, 6vw, 84px) 24px;
++    background: rgba(244, 247, 251, 0.2);
+   }
+ 
+   .quiz-progress { width: min(100%, 760px); display: grid; grid-template-columns: auto minmax(120px, 320px); gap: 24px; align-items: center; justify-content: center; margin-inline: auto; }
+-  .quiz-progress > span { color: rgba(201, 211, 223, 0.58); font-size: 0.7rem; }
+-  .progress-track { height: 2px; overflow: hidden; background: rgba(201, 211, 223, 0.16); }
++  .quiz-progress > span { color: rgba(244, 247, 251, 0.76); font-size: 0.7rem; }
++  .progress-track { height: 2px; overflow: hidden; background: rgba(244, 247, 251, 0.24); }
+   .progress-track span { display: block; width: 20%; height: 100%; background: var(--signal-ice); transition: width 360ms cubic-bezier(0.16, 1, 0.3, 1); }
+@@ -628,7 +631,7 @@ const questions = quizBlueprint.map((question, index) => ({
+   }
+   .question-panel legend:focus { outline: none; }
+-  .question-hint { margin: 14px auto 0; color: var(--steel); font-size: 0.82rem; }
++  .question-hint { margin: 14px auto 0; color: rgba(244, 247, 251, 0.72); font-size: 0.82rem; }
+   .answer-grid { width: min(100%, 920px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: clamp(24px, 4vh, 38px) auto 0; }
+@@ -650,7 +653,7 @@ const questions = quizBlueprint.map((question, index) => ({
+ 
+   .quiz-controls { display: flex; justify-content: space-between; padding-top: 10px; }
+-  .quiz-back { min-height: 38px; color: rgba(201, 211, 223, 0.7); font-size: 0.82rem; }
++  .quiz-back { min-height: 38px; color: rgba(244, 247, 251, 0.82); font-size: 0.82rem; }
+   .quiz-back:disabled { opacity: 0; pointer-events: none; }
+diff --git a/website/src/pages/id/contact.astro b/website/src/pages/id/contact.astro
+--- a/website/src/pages/id/contact.astro
++++ b/website/src/pages/id/contact.astro
+@@ -234,8 +234,9 @@ const locale = 'id';
+     width: 100%;
+     max-width: 100%;
+     min-width: 0;
++    border-radius: 0;
+     padding: clamp(22px, 4vw, 48px);
+-    background-color: var(--deep-navy);
++    background: rgba(11, 19, 34, 0.58);
+   }
+@@ -281,13 +282,15 @@ const locale = 'id';
+     min-width: 0;
+     max-width: 100%;
+-    padding: 12px var(--spacing-sm);
+-    background-color: var(--void-black);
+-    border: 1px solid var(--slate);
+-    border-radius: var(--border-radius-sm);
++    padding: 14px 2px 12px;
++    background: transparent;
++    border: 0;
++    border-bottom: 1px solid rgba(122, 135, 152, 0.58);
++    border-radius: 0;
+     color: var(--cloud-white);
+     font-family: var(--font-sans);
+     font-size: 0.9375rem;
++    transition: border-color var(--transition-micro), background-color var(--transition-micro);
+   }
+ 
+   .form-textarea {
+@@ -298,8 +301,17 @@ const locale = 'id';
+   .form-select:focus,
+   .form-textarea:focus {
+     outline: none;
+-    border-color: var(--electric-blue);
++    border-bottom-color: var(--signal-ice);
++    background: rgba(103, 217, 255, 0.035);
++  }
++
++  .form-input:focus-visible,
++  .form-select:focus-visible,
++  .form-textarea:focus-visible {
++    outline: 1px solid rgba(207, 247, 255, 0.42);
++    outline-offset: 3px;
+   }
++
++  .form-select option { background: var(--deep-navy); color: var(--cloud-white); }
+diff --git a/website/src/pages/en/contact.astro b/website/src/pages/en/contact.astro
+--- a/website/src/pages/en/contact.astro
++++ b/website/src/pages/en/contact.astro
+@@ -234,8 +234,9 @@ const locale = 'en';
+     width: 100%;
+     max-width: 100%;
+     min-width: 0;
++    border-radius: 0;
+     padding: clamp(22px, 4vw, 48px);
+-    background-color: var(--deep-navy);
++    background: rgba(11, 19, 34, 0.58);
+   }
+@@ -281,13 +282,15 @@ const locale = 'en';
+     min-width: 0;
+     max-width: 100%;
+-    padding: 12px var(--spacing-sm);
+-    background-color: var(--void-black);
+-    border: 1px solid var(--slate);
+-    border-radius: var(--border-radius-sm);
++    padding: 14px 2px 12px;
++    background: transparent;
++    border: 0;
++    border-bottom: 1px solid rgba(122, 135, 152, 0.58);
++    border-radius: 0;
+     color: var(--cloud-white);
+     font-family: var(--font-sans);
+     font-size: 0.9375rem;
++    transition: border-color var(--transition-micro), background-color var(--transition-micro);
+   }
+ 
+   .form-textarea {
+@@ -298,8 +301,17 @@ const locale = 'en';
+   .form-select:focus,
+   .form-textarea:focus {
+     outline: none;
+-    border-color: var(--electric-blue);
++    border-bottom-color: var(--signal-ice);
++    background: rgba(103, 217, 255, 0.035);
++  }
++
++  .form-input:focus-visible,
++  .form-select:focus-visible,
++  .form-textarea:focus-visible {
++    outline: 1px solid rgba(207, 247, 255, 0.42);
++    outline-offset: 3px;
+   }
++
++  .form-select option { background: var(--deep-navy); color: var(--cloud-white); }

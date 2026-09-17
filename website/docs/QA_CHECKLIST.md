@@ -1,5 +1,34 @@
 # QA Checklist
 
+- [x] Latest banner/contrast revision: eight localized service routes at desktop/mobile use one loaded banner image; Blog handoff and filter verified; small light-field label contrast measures 8.28:1 / 4.69:1; 52-page build passes with no browser errors or failed local assets.
+
+- [x] Latest scroll revision: Home and Learn at 1440/390 px retain absolute document coordinates from top to bottom, render at most three canvases, preserve pause/reduced motion, and report no runtime errors, failed local requests, or WebGL context warnings.
+
+## Revision validation · 16 September 2026
+
+- [x] Production build remains 52 pages; targeted desktop/mobile checks have no JavaScript errors or failed local requests.
+- [x] Color/ribbon/content planes are 0/1/2; ribbon repeats at fixed document coordinates while foreground content stays above it.
+- [x] Muted gradients, softer surfaces, and the long Learn transition visually inspected.
+- [x] Home services fit 1440×900 and 1280×720 in both locales; 390×844 stacks without overflow.
+- [x] Latest client revision restores staging portfolio gaps: 21.59375 px at 1440 wide, 12 px at 390 wide, including mobile gaps within clusters.
+- [x] Requested Home/About headings, quiz fade, Blog filters, pause/resume, and reduced motion verified.
+- [x] All registered ThreeUI hashes unchanged.
+
+## Experiments validation · 15 September 2026
+
+- [x] Production build: 52 static pages, including four service routes per locale.
+- [x] Seven diagnostic tests pass, including all 1,024 combinations and both new services.
+- [x] Desktop ID/EN pages: Home, About, Services, Learn, Blog, Work, Visual Strategy, Social Media Management; no horizontal overflow, broken images, or JavaScript errors.
+- [x] Services fit the available viewport at 1440×900, 1366×768, 1280×720, and 1024×768 in ID/EN; text stays inside all panels.
+- [x] Mobile 390×844 checks on the same eight pages in both locales.
+- [x] Pointer response, motion pause/resume, reduced-motion behavior, Blog filters, service FAQ, mobile menu and Escape.
+- [x] Visual/Social diagnostic → service detail links → contact prefill; no form submission sent.
+- [x] Original component, shader and CSS checksums match the requested source.
+- [x] Gallery and inactive work template updated; no new case studies published.
+
+Browser checks ran on the production preview using local Edge/Playwright. In-app automation was unavailable due to the host ACL issue; `astro dev --background` also timed out after the runtime change, so the working preview uses `astro preview --background`. Build and production-browser checks passed. Existing unrelated launch checks remain below.
+
+
 ## Documentation and version consistency
 
 - [x] Brand Guideline Book v2.0 is referenced as the governing visual source.

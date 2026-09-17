@@ -1,121 +1,99 @@
 ---
 import { servicesData } from '../../data/services';
-
 interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
-const services = (servicesData[locale] || []).filter((service) => service.id === 'seo' || service.id === 'web-services');
-
-const presentation = locale === 'id'
-  ? {
-      seo: {
-        title: 'SEO',
-        description: 'Kami membantu halaman prioritas Anda ditemukan untuk pencarian yang terhubung dengan produk, layanan, dan pelanggan Anda.',
-        image: '/assets/services/seo-focus-v3.webp'
-      },
-      'web-services': {
-        title: 'Web Services',
-        description: 'Kami membangun dan merawat website yang mendukung performa search, usability, dan pengelolaan konten sehari-hari.',
-        image: '/assets/services/web-foundation-v3.webp'
-      }
-    }
-  : {
-      seo: {
-        title: 'SEO',
-        description: 'We help your priority pages appear for searches connected to your products, services, and customers.',
-        image: '/assets/services/seo-focus-v3.webp'
-      },
-      'web-services': {
-        title: 'Web Services',
-        description: 'We build and maintain websites that support search performance, usability, and day-to-day content work.',
-        image: '/assets/services/web-foundation-v3.webp'
-      }
-    };
+const services = servicesData[locale];
+const copy = locale === 'id' ? {
+  title: 'Keahlian mendalam untuk pertumbuhan digital',
+  body: 'Kami menghubungkan cara orang menemukan bisnis Anda, memahami nilainya, dan mengambil langkah berikutnya.',
+  foundation: 'Search + website', explore: 'Lihat layanan', label: 'Layanan',
+} : {
+  title: 'Deep Expertise in Digital Growth',
+  body: 'We connect how people discover your business, understand its value, and take the next step.',
+  foundation: 'Search + website', explore: 'Explore service', label: 'Services',
+};
 ---
-
-<section id="services" class="services-section section-padding flow-section" aria-labelledby="services-title" data-scroll-key="home-services">
-  <div class="container">
+<section id="services" class="services-section flow-section light-field" aria-labelledby="services-title" data-scroll-key="home-services">
+  <div class="container services-layout">
     <header class="services-header" data-reveal>
-      <span class="section-kicker">{locale === 'id' ? 'Layanan' : 'Services'}</span>
-      <h2 id="services-title">{locale === 'id' ? 'Keahlian mendalam di search dan website' : 'Deep expertise in search and websites'}</h2>
-      <p>
-        {locale === 'id'
-          ? 'Kami fokus pada dua bidang yang paling menentukan pertumbuhan digital: membantu bisnis ditemukan dan memastikan website mampu mengubah perhatian menjadi tindakan.'
-          : 'We focus on the two disciplines that shape digital growth: helping businesses get found and making sure the website turns attention into action.'}
-      </p>
+      <div><span class="section-kicker">{copy.label}</span><h2 id="services-title">{copy.title}</h2></div>
+      <p>{copy.body}</p>
     </header>
-
-    <div class="services-grid">
-      {services.map((service, index) => {
-        const item = presentation[service.id as keyof typeof presentation];
-        return (
-          <a class="service-panel" href={`/${locale}/services/${service.slug}/`} aria-label={service.title} data-reveal style={`--reveal-delay: ${index * 80}ms`}>
-            <div class="service-media" aria-hidden="true">
-              <img src={item.image} alt="" width="1200" height="768" loading="lazy" decoding="async" />
-            </div>
-            <div class="service-scrim" aria-hidden="true"></div>
-            <div class="service-content">
-              <div class="service-main">
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
-              <span class="service-action"><span>{locale === 'id' ? 'Pelajari' : 'Explore'}</span><span aria-hidden="true">&#8594;</span></span>
-            </div>
+    <div class="services-composition">
+      <div class="services-foundation" aria-label={copy.foundation}>
+        {services.slice(0,2).map((service,index) => (
+          <a class="service-panel service-panel--core" href={`/${locale}/services/${service.slug}/`} data-reveal>
+            <img src={service.image} alt="" width="1200" height="768" loading="lazy" decoding="async" />
+            <span class="service-number text-mono">0{index+1}</span>
+            <div class="service-copy"><h3>{service.title}</h3><p>{service.summary}</p></div>
+            <span class="service-action"><span>{copy.explore}</span><span aria-hidden="true">↗</span></span>
           </a>
-        );
-      })}
+        ))}
+      </div>
+      <div class="services-expression">
+        {services.slice(2).map(service => (
+          <a class="service-panel service-panel--support" href={`/${locale}/services/${service.slug}/`} data-reveal>
+            <img src={service.image} alt="" width="1200" height="768" loading="lazy" decoding="async" />
+            <div class="service-copy"><h3>{service.title}</h3><p>{service.summary}</p></div>
+            <span class="service-arrow" aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
     </div>
   </div>
 </section>
-
 <style>
-  .services-section {
-    position: relative;
-    margin-top: -1px;
-    overflow: hidden;
-    background:
-      radial-gradient(ellipse 62% 72% at 14% 30%, rgba(139, 193, 237, 0.16), transparent 74%),
-      radial-gradient(ellipse 56% 72% at 88% 68%, rgba(70, 134, 183, 0.28), transparent 76%),
-      linear-gradient(180deg, #07101a 0%, #0b1d2b 48%, #07101a 100%);
-    padding-block: clamp(70px, 8vw, 108px);
+  .services-section { padding-block:clamp(86px,11.5svh,128px); }
+  .services-layout { display:grid; gap:clamp(24px,3.6svh,40px); }
+  .services-header { display:grid; grid-template-columns:1.3fr .7fr; align-items:end; gap:clamp(40px,8vw,120px); }
+  .services-header .section-kicker { display:block; margin-bottom:14px; color:#244963; }
+  .services-header h2 { max-width:none; font-size:clamp(2.7rem,4.9vw,5rem); line-height:.98; letter-spacing:-.05em; font-weight:530; color:#0b2033; }
+  .services-header p { max-width:40ch; padding-bottom:3px; font-size:clamp(.88rem,1.05vw,1rem); line-height:1.6; color:#28485f; }
+  .services-composition { display:grid; grid-template-columns:1.55fr 1fr; gap:18px; }
+  .services-foundation { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:rgba(133,180,211,.5); border-radius:12px; overflow:hidden; }
+  .services-expression { display:grid; grid-template-rows:repeat(2,minmax(0,1fr)); gap:18px; }
+  .service-panel { position:relative; isolation:isolate; overflow:hidden; min-width:0; background:#10283d; color:#f0f7fb; }
+  .service-panel > img { position:absolute; z-index:-2; inset:0; height:100%; width:100%; object-fit:cover; opacity:.76; transform:scale(1.02); transition:transform 600ms var(--ease-out),opacity 400ms ease; }
+  .service-panel::before { content:''; position:absolute; z-index:-1; inset:0; background:linear-gradient(180deg,rgba(5,18,31,.12),rgba(5,18,31,.56) 36%,#081b2c 100%); }
+  .service-panel--core { min-height:clamp(270px,34svh,380px); display:flex; flex-direction:column; align-items:flex-start; padding:clamp(22px,2.5vw,34px); }
+  .service-number { color:#ccdfec; font-size:.65rem; }
+  .service-copy { margin-top:auto; padding-top:16px; }
+  .service-copy h3 { color:#f1f7fb; font-size:clamp(1.7rem,2.6vw,2.75rem); line-height:1; letter-spacing:-.04em; font-weight:500; margin-bottom:12px; }
+  .service-copy p { color:#c1d5e4; font-size:clamp(.82rem,.95vw,.93rem); line-height:1.5; max-width:34ch; }
+  .service-action { display:flex; justify-content:space-between; align-items:center; width:100%; gap:12px; margin-top:24px; color:#d4ecfc; font-size:.7rem; }
+  .service-action > :last-child,.service-arrow { font-size:1.35rem; transition:transform 200ms ease; }
+  .service-panel--support { border-radius:12px; display:flex; align-items:center; gap:16px; padding:clamp(20px,2.2vw,30px); }
+  .service-panel--support::before { background:linear-gradient(90deg,rgba(9,29,46,.96),rgba(9,29,46,.83) 48%,rgba(9,29,46,.18)); }
+  .service-panel--support > img { object-position:85% 50%; }
+  .service-panel--support .service-copy { margin:0; padding:0; max-width:90%; }
+  .service-panel--support h3 { font-size:clamp(1.35rem,1.8vw,2rem); max-width:19ch; margin-bottom:8px; }
+  .service-panel--support p { max-width:38ch; font-size:.81rem; }
+  .service-arrow { margin-left:auto; align-self:flex-start; }
+  .service-panel:focus-visible { outline:3px solid #fff; outline-offset:-6px; }
+  @media (hover:hover) { .service-panel:hover > img { opacity:1; transform:scale(1.07); } .service-panel:hover :is(.service-arrow,.service-action > :last-child) { transform:translate(2px,-2px); } }
+  @media (min-width:1000px) and (min-height:620px) { .services-section { min-height:calc(100svh - 72px); display:grid; align-content:center; } }
+  @media (min-width:1000px) and (max-height:800px) {
+    .services-section { padding-block:80px; }
+    .services-header h2 { font-size:clamp(2.7rem,4.4vw,3.8rem); }
+    .services-header .section-kicker { margin-bottom:10px; }
+    .service-panel--core { min-height:260px; padding:24px; }
+    .service-action { margin-top:16px; }
+    .services-layout { gap:24px; }
   }
-  .services-section::before { content: ''; position: absolute; inset: 18% 36% auto 4%; height: 34%; border-radius: 50%; background: rgba(139,193,237,.07); filter: blur(82px); pointer-events: none; }
-  .services-header { position: relative; z-index: 1; display:grid; grid-template-columns:minmax(0,1fr) minmax(320px,.72fr); gap:18px clamp(44px,8vw,112px); align-items:end; margin-bottom: clamp(32px, 4vw, 48px); }
-  .services-header .section-kicker { grid-column:1/-1; color: rgba(201, 211, 223, 0.58); }
-  .services-header h2 { max-width:18ch; color: var(--cloud-white); }
-  .services-header p { max-width: 60ch; padding-bottom:4px; color: rgba(201, 211, 223, 0.76); font-size: 0.98rem; }
-  .services-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; overflow: hidden; border-radius: var(--border-radius-lg); background: rgba(91, 122, 151, 0.34); }
-  .service-panel { position: relative; min-width: 0; min-height: clamp(270px, 27vw, 340px); overflow: hidden; background: linear-gradient(155deg, rgba(17, 39, 57, 0.96), rgba(10, 23, 36, 0.98)); isolation: isolate; transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
-  .service-media, .service-media img, .service-scrim { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .service-media { z-index: 0; clip-path: inset(0 100% 0 0); transition: clip-path 480ms var(--ease-out); }
-  .service-media img { object-fit: cover; opacity: 0.82; transform: scale(1.035); transition: transform 480ms var(--ease-out); }
-  .service-scrim { z-index: 1; background: linear-gradient(0deg, rgba(8, 18, 29, 0.96) 0%, rgba(10, 27, 41, 0.66) 52%, rgba(9, 24, 38, 0.18) 100%), linear-gradient(90deg, rgba(8, 20, 32, 0.58), transparent); }
-  .service-content { position: relative; z-index: 2; min-height: inherit; display: grid; grid-template-rows: 1fr auto; gap: 20px; padding: clamp(24px, 2.7vw, 36px); transition: transform 220ms var(--ease-out); }
-  .service-main { align-self: end; }
-  .service-content h3 { margin-bottom: 10px; color: var(--cloud-white); font-family: var(--font-display); font-size: clamp(2.25rem, 3.6vw, 4rem); font-weight: 400; letter-spacing: -0.045em; line-height: 0.94; }
-  .service-content p { max-width: 42ch; color: rgba(201, 211, 223, 0.84); font-size: 0.92rem; line-height: 1.58; }
-  .service-action { display: inline-flex; align-items: center; gap: 8px; color: var(--mist); font-size: 0.82rem; font-weight: 550; }
-  .service-action [aria-hidden] { transition: transform 180ms var(--ease-out); }
-  @media (hover: hover) and (pointer: fine) {
-    .service-panel:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2); }
-    .service-panel:hover .service-media { clip-path: inset(0); }
-    .service-panel:hover .service-media img { transform: scale(1); }
-    .service-panel:hover .service-content { transform: translateY(-2px); }
-    .service-panel:hover .service-action [aria-hidden] { transform: translate3d(2px, -2px, 0); }
+  @media (max-width:999px) { .services-composition { grid-template-columns:1fr; } .services-expression { grid-template-columns:1fr 1fr; grid-template-rows:auto; } .services-header { gap:30px; } .service-panel--support { min-height:200px; } }
+  @media (max-width:600px) {
+    .services-section { padding-block:120px; }
+    .services-section::after { mask-image:linear-gradient(180deg,transparent,#000 90px,#000 calc(100% - 90px),transparent); background:linear-gradient(180deg,transparent,#bed8e8 90px,#e4f1f7 260px,#a3c6df calc(100% - 150px),transparent); }
+    .services-header { grid-template-columns:1fr; gap:18px; }
+    .services-header h2 { font-size:clamp(2.7rem,12vw,4rem); }
+    .services-foundation { grid-template-columns:1fr; }
+    .services-expression { grid-template-columns:1fr; gap:12px; }
+    .services-composition { gap:12px; }
+    .service-panel--core { min-height:260px; }
+    .service-panel--support { min-height:190px; padding:26px; }
+    .service-copy h3 { font-size:2.2rem; }
+    .service-panel--support h3 { font-size:1.8rem; }
+    .service-copy p,.service-panel--support p { font-size:.9rem; }
   }
-  .service-panel:active { transform: scale(0.995); }
-  .service-panel:focus-visible .service-media { clip-path: inset(0); transition-duration: 0ms; }
-  .service-panel:focus-visible .service-media img { transform: scale(1); transition-duration: 0ms; }
-  @media (hover: none), (pointer: coarse) { .service-media { clip-path: inset(0); } .service-media img { opacity: 0.5; transform: none; } }
-  @media (max-width: 760px) {
-    .services-section { padding-block:52px; }
-    .services-header { grid-template-columns:1fr; gap:14px; }
-    .services-header .section-kicker { grid-column:auto; }
-    .services-header p { padding-bottom:0; }
-    .services-grid { grid-template-columns: 1fr; }
-    .service-panel, .service-content { min-height: 224px; }
-    .service-content { padding: 24px; }
-    .service-content h3 { font-size: clamp(2.35rem, 10vw, 3.5rem); }
-    .service-content p { max-width: 38ch; }
-  }
-  @media (prefers-reduced-motion: reduce) { .service-panel, .service-media, .service-media img, .service-content, .service-action [aria-hidden] { transition: color 180ms ease, opacity 180ms ease; } }
+  @media (prefers-reduced-motion:reduce) { .service-panel > img,.service-arrow,.service-action > :last-child { transition:none; transform:none; } }
 </style>

@@ -9,7 +9,7 @@ interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
 const copy = locale === 'id'
   ? {
-      title: 'SEO Agency untuk Prioritas Anda',
+      title: 'Partner Digital untuk Prioritas Anda',
       description: 'Kami mulai dari apa yang dibutuhkan bisnis Anda untuk tumbuh.',
       heroAlt: 'Lima bentuk berbeda yang berkumpul mengitari satu pusat biru',
       cultureTitle: 'Kami percaya digital seharusnya terasa lebih terarah',
@@ -25,7 +25,7 @@ const copy = locale === 'id'
       ]
     }
   : {
-      title: 'SEO Agency for Your Priorities',
+      title: 'Digital Partner for Your Priorities',
       description: 'We start with what your business needs to grow.',
       heroAlt: 'Five distinct forms gathered around one blue center',
       cultureTitle: 'We believe digital should feel more directed',
@@ -106,7 +106,7 @@ const marqueeRows = [collageImages.slice(0, 6), collageImages.slice(6)].map((row
 
   <AboutOrbit3D locale={locale} />
 
-  <section class="about-partnership flow-section" aria-label={copy.partnershipLabel} data-scroll-key="about-partnership">
+  <section class="about-partnership flow-section light-field" aria-label={copy.partnershipLabel} data-scroll-key="about-partnership">
     <div class="container partnership-intro" data-reveal>
       <h2>{copy.partnershipTitle}</h2>
       <p class="partnership-statement">{copy.partnershipClosing}</p>
@@ -328,4 +328,14 @@ const marqueeRows = [collageImages.slice(0, 6), collageImages.slice(6)].map((row
     .collage-item img { transition: none; }
     .collage-item { transform: none; }
   }
+
+  .about-partnership { padding-block:clamp(170px,19vw,270px); }
+  .about-partnership :is(h2,h3) { color:#0b2033; }
+  .about-partnership :is(p,.partnership-statement) { color:#28485f; }
+  .about-partnership .partnership-promises { margin-top:64px; }
+  @media(max-width:760px) {
+    .about-partnership { padding-block:180px; }
+    .about-partnership::after { background:linear-gradient(180deg,transparent,#bfd9e7 16%,#e4f1f7 35%,#b4d1e3 82%,transparent); }
+  }
+
 </style>

@@ -1,0 +1,176 @@
+[
+  {
+    "n": 1,
+    "title": "Menghubungkan pencarian\ndengan peluang bisnis",
+    "purpose": "Menempatkan lesson dalam seri dan mengenalkan satu fokus belajar.",
+    "content": [
+      "6 Courses × 6 Lessons = 36 Lessons",
+      "1 lesson = 1 video utama",
+      "Satu lesson, satu keputusan atau mental model",
+      "Course 01 • Lesson 01"
+    ],
+    "visual": "Judul editorial, angka struktur seri dalam satu baris, posisi C01L01. Tanpa daftar seluruh topik.",
+    "source": "Kurikulum internal dan brief revisi. Logo berasal dari file asli pengguna.",
+    "chapter": "Metadata dan Posisi kita di Kultivate Learn"
+  },
+  {
+    "n": 2,
+    "title": "Traffic naik, peluangnya belum jelas",
+    "purpose": "Membedakan laporan aktivitas dengan pertanyaan bisnis.",
+    "content": [
+      "Yang sudah terlihat: website makin banyak dikunjungi",
+      "Yang perlu diperiksa: kebutuhan siapa yang terbantu?",
+      "Apakah ada inquiry yang sesuai?"
+    ],
+    "visual": "Perbandingan dua bidang terbuka, tanpa grafik atau angka performa.",
+    "source": "Kultivate framing; kondisi ilustratif, bukan laporan bisnis.",
+    "chapter": "Bab 1"
+  },
+  {
+    "n": 3,
+    "title": "Demand dan traffic",
+    "purpose": "Memperjelas kebutuhan calon pembeli dan aktivitas website.",
+    "content": [
+      "Demand: kebutuhan terhadap solusi",
+      "Traffic: kunjungan ke website",
+      "Relevansi: apakah kebutuhan itu dapat kita layani?"
+    ],
+    "visual": "Dua definisi besar berdampingan dengan satu pertanyaan penghubung di bawah.",
+    "source": "Definisi kerja dalam modul dan reasoning Kultivate.",
+    "chapter": "Bab 1"
+  },
+  {
+    "n": 4,
+    "title": "Empat momen pencarian",
+    "purpose": "Mengenalkan model utama beserta batas urutannya.",
+    "content": [
+      "Discover — mengenali masalah",
+      "Learn — memahami solusi",
+      "Compare/Validate — menilai kecocokan dan bukti",
+      "Act — mengambil langkah berikutnya",
+      "Momen dapat berulang atau terlewati"
+    ],
+    "visual": "Empat simpul mendatar dengan panah penghubung dan jalur kembali. Label Kultivate framework.",
+    "source": "Framework kurikulum internal. Batas perjalanan nonlinier merujuk S4, bukan validasi model empat tahap.",
+    "chapter": "Bab 2"
+  },
+  {
+    "n": 5,
+    "title": "Informasi mengikuti keputusan pembeli",
+    "purpose": "Menunjukkan pertanyaan yang perlu dibantu pada tiap momen.",
+    "content": [
+      "Discover: masalah apa yang perlu ditangani?",
+      "Learn: bagaimana solusi bekerja?",
+      "Compare/Validate: cocok dan bisa dipercaya?",
+      "Act: bagaimana memulai?",
+      "Satu halaman dapat membantu lebih dari satu momen"
+    ],
+    "visual": "Empat baris berurutan berisi momen dan pertanyaan, tanpa panel bertumpuk.",
+    "source": "Kultivate framework.",
+    "chapter": "Bab 2"
+  },
+  {
+    "n": 6,
+    "title": "Bukti menuju peluang bisnis",
+    "purpose": "Memisahkan sinyal dari proses kualifikasi bisnis.",
+    "content": [
+      "Visibility",
+      "Kunjungan relevan",
+      "Inquiry",
+      "Qualified opportunity",
+      "Setiap perpindahan perlu bukti",
+      "Peluang sesuai belum berarti penjualan"
+    ],
+    "visual": "Alur empat tahap. Di bawah setiap tahap terdapat bukti yang diperiksa: kemunculan, konteks kebutuhan, pesan diterima, kecocokan diperiksa.",
+    "source": "S2 untuk impressions/clicks; kualifikasi dan urutan bukti merupakan Kultivate framework.",
+    "chapter": "Bab 3"
+  },
+  {
+    "n": 7,
+    "title": "Klik kontak belum membuktikan inquiry",
+    "purpose": "Menjelaskan mengapa event digital perlu dibedakan dari hasil bisnis.",
+    "content": [
+      "Klik tombol kontak",
+      "Pesan benar-benar diterima",
+      "Kebutuhan diperiksa tim",
+      "Key event mencatat tindakan penting, bukan otomatis peluang yang sesuai"
+    ],
+    "visual": "Urutan tiga tindakan dengan celah yang menandai pemeriksaan. Label contoh ilustratif.",
+    "source": "S3 untuk definisi key event. Penerapan tombol kontak merupakan ilustrasi Kultivate.",
+    "chapter": "Bab 3"
+  },
+  {
+    "n": 8,
+    "title": "Contoh perawatan AC kantor",
+    "purpose": "Membuat Discover dan Learn konkret dalam satu skenario B2B.",
+    "content": [
+      "Discover: AC kantor sering bermasalah",
+      "Perlu memahami masalah",
+      "Learn: perawatan berkala mencakup apa",
+      "Perlu memahami lingkup layanan",
+      "Contoh hipotetis, bukan keyword hasil riset"
+    ],
+    "visual": "Dua langkah besar bernomor dengan pencarian di atas dan kebutuhan informasi di bawah. Tidak menyerupai hasil Google nyata.",
+    "source": "Contoh hipotetis Kultivate. Tidak memakai data atau nama klien.",
+    "chapter": "Bab 4"
+  },
+  {
+    "n": 9,
+    "title": "Kecocokan diperiksa sebelum menjadi peluang",
+    "purpose": "Menyelesaikan contoh dengan Compare/Validate dan Act.",
+    "content": [
+      "Compare/Validate: area layanan, cakupan, bukti relevan",
+      "Act: kirim kebutuhan, pahami tindak lanjut",
+      "Permintaan masuk masih perlu diperiksa kecocokannya",
+      "Contoh hipotetis"
+    ],
+    "visual": "Dua bagian berurutan lalu satu kesimpulan pendek. Struktur melanjutkan contoh slide 8.",
+    "source": "Contoh hipotetis Kultivate.",
+    "chapter": "Bab 4"
+  },
+  {
+    "n": 10,
+    "title": "Observasi dan hipotesis",
+    "purpose": "Menunjukkan cara mengisi gap worksheet tanpa mengarang diagnosis.",
+    "content": [
+      "Observasi: area layanan tidak tercantum di halaman",
+      "Hipotesis: calon pembeli ragu lalu batal menghubungi",
+      "Bukti berikutnya: periksa pertanyaan lokasi dalam inquiry",
+      "Contoh hipotetis"
+    ],
+    "visual": "Tiga baris besar dengan label yang jelas dan garis pemisah. Hubungan observasi, dugaan, pemeriksaan terlihat.",
+    "source": "Penerapan hypothetical worked example Kultivate.",
+    "chapter": "Bab 4"
+  },
+  {
+    "n": 11,
+    "title": "Peta awal untuk layanan Anda",
+    "purpose": "Menghubungkan lesson dengan worksheet dan batas tindakan.",
+    "content": [
+      "Pilih satu layanan",
+      "Jawab empat pertanyaan pembeli",
+      "Catat satu gap atau unknown",
+      "Tentukan bukti berikutnya",
+      "Belum tahu perilaku search? Periksa dahulu.",
+      "Inquiry relevan terlambat ditangani? Periksa tindak lanjut."
+    ],
+    "visual": "Alur isian di sisi kiri, dua kondisi keputusan di sisi kanan. Resource disebut dengan nama yang sama.",
+    "source": "Search-to-Sales Mapping Worksheet bagian C01L01; Kultivate decision framework.",
+    "chapter": "Bab 4 dan Worksheet"
+  },
+  {
+    "n": 12,
+    "title": "Search dinilai lewat keputusan yang dibantunya",
+    "purpose": "Menutup dengan satu takeaway dan jalur belajar berikutnya.",
+    "content": [
+      "Periksa bukti menuju inquiry yang sesuai.",
+      "Traffic saja belum membuktikan peluang bisnis.",
+      "Berikutnya: Lesson 02",
+      "Map Customer Demand Before Choosing Keywords",
+      "Worksheet C01L01 bersifat opsional"
+    ],
+    "visual": "Takeaway besar dengan next lesson yang lebih kecil. Tanpa CTA konsultasi utama.",
+    "source": "Sintesis Kultivate, sesuai CTA kurikulum untuk lesson awal.",
+    "chapter": "Bab 4 bagian penutup"
+  }
+]

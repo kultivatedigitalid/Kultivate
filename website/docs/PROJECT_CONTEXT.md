@@ -1,12 +1,21 @@
 # Project Context
 
+## Current direction · 15 September 2026
+
+The latest client request takes precedence over the earlier baseline below. Public services are **SEO, Web Services, Visual Strategy, and Social Media Management**, with `Kultivate Services.docx` as the newest content source. Both locales have four service details and a four-service diagnostic.
+
+Use icy white/blue gradients that fade into the surrounding navy, plus the exact ThreeUI Ribbon Field as an additional motion layer. This supersedes earlier dark-only and no-WebGL restrictions for this specific integration. Home services use the supplied sketch and fit a desktop/laptop viewport; mobile stacks vertically. Existing portfolio detail templates remain inactive.
+
+Implementation, source provenance, and validation: [September experiments](EXPERIMENTS_2026-09-15.md).
+
+
 **Context version:** 2.0
 **Last updated:** 2026-08-26
 **Governing brand source:** Kultivate Brand Guideline Book v2.0
 
 ## Brand
 
-Kultivate (PT Karya Lintas Generasi) is a digital agency offering SEO, AEO & GEO, Web Services, and Content Management. The strategic message begins with business context and connects only the expertise required for the current priority.
+Kultivate (PT Karya Lintas Generasi) is a digital agency offering SEO, Web Services, Visual Strategy, and Social Media Management. The strategic message begins with business context and connects only the expertise required for the current priority.
 
 ## Brand foundation
 

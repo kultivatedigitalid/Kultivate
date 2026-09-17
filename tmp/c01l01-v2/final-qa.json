@@ -1,0 +1,58 @@
+{
+  "qa-module-final": {
+    "pages": 6,
+    "characters": [
+      3071,
+      3547,
+      3606,
+      3490,
+      2091,
+      2348
+    ]
+  },
+  "qa-worksheet-final": {
+    "pages": 2,
+    "characters": [
+      2239,
+      2435
+    ]
+  },
+  "qa-planning-final": {
+    "pages": 5,
+    "characters": [
+      2795,
+      2972,
+      3044,
+      2134,
+      1683
+    ]
+  },
+  "C01L01_Modul_Pembelajaran_v2.docx": {
+    "paragraphs": 65,
+    "tables": 3,
+    "sha256": "bbae72fc011a2a604cbb18d779128cafc2cc606bb5234ef0478e8a07a6c8301d",
+    "chapters": [
+      "1 Orang cari sesuatu karena ada kebutuhan",
+      "2 Empat momen sebelum orang hubungi kita",
+      "3 Traffic sampai peluang bisnis perlu dicek satu per satu",
+      "4 Kita coba pakai di satu layanan"
+    ]
+  },
+  "C01L01_Slide_Planning_dan_Quality_Check_v2.docx": {
+    "paragraphs": 105,
+    "tables": 0,
+    "sha256": "895beb19721222e0eda88a1b710ade5e756015101bf3cdca3cae92ec8dda1ff9"
+  },
+  "C01L01_Worksheet_Search_to_Sales_v2.docx": {
+    "paragraphs": 50,
+    "tables": 0,
+    "sha256": "be0378e072de9c043b602c6c16eaa900764a543c1a6cca7aec93a6b8b60859b6"
+  },
+  "pptx": {
+    "slides": 12,
+    "native_shapes": 176,
+    "native_tables": 1,
+    "pictures": 1,
+    "notes": 12
+  }
+}

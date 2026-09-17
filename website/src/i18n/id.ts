@@ -10,7 +10,7 @@ export const idTranslations = {
   'nav.explore_service': 'Pelajari Layanan',
   
   // Footer
-  'footer.tagline': 'Dukungan SEO dan website yang disesuaikan dengan kebutuhan bisnis Anda.',
+  'footer.tagline': 'Search, website, visual strategy, dan social media. Dimulai dari bisnis Anda.',
   'footer.services': 'Layanan',
   'footer.about': 'Tentang',
   'footer.legal': 'Hukum',
@@ -28,8 +28,8 @@ export const idTranslations = {
   'contact.service_interest': 'Jasa yang Diminati',
   'contact.service_web': 'Web Services',
   'contact.service_seo': 'SEO',
-  'contact.service_social': 'Content Management',
-  'contact.service_system': 'AEO & GEO',
+  'contact.service_social': 'Social Media Management',
+  'contact.service_visual': 'Visual Strategy',
   'contact.summary': 'Bagian apa yang membutuhkan bantuan?',
   'contact.timeline': 'Waktu Mulai yang Diinginkan',
   'contact.consent': 'Saya menyetujui data saya diproses sesuai dengan Kebijakan Privasi Kultivate.',

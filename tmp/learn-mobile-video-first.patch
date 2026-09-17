@@ -1,0 +1,34 @@
+diff --git a/website/src/components/learn/LearnSeriesPage.astro b/website/src/components/learn/LearnSeriesPage.astro
+--- a/website/src/components/learn/LearnSeriesPage.astro
++++ b/website/src/components/learn/LearnSeriesPage.astro
+@@ -238,6 +238,15 @@
+           lesson_id: lessonId,
+           source,
+         });
++
++        if (source === 'module' && window.matchMedia('(max-width: 920px)').matches) {
++          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
++          window.requestAnimationFrame(() => {
++            root.querySelector<HTMLElement>('.learn-player')?.scrollIntoView({
++              behavior: reduceMotion ? 'auto' : 'smooth',
++              block: 'start',
++            });
++          });
++        }
+       };
+@@ -395,6 +404,7 @@
+ 
+   .learn-player {
+     min-width: 0;
++    scroll-margin-top: 84px;
+   }
+@@ -499,6 +509,10 @@
+     .learn-modules {
+       position: static;
+     }
++
++    .learn-player {
++      order: -1;
++    }
+ 
+     .learn-modules h1 {

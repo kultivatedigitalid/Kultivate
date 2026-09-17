@@ -1,0 +1,40 @@
+{
+  "runs": [
+    {
+      "width": 1440,
+      "route": "/en/",
+      "height": 7873.609375,
+      "maxCanvases": 3,
+      "documentAnchored": true,
+      "pauseAndReducedMotion": true
+    },
+    {
+      "width": 1440,
+      "route": "/id/learn/",
+      "height": 4781.640625,
+      "maxCanvases": 3,
+      "documentAnchored": true,
+      "pauseAndReducedMotion": true
+    },
+    {
+      "width": 390,
+      "route": "/en/",
+      "height": 8200.75,
+      "maxCanvases": 3,
+      "documentAnchored": true,
+      "pauseAndReducedMotion": true
+    },
+    {
+      "width": 390,
+      "route": "/id/learn/",
+      "height": 5935.234375,
+      "maxCanvases": 3,
+      "documentAnchored": true,
+      "pauseAndReducedMotion": true
+    }
+  ],
+  "errors": [],
+  "webglWarnings": [],
+  "requests": [],
+  "passed": true
+}

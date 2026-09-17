@@ -48,12 +48,14 @@ const copy = locale === 'id'
         <p>{copy.introBody}</p>
       </header>
 
-      <div class="learn-series-grid">
-        {series.map((item) => (
-          <LearnSeriesCard locale={locale} series={item} />
-        ))}
-      </div>
     </div>
+    {[series.slice(0,2), series.slice(2,4), series.slice(4)].map((group,index) => (
+      <div class:list={['learn-course-band', index === 1 && 'light-field']}>
+        <div class="container learn-series-grid">
+          {group.map(item => <LearnSeriesCard locale={locale} series={item} />)}
+        </div>
+      </div>
+    ))}
   </section>
 </div>
 
@@ -139,4 +141,14 @@ const copy = locale === 'id'
       gap: 58px;
     }
   }
+
+  .learn-course-band { padding-block:36px; }
+  .learn-course-band.light-field { padding-block:180px; margin-block:30px; }
+  .learn-course-band.light-field :global(.learn-series-card h3) { color:#0b2033; }
+  .learn-course-band.light-field :global(.learn-series-card p),
+  .learn-course-band.light-field :global(.learn-series-card__meta) { color:#294b63; }
+  .learn-course-band.light-field :global(.learn-series-card__link) { color:#163e5a; border-color:rgba(18,56,85,.5); }
+  .learn-course-band.light-field :global(.learn-series-card__link:hover) { color:#081e31; border-color:#081e31; }
+  @media(max-width:780px) { .learn-course-band.light-field::after { background:linear-gradient(180deg,transparent,#bed9e8 12%,#e4f1f7 32%,#aacce3 85%,transparent); } }
+
 </style>

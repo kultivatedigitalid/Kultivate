@@ -1,0 +1,82 @@
+diff --git a/website/src/components/learn/LearnIndex.astro b/website/src/components/learn/LearnIndex.astro
+--- a/website/src/components/learn/LearnIndex.astro
++++ b/website/src/components/learn/LearnIndex.astro
+@@ -4,2 +4,1 @@
+-import { type LearningLocale } from '../../data/learning';
+-import { getActiveLearningSeries } from '../../data/learning-content';
++import { getLearningSeries, type LearningLocale } from '../../data/learning';
+@@ -9,1 +8,1 @@
+-const series = getActiveLearningSeries();
++const series = getLearningSeries();
+@@ -17,2 +16,2 @@
+-      introBody: 'Pilih learning path yang paling dekat dengan kondisi bisnis Anda saat ini. Setiap path berisi lima materi teks-first, refleksi praktis, dan worksheet yang dapat langsung digunakan.',
+-      directory: '2 learning paths',
++      introBody: 'Pilih course yang paling dekat dengan kondisi bisnis Anda saat ini. Setiap course berisi enam lesson yang membantu Anda memahami masalah, menilai pilihan, dan menentukan next step.',
++      directory: '6 courses',
+@@ -25,2 +24,2 @@
+-      introBody: 'Choose the learning path closest to your business today. Each path includes five text-first lessons, practical reflection, and a worksheet you can use immediately.',
+-      directory: '2 learning paths',
++      introBody: 'Choose the course closest to your business today. Each course includes six lessons that help you understand the problem, assess the options, and choose a useful next step.',
++      directory: '6 courses',
+diff --git a/website/src/components/learning/ServiceLearningPreview.astro b/website/src/components/learning/ServiceLearningPreview.astro
+--- a/website/src/components/learning/ServiceLearningPreview.astro
++++ b/website/src/components/learning/ServiceLearningPreview.astro
+@@ -2,2 +2,1 @@
+-import { type LearningCategory, type LearningLocale } from '../../data/learning';
+-import { getActiveLearningSeries } from '../../data/learning-content';
++import { getLearningSeries, type LearningCategory, type LearningLocale } from '../../data/learning';
+@@ -11,1 +10,1 @@
+-const series = getActiveLearningSeries().find((item) => item.category === serviceId);
++const series = getLearningSeries().find((item) => item.category === serviceId);
+diff --git a/website/src/pages/id/learn/index.astro b/website/src/pages/id/learn/index.astro
+--- a/website/src/pages/id/learn/index.astro
++++ b/website/src/pages/id/learn/index.astro
+@@ -4,1 +4,1 @@
+-import FinalCTA from '../../../components/home/FinalCTA.astro';
++import WebsiteGrowthRoadmap from '../../../components/services/WebsiteGrowthRoadmap.astro';
+@@ -10,1 +10,1 @@
+-  description="Dua learning path praktis tentang search demand, keputusan website, dan langkah digital yang lebih jelas."
++  description="Enam course praktis tentang SEO, website, UX, project scope, kesiapan teknis, dan AI Search untuk keputusan bisnis yang lebih jelas."
+@@ -14,1 +14,1 @@
+-  <FinalCTA locale="id" analyticsEvent="learn_to_priorities_click" analyticsContext="learn-index" />
++  <WebsiteGrowthRoadmap locale="id" origin="learn" />
+diff --git a/website/src/pages/en/learn/index.astro b/website/src/pages/en/learn/index.astro
+--- a/website/src/pages/en/learn/index.astro
++++ b/website/src/pages/en/learn/index.astro
+@@ -4,1 +4,1 @@
+-import FinalCTA from '../../../components/home/FinalCTA.astro';
++import WebsiteGrowthRoadmap from '../../../components/services/WebsiteGrowthRoadmap.astro';
+@@ -10,1 +10,1 @@
+-  description="Two practical learning paths about search demand, website decisions, and clearer digital next steps."
++  description="Six practical courses about SEO, websites, UX, project scope, technical readiness, and AI Search for clearer business decisions."
+@@ -14,1 +14,1 @@
+-  <FinalCTA locale="en" analyticsEvent="learn_to_priorities_click" analyticsContext="learn-index" />
++  <WebsiteGrowthRoadmap locale="en" origin="learn" />
+diff --git a/website/src/pages/id/learn/[series].astro b/website/src/pages/id/learn/[series].astro
+--- a/website/src/pages/id/learn/[series].astro
++++ b/website/src/pages/id/learn/[series].astro
+@@ -4,2 +4,2 @@
+-import FinalCTA from '../../../components/home/FinalCTA.astro';
+-import { getActiveLearningSeries } from '../../../data/learning-content';
++import WebsiteGrowthRoadmap from '../../../components/services/WebsiteGrowthRoadmap.astro';
++import { getLearningSeries } from '../../../data/learning';
+@@ -9,1 +9,1 @@
+-  return getActiveLearningSeries().map((series) => ({
++  return getLearningSeries().map((series) => ({
+@@ -31,1 +31,1 @@
+-  <FinalCTA locale="id" analyticsEvent="learn_to_priorities_click" analyticsContext={series.slug} />
++  <WebsiteGrowthRoadmap locale="id" origin="learn" seriesId={series.id} />
+diff --git a/website/src/pages/en/learn/[series].astro b/website/src/pages/en/learn/[series].astro
+--- a/website/src/pages/en/learn/[series].astro
++++ b/website/src/pages/en/learn/[series].astro
+@@ -4,2 +4,2 @@
+-import FinalCTA from '../../../components/home/FinalCTA.astro';
+-import { getActiveLearningSeries } from '../../../data/learning-content';
++import WebsiteGrowthRoadmap from '../../../components/services/WebsiteGrowthRoadmap.astro';
++import { getLearningSeries } from '../../../data/learning';
+@@ -9,1 +9,1 @@
+-  return getActiveLearningSeries().map((series) => ({
++  return getLearningSeries().map((series) => ({
+@@ -31,1 +31,1 @@
+-  <FinalCTA locale="en" analyticsEvent="learn_to_priorities_click" analyticsContext={series.slug} />
++  <WebsiteGrowthRoadmap locale="en" origin="learn" seriesId={series.id} />

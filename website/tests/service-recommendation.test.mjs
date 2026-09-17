@@ -10,6 +10,8 @@ const cases = {
     capacity: 'focused',
     outcome: 'pipeline'
   },
+  visual: { goal:'recognition', foundation:'stable', discovery:'referral', capacity:'direction', outcome:'recognition' },
+  social: { goal:'publishing', foundation:'stable', discovery:'social', capacity:'managed', outcome:'cadence' },
   web: {
     goal: 'clarity',
     foundation: 'fragile',
@@ -53,15 +55,8 @@ test('rejects incomplete scenarios', () => {
   assert.throws(() => recommendServices({ goal: 'visibility' }), /Missing or invalid answer/);
 });
 
-test('keeps the second discipline when both scores are materially close', () => {
-  const result = recommendServices({
-    goal: 'clarity',
-    foundation: 'unclear',
-    discovery: 'mixed',
-    capacity: 'focused',
-    outcome: 'pipeline'
-  });
-
-  assert.equal(result.primary, 'web');
-  assert.deepEqual(result.supporting, ['seo']);
+test('keeps a complementary discipline when needs overlap', () => {
+  const result = recommendServices({ goal:'visibility', foundation:'fragile', discovery:'mixed', capacity:'development', outcome:'pipeline' });
+  assert.equal(result.primary, 'seo');
+  assert.deepEqual(result.supporting, ['web']);
 });

@@ -146,6 +146,12 @@ const centerBannerVisual = hasBannerMotion && variant !== 'home';
   }
   .hero-shell--insights {
     min-height: max(760px, 100svh);
+    /* Fade the whole banner into the shared page atmosphere, including its fill. */
+    mask-image: linear-gradient(180deg, #000 0%, #000 58%, rgba(0,0,0,.96) 70%, rgba(0,0,0,.65) 84%, rgba(0,0,0,.24) 94%, transparent 100%);
+  }
+
+  .hero-shell--insights .hero-shell__handoff {
+    height: clamp(320px, 46vh, 480px);
   }
 
   .hero-shell--compact,

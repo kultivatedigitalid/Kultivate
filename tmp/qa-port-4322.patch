@@ -1,0 +1,15 @@
+diff --git a/website/tmp/qa-smooth-transition.mjs b/website/tmp/qa-smooth-transition.mjs
+--- a/website/tmp/qa-smooth-transition.mjs
++++ b/website/tmp/qa-smooth-transition.mjs
+@@ -50 +50 @@
+-await navigate('http://localhost:4321/en/learn/seo-business-growth/');
++await navigate('http://localhost:4322/en/learn/seo-business-growth/');
+@@ -83 +83 @@
+-await navigate('http://localhost:4321/en/services/');
++await navigate('http://localhost:4322/en/services/');
+@@ -97 +97 @@
+-await navigate('http://localhost:4321/en/contact/');
++await navigate('http://localhost:4322/en/contact/');
+@@ -124 +124 @@
+-await navigate('http://localhost:4321/en/learn/seo-business-growth/');
++await navigate('http://localhost:4322/en/learn/seo-business-growth/');

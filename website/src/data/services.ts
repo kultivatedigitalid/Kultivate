@@ -1,189 +1,606 @@
+/** Public adaptation of Kultivate Services.docx, supplied 15 September 2026. */
 export interface ServiceDetail {
-  id: string;
-  title: string;
-  slug: string;
-  tagline: string;
-  description: string;
-  problemsSolved: string[];
-  problemCauses: string[];
-  whoItIsFor: string[];
-  scope: string[];
-  deliverables: string[];
-  process: string[];
+  id: string; title: string; slug: string; tagline: string; summary: string;
+  description: string; image: string; principles: string[];
+  problemsSolved: string[]; problemCauses: string[]; impacts: string[]; inspections: string[];
+  whoItIsFor: string[]; scope: string[]; deliverables: string[]; process: string[];
+  faqs: { question: string; answer: string }[];
 }
 
 export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
-  id: [
+  "id": [
     {
-      id: 'seo',
-      title: 'SEO',
-      slug: 'seo',
-      tagline: 'Bantu pelanggan yang tepat menemukan dan memahami apa yang bisnis Anda tawarkan.',
-      description: 'Kami memperkuat fondasi teknis, halaman prioritas, konten, entity, dan authority signals agar bisnis Anda dapat ditemukan melalui search tradisional maupun pengalaman pencarian berbasis AI.',
-      problemCauses: [
-        'Halaman prioritas belum dipetakan ke istilah, pertanyaan, dan intent yang digunakan pelanggan.',
-        'Crawlability, indexing, kecepatan, internal linking, atau struktur halaman menghambat discovery.',
-        'Jawaban penting, entity, schema, dan evidence belum tersusun agar mudah dipahami atau dirujuk oleh search dan answer engines.'
+      "id": "seo",
+      "slug": "seo",
+      "title": "SEO",
+      "tagline": "Temukan demand yang bernilai bagi bisnis Anda.",
+      "summary": "Pahami apa yang pelanggan cari, lalu hubungkan pencarian itu dengan halaman yang membantu mereka mengambil keputusan.",
+      "description": "Kami memulai SEO dari bisnis, buyer, dan demand. Peluang pencarian menentukan halaman, konten, dan perbaikan teknis yang diprioritaskan; hasilnya ditinjau hingga inquiry dan peluang bisnis yang dapat diukur.",
+      "image": "/assets/services/seo-focus-v3.webp",
+      "principles": [
+        "Demand sebelum keyword.",
+        "Nilai bisnis sebelum traffic.",
+        "Ukur hingga tindakan."
       ],
-      problemsSolved: [
-        'Halaman prioritas Anda belum muncul untuk pencarian yang terhubung dengan produk atau layanan Anda.',
-        'Masalah teknis membuat halaman lebih sulit dirayapi, diindeks, dipahami, atau digunakan.',
-        'Expertise bisnis belum terlihat jelas dalam hasil search, AI answers, atau sumber yang memengaruhi keputusan pelanggan.'
+      "problemsSolved": [
+        "Pelanggan yang tepat belum menemukan penawaran Anda.",
+        "Traffic bertambah, tetapi inquiry relevan belum mengikuti.",
+        "Rekomendasi SEO belum menjadi perubahan nyata di website."
       ],
-      whoItIsFor: [
-        'Bisnis yang mengandalkan pelanggan untuk menemukan produk atau layanan melalui search.',
-        'Tim marketing yang membutuhkan prioritas SEO yang jelas dan dukungan implementasi.',
-        'Brand yang ingin menyiapkan expertise untuk Google AI Overviews dan pengalaman generative search.',
-        'Website baru, existing, atau yang sedang migrasi dan membutuhkan fondasi search lebih kuat.'
+      "problemCauses": [
+        "Struktur halaman belum mengikuti search demand dan pertanyaan buyer.",
+        "Keyword dipilih karena volume, sementara intent dan nilai bisnisnya belum dinilai.",
+        "Riset, konten, dan development berjalan dengan prioritas serta ownership yang terpisah."
       ],
-      scope: [
-        'SEO strategy, audit, keyword research, search intent, dan page mapping.',
-        'Technical SEO untuk crawlability, indexation, performance, schema, dan internal linking.',
-        'On-page SEO, content strategy, content structure, dan optimasi halaman prioritas.',
-        'AEO & GEO untuk answer-ready content, entity signals, retrievability, dan citation readiness.',
-        'Authority signals, AI search visibility monitoring, analytics, dan prioritas optimasi.'
+      "impacts": [
+        "Peluang bernilai dapat jatuh ke kompetitor sebelum buyer mengenal bisnis Anda.",
+        "Aktivitas meningkat tanpa memperjelas kontribusinya pada proses penjualan.",
+        "Hambatan teknis dan kekosongan konten terus membatasi discovery."
       ],
-      deliverables: [
-        'Audit dan roadmap SEO yang diprioritaskan berdasarkan kebutuhan bisnis.',
-        'Keyword, question, prompt, dan page mapping berdasarkan search intent.',
-        'Rekomendasi on-page, technical SEO, schema, entity, dan answer-ready content.',
-        'Dukungan implementasi sesuai cakupan yang disepakati.',
-        'Reporting untuk visibility, AI search presence, inquiry, dan sinyal bisnis yang relevan.'
+      "inspections": [
+        "Search demand, intent, halaman yang tersedia, dan visibility kompetitor.",
+        "Relevansi landing page, pertanyaan buyer, CTA, dan jalur menuju inquiry.",
+        "Crawlability, indexability, internal linking, backlog, dan kapasitas implementasi."
       ],
-      process: [
-        'Selaraskan bersama: Kami mempelajari penawaran, pelanggan, pertanyaan, search intent, dan baseline visibility bisnis Anda.',
-        'Pilih bersama: Kami menentukan peluang SEO, AEO & GEO, content, dan masalah teknis yang paling layak ditangani lebih dahulu.',
-        'Perbaiki bersama: Kami memperkuat fondasi teknis, halaman prioritas, struktur jawaban, entity, internal linking, dan authority signals sesuai scope.',
-        'Tinjau bersama: Kami membahas hasil search dan AI visibility, mengukur perubahan yang relevan, lalu menentukan prioritas berikutnya.'
+      "whoItIsFor": [
+        "Bisnis B2B dan layanan bernilai tinggi yang buyernya melakukan riset sebelum membeli.",
+        "Tim yang membutuhkan prioritas SEO dan dukungan implementasi.",
+        "Website existing, baru, atau yang akan redesign dengan search demand yang relevan."
+      ],
+      "scope": [
+        "Pemahaman bisnis, buyer, search intent, dan peluang komersial.",
+        "Audit website, search-to-page mapping, arsitektur konten, dan internal linking.",
+        "Technical SEO, on-page SEO, dan penguatan halaman prioritas.",
+        "Konten yang menjawab pertanyaan buyer dan menunjukkan bukti relevan.",
+        "Measurement, review inquiry, dan backlog optimasi sesuai data yang tersedia."
+      ],
+      "deliverables": [
+        "Peta search demand dan prioritas peluang bisnis.",
+        "Audit dan roadmap SEO dengan alasan di balik setiap prioritas.",
+        "Pemetaan demand ke halaman serta brief konten.",
+        "Implementasi atau dukungan teknis sesuai scope.",
+        "Review visibility, perilaku pengunjung, inquiry, dan langkah berikutnya."
+      ],
+      "process": [
+        "Pahami bisnis: Kenali penawaran, nilai customer, mekanisme penjualan, dan prioritas bisnis.",
+        "Pelajari buyer: Petakan pertanyaan, kekhawatiran, kriteria keputusan, dan bukti yang dibutuhkan.",
+        "Petakan demand: Nilai intent, relevansi, kompetisi, dan nilai bisnis setiap kelompok pencarian.",
+        "Tentukan prioritas: Hubungkan demand dengan halaman yang ada dan pekerjaan yang paling layak dilakukan.",
+        "Implementasikan: Perkuat halaman, konten, dan fondasi teknis bersama tim Anda.",
+        "Pelajari dan tingkatkan: Gunakan data search, perilaku website, dan feedback sales untuk menentukan langkah berikutnya."
+      ],
+      "faqs": [
+        {
+          "question": "Apakah SEO harus disertai website baru?",
+          "answer": "Tidak. Kami meninjau website yang ada terlebih dahulu. Redesign hanya masuk scope ketika perubahan besar memang diperlukan; banyak kebutuhan dapat ditangani dengan memperbaiki halaman dan fondasi existing."
+        },
+        {
+          "question": "Apa ukuran keberhasilan SEO?",
+          "answer": "Kami menghubungkan visibility dan organic clicks dengan kunjungan relevan, interaksi CTA, inquiry, dan qualified leads. Revenue dapat ditinjau ketika datanya tersedia. Kami tidak menjamin ranking atau hasil komersial tertentu."
+        }
       ]
     },
     {
-      id: 'web-services',
-      title: 'Web Services',
-      slug: 'web-services',
-      tagline: 'Berikan dukungan website yang dibutuhkan pekerjaan search dan bisnis Anda.',
-      description: 'Kami merancang, membangun, merawat, dan memperbaiki website ketika performa, usability, atau implementasi teknis membatasi pertumbuhan.',
-      problemCauses: [
-        'Technical debt, template lambat, atau arsitektur yang tidak jelas melemahkan akses dan usability.',
-        'Pekerjaan SEO berada di luar backlog development tanpa ownership implementasi yang jelas.',
-        'Redirect, template, performa, dan tracking belum divalidasi saat perubahan dilakukan.'
+      "id": "web-services",
+      "slug": "web-services",
+      "title": "Web Services",
+      "tagline": "Bangun website dari cara pelanggan mencari dan memutuskan.",
+      "summary": "Search membentuk apa yang perlu dibangun. Kebutuhan buyer membentuk bagaimana website menjelaskan, meyakinkan, dan mengarahkan tindakan.",
+      "description": "Sebelum sitemap dan UI, kami memahami bisnis, buyer, dan search demand Anda. Insight tersebut membentuk arsitektur, pesan, pengalaman, dan fondasi teknis website sebagai bagian dari satu sistem akuisisi customer.",
+      "image": "/assets/services/web-foundation-v3.webp",
+      "principles": [
+        "Search sebelum sitemap.",
+        "Buyer sebelum UI.",
+        "Nilai bisnis sebelum traffic."
       ],
-      problemsSolved: [
-        'Masalah website membuat halaman penting lebih sulit dirayapi, diindeks, atau digunakan.',
-        'Rekomendasi SEO dan kebutuhan bisnis menunggu dukungan development.',
-        'Migrasi, redesign, atau maintenance rutin menempatkan performa search dalam risiko.'
+      "problemsSolved": [
+        "Website belum membantu buyer memahami dan mengevaluasi penawaran.",
+        "SEO baru dipikirkan setelah website selesai dibangun.",
+        "Redesign berisiko menghilangkan visibility dan data yang sudah ada."
       ],
-      whoItIsFor: [
-        'Bisnis yang membutuhkan website baru dengan fondasi search yang jelas.',
-        'Tim yang membutuhkan dukungan UX, design, development, atau technical SEO.',
-        'Website yang sedang migrasi, redesign, atau membutuhkan maintenance berkelanjutan.'
+      "problemCauses": [
+        "Sitemap dan desain dibuat sebelum pertanyaan serta kriteria keputusan buyer dipahami.",
+        "Search demand belum ikut menentukan arsitektur dan hubungan antar konten.",
+        "Perubahan URL, redirect, indexability, dan tracking belum memiliki rencana validasi."
       ],
-      scope: [
-        'UX dan website strategy, information architecture, serta user flow.',
-        'Web design, development, dan implementasi landing page.',
-        'Perbaikan teknis, performance, schema, dan accessibility.',
-        'Dukungan migrasi SEO, redirects, analytics, dan quality assurance.',
-        'Website maintenance dan optimasi berkelanjutan.'
+      "impacts": [
+        "Pengunjung kesulitan menemukan alasan untuk percaya atau menghubungi tim Anda.",
+        "Halaman dan fondasi teknis perlu dikerjakan ulang saat optimasi dimulai.",
+        "Organic equity, jalur inquiry, dan kemampuan mengukur hasil dapat terganggu."
       ],
-      deliverables: [
-        'Website atau update implementasi yang siap produksi.',
-        'Arsitektur, interface, dan komponen sesuai scope yang disepakati.',
-        'Perbaikan teknis, performance, accessibility, dan catatan QA.',
-        'Rencana migrasi, redirect, atau analytics bila diperlukan.',
-        'Dokumentasi maintenance dan pengelolaan website.'
+      "inspections": [
+        "Tujuan tiap halaman, message hierarchy, bukti, FAQ, dan tindakan berikutnya.",
+        "Search demand, sitemap, URL, CMS, internal linking, dan ruang pengembangan.",
+        "Halaman yang terindeks, redirects, canonical, analytics, formulir, dan launch QA."
       ],
-      process: [
-        'Selaraskan bersama: Kami memahami kebutuhan bisnis, user journey, dan dependensi search Anda sebelum menentukan solusi.',
-        'Definisikan bersama: Kami menyepakati arsitektur, scope, interface direction, dan acceptance criteria dengan tim Anda.',
-        'Bangun bersama: Kami mengimplementasikan pengalaman dan perbaikan teknis sambil menjaga komunikasi tetap terbuka.',
-        'Uji bersama: Kami memvalidasi performance, accessibility, tracking, dan search readiness sebelum pekerjaan ditutup.'
+      "whoItIsFor": [
+        "Bisnis dengan penawaran yang membutuhkan penjelasan dan proses evaluasi.",
+        "Tim yang membutuhkan website baru, redesign, atau implementasi rekomendasi SEO.",
+        "Website yang memerlukan perbaikan UX, performance, maintenance, atau migrasi."
+      ],
+      "scope": [
+        "Business dan buyer discovery, disertai riset demand sesuai skala proyek.",
+        "Information architecture, message hierarchy, dan jalur conversion.",
+        "Wireframe, UI/UX, sistem komponen, dan implementasi responsif.",
+        "Development, CMS bila diperlukan, performance, accessibility, dan search readiness.",
+        "Rencana migrasi, launch QA, tracking, dan optimasi sesuai scope."
+      ],
+      "deliverables": [
+        "Business brief, buyer decision map, dan prioritas peluang.",
+        "Sitemap, search-to-page map, dan brief halaman utama.",
+        "Wireframe, desain, komponen, dan website siap produksi.",
+        "Catatan QA, rencana migrasi jika relevan, dan measurement setup.",
+        "Dokumentasi pengelolaan, handover, dan backlog peningkatan."
+      ],
+      "process": [
+        "Pahami bisnis: Kenali cara bisnis menghasilkan nilai dan bagian yang ingin ditingkatkan.",
+        "Pelajari buyer: Pahami informasi dan bukti yang dibutuhkan sebelum mereka mengambil keputusan.",
+        "Petakan demand: Pelajari pencarian yang perlu dijawab oleh website.",
+        "Rancang sistem: Terjemahkan insight menjadi arsitektur, pesan, conversion flow, dan UX/UI.",
+        "Bangun dengan tepat: Implementasikan website yang cepat, responsif, mudah dikembangkan, dan siap untuk search; validasi sebelum launch.",
+        "Pelajari dan tingkatkan: Gunakan data nyata dan feedback sales untuk memperbaiki pengalaman serta prioritas berikutnya."
+      ],
+      "faqs": [
+        {
+          "question": "Apakah bisa mengambil Web Services tanpa SEO retainer?",
+          "answer": "Bisa. Riset demand tetap membantu membentuk website, dengan kedalaman sesuai scope proyek. SEO berkelanjutan merupakan pekerjaan terpisah yang ditentukan berdasarkan kebutuhan."
+        },
+        {
+          "question": "Bagaimana Website dan SEO bekerja bersama?",
+          "answer": "SEO membantu memahami bagaimana pelanggan menemukan bisnis. Website membantu mereka memahami, mengevaluasi, dan mengambil tindakan setelah menemukannya. Strategi, arsitektur, dan measurement dirancang saling terhubung."
+        },
+        {
+          "question": "Bagaimana dengan organic traffic yang sudah ada?",
+          "answer": "Kami meninjau halaman dan URL yang bernilai, menyusun rencana migrasi bila diperlukan, lalu memvalidasi redirect, indexability, tracking, dan formulir sebelum serta setelah launch."
+        }
+      ]
+    },
+    {
+      "id": "social-media-management",
+      "slug": "social-media-management",
+      "title": "Social Media Management",
+      "tagline": "Ubah expertise menjadi kehadiran yang konsisten.",
+      "summary": "Bawa pengetahuan dan pengalaman bisnis ke konten yang bernilai, agar audiens terus mengenal kemampuan Anda.",
+      "description": "Kami menggali pengetahuan dari founder, tim, customer questions, dan pengalaman proyek. Insight tersebut menjadi arah konten, materi sumber, dan komunikasi yang membangun attention, familiarity, serta authority secara konsisten.",
+      "image": "/assets/services/social-distribution-v2.webp",
+      "principles": [
+        "Expertise sebelum konten.",
+        "Audiens sebelum algoritma.",
+        "Konsistensi sebelum viralitas."
+      ],
+      "problemsSolved": [
+        "Keahlian bisnis Anda belum cukup terlihat oleh market.",
+        "Konten diproduksi, tetapi terasa seperti milik siapa saja.",
+        "Akun aktif, tetapi pembelajaran dari respons audiens belum jelas."
+      ],
+      "problemCauses": [
+        "Knowledge masih tersimpan di founder, sales call, proyek, dan tim internal.",
+        "Ide dimulai dari kalender atau tren tanpa insight dan sudut pandang yang kuat.",
+        "Reporting berhenti pada jumlah posting, views, dan followers."
+      ],
+      "impacts": [
+        "Audiens belum punya cukup kesempatan untuk mengenal cara bisnis Anda berpikir.",
+        "Brand sulit membangun asosiasi yang khas dengan keahliannya.",
+        "Tim mengulang aktivitas tanpa keputusan tentang apa yang perlu diperbaiki."
+      ],
+      "inspections": [
+        "Expertise tim, pertanyaan customer, pengalaman, dan bukti yang boleh dibagikan.",
+        "Kesesuaian topik dengan expertise, kebutuhan audiens, dan relevansi komersial.",
+        "Relevant attention, respons konten, brand interest, DM, inquiry, dan sinyal bisnis."
+      ],
+      "whoItIsFor": [
+        "Bisnis dengan expertise bernilai yang belum dikomunikasikan secara konsisten.",
+        "Founder dan tim yang siap membagikan knowledge sebagai sumber konten.",
+        "Brand yang ingin membangun familiarity dan authority di audiens relevan."
+      ],
+      "scope": [
+        "Strategi social berdasarkan perannya dalam customer journey.",
+        "Expertise mining bersama founder, expert, sales, atau tim proyek.",
+        "Content territories, point of view, dan pengembangan materi sumber.",
+        "Adaptasi format, copy, produksi, quality control, dan distribusi pada channel yang disepakati.",
+        "Review respons audiens, brand interest, dan sinyal komersial."
+      ],
+      "deliverables": [
+        "Social strategy brief dengan tujuan dan audiens yang jelas.",
+        "Expertise bank dan peta content territories.",
+        "Materi sumber serta rencana konten dan distribusi.",
+        "Konten untuk format dan channel yang disepakati.",
+        "Review pembelajaran dengan keputusan untuk melanjutkan, memperbaiki, menghentikan, atau menguji."
+      ],
+      "process": [
+        "Pahami bisnis dan audiens: Tentukan perhatian siapa yang penting dan peran social bagi bisnis.",
+        "Gali expertise: Kumpulkan knowledge, pengalaman, pertanyaan customer, dan sudut pandang yang dapat dibuktikan.",
+        "Tentukan territory: Pilih topik yang ingin diasosiasikan dengan brand.",
+        "Bangun materi sumber: Kembangkan satu ide mendalam menjadi beberapa bentuk konten bernilai.",
+        "Buat dan distribusikan: Adaptasikan pesan ke format dan channel, lalu periksa kualitas sebelum publikasi.",
+        "Ukur dan pelajari: Gunakan respons market untuk menentukan apa yang diteruskan, diperbaiki, dan diuji berikutnya."
+      ],
+      "faqs": [
+        {
+          "question": "Apakah layanan ini bisa berdiri sendiri?",
+          "answer": "Bisa. Social Media Management merupakan layanan berkelanjutan dengan metode tersendiri. Insight-nya dapat memperkuat Website dan SEO ketika ada hubungan yang relevan."
+        },
+        {
+          "question": "Berapa posting dan channel yang termasuk?",
+          "answer": "Format, volume, channel, dan ritme produksi ditentukan setelah memahami tujuan, audiens, materi sumber, serta kapasitas tim. Setiap bagian dijelaskan dalam scope."
+        },
+        {
+          "question": "Apa yang perlu disiapkan tim kami?",
+          "answer": "Akses ke expertise dan pengalaman nyata: percakapan dengan founder atau expert, pertanyaan customer, proyek, dan data yang boleh dibagikan. Sumber yang spesifik membuat komunikasi terasa milik brand Anda."
+        }
+      ]
+    },
+    {
+      "id": "visual-strategy",
+      "slug": "visual-strategy",
+      "title": "Visual Strategy",
+      "tagline": "Buat brand lebih mudah dipahami, dikenali, dan diingat.",
+      "summary": "Mulai dari pesan yang perlu dipahami, lalu bangun bahasa visual yang khas dan konsisten di berbagai touchpoint.",
+      "description": "Kami menerjemahkan tujuan bisnis, kebutuhan audiens, dan pesan menjadi satu sistem komunikasi visual. Konsep, ilustrasi, diagram, iconography, dan motion dipilih berdasarkan apa yang perlu dipahami dan diingat.",
+      "image": "/assets/why/purposeful-craft.webp",
+      "principles": [
+        "Makna sebelum gaya.",
+        "Kejelasan sebelum dekorasi.",
+        "Sistem sebelum aset."
+      ],
+      "problemsSolved": [
+        "Penawaran yang kuat masih sulit dijelaskan secara visual.",
+        "Komunikasi brand terasa berbeda di setiap touchpoint.",
+        "Tim memiliki banyak aset, tetapi kesulitan mengembangkannya."
+      ],
+      "problemCauses": [
+        "Medium dan style dipilih sebelum pesan serta kebutuhan audiens dipahami.",
+        "Komposisi, warna, tipografi, imagery, dan motion belum memiliki bahasa bersama.",
+        "Output diserahkan tanpa aturan, template, dan konteks penggunaannya."
+      ],
+      "impacts": [
+        "Audiens dapat melewatkan informasi penting atau salah memahami nilai penawaran.",
+        "Brand lebih sulit dikenali dan diingat secara konsisten.",
+        "Setiap kebutuhan baru mengulang keputusan desain dari awal."
+      ],
+      "inspections": [
+        "Core message, informasi prioritas, kompleksitas, dan persepsi yang ingin dibangun.",
+        "Visual direction di website, social, campaign, dan sales material.",
+        "Guidelines, template, asset library, penggunaan sehari-hari, dan skalabilitas."
+      ],
+      "whoItIsFor": [
+        "Bisnis dengan produk, proses, atau expertise yang membutuhkan penjelasan visual.",
+        "Brand yang ingin memperkuat recognition dan konsistensi komunikasi.",
+        "Tim yang membutuhkan sistem visual yang dapat digunakan dan dikembangkan."
+      ],
+      "scope": [
+        "Business, audience, communication objective, serta message dan perception mapping.",
+        "Visual concept, art direction, dan eksplorasi key visual dengan rationale.",
+        "Sistem ilustrasi, iconography, information design, komposisi, dan prinsip motion sesuai kebutuhan.",
+        "Aplikasi pada website, social, campaign, presentation, atau sales material.",
+        "Validasi kejelasan dan konsistensi, guidelines, template, dan handover."
+      ],
+      "deliverables": [
+        "Visual strategy brief dan message & perception map.",
+        "Visual direction dengan konsep, referensi, dan alasan pemilihannya.",
+        "Sistem visual dengan aturan komposisi, warna, tipografi, dan image treatment.",
+        "Aplikasi pada touchpoint nyata yang disepakati.",
+        "Visual guidelines, template, asset library, dan usage rules sesuai scope."
+      ],
+      "process": [
+        "Pahami bisnis dan audiens: Tentukan masalah komunikasi dan konteks penggunaannya.",
+        "Petakan pesan dan persepsi: Tentukan apa yang perlu dipahami, dirasakan, dan diingat.",
+        "Tentukan arah visual: Terjemahkan makna menjadi konsep dan bahasa visual yang tepat.",
+        "Bangun sistem: Tetapkan aturan agar aset berikutnya tetap terasa seperti brand yang sama.",
+        "Terapkan: Bawa sistem ke format dan touchpoint nyata.",
+        "Validasi dan serahkan: Periksa kejelasan, konsistensi, dan kemudahan penggunaan; bekali tim dengan panduan."
+      ],
+      "faqs": [
+        {
+          "question": "Apakah Visual Strategy hanya membuat ilustrasi?",
+          "answer": "Ilustrasi adalah salah satu medium. Kami mulai dari masalah komunikasi, lalu menentukan apakah ilustrasi, diagram, iconography, motion, atau information design paling membantu."
+        },
+        {
+          "question": "Apakah harus disertai proyek website atau social?",
+          "answer": "Tidak. Visual Strategy dapat berdiri sendiri sebagai strategi visual, brand illustration system, information design, atau campaign dan digital visual system. Sistem yang sama juga dapat memperkuat layanan lain."
+        },
+        {
+          "question": "Bisakah tim kami memakai sistemnya sendiri?",
+          "answer": "Kemudahan penggunaan menjadi bagian dari handover. Guidelines, template, asset library, dan aturan penggunaan disusun sesuai scope agar tim dapat melanjutkan sistem tanpa kehilangan ide dasarnya."
+        }
       ]
     }
   ],
-  en: [
+  "en": [
     {
-      id: 'seo',
-      title: 'SEO',
-      slug: 'seo',
-      tagline: 'Help the right customers find and understand what your business offers.',
-      description: 'We strengthen technical foundations, priority pages, content, entities, and authority signals so your business can be discovered across traditional search and AI-powered search experiences.',
-      problemCauses: [
-        'Priority pages are not mapped to the terms, questions, and intent customers use.',
-        'Crawlability, indexing, speed, internal linking, or page structure is blocking discovery.',
-        'Key answers, entities, schema, and evidence are not structured for search and answer engines to understand or reference.'
+      "id": "seo",
+      "slug": "seo",
+      "title": "SEO",
+      "tagline": "Find the demand that matters to your business.",
+      "summary": "Understand what customers search for, then connect that demand to pages that help them make a decision.",
+      "description": "We start SEO with the business, the buyer, and the demand. Search opportunities guide the pages, content, and technical work we prioritize; progress is reviewed through to inquiries and measurable business opportunities.",
+      "image": "/assets/services/seo-focus-v3.webp",
+      "principles": [
+        "Demand before keywords.",
+        "Business value before traffic.",
+        "Measure through to action."
       ],
-      problemsSolved: [
-        'Your priority pages are not appearing for searches connected to your products or services.',
-        'Technical issues are making pages harder to crawl, index, understand, or use.',
-        'Your expertise is not clearly represented across search results, AI answers, or the sources that shape customer decisions.'
+      "problemsSolved": [
+        "The right customers are not finding your offer.",
+        "Traffic is growing, but relevant inquiries are not following.",
+        "SEO recommendations are not becoming changes on the website."
       ],
-      whoItIsFor: [
-        'Businesses that depend on customers finding their products or services through search.',
-        'Marketing teams that need clear SEO priorities and implementation support.',
-        'Brands preparing their expertise for Google AI Overviews and generative search experiences.',
-        'New, established, or migrating websites that need stronger search foundations.'
+      "problemCauses": [
+        "Page structure does not reflect search demand and buyer questions.",
+        "Keywords are selected for volume before intent and business value are assessed.",
+        "Research, content, and development have separate priorities and ownership."
       ],
-      scope: [
-        'SEO strategy, audits, keyword research, search intent, and page mapping.',
-        'Technical SEO for crawlability, indexation, performance, schema, and internal linking.',
-        'On-page SEO, content strategy, content structure, and priority-page optimization.',
-        'AEO & GEO for answer-ready content, entity signals, retrievability, and citation readiness.',
-        'Authority signals, AI search visibility monitoring, analytics, and optimization priorities.'
+      "impacts": [
+        "Valuable opportunities can reach competitors before buyers discover your business.",
+        "Activity grows without a clear contribution to the sales process.",
+        "Technical friction and content gaps continue to limit discovery."
       ],
-      deliverables: [
-        'A prioritized SEO audit and roadmap tied to business needs.',
-        'Keyword, question, prompt, and page mapping based on search intent.',
-        'On-page, technical SEO, schema, entity, and answer-ready content recommendations.',
-        'Implementation support within the agreed scope.',
-        'Reporting for visibility, AI search presence, inquiries, and relevant business signals.'
+      "inspections": [
+        "Search demand, intent, existing pages, and competitor visibility.",
+        "Landing-page relevance, buyer questions, calls to action, and the path to inquiry.",
+        "Crawling, indexing, internal links, the backlog, and implementation capacity."
       ],
-      process: [
-        'Align together: We learn your offer, customers, questions, search intent, and current visibility baseline.',
-        'Choose together: We prioritize the SEO, AEO & GEO, content, and technical opportunities that deserve attention first.',
-        'Improve together: We strengthen technical foundations, priority pages, answer structure, entities, internal links, and authority signals within scope.',
-        'Review together: We review search and AI visibility, measure the changes that matter, and agree on the next priorities.'
+      "whoItIsFor": [
+        "B2B and high-value service businesses whose buyers research before purchasing.",
+        "Teams that need clear SEO priorities and help putting them into practice.",
+        "Existing, new, or migrating websites with relevant search demand."
+      ],
+      "scope": [
+        "Business and buyer understanding, search intent, and commercial opportunities.",
+        "Website audits, search-to-page mapping, content architecture, and internal links.",
+        "Technical SEO, on-page SEO, and priority-page improvements.",
+        "Content that answers buyer questions and presents relevant evidence.",
+        "Measurement, inquiry reviews, and an optimization backlog grounded in available data."
+      ],
+      "deliverables": [
+        "A search demand map and prioritized business opportunities.",
+        "An SEO audit and roadmap with the reasoning behind each priority.",
+        "Demand-to-page mapping and content briefs.",
+        "Implementation or technical support within the agreed scope.",
+        "Reviews of visibility, visitor behavior, inquiries, and next steps."
+      ],
+      "process": [
+        "Understand the business: Learn the offer, customer value, sales mechanism, and commercial priorities.",
+        "Study the buyer: Map the questions, concerns, decision criteria, and evidence buyers need.",
+        "Map the demand: Assess intent, relevance, competition, and business value across search clusters.",
+        "Choose the priorities: Connect demand to existing pages and the changes worth making first.",
+        "Implement: Improve pages, content, and technical foundations with your team.",
+        "Learn and grow: Use search data, website behavior, and sales feedback to guide the next step."
+      ],
+      "faqs": [
+        {
+          "question": "Does SEO require a new website?",
+          "answer": "No. We review the existing website first. A redesign enters the scope only when larger changes are needed; many priorities can be addressed by improving existing pages and foundations."
+        },
+        {
+          "question": "How do you measure SEO progress?",
+          "answer": "We connect visibility and organic clicks to relevant visits, CTA interactions, inquiries, and qualified leads. Revenue can be reviewed when the data is available. We do not guarantee rankings or a specific commercial result."
+        }
       ]
     },
     {
-      id: 'web-services',
-      title: 'Web Services',
-      slug: 'web-services',
-      tagline: 'Give your search work and business the website support they need.',
-      description: 'We design, build, maintain, and improve websites where performance, usability, or technical implementation limits growth.',
-      problemCauses: [
-        'Technical debt, slow templates, or unclear architecture weakens access and usability.',
-        'SEO work sits outside the development backlog without clear implementation ownership.',
-        'Redirects, templates, performance, and tracking are not validated around changes.'
+      "id": "web-services",
+      "slug": "web-services",
+      "title": "Web Services",
+      "tagline": "Build around how customers search and decide.",
+      "summary": "Search shapes what needs to be built. Buyer needs shape how the website explains, earns trust, and guides action.",
+      "description": "Before the sitemap and interface, we understand your business, buyers, and search demand. Those insights shape the architecture, messaging, experience, and technical foundations of a website designed as part of one customer acquisition system.",
+      "image": "/assets/services/web-foundation-v3.webp",
+      "principles": [
+        "Search before sitemap.",
+        "Buyer before UI.",
+        "Business value before traffic."
       ],
-      problemsSolved: [
-        'Website problems make important pages harder to crawl, index, or use.',
-        'SEO recommendations and business needs are waiting for development support.',
-        'Migration, redesign, or routine maintenance is putting search performance at risk.'
+      "problemsSolved": [
+        "Your website does not help buyers understand and evaluate the offer.",
+        "SEO is considered after the website has already been built.",
+        "A redesign could lose visibility and data you have already earned."
       ],
-      whoItIsFor: [
-        'Businesses that need a new website with a clear search foundation.',
-        'Teams that need UX, design, development, or technical SEO support.',
-        'Websites preparing for migration, redesign, or ongoing maintenance.'
+      "problemCauses": [
+        "The sitemap and design come before buyer questions and decision criteria.",
+        "Search demand has not shaped the architecture or content relationships.",
+        "URL changes, redirects, indexing, and tracking lack a clear validation plan."
       ],
-      scope: [
-        'UX and website strategy, information architecture, and user flows.',
-        'Web design, development, and landing-page implementation.',
-        'Technical improvements, performance, schema, and accessibility.',
-        'SEO migration support, redirects, analytics, and quality assurance.',
-        'Website maintenance and ongoing optimization.'
+      "impacts": [
+        "Visitors struggle to find a reason to trust the business or contact your team.",
+        "Pages and technical foundations need to be reworked when optimization begins.",
+        "Organic equity, inquiry paths, and the ability to measure results can be disrupted."
       ],
-      deliverables: [
-        'A production-ready website or implementation update.',
-        'Architecture, interfaces, and components within the agreed scope.',
-        'Technical, performance, and accessibility improvements with a QA record.',
-        'A migration, redirect, or analytics plan where required.',
-        'Website maintenance and management documentation.'
+      "inspections": [
+        "The purpose of each page, message hierarchy, evidence, FAQs, and next action.",
+        "Search demand, sitemap, URLs, CMS, internal links, and room to grow.",
+        "Indexed pages, redirects, canonicals, analytics, forms, and launch QA."
       ],
-      process: [
-        'Align together: We learn your business need, user journey, and search dependencies before defining the solution.',
-        'Define together: We agree on architecture, scope, interface direction, and acceptance criteria with your team.',
-        'Build together: We implement the experience and technical improvements while keeping communication open.',
-        'Test together: We validate performance, accessibility, tracking, and search readiness before closing the work.'
+      "whoItIsFor": [
+        "Businesses whose offers need explanation and considered evaluation.",
+        "Teams planning a website, redesign, or implementation of SEO recommendations.",
+        "Websites needing UX, performance, maintenance, or migration support."
+      ],
+      "scope": [
+        "Business and buyer discovery, with demand research appropriate to the project.",
+        "Information architecture, message hierarchy, and conversion paths.",
+        "Wireframes, UI/UX, component systems, and responsive implementation.",
+        "Development, CMS where needed, performance, accessibility, and search readiness.",
+        "Migration planning, launch QA, tracking, and optimization within scope."
+      ],
+      "deliverables": [
+        "A business brief, buyer decision map, and opportunity priorities.",
+        "A sitemap, search-to-page map, and priority-page briefs.",
+        "Wireframes, design, components, and a production-ready website.",
+        "QA records, migration planning where relevant, and measurement setup.",
+        "Management documentation, handover, and an improvement backlog."
+      ],
+      "process": [
+        "Understand the business: Learn how the business creates value and what needs to improve.",
+        "Understand the buyer: Identify the information and evidence customers need to make a decision.",
+        "Map the demand: Study the searches the website needs to answer.",
+        "Design the system: Turn the insights into architecture, messaging, conversion paths, and UX/UI.",
+        "Build it right: Develop a fast, responsive, scalable, search-ready website and validate it before launch.",
+        "Learn and grow: Use real data and sales feedback to improve the experience and choose the next priorities."
+      ],
+      "faqs": [
+        {
+          "question": "Can we use Web Services without an SEO retainer?",
+          "answer": "Yes. Demand research still helps shape the website, at a depth appropriate to the project. Ongoing SEO is a separate engagement based on your needs."
+        },
+        {
+          "question": "How do Website and SEO work together?",
+          "answer": "SEO helps us understand how customers discover a business. The website helps them understand, evaluate, and act after discovery. Strategy, architecture, and measurement are designed to work together."
+        },
+        {
+          "question": "What happens to our existing organic traffic?",
+          "answer": "We review valuable pages and URLs, plan the migration where needed, and validate redirects, indexing, tracking, and forms before and after launch."
+        }
+      ]
+    },
+    {
+      "id": "social-media-management",
+      "slug": "social-media-management",
+      "title": "Social Media Management",
+      "tagline": "Turn expertise into consistent market presence.",
+      "summary": "Bring your knowledge and experience into useful content, so the right audience keeps recognizing what you know.",
+      "description": "We uncover knowledge from founders, teams, customer questions, and project experience. Those insights become content territories, source material, and communication that consistently builds attention, familiarity, and authority.",
+      "image": "/assets/services/social-distribution-v2.webp",
+      "principles": [
+        "Expertise before content.",
+        "Audience before algorithm.",
+        "Consistency before virality."
+      ],
+      "problemsSolved": [
+        "The market is not seeing enough of your expertise.",
+        "Content keeps going out, but could belong to any business.",
+        "Your account is active, but audience response rarely informs the next cycle."
+      ],
+      "problemCauses": [
+        "Knowledge stays inside the founder, sales calls, projects, and internal team.",
+        "Ideas start with a calendar or trend before there is a strong source and point of view.",
+        "Reporting stops at post counts, views, and followers."
+      ],
+      "impacts": [
+        "The right audience has too few opportunities to recognize how your business thinks.",
+        "The brand struggles to build a distinctive association with its expertise.",
+        "The team repeats activity without deciding what to improve."
+      ],
+      "inspections": [
+        "Team expertise, customer questions, experience, and evidence available to share.",
+        "The connection between topics, expertise, audience needs, and commercial relevance.",
+        "Relevant attention, content response, brand interest, DMs, inquiries, and business signals."
+      ],
+      "whoItIsFor": [
+        "Businesses with valuable expertise they do not yet communicate consistently.",
+        "Founders and teams willing to share knowledge as the source of content.",
+        "Brands building familiarity and authority with a relevant audience."
+      ],
+      "scope": [
+        "Social strategy based on the channel’s role in the customer journey.",
+        "Expertise mining with founders, experts, sales, or project teams.",
+        "Content territories, points of view, and source material development.",
+        "Format adaptation, copy, production, quality control, and distribution on agreed channels.",
+        "Audience response, brand interest, and commercial-signal reviews."
+      ],
+      "deliverables": [
+        "A social strategy brief with a clear objective and audience.",
+        "An expertise bank and content territory map.",
+        "Source material, content planning, and a distribution plan.",
+        "Content for the formats and channels agreed in the scope.",
+        "Learning reviews with decisions to continue, improve, stop, or test."
+      ],
+      "process": [
+        "Understand the business and audience: Decide whose attention matters and the role social should play.",
+        "Mine the expertise: Gather knowledge, experience, customer questions, and points of view grounded in evidence.",
+        "Define the territory: Choose what the brand should become known for.",
+        "Build the source: Develop one deep idea into several useful expressions.",
+        "Create and distribute: Adapt the message to each format and channel, with quality checks before publication.",
+        "Measure and learn: Use market response to decide what to continue, improve, and test next."
+      ],
+      "faqs": [
+        {
+          "question": "Can this service stand on its own?",
+          "answer": "Yes. Social Media Management is an ongoing service with its own method. Its insights can also strengthen Website and SEO work when the connection is relevant."
+        },
+        {
+          "question": "How many posts and channels are included?",
+          "answer": "Formats, volume, channels, and production rhythm follow the objective, audience, source material, and team capacity. Each part is defined in the scope."
+        },
+        {
+          "question": "What does our team need to provide?",
+          "answer": "Access to real expertise and experience: founder or expert conversations, customer questions, projects, and data that can be shared. Specific source material makes the communication your own."
+        }
+      ]
+    },
+    {
+      "id": "visual-strategy",
+      "slug": "visual-strategy",
+      "title": "Visual Strategy",
+      "tagline": "Make your brand easier to understand, recognize, and remember.",
+      "summary": "Start with what people need to understand, then build a distinctive visual language that works across touchpoints.",
+      "description": "We translate business goals, audience needs, and meaning into a visual communication system. Concepts, illustration, diagrams, iconography, and motion are chosen around what people need to understand and remember.",
+      "image": "/assets/why/purposeful-craft.webp",
+      "principles": [
+        "Meaning before style.",
+        "Clarity before decoration.",
+        "System before assets."
+      ],
+      "problemsSolved": [
+        "A strong offer is still difficult to explain visually.",
+        "The brand feels different across its touchpoints.",
+        "Your team has many assets but struggles to build on them."
+      ],
+      "problemCauses": [
+        "The medium and style are chosen before the message and audience needs.",
+        "Composition, color, typography, imagery, and motion do not share a common language.",
+        "Outputs are handed over without rules, templates, and context for using them."
+      ],
+      "impacts": [
+        "People can miss important information or misunderstand the value of your offer.",
+        "The brand becomes harder to recognize and remember consistently.",
+        "Each new requirement restarts the design decisions from the beginning."
+      ],
+      "inspections": [
+        "The core message, priority information, complexity, and intended perception.",
+        "Visual direction across the website, social, campaigns, and sales material.",
+        "Guidelines, templates, the asset library, everyday use, and room to grow."
+      ],
+      "whoItIsFor": [
+        "Businesses with products, processes, or expertise that benefit from visual explanation.",
+        "Brands that want stronger recognition and more consistent communication.",
+        "Teams that need a visual system they can use and develop."
+      ],
+      "scope": [
+        "Business, audience, communication objectives, and message and perception mapping.",
+        "Visual concepts, art direction, and key visual exploration with clear rationale.",
+        "Illustration, iconography, information design, composition, and motion principles as needed.",
+        "Application across website, social, campaigns, presentations, or sales material.",
+        "Clarity and consistency validation, guidelines, templates, and handover."
+      ],
+      "deliverables": [
+        "A visual strategy brief and message & perception map.",
+        "Visual direction with concepts, references, and the reasoning behind them.",
+        "A system of composition, color, typography, and image-treatment rules.",
+        "Applications across agreed real-world touchpoints.",
+        "Visual guidelines, templates, an asset library, and usage rules within scope."
+      ],
+      "process": [
+        "Understand the business and audience: Define the communication problem and its context.",
+        "Map message and perception: Decide what people should understand, feel, and remember.",
+        "Find the visual direction: Translate meaning into a relevant concept and visual language.",
+        "Build the system: Set the rules that keep future assets recognizable as the same brand.",
+        "Apply it: Bring the system to life in real formats and touchpoints.",
+        "Validate and hand over: Check clarity, consistency, and usability, then equip the team with guidance."
+      ],
+      "faqs": [
+        {
+          "question": "Is Visual Strategy only about illustration?",
+          "answer": "Illustration is one possible medium. We start with the communication problem, then decide whether illustration, diagrams, iconography, motion, or information design is most useful."
+        },
+        {
+          "question": "Does it require a website or social project?",
+          "answer": "No. Visual Strategy can stand alone as visual strategy, a brand illustration system, information design, or a campaign and digital visual system. It can also strengthen other services."
+        },
+        {
+          "question": "Can our team use the system independently?",
+          "answer": "Everyday usability is part of the handover. Guidelines, templates, the asset library, and usage rules follow the agreed scope so your team can build on the system without losing its central idea."
+        }
       ]
     }
   ]

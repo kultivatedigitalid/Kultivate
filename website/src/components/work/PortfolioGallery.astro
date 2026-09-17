@@ -253,4 +253,11 @@ const copy = locale === 'id'
     .portfolio-item:nth-child(2) img,
     .portfolio-item:nth-child(3) img { transform: none; }
   }
+
+  .portfolio-section::after { content:''; position:absolute; z-index:0; inset:0; height:auto; pointer-events:none; mask-image:linear-gradient(180deg,transparent,#000 15%,#000 85%,transparent);
+    background:radial-gradient(ellipse 86% 34% at 25% 50%,#e2f0f7,rgba(148,190,218,.8) 47%,transparent 100%),
+      radial-gradient(ellipse 82% 38% at 84% 61%,rgba(108,170,218,.8),transparent 100%); }
+  .portfolio-grid { position:relative; z-index:1; }
+
+
 </style>

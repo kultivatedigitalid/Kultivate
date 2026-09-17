@@ -1,0 +1,72 @@
+diff --git a/website/src/pages/id/contact.astro b/website/src/pages/id/contact.astro
+--- a/website/src/pages/id/contact.astro
++++ b/website/src/pages/id/contact.astro
+@@ -237,2 +237,3 @@
++    border-radius: 0;
+     padding: clamp(22px, 4vw, 48px);
+-    background-color: var(--deep-navy);
++    background: rgba(11, 19, 34, 0.58);
+@@ -284,4 +285,6 @@
+-    padding: 12px var(--spacing-sm);
+-    background-color: var(--void-black);
+-    border: 1px solid var(--slate);
+-    border-radius: var(--border-radius-sm);
++    padding: 14px 2px 12px;
++    background: transparent;
++    border: 0;
++    border-bottom: 1px solid rgba(122, 135, 152, 0.58);
++    border-radius: 0;
+@@ -290,1 +293,2 @@
+     font-size: 0.9375rem;
++    transition: border-color var(--transition-micro), background-color var(--transition-micro);
+@@ -300,3 +304,14 @@
+     outline: none;
+-    border-color: var(--electric-blue);
++    border-bottom-color: var(--signal-ice);
++    background: rgba(103, 217, 255, 0.035);
+   }
++
++  .form-input:focus-visible,
++  .form-select:focus-visible,
++  .form-textarea:focus-visible {
++    outline: 1px solid rgba(207, 247, 255, 0.42);
++    outline-offset: 3px;
++  }
++
++  .form-select option { background: var(--deep-navy); color: var(--cloud-white); }
+diff --git a/website/src/pages/en/contact.astro b/website/src/pages/en/contact.astro
+--- a/website/src/pages/en/contact.astro
++++ b/website/src/pages/en/contact.astro
+@@ -237,2 +237,3 @@
++    border-radius: 0;
+     padding: clamp(22px, 4vw, 48px);
+-    background-color: var(--deep-navy);
++    background: rgba(11, 19, 34, 0.58);
+@@ -284,4 +285,6 @@
+-    padding: 12px var(--spacing-sm);
+-    background-color: var(--void-black);
+-    border: 1px solid var(--slate);
+-    border-radius: var(--border-radius-sm);
++    padding: 14px 2px 12px;
++    background: transparent;
++    border: 0;
++    border-bottom: 1px solid rgba(122, 135, 152, 0.58);
++    border-radius: 0;
+@@ -290,1 +293,2 @@
+     font-size: 0.9375rem;
++    transition: border-color var(--transition-micro), background-color var(--transition-micro);
+@@ -300,3 +304,14 @@
+     outline: none;
+-    border-color: var(--electric-blue);
++    border-bottom-color: var(--signal-ice);
++    background: rgba(103, 217, 255, 0.035);
+   }
++
++  .form-input:focus-visible,
++  .form-select:focus-visible,
++  .form-textarea:focus-visible {
++    outline: 1px solid rgba(207, 247, 255, 0.42);
++    outline-offset: 3px;
++  }
++
++  .form-select option { background: var(--deep-navy); color: var(--cloud-white); }

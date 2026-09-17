@@ -1,0 +1,80 @@
+diff --git a/website/src/pages/en/contact.astro b/website/src/pages/en/contact.astro
+--- a/website/src/pages/en/contact.astro
++++ b/website/src/pages/en/contact.astro
+@@ -285,7 +285,7 @@
+     min-width: 0;
+     max-width: 100%;
+     padding: 14px 16px;
+-    background: rgba(7, 16, 26, 0.32);
++    background: rgba(7, 16, 26, 0.18);
+     border: 0;
+     border-radius: 10px;
+@@ -309,7 +309,7 @@
+   .form-textarea:focus {
+     outline: none;
+-    background: rgba(7, 16, 26, 0.52);
++    background: rgba(7, 16, 26, 0.34);
+     box-shadow: none;
+   }
+@@ -362,7 +362,7 @@
+   .office-card {
+     border: 0;
+     padding: var(--spacing-xl);
+-    background-color: var(--deep-navy);
++    background-color: rgba(7, 16, 26, 0.42);
+     box-shadow: none;
+   }
+@@ -390,7 +390,7 @@
+     align-items: center;
+     gap: var(--spacing-md);
+     padding: var(--spacing-sm);
+-    background-color: rgba(4, 10, 18, 0.7);
++    background-color: rgba(4, 10, 18, 0.28);
+     border-radius: var(--border-radius-sm);
+@@ -407,7 +407,7 @@
+   }
+ 
+   .contact-link-item:hover {
+-    background-color: rgba(9, 26, 40, 0.9);
++    background-color: rgba(9, 26, 40, 0.46);
+   }
+diff --git a/website/src/pages/id/contact.astro b/website/src/pages/id/contact.astro
+--- a/website/src/pages/id/contact.astro
++++ b/website/src/pages/id/contact.astro
+@@ -285,7 +285,7 @@
+     min-width: 0;
+     max-width: 100%;
+     padding: 14px 16px;
+-    background: rgba(7, 16, 26, 0.32);
++    background: rgba(7, 16, 26, 0.18);
+     border: 0;
+     border-radius: 10px;
+@@ -309,7 +309,7 @@
+   .form-textarea:focus {
+     outline: none;
+-    background: rgba(7, 16, 26, 0.52);
++    background: rgba(7, 16, 26, 0.34);
+     box-shadow: none;
+   }
+@@ -362,7 +362,7 @@
+   .office-card {
+     border: 0;
+     padding: var(--spacing-xl);
+-    background-color: var(--deep-navy);
++    background-color: rgba(7, 16, 26, 0.42);
+     box-shadow: none;
+   }
+@@ -390,7 +390,7 @@
+     align-items: center;
+     gap: var(--spacing-md);
+     padding: var(--spacing-sm);
+-    background-color: rgba(4, 10, 18, 0.7);
++    background-color: rgba(4, 10, 18, 0.28);
+     border-radius: var(--border-radius-sm);
+@@ -407,7 +407,7 @@
+   }
+ 
+   .contact-link-item:hover {
+-    background-color: rgba(9, 26, 40, 0.9);
++    background-color: rgba(9, 26, 40, 0.46);
+   }

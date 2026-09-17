@@ -14,7 +14,7 @@ const { heading, steps, locale } = Astro.props;
   <div class="container">
     <header class="process-heading" data-reveal>
       <h2 id="process-title">{heading}</h2>
-      <p>{locale === 'id' ? 'Empat langkah yang kami jalankan bersama Anda, dari konteks sampai langkah berikutnya.' : 'Four steps we move through with you, from context to the next useful move.'}</p>
+      <p>{locale === 'id' ? 'Enam tahap, dari konteks bisnis sampai pembelajaran yang mengarahkan langkah berikutnya.' : 'Six phases, from business context to the learning that shapes your next move.'}</p>
     </header>
 
     <ol class="process-grid">
@@ -115,8 +115,9 @@ const { heading, steps, locale } = Astro.props;
   .process-grid {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     padding-top: 1px;
+    row-gap: 48px;
     list-style: none;
   }
 

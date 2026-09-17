@@ -1,0 +1,59 @@
+{
+  "qa-module-final": {
+    "pages": 6,
+    "characters": [
+      2840,
+      3487,
+      3344,
+      3404,
+      2983,
+      2131
+    ]
+  },
+  "qa-worksheet-final": {
+    "pages": 2,
+    "characters": [
+      2187,
+      2433
+    ]
+  },
+  "qa-planning-final": {
+    "pages": 6,
+    "characters": [
+      2832,
+      2130,
+      2681,
+      2538,
+      3093,
+      1610
+    ]
+  },
+  "C01L01_Modul_Pembelajaran.docx": {
+    "paragraphs": 65,
+    "tables": 3,
+    "sha256": "8ed3d7316231fc2451a47d7ab3acd6b24dc039fb226a530b650387bffdcc5c9b",
+    "chapters": [
+      "1 Pencarian berawal dari kebutuhan",
+      "2 Empat momen sebelum inquiry",
+      "3 Membaca sinyal sampai menjadi peluang",
+      "4 Menguji peta pada satu layanan"
+    ]
+  },
+  "C01L01_Slide_Planning_dan_Quality_Check.docx": {
+    "paragraphs": 113,
+    "tables": 2,
+    "sha256": "3bcadbd26e0d777541d1126f41cdaebb5de7cce02fbbffb1b04e6a2d626bd530"
+  },
+  "C01L01_Worksheet_Search_to_Sales.docx": {
+    "paragraphs": 50,
+    "tables": 0,
+    "sha256": "9c71c11e24e03c8df6ba48ee4d5cfed45ca81898b65cd0a0cd9f4131ccee7f17"
+  },
+  "pptx": {
+    "slides": 12,
+    "native_shapes": 176,
+    "native_tables": 1,
+    "pictures": 1,
+    "notes": 12
+  }
+}

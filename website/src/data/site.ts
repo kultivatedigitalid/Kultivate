@@ -8,7 +8,7 @@ export const siteConfig = {
 
   // STRATEGIC DECISION
   name: 'Kultivate',
-  tagline: 'SEO Agency for Search and AI Visibility',
+  tagline: 'Found. Understood. Chosen.',
 
   // PENDING - PLACEHOLDER - NOT PUBLIC PROOF
   domain: 'https://kultivate.id', // Target domain

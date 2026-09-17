@@ -1,61 +1,31 @@
 ---
 import InteriorHero from '../shared/InteriorHero.astro';
-
+import { servicesData } from '../../data/services';
 interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
-const copy = locale === 'id'
-  ? {
-      hero: {
-        label: 'SEO + WEB SERVICES',
-        title: 'Layanan untuk prioritas Anda',
-        description: 'Dibangun berdasarkan apa yang dibutuhkan bisnis Anda selanjutnya.'
-      },
-      explore: 'Lihat layanan',
-      services: [
-        { title: 'SEO', result: 'Visibility untuk pencarian bernilai', description: 'Kami memperbaiki fondasi teknis, halaman prioritas, dan authority signals untuk search tradisional, sekaligus menyusun AEO & GEO agar expertise lebih mudah dipahami oleh pengalaman pencarian berbasis AI.', image: '/assets/services/seo-focus-v3.webp', alt: 'Beberapa jalur search bergerak menuju satu titik prioritas', slug: 'seo' },
-        { title: 'Web Services', result: 'Website yang siap mendukung pertumbuhan', description: 'Kami merancang, membangun, dan merawat website ketika performa, usability, migrasi, atau kekurangan implementasi menghambat halaman prioritas dan orang yang menggunakannya.', image: '/assets/services/web-foundation-v3.webp', alt: 'Lapisan website modular tersusun di atas fondasi teknis', slug: 'web-services' }
-      ]
-    }
-  : {
-      hero: {
-        label: 'SEO + WEB SERVICES',
-        title: 'Services for your priorities',
-        description: 'Built around what your business needs next.'
-      },
-      explore: 'View service',
-      services: [
-        { title: 'SEO', result: 'Visibility for valuable searches', description: 'We improve technical foundations, priority pages, and authority signals for traditional search, while shaping AEO & GEO so your expertise is easier for AI-powered search experiences to understand.', image: '/assets/services/seo-focus-v3.webp', alt: 'Several search paths moving toward one priority destination', slug: 'seo' },
-        { title: 'Web Services', result: 'A website built to support growth', description: 'We design, build, and maintain the website where performance, usability, migrations, or implementation gaps hold back priority pages and the people using them.', image: '/assets/services/web-foundation-v3.webp', alt: 'Modular website layers arranged on a technical foundation', slug: 'web-services' }
-      ]
-    };
+const services = servicesData[locale];
+const copy = locale === 'id' ? {
+  title:'Layanan untuk prioritas Anda', description:'Search, website, visual, dan social media. Dimulai dari bisnis Anda dan cara pelanggan mengambil keputusan.', explore:'Lihat layanan',
+} : {
+  title:'Services for your priorities', description:'Search, websites, visual strategy, and social media. Built around your business and how customers make decisions.', explore:'View service',
+};
 ---
-
-<InteriorHero
-  title={copy.hero.title}
-  description={copy.hero.description}
-  label={copy.hero.label}
-  image="/assets/banners/services-gradient.webp"
-  imageAlt={locale === 'id' ? 'Elemen modular mengitari satu pusat biru' : 'Modular elements arranged around one blue core'}
-  variant="services"
-/>
-
-<section id="services-list" class="services-index flow-section" aria-label={copy.hero.label} data-scroll-key="services-list">
+<InteriorHero title={copy.title} description={copy.description} label="KULTIVATE SERVICES"
+  image="/assets/banners/services-gradient.webp" imageAlt="" variant="services" />
+<section id="services-list" class="services-index flow-section" aria-label="Kultivate services" data-scroll-key="services-list">
   <div class="container service-stream">
-    {copy.services.map((service, index) => (
+    {services.map((service,index) => (
       <article class="service-row" data-reveal>
-        <figure class="service-row__visual" data-reveal><img src={service.image} alt={service.alt} width="1440" height="1080" loading="lazy" decoding="async" /></figure>
-        <div class="service-row__copy" data-reveal>
-          <div class="service-row__meta text-mono"><span>0{index + 1}</span></div>
-          <h2>{service.title}</h2>
-          <h3>{service.result}</h3>
-          <p>{service.description}</p>
-          <a href={'/' + locale + '/services/' + service.slug + '/'} class="link-hover-arrow"><span>{copy.explore}</span><span aria-hidden="true">&#8594;</span></a>
+        <figure class="service-row__visual"><img src={service.image} alt="" width="1440" height="1080" loading="lazy" decoding="async" /></figure>
+        <div class="service-row__copy">
+          <div class="service-row__meta text-mono"><span>0{index+1}</span></div>
+          <h2>{service.title}</h2><h3>{service.tagline}</h3><p>{service.description}</p>
+          <a href={`/${locale}/services/${service.slug}/`} class="link-hover-arrow"><span>{copy.explore}</span><span aria-hidden="true">→</span></a>
         </div>
       </article>
     ))}
   </div>
 </section>
-
 <style>
   .services-index { margin-top:-2px; padding:clamp(52px,7vw,96px) 0 clamp(34px,4.5vw,62px); background:radial-gradient(ellipse 54% 24% at 50% 10%,rgba(70,134,183,.11),transparent 80%),linear-gradient(180deg,#070b12 0%,#060a11 54%,#05080e 100%); }
   .service-stream { display:flex; flex-direction:column; gap:clamp(96px,12vw,172px); }

@@ -1,0 +1,214 @@
+{"kind":"deck","id":"pr/6pp53r","name":"Deck"}
+{"kind":"layout","layoutId":"4d7715bf-104f-4a99-b21e-a2ce1757e964","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"c45448a7-d810-4712-a386-51b8f2dc8ecc","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/3tnddu","slide":1,"title":"KULTIVATE LEARN","textShapes":13}
+{"kind":"textbox","id":"sh/4fetgzmh","slide":1,"name":"KULTIVATE LEARN","text":"KULTIVATE LEARN","textPreview":"KULTIVATE LEARN","textChars":15,"textLines":1,"bbox":[64,32,420,28]}
+{"kind":"textbox","id":"sh/3e5snulw","slide":1,"name":"COURSE 01  /  LESSON 01","text":"COURSE 01  /  LESSON 01","textPreview":"COURSE 01  /  LESSON 01","textChars":23,"textLines":1,"bbox":[800,32,416,28]}
+{"kind":"shape","id":"sh/idwbep4b","slide":1,"name":"separator","bbox":[64,663,1152,0]}
+{"kind":"textbox","id":"sh/hcnalk3q","slide":1,"name":"SEO for Business Growth: From Searc","text":"SEO for Business Growth: From Search to Sales","textPreview":"SEO for Business Growth: From Search to Sales","textChars":45,"textLines":1,"bbox":[64,679,1020,25]}
+{"kind":"textbox","id":"sh/gbutcfm5","slide":1,"name":"01","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1160,675,56,27]}
+{"kind":"textbox","id":"sh/upcbap4f","slide":1,"name":"slide-title","text":"Menghubungkan pencarian\ndengan peluang bisnis","textPreview":"Menghubungkan pencarian | dengan peluang bisnis","textChars":45,"textLines":2,"bbox":[64,211,1150,185]}
+{"kind":"textbox","id":"sh/to3ahk3u","slide":1,"name":"Satu lesson, satu keputusan atau me","text":"Satu lesson, satu keputusan atau mental model","textPreview":"Satu lesson, satu keputusan atau mental model","textChars":45,"textLines":1,"bbox":[66,412,1080,52]}
+{"kind":"textbox","id":"sh/8nut8fm9","slide":1,"name":"6","text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[66,510,108,90]}
+{"kind":"textbox","id":"sh/qdc36lkz","slide":1,"name":"Courses","text":"Courses","textPreview":"Courses","textChars":7,"textLines":1,"bbox":[178,534,240,59]}
+{"kind":"textbox","id":"sh/relkfq14","slide":1,"name":"6","text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[431,510,108,90]}
+{"kind":"textbox","id":"sh/sful8bip","slide":1,"name":"Lessons per Course","text":"Lessons per Course","textPreview":"Lessons per Course","textChars":18,"textLines":1,"bbox":[543,534,240,59]}
+{"kind":"textbox","id":"sh/dgn2hgja","slide":1,"name":"36","text":"36","textPreview":"36","textChars":2,"textLines":1,"bbox":[796,510,108,90]}
+{"kind":"textbox","id":"sh/ipc321kn","slide":1,"name":"Lessons total","text":"Lessons total","textPreview":"Lessons total","textChars":13,"textLines":1,"bbox":[908,534,240,59]}
+{"kind":"textbox","id":"sh/3qlkb618","slide":1,"name":"1 lesson = 1 video utama","text":"1 lesson = 1 video utama","textPreview":"1 lesson = 1 video utama","textChars":24,"textLines":1,"bbox":[66,616,1100,32]}
+{"kind":"image","id":"im/ehov69g7","slide":1,"name":"","alt":"Logo Kultivate dari asset asli","bbox":[58,91,295,71]}
+{"kind":"notes","id":"nt/3tnddu","slide":1,"text":"Konteks modul: Metadata dan Posisi kita di Kultivate Learn.\nKurikulum internal dan brief revisi. Logo berasal dari file asli pengguna.\n\n\n\nSumber web diperiksa 14 September 2026. Catatan berisi referensi dan pemetaan modul, tanpa presenter script."}
+{"kind":"slide","id":"sl/gptk02","slide":2,"title":"KULTIVATE LEARN","textShapes":11}
+{"kind":"textbox","id":"sh/ml836l4j","slide":2,"name":"KULTIVATE LEARN","text":"KULTIVATE LEARN","textPreview":"KULTIVATE LEARN","textChars":15,"textLines":1,"bbox":[64,32,420,28]}
+{"kind":"textbox","id":"sh/9oz2h03u","slide":2,"name":"COURSE 01  /  LESSON 01","text":"COURSE 01  /  LESSON 01","textPreview":"COURSE 01  /  LESSON 01","textChars":23,"textLines":1,"bbox":[800,32,416,28]}
+{"kind":"textbox","id":"sh/onql8vmp","slide":2,"name":"slide-title","text":"Traffic naik, peluangnya belum jelas","textPreview":"Traffic naik, peluangnya belum jelas","textChars":36,"textLines":1,"bbox":[64,99,1148,122]}
+{"kind":"textbox","id":"sh/bqhkjql0","slide":2,"name":"Kondisi ilustratif","text":"Kondisi ilustratif","textPreview":"Kondisi ilustratif","textChars":18,"textLines":1,"bbox":[64,220,1110,34]}
+{"kind":"shape","id":"sh/ap83alkf","slide":2,"name":"separator","bbox":[64,663,1152,0]}
+{"kind":"textbox","id":"sh/xsj2l036","slide":2,"name":"SEO for Business Growth: From Searc","text":"SEO for Business Growth: From Search to Sales","textPreview":"SEO for Business Growth: From Search to Sales","textChars":45,"textLines":1,"bbox":[64,679,1020,25]}
+{"kind":"textbox","id":"sh/wrqlcv2l","slide":2,"name":"02","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1160,675,56,27]}
+{"kind":"textbox","id":"sh/je1knalc","slide":2,"name":"YANG SUDAH TERLIHAT","text":"YANG SUDAH TERLIHAT","textPreview":"YANG SUDAH TERLIHAT","textChars":19,"textLines":1,"bbox":[65,300,504,35]}
+{"kind":"textbox","id":"sh/yds3e5kr","slide":2,"name":"Website makin\nbanyak dikunjungi","text":"Website makin\nbanyak dikunjungi","textPreview":"Website makin | banyak dikunjungi","textChars":31,"textLines":2,"bbox":[65,356,512,150]}
+{"kind":"shape","id":"sh/47udk7up","slide":2,"bbox":[620,290,0,272]}
+{"kind":"textbox","id":"sh/583etcba","slide":2,"name":"YANG PERLU DIPERIKSA","text":"YANG PERLU DIPERIKSA","textPreview":"YANG PERLU DIPERIKSA","textChars":20,"textLines":1,"bbox":[683,300,514,35]}
+{"kind":"textbox","id":"sh/i5svixcj","slide":2,"name":"Kebutuhan siapa\nyang terbantu?","text":"Kebutuhan siapa\nyang terbantu?","textPreview":"Kebutuhan siapa | yang terbantu?","textChars":30,"textLines":2,"bbox":[683,356,514,120]}
+{"kind":"textbox","id":"sh/36lwr2t4","slide":2,"name":"Apakah ada inquiry yang sesuai?","text":"Apakah ada inquiry yang sesuai?","textPreview":"Apakah ada inquiry yang sesuai?","textChars":31,"textLines":1,"bbox":[683,520,514,85]}
+{"kind":"notes","id":"nt/gptk02","slide":2,"text":"Konteks modul: Bab 1.\nKultivate framing; kondisi ilustratif, bukan laporan bisnis.\n\n\n\nSumber web diperiksa 14 September 2026. Catatan berisi referensi dan pemetaan modul, tanpa presenter script."}
+{"kind":"slide","id":"sl/735vny","slide":3,"title":"KULTIVATE LEARN","textShapes":11}
+{"kind":"textbox","id":"sh/apc3yt47","slide":3,"name":"KULTIVATE LEARN","text":"KULTIVATE LEARN","textPreview":"KULTIVATE LEARN","textChars":15,"textLines":1,"bbox":[64,32,420,28]}
+{"kind":"textbox","id":"sh/xs32983i","slide":3,"name":"COURSE 01  /  LESSON 01","text":"COURSE 01  /  LESSON 01","textPreview":"COURSE 01  /  LESSON 01","textChars":23,"textLines":1,"bbox":[800,32,416,28]}
+{"kind":"textbox","id":"sh/wrul03mx","slide":3,"name":"slide-title","text":"Demand dan traffic","textPreview":"Demand dan traffic","textChars":18,"textLines":1,"bbox":[64,99,1148,122]}
+{"kind":"shape","id":"sh/n21k3elg","slide":3,"name":"separator","bbox":[64,663,1152,0]}
+{"kind":"textbox","id":"sh/m1sju94v","slide":3,"name":"SEO for Business Growth: From Searc","text":"SEO for Business Growth: From Search to Sales","textPreview":"SEO for Business Growth: From Search to Sales","textChars":45,"textLines":1,"bbox":[64,679,1020,25]}
+{"kind":"textbox","id":"sh/9o325o3m","slide":3,"name":"03","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1160,675,56,27]}
+{"kind":"textbox","id":"sh/o3alwjm1","slide":3,"name":"Demand","text":"Demand","textPreview":"Demand","textChars":6,"textLines":1,"bbox":[65,300,480,72]}
+{"kind":"textbox","id":"sh/7y5kfil0","slide":3,"name":"Kebutuhan terhadap solusi","text":"Kebutuhan terhadap solusi","textPreview":"Kebutuhan terhadap solusi","textChars":25,"textLines":1,"bbox":[65,386,500,82]}
+{"kind":"textbox","id":"sh/6xw36d4f","slide":3,"name":"Traffic","text":"Traffic","textPreview":"Traffic","textChars":7,"textLines":1,"bbox":[687,300,485,72]}
+{"kind":"textbox","id":"sh/ob2h47ud","slide":3,"name":"Kunjungan ke website","text":"Kunjungan ke website","textPreview":"Kunjungan ke website","textChars":20,"textLines":1,"bbox":[687,386,490,82]}
+{"kind":"shape","id":"sh/pcbyxcby","slide":3,"name":"separator","bbox":[65,520,1130,0]}
+{"kind":"textbox","id":"sh/29kz2xc7","slide":3,"name":"Relevansi","text":"Relevansi","textPreview":"Relevansi","textChars":9,"textLines":1,"bbox":[65,558,215,40]}
+{"kind":"textbox","id":"sh/3atgv2ts","slide":3,"name":"Apakah kebutuhan itu dapat kita lay","text":"Apakah kebutuhan itu dapat kita layani?","textPreview":"Apakah kebutuhan itu dapat kita layani?","textChars":39,"textLines":1,"bbox":[295,554,900,76]}
+{"kind":"notes","id":"nt/735vny","slide":3,"text":"Konteks modul: Bab 1.\nDefinisi kerja dalam modul dan reasoning Kultivate.\n\n\n\nSumber web diperiksa 14 September 2026. Catatan berisi referensi dan pemetaan modul, tanpa presenter script."}
+{"kind":"slide","id":"sl/m205o7","slide":4,"title":"KULTIVATE LEARN","textShapes":19}
+{"kind":"textbox","id":"sh/sbuxkb2l","slide":4,"name":"KULTIVATE LEARN","text":"KULTIVATE LEARN","textPreview":"KULTIVATE LEARN","textChars":15,"textLines":1,"bbox":[64,32,420,28]}
+{"kind":"textbox","id":"sh/ra1wr6l0","slide":4,"name":"COURSE 01  /  LESSON 01","text":"COURSE 01  /  LESSON 01","textPreview":"COURSE 01  /  LESSON 01","textChars":23,"textLines":1,"bbox":[800,32,416,28]}
+{"kind":"textbox","id":"sh/q9svi1kf","slide":4,"name":"slide-title","text":"Empat momen pencarian","textPreview":"Empat momen pencarian","textChars":21,"textLines":1,"bbox":[64,99,1148,122]}
+{"kind":"textbox","id":"sh/1g3ex032","slide":4,"name":"Kultivate framework","text":"Kultivate framework","textPreview":"Kultivate framework","textChars":19,"textLines":1,"bbox":[64,220,1110,34]}
+{"kind":"shape","id":"sh/0fuxov2h","slide":4,"name":"separator","bbox":[64,663,1152,0]}
+{"kind":"textbox","id":"sh/felwvqlw","slide":4,"name":"SEO for Business Growth: From Searc","text":"SEO for Business Growth: From Search to Sales","textPreview":"SEO for Business Growth: From Search to Sales","textChars":45,"textLines":1,"bbox":[64,679,1020,25]}
+{"kind":"textbox","id":"sh/edcfmlkr","slide":4,"name":"04","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1160,675,56,27]}
+{"kind":"textbox","id":"sh/hkjelw3y","slide":4,"name":"01","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[64,268,210,47]}
+{"kind":"textbox","id":"sh/gjqdcr2d","slide":4,"name":"Discover","text":"Discover","textPreview":"Discover","textChars":8,"textLines":1,"bbox":[64,354,236,100]}
+{"kind":"textbox","id":"sh/6dw3250f","slide":4,"name":"Mengenali\nmasalah","text":"Mengenali\nmasalah","textPreview":"Mengenali | masalah","textChars":17,"textLines":2,"bbox":[64,465,238,92]}
+{"kind":"textbox","id":"sh/re5kba10","slide":4,"name":"02","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[356,268,210,47]}
+{"kind":"textbox","id":"sh/sfel4fil","slide":4,"name":"Learn","text":"Learn","textPreview":"Learn","textChars":5,"textLines":1,"bbox":[356,354,236,100]}
+{"kind":"textbox","id":"sh/t0nmd0jq","slide":4,"name":"Memahami\nsolusi","text":"Memahami\nsolusi","textPreview":"Memahami | solusi","textChars":15,"textLines":2,"bbox":[356,465,238,92]}
+{"kind":"textbox","id":"sh/e1w3650b","slide":4,"name":"03","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[648,268,210,47]}
+{"kind":"textbox","id":"sh/f2p4fa1w","slide":4,"name":"Compare/\nValidate","text":"Compare/\nValidate","textPreview":"Compare/ | Validate","textChars":17,"textLines":2,"bbox":[648,354,236,100]}
+{"kind":"textbox","id":"sh/g3yl8fih","slide":4,"name":"Menilai kecocokan\ndan bukti","text":"Menilai kecocokan\ndan bukti","textPreview":"Menilai kecocokan | dan bukti","textChars":27,"textLines":2,"bbox":[648,465,238,92]}
+{"kind":"textbox","id":"sh/147mhkj2","slide":4,"name":"04","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[940,268,210,47]}
+{"kind":"textbox","id":"sh/25g3ap0n","slide":4,"name":"Act","text":"Act","textPreview":"Act","textChars":3,"textLines":1,"bbox":[940,354,236,100]}
+{"kind":"textbox","id":"sh/n6p4ju18","slide":4,"name":"Mengambil\nlangkah berikutnya","text":"Mengambil\nlangkah berikutnya","textPreview":"Mengambil | langkah berikutnya","textChars":28,"textLines":2,"bbox":[940,465,238,92]}
+{"kind":"shape","id":"sh/za9k7ux0","slide":4,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/y903ypgv","slide":4,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/lcr294f6","slide":4,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/kbil0zyl","slide":4,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/b6pk3ax4","slide":4,"name":"Momen dapat berulang atau terlewati","text":"Momen dapat berulang atau terlewati","textPreview":"Momen dapat berulang atau terlewati","textChars":35,"textLines":1,"bbox":[64,601,1140,37]}
+{"kind":"notes","id":"nt/m205o7","slide":4,"text":"Konteks modul: Bab 2.\nFramework kurikulum internal. Batas perjalanan nonlinier merujuk S4, bukan validasi model empat tahap.\n\nS4 Think with Google — Decoding Decisions Making sense of the messy middle\nhttps://www.thinkwithgoogle.com/_qs/documents/11071/DecodingDecisions_NL.pdf\nEdisi Local Results Netherlands, halaman PDF 3, 5–6. Tanggal publikasi tidak tercantum. Menjelaskan eksplorasi dan evaluasi yang berulang. Penelitian konsumen ini bukan validasi langsung atas seluruh proses pembelian B2B Indonesia. Dipakai sebagai batas model di Bab 2.\n\nSumber web diperiksa 14 September 2026. Catatan berisi referensi dan pemetaan modul, tanpa presenter script."}
+{"kind":"slide","id":"sl/kp9l33","slide":5,"title":"KULTIVATE LEARN","textShapes":7}
+{"kind":"textbox","id":"sh/mtcr2l0n","slide":5,"name":"KULTIVATE LEARN","text":"KULTIVATE LEARN","textPreview":"KULTIVATE LEARN","textChars":15,"textLines":1,"bbox":[64,32,420,28]}
+{"kind":"textbox","id":"sh/9wnqdgzy","slide":5,"name":"COURSE 01  /  LESSON 01","text":"COURSE 01  /  LESSON 01","textPreview":"COURSE 01  /  LESSON 01","textChars":23,"textLines":1,"bbox":[800,32,416,28]}
+{"kind":"textbox","id":"sh/ove94vid","slide":5,"name":"slide-title","text":"Informasi mengikuti keputusan pembeli","textPreview":"Informasi mengikuti keputusan pembeli","textChars":37,"textLines":1,"bbox":[64,99,1148,122]}
+{"kind":"textbox","id":"sh/zql876hw","slide":5,"name":"Kultivate framework","text":"Kultivate framework","textPreview":"Kultivate framework","textChars":19,"textLines":1,"bbox":[64,220,1110,34]}
+{"kind":"shape","id":"sh/epc7y10b","slide":5,"name":"separator","bbox":[64,663,1152,0]}
+{"kind":"textbox","id":"sh/1s3q9gz2","slide":5,"name":"SEO for Business Growth: From Searc","text":"SEO for Business Growth: From Search to Sales","textPreview":"SEO for Business Growth: From Search to Sales","textChars":45,"textLines":1,"bbox":[64,679,1020,25]}
+{"kind":"textbox","id":"sh/0rup0bih","slide":5,"name":"05","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1160,675,56,27]}
+{"kind":"textbox","id":"sh/q1s7u10f","slide":5,"name":"Satu halaman dapat membantu lebih d","text":"Satu halaman dapat membantu lebih dari satu momen","textPreview":"Satu halaman dapat membantu lebih dari satu momen","textChars":49,"textLines":1,"bbox":[64,603,1152,39]}
+{"kind":"table","id":"tb/2x8f698r","slide":5,"name":"","rows":4,"cols":2,"preview":"Discover | Masalah apa yang perlu ditangani?","bbox":[64,290,1152,280]}
+{"kind":"notes","id":"nt/kp9l33","slide":5,"text":"Konteks modul: Bab 2.\nKultivate framework.\n\n\n\nSumber web diperiksa 14 September 2026. Catatan berisi referensi dan pemetaan modul, tanpa presenter script."}
+{"kind":"slide","id":"sl/p6j925","slide":6,"title":"KULTIVATE LEARN","textShapes":16}
+{"kind":"textbox","id":"sh/4fi54ne9","slide":6,"name":"KULTIVATE LEARN","text":"KULTIVATE LEARN","textPreview":"KULTIVATE LEARN","textChars":15,"textLines":1,"bbox":[64,32,420,28]}
+{"kind":"textbox","id":"sh/je9ovido","slide":6,"name":"COURSE 01  /  LESSON 01","text":"COURSE 01  /  LESSON 01","textPreview":"COURSE 01  /  LESSON 01","textChars":23,"textLines":1,"bbox":[800,32,416,28]}
+{"kind":"textbox","id":"sh/idgn2dw3","slide":6,"name":"slide-title","text":"Bukti menuju peluang bisnis","textPreview":"Bukti menuju peluang bisnis","textChars":27,"textLines":1,"bbox":[64,99,1148,122]}
+{"kind":"textbox","id":"sh/hc76tsvi","slide":6,"name":"Kultivate framework  •  Peta pemeri","text":"Kultivate framework  •  Peta pemeriksaan, bukan funnel terukur","textPreview":"Kultivate framework  •  Peta pemeriksaan, bukan funnel terukur","textChars":62,"textLines":1,"bbox":[64,220,1110,34]}
+{"kind":"shape","id":"sh/wby50nex","slide":6,"name":"separator","bbox":[64,663,1152,0]}
+{"kind":"textbox","id":"sh/vaporidc","slide":6,"name":"SEO for Business Growth: From Searc","text":"SEO for Business Growth: From Search to Sales","textPreview":"SEO for Business Growth: From Search to Sales","textChars":45,"textLines":1,"bbox":[64,679,1020,25]}
+{"kind":"textbox","id":"sh/u9gnydw7","slide":6,"name":"06","text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1160,675,56,27]}
+{"kind":"textbox","id":"sh/9876p8vm","slide":6,"name":"Visibility","text":"Visibility","textPreview":"Visibility","textChars":10,"textLines":1,"bbox":[64,316,230,106]}
+{"kind":"shape","id":"sh/87y5w3e1","slide":6,"name":"separator","bbox":[64,447,230,0]}
+{"kind":"textbox","id":"sh/a1cbypwb","slide":6,"name":"Kemunculan","text":"Kemunculan","textPreview":"Kemunculan","textChars":10,"textLines":1,"bbox":[64,472,230,92]}
+{"kind":"textbox","id":"sh/b25cruxw","slide":6,"name":"Kunjungan\nrelevan","text":"Kunjungan\nrelevan","textPreview":"Kunjungan | relevan","textChars":17,"textLines":2,"bbox":[357,316,230,106]}
+{"kind":"shape","id":"sh/wned0zeh","slide":6,"name":"separator","bbox":[357,447,230,0]}
+{"kind":"textbox","id":"sh/xonut4f2","slide":6,"name":"Konteks kebutuhan","text":"Konteks kebutuhan","textPreview":"Konteks kebutuhan","textChars":17,"textLines":1,"bbox":[357,472,230,92]}
+{"kind":"textbox","id":"sh/mxcbu5wf","slide":6,"name":"Inquiry","text":"Inquiry","textPreview":"Inquiry","textChars":7,"textLines":1,"bbox":[650,316,230,106]}
+{"kind":"shape","id":"sh/nylcnaxk","slide":6,"name":"separator","bbox":[650,447,230,0]}
+{"kind":"textbox","id":"sh/ozutwfe5","slide":6,"name":"Pesan diterima","text":"Pesan diterima","textPreview":"Pesan diterima","textChars":14,"textLines":1,"bbox":[650,472,230,92]}
+{"kind":"textbox","id":"sh/903upkfq","slide":6,"name":"Qualified\nopportunity","text":"Qualified\nopportunity","textPreview":"Qualified | opportunity","textChars":21,"textLines":2,"bbox":[943,316,230,106]}
+{"kind":"shape","id":"sh/etsbq5w3","slide":6,"name":"separator","bbox":[943,447,230,0]}
+{"kind":"textbox","id":"sh/zu1cjaxo","slide":6,"name":"Kecocokan diperiksa","text":"Kecocokan diperiksa","textPreview":"Kecocokan diperiksa","textChars":19,"textLines":1,"bbox":[943,472,230,92]}
+{"kind":"shape","id":"sh/3yh8r6dg","slide":6,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/2d8ry1cv","slide":6,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/p0zatgvm","slide":6,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/4zq90bu1","slide":6,"name":"Setiap perpindahan perlu bukti","text":"Setiap perpindahan perlu bukti","textPreview":"Setiap perpindahan perlu bukti","textChars":30,"textLines":1,"bbox":[64,581,650,37]}
+{"kind":"textbox","id":"sh/r2hsv6dc","slide":6,"name":"Peluang sesuai belum berarti penjua","text":"Peluang sesuai belum berarti penjualan","textPreview":"Peluang sesuai belum berarti penjualan","textChars":38,"textLines":1,"bbox":[64,620,1100,34]}
+{"kind":"notes","id":"nt/p6j925","slide":6,"text":"Konteks modul: Bab 3.\nS2 untuk impressions/clicks; kualifikasi dan urutan bukti merupakan Kultivate framework.\n\nS2 Google Search Console Help — What are impressions position and clicks\nhttps://support.google.com/webmasters/answer/7042828?hl=en\nTanggal pembaruan tidak ditampilkan. Definisi impressions dan clicks bergantung pada jenis hasil. Dipakai di Bab 3.\n\nSumber web diperiksa 14 September 2026. Catatan berisi referensi dan pemetaan modul, tanpa presenter script."}
+{"kind":"slide","id":"sl/sfpo1a","slide":7,"title":"KULTIVATE LEARN","textShapes":13}
+{"kind":"textbox","id":"sh/0fytwj6h","slide":7,"name":"KULTIVATE LEARN","text":"KULTIVATE LEARN","textPreview":"KULTIVATE LEARN","textChars":15,"textLines":1,"bbox":[64,32,420,28]}
+{"kind":"textbox","id":"sh/fepc3epw","slide":7,"name":"COURSE 01  /  LESSON 01","text":"COURSE 01  /  LESSON 01","textPreview":"COURSE 01  /  LESSON 01","textChars":23,"textLines":1,"bbox":[800,32,416,28]}
+{"kind":"textbox","id":"sh/edgbu9or","slide":7,"name":"slide-title","text":"Klik kontak belum membuktikan inquiry","textPreview":"Klik kontak belum membuktikan inquiry","textChars":37,"textLines":1,"bbox":[64,99,1148,122]}
+{"kind":"textbox","id":"sh/pkru9o7e","slide":7,"name":"Contoh ilustratif","text":"Contoh ilustratif","textPreview":"Contoh ilustratif","textChars":17,"textLines":1,"bbox":[64,220,1110,34]}
+{"kind":"shape","id":"sh/ojit036t","slide":7,"name":"separator","bbox":[64,663,1152,0]}
+{"kind":"textbox","id":"sh/nipc7yp8","slide":7,"name":"SEO for Business Growth: From Searc","text":"SEO for Business Growth: From Search to Sales","textPreview":"SEO for Business Growth: From Search to Sales","textChars":45,"textLines":1,"bbox":[64,679,1020,25]}
+{"kind":"textbox","id":"sh/2hgbyton","slide":7,"name":"07","text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1160,675,56,27]}
+{"kind":"textbox","id":"sh/xorud87a","slide":7,"name":"1","text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[65,298,100,64]}
+{"kind":"textbox","id":"sh/cnid436p","slide":7,"name":"Klik tombol\nkontak","text":"Klik tombol\nkontak","textPreview":"Klik tombol | kontak","textChars":18,"textLines":2,"bbox":[65,385,332,121]}
+{"kind":"textbox","id":"sh/q983qlsz","slide":7,"name":"2","text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[460,298,100,64]}
+{"kind":"textbox","id":"sh/bah4jq9k","slide":7,"name":"Pesan benar-benar\nditerima","text":"Pesan benar-benar\nditerima","textPreview":"Pesan benar-benar | diterima","textChars":26,"textLines":2,"bbox":[460,385,332,121]}
+{"kind":"textbox","id":"sh/cbalsva5","slide":7,"name":"3","text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[855,298,100,64]}
+{"kind":"textbox","id":"sh/dcjml0ra","slide":7,"name":"Kebutuhan\ndiperiksa tim","text":"Kebutuhan\ndiperiksa tim","textPreview":"Kebutuhan | diperiksa tim","textChars":23,"textLines":2,"bbox":[855,385,332,121]}
+{"kind":"shape","id":"sh/ydsnu5sv","slide":7,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/ze14nq9g","slide":7,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/kza5wva1","slide":7,"name":"Key event mencatat tindakan penting","text":"Key event mencatat tindakan penting,\nbukan otomatis peluang yang sesuai","textPreview":"Key event mencatat tindakan penting, | bukan otomatis peluang yang sesuai","textChars":71,"textLines":2,"bbox":[65,566,1150,79]}
+{"kind":"notes","id":"nt/sfpo1a","slide":7,"text":"Konteks modul: Bab 3.\nS3 untuk definisi key event. Penerapan tombol kontak merupakan ilustrasi Kultivate.\n\nS3 Google Analytics Help — About key events\nhttps://support.google.com/analytics/answer/9267568?hl=en\nTanggal pembaruan tidak ditampilkan. Key event merekam tindakan yang dianggap penting bagi bisnis. Label ini tidak otomatis menilai kelayakan calon pembeli. Dipakai di Bab 3.\n\nSumber web diperiksa 14 September 2026. Catatan berisi referensi dan pemetaan modul, tanpa presenter script."}
+{"kind":"slide","id":"sl/chdbjg","slide":8,"title":"KULTIVATE LEARN","textShapes":12}
+{"kind":"textbox","id":"sh/0bup4fa5","slide":8,"name":"KULTIVATE LEARN","text":"KULTIVATE LEARN","textPreview":"KULTIVATE LEARN","textChars":15,"textLines":1,"bbox":[64,32,420,28]}
+{"kind":"textbox","id":"sh/fa18va9k","slide":8,"name":"COURSE 01  /  LESSON 01","text":"COURSE 01  /  LESSON 01","textPreview":"COURSE 01  /  LESSON 01","textChars":23,"textLines":1,"bbox":[800,32,416,28]}
+{"kind":"textbox","id":"sh/e9s725sz","slide":8,"name":"slide-title","text":"Contoh perawatan AC kantor","textPreview":"Contoh perawatan AC kantor","textChars":26,"textLines":1,"bbox":[64,99,1148,122]}
+{"kind":"textbox","id":"sh/p03q1kr2","slide":8,"name":"Contoh hipotetis  •  Bukan keyword ","text":"Contoh hipotetis  •  Bukan keyword hasil riset","textPreview":"Contoh hipotetis  •  Bukan keyword hasil riset","textChars":46,"textLines":1,"bbox":[64,220,1110,34]}
+{"kind":"shape","id":"sh/ozup8zah","slide":8,"name":"separator","bbox":[64,663,1152,0]}
+{"kind":"textbox","id":"sh/nyl8zu9w","slide":8,"name":"SEO for Business Growth: From Searc","text":"SEO for Business Growth: From Search to Sales","textPreview":"SEO for Business Growth: From Search to Sales","textChars":45,"textLines":1,"bbox":[64,679,1020,25]}
+{"kind":"textbox","id":"sh/2dc76psb","slide":8,"name":"08","text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1160,675,56,27]}
+{"kind":"textbox","id":"sh/x4nq54ry","slide":8,"name":"01  DISCOVER","text":"01  DISCOVER","textPreview":"01  DISCOVER","textChars":12,"textLines":1,"bbox":[65,300,500,35]}
+{"kind":"textbox","id":"sh/c3epczad","slide":8,"name":"AC kantor\nsering bermasalah","text":"AC kantor\nsering bermasalah","textPreview":"AC kantor | sering bermasalah","textChars":27,"textLines":2,"bbox":[65,362,510,132]}
+{"kind":"textbox","id":"sh/i1g7exgj","slide":8,"name":"Perlu memahami masalah","text":"Perlu memahami masalah","textPreview":"Perlu memahami masalah","textChars":22,"textLines":1,"bbox":[65,527,510,70]}
+{"kind":"textbox","id":"sh/j2pon2x4","slide":8,"name":"02  LEARN","text":"02  LEARN","textPreview":"02  LEARN","textChars":9,"textLines":1,"bbox":[690,300,500,35]}
+{"kind":"textbox","id":"sh/43ypg7yp","slide":8,"name":"Perawatan berkala\nmencakup apa","text":"Perawatan berkala\nmencakup apa","textPreview":"Perawatan berkala | mencakup apa","textChars":30,"textLines":2,"bbox":[690,362,510,132]}
+{"kind":"textbox","id":"sh/5476pcfu","slide":8,"name":"Perlu memahami lingkup layanan","text":"Perlu memahami lingkup layanan","textPreview":"Perlu memahami lingkup layanan","textChars":30,"textLines":1,"bbox":[690,527,510,83]}
+{"kind":"notes","id":"nt/chdbjg","slide":8,"text":"Konteks modul: Bab 4.\nContoh hipotetis Kultivate. Tidak memakai data atau nama klien.\n\n\n\nSumber web diperiksa 14 September 2026. Catatan berisi referensi dan pemetaan modul, tanpa presenter script."}
+{"kind":"slide","id":"sl/fycncq","slide":9,"title":"KULTIVATE LEARN","textShapes":11}
+{"kind":"textbox","id":"sh/y9wbitgv","slide":9,"name":"KULTIVATE LEARN","text":"KULTIVATE LEARN","textPreview":"KULTIVATE LEARN","textChars":15,"textLines":1,"bbox":[64,32,420,28]}
+{"kind":"textbox","id":"sh/lc7ut8zm","slide":9,"name":"COURSE 01  /  LESSON 01","text":"COURSE 01  /  LESSON 01","textPreview":"COURSE 01  /  LESSON 01","textChars":23,"textLines":1,"bbox":[800,32,416,28]}
+{"kind":"textbox","id":"sh/kbytk3y1","slide":9,"name":"slide-title","text":"Kecocokan diperiksa sebelum menjadi peluang","textPreview":"Kecocokan diperiksa sebelum menjadi peluang","textChars":43,"textLines":1,"bbox":[64,99,1148,122]}
+{"kind":"textbox","id":"sh/7ypcvyhc","slide":9,"name":"Contoh hipotetis","text":"Contoh hipotetis","textPreview":"Contoh hipotetis","textChars":16,"textLines":1,"bbox":[64,220,1110,34]}
+{"kind":"shape","id":"sh/6dgbmdgr","slide":9,"name":"separator","bbox":[64,663,1152,0]}
+{"kind":"textbox","id":"sh/t07ux8zi","slide":9,"name":"SEO for Business Growth: From Searc","text":"SEO for Business Growth: From Search to Sales","textPreview":"SEO for Business Growth: From Search to Sales","textChars":45,"textLines":1,"bbox":[64,679,1020,25]}
+{"kind":"textbox","id":"sh/8zyto3yx","slide":9,"name":"09","text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1160,675,56,27]}
+{"kind":"textbox","id":"sh/nilsjeh8","slide":9,"name":"03  COMPARE / VALIDATE","text":"03  COMPARE / VALIDATE","textPreview":"03  COMPARE / VALIDATE","textChars":22,"textLines":1,"bbox":[65,304,575,34]}
+{"kind":"textbox","id":"sh/mhcba9gn","slide":9,"name":"Area layanan\nCakupan pekerjaan\nBukt","text":"Area layanan\nCakupan pekerjaan\nBukti relevan","textPreview":"Area layanan | Cakupan pekerjaan | Bukti relevan","textChars":44,"textLines":3,"bbox":[65,369,529,165]}
+{"kind":"textbox","id":"sh/4nyd0jeh","slide":9,"name":"04  ACT","text":"04  ACT","textPreview":"04  ACT","textChars":7,"textLines":1,"bbox":[734,304,470,34]}
+{"kind":"textbox","id":"sh/5o7etov2","slide":9,"name":"Kirim kebutuhan\nPahami tindak lanju","text":"Kirim kebutuhan\nPahami tindak lanjut","textPreview":"Kirim kebutuhan | Pahami tindak lanjut","textChars":36,"textLines":2,"bbox":[734,369,470,155]}
+{"kind":"shape","id":"sh/ilgvytwb","slide":9,"name":"separator","bbox":[65,559,1136,0]}
+{"kind":"textbox","id":"sh/jmpwrydw","slide":9,"name":"Permintaan masuk masih perlu diperi","text":"Permintaan masuk masih perlu diperiksa kecocokannya","textPreview":"Permintaan masuk masih perlu diperiksa kecocokannya","textChars":51,"textLines":1,"bbox":[65,591,1136,67]}
+{"kind":"notes","id":"nt/fycncq","slide":9,"text":"Konteks modul: Bab 4.\nContoh hipotetis Kultivate.\n\n\n\nSumber web diperiksa 14 September 2026. Catatan berisi referensi dan pemetaan modul, tanpa presenter script."}
+{"kind":"slide","id":"sl/6ueq0u","slide":10,"title":"KULTIVATE LEARN","textShapes":12}
+{"kind":"textbox","id":"sh/2pof2p8b","slide":10,"name":"KULTIVATE LEARN","text":"KULTIVATE LEARN","textPreview":"KULTIVATE LEARN","textChars":15,"textLines":1,"bbox":[64,32,420,28]}
+{"kind":"textbox","id":"sh/psfed4r2","slide":10,"name":"COURSE 01  /  LESSON 01","text":"COURSE 01  /  LESSON 01","textPreview":"COURSE 01  /  LESSON 01","textChars":23,"textLines":1,"bbox":[800,32,416,28]}
+{"kind":"textbox","id":"sh/4r6x4zqh","slide":10,"name":"slide-title","text":"Observasi dan hipotesis","textPreview":"Observasi dan hipotesis","textChars":23,"textLines":1,"bbox":[64,99,1148,122]}
+{"kind":"textbox","id":"sh/f2dw7u9k","slide":10,"name":"Contoh hipotetis","text":"Contoh hipotetis","textPreview":"Contoh hipotetis","textChars":16,"textLines":1,"bbox":[64,220,1110,34]}
+{"kind":"shape","id":"sh/u14vypsf","slide":10,"name":"separator","bbox":[64,663,1152,0]}
+{"kind":"textbox","id":"sh/hofe9krq","slide":10,"name":"SEO for Business Growth: From Searc","text":"SEO for Business Growth: From Search to Sales","textPreview":"SEO for Business Growth: From Search to Sales","textChars":45,"textLines":1,"bbox":[64,679,1020,25]}
+{"kind":"textbox","id":"sh/gn6d0fa5","slide":10,"name":"10","text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1160,675,56,27]}
+{"kind":"textbox","id":"sh/zyhwje94","slide":10,"name":"OBSERVASI","text":"OBSERVASI","textPreview":"OBSERVASI","textChars":9,"textLines":1,"bbox":[65,305,309,42]}
+{"kind":"textbox","id":"sh/ex8fa98j","slide":10,"name":"Area layanan tidak tercantum di hal","text":"Area layanan tidak tercantum di halaman","textPreview":"Area layanan tidak tercantum di halaman","textChars":39,"textLines":1,"bbox":[390,302,815,82]}
+{"kind":"shape","id":"sh/g7udwnu5","slide":10,"name":"separator","bbox":[65,387,1135,0]}
+{"kind":"textbox","id":"sh/183e5sbq","slide":10,"name":"HIPOTESIS","text":"HIPOTESIS","textPreview":"HIPOTESIS","textChars":9,"textLines":1,"bbox":[65,412,309,42]}
+{"kind":"textbox","id":"sh/elcvudcz","slide":10,"name":"Calon pembeli ragu lalu batal mengh","text":"Calon pembeli ragu lalu batal menghubungi","textPreview":"Calon pembeli ragu lalu batal menghubungi","textChars":41,"textLines":1,"bbox":[390,409,815,82]}
+{"kind":"shape","id":"sh/f6lw3itk","slide":10,"name":"separator","bbox":[65,494,1135,0]}
+{"kind":"textbox","id":"sh/sjudsnut","slide":10,"name":"BUKTI BERIKUTNYA","text":"BUKTI BERIKUTNYA","textPreview":"BUKTI BERIKUTNYA","textChars":16,"textLines":1,"bbox":[65,519,309,42]}
+{"kind":"textbox","id":"sh/tk3e1sbe","slide":10,"name":"Periksa pertanyaan lokasi dalam inq","text":"Periksa pertanyaan lokasi dalam inquiry","textPreview":"Periksa pertanyaan lokasi dalam inquiry","textChars":39,"textLines":1,"bbox":[390,516,815,82]}
+{"kind":"notes","id":"nt/6ueq0u","slide":10,"text":"Konteks modul: Bab 4.\nPenerapan hypothetical worked example Kultivate.\n\n\n\nSumber web diperiksa 14 September 2026. Catatan berisi referensi dan pemetaan modul, tanpa presenter script."}
+{"kind":"slide","id":"sl/dyw8rx","slide":11,"title":"KULTIVATE LEARN","textShapes":18}
+{"kind":"textbox","id":"sh/4vupona1","slide":11,"name":"KULTIVATE LEARN","text":"KULTIVATE LEARN","textPreview":"KULTIVATE LEARN","textChars":15,"textLines":1,"bbox":[64,32,420,28]}
+{"kind":"textbox","id":"sh/ja1ofi9w","slide":11,"name":"COURSE 01  /  LESSON 01","text":"COURSE 01  /  LESSON 01","textPreview":"COURSE 01  /  LESSON 01","textChars":23,"textLines":1,"bbox":[800,32,416,28]}
+{"kind":"textbox","id":"sh/i9s7mxsb","slide":11,"name":"slide-title","text":"Peta awal untuk layanan Anda","textPreview":"Peta awal untuk layanan Anda","textChars":28,"textLines":1,"bbox":[64,99,1148,122]}
+{"kind":"textbox","id":"sh/h8j6dsrq","slide":11,"name":"Search-to-Sales Mapping Worksheet  ","text":"Search-to-Sales Mapping Worksheet  •  Bagian C01L01","textPreview":"Search-to-Sales Mapping Worksheet  •  Bagian C01L01","textChars":51,"textLines":1,"bbox":[64,220,1110,34]}
+{"kind":"shape","id":"sh/w7apkna5","slide":11,"name":"separator","bbox":[64,663,1152,0]}
+{"kind":"textbox","id":"sh/v61obi9k","slide":11,"name":"SEO for Business Growth: From Searc","text":"SEO for Business Growth: From Search to Sales","textPreview":"SEO for Business Growth: From Search to Sales","textChars":45,"textLines":1,"bbox":[64,679,1020,25]}
+{"kind":"textbox","id":"sh/u5s7idsz","slide":11,"name":"11","text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1160,675,56,27]}
+{"kind":"textbox","id":"sh/14nqpcru","slide":11,"name":"01","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[65,303,61,43]}
+{"kind":"textbox","id":"sh/g3epw7a9","slide":11,"name":"Pilih satu layanan","text":"Pilih satu layanan","textPreview":"Pilih satu layanan","textChars":18,"textLines":1,"bbox":[143,302,603,64]}
+{"kind":"textbox","id":"sh/mlwve9or","slide":11,"name":"02","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[65,379,61,43]}
+{"kind":"textbox","id":"sh/nm5c7epc","slide":11,"name":"Jawab empat pertanyaan pembeli","text":"Jawab empat pertanyaan pembeli","textPreview":"Jawab empat pertanyaan pembeli","textChars":30,"textLines":1,"bbox":[143,378,603,64]}
+{"kind":"textbox","id":"sh/8nedgz6x","slide":11,"name":"03","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[65,455,61,43]}
+{"kind":"textbox","id":"sh/9onu9472","slide":11,"name":"Catat satu gap atau unknown","text":"Catat satu gap atau unknown","textPreview":"Catat satu gap atau unknown","textChars":27,"textLines":1,"bbox":[143,454,603,64]}
+{"kind":"textbox","id":"sh/yhcbap8f","slide":11,"name":"04","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[65,531,61,43]}
+{"kind":"textbox","id":"sh/zilc3up0","slide":11,"name":"Tentukan bukti berikutnya","text":"Tentukan bukti berikutnya","textPreview":"Tentukan bukti berikutnya","textChars":25,"textLines":1,"bbox":[143,530,603,64]}
+{"kind":"shape","id":"sh/0jetczql","slide":11,"bbox":[795,290,0,328]}
+{"kind":"textbox","id":"sh/lknu5476","slide":11,"name":"Belum tahu\nperilaku search?","text":"Belum tahu\nperilaku search?","textPreview":"Belum tahu | perilaku search?","textChars":27,"textLines":2,"bbox":[852,306,353,92]}
+{"kind":"textbox","id":"sh/idgvmtoz","slide":11,"name":"Periksa dahulu.","text":"Periksa dahulu.","textPreview":"Periksa dahulu.","textChars":15,"textLines":1,"bbox":[852,404,353,43]}
+{"kind":"textbox","id":"sh/jepcfypk","slide":11,"name":"Inquiry relevan\nterlambat ditangani","text":"Inquiry relevan\nterlambat ditangani?","textPreview":"Inquiry relevan | terlambat ditangani?","textChars":36,"textLines":2,"bbox":[852,479,353,85]}
+{"kind":"textbox","id":"sh/fyhs7q5w","slide":11,"name":"Periksa tindak lanjut.","text":"Periksa tindak lanjut.","textPreview":"Periksa tindak lanjut.","textChars":22,"textLines":1,"bbox":[852,582,353,50]}
+{"kind":"notes","id":"nt/dyw8rx","slide":11,"text":"Konteks modul: Bab 4 dan Worksheet.\nSearch-to-Sales Mapping Worksheet bagian C01L01; Kultivate decision framework.\n\n\n\nSumber web diperiksa 14 September 2026. Catatan berisi referensi dan pemetaan modul, tanpa presenter script."}
+{"kind":"slide","id":"sl/wbp0k2","slide":12,"title":"KULTIVATE LEARN","textShapes":10}
+{"kind":"textbox","id":"sh/eds3qhcn","slide":12,"name":"KULTIVATE LEARN","text":"KULTIVATE LEARN","textPreview":"KULTIVATE LEARN","textChars":15,"textLines":1,"bbox":[64,32,420,28]}
+{"kind":"textbox","id":"sh/103mlwbe","slide":12,"name":"COURSE 01  /  LESSON 01","text":"COURSE 01  /  LESSON 01","textPreview":"COURSE 01  /  LESSON 01","textChars":23,"textLines":1,"bbox":[800,32,416,28]}
+{"kind":"shape","id":"sh/gfalsrut","slide":12,"name":"separator","bbox":[64,663,1152,0]}
+{"kind":"textbox","id":"sh/n2l4n6tk","slide":12,"name":"SEO for Business Growth: From Searc","text":"SEO for Business Growth: From Search to Sales","textPreview":"SEO for Business Growth: From Search to Sales","textChars":45,"textLines":1,"bbox":[64,679,1020,25]}
+{"kind":"textbox","id":"sh/21c3u1cz","slide":12,"name":"12","text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1160,675,56,27]}
+{"kind":"textbox","id":"sh/p43mpwba","slide":12,"name":"slide-title","text":"Search dinilai lewat\nkeputusan yang dibantunya","textPreview":"Search dinilai lewat | keputusan yang dibantunya","textChars":46,"textLines":2,"bbox":[64,134,1152,160]}
+{"kind":"textbox","id":"sh/o3u5wru5","slide":12,"name":"Periksa bukti menuju inquiry yang s","text":"Periksa bukti menuju inquiry yang sesuai.","textPreview":"Periksa bukti menuju inquiry yang sesuai.","textChars":41,"textLines":1,"bbox":[64,338,1120,60]}
+{"kind":"textbox","id":"sh/b6l4r6tg","slide":12,"name":"Traffic saja belum membuktikan pelu","text":"Traffic saja belum membuktikan peluang bisnis.","textPreview":"Traffic saja belum membuktikan peluang bisnis.","textChars":46,"textLines":1,"bbox":[64,410,1136,62]}
+{"kind":"shape","id":"sh/a5cny1cv","slide":12,"name":"separator","bbox":[64,519,1136,0]}
+{"kind":"textbox","id":"sh/0zu1sjq9","slide":12,"name":"BERIKUTNYA  /  LESSON 02","text":"BERIKUTNYA  /  LESSON 02","textPreview":"BERIKUTNYA  /  LESSON 02","textChars":24,"textLines":1,"bbox":[64,550,1100,31]}
+{"kind":"textbox","id":"sh/1032loru","slide":12,"name":"Map Customer Demand Before Choosing","text":"Map Customer Demand Before Choosing Keywords","textPreview":"Map Customer Demand Before Choosing Keywords","textChars":44,"textLines":1,"bbox":[64,593,1130,47]}
+{"kind":"textbox","id":"sh/edsjq983","slide":12,"name":"Worksheet C01L01 bersifat opsional","text":"Worksheet C01L01 bersifat opsional","textPreview":"Worksheet C01L01 bersifat opsional","textChars":34,"textLines":1,"bbox":[64,644,1000,24]}
+{"kind":"notes","id":"nt/wbp0k2","slide":12,"text":"Konteks modul: Bab 4 bagian penutup.\nSintesis Kultivate, sesuai CTA kurikulum untuk lesson awal.\n\n\n\nSumber web diperiksa 14 September 2026. Catatan berisi referensi dan pemetaan modul, tanpa presenter script."}

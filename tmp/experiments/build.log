@@ -1,0 +1,77 @@
+
+> satellite-spiral@0.0.1 build
+> astro build
+
+18.32.19 [content] Syncing content
+18.32.19 [content] Synced content
+18.32.19 [types] Generated 1.56s
+18.32.19 [build] output: "static"
+18.32.19 [build] mode: "static"
+18.32.19 [build] directory: C:\Users\Joshua\OneDrive\Documents\Kultivate\website\dist\
+18.32.19 [build] Collecting build info...
+18.32.19 [build] ✓ Completed in 1.71s.
+18.32.19 [build] Building static entrypoints...
+18.32.21 [vite] ✓ built in 2.17s
+18.32.22 [vite] ✓ built in 851ms
+18.32.22 [build] Rearranging server assets...
+
+ generating static routes 
+18.32.23   ├─ /404.html (+67ms) 
+18.32.23   ├─ /en/about/galdino-hans/index.html (+55ms) 
+18.32.23   ├─ /en/about/index.html (+99ms) 
+18.32.23   ├─ /en/contact/index.html (+49ms) 
+18.32.23   ├─ /en/insights/content-starts-with-a-system/index.html (+88ms) 
+18.32.23   ├─ /en/insights/direction-before-channels/index.html (+21ms) 
+18.32.23   ├─ /en/insights/seo-before-keywords/index.html (+277ms) 
+18.32.23   ├─ /en/insights/speed-and-positioning/index.html (+51ms) 
+18.32.24   ├─ /en/insights/website-as-the-system-center/index.html (+25ms) 
+18.32.24   ├─ /en/insights/what-happens-after-discovery/index.html (+22ms) 
+18.32.24   ├─ /en/insights/index.html (+31ms) 
+18.32.24   ├─ /en/learn/seo-business-growth/index.html (+33ms) 
+18.32.24   ├─ /en/learn/website-business-sales-system/index.html (+33ms) 
+18.32.24   ├─ /en/learn/digital-project-scope-evaluation/index.html (+51ms) 
+18.32.24   ├─ /en/learn/ux-visitor-action/index.html (+80ms) 
+18.32.24   ├─ /en/learn/website-technical-migration-readiness/index.html (+17ms) 
+18.32.24   ├─ /en/learn/ai-search-aeo-geo-business/index.html (+33ms) 
+18.32.24   ├─ /en/learn/index.html (+78ms) 
+18.32.24   ├─ /en/privacy/index.html (+42ms) 
+18.32.24   ├─ /en/services/seo/index.html (+37ms) 
+18.32.24   ├─ /en/services/web-services/index.html (+19ms) 
+18.32.24   ├─ /en/services/social-media-management/index.html (+31ms) 
+18.32.24   ├─ /en/services/visual-strategy/index.html (+100ms) 
+18.32.24   ├─ /en/services/index.html (+56ms) 
+18.32.24   ├─ /en/work/index.html (+23ms) 
+18.32.24   ├─ /en/index.html (+26ms) 
+18.32.24   ├─ /id/about/galdino-hans/index.html (+34ms) 
+18.32.24   ├─ /id/about/index.html (+26ms) 
+18.32.24   ├─ /id/contact/index.html (+19ms) 
+18.32.24   ├─ /id/insights/arah-sebelum-channel/index.html (+20ms) 
+18.32.24   ├─ /id/insights/kecepatan-dan-positioning/index.html (+88ms) 
+18.32.24   ├─ /id/insights/konten-dimulai-dari-sistem/index.html (+95ms) 
+18.32.25   ├─ /id/insights/seo-sebelum-keyword/index.html (+55ms) 
+18.32.25   ├─ /id/insights/setelah-ditemukan/index.html (+25ms) 
+18.32.25   ├─ /id/insights/website-sebagai-pusat-sistem/index.html (+67ms) 
+18.32.25   ├─ /id/insights/index.html (+115ms) 
+18.32.25   ├─ /id/learn/seo-business-growth/index.html (+48ms) 
+18.32.25   ├─ /id/learn/website-business-sales-system/index.html (+19ms) 
+18.32.25   ├─ /id/learn/digital-project-scope-evaluation/index.html (+59ms) 
+18.32.25   ├─ /id/learn/ux-visitor-action/index.html (+25ms) 
+18.32.25   ├─ /id/learn/website-technical-migration-readiness/index.html (+87ms) 
+18.32.25   ├─ /id/learn/ai-search-aeo-geo-business/index.html (+49ms) 
+18.32.25   ├─ /id/learn/index.html (+46ms) 
+18.32.25   ├─ /id/privacy/index.html (+14ms) 
+18.32.25   ├─ /id/services/seo/index.html (+23ms) 
+18.32.25   ├─ /id/services/web-services/index.html (+13ms) 
+18.32.25   ├─ /id/services/social-media-management/index.html (+88ms) 
+18.32.25   ├─ /id/services/visual-strategy/index.html (+77ms) 
+18.32.25   ├─ /id/services/index.html (+98ms) 
+18.32.25   ├─ /id/work/index.html (+31ms) 
+18.32.26   ├─ /id/index.html (+36ms) 
+18.32.26   ├─ /robots.txt (+38ms) 
+18.32.26   ├─ /index.html (+52ms) 
+18.32.26 ✓ Completed in 3.27s.
+
+18.32.26 [build] ✓ Completed in 6.63s.
+18.32.26 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+18.32.26 [build] 52 page(s) built in 8.60s
+18.32.26 [build] Complete!

@@ -1,0 +1,1343 @@
+{
+  "mappingCount": 466,
+  "updateCount": 165,
+  "updates": [
+    {
+      "row": 6,
+      "from": "Mulai Sekarang",
+      "to": "Konsultasi dengan kami",
+      "page": "GLOBAL",
+      "component": "BaseLayout"
+    },
+    {
+      "row": 18,
+      "from": "Website, search, dan social yang bergerak searah.",
+      "to": "Dukungan SEO yang disesuaikan dengan kebutuhan bisnis Anda.",
+      "page": "GLOBAL",
+      "component": "BaseLayout"
+    },
+    {
+      "row": 34,
+      "from": "Get Started",
+      "to": "Consult with us",
+      "page": "GLOBAL",
+      "component": "BaseLayout"
+    },
+    {
+      "row": 46,
+      "from": "Website, search, and social moving in one direction.",
+      "to": "SEO support shaped around what your business needs.",
+      "page": "GLOBAL",
+      "component": "BaseLayout"
+    },
+    {
+      "row": 59,
+      "from": "Partner Anda untuk fondasi, penemuan, dan distribusi digital",
+      "to": "Kultivate mendukung prioritas search Anda melalui SEO, AEO & GEO, Web Services, dan Content Management.",
+      "page": "HOME",
+      "component": "pages/{locale}/index.astro"
+    },
+    {
+      "row": 61,
+      "from": "Your partner for digital foundation, discovery, and distribution",
+      "to": "Kultivate supports your search priorities through SEO, AEO & GEO, Web Services, and Content Management.",
+      "page": "HOME",
+      "component": "pages/{locale}/index.astro"
+    },
+    {
+      "row": 67,
+      "from": "Karya dalam satu sistem.",
+      "to": "Pilihan karya.",
+      "page": "HOME",
+      "component": "Portfolio"
+    },
+    {
+      "row": 76,
+      "from": "Empat layanan. Satu strategi search yang terhubung.",
+      "to": "Dukungan yang disesuaikan dengan kebutuhan bisnis Anda.",
+      "page": "HOME",
+      "component": "Services"
+    },
+    {
+      "row": 77,
+      "from": "Mulai dari layanan yang dibutuhkan bisnis Anda sekarang. Semuanya mendukung tujuan yang sama: visibility yang lebih kuat di search dan AI.",
+      "to": "Sesuai prioritas Anda, kami dapat membantu melalui SEO, AEO & GEO, Web Services, Content Management, atau kombinasi yang memang dibutuhkan.",
+      "page": "HOME",
+      "component": "Services"
+    },
+    {
+      "row": 80,
+      "from": "Selaraskan technical foundation, intent, halaman, dan authority dengan peluang bisnis.",
+      "to": "Kami membantu halaman prioritas Anda ditemukan untuk pencarian yang terhubung dengan produk, layanan, dan pelanggan Anda.",
+      "page": "HOME",
+      "component": "Services"
+    },
+    {
+      "row": 84,
+      "from": "Buat expertise Anda lebih mudah dipahami, diambil, dan dikutip oleh answer engines.",
+      "to": "Kami menyusun konten dan sinyal teknis agar answer engines dapat memahami dan mengambil informasi penting dari website Anda.",
+      "page": "HOME",
+      "component": "Services"
+    },
+    {
+      "row": 90,
+      "from": "Satu strategi terhubung",
+      "to": "Pilihan layanan",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 91,
+      "from": "Empat layanan, menuju hasil yang sama.",
+      "to": "Mulai dari pekerjaan yang dibutuhkan bisnis Anda.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 92,
+      "from": "SEO menentukan peluang. AEO & GEO memperluas discovery. Web Services memperkuat fondasi. Content Management menjaga relevance.",
+      "to": "Setiap layanan memiliki peran yang jelas. Kami menentukan titik awal berdasarkan posisi saat ini, prioritas, dan kapasitas tim Anda.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 93,
+      "from": "Targetkan",
+      "to": "Perkuat visibility",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 95,
+      "from": "Hubungkan demand, intent, technical foundation, dan tujuan bisnis.",
+      "to": "Bangun fondasi search berdasarkan layanan, halaman, dan demand pelanggan Anda.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 96,
+      "from": "Perluas",
+      "to": "Siapkan AI search",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 98,
+      "from": "Strukturkan jawaban, entity, schema, dan citation readiness.",
+      "to": "Susun konten, entity, dan schema agar answer engines dapat memahami expertise Anda.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 99,
+      "from": "Perkuat",
+      "to": "Perbaiki website",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 101,
+      "from": "Tingkatkan crawlability, speed, UX, dan implementation quality.",
+      "to": "Tingkatkan performa, usability, dan implementasi teknis pada bagian yang membutuhkan dukungan.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 102,
+      "from": "Jaga relevansi",
+      "to": "Kelola konten",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 103,
+      "from": "Content",
+      "to": "Content Management",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 104,
+      "from": "Buat, terbitkan, optimalkan, dan perbarui konten.",
+      "to": "Rencanakan, buat, terbitkan, dan perbarui konten berdasarkan pertanyaan pelanggan.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 105,
+      "from": "Arah bersama",
+      "to": "Prioritas Anda",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 106,
+      "from": "Performance data menjaga keempat layanan tetap selaras dengan prioritas bisnis.",
+      "to": "Prioritas Anda menentukan titik awal, layanan yang perlu digabungkan, dan pekerjaan yang tidak perlu dilakukan.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 108,
+      "from": "Clarity sebelum kompleksitas.",
+      "to": "Dukungan SEO profesional, tanpa kerumitan yang tidak perlu.",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 109,
+      "from": "Tim SEO yang menghubungkan strategi dan implementasi, supaya Anda selalu tahu apa yang dikerjakan, mengapa, dan apa dampaknya.",
+      "to": "Kami menjelaskan setiap rekomendasi dengan bahasa yang jelas dan menghubungkannya dengan alasan bisnis yang konkret.",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 110,
+      "from": "Arah search-first",
+      "to": "Dimulai dari bisnis Anda",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 111,
+      "from": "SEO, AEO & GEO, Web Services, dan Content Management bergerak menuju satu tujuan visibility.",
+      "to": "Kami mulai dari apa yang Anda tawarkan, pelanggan yang ingin dijangkau, dan cara mereka mencari.",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 112,
+      "from": "Keputusan yang terlihat",
+      "to": "Rekomendasi yang jelas",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 113,
+      "from": "Prioritas, trade-off, asumsi, dan hasil dibahas dengan bahasa yang dapat dipahami tim bisnis.",
+      "to": "Kami menjelaskan apa yang direkomendasikan, alasan di baliknya, dan pekerjaan yang terlibat.",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 114,
+      "from": "Strategi dekat dengan implementasi",
+      "to": "Strategi tetap dekat dengan pekerjaan",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 115,
+      "from": "Orang yang menyusun arah tetap terlibat ketika fondasi, halaman, konten, dan pengukuran dikerjakan.",
+      "to": "Orang yang menyusun arah tetap terlibat saat halaman, konten, dan perbaikan teknis dikerjakan.",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 117,
+      "from": "Catatan untuk keputusan digital.",
+      "to": "Catatan untuk keputusan search yang lebih jelas.",
+      "page": "HOME",
+      "component": "Blog Preview"
+    },
+    {
+      "row": 135,
+      "from": "Mulai dari kebutuhan.",
+      "to": "Mulai dari prioritas Anda saat ini.",
+      "page": "HOME",
+      "component": "Final CTA"
+    },
+    {
+      "row": 136,
+      "from": "Ceritakan konteksnya. Kami bantu menentukan langkah pertama.",
+      "to": "Ceritakan bagian yang membutuhkan perhatian. Kami akan memahami konteksnya sebelum merekomendasikan pekerjaan.",
+      "page": "HOME",
+      "component": "Final CTA"
+    },
+    {
+      "row": 137,
+      "from": "Mulai Proyek",
+      "to": "Konsultasi dengan kami",
+      "page": "HOME",
+      "component": "Final CTA"
+    },
+    {
+      "row": 143,
+      "from": "Work across one system.",
+      "to": "Selected work.",
+      "page": "HOME",
+      "component": "Portfolio"
+    },
+    {
+      "row": 152,
+      "from": "Four services. One connected search strategy.",
+      "to": "Support shaped around what your business needs.",
+      "page": "HOME",
+      "component": "Services"
+    },
+    {
+      "row": 153,
+      "from": "Start with the service your business needs now. Each one supports the same goal: stronger visibility across search and AI.",
+      "to": "Depending on your priorities, we can support you with SEO, AEO & GEO, Web Services, Content Management, or a combination of them.",
+      "page": "HOME",
+      "component": "Services"
+    },
+    {
+      "row": 156,
+      "from": "Align technical foundations, intent, pages, and authority with business opportunities.",
+      "to": "We help your priority pages appear for searches connected to your products, services, and customers.",
+      "page": "HOME",
+      "component": "Services"
+    },
+    {
+      "row": 160,
+      "from": "Make your expertise easier for answer engines to understand, retrieve, and cite.",
+      "to": "We organize content and technical signals so answer engines can understand and retrieve useful information from your website.",
+      "page": "HOME",
+      "component": "Services"
+    },
+    {
+      "row": 166,
+      "from": "One connected strategy",
+      "to": "Service options",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 167,
+      "from": "Four services, working toward the same outcome.",
+      "to": "Start with the work your business needs now.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 168,
+      "from": "SEO identifies opportunity. AEO & GEO extends discovery. Web Services strengthens the foundation. Content Management keeps relevance current.",
+      "to": "Each service has a clear role. We recommend the right starting point based on your current position, priorities, and internal capacity.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 169,
+      "from": "Target",
+      "to": "Improve visibility",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 171,
+      "from": "Connect demand, intent, technical foundations, and business goals.",
+      "to": "Build the search foundation around your services, priority pages, and customer demand.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 172,
+      "from": "Extend",
+      "to": "Prepare for AI search",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 174,
+      "from": "Structure answers, entities, schema, and citation readiness.",
+      "to": "Organize content, entities, and schema so answer engines can interpret your expertise.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 175,
+      "from": "Strengthen",
+      "to": "Improve the website",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 177,
+      "from": "Improve crawlability, speed, UX, and implementation quality.",
+      "to": "Improve performance, usability, and technical implementation where the website needs support.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 178,
+      "from": "Stay relevant",
+      "to": "Manage useful content",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 179,
+      "from": "Content",
+      "to": "Content Management",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 180,
+      "from": "Create, publish, optimize, and refresh useful content.",
+      "to": "Plan, create, publish, and refresh content around customer questions.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 181,
+      "from": "Shared direction",
+      "to": "Your priorities",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 182,
+      "from": "Performance data keeps all four services aligned with business priorities.",
+      "to": "Your priorities guide where we start, which services we combine, and which work we leave out.",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 184,
+      "from": "Clarity before complexity.",
+      "to": "Professional SEO support, without unnecessary complexity.",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 185,
+      "from": "An SEO team that keeps strategy close to implementation, so you know what is being done, why it matters, and what it changes.",
+      "to": "We explain each recommendation in plain language and connect it to a clear business reason.",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 186,
+      "from": "Search-first direction",
+      "to": "Built around your business",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 187,
+      "from": "SEO, AEO & GEO, Web Services, and Content Management move toward one visibility goal.",
+      "to": "We begin with what you offer, the customers you want to reach, and how they search.",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 188,
+      "from": "Decisions you can see",
+      "to": "Clear recommendations",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 189,
+      "from": "Priorities, trade-offs, assumptions, and results are discussed in language business teams can use.",
+      "to": "We explain what we recommend, the reason behind it, and the work involved.",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 190,
+      "from": "Strategy stays close",
+      "to": "Strategy stays close to the work",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 191,
+      "from": "The people shaping the direction stay involved as foundations, pages, content, and measurement are implemented.",
+      "to": "The people shaping the direction stay involved as pages, content, and technical improvements are carried out.",
+      "page": "HOME",
+      "component": "Why Kultivate"
+    },
+    {
+      "row": 193,
+      "from": "Notes for digital decisions.",
+      "to": "Notes for clearer search decisions.",
+      "page": "HOME",
+      "component": "Blog Preview"
+    },
+    {
+      "row": 211,
+      "from": "Start with the need.",
+      "to": "Start with your current priorities.",
+      "page": "HOME",
+      "component": "Final CTA"
+    },
+    {
+      "row": 212,
+      "from": "Share the context. We will help define the first step.",
+      "to": "Tell us what needs attention. We will review the context before recommending any work.",
+      "page": "HOME",
+      "component": "Final CTA"
+    },
+    {
+      "row": 213,
+      "from": "Start a Project",
+      "to": "Consult with us",
+      "page": "HOME",
+      "component": "Final CTA"
+    },
+    {
+      "row": 217,
+      "from": "Empat layanan Kultivate dalam satu strategi search",
+      "to": "Empat layanan Kultivate untuk prioritas yang berbeda",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 229,
+      "from": "Four Kultivate services within one search strategy",
+      "to": "Four Kultivate services for different business priorities",
+      "page": "HOME",
+      "component": "Connected System"
+    },
+    {
+      "row": 239,
+      "from": "Empat layanan terhubung untuk memperkuat visibility di search dan AI.",
+      "to": "Pilih SEO, AEO & GEO, Web Services, Content Management, atau kombinasi yang sesuai dengan prioritas Anda saat ini.",
+      "page": "SERVICES",
+      "component": "services/index.astro"
+    },
+    {
+      "row": 241,
+      "from": "Empat layanan. Satu strategi search.",
+      "to": "Layanan untuk kebutuhan search bisnis Anda.",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 242,
+      "from": "SEO, AEO & GEO, Web Services, dan Content Management bekerja dalam satu arah.",
+      "to": "Sesuai prioritas Anda, kami dapat membantu melalui SEO, AEO & GEO, Web Services, Content Management, atau kombinasi yang memang dibutuhkan.",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 243,
+      "from": "Empat jalur cahaya yang menyatu dalam satu strategi search",
+      "to": "Empat jalur cahaya yang mewakili pilihan layanan Kultivate",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 245,
+      "from": "Ditemukan saat dibutuhkan.",
+      "to": "Bantu pelanggan yang tepat menemukan apa yang Anda tawarkan.",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 246,
+      "from": "Bangun visibility melalui technical foundation, search intent, halaman, dan authority yang tepat.",
+      "to": "Kami memperbaiki fondasi teknis, halaman prioritas, dan authority untuk pencarian yang terhubung dengan bisnis Anda.",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 250,
+      "from": "Hadir di jawaban yang membentuk keputusan.",
+      "to": "Siapkan expertise Anda untuk AI search.",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 251,
+      "from": "Buat expertise Anda lebih mudah dipahami, diambil, dan dikutip oleh answer engines.",
+      "to": "Kami menyusun konten dan sinyal teknis agar answer engines dapat memahami dan mengambil informasi penting dari website Anda.",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 259,
+      "from": "Mulai dari kebutuhan.",
+      "to": "Mulai dari prioritas Anda saat ini.",
+      "page": "SERVICES",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 260,
+      "from": "Ceritakan konteksnya. Kami bantu menentukan langkah pertama.",
+      "to": "Ceritakan bagian yang membutuhkan perhatian. Kami akan memahami konteksnya sebelum merekomendasikan pekerjaan.",
+      "page": "SERVICES",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 261,
+      "from": "Mulai Proyek",
+      "to": "Konsultasi dengan kami",
+      "page": "SERVICES",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 263,
+      "from": "Explore four connected services built to strengthen visibility across search and AI.",
+      "to": "Choose SEO, AEO & GEO, Web Services, Content Management, or the combination that fits your current priorities.",
+      "page": "SERVICES",
+      "component": "services/index.astro"
+    },
+    {
+      "row": 265,
+      "from": "Four services. One search strategy.",
+      "to": "Services for the search work your business needs.",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 266,
+      "from": "SEO, AEO & GEO, Web Services, and Content Management working in one direction.",
+      "to": "Depending on your priorities, we can support you with SEO, AEO & GEO, Web Services, Content Management, or a combination of them.",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 267,
+      "from": "Four paths of light merging into one search strategy",
+      "to": "Four paths of light representing Kultivate service options",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 269,
+      "from": "Found when it matters.",
+      "to": "Help the right customers find what you offer.",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 270,
+      "from": "Build visibility through technical foundations, search intent, priority pages, and authority.",
+      "to": "We improve technical foundations, priority pages, and authority around searches connected to your business.",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 271,
+      "from": "Explore service",
+      "to": "View service",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 274,
+      "from": "Present in the answers shaping decisions.",
+      "to": "Prepare your expertise for AI search.",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 275,
+      "from": "Make your expertise easier for answer engines to understand, retrieve, and cite.",
+      "to": "We organize content and technical signals so answer engines can understand and retrieve useful information from your website.",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 276,
+      "from": "Explore service",
+      "to": "View service",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 281,
+      "from": "Explore service",
+      "to": "View service",
+      "page": "SERVICES",
+      "component": "ServicesIndex"
+    },
+    {
+      "row": 283,
+      "from": "Start with the need.",
+      "to": "Start with your current priorities.",
+      "page": "SERVICES",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 284,
+      "from": "Share the context. We will help define the first step.",
+      "to": "Tell us what needs attention. We will review the context before recommending any work.",
+      "page": "SERVICES",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 285,
+      "from": "Start a Project",
+      "to": "Consult with us",
+      "page": "SERVICES",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 289,
+      "from": "Website Development",
+      "to": "Web Services",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 292,
+      "from": "Mulai Proyek",
+      "to": "Konsultasi dengan kami",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 293,
+      "from": "Lihat Portofolio",
+      "to": "Lihat portofolio",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 296,
+      "from": "Hasil yang terasa",
+      "to": "Bagian yang dapat dibantu",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceProblems"
+    },
+    {
+      "row": 302,
+      "from": "Lingkup kerja",
+      "to": "Bagian yang dapat kami tangani",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 303,
+      "from": "Cakupan kerja",
+      "to": "Pilihan cakupan",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 309,
+      "from": "Hasil yang diterima",
+      "to": "Hasil kerja yang umum",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 314,
+      "from": "Dirancang untuk",
+      "to": "Cocok untuk",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 319,
+      "from": "Cara kami bekerja",
+      "to": "Cara kami mengerjakannya",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceProcess"
+    },
+    {
+      "row": 336,
+      "from": "Mulai dari kebutuhan.",
+      "to": "Mulai dari prioritas Anda saat ini.",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 337,
+      "from": "Ceritakan konteksnya. Kami bantu menentukan langkah pertama.",
+      "to": "Ceritakan bagian yang membutuhkan perhatian. Kami akan memahami konteksnya sebelum merekomendasikan pekerjaan.",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 338,
+      "from": "Mulai Proyek",
+      "to": "Konsultasi dengan kami",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 345,
+      "from": "Mulai Proyek",
+      "to": "Konsultasi dengan kami",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 346,
+      "from": "Lihat Portofolio",
+      "to": "Lihat portofolio",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 349,
+      "from": "Hasil yang terasa",
+      "to": "Bagian yang dapat dibantu",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceProblems"
+    },
+    {
+      "row": 354,
+      "from": "Lingkup kerja",
+      "to": "Bagian yang dapat kami tangani",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 355,
+      "from": "Cakupan kerja",
+      "to": "Pilihan cakupan",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 360,
+      "from": "Hasil yang diterima",
+      "to": "Hasil kerja yang umum",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 365,
+      "from": "Dirancang untuk",
+      "to": "Cocok untuk",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 370,
+      "from": "Cara kami bekerja",
+      "to": "Cara kami mengerjakannya",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceProcess"
+    },
+    {
+      "row": 387,
+      "from": "Mulai dari kebutuhan.",
+      "to": "Mulai dari prioritas Anda saat ini.",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 388,
+      "from": "Ceritakan konteksnya. Kami bantu menentukan langkah pertama.",
+      "to": "Ceritakan bagian yang membutuhkan perhatian. Kami akan memahami konteksnya sebelum merekomendasikan pekerjaan.",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 389,
+      "from": "Mulai Proyek",
+      "to": "Konsultasi dengan kami",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 393,
+      "from": "Social Media Management",
+      "to": "Content Management",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 396,
+      "from": "Mulai Proyek",
+      "to": "Konsultasi dengan kami",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 397,
+      "from": "Lihat Portofolio",
+      "to": "Lihat portofolio",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 400,
+      "from": "Hasil yang terasa",
+      "to": "Bagian yang dapat dibantu",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceProblems"
+    },
+    {
+      "row": 405,
+      "from": "Lingkup kerja",
+      "to": "Bagian yang dapat kami tangani",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 406,
+      "from": "Cakupan kerja",
+      "to": "Pilihan cakupan",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 411,
+      "from": "Hasil yang diterima",
+      "to": "Hasil kerja yang umum",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 415,
+      "from": "Dirancang untuk",
+      "to": "Cocok untuk",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 420,
+      "from": "Cara kami bekerja",
+      "to": "Cara kami mengerjakannya",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceProcess"
+    },
+    {
+      "row": 437,
+      "from": "Mulai dari kebutuhan.",
+      "to": "Mulai dari prioritas Anda saat ini.",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 438,
+      "from": "Ceritakan konteksnya. Kami bantu menentukan langkah pertama.",
+      "to": "Ceritakan bagian yang membutuhkan perhatian. Kami akan memahami konteksnya sebelum merekomendasikan pekerjaan.",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 439,
+      "from": "Mulai Proyek",
+      "to": "Konsultasi dengan kami",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 443,
+      "from": "Website Development",
+      "to": "Web Services",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 446,
+      "from": "Start a Project",
+      "to": "Consult with us",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 447,
+      "from": "View Portfolio",
+      "to": "View portfolio",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 450,
+      "from": "What changes",
+      "to": "Where this service helps",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceProblems"
+    },
+    {
+      "row": 456,
+      "from": "What we take care of",
+      "to": "What we can take care of",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 457,
+      "from": "Scope of work",
+      "to": "Scope options",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 463,
+      "from": "Deliverables",
+      "to": "Typical deliverables",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 468,
+      "from": "Designed For",
+      "to": "Useful for",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 473,
+      "from": "From first decision to a working system",
+      "to": "How we approach the work",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceProcess"
+    },
+    {
+      "row": 490,
+      "from": "Start with the need.",
+      "to": "Start with your current priorities.",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 491,
+      "from": "Share the context. We will help define the first step.",
+      "to": "Tell us what needs attention. We will review the context before recommending any work.",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 492,
+      "from": "Start a Project",
+      "to": "Consult with us",
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 499,
+      "from": "Start a Project",
+      "to": "Consult with us",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 500,
+      "from": "View Portfolio",
+      "to": "View portfolio",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 503,
+      "from": "What changes",
+      "to": "Where this service helps",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceProblems"
+    },
+    {
+      "row": 508,
+      "from": "What we take care of",
+      "to": "What we can take care of",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 509,
+      "from": "Scope of work",
+      "to": "Scope options",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 514,
+      "from": "Deliverables",
+      "to": "Typical deliverables",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 519,
+      "from": "Designed For",
+      "to": "Useful for",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 524,
+      "from": "From first decision to a working system",
+      "to": "How we approach the work",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceProcess"
+    },
+    {
+      "row": 541,
+      "from": "Start with the need.",
+      "to": "Start with your current priorities.",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 542,
+      "from": "Share the context. We will help define the first step.",
+      "to": "Tell us what needs attention. We will review the context before recommending any work.",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 543,
+      "from": "Start a Project",
+      "to": "Consult with us",
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 547,
+      "from": "Social Media Management",
+      "to": "Content Management",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 550,
+      "from": "Start a Project",
+      "to": "Consult with us",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 551,
+      "from": "View Portfolio",
+      "to": "View portfolio",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceHero"
+    },
+    {
+      "row": 554,
+      "from": "What changes",
+      "to": "Where this service helps",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceProblems"
+    },
+    {
+      "row": 559,
+      "from": "What we take care of",
+      "to": "What we can take care of",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 560,
+      "from": "Scope of work",
+      "to": "Scope options",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 565,
+      "from": "Deliverables",
+      "to": "Typical deliverables",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 569,
+      "from": "Designed For",
+      "to": "Useful for",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceScope"
+    },
+    {
+      "row": 574,
+      "from": "From first decision to a working system",
+      "to": "How we approach the work",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceProcess"
+    },
+    {
+      "row": 591,
+      "from": "Start with the need.",
+      "to": "Start with your current priorities.",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 592,
+      "from": "Share the context. We will help define the first step.",
+      "to": "Tell us what needs attention. We will review the context before recommending any work.",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "FinalCTA"
+    },
+    {
+      "row": 593,
+      "from": "Start a Project",
+      "to": "Consult with us",
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "FinalCTA"
+    }
+  ],
+  "suspicious": [
+    {
+      "row": 218,
+      "page": "HOME",
+      "component": "Why Kultivate",
+      "current": "Lapisan search yang terhubung menjadi satu sistem"
+    },
+    {
+      "row": 230,
+      "page": "HOME",
+      "component": "Why Kultivate",
+      "current": "Connected search layers forming one system"
+    },
+    {
+      "row": 286,
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "[slug].astro",
+      "current": "Website Development - Layanan Kultivate | Kultivate"
+    },
+    {
+      "row": 294,
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceHero",
+      "current": "Website Development service visual"
+    },
+    {
+      "row": 330,
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceFAQ",
+      "current": "Berapa lama estimasi pengerjaan proyek Website Development?"
+    },
+    {
+      "row": 331,
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceFAQ",
+      "current": "Sebagian besar proyek berjalan 2 sampai 6 minggu. Scope dan kesiapan aset menentukan ritmenya; milestone disepakati sebelum pekerjaan dimulai."
+    },
+    {
+      "row": 332,
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceFAQ",
+      "current": "Apakah layanan Website Development dapat digabungkan dengan jasa lainnya?"
+    },
+    {
+      "row": 333,
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceFAQ",
+      "current": "Bisa. Website, SEO, dan social dapat dirancang sebagai satu sistem, atau dimulai dari kebutuhan yang paling mendesak."
+    },
+    {
+      "row": 382,
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceFAQ",
+      "current": "Sebagian besar proyek berjalan 2 sampai 6 minggu. Scope dan kesiapan aset menentukan ritmenya; milestone disepakati sebelum pekerjaan dimulai."
+    },
+    {
+      "row": 384,
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceFAQ",
+      "current": "Bisa. Website, SEO, dan social dapat dirancang sebagai satu sistem, atau dimulai dari kebutuhan yang paling mendesak."
+    },
+    {
+      "row": 390,
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "[slug].astro",
+      "current": "Social Media Management - Layanan Kultivate | Kultivate"
+    },
+    {
+      "row": 398,
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceHero",
+      "current": "Social Media Management service visual"
+    },
+    {
+      "row": 431,
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceFAQ",
+      "current": "Berapa lama estimasi pengerjaan proyek Social Media Management?"
+    },
+    {
+      "row": 432,
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceFAQ",
+      "current": "Sebagian besar proyek berjalan 2 sampai 6 minggu. Scope dan kesiapan aset menentukan ritmenya; milestone disepakati sebelum pekerjaan dimulai."
+    },
+    {
+      "row": 433,
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceFAQ",
+      "current": "Apakah layanan Social Media Management dapat digabungkan dengan jasa lainnya?"
+    },
+    {
+      "row": 434,
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceFAQ",
+      "current": "Bisa. Website, SEO, dan social dapat dirancang sebagai satu sistem, atau dimulai dari kebutuhan yang paling mendesak."
+    },
+    {
+      "row": 440,
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "[slug].astro",
+      "current": "Website Development - Kultivate Services | Kultivate"
+    },
+    {
+      "row": 448,
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceHero",
+      "current": "Website Development service visual"
+    },
+    {
+      "row": 484,
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceFAQ",
+      "current": "What is the typical timeframe for a Website Development project?"
+    },
+    {
+      "row": 485,
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceFAQ",
+      "current": "Most projects run for 2 to 6 weeks. Scope and asset readiness set the pace; milestones are agreed before work begins."
+    },
+    {
+      "row": 486,
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceFAQ",
+      "current": "Can Website Development be combined with other Kultivate services?"
+    },
+    {
+      "row": 487,
+      "page": "SERVICE DETAIL — Website Development",
+      "component": "ServiceFAQ",
+      "current": "Yes. Website, SEO, and social can be designed as one system, or started from the most urgent need."
+    },
+    {
+      "row": 536,
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceFAQ",
+      "current": "Most projects run for 2 to 6 weeks. Scope and asset readiness set the pace; milestones are agreed before work begins."
+    },
+    {
+      "row": 538,
+      "page": "SERVICE DETAIL — Search Engine Optimization (SEO)",
+      "component": "ServiceFAQ",
+      "current": "Yes. Website, SEO, and social can be designed as one system, or started from the most urgent need."
+    },
+    {
+      "row": 544,
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "[slug].astro",
+      "current": "Social Media Management - Kultivate Services | Kultivate"
+    },
+    {
+      "row": 552,
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceHero",
+      "current": "Social Media Management service visual"
+    },
+    {
+      "row": 585,
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceFAQ",
+      "current": "What is the typical timeframe for a Social Media Management project?"
+    },
+    {
+      "row": 586,
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceFAQ",
+      "current": "Most projects run for 2 to 6 weeks. Scope and asset readiness set the pace; milestones are agreed before work begins."
+    },
+    {
+      "row": 587,
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceFAQ",
+      "current": "Can Social Media Management be combined with other Kultivate services?"
+    },
+    {
+      "row": 588,
+      "page": "SERVICE DETAIL — Social Media Management",
+      "component": "ServiceFAQ",
+      "current": "Yes. Website, SEO, and social can be designed as one system, or started from the most urgent need."
+    }
+  ]
+}

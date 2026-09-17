@@ -1,0 +1,5 @@
+src/vendor/threeui/**/*.tsx text eol=lf
+src/vendor/threeui/**/*.ts text eol=lf
+src/vendor/threeui/**/*.css text eol=lf
+src/vendor/threeui/**/*.json text eol=lf
+src/vendor/threeui/**/*.woff2 binary

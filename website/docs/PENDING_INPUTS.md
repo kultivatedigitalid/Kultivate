@@ -1,5 +1,15 @@
 # Pending Inputs
 
+## Resolved scope · 15 September 2026
+
+- Newest service source received: `Kultivate Services.docx`.
+- “One segment, one screen” confirmed for desktop/laptop; mobile may stack.
+- Light direction confirmed: icy Pinterest white/blue mixed with ROOTS blue glow.
+- Portfolio scope confirmed: current gallery and existing inactive detail template.
+- Exact Ribbon Field source retrieved; all three registered SHA-256 values verified. No source-retrieval blocker remains.
+- New work stays on `experiments`. Previous work was committed as `4c8599a` and pushed to `origin/staging` before continuing. Existing proof, business contact, and content approvals below are unaffected.
+
+
 
 **Brand baseline:** Kultivate Brand Guideline Book v2.0
 **Last updated:** 2026-08-26

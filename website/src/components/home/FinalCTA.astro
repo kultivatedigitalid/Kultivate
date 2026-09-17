@@ -83,15 +83,11 @@ const t = useTranslations(locale);
   }
 
   .final-cta--learn {
-    margin-top: -2px;
-    background:
-      radial-gradient(ellipse 48% 54% at 50% 50%, rgba(81, 155, 204, 0.08), transparent 72%),
-      linear-gradient(
-        180deg,
-        #070b12 0%,
-        #07101a 46%,
-        #070b12 100%
-      );
+    margin-top:-1px;
+    min-height:560px;
+    padding-top:clamp(130px,17vh,190px);
+    background:radial-gradient(ellipse 64% 60% at 50% 62%,rgba(81,155,204,.06),transparent 85%),
+      linear-gradient(180deg,transparent 0%,rgba(7,11,18,.06) 22%,rgba(7,11,18,.28) 52%,rgba(7,11,18,.7) 82%,#070b12 100%);
   }
 
   .final-cta--founder-profile {

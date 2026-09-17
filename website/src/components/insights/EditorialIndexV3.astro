@@ -17,7 +17,7 @@ const copy = locale === 'id'
       allTopic: 'Semua',
       all: 'Semua artikel',
       filtered: 'Artikel terpilih',
-      featured: 'Featured story',
+      featured: 'Artikel pilihan',
       story: 'Story',
       read: 'Baca artikel',
       result: 'artikel ditampilkan'
@@ -50,7 +50,7 @@ const copy = locale === 'id'
     focalPoint="56% 50%"
   />
 
-  <main
+  <section
     class="editorial flow-section"
     id="all-stories"
     data-scroll-key="insights-stories"
@@ -81,6 +81,7 @@ const copy = locale === 'id'
 
         <div class="story-grid" data-story-grid>
           {articles.map((article, index) => (
+            <div class:list={[index === 0 ? 'story-feature light-field' : 'story-item']}>
             <a
               href={'/' + locale + '/insights/' + article.slug + '/'}
               class="story-card"
@@ -113,11 +114,12 @@ const copy = locale === 'id'
                 </span>
               </div>
             </a>
+            </div>
           ))}
         </div>
       </section>
     </div>
-  </main>
+  </section>
 </div>
 
 <script>
@@ -144,6 +146,9 @@ const copy = locale === 'id'
           card.hidden = !matches;
           if (matches) visibleCount += 1;
         });
+
+        const feature = root.querySelector<HTMLElement>('.story-feature');
+        if (feature) feature.hidden = cards[0]?.hidden ?? true;
 
         buttons.forEach((button) => {
           button.setAttribute('aria-pressed', String((button.dataset.topic ?? '') === topic));
@@ -176,7 +181,7 @@ const copy = locale === 'id'
 <style>
   .editorial {
     position: relative;
-    padding: 0 0 clamp(96px, 11vw, 148px);
+    padding: clamp(48px, 6vw, 86px) 0 clamp(96px, 11vw, 148px);
     background: linear-gradient(180deg, rgba(7, 11, 18, 0.24), rgba(6, 10, 17, 0.56) 54%, rgba(5, 8, 14, 0.48));
   }
 
@@ -185,7 +190,7 @@ const copy = locale === 'id'
     grid-template-columns: minmax(130px, 0.34fr) 1.66fr;
     gap: clamp(28px, 6vw, 88px);
     align-items: center;
-    border-block: 1px solid rgba(89, 106, 130, 0.34);
+    border: 0;
     padding-block: 18px;
   }
 
@@ -429,4 +434,21 @@ const copy = locale === 'id'
   @media (prefers-reduced-motion: reduce) {
     .story-link { transition: none; }
   }
+
+  .story-item { display:contents; }
+  .story-feature { grid-column:1/-1; padding-block:160px; margin-block:-24px 20px; }
+  .story-feature::after { left:calc((min(100vw,1440px) - 100vw) / 2 - 10vw); right:calc((min(100vw,1440px) - 100vw) / 2 - 10vw); }
+  .story-feature > .story-card { width:100%; }
+  .story-feature :is(h3,.story-link) { color:#0c2940; }
+  .story-feature :is(p,.story-rank,.story-meta) { color:#2a4c65; }
+  .story-feature .story-link { border-color:rgba(16,57,87,.45); }
+  .story-feature .story-card:is(:hover,:focus-visible) .story-link { color:#071c2d; border-color:#071c2d; }
+  [data-filtered='true'] .story-feature .story-card { display:grid; grid-template-columns:1.18fr .82fr; }
+  .story-feature[hidden] { display:none; }
+  @media(max-width:1050px) {
+    .story-feature { padding-block:160px; }
+    .story-feature::after { background:linear-gradient(180deg,transparent,#bfd8e7 15%,#e5f1f7 39%,#b6d2e6 83%,transparent); }
+    [data-filtered='true'] .story-feature .story-card { display:block; }
+  }
+
 </style>

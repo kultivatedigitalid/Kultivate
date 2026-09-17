@@ -1,0 +1,29 @@
+---
+import type { ServiceDetail } from '../../data/services';
+interface Props { locale:'id'|'en'; service:ServiceDetail; }
+const { locale, service } = Astro.props;
+---
+<section class="service-principles flow-section light-field" aria-labelledby="principles-title" data-scroll-key="service-principles">
+  <div class="container principles-layout">
+    <header>
+      <span class="section-kicker">{locale === 'id' ? 'Cara kami menentukan arah' : 'What guides the work'}</span>
+      <h2 id="principles-title">{service.principles[0]}</h2>
+      <p>{service.description}</p>
+    </header>
+    <ol>
+      {service.principles.map((principle,index) => <li><span class="text-mono">0{index+1}</span><h3>{principle}</h3></li>)}
+    </ol>
+  </div>
+</section>
+<style>
+  .service-principles { padding-block:clamp(180px,18vw,260px); }
+  .principles-layout { display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(60px,10vw,140px); align-items:center; }
+  .principles-layout h2 { color:#0b2033; max-width:15ch; font-size:clamp(2.8rem,4.6vw,5rem); line-height:.99; letter-spacing:-.045em; margin:20px 0 28px; }
+  .principles-layout p { color:#28485f; max-width:50ch; }
+  .principles-layout ol { list-style:none; }
+  .principles-layout li { padding:26px 0; display:grid; grid-template-columns:32px 1fr; gap:18px; border-bottom:1px solid rgba(14,56,83,.2); }
+  .principles-layout li:last-child { border:0; }
+  .principles-layout .text-mono { padding-top:5px; color:#335b75; }
+  .principles-layout h3 { color:#0b2033; font-size:clamp(1.3rem,2vw,2rem); line-height:1.18; font-weight:500; }
+  @media(max-width:760px) { .principles-layout { grid-template-columns:1fr; gap:36px; } .service-principles::after { background:linear-gradient(180deg,transparent,#b7d2e3 16%,#e4f1f7 35%,#b4d1e3 84%,transparent); } }
+</style>

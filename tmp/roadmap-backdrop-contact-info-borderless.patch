@@ -1,0 +1,150 @@
+diff --git a/website/src/components/services/WebsiteGrowthRoadmap.astro b/website/src/components/services/WebsiteGrowthRoadmap.astro
+--- a/website/src/components/services/WebsiteGrowthRoadmap.astro
++++ b/website/src/components/services/WebsiteGrowthRoadmap.astro
+@@ -537,15 +537,43 @@
+     display: grid;
+     place-items: center;
++    position: relative;
++    isolation: isolate;
++    overflow: hidden;
+     margin-top: -2px;
+     padding: clamp(38px, 5vh, 56px) 0 8px;
+     background: transparent;
+   }
+ 
++  .roadmap::before {
++    content: '';
++    position: absolute;
++    inset: 0;
++    z-index: 0;
++    pointer-events: none;
++    opacity: 0;
++    background:
++      radial-gradient(
++        ellipse 64% 72% at 50% 46%,
++        rgba(225, 232, 236, 0.94) 0%,
++        rgba(191, 204, 212, 0.84) 52%,
++        rgba(191, 204, 212, 0) 82%
++      ),
++      linear-gradient(135deg, #617887 0%, #93a8b3 48%, #556e7e 100%);
++    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 11%, #000 89%, transparent 100%);
++    mask-image: linear-gradient(180deg, transparent 0%, #000 11%, #000 89%, transparent 100%);
++    transition: opacity 520ms cubic-bezier(0.16, 1, 0.3, 1);
++  }
++
++  .roadmap:has(.quiz-intro:not([hidden]))::before {
++    opacity: 1;
++  }
++
+   .quiz-shell {
++    position: relative;
++    z-index: 1;
+     height: 100%;
+     min-height: 0;
+   }
+@@ -584,12 +612,9 @@
+   .quiz-intro {
+     display: grid;
+     place-items: center;
+-    border-radius: 12px;
++    border-radius: 0;
+     padding: clamp(38px, 7vh, 76px) clamp(24px, 6vw, 84px);
+-    background:
+-      radial-gradient(circle at 50% 42%, rgba(244, 248, 250, 0.38) 0%, rgba(244, 248, 250, 0) 58%),
+-      linear-gradient(145deg, #a8b8c1 0%, #c6d1d6 50%, #9fafb9 100%);
++    background: transparent;
+     color: #081522;
+     text-align: center;
+   }
+diff --git a/website/src/pages/en/contact.astro b/website/src/pages/en/contact.astro
+--- a/website/src/pages/en/contact.astro
++++ b/website/src/pages/en/contact.astro
+@@ -353,7 +353,8 @@
+     min-width: 0;
+     display: flex;
+     flex-direction: column;
+-    gap: var(--spacing-lg);
++    gap: clamp(48px, 6vw, 76px);
++    padding: clamp(6px, 1vw, 12px) 0;
+   }
+ 
+   .info-card,
+@@ -361,9 +362,10 @@
+   .office-card {
+     border: 0;
+-    padding: var(--spacing-xl);
+-    background-color: rgba(7, 16, 26, 0.42);
++    border-radius: 0;
++    padding: 0;
++    background: transparent;
+     box-shadow: none;
+   }
+@@ -388,18 +390,19 @@
+     display: flex;
+     align-items: center;
+     gap: var(--spacing-md);
+-    padding: var(--spacing-sm);
+-    background-color: rgba(4, 10, 18, 0.28);
+-    border-radius: var(--border-radius-sm);
++    min-height: 54px;
++    padding: 10px 0;
++    background: transparent;
++    border-radius: 0;
+     border: 0;
+-    transition: background-color var(--transition-micro);
++    transition: color var(--transition-micro), transform var(--transition-micro);
+   }
+@@ -410,7 +413,8 @@
+   }
+ 
+   .contact-link-item:hover {
+-    background-color: rgba(9, 26, 40, 0.46);
++    background: transparent;
++    transform: translate3d(4px, 0, 0);
+   }
+diff --git a/website/src/pages/id/contact.astro b/website/src/pages/id/contact.astro
+--- a/website/src/pages/id/contact.astro
++++ b/website/src/pages/id/contact.astro
+@@ -353,7 +353,8 @@
+     min-width: 0;
+     display: flex;
+     flex-direction: column;
+-    gap: var(--spacing-lg);
++    gap: clamp(48px, 6vw, 76px);
++    padding: clamp(6px, 1vw, 12px) 0;
+   }
+ 
+   .info-card,
+@@ -361,9 +362,10 @@
+   .office-card {
+     border: 0;
+-    padding: var(--spacing-xl);
+-    background-color: rgba(7, 16, 26, 0.42);
++    border-radius: 0;
++    padding: 0;
++    background: transparent;
+     box-shadow: none;
+   }
+@@ -388,18 +390,19 @@
+     display: flex;
+     align-items: center;
+     gap: var(--spacing-md);
+-    padding: var(--spacing-sm);
+-    background-color: rgba(4, 10, 18, 0.28);
+-    border-radius: var(--border-radius-sm);
++    min-height: 54px;
++    padding: 10px 0;
++    background: transparent;
++    border-radius: 0;
+     border: 0;
+-    transition: background-color var(--transition-micro);
++    transition: color var(--transition-micro), transform var(--transition-micro);
+   }
+@@ -410,7 +413,8 @@
+   }
+ 
+   .contact-link-item:hover {
+-    background-color: rgba(9, 26, 40, 0.46);
++    background: transparent;
++    transform: translate3d(4px, 0, 0);
+   }

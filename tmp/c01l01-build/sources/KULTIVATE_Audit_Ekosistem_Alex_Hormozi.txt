@@ -1,0 +1,431 @@
+[Normal] DEEP RESEARCH
+[Normal] Audit Ekosistem Website
+Alex Hormozi
+[Normal] Apa yang KULTIVATE dapat adaptasi dari Acquisition.com
+dan properti terafiliasinya
+[TABLE]
+FOKUS / Funnel, edukasi, proof | HORIZON / Prioritas 2-3 bulan | SNAPSHOT / 24 Agustus 2026
+[Normal] Disiapkan untuk Galino dan tim KULTIVATE
+[Normal] Research scope: Acquisition.com, training ecosystem, commerce,
+high-ticket continuation, founder media, and affiliated endpoints
+[Heading 1] Isi laporan
+[Normal] Struktur ini mengikuti alur keputusan: memahami economics, mengaudit page roles, lalu menerjemahkannya menjadi arsitektur dan roadmap KULTIVATE.
+[List Bullet] Keputusan eksekutif
+[List Bullet] 1. Ruang lingkup dan metode
+[List Bullet] 2. Peta ekonomi: website sebagai sistem, bukan brosur
+[List Bullet] 3. Audit halaman-per-halaman
+[List Bullet] 4. Pola lintas situs yang paling bernilai
+[List Bullet] 5. Matriks adaptasi untuk KULTIVATE
+[List Bullet] 6. Arsitektur website KULTIVATE yang disarankan
+[List Bullet] 7. Client flow yang disarankan
+[List Bullet] 8. Roadmap implementasi 12 minggu
+[List Bullet] 9. Feature backlog berdasarkan impact vs effort
+[List Bullet] 10. KPI yang benar
+[List Bullet] 11. Aturan content governance
+[List Bullet] 12. Apa yang jangan ditiru
+[List Bullet] 13. Keputusan final untuk KULTIVATE
+[List Bullet] Appendix: page inventory dan sources
+[Heading 1] Keputusan eksekutif
+[Normal] Kesimpulan utama: jangan meniru tampilan Acquisition.com. Tiru economic system-nya.
+[Normal] Ekosistem Hormozi bekerja sebagai mesin bertingkat: konten publik menurunkan ketidakpastian; diagnostic mempersonalisasi masalah; workshop dan membership mengubah perhatian menjadi transaksi; halaman firm, team, portfolio, dan legal menurunkan risiko; lalu aplikasi mengalirkan prospek bernilai tinggi ke percakapan manusia. Halaman-halamannya sering sederhana secara teknologi. Kekuatan sesungguhnya datang dari keterhubungan antara value, proof, segmentation, dan next step.
+[Normal] Untuk KULTIVATE, adaptasi paling bernilai bukan toko buku atau AI canggih. Dalam 2–3 bulan, prioritasnya adalah:
+[List Number] Learning Hub berbasis kurikulum, bukan blog acak.
+[List Number] Industry Solution Rooms yang menunjukkan contoh persis untuk kontraktor, heavy equipment, professional services, interior/property, dan vertikal prioritas berikutnya.
+[List Number] Case study berbentuk Challenge → Intervention → Evidence → Outcome, dengan screenshot before/after dan testimonial yang dapat diverifikasi.
+[List Number] Website Growth Roadmap sederhana dan rule-based yang menghasilkan rekomendasi relevan dalam 60–90 detik.
+[List Number] Satu CTA komersial utama: Strategy Session / Website Growth Audit, dengan kualifikasi yang jelas.
+[List Number] Halaman firm + team + process agar KULTIVATE terlihat sebagai institusi yang dipimpin founder, bukan freelancer dengan logo agency.
+[Normal] KULTIVATE sebaiknya menunda AI advisor, membership, client portal kustom, toko digital, dan gamification. Semua itu baru masuk akal setelah traffic, katalog content, data diagnostic, dan basis client berulang sudah cukup besar.
+[Normal] Prinsip desain: pengunjung tidak perlu “dibuat lama” di website. Mereka perlu selalu menemukan langkah berikut yang paling berguna. Durasi kunjungan akan menjadi akibat dari relevansi, bukan sasaran yang dipaksakan.
+[Heading 1] 1. Ruang lingkup dan metode
+[Heading 2] 1.1 Apa yang diaudit
+[Normal] Riset mencakup properti yang secara resmi dioperasikan, ditautkan, atau dipakai sebagai endpoint funnel oleh Acquisition.com dan para foundernya:
+[List Bullet] Acquisition.com utama: home, training, workshop, roadmap, audiobooks, books, about, firm, team bios, media, careers, apply, dan halaman campaign/thank-you yang relevan.
+[List Bullet] Empat keluarga course publik: Offer Creation, Lead Generation, Scaling, dan Money Models.
+[List Bullet] Commerce: shop.acquisition.com, product pages, bundle, workbooks, masterclass, dan FAQ.
+[List Bullet] High-ticket continuation: ACQ Vantage.
+[List Bullet] Gated products: ACQ AI dan VAM dashboard.
+[List Bullet] Institutional extensions: ACQ Ventures dan ACQ Real Estate.
+[List Bullet] Founder content: Mozi Money Minute dan Leila’s Letters.
+[List Bullet] Adjacent external endpoint: Skool dan The Skool Games, karena situs resmi Acquisition.com mengarahkan pemula ke sana dan Skool menyatakan Alex Hormozi bermitra pada 2024.
+[Heading 2] 1.2 Arti “setiap halaman” dalam laporan ini
+[Normal] Audit ini mencakup setiap keluarga halaman canonical dan navigable yang ditemukan, serta inventaris semua keluarga modul course. Halaman legal, consent, thank-you, dan campaign lama dinilai sebagai bagian operasional funnel. Audit ini tidak mengklaim mencakup setiap URL eksperimen, parameter tracking, duplikasi CMS, atau halaman yang pernah dipublikasikan tetapi tidak lagi dapat ditemukan dari ekosistem aktif.
+[Heading 2] 1.3 Standar bukti
+[Normal] Klaim faktual mengutamakan sumber primer: halaman resmi, FAQ, terms, course navigation, product pages, dan halaman perusahaan. Interpretasi yang menghubungkan pola tersebut ke KULTIVATE ditandai sebagai rekomendasi atau inferensi.
+[Heading 1] 2. Peta ekonomi: website sebagai sistem, bukan brosur
+[Normal] Attention
+  → Free value
+  → Self-segmentation
+  → Diagnosis
+  → Proof + risk reduction
+  → Human conversation / transaction
+  → Higher-value continuation
+[Normal] Homepage Acquisition.com langsung menawarkan scaling, training, dan roadmap; training pages mengarahkan business owners ke workshop; newsletter thank-you page mengarahkan subscriber ke booking; store mengurutkan buku dan implementation products; Vantage menjual diagnosis, peers, playbooks, dan operator access sebagai membership. Ini menunjukkan satu pola: setiap aset harus membayar perhatian yang diminta dan sekaligus membuka langkah berikutnya. Acquisition.com Home · Free Trainings · Mozi Money Minute Thank-you · ACQ Vantage
+[Heading 2] 2.1 Ladder yang terlihat
+[List Number] Free: short-form/social, audiobook, newsletter, course, checklist, roadmap.
+[List Number] Low-friction transaction: books, bundles, workbooks, masterclass.
+[List Number] High-intent transaction: in-person Scaling Workshop.
+[List Number] Recurring high-ticket: ACQ Vantage.
+[List Number] Strategic partnership/equity: apply, portfolio partnership, ventures, real estate.
+[Normal] Tidak semua orang melewati tangga yang sama. Prospek pemula diarahkan ke Skool; operator yang sudah berjalan diarahkan ke course, roadmap, workshop, atau Vantage; perusahaan yang memenuhi thesis dapat mengajukan partnership. Segmentasi terjadi lewat status bisnis, revenue, problem, dan level commitment, bukan hanya lewat demografi. Start a Business · Scaling Workshop · Apply · Skool About
+[Heading 2] 2.2 Apa yang setara untuk KULTIVATE
+[List Bullet] Attention: konten short-form Galino dan tim.
+[List Bullet] Free value: lesson, teardown, checklist, estimator, dan industry guide.
+[List Bullet] Diagnosis: Website Growth Roadmap.
+[List Bullet] Proof: case study, before/after, feature gallery, client story.
+[List Bullet] Conversation: Website Growth Audit / Strategy Session.
+[List Bullet] Core transaction: Website Development / Redesign.
+[List Bullet] Continuation: SEO, CRO, content, maintenance, analytics, quarterly growth review.
+[Heading 1] 3. Audit halaman-per-halaman
+[Heading 2] 3.1 Acquisition.com Home
+[Normal] Fungsi. Menentukan audience (“business owner yang ingin scale”), membangun authority dengan revenue portfolio dan founder track record, lalu menawarkan beberapa pintu: workshop, course gratis, roadmap, books, firm, dan careers. Acquisition.com Home
+[Normal] Yang bekerja. Value proposition besar muncul sebelum detail. Training ditempatkan sebagai “advanced training”, bukan blog. Founder proof dan portfolio proof saling memperkuat. CTA “I’m ready to scale” menggunakan bahasa customer intent.
+[Normal] Adaptasi KULTIVATE. Hero harus menyebut hasil bisnis, bukan hanya “website development & SEO”. Contoh: “Bangun website yang membuat perusahaan Anda lebih dipercaya, lebih mudah ditemukan, dan lebih siap menghasilkan inquiry.” Berikan tiga pintu: Explore by Industry, See Client Results, Get Your Website Roadmap.
+[Normal] Jangan ditiru mentah. Klaim revenue besar tanpa audit trail, terlalu banyak CTA setara di area awal, atau founder story yang lebih dominan daripada masalah client.
+[Heading 2] 3.2 Training Hub
+[Normal] Fungsi. Menjadi katalog learning paths: offers, leads, scaling, money models, roadmap, dan workshop. Free Trainings
+[Normal] Yang bekerja. Content tidak disusun menurut tanggal, tetapi menurut problem dan outcome. Setiap card adalah entry point ke transformasi tertentu. Free training mengurangi information asymmetry sebelum transaksi.
+[Normal] Adaptasi KULTIVATE. Buat lima jalur awal: Website Strategy, Trust & Conversion, SEO & Demand Capture, Industry Website Playbooks, dan Project Readiness. Setiap jalur memiliki urutan modul, checklist, dan CTA relevan.
+[Normal] Risiko yang ditemukan. Range kualifikasi workshop berbeda antarversi halaman: training hub/campaign lama dan halaman workshop canonical tidak selalu selaras. Ini menjadi pelajaran agar KULTIVATE memiliki single source of truth untuk siapa yang qualified, harga, SLA, dan offer wording. Scaling Workshop · Legacy Campaign Example
+[Heading 2] 3.3 Offer Creation Course
+[Normal] Halaman yang diinventarisasi. Start Here; Picking Markets; Charge What It’s Worth; Value Equation; Offer Creation Part 1 dan 2; Bonus Creation; Guarantee Creation; Scarcity & Urgency; Naming Products; Free Bonus; Audiobook. Offer Creation Start
+[Normal] Pola template. Satu video/lesson, sidebar module navigation, download yang kontekstual, announcement bar, lalu CTA workshop untuk business owner.
+[Normal] Adaptasi KULTIVATE. “Website Offer Design” dapat menjadi course untuk owner: memilih objective website, menyusun service hierarchy, proof architecture, CTA, guarantee boundaries, dan message hierarchy. Download harus berupa alat implementasi—misalnya Website Brief Canvas—bukan PDF promosi.
+[Heading 2] 3.4 Lead Generation Course
+[Normal] Halaman yang diinventarisasi. Context; Problem & Definition; Lead Magnet Mastery; First 5 Clients; Mozi Media Method I–II; Cold Outreach; Paid Ads I–II; More/Better/New; Referral Playbook; Employees; Agencies; Affiliates; Open-to-Goal; Roadmap; Recap; Free Bonus; Audiobook. Lead Generation Start
+[Normal] Pola yang bekerja. Materi membedakan channel, operator, dan tahap implementasi. Warm outreach memiliki script; course menghubungkan teori ke aset yang dapat dipakai.
+[Normal] Adaptasi KULTIVATE. Course “How Your Website Captures Demand” harus menghubungkan SEO, paid traffic, Google Business Profile, referral traffic, landing page, WhatsApp/chat, dan CRM handoff. Buat template: landing-page checklist, lead-source map, dan response-time SOP.
+[Heading 2] 3.5 Scaling Course
+[Normal] Halaman yang diinventarisasi. Start; Context; lalu tahap Improvise, Monetize, Advertise, Stabilize, Prioritize, Productize, Optimize, Categorize, Specialize, Capitalize; Free Bonus; Roadmap. Tahap-tahap dipetakan ke ukuran tim, dari 0–1 sampai 250–500 orang. Scaling Course Context
+[Normal] Pola yang bekerja. Personalisasi tidak membutuhkan AI: user memilih tahap yang paling mirip dengan kondisinya. Setiap tahap mengarahkan ke resource yang tepat.
+[Normal] Adaptasi KULTIVATE. Segmentasikan website maturity:
+[List Number] Belum punya website.
+[List Number] Ada website, tetapi tidak meyakinkan.
+[List Number] Ada traffic, tetapi inquiry rendah.
+[List Number] Ada inquiry, tetapi tracking dan follow-up lemah.
+[List Number] Website matang, perlu SEO/CRO/automation.
+[Normal] Dengan ini, KULTIVATE dapat memberi rekomendasi spesifik tanpa membangun model AI.
+[Heading 2] 3.6 Money Models Course
+[Normal] Halaman/kelompok yang diinventarisasi. Intro; Money Models; Attraction Offers; Upsell Offers; Downsell Offers; Continuity; Next Steps; Audiobook, dengan lesson turunan seperti Win Your Money Back, Free Giveaways, Decoy, Buy X Get Y, Continuity Bonus, Continuity Discounts, dan Make Your Own Money Model. Money Models Course · Continuity Offers · Make Your Own Money Model
+[Normal] Adaptasi KULTIVATE. Bukan membuat course tentang pricing agency secara generik, tetapi menunjukkan bagaimana website mendukung model ekonomi client: project-based, recurring service, equipment rental, appointment, quotation, distributor/dealer, multi-location, atau retainer. Ini akan membuat Industry Solution Rooms terasa benar-benar berbeda.
+[Heading 2] 3.7 Personalized Roadmap
+[Normal] Fungsi. Lead capture dengan janji output personal dalam waktu singkat. Halaman menyebut roadmap gratis di bawah 30 detik dan menampilkan social proof berbasis jumlah request. Form juga memuat consent untuk phone/text/email/AI. Personalized Scaling Roadmap
+[Normal] Adaptasi KULTIVATE. Bangun “Website Growth Roadmap” 6–8 pertanyaan: industri, revenue band, target customer, objective, maturity, traffic, lead flow, dan urgency. Output berisi maturity score, tiga prioritas, satu relevant case study, satu lesson, dan CTA audit.
+[Normal] MVP yang disarankan. Rule-based, tanpa login, hasil muncul langsung dan dapat dikirim ke email secara opsional. Simpan jawaban ke CRM/Sheet. Jangan menyebut “AI” jika output sesungguhnya hanya branching rules.
+[Heading 2] 3.8 Audiobook Lead Capture
+[Normal] Fungsi. Menukar contact information dengan bundle audiobook, lalu mengarahkan subscriber ke aset lain. Free Audiobooks
+[Normal] Adaptasi KULTIVATE. Lead magnet bernilai tinggi: “7 Website Playbooks untuk Perusahaan High-Ticket”, disertai video breakdown dan template brief. Minta email/WhatsApp hanya setelah nilai terlihat; jelaskan consent dengan bahasa sederhana.
+[Heading 2] 3.9 Books dan Store
+[Normal] Fungsi. Mengubah intellectual property menjadi produk fisik/digital: buku tunggal, trilogy bundle, workbooks, masterclass, dan implementation materials. Product sequence juga membantu user tahu urutan belajar. Books · Acquisition.com Shop · Store FAQ
+[Normal] Yang bekerja. Buku membangun authority yang dapat didistribusikan; workbook mengubah consumption menjadi implementation; bundle menaikkan average order value; testimonial dan FAQ menurunkan risiko.
+[Normal] Adaptasi KULTIVATE. Dalam 2–3 bulan, jangan membangun toko. Buat digital playbook gratis dan “implementation worksheet” yang melengkapi video. Produk berbayar baru relevan setelah ada demand organik dan IP yang terbukti.
+[Normal] Yang perlu dihindari. Sales page yang terlalu panjang, proof blocks berulang, dan duplikasi pricing/comparison. Gunakan proof yang paling relevan, bukan “endless scroll” tanpa struktur.
+[Heading 2] 3.10 Scaling Workshop
+[Normal] Fungsi. Mengubah operator dengan intent tinggi menjadi pengalaman 2 hari di Las Vegas. Halaman menjanjikan diagnosis, framework, dan 3–5 tindakan; FAQ menyebut segmentasi bisnis, industri, kebijakan, dan harga publik $5.000 per seat pada versi canonical yang diaudit. Scaling Workshop · Workshop FAQ
+[Normal] Yang bekerja. Positioning anti-hype; outcome konkret; qualification tegas; price transparency; objection handling; operational details; expectation setting.
+[Normal] Adaptasi KULTIVATE. Ganti dengan dua level:
+[List Bullet] Free fit call (20–30 menit): memastikan kebutuhan, budget, timeline, decision maker.
+[List Bullet] Paid Website Growth Audit: analytics/SEO/competitor/message review, prioritized roadmap, dan workshop internal.
+[Normal] Paid audit harus dapat berdiri sendiri dan bernilai walaupun client tidak lanjut. Jangan meniru harga atau scarcity Hormozi sebelum KULTIVATE memiliki demand dan proof sebanding.
+[Heading 2] 3.11 ACQ Vantage
+[Normal] Fungsi. Membership invitation-only untuk operator, dengan verified peers, ACQ AI, playbooks, workshops, advisors, onboarding, dan tier monthly/annual. Halaman menjual “satu keputusan lebih baik” sebagai economic justification. ACQ Vantage
+[Normal] Yang bekerja. Proof diberi konteks: industri, lokasi, challenge, intervention, dan win. FAQ sangat terus terang tentang revenue verification, akses Alex, time commitment, solicitation, cancellation, dan hasil yang tidak dijamin. Product value dijelaskan sebagai empat layer: room, diagnosis, playbooks, directors.
+[Normal] Adaptasi KULTIVATE. Ini adalah inspirasi fase lanjut untuk client success retainer: Quarterly Growth Review, SEO/CRO backlog, analytics dashboard, playbooks, office hours, dan peer roundtable per industri. Untuk sekarang, implementasikan versi service-led melalui tool yang sudah ada, bukan portal kustom.
+[Normal] Jangan ditiru sekarang. Membership, tier kompleks, verified community, hotline, atau AI trained on proprietary data. Tanpa density dan operator bench, fiturnya menjadi mahal tetapi kosong.
+[Heading 2] 3.12 ACQ AI dan VAM Dashboard
+[Normal] Fungsi. ACQ AI adalah gated diagnosis software; VAM adalah dashboard gated. Detail value ACQ AI dijual di Vantage, sedangkan aplikasi sendiri menjaga akses melalui sign-in dan terms. ACQ AI Sign-in · ACQ AI Terms · VAM Dashboard
+[Normal] Adaptasi KULTIVATE. Pelajaran utamanya bukan “harus punya AI”, tetapi software harus mengoperasionalkan diagnosis yang sudah terbukti. KULTIVATE perlu mengumpulkan pattern dari audit dan project terlebih dahulu. Sementara itu gunakan questionnaire + rules + human review.
+[Heading 2] 3.13 Firm, Team, dan Bio Pages
+[Normal] Fungsi. Mengubah brand yang sangat founder-led menjadi institusi: leadership bench, pengalaman, sejarah perusahaan, dan proof timeline. Halaman firm menceritakan Gym Launch, Prestige Labs, dan ALAN dengan angka operasional; bio pages memberi kredibilitas spesifik tiap leader. Meet the Team · Alex Hormozi Bio · Leila Hormozi Bio
+[Normal] Adaptasi KULTIVATE. Buat “Why KULTIVATE”, “Leadership”, dan “How We Work”. Galino tampil sebagai point of view, tetapi delivery proof harus menjelaskan peran strategist, designer, developer, SEO, content, dan project lead. Sertakan timeline project dan prinsip kerja.
+[Heading 2] 3.14 Media
+[Normal] Fungsi. Hub sederhana untuk mengarahkan audience ke figur dan channel media utama. Media Hub
+[Normal] Adaptasi KULTIVATE. Buat Content/Media hub yang mengelompokkan long-form video, lessons, podcast appearances, dan keynote. Jangan menduplikasi konten; jadikan website sebagai canonical learning path dan social platform sebagai distribution.
+[Heading 2] 3.15 Careers dan Culture
+[Normal] Fungsi. Employer brand dengan standar, cara kerja, feedback, benefits, employee proof, dan open roles. Ada versi careers utama dan halaman culture lama/overlap. Careers · Our Culture · Open Jobs
+[Normal] Adaptasi KULTIVATE. Tidak perlu careers portal kompleks. Buat satu halaman People & Standards jika rekrutmen aktif: siapa yang cocok, bagaimana kualitas dinilai, dan cara apply. Content ini juga membantu client memahami disiplin delivery.
+[Normal] Pelajaran governance. Overlap halaman lama dan baru menunjukkan biaya content debt. KULTIVATE perlu owner, review date, canonical URL, dan redirect policy untuk setiap funnel page.
+[Heading 2] 3.16 Apply dan Portfolio Partnership
+[Normal] Fungsi. Form-focused page untuk perusahaan yang ingin bekerja sama; friction sengaja lebih tinggi karena nilai calon partnership tinggi. Apply
+[Normal] Adaptasi KULTIVATE. Form consultation harus progresif: data minimum di awal, qualification setelah intent terbentuk. Untuk high-ticket, pertanyaan tentang industri, objective, budget range, timeline, dan decision process membantu sales memprioritaskan—tetapi jangan meminta terlalu banyak sebelum user melihat proof.
+[Heading 2] 3.17 ACQ Ventures
+[Normal] Fungsi. Institutional extension untuk early-stage SMB technology: mission, team, portfolio, dan partnership CTA. Search-visible official content menggambarkannya sebagai strategic venture capital fund dengan funding, expert advice, dan network. ACQ Ventures · ACQ Ventures Terms
+[Normal] Adaptasi KULTIVATE. Jika nanti memiliki product studio atau venture arm, pisahkan thesis, audience, proof, dan CTA dari agency. Untuk sekarang, jangan mencampurkan terlalu banyak lini bisnis di homepage utama.
+[Heading 2] 3.18 ACQ Real Estate
+[Normal] Fungsi. One-page institutional site: thesis, team, quantified portfolio proof, property/fund cards, VIP list, dan securities disclaimer. Halaman menampilkan lebih dari $420 juta dan 2.068 units pada saat audit. ACQ Real Estate
+[Normal] Adaptasi KULTIVATE. Ini adalah referensi terbaik untuk portfolio grid KULTIVATE: jumlah project, industries served, selected sites, challenge, solution, dan measurable evidence. Gunakan project cards untuk kingsign.id, indojagat.id, galdino.co.id, dan kediamanku.id, tetapi bedakan “client project”, “concept/demo”, dan “results verified”.
+[Heading 2] 3.19 Mozi Money Minute
+[Normal] Fungsi. Newsletter dengan promise sangat sempit: satu menit baca dan satu tactic. Listing/archive, post pages, opt-in, comments, dan thank-you page membentuk micro-funnel. Thank-you page langsung menawarkan workshop. Mozi Money Minute · Newsletter Archive · Example Post
+[Normal] Adaptasi KULTIVATE. Buat seri “Website Growth Minute” atau “1 Fix This Week”: satu masalah, satu contoh, satu tindakan. Setiap post menghubungkan ke lesson lengkap dan relevant case study. Jangan membangun comments dulu; distribusi dan email reply lebih murah.
+[Heading 2] 3.20 Leila’s Letters
+[Normal] Fungsi. Founder newsletter yang sangat minimal: strong promise, email capture, distinctive voice, dan archive berisi memo singkat tentang leadership, systems, hiring, capacity, dan culture. Leila’s Letters Home · Leila’s Letters Archive
+[Normal] Adaptasi KULTIVATE. Galino dapat memiliki founder note dengan point of view yang konsisten—misalnya “Building Trust Online”—tetapi domain dan email list sebaiknya memperkuat KULTIVATE, bukan memecah audience terlalu dini. Arsitektur minimal cocok untuk thought leadership yang cadence-nya tinggi.
+[Heading 2] 3.21 Skool dan The Skool Games
+[Normal] Fungsi. External community/course platform dengan community, classroom, events, membership, leaderboard, dan prizes. Skool menyatakan Alex Hormozi bermitra pada 2024; Acquisition.com mengarahkan pemula ke The Skool Games. Skool About · The Skool Games · Start a Business
+[Normal] Adaptasi KULTIVATE. Untuk learning hub, gunakan website sendiri sebagai canonical content dan platform eksternal hanya jika community behavior memang dibutuhkan. Gamification tidak prioritas. Tantangan 7 hari atau progress checklist baru layak setelah content completion rate dapat diukur.
+[Heading 1] 4. Pola lintas situs yang paling bernilai
+[Heading 2] 4.1 Satu aset, satu job
+[Normal] Course page mengajar; roadmap mendiagnosis; workshop mengonversi; firm page membangun institutional trust; store mentransaksikan IP; careers merekrut. KULTIVATE harus memberi setiap page satu primary job dan satu primary CTA.
+[Heading 2] 4.2 Curriculum beats chronology
+[Normal] Training disusun berdasarkan outcome dan stage, bukan berdasarkan tanggal publikasi. Untuk agency, ini lebih kuat daripada blog karena decision maker datang dengan masalah, bukan keinginan membaca arsip.
+[Heading 2] 4.3 Proof harus mempunyai konteks
+[Normal] Vantage tidak hanya menampilkan quote; ia memberi industry, challenge, intervention, dan win. Real Estate menampilkan nilai portfolio dan asset cards. KULTIVATE harus menghindari carousel logo tanpa cerita.
+[Heading 2] 4.4 Self-segmentation mengurangi biaya sales
+[Normal] Stage-based training, qualification FAQ, roadmap, dan application form membuat prospek memahami dirinya sebelum call. Ini mengurangi waktu discovery dan meningkatkan kualitas percakapan.
+[Heading 2] 4.5 Free content dan high-ticket offer tidak bertentangan
+[Normal] Free course memperlihatkan kualitas thinking; high-ticket product menjual diagnosis, speed, context, accountability, access, dan implementation. KULTIVATE sebaiknya membagikan “what/why” secara terbuka dan memonetisasi “specific diagnosis + build + accountability”.
+[Heading 2] 4.6 Founder magnet, institutional close
+[Normal] Alex/Leila menarik perhatian; team, directors, proof, process, terms, dan portfolio membuat transaksi besar terasa lebih aman. Galino dapat menjadi wajah KULTIVATE, tetapi website harus menunjukkan bahwa hasil tidak bergantung pada satu orang saja.
+[Heading 2] 4.7 Objection handling adalah content, bukan bagian tersembunyi
+[Normal] Workshop dan Vantage membahas fit, price, time, access, cancellation, dan results. KULTIVATE perlu FAQ yang menjawab: berapa lama, siapa menulis content, bagaimana revisi, ownership, SEO expectation, support, maintenance, dan apa yang dibutuhkan dari client.
+[Heading 2] 4.8 Content debt adalah risiko nyata
+[Normal] Beberapa workshop/careers/about pages yang overlap dan klaim/range yang berubah menunjukkan bahwa funnel yang agresif dapat menghasilkan inconsistency. KULTIVATE perlu content operations sejak awal.
+[Heading 1] 5. Matriks adaptasi untuk KULTIVATE
+[TABLE]
+Pola Hormozi | Keputusan | Adaptasi KULTIVATE | Prioritas
+Training hub berbasis course | Adaptasi langsung | Learning Hub + 3–5 pathway | P0
+Roadmap personal | Adaptasi sederhana | Rule-based Website Growth Roadmap | P0
+Proof cards dengan context | Adaptasi langsung | Challenge → Work → Evidence → Outcome | P0
+Firm/team bios | Adaptasi langsung | Founder POV + delivery bench | P0
+Workshop qualification | Modifikasi | Fit call + paid audit | P0
+Store/books/workbooks | Modifikasi ringan | Free guide + implementation worksheet | P1
+Newsletter micro-format | Adaptasi langsung | Website Growth Minute | P1
+Vantage membership | Tunda | Client growth retainer via existing tools | P2
+ACQ AI | Tunda | Rules + human review dulu | P2
+VAM/client portal kustom | Tunda | Shared workspace / PM tool | P2
+Skool gamification | Tunda | Progress checklist setelah ada usage data | P2
+Endless proof scroll | Hindari | Curated proof per industry/problem | —
+Duplicate campaign pages | Hindari | Canonical owner + review date + redirects | —
+Revenue/result claims tanpa konteks | Hindari | Verified evidence + caveat | —
+[Heading 1] 6. Arsitektur website KULTIVATE yang disarankan
+[Heading 2] 6.1 Navigasi utama
+[List Number] Solutions
+[List Bullet] Website Development
+[List Bullet] Website Redesign
+[List Bullet] SEO & Demand Capture
+[List Bullet] Conversion & Analytics
+[List Bullet] Care & Optimization
+[List Number] Industries
+[List Bullet] Contractors
+[List Bullet] Heavy Equipment & Rental
+[List Bullet] Industrial Suppliers
+[List Bullet] Professional Services
+[List Bullet] Property & Interior
+[List Bullet] Healthcare/Clinics ketika proof tersedia
+[List Number] Results
+[List Bullet] Case Studies
+[List Bullet] Before & After
+[List Bullet] Client Stories
+[List Bullet] Feature Gallery
+[List Number] Learn
+[List Bullet] Learning Paths
+[List Bullet] Playlists
+[List Bullet] Tools & Checklists
+[List Bullet] Founder Notes
+[List Number] About
+[List Bullet] Why KULTIVATE
+[List Bullet] Team
+[List Bullet] Process
+[List Bullet] Standards
+[List Number] Primary CTA: Get Your Website Roadmap
+[Heading 2] 6.2 Industry Solution Room template
+[Normal] Setiap industri memakai struktur yang konsisten, tetapi kontennya spesifik:
+[List Number] Masalah komersial industri.
+[List Number] Siapa buyer dan bagaimana mereka menilai vendor.
+[List Number] Fitur website yang relevan.
+[List Number] Demo project/real project.
+[List Number] Before/after atau proof.
+[List Number] Content/SEO opportunity.
+[List Number] Recommended package.
+[List Number] FAQ industri.
+[List Number] CTA audit.
+[Normal] Contoh kontraktor: project portfolio, service area, tender capability, certifications, safety, equipment/team, project filters, quotation flow, WhatsApp routing, and local SEO. Contoh equipment rental: fleet catalog, capacity/specs, availability inquiry, service area, delivery, operator options, maintenance assurance, and request-a-quote.
+[Heading 2] 6.3 Case study template
+[List Bullet] Client / industry / location.
+[List Bullet] Business context.
+[List Bullet] Constraint before project.
+[List Bullet] What KULTIVATE changed.
+[List Bullet] Evidence: screenshot, analytics, search visibility, conversion event, sales feedback.
+[List Bullet] Outcome dan periode pengukuran.
+[List Bullet] What was not measured / caveat.
+[List Bullet] Features that readers can inspect.
+[List Bullet] CTA: build a similar system.
+[Heading 1] 7. Client flow yang disarankan
+[Heading 2] 7.1 Cold prospect dari chat/outbound
+[Normal] Personal message → Industry page → Relevant demo/case study → 3-minute lesson → Website Roadmap → Fit call → Paid audit / proposal.
+[Heading 2] 7.2 Inbound dari short-form content
+[Normal] Short-form hook → Comment keyword / link → Complete lesson → Checklist → Related case study → Roadmap → Email nurture → Strategy Session.
+[Heading 2] 7.3 Referral
+[Normal] Direct to client story → Process & standards → Roadmap or call → Proposal.
+[Heading 2] 7.4 Existing client
+[Normal] Project completion → Results review → SEO/CRO roadmap → recurring optimization → documented case study → referral ask.
+[Heading 1] 8. Roadmap implementasi 12 minggu
+[Heading 2] P0 — Minggu 1–4: conversion foundation
+[Normal] Tujuan: membuat website dapat menjelaskan value dan mengonversi prospek yang sudah hangat.
+[List Bullet] Rebuild homepage around outcome, audience, proof, dan three entry points.
+[List Bullet] Buat 4 Industry Solution Rooms: contractor, heavy equipment/rental, professional services, property/interior.
+[List Bullet] Buat 4 case study/project pages dari portfolio yang tersedia; beri label real/demo dan status evidence.
+[List Bullet] Buat About/Firm, Team, Process, FAQ, dan Start a Project.
+[List Bullet] Pasang analytics events: CTA click, case study view, lesson completion proxy, roadmap start/complete, form submit, booked call.
+[List Bullet] Gunakan satu canonical qualification rubric untuk sales dan website.
+[Heading 2] P1 — Minggu 5–8: learning and diagnostic
+[Normal] Tujuan: membuat visitor belajar, self-segment, dan kembali.
+[List Bullet] Launch Learning Hub dengan tiga pathways dan 9–12 lessons.
+[List Bullet] Buat satu template lesson: video, summary, action steps, download, related proof, next lesson, CTA.
+[List Bullet] Launch Website Growth Roadmap versi rule-based.
+[List Bullet] Buat one high-value guide dan 3 implementation worksheets.
+[List Bullet] Buat email nurture 5 pesan berdasarkan maturity stage.
+[Heading 2] P1.5 — Minggu 9–12: proof and sales enablement
+[Normal] Tujuan: meningkatkan close quality dan membuka recurring revenue.
+[List Bullet] Record 2–3 client story videos dengan format challenge/process/outcome.
+[List Bullet] Launch before/after gallery dan feature gallery.
+[List Bullet] Tambahkan paid Website Growth Audit sebagai offer terpisah.
+[List Bullet] Buat SEO/CRO care plan dan Quarterly Growth Review.
+[List Bullet] Publish “Website Growth Minute” secara mingguan.
+[List Bullet] Audit content consistency, broken paths, duplicated claims, dan stale pages.
+[Heading 2] P2 — Setelah data membuktikan kebutuhan
+[List Bullet] Client portal kustom.
+[List Bullet] AI advisor.
+[List Bullet] Membership/community.
+[List Bullet] Gamification dan leaderboards.
+[List Bullet] Digital store.
+[List Bullet] Industry marketplace atau vendor directory.
+[Heading 1] 9. Feature backlog berdasarkan impact vs effort
+[TABLE]
+Fitur | Client problem yang diselesaikan | Effort | Dampak | Keputusan
+Industry pages | “Apakah mereka mengerti bisnis saya?” | Sedang | Sangat tinggi | Build now
+Case study detail | “Apakah mereka bisa deliver?” | Sedang | Sangat tinggi | Build now
+Learning playlists | “Apakah thinking mereka kuat?” | Sedang | Tinggi | Build now
+Rule-based roadmap | “Apa masalah saya dan next step?” | Sedang | Sangat tinggi | Build now
+Process/FAQ | “Apa risiko dan cara kerjanya?” | Rendah | Tinggi | Build now
+Video client stories | “Bisakah saya percaya?” | Sedang | Tinggi | Build now
+Feature gallery | “Apa yang sebenarnya bisa dibuat?” | Rendah | Tinggi | Build now
+Personal dashboard | “Di mana progress project?” | Tinggi | Sedang | Use existing PM tool
+AI advisor | “Beri saya diagnosis instan” | Sangat tinggi | Belum pasti | Defer
+Community/leaderboard | “Saya ingin peers/accountability” | Sangat tinggi | Rendah saat audience kecil | Defer
+[Heading 1] 10. KPI yang benar
+[Normal] Jangan mengoptimalkan “time on site” sendirian. Ukur perjalanan nilai dan intent:
+[List Bullet] Persentase visitor yang memilih industry/pathway.
+[List Bullet] Lesson start-to-completion proxy.
+[List Bullet] Click dari lesson ke case study.
+[List Bullet] Roadmap start rate dan completion rate.
+[List Bullet] Qualified roadmap completions.
+[List Bullet] Call booking rate per industry/source.
+[List Bullet] Show rate dan proposal rate.
+[List Bullet] Close rate per content path.
+[List Bullet] Sales-cycle length.
+[List Bullet] Revenue dan gross profit per source/path.
+[List Bullet] Expansion dari build ke SEO/CRO/care.
+[List Bullet] Case study production rate dan referral rate.
+[Normal] North-star metric yang disarankan untuk fase awal: qualified strategy conversations per 1.000 relevant visitors, bukan total visits atau average session duration.
+[Heading 1] 11. Aturan content governance
+[Normal] Setiap halaman komersial harus memiliki:
+[List Bullet] Page owner.
+[List Bullet] Audience dan primary job.
+[List Bullet] Primary CTA.
+[List Bullet] Canonical URL.
+[List Bullet] Claims source/evidence.
+[List Bullet] Last reviewed date.
+[List Bullet] Next review date.
+[List Bullet] Status: active, experiment, legacy, redirect, archive.
+[Normal] Ini mencegah masalah yang terlihat pada beberapa properti Hormozi: overlapping campaign pages, versi qualification yang berbeda, dan repeated sections.
+[Heading 1] 12. Apa yang jangan ditiru
+[List Number] Aesthetic cosplay. Warna hitam/kuning, caps lock, atau copy agresif tidak otomatis menghasilkan economics yang sama.
+[List Number] Artificial scarcity. Hanya gunakan cohort/capacity claim jika benar secara operasional.
+[List Number] Overclaiming. Jangan menjamin ranking, lead, atau revenue tanpa basis.
+[List Number] Founder dependency. Galino menarik perhatian, tetapi delivery harus terlihat repeatable.
+[List Number] Gating berlebihan. Course Hormozi banyak yang terbuka; gate hanya aset/diagnostic yang benar-benar bernilai.
+[List Number] Build technology before demand. AI, portal, community, dan gamification membutuhkan density dan operating data.
+[List Number] Proof tanpa konteks. Logo dan quote saja tidak menjawab problem buyer.
+[List Number] Too many equal CTAs. Setiap page harus memiliki satu next best action.
+[Heading 1] 13. Keputusan final untuk KULTIVATE
+[Heading 2] Bangun sekarang
+[List Bullet] Outcome-led homepage.
+[List Bullet] Four Industry Solution Rooms.
+[List Bullet] Four evidence-rich project/case pages.
+[List Bullet] Learning Hub + 9–12 lessons.
+[List Bullet] Rule-based Website Growth Roadmap.
+[List Bullet] Firm/team/process/FAQ.
+[List Bullet] One paid diagnostic offer.
+[List Bullet] Analytics event taxonomy.
+[Heading 2] Bangun setelah 8–12 minggu jika data mendukung
+[List Bullet] Founder newsletter archive.
+[List Bullet] Video client story series.
+[List Bullet] Feature gallery filters.
+[List Bullet] Personalized email nurture.
+[List Bullet] Client growth-retainer page.
+[Heading 2] Jangan bangun dulu
+[List Bullet] Custom client portal.
+[List Bullet] AI advisor.
+[List Bullet] Membership/community.
+[List Bullet] Store and paid courses.
+[List Bullet] Gamification.
+[Normal] Thesis akhir: KULTIVATE harus menjadi tempat owner belajar cara menilai website, melihat bukti yang relevan dengan industrinya, memahami apa yang salah dalam situasinya, dan mengambil next step tanpa merasa sedang dipaksa membeli. Hormozi menunjukkan bahwa edukasi gratis dan high-ticket sales dapat berada dalam satu sistem apabila setiap tahap menambah context, certainty, dan speed.
+[Heading 1] Appendix A — Inventaris properti dan keluarga halaman
+[Heading 2] Core Acquisition.com
+[List Bullet] Home
+[List Bullet] Training hub
+[List Bullet] Workshop canonical + alternate/legacy campaign variants
+[List Bullet] Workshop FAQ
+[List Bullet] Personalized roadmap
+[List Bullet] Audiobooks lead capture
+[List Bullet] Books
+[List Bullet] About Alex
+[List Bullet] Firm
+[List Bullet] Team bio pages
+[List Bullet] Media
+[List Bullet] Careers
+[List Bullet] Culture legacy page
+[List Bullet] Open jobs
+[List Bullet] Apply
+[List Bullet] Start a Business
+[List Bullet] Newsletter opt-in, archive, post, and thank-you pages
+[Heading 2] Course families
+[List Bullet] Offer Creation: 12 page/module roles.
+[List Bullet] Lead Generation: 19 page/module roles.
+[List Bullet] Scaling: 14 page/module roles.
+[List Bullet] Money Models: 8 top-level groups plus nested lesson pages.
+[Heading 2] Commerce and continuation
+[List Bullet] Store home
+[List Bullet] Offers book
+[List Bullet] Leads book
+[List Bullet] Trilogy bundle
+[List Bullet] Workbooks and workbook pack
+[List Bullet] Masterclass
+[List Bullet] Bundle campaign pages
+[List Bullet] FAQ
+[List Bullet] Vantage product page
+[List Bullet] ACQ AI sign-in, disclosure, terms
+[List Bullet] VAM app/dashboard
+[Heading 2] Institutional and founder properties
+[List Bullet] ACQ Ventures
+[List Bullet] ACQ Real Estate
+[List Bullet] Leila’s Letters home and archive
+[List Bullet] Skool About
+[List Bullet] The Skool Games
+[Heading 1] Appendix B — Sumber primer utama
+[List Number] Acquisition.com Home
+[List Number] Free Trainings
+[List Number] Scaling Workshop
+[List Number] Workshop FAQ
+[List Number] Personalized Roadmap
+[List Number] Audiobooks
+[List Number] Books
+[List Number] Firm
+[List Number] Careers
+[List Number] Apply
+[List Number] Offer Creation Course
+[List Number] Lead Generation Course
+[List Number] Scaling Course
+[List Number] Money Models Course
+[List Number] Acquisition.com Shop
+[List Number] ACQ Vantage
+[List Number] ACQ AI
+[List Number] VAM Dashboard
+[List Number] ACQ Ventures
+[List Number] ACQ Real Estate
+[List Number] Mozi Money Minute
+[List Number] Leila’s Letters
+[List Number] Skool About
+[List Number] The Skool Games
+[Normal] Research note. Situs dan offer dapat berubah setelah 24 Agustus 2026. Angka, harga, qualification range, dan product structure di laporan ini adalah snapshot halaman publik saat riset. Rekomendasi KULTIVATE merupakan inferensi konsultatif berdasarkan pola yang ditemukan, bukan endorsement atau afiliasi dengan Acquisition.com.

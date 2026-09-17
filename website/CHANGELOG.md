@@ -1,5 +1,36 @@
 # Changelog
 
+## 2026-09-16 · spacing and banner refinement
+
+- Restored compact portfolio gaps to staging values (12–22 px).
+- Separated service hero artwork from service-card imagery; each service uses one abstract banner object in both languages.
+- Extended the Blog hero fade and removed the duplicate black veil and topic separator lines.
+- Strengthened contrasting labels, controls, and graphics on light surfaces. Production build and targeted desktop/mobile checks pass.
+
+## 2026-09-16 · document background clarification
+
+- Changed ThreeUI from viewport-fixed to document-anchored repeats down the full page. Overlapping masks soften repeat boundaries; content remains above the ribbon.
+- Mount only nearby repeats and release inactive WebGL contexts. Original registered source and configured props remain unchanged.
+- Rebuilt 52 pages; desktop/mobile Home and Learn scroll checks pass with at most three simultaneous canvases, working pause/reduced motion, and no runtime, local asset, or context-limit errors.
+
+## 2026-09-16 · experiments refinement
+
+- Moved the fixed ThreeUI canvas between a shared background color plane and the content plane. Original source and configured props remain unchanged.
+- Muted the light fields to blue-grey, extended their feathered transitions, and harmonized nearby surfaces and imagery.
+- Updated Home to “Deep Expertise in Digital Growth” and About to “Digital Partner for Your Priorities”.
+- Removed vertical gaps between portfolio rows and added a continuous gradient into Learn's closing invitation.
+- Production build and targeted desktop/mobile browser checks pass. Foreground panel interior pixels are unchanged when the canvas is paused; no runtime or local asset errors were found.
+
+## 2026-09-15 · experiments
+
+- Saved previous work on staging: `4c8599a`, pushed to `origin/staging`.
+- Added Visual Strategy and Social Media Management, updated source-driven bilingual copy across the acquisition journey, and expanded the local diagnostic.
+- Rebuilt home services from the client sketch with a desktop viewport fit and vertical mobile layout.
+- Added seamless pale-blue light fields in the requested page sections and existing case-study templates.
+- Integrated the hash-verified ThreeUI Ribbon Field with the supplied props, pointer response, reduced motion, and a pause control.
+- Verified production build, diagnostic tests, responsive pages, links and interactions. See [implementation notes](docs/EXPERIMENTS_2026-09-15.md).
+
+
 ## [0.6.0] - 2026-08-26
 
 ### Added

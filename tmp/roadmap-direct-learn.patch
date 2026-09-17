@@ -1,0 +1,43 @@
+diff --git a/website/src/components/services/WebsiteGrowthRoadmap.astro b/website/src/components/services/WebsiteGrowthRoadmap.astro
+--- a/website/src/components/services/WebsiteGrowthRoadmap.astro
++++ b/website/src/components/services/WebsiteGrowthRoadmap.astro
+@@ -4,2 +4,7 @@
+-interface Props { locale: 'id' | 'en'; }
+-const { locale } = Astro.props;
++interface Props {
++  locale: 'id' | 'en';
++  origin?: 'learn';
++  seriesId?: string;
++}
++const { locale, origin, seriesId } = Astro.props;
+@@ -189,1 +194,3 @@
+   data-locale={locale}
++  data-origin={origin}
++  data-series-id={seriesId}
+@@ -299,2 +306,2 @@
+-        origin: incomingParams.get('source') === 'learn' ? 'learn' : '',
+-        series_id: incomingParams.get('series') ?? '',
++        origin: root.dataset.origin ?? (incomingParams.get('source') === 'learn' ? 'learn' : ''),
++        series_id: root.dataset.seriesId ?? incomingParams.get('series') ?? '',
+@@ -308,1 +315,5 @@
+       });
++
++      if (learnContext.origin === 'learn') {
++        trackFunnelEvent('learn_roadmap_view', withLearnContext({ locale: root.dataset.locale ?? '' }));
++      }
+@@ -503,1 +514,4 @@
+         }));
++        if (learnContext.origin === 'learn') {
++          trackFunnelEvent('learn_consultation_click', withLearnContext({ recommended_service: link.dataset.recommendedService ?? '' }));
++        }
+diff --git a/website/src/scripts/funnel-analytics.ts b/website/src/scripts/funnel-analytics.ts
+--- a/website/src/scripts/funnel-analytics.ts
++++ b/website/src/scripts/funnel-analytics.ts
+@@ -10,3 +10,2 @@
+-  | 'learn_resource_click'
+-  | 'learn_resource_view'
+-  | 'learn_resource_download'
++  | 'learn_roadmap_view'
+@@ -14,1 +13,2 @@
+   | 'learn_to_priorities_click'
++  | 'learn_consultation_click'

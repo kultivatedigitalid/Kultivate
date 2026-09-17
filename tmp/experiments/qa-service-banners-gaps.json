@@ -1,0 +1,141 @@
+{
+  "banners": [
+    {
+      "width": 1440,
+      "locale": "en",
+      "slug": "seo",
+      "banner": "seo-gradient.webp"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "slug": "web-services",
+      "banner": "web-services-gradient.webp"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "slug": "social-media-management",
+      "banner": "aeo-geo-gradient.webp"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "slug": "visual-strategy",
+      "banner": "insights-gradient.webp"
+    },
+    {
+      "width": 1440,
+      "locale": "id",
+      "slug": "seo",
+      "banner": "seo-gradient.webp"
+    },
+    {
+      "width": 1440,
+      "locale": "id",
+      "slug": "web-services",
+      "banner": "web-services-gradient.webp"
+    },
+    {
+      "width": 1440,
+      "locale": "id",
+      "slug": "social-media-management",
+      "banner": "aeo-geo-gradient.webp"
+    },
+    {
+      "width": 1440,
+      "locale": "id",
+      "slug": "visual-strategy",
+      "banner": "insights-gradient.webp"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "slug": "seo",
+      "banner": "seo-gradient.webp"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "slug": "web-services",
+      "banner": "web-services-gradient.webp"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "slug": "social-media-management",
+      "banner": "aeo-geo-gradient.webp"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "slug": "visual-strategy",
+      "banner": "insights-gradient.webp"
+    },
+    {
+      "width": 390,
+      "locale": "id",
+      "slug": "seo",
+      "banner": "seo-gradient.webp"
+    },
+    {
+      "width": 390,
+      "locale": "id",
+      "slug": "web-services",
+      "banner": "web-services-gradient.webp"
+    },
+    {
+      "width": 390,
+      "locale": "id",
+      "slug": "social-media-management",
+      "banner": "aeo-geo-gradient.webp"
+    },
+    {
+      "width": 390,
+      "locale": "id",
+      "slug": "visual-strategy",
+      "banner": "insights-gradient.webp"
+    }
+  ],
+  "gaps": [
+    {
+      "width": 1440,
+      "gaps": [
+        21.59375,
+        21.59375,
+        21.59375
+      ]
+    },
+    {
+      "width": 390,
+      "gaps": [
+        12,
+        12,
+        12
+      ]
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "contrastSample1440": {
+    "x": 172,
+    "y": 335,
+    "color": [
+      11,
+      32,
+      51
+    ]
+  },
+  "contrastSample390": {
+    "x": 96,
+    "y": 135,
+    "color": [
+      11,
+      32,
+      51
+    ]
+  },
+  "passed": true,
+  "blogBoundary1440": 405,
+  "blogBoundary390": 380
+}

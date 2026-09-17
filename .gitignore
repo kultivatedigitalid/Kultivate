@@ -1,0 +1,11 @@
+# Local dependencies and Python bytecode
+node_modules/
+__pycache__/
+
+# Temporary browser profiles used for visual QA
+/tmp/site-qa/edge-profile*/
+/website/tmp/*profile*/
+/website/tmp/edge-qa-*/
+
+# Downloaded package archives
+/tmp/experiments/*.tgz

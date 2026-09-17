@@ -13,6 +13,9 @@ import '../styles/global.css';
 import '../styles/utilities.css';
 import '../styles/motion.css';
 import '../styles/flow-polish.css';
+import '../styles/atmosphere.css';
+import SiteAtmosphere from '../components/shared/SiteAtmosphere';
+import { servicesData } from '../data/services';
 
 interface Props {
   title?: string;
@@ -106,6 +109,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
   <StructuredData data={[...defaultStructuredData, ...pageStructuredData]} />
 </head>
 <body>
+  <SiteAtmosphere client:idle locale={locale} />
   <a href="#main-content" class="skip-link">{skipLabel}</a>
   <div class="header-sentinel" data-header-sentinel aria-hidden="true"></div>
 
@@ -203,8 +207,7 @@ const closeLabel = locale === 'id' ? 'Tutup' : 'Close';
         <div class="footer-links-col">
           <span class="footer-col-title">{t('footer.services')}</span>
           <ul>
-            <li><a href={'/' + locale + '/services/seo/'}>SEO</a></li>
-            <li><a href={'/' + locale + '/services/web-services/'}>Web Services</a></li>
+            {servicesData[locale].map(service => <li><a href={`/${locale}/services/${service.slug}/`}>{service.title}</a></li>)}
           </ul>
         </div>
         <div class="footer-links-col">

@@ -4,7 +4,7 @@ import ServiceHero from '../../../components/services/ServiceHero.astro';
 import ServiceProblems from '../../../components/services/ServiceProblems.astro';
 import ServiceScope from '../../../components/services/ServiceScope.astro';
 import ServiceProcess from '../../../components/services/ServiceProcess.astro';
-import ServiceEvidence from '../../../components/services/ServiceEvidence.astro';
+import ServicePrinciples from '../../../components/services/ServicePrinciples.astro';
 import ServiceLearningPreview from '../../../components/learning/ServiceLearningPreview.astro';
 import ServiceFAQ from '../../../components/services/ServiceFAQ.astro';
 import FinalCTA from '../../../components/home/FinalCTA.astro';
@@ -23,39 +23,11 @@ export async function getStaticPaths() {
 const { service } = Astro.props;
 
 // Format data for subcomponents
-const businessLens: Record<string, { impacts: string[]; inspections: string[] }> = {
-  seo: {
-    impacts: [
-      'High-intent customers may leave before they understand what your business offers.',
-      'Technical friction weakens user experience and search confidence in priority pages.',
-      'Unstructured expertise is harder for search and answer engines to understand, retrieve, and reference.'
-    ],
-    inspections: [
-      'The relationship between the offer, search intent, page roles, and the path to inquiry.',
-      'Crawling, indexation, performance, internal linking, and template consistency.',
-      'Answer structure, entities, schema, evidence, citation readiness, prompt samples, and visibility baselines.'
-    ]
-  },
-  'web-services': {
-    impacts: [
-      'Website friction makes it harder for customers and search systems to reach important pages.',
-      'Commercial changes stall when recommendations have no clear implementation path.',
-      'A redesign or migration can remove visibility, data, and trust already built.'
-    ],
-    inspections: [
-      'User journeys, architecture, performance, accessibility, and search readiness.',
-      'Ownership, backlog, technical dependencies, and acceptance criteria.',
-      'Redirects, templates, analytics, pre-launch QA, and post-launch checks.'
-    ]
-  }
-};
-
-const activeLens = businessLens[service.id];
 const problemItems = service.problemsSolved.map((problem, index) => ({
   title: problem,
   description: service.problemCauses[index] ?? '',
-  impact: activeLens?.impacts[index] ?? '',
-  inspect: activeLens?.inspections[index] ?? ''
+  impact: service.impacts[index] ?? '',
+  inspect: service.inspections[index] ?? ''
 }));
 
 const scopeItems = [
@@ -118,6 +90,7 @@ const defaultFaqs = [
   <div class="service-detail-page page-flow">
   <ServiceHero
     title={service.title}
+    serviceId={service.id}
     tagline={service.tagline}
     description={service.description}
     systemRole="KULTIVATE SERVICE"
@@ -130,7 +103,7 @@ const defaultFaqs = [
     locale={locale}
   />
 
-  <ServiceLearningPreview locale={locale} serviceId={service.id} />
+  {['seo', 'web-services'].includes(service.id) && <ServiceLearningPreview locale={locale} serviceId={service.id} />}
 
   <ServiceScope
     heading="What we can take care of"
@@ -144,11 +117,11 @@ const defaultFaqs = [
     locale={locale}
   />
 
-  <ServiceEvidence locale={locale} serviceTitle={service.title} />
+  <ServicePrinciples locale={locale} service={service} />
 
   <ServiceFAQ
     heading="Frequently asked questions"
-    faqs={defaultFaqs}
+    faqs={[...service.faqs, ...defaultFaqs.slice(2, 5)]}
   />
 
   </div>
