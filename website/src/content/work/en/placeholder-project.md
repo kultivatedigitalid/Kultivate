@@ -1,27 +1,34 @@
 ---
-title: "Green E-Commerce Website Development"
+title: "Sustainable commerce"
 slug: "green-ecommerce-development"
 locale: "en"
 translationKey: "green-ecommerce"
 client: "GreenCo Indonesia"
 clientDisplayAllowed: false
-summary: "Building a fast, SEO-friendly e-commerce platform for sustainable products."
-services: ["Website Development"]
+publicName: "Sustainable commerce"
+descriptor: "Product discovery"
+order: 12
+status: "provisional"
+summary: "A faster, clearer foundation for discovering sustainable products."
+services: ["Web Services", "SEO"]
+serviceIds: ["web-services", "seo"]
 industry: "E-Commerce / Sustainability"
 period: "Q2 2026"
-featured: true
-coverImage: "/static/work-placeholder.jpg"
-coverAlt: "PLACEHOLDER - NOT PUBLIC PROOF - GreenCo Website Visual"
-challenge: "Designing a high-performance e-commerce frontend to reduce user bounce rate from slow load times."
-approach: "Applying static site generation optimization alongside automated media compression."
+featured: false
+coverImage: "/assets/services/web-foundation-v3.webp"
+coverAlt: "Connected website planning components"
+challenge: "A sustainable-product catalogue needed a lighter frontend and a clear route from browsing to product detail."
+objective: "Make the catalogue easier to maintain, navigate and load."
+role: "Kultivate planned the frontend structure, media handling and editorial handoff."
+approach: "Static page generation and compressed media reduce avoidable work at page load. A headless CMS separates product editing from the interface."
 deliverables: ["Next.js static source files", "Headless CMS configuration"]
-outcomes: ["PLACEHOLDER - NOT PUBLIC PROOF - Page load times reduced below 1 second"]
+outcomes: ["A structured catalogue and editorial workflow create a maintainable base for subsequent performance review."]
 proofStatus: "pending"
-seoTitle: "Case Study: Sustainable E-Commerce Website | Kultivate"
-seoDescription: "Case study of high-performance eco-friendly e-commerce website development by Kultivate."
-draft: true
+seoTitle: "Sustainable commerce | Kultivate"
+seoDescription: "A faster, clearer foundation for discovering sustainable products."
+draft: false
 ---
 
-# Case Study: Green E-Commerce
+## Execution
 
-This is a draft project case study for a sustainable e-commerce system. This file has `draft: true` and outcomes are tagged as `proofStatus: pending` (PLACEHOLDER - NOT PUBLIC PROOF).
+Product page patterns bring essential information together and keep media dimensions predictable. The handoff connects the frontend templates with the CMS fields needed to maintain the catalogue.

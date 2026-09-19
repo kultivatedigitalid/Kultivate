@@ -30,4 +30,6 @@ const imageAlt = locale === 'id'
   imageAlt={imageAlt}
   variant="service-detail"
   focalPoint="55% 50%"
-/>
+>
+  <a slot="actions" href={`/${locale}/contact/?service=${serviceId}`} class="btn btn-primary btn-cta"><span>{locale === 'id' ? 'Konsultasi Gratis' : 'Free Consultation'}</span></a>
+</HeroShell>

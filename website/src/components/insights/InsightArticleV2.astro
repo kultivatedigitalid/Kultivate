@@ -1,5 +1,6 @@
 ---
 import ArticleHeaderV2 from './ArticleHeaderV2.astro';
+import InsightNextStep from './InsightNextStep.astro';
 import FounderAuthorCard from './FounderAuthorCard.astro';
 import { editorialItems } from '../../data/editorial';
 
@@ -65,6 +66,7 @@ const copy = locale === 'id'
               <ul>{article.data.sources.map((source: string) => <li>{source}</li>)}</ul>
             </section>
           )}
+          <InsightNextStep locale={locale} category={article.data.category} />
         </div>
       </div>
 

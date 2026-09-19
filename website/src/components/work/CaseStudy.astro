@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CaseStudyHeader from './CaseStudyHeader.astro';
+import NextProject from './NextProject.astro';
+import { projectName } from '../../data/work';
+import { servicesData } from '../../data/services';
+interface Props { project: CollectionEntry<'work'>; nextProject: CollectionEntry<'work'> | null; locale: 'en' | 'id'; }
+const { project, nextProject, locale } = Astro.props;
+const { data } = project;
+const services = servicesData[locale].filter(service => data.serviceIds.includes(service.id));
+const copy = locale === 'id'
+  ? { challenge: 'Tantangan', objective: 'Tujuan', role: 'Peran Kultivate', approach: 'Pendekatan', deliverables: 'Hasil kerja', outcome: 'Hasil', services: 'Layanan terkait' }
+  : { challenge: 'Challenge', objective: 'Objective', role: 'Kultivate’s role', approach: 'Approach', deliverables: 'Deliverables', outcome: 'Outcome', services: 'Related services' };
+---
+<article class="case-study-page">
+  <div class="container">
+    <CaseStudyHeader title={data.title} client={projectName(project)} industry={data.industry} period={data.period} services={data.services} summary={data.summary} coverImage={data.coverImage} coverAlt={data.coverAlt} proofStatus={data.proofStatus} locale={locale} />
+    <div class="case-story">
+      <div class="case-story__context">
+        <section><h2>{copy.challenge}</h2><p>{data.challenge}</p></section>
+        {data.objective && <section><h2>{copy.objective}</h2><p>{data.objective}</p></section>}
+        {data.role && <section><h2>{copy.role}</h2><p>{data.role}</p></section>}
+        {services.length > 0 && <nav aria-label={copy.services}><h2>{copy.services}</h2>{services.map(service => <a href={`/${locale}/services/${service.slug}/`}>{service.title}<span aria-hidden="true"> ↗</span></a>)}</nav>}
+      </div>
+      <div class="case-story__body">
+        <section><h2>{copy.approach}</h2><p>{data.approach}</p></section>
+        <section><h2>{copy.deliverables}</h2><ul>{data.deliverables.map(item => <li>{item}</li>)}</ul></section>
+        <div class="case-execution"><slot /></div>
+        <section class="case-outcome"><h2>{copy.outcome}</h2><ul>{data.outcomes.map(item => <li>{item}</li>)}</ul></section>
+      </div>
+    </div>
+    <NextProject nextSlug={nextProject?.data.slug} nextTitle={nextProject?.data.title} locale={locale} />
+  </div>
+</article>
+<style>
+  .case-study-page { padding: clamp(120px, 13vw, 180px) 0 96px; }
+  .case-story { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.2fr); gap: clamp(32px, 8vw, 120px); padding-top: clamp(28px, 5vw, 64px); }
+  .case-story__context, .case-story__body { display: flex; flex-direction: column; gap: 40px; min-width: 0; }
+  .case-story h2, .case-execution :global(h2) { margin-bottom: 16px; font-size: 1.5rem; font-weight: 560; letter-spacing: -.02em; color: var(--cloud-white); }
+  .case-story p, .case-execution :global(p), .case-story li { max-width: 68ch; color: var(--mist); font-size: 1.0625rem; line-height: 1.75; }
+  .case-story ul { padding-left: 1.2em; display: grid; gap: 12px; }
+  .case-story nav a { display: block; width: fit-content; padding-block: 10px; color: var(--signal-ice); text-decoration: underline; text-underline-offset: 5px; }
+  .case-outcome { padding-top: 32px; border-top: 1px solid var(--slate); }
+  .case-story a:focus-visible { outline: 2px solid var(--signal-ice); outline-offset: 5px; }
+  @media (max-width: 760px) { .case-story { grid-template-columns: minmax(0, 1fr); } }
+</style>

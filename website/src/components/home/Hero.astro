@@ -24,7 +24,6 @@ const content = locale === 'id'
   image="/assets/hero-horizon.webp"
   imageAlt=""
   variant="home"
-  depth
   focalPoint="58% 50%"
   titleId="home-hero-title"
 >
@@ -33,3 +32,57 @@ const content = locale === 'id'
     <a href={`/${locale}/work/`} class="btn btn-secondary"><span>{content.secondary}</span></a>
   </Fragment>
 </HeroShell>
+
+
+<style is:global>
+  /* Homepage-only: preserve the approved artwork and its static resting crop.
+     Other HeroShell / HeroVisual consumers retain their existing behavior. */
+  .hero-shell--home .hero-visual { transform: none; transition: none; }
+  .hero-shell--home .hero-visual img[data-ambient='true'] {
+    /* Override scoped HeroVisual animation and the global motion reset only here. */
+    animation: none !important;
+    transform: none !important;
+  }
+  .hero-shell--home .hero-visual::after {
+    content: '';
+    position: absolute;
+    inset: -20% -30%;
+    pointer-events: none;
+    background: linear-gradient(125deg, transparent 32%, rgba(122, 192, 225, .12) 43%, rgba(205, 237, 249, .4) 49%, rgba(105, 177, 215, .08) 58%, transparent 70%);
+    mask-image: linear-gradient(180deg, transparent 8%, #000 35%, #000 58%, transparent 83%);
+    mix-blend-mode: screen;
+    opacity: .1;
+    transform: translate3d(-12%, 0, 0);
+    animation: home-light-pass 24s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+  .hero-shell--home[data-light-active='true'] .hero-visual::after { animation-play-state: running; }
+  /* Reuse the existing accessible background-motion control without changing it. */
+  body:has(.atmosphere-toggle[aria-pressed='true']) .hero-shell--home .hero-visual::after { animation-play-state: paused; }
+  @keyframes home-light-pass {
+    0%, 100% { transform: translate3d(-18%, 0, 0); opacity: .035; }
+    45% { opacity: .16; }
+    65% { transform: translate3d(18%, 0, 0); opacity: .09; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-shell--home .hero-visual::after { animation: none; transform: translate3d(-12%, 0, 0); opacity: .1; }
+  }
+</style>
+
+<script>
+  const hero = document.querySelector<HTMLElement>('.hero-shell--home');
+  if (hero) {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let visible = false;
+    const update = () => { hero.dataset.lightActive = String(visible && !document.hidden && !reduced.matches); };
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; update(); });
+    observer.observe(hero);
+    document.addEventListener('visibilitychange', update);
+    reduced.addEventListener('change', update);
+    document.addEventListener('astro:before-swap', () => {
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', update);
+      reduced.removeEventListener('change', update);
+    }, { once: true });
+  }
+</script>

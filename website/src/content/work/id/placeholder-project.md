@@ -1,27 +1,34 @@
 ---
-title: "Pengembangan Website E-Commerce Hijau"
+title: "Commerce berkelanjutan"
 slug: "green-ecommerce-development"
 locale: "id"
 translationKey: "green-ecommerce"
 client: "GreenCo Indonesia"
 clientDisplayAllowed: false
-summary: "Pengembangan sistem e-commerce cepat dan SEO-friendly untuk produk berkelanjutan."
-services: ["Website Development"]
+publicName: "Commerce berkelanjutan"
+descriptor: "Penelusuran produk"
+order: 12
+status: "provisional"
+summary: "Fondasi yang lebih cepat dan jelas untuk menemukan produk berkelanjutan."
+services: ["Web Services", "SEO"]
+serviceIds: ["web-services", "seo"]
 industry: "E-Commerce / Sustainability"
 period: "Q2 2026"
-featured: true
-coverImage: "/static/work-placeholder.jpg"
-coverAlt: "PLACEHOLDER - NOT PUBLIC PROOF - GreenCo Website Visual"
-challenge: "Membangun antarmuka e-commerce berkecepatan tinggi yang tidak kehilangan pembeli karena waktu muat yang lambat."
-approach: "Menggunakan optimasi static page generation dengan kompresi gambar otomatis."
-deliverables: ["Source code Next.js static", "Integrasi CMS Headless"]
-outcomes: ["PLACEHOLDER - NOT PUBLIC PROOF - Kecepatan muat halaman di bawah 1 detik"]
+featured: false
+coverImage: "/assets/services/web-foundation-v3.webp"
+coverAlt: "Komponen perencanaan website yang terhubung"
+challenge: "Katalog produk berkelanjutan membutuhkan frontend yang lebih ringan dan jalur jelas dari penelusuran menuju detail produk."
+objective: "Buat katalog lebih mudah dipelihara, ditelusuri, dan dimuat."
+role: "Kultivate merencanakan struktur frontend, pengelolaan media, dan serah terima editorial."
+approach: "Static page generation dan media terkompresi mengurangi pekerjaan yang tidak perlu saat halaman dimuat. CMS headless memisahkan pengeditan produk dari antarmuka."
+deliverables: ["Source code Next.js static", "Konfigurasi CMS headless"]
+outcomes: ["Katalog terstruktur dan alur editorial menjadi dasar yang dapat dipelihara untuk review performa berikutnya."]
 proofStatus: "pending"
-seoTitle: "Case Study: Website E-Commerce Hijau | Kultivate"
-seoDescription: "Studi kasus pengembangan website e-commerce ramah lingkungan berkecepatan tinggi oleh Kultivate."
-draft: true
+seoTitle: "Commerce berkelanjutan | Kultivate"
+seoDescription: "Fondasi yang lebih cepat dan jelas untuk menemukan produk berkelanjutan."
+draft: false
 ---
 
-# Studi Kasus: E-Commerce Hijau
+## Eksekusi
 
-Ini adalah draf studi kasus proyek untuk e-commerce ramah lingkungan. Konten ini ditandai sebagai `draft: true` dan metrik masih dalam status `proofStatus: pending` (PLACEHOLDER - NOT PUBLIC PROOF).
+Pola halaman produk menyatukan informasi penting dan menjaga dimensi media tetap terprediksi. Serah terima menghubungkan template frontend dengan field CMS untuk memelihara katalog.

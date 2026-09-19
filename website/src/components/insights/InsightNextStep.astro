@@ -1,0 +1,24 @@
+---
+interface Props { locale: 'id' | 'en'; category: string; }
+const { locale, category } = Astro.props;
+const isId = locale === 'id';
+// Internal provenance: provisional editorial bridge; article content stays intact.
+const prompts: Record<string, [string, string]> = {
+  SEO: ['Hubungkan pertanyaan pencarian dengan halaman yang perlu diprioritaskan.', 'Connect search questions with the pages that deserve attention first.'],
+  Website: ['Tentukan bagian pengalaman website yang paling perlu diperjelas.', 'Identify which part of the website experience needs attention first.'],
+  Content: ['Pilih pertanyaan pelanggan yang paling penting untuk dijawab berikutnya.', 'Choose the customer question that matters most to answer next.'],
+};
+const prompt = (prompts[category] ?? ['Mulai dari hambatan bisnis yang paling terasa saat ini.', 'Start with the business constraint that matters most right now.'])[isId ? 0 : 1];
+---
+<aside class="insight-next-step" aria-labelledby="insight-next-title">
+  <h2 id="insight-next-title">{isId ? 'Ubah insight ini menjadi prioritas' : 'Turn this insight into a priority'}</h2>
+  <p>{prompt} {isId ? 'Website Growth Roadmap membantu Anda menilai arah pekerjaan sebelum menentukan scope.' : 'The Website Growth Roadmap helps you consider the direction of the work before defining its scope.'}</p>
+  <a href={`/${locale}/services/#website-growth-roadmap`}>{isId ? 'Buka Website Growth Roadmap' : 'Open the Website Growth Roadmap'} <span aria-hidden="true">↗</span></a>
+</aside>
+<style>
+  .insight-next-step { margin-top: 48px; padding: clamp(24px, 4vw, 40px); border: 1px solid #bccbd6; border-radius: 8px; background: #e4edf3; color: #102b42; }
+  h2 { color: #102b42; font-size: clamp(1.5rem, 2.4vw, 2.1rem); line-height: 1.2; letter-spacing: -.025em; margin-bottom: 16px; }
+  p { color: #102b42; max-width: 65ch; line-height: 1.7; margin-bottom: 22px; }
+  a { display: inline-block; color: #123f62; text-decoration: underline; text-underline-offset: 5px; line-height: 1.65; }
+  a:focus-visible { outline: 2px solid #123f62; outline-offset: 6px; }
+</style>

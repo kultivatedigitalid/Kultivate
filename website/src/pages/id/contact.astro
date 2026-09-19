@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactSuccessModal from '../../components/contact/ContactSuccessModal.astro';
+import ContactNextSteps from '../../components/contact/ContactNextSteps.astro';
 import { siteConfig } from '../../data/site';
 import { useTranslations } from '../../i18n/routes';
 
@@ -28,22 +29,22 @@ const t = useTranslations(locale);
             <div class="form-row">
               <div class="form-group">
                 <label for="name" class="form-label">{t('contact.name')} <span class="required">*</span></label>
-                <input type="text" id="name" name="name" required placeholder={t('contact.placeholder_name')} class="form-input" />
+                <input type="text" id="name" name="name" autocomplete="name" required placeholder={t('contact.placeholder_name')} class="form-input" />
               </div>
               <div class="form-group">
                 <label for="company" class="form-label">{t('contact.company')} <span class="required">*</span></label>
-                <input type="text" id="company" name="company" required placeholder={t('contact.placeholder_company')} class="form-input" />
+                <input type="text" id="company" name="company" autocomplete="organization" required placeholder={t('contact.placeholder_company')} class="form-input" />
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="email" class="form-label">{t('contact.email')} <span class="required">*</span></label>
-                <input type="email" id="email" name="email" required placeholder={t('contact.placeholder_email')} class="form-input" />
+                <input type="email" id="email" name="email" autocomplete="email" required placeholder={t('contact.placeholder_email')} class="form-input" />
               </div>
               <div class="form-group">
                 <label for="whatsapp" class="form-label">{t('contact.whatsapp')} <span class="required">*</span></label>
-                <input type="tel" id="whatsapp" name="whatsapp" required placeholder={t('contact.placeholder_whatsapp')} class="form-input" />
+                <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" required placeholder={t('contact.placeholder_whatsapp')} class="form-input" />
               </div>
             </div>
 
@@ -132,6 +133,7 @@ const t = useTranslations(locale);
           </div>
         </div>
       </div>
+      <ContactNextSteps locale={locale} />
     </div>
     </section>
   </div>

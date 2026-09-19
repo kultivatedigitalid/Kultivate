@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import InteriorHero from '../../components/shared/InteriorHero.astro';
-import FinalCTA from '../../components/home/FinalCTA.astro';
 import { siteConfig } from '../../data/site';
 
 const locale = 'id';
@@ -62,7 +61,6 @@ const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURICompon
   </section>
   </div>
 
-  <FinalCTA locale={locale} />
 </BaseLayout>
 
 <style>

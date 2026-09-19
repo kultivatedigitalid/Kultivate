@@ -1,14 +1,19 @@
 ---
-import { getLearningSeries, type LearningCategory, type LearningLocale } from '../../data/learning';
+import { getLearningSeries, type LearningLocale } from '../../data/learning';
+import { editorialItems } from '../../data/editorial';
 
 interface Props {
   locale: LearningLocale;
-  serviceId: LearningCategory;
+  serviceId: string;
 }
 
 const { locale, serviceId } = Astro.props;
 const series = getLearningSeries().find((item) => item.category === serviceId);
-const serviceLabel = serviceId === 'seo' ? 'SEO' : 'Web Services';
+const serviceLabels: Record<string, string> = { seo: 'SEO', 'web-services': 'Web Services', 'visual-strategy': 'Visual Strategy', 'social-media-management': 'Social Media Management' };
+const serviceLabel = serviceLabels[serviceId];
+// Internal provenance: provisional bridge to existing editorial content.
+const articleCategory = serviceId === 'visual-strategy' ? 'Strategy' : 'Content';
+const article = editorialItems[locale].find(item => item.category === articleCategory) ?? editorialItems[locale][0];
 const copy = locale === 'id'
   ? {
       kicker: 'LEARN',
@@ -22,7 +27,15 @@ const copy = locale === 'id'
       body: 'Start with the course closest to the problems above. It helps you understand the important questions before choosing a scope of work.',
       cta: series ? `Start ${series.title.en}` : 'Explore Learn',
     };
-const destination = series ? `/${locale}/learn/${series.slug}/` : `/${locale}/learn/`;
+if (!series) {
+  copy.kicker = locale === 'id' ? 'INSIGHT TERKAIT' : 'RELATED INSIGHT';
+  copy.title = article.title;
+  copy.body = serviceId === 'visual-strategy'
+    ? (locale === 'id' ? 'Sebelum menentukan arah visual, perjelas prioritas bisnis yang harus didukungnya. Artikel ini membantu Anda memulai dari keputusan tersebut.' : 'Before choosing a visual direction, clarify the business priority it needs to support. This article helps you start with that decision.')
+    : (locale === 'id' ? 'Pertanyaan pelanggan dapat menjadi dasar tema dan ritme publikasi social media. Mulai dari prinsip konten dalam artikel ini.' : 'Customer questions can guide social media themes and publishing rhythm. Start with the content principles in this article.');
+  copy.cta = locale === 'id' ? 'Baca artikel' : 'Read article';
+}
+const destination = series ? `/${locale}/learn/${series.slug}/` : `/${locale}/insights/${article.slug}/`;
 ---
 
 <aside class="service-learning-link flow-section" aria-labelledby={`service-learning-${serviceId}`}>

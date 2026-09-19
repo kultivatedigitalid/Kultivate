@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ServiceHero from '../../../components/services/ServiceHero.astro';
+import ServiceEvidence from '../../../components/services/ServiceEvidence.astro';
 import ServiceProblems from '../../../components/services/ServiceProblems.astro';
 import ServiceScope from '../../../components/services/ServiceScope.astro';
 import ServiceProcess from '../../../components/services/ServiceProcess.astro';
@@ -105,8 +106,6 @@ const defaultFaqs = [
     locale={locale}
   />
 
-  {['seo', 'web-services'].includes(service.id) && <ServiceLearningPreview locale={locale} serviceId={service.id} />}
-
   <ServiceScope
     heading="Bagian yang dapat kami tangani"
     scopes={scopeItems}
@@ -119,7 +118,11 @@ const defaultFaqs = [
     locale={locale}
   />
 
+  <ServiceEvidence locale={locale} serviceId={service.id} serviceTitle={service.title} />
+
   <ServicePrinciples locale={locale} service={service} />
+
+  <ServiceLearningPreview locale={locale} serviceId={service.id} />
 
   <ServiceFAQ
     heading="Pertanyaan yang sering diajukan"

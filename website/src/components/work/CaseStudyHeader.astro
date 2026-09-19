@@ -25,9 +25,6 @@ const { title, client, industry, period, services, summary, coverImage, coverAlt
         </svg>
         <span>{locale === 'id' ? 'Kembali ke Karya' : 'Back to Work'}</span>
       </a>
-      {proofStatus === 'pending' && (
-        <span class="proof-badge text-mono">PLACEHOLDER - NOT PUBLIC PROOF</span>
-      )}
     </div>
 
     <h1 class="case-title">{title}</h1>
@@ -42,10 +39,10 @@ const { title, client, industry, period, services, summary, coverImage, coverAlt
         <span class="detail-label text-mono">{locale === 'id' ? 'Industri' : 'Industry'}</span>
         <span class="detail-value">{industry}</span>
       </div>
-      <div class="detail-item">
+      {period && <div class="detail-item">
         <span class="detail-label text-mono">{locale === 'id' ? 'Periode' : 'Period'}</span>
         <span class="detail-value">{period}</span>
-      </div>
+      </div>}
       <div class="detail-item">
         <span class="detail-label text-mono">{locale === 'id' ? 'Layanan' : 'Services'}</span>
         <div class="detail-tags">
@@ -58,7 +55,7 @@ const { title, client, industry, period, services, summary, coverImage, coverAlt
   </div>
 
   <div class="case-hero-media">
-    <img src={coverImage} alt={coverAlt} loading="eager" fetchpriority="high" class="case-hero-image" />
+    <img src={coverImage} alt={coverAlt} width="1536" height="1024" loading="eager" fetchpriority="high" class="case-hero-image" />
   </div>
 </header>
 
@@ -86,14 +83,6 @@ const { title, client, industry, period, services, summary, coverImage, coverAlt
     color: var(--cyan-glow);
   }
 
-  .proof-badge {
-    font-size: 0.6875rem;
-    color: var(--warning);
-    background-color: rgba(7, 11, 18, 0.85);
-    padding: 2px 8px;
-    border-radius: 4px;
-    border: 1px solid var(--slate);
-  }
 
   .case-title {
     font-size: clamp(2rem, 5vw, 3.25rem);
