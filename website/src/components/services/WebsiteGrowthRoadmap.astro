@@ -193,6 +193,7 @@ const questions = quizBlueprint.map((question, index) => ({
   class="roadmap flow-section"
   aria-labelledby="quiz-title"
   data-service-quiz
+  data-persistent-field
   data-load-state="pending"
   data-locale={locale}
   data-origin={origin}
@@ -555,16 +556,13 @@ const questions = quizBlueprint.map((question, index) => ({
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    opacity: 0;
+    opacity: 1;
     background:radial-gradient(ellipse 70% 35% at 35% 45%,#f0f7fa,#cfe5f1 48%,transparent 100%),
       linear-gradient(180deg,transparent,#9ebed5 22%,#e3f0f7 42%,#b8d4e7 72%,transparent);
     mask-image:linear-gradient(180deg,transparent,#000 15%,#000 82%,transparent);
     transition: opacity 520ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .roadmap:has(.quiz-intro:not([hidden]))::before {
-    opacity: 1;
-  }
 
   .quiz-shell {
     position: relative;
@@ -650,7 +648,7 @@ const questions = quizBlueprint.map((question, index) => ({
     grid-template-rows: auto minmax(0, 1fr) auto;
     border-radius: 12px;
     padding: clamp(24px, 4vh, 38px) clamp(24px, 6vw, 84px) 24px;
-    background: rgba(244, 247, 251, 0.2);
+    background: transparent;
   }
 
   .quiz-progress { width: min(100%, 760px); display: grid; grid-template-columns: auto minmax(120px, 320px); gap: 24px; align-items: center; justify-content: center; margin-inline: auto; }
@@ -843,4 +841,26 @@ const questions = quizBlueprint.map((question, index) => ({
   @media (prefers-reduced-motion: reduce) {
     .recommendation-loader::after { animation: none; transform: translateY(-50%) scaleX(1); }
   }
+  /* One continuous light field through intro, questions and recommendation. */
+  :global(.site-color-field.site-color-field--persistent),
+  :global(#main-content .roadmap[data-persistent-field]::before) {
+    mask-image: linear-gradient(180deg, transparent, #000 var(--field-spread), #000 calc(100% - var(--field-spread)), transparent);
+  }
+  .roadmap { --cloud-white: #081f30; --mist: #081f30; --steel: #334e62; --signal-ice: #153f5a; }
+  .roadmap .quiz-meta, .quiz-intro small, .quiz-intro p, .quiz-progress > span, .question-hint, .quiz-back,
+  .consultation-support, .result-block > .text-mono, .result-block p,
+  .result-block :global(li), .quiz-reset, .quiz-calculating p { color: #081f30; }
+  .roadmap .section-kicker, .roadmap [data-service-link] { color: #081f30; }
+  .progress-track { background: rgba(18, 53, 77, .2); }
+  .answer-option { background: rgba(244, 249, 252, .65); color: #081f30; }
+  .answer-option[aria-pressed='true'] { background: #143c58; color: #f5f9fc; }
+  .answer-option:focus-visible, .quiz-back:focus-visible, .quiz-reset:focus-visible,
+  .roadmap a:focus-visible, .roadmap .btn:focus-visible { outline: 2px solid #143c58; outline-offset: 4px; }
+  .roadmap .btn { background: #0b2234; color: #f5f9fc; border-color: #0b2234; box-shadow: none; }
+  .service-combination :global(span) { display: inline-block; padding: 7px 11px; border: 1px solid; border-radius: 999px; font-size: .8rem; line-height: 1.4; color: #081f30; border-color: rgba(18, 53, 77, .3); }
+  .service-combination :global(span[data-priority='primary']) { background: rgba(240, 247, 251, .55); color: #081f30; border-color: #3a607a; }
+  .quiz-reset { text-decoration-color: currentColor; }
+  .recommendation-loader span { background: #163f59; box-shadow: none; }
+  .recommendation-loader::before { background: rgba(18, 53, 77, .2); }
+  @media (hover: hover) and (pointer: fine) { .answer-option:not([aria-pressed='true']):hover { background: #eaf3f8; color: #081f30; } .quiz-back:not(:disabled):hover { color: #081522; } }
 </style>

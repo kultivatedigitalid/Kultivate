@@ -1,41 +1,36 @@
 ---
 interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
-// Internal provenance: provisional expectation copy; no response-time promise.
-const copy = locale === 'id'
-  ? { label: 'Setelah dikirim', title: 'Langkah berikutnya', steps: [
-      'Kirim konteks — Ceritakan tujuan, hambatan, dan kebutuhan Anda melalui formulir atau pesan langsung.',
-      'Kami meninjau — Kultivate membaca konteks dan pertanyaan Anda sebelum merekomendasikan layanan.',
-      'Discovery singkat — Konsultasi pertama gratis untuk memperjelas kebutuhan, kecocokan, dan prioritas.',
-      'Rekomendasi langkah — Kami menjelaskan scope dan biaya jika ada pekerjaan yang relevan. Jika belum tepat, kami menyampaikannya dengan jelas.'
-    ], note: 'Anda dapat mengevaluasi rekomendasi sebelum memutuskan untuk melanjutkan.' }
-  : { label: 'After submission', title: 'What happens next', steps: [
-      'Submit your context — Share your objective, constraints and needs through the form or a direct message.',
-      'Kultivate reviews — We read your context and questions before recommending a service.',
-      'Short discovery — Your first consultation is free and helps clarify needs, fit and priorities.',
-      'Recommended next step — We explain the scope and pricing if there is relevant work to do. If the fit is not right, we say so clearly.'
-    ], note: 'You can review the recommendation before deciding to proceed.' };
-
+// Internal provenance: provisional working copy; the 1–2 working day expectation is explicitly requested by the team.
+const steps = locale === 'id' ? [
+  ['Tunggu 1–2 hari kerja', 'Setelah inquiry Anda terkirim.'],
+  ['Kami menghubungi Anda', 'Melalui email atau WhatsApp.'],
+  ['Lengkapi konteks', 'Ceritakan tujuan dan hambatan Anda.'],
+  ['Kami meninjau', 'Menilai kecocokan dan prioritas.'],
+  ['Discovery singkat', 'Konsultasi pertama tanpa biaya.'],
+  ['Perjelas scope', 'Kami jelaskan pekerjaan dan langkah berikutnya.'],
+] : [
+  ['Allow 1–2 working days', 'After sending your enquiry.'],
+  ['We reach out', 'By email or WhatsApp.'],
+  ['Share your context', 'Tell us your goals and constraints.'],
+  ['We review', 'We assess fit and priorities.'],
+  ['Short discovery', 'A free first conversation.'],
+  ['Clarify the scope', 'We explain the work and next steps.'],
+];
 ---
-
 <section class="next-steps-card" aria-labelledby="contact-next-title">
-  <span class="text-mono">{copy.label}</span>
-  <h2 id="contact-next-title">{copy.title}</h2>
-  <ol>
-    {copy.steps.map((step, index) => (
-      <li><span class="text-mono">0{index + 1}</span><p>{step}</p></li>
-    ))}
-  </ol>
-  <p class="next-note">{copy.note}</p>
+  <h2 id="contact-next-title">{locale === 'id' ? 'Langkah berikutnya' : 'What happens next'}</h2>
+  <ol>{steps.map(([title, description], index) => <li>
+    <span class="step-number" aria-hidden="true">{index + 1}</span>
+    <div><h3>{title}</h3><p>{description}</p></div>
+  </li>)}</ol>
 </section>
-
 <style>
-  .next-steps-card { margin-top: 64px; padding: clamp(24px, 4vw, 48px); background: var(--deep-navy); }
-  .next-steps-card > .text-mono { color: var(--mist); }
-  .next-steps-card h2 { margin: 12px 0 22px; font-size: 1.25rem; font-weight: 650; line-height: 1.2; }
-  .next-steps-card ol { display: grid; gap: 16px; list-style: none; }
-  .next-steps-card li { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 10px; }
-  .next-steps-card li > span { padding-top: 3px; color: var(--mist); font-size: 0.8rem; }
-  .next-steps-card li p { color: rgba(226, 234, 243, 0.76); font-size: 1rem; line-height: 1.55; }
-  .next-note { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(89, 106, 130, 0.34); color: var(--steel); font-size: .94rem; line-height: 1.5; }
+  .next-steps-card { padding: 0; border: 0; border-radius: 0; background: transparent; }
+  h2 { margin-bottom: 24px; color: var(--cloud-white); font-size: 1.25rem; font-weight: 650; line-height: 1.2; }
+  ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 20px; list-style: none; }
+  li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; align-items: baseline; }
+  .step-number { color: var(--signal-ice); font-size: .8rem; }
+  h3 { margin-bottom: 5px; font-size: .94rem; font-weight: 600; line-height: 1.4; color: var(--cloud-white); }
+  p { font-size: .9rem; line-height: 1.5; color: var(--mist); }
 </style>

@@ -1,0 +1,57 @@
+---
+interface Props {
+  locale: 'en' | 'id';
+  intro: string;
+  updated: string;
+  sections: { id: string; title: string }[];
+}
+const { locale, intro, updated, sections } = Astro.props;
+const title = locale === 'id' ? 'Kebijakan Privasi' : 'Privacy Policy';
+---
+<section class="privacy-document" aria-labelledby="privacy-title">
+  <div class="container privacy-shell">
+    <header class="privacy-heading">
+      <h1 id="privacy-title">{title}</h1>
+      <p class="privacy-updated">{updated}</p>
+      <p class="privacy-intro">{intro}</p>
+    </header>
+    <div class="privacy-layout">
+      <nav class="privacy-nav" aria-label={locale === 'id' ? 'Isi kebijakan privasi' : 'Privacy policy contents'}>
+        <p>{locale === 'id' ? 'Di halaman ini' : 'On this page'}</p>
+        <ol>{sections.map(section => <li><a href={`#${section.id}`}>{section.title}</a></li>)}</ol>
+        <a class="privacy-home" href={`/${locale}/`}>{locale === 'id' ? 'Kembali ke website' : 'Back to the website'} <span aria-hidden="true">↗</span></a>
+      </nav>
+      <div class="privacy-body"><slot /></div>
+    </div>
+  </div>
+</section>
+<style>
+  :global(body:has(.privacy-document) .header) { background: #070b12; }
+  .privacy-document { position: relative; background: #f3f6f8; color: #102b42; padding: clamp(120px, 12vw, 168px) 0 clamp(72px, 9vw, 128px); }
+  .privacy-shell { --privacy-nav-width: 220px; --privacy-gap: clamp(40px, 6vw, 88px); max-width: 1184px; }
+  .privacy-heading { margin-left: calc(var(--privacy-nav-width) + var(--privacy-gap)); margin-bottom: 48px; }
+  h1 { color: #102b42; font-size: clamp(2.5rem, 4.6vw, 4.5rem); line-height: 1.05; font-weight: 570; letter-spacing: -.035em; margin-bottom: 28px; }
+  .privacy-updated { color: #40566a; font-size: .9rem; margin-bottom: 16px; }
+  .privacy-intro { color: #30495e; max-width: 65ch; font-size: 1.08rem; line-height: 1.7; }
+  .privacy-layout { display: grid; grid-template-columns: var(--privacy-nav-width) minmax(0, 1fr); gap: var(--privacy-gap); align-items: start; }
+  .privacy-nav { position: sticky; top: 112px; }
+  .privacy-nav p { margin-bottom: 18px; color: #102b42; font-size: .94rem; font-weight: 650; }
+  .privacy-nav ol { list-style: none; display: grid; gap: 4px; }
+  .privacy-nav a { display: inline-block; color: #30495e; padding: 7px 0; font-size: .94rem; line-height: 1.5; }
+  .privacy-nav a:hover { color: #124f76; text-decoration: underline; text-underline-offset: 4px; }
+  .privacy-nav .privacy-home { margin-top: 24px; color: #185b83; }
+  .privacy-body { min-width: 0; max-width: 72ch; }
+  .privacy-body :global(section) { margin-bottom: 40px; scroll-margin-top: 108px; }
+  .privacy-body :global(section:last-child) { margin-bottom: 0; }
+  .privacy-body :global(h2) { color: #102b42; font-size: clamp(1.4rem, 2.2vw, 1.85rem); letter-spacing: -.02em; line-height: 1.25; margin-bottom: 16px; font-weight: 600; }
+  .privacy-body :global(p) { color: #30495e; font-size: 1rem; line-height: 1.8; }
+  .privacy-body :global(a) { color: #185b83; text-decoration: underline; text-underline-offset: 4px; }
+  .privacy-document a:focus-visible, .privacy-body :global(a:focus-visible) { outline: 2px solid #185b83; outline-offset: 4px; }
+  @media (max-width: 760px) {
+    .privacy-heading { margin-left: 0; margin-bottom: 32px; }
+    .privacy-layout { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .privacy-nav { position: static; }
+    .privacy-nav ol { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; }
+    .privacy-nav .privacy-home { margin-top: 16px; }
+  }
+</style>

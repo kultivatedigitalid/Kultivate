@@ -1,10 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import InteriorHero from '../../components/shared/InteriorHero.astro';
+import PrivacyPolicy from '../../components/legal/PrivacyPolicy.astro';
 import { siteConfig } from '../../data/site';
 
 const locale = 'en';
 const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURIComponent('Data deletion request')}&body=${encodeURIComponent('Full name:\nEmail address or WhatsApp number used on the form:\nApproximate form submission date:\n\nPlease delete the data I submitted through the Kultivate website form.')}`;
+const sections = [
+  { id: 'data-collected', title: 'Data We Collect' },
+  { id: 'use-and-access', title: 'Use and Access' },
+  { id: 'form-processing', title: 'Form Processing' },
+  { id: 'retention-and-deletion', title: 'Retention and Deletion' },
+  { id: 'analytics-and-cookies', title: 'Analytics and Cookies' },
+  { id: 'privacy-contact', title: 'Privacy Contact' }
+];
 ---
 
 <BaseLayout
@@ -12,124 +20,42 @@ const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURICompon
   title="Privacy Policy - Kultivate"
   description="Kultivate privacy policy regarding visitor personal data protection and form submissions."
 >
-  <div class="privacy-page page-flow">
-  <InteriorHero
-    label="PRIVACY"
-    title="Privacy without the puzzle"
-    description="What we collect, why it is needed, and how you stay in control."
-    image="/assets/banners/privacy-minimal.webp"
-    imageAlt="Transparent planes moving into exact alignment"
-    compact
-  />
-
-  <section class="section privacy-content-section flow-section">
-    <div class="container">
-      <div class="privacy-card card">
-        <h2>1. Data We Collect</h2>
-        <p>
-          We retain the information you submit through the contact form: name, company, email, WhatsApp number, service interest, project summary, and target timeline.
-        </p>
-
-        <h2>2. Use and Access</h2>
-        <p>
-          We use this data to review your needs, respond to inquiries, prepare a scope of work, and communicate about the project. Access is limited to Kultivate team members who need it for these purposes.
-        </p>
-
-        <h2>3. Form Processing</h2>
-        <p>
-          Form submissions are delivered through Formspree as our form processor. Beyond that technical processing, Kultivate does not sell or share form data with other parties for marketing.
-        </p>
-
-        <h2>4. Retention and Deletion</h2>
-        <p>
-          Kultivate retains form data until you request deletion. Use our <a href={privacyRequestHref}>data deletion email template</a> so we can locate the correct information and confirm when the request is complete.
-        </p>
-
-        <h2>5. Analytics and Cookies</h2>
-        <p>
-          This website currently does not use analytics or tracking cookies. Cookies required by third-party services are limited to the technical needs of those services.
-        </p>
-
-        <h2>6. Privacy Contact</h2>
-        <p>
-          Questions, corrections, or deletion requests can be sent to <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
-        </p>
-
-        <p class="last-updated text-mono">Effective date: August 13, 2026</p>
-      </div>
-    </div>
-  </section>
-  </div>
-
+  <PrivacyPolicy locale={locale} intro="What we collect, why it is needed, and how you stay in control." updated="Effective date: August 13, 2026" sections={sections}>
+    <section id="data-collected">
+      <h2>1. Data We Collect</h2>
+      <p>
+        We retain the information you submit through the contact form: name, company, email, WhatsApp number, service interest, project summary, and target timeline.
+      </p>
+    </section>
+    <section id="use-and-access">
+      <h2>2. Use and Access</h2>
+      <p>
+        We use this data to review your needs, respond to inquiries, prepare a scope of work, and communicate about the project. Access is limited to Kultivate team members who need it for these purposes.
+      </p>
+    </section>
+    <section id="form-processing">
+      <h2>3. Form Processing</h2>
+      <p>
+        Form submissions are delivered through Formspree as our form processor. Beyond that technical processing, Kultivate does not sell or share form data with other parties for marketing.
+      </p>
+    </section>
+    <section id="retention-and-deletion">
+      <h2>4. Retention and Deletion</h2>
+      <p>
+        Kultivate retains form data until you request deletion. Use our <a href={privacyRequestHref}>data deletion email template</a> so we can locate the correct information and confirm when the request is complete.
+      </p>
+    </section>
+    <section id="analytics-and-cookies">
+      <h2>5. Analytics and Cookies</h2>
+      <p>
+        This website currently does not use analytics or tracking cookies. Cookies required by third-party services are limited to the technical needs of those services.
+      </p>
+    </section>
+    <section id="privacy-contact">
+      <h2>6. Privacy Contact</h2>
+      <p>
+        Questions, corrections, or deletion requests can be sent to <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+      </p>
+    </section>
+  </PrivacyPolicy>
 </BaseLayout>
-
-<style>
-  .privacy-hero {
-    padding-top: var(--spacing-xxl);
-    padding-bottom: var(--spacing-xl);
-    border-bottom: 1px solid var(--slate);
-  }
-
-  .section-label {
-    display: inline-block;
-    font-size: 0.75rem;
-    color: var(--cyan-glow);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .page-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    color: var(--cloud-white);
-    line-height: 1.1;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .page-intro {
-    font-size: clamp(1.125rem, 2vw, 1.375rem);
-    color: var(--mist);
-    max-width: 720px;
-    line-height: 1.5;
-  }
-
-  .privacy-content-section {
-    padding-top: var(--spacing-xxl);
-    padding-bottom: var(--spacing-xxl);
-  }
-
-  .privacy-card {
-    padding: 0;
-    background: transparent;
-    max-width: 760px;
-    margin: 0 auto;
-  }
-
-  .privacy-card h2 {
-    font-size: 1.375rem;
-    font-weight: 700;
-    color: var(--cyan-glow);
-    margin-top: var(--spacing-lg);
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .privacy-card h2:first-of-type {
-    margin-top: 0;
-  }
-
-  .privacy-card p {
-    font-size: 1rem;
-    color: var(--mist);
-    line-height: 1.7;
-    margin-bottom: var(--spacing-md);
-  }
-
-  .last-updated {
-    font-size: 0.8125rem;
-    color: var(--steel);
-    margin-top: var(--spacing-xl);
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--slate);
-  }
-</style>

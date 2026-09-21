@@ -6,7 +6,6 @@ interface Props { locale: 'id' | 'en'; }
 
 const { locale } = Astro.props;
 const items = await getProjects(locale);
-const featured = items.find(({ data }) => data.featured) ?? items[0];
 const clusters = Array.from({ length: Math.ceil(items.length / 3) }, (_, index) => items.slice(index * 3, index * 3 + 3));
 const copy = locale === 'id'
   ? {
@@ -30,21 +29,6 @@ const copy = locale === 'id'
   imageAlt={locale === 'id' ? 'Tiga bidang obsidian yang terbuka dari satu garis biru' : 'Three obsidian planes opening from one blue seam'}
   variant="work"
 />
-
-{featured && <section class="featured-work flow-section" aria-labelledby="featured-work-title">
-  <div class="container featured-work__layout">
-    <a class="featured-work__image" href={`/${locale}/work/${featured.data.slug}/`} aria-label={`${locale === 'id' ? 'Lihat studi kasus' : 'View case study'}: ${projectName(featured)}`}>
-      <img src={featured.data.coverImage} alt={featured.data.coverAlt} width="1536" height="1024" loading="lazy" decoding="async" />
-    </a>
-    <div class="featured-work__copy">
-      <span class="section-kicker">{locale === 'id' ? 'Studi kasus pilihan' : 'Featured case study'}</span>
-      <h2 id="featured-work-title">{projectName(featured)} — {featured.data.descriptor}</h2>
-      <p>{featured.data.summary}</p>
-      <p class="featured-work__services">{featured.data.services.join(' · ')}</p>
-      <a class="link-hover-arrow" href={`/${locale}/work/${featured.data.slug}/`}><span>{locale === 'id' ? 'Lihat studi kasus' : 'View case study'}</span><span aria-hidden="true">↗</span></a>
-    </div>
-  </div>
-</section>}
 
 <section
   class="portfolio-section flow-section"
@@ -273,13 +257,6 @@ const copy = locale === 'id'
     .portfolio-item:nth-child(3) img { transform: none; }
   }
 
-  .featured-work { padding: clamp(64px, 8vw, 112px) 0; background: #0b1724; }
-  .featured-work__layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .8fr); gap: clamp(28px, 6vw, 88px); align-items: center; }
-  .featured-work__image { display: block; border-radius: 8px; overflow: hidden; }
-  .featured-work__image img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
-  .featured-work__copy h2 { margin: 18px 0; font-size: clamp(2rem, 3.3vw, 3.7rem); line-height: 1.08; letter-spacing: -.035em; }
-  .featured-work__copy p { max-width: 48ch; color: var(--mist); line-height: 1.65; }
-  .featured-work__copy .featured-work__services { margin: 22px 0; font-size: .9rem; color: var(--signal-ice); }
   .all-work-title { margin-bottom: 20px; font-size: clamp(2rem, 3vw, 3rem); }
   .portfolio-grid { gap: clamp(36px, 5vw, 64px); }
   .portfolio-context { margin: 18px 0 12px; color: var(--mist); font-size: .96rem; line-height: 1.6; }
@@ -287,8 +264,7 @@ const copy = locale === 'id'
   .portfolio-caption { flex-direction: column; align-items: flex-start; gap: 8px; opacity: 1; }
   .portfolio-caption span { max-width: none; color: var(--mist); text-align: left; }
   .portfolio-media::after { inset: 0; background: linear-gradient(180deg, transparent 35%, rgba(5, 8, 14, .97)); opacity: 1; }
-  .portfolio-item:focus-visible, .featured-work a:focus-visible { outline: 2px solid var(--signal-ice); outline-offset: 5px; border-radius: 8px; }
-  @media (max-width: 760px) { .featured-work__layout { grid-template-columns: minmax(0, 1fr); } }
+  .portfolio-item:focus-visible { outline: 2px solid var(--signal-ice); outline-offset: 5px; border-radius: 8px; }
 
 
 

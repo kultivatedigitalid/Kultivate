@@ -75,6 +75,12 @@ const copy = locale === 'id'
 </script>
 
 <style>
+  .learn-page :global(.hero-shell--insights) {
+    background: transparent;
+    mask-image: linear-gradient(180deg, #000 0%, #000 58%, rgba(0,0,0,.96) 70%, rgba(0,0,0,.65) 84%, rgba(0,0,0,.24) 94%, transparent 100%);
+  }
+  .learn-page.learn-page :global(.hero-shell--insights + .learn-directory::before) { display: none; }
+
   .learn-page :global(.hero-shell__media img) {
     filter: brightness(0.8) saturate(0.86);
   }

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { PredictiveArcCanvas } from '@designcodeio/threeui';
 import '@designcodeio/threeui/style.css';
 
-type Field = { id: number; top: number; height: number; visible: boolean; gallery: boolean };
+type Field = { id: number; top: number; height: number; visible: boolean; gallery: boolean; persistent: boolean };
 type Backdrop = { top: number; height: number; pageHeight: number; tileHeight: number; fields: Field[] };
 
 function RibbonTile({ top, height }: { top: number; height: number }) {
@@ -80,9 +80,9 @@ export default function SiteAtmosphere({ locale }: { locale: 'en' | 'id' }) {
         const gallery = target.classList.contains('portfolio-section');
         const spread = gallery ? 0 : bleed;
         const intro = target.querySelector<HTMLElement>('.quiz-intro');
-        return { id, gallery, top: bounds.top - mainBounds.top - spread,
+        return { id, gallery, persistent: target.hasAttribute('data-persistent-field'), top: bounds.top - mainBounds.top - spread,
           height: bounds.height + spread * 2,
-          visible: bounds.height > 0 && !target.hidden && (!intro || !intro.hidden) };
+          visible: bounds.height > 0 && !target.hidden && (target.hasAttribute('data-persistent-field') || !intro || !intro.hidden) };
       });
       const next = { top: mainBounds.top + scrollY, height: mainBounds.height,
         pageHeight: document.body.getBoundingClientRect().height,
@@ -119,7 +119,7 @@ export default function SiteAtmosphere({ locale }: { locale: 'en' | 'id' }) {
   return <>
     <div className="site-colors" aria-hidden="true" style={{ top: backdrop?.top ?? 0, height: backdrop?.height ?? 0 }}>
       {backdrop?.fields.map(field => <div key={field.id}
-        className={`site-color-field${field.gallery ? ' site-color-field--gallery' : ''}`}
+        className={`site-color-field${field.gallery ? ' site-color-field--gallery' : ''}${field.persistent ? ' site-color-field--persistent' : ''}`}
         style={{ top: field.top, height: field.height, opacity: field.visible ? 1 : 0 }} />)}
     </div>
     <div ref={root} className="site-atmosphere" aria-hidden="true" data-atmosphere-active={moving}
