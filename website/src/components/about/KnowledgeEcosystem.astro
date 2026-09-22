@@ -154,12 +154,14 @@ const copy = locale === 'id'
     min-height: 660px;
     display: grid;
     place-items: center;
+    grid-template-columns: minmax(0, 1fr);
     margin-top: -1px;
     padding: 84px 0 12px;
     background: transparent;
   }
 
   .ecosystem-shell {
+    min-width: 0;
     height: 100%;
     min-height: 0;
     display: grid;
@@ -274,7 +276,7 @@ const copy = locale === 'id'
 
   @media (max-width: 980px) {
     .knowledge-ecosystem { height: auto; min-height: 0; padding-block: clamp(76px, 10vw, 118px); }
-    .ecosystem-shell { height: auto; min-height: 0; grid-template-columns: 1fr; gap: 48px; }
+    .ecosystem-shell { height: auto; min-height: 0; grid-template-columns: minmax(0, 1fr); gap: 48px; }
     .ecosystem-copy h2 { max-width: 13ch; }
     .ecosystem-detail,
     .ecosystem-stage { display: none; }
@@ -287,7 +289,7 @@ const copy = locale === 'id'
   }
 
   @media (max-width: 600px) {
-    .ecosystem-mobile { grid-template-columns: 1fr; }
+    .ecosystem-mobile { grid-template-columns: minmax(0, 1fr); }
     .ecosystem-mobile article:nth-child(odd) { border-right: 0; }
   }
 
@@ -315,7 +317,7 @@ const copy = locale === 'id'
   .ecosystem-shell {
     height: 100%;
     min-height: 0;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto minmax(0, 1fr);
     gap: clamp(24px, 4vh, 42px);
     align-items: stretch;
@@ -355,6 +357,16 @@ const copy = locale === 'id'
     margin-inline: auto;
     overflow: visible;
     isolation: isolate;
+  }
+
+  /* The diagram owns a quiet foreground plane above the site ribbon. */
+  .ecosystem-stage::before {
+    content: '';
+    position: absolute;
+    inset: -16% -10%;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse closest-side at center, #091b2a 0%, rgba(9,27,42,.98) 52%, rgba(9,27,42,.6) 74%, transparent 100%);
   }
 
   .atom-orbits,
@@ -560,7 +572,7 @@ const copy = locale === 'id'
 
     .ecosystem-shell {
       height: 100%;
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       grid-template-rows: auto minmax(0, 1fr);
       gap: 18px;
     }
@@ -651,7 +663,7 @@ const copy = locale === 'id'
     z-index: -1;
     border: 1px solid rgba(207, 247, 255, 0.34);
     border-radius: 50%;
-    background: radial-gradient(circle at 38% 30%, rgba(103, 217, 255, 0.3), rgba(23, 107, 255, 0.1) 44%, rgba(7, 16, 26, 0.96) 76%);
+    background: radial-gradient(circle at 38% 30%, rgba(103, 217, 255, 0.3), rgba(23, 107, 255, 0.1) 44%, rgba(7, 16, 26, 0.96) 76%), #07101a;
     box-shadow: 0 0 72px rgba(23, 107, 255, 0.18);
     transform: scale(1);
     transition: border-color 260ms ease, box-shadow 360ms ease, transform 1100ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -755,7 +767,7 @@ const copy = locale === 'id'
     --ring-radius: var(--atom-radius);
     width: calc(var(--ring-radius) * 2);
     height: calc(var(--ring-radius) * 0.78);
-    border-color: rgba(103, 217, 255, 0.15);
+    border-color: rgba(103, 217, 255, 0.28);
   }
 
   .atom-orbits span:nth-child(even) {
@@ -943,22 +955,22 @@ const copy = locale === 'id'
 
   @media (max-width: 980px) {
     .knowledge-ecosystem { --atom-radius: clamp(92px, 25vw, 112px); }
-    .node-label { max-width: 106px; white-space: normal; font-size: 0.6rem; }
+    .node-label { max-width: clamp(60px, 18vw, 78px); white-space: normal; font-size: 0.65rem; }
 
     .expertise-node:nth-child(2) .node-label,
     .expertise-node:nth-child(3) .node-label,
     .expertise-node:nth-child(4) .node-label {
-      right: calc(50% + 14px);
-      left: auto;
-      text-align: right;
+      left: calc(50% + 14px);
+      right: auto;
+      text-align: left;
     }
 
     .expertise-node:nth-child(6) .node-label,
     .expertise-node:nth-child(7) .node-label,
     .expertise-node:nth-child(8) .node-label {
-      right: auto;
-      left: calc(50% + 14px);
-      text-align: left;
+      left: auto;
+      right: calc(50% + 14px);
+      text-align: right;
     }
   }
 

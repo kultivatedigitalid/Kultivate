@@ -32,7 +32,7 @@ body {
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  overflow-x: clip;
   background:
     radial-gradient(ellipse 60% 36% at 84% 4%, rgba(103, 217, 255, 0.055), transparent 72%),
     radial-gradient(ellipse 74% 50% at 18% 42%, rgba(23, 107, 255, 0.045), transparent 76%),

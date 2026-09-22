@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-17 · contrast, article navigation, and founder flow
+
+- Deepened Home service panels while preserving the muted blue background.
+- Feathered article artwork and scrims into the shared backdrop; kept bylines and navigation readable.
+- Made article contents sticky on desktop and a compact scrolling navigation strip on mobile.
+- Isolated the expertise atom from the background ribbon and corrected narrow-screen diagram sizing and labels.
+- Sized the founder portrait to the available viewport and placed the closing invitation inside the continuous profile background.
+- Verified English and Indonesian desktop/mobile views, article anchor navigation, 320 px screens, 620 px laptop height, and reduced motion; production build passes.
+
 ## 2026-09-16 · spacing and banner refinement
 
 - Restored compact portfolio gaps to staging values (12–22 px).

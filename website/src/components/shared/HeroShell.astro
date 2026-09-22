@@ -101,6 +101,7 @@ const centerBannerVisual = hasBannerMotion && variant !== 'home';
     --hero-description-color: rgba(6, 17, 27, 0.86);
     --hero-muted-color: rgba(6, 17, 27, 0.84);
     --hero-control-color: rgba(6, 17, 27, 0.9);
+    --hero-control-fill: rgba(234, 243, 248, 0.94);
     --hero-control-border: rgba(6, 17, 27, 0.3);
     --hero-control-hover-color: #030a11;
     --hero-control-hover-border: rgba(6, 17, 27, 0.52);
@@ -171,6 +172,14 @@ const centerBannerVisual = hasBannerMotion && variant !== 'home';
   .hero-shell--editorial-compact .hero-shell__content {
     transform: translateY(clamp(62px, 9vh, 84px));
   }
+
+  /* Fade artwork and scrim without fading the byline or navigation. */
+  .hero-shell--editorial-compact { background: transparent; }
+  .hero-shell--editorial-compact :global(.hero-visual),
+  .hero-shell--editorial-compact .hero-shell__readability {
+    mask-image: linear-gradient(180deg, #000 0%, #000 calc(100% - 220px), rgba(0,0,0,.85) calc(100% - 160px), rgba(0,0,0,.35) calc(100% - 80px), transparent 100%);
+  }
+  .hero-shell--editorial-compact .hero-shell__handoff { display: none; }
 
   .hero-shell__copy {
     width: min(100%, 920px);

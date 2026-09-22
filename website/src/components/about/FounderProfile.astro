@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import FinalCTA from '../home/FinalCTA.astro';
 import { founderCopy, founderIdentity, type FounderLocale } from '../../data/founder';
 
 interface Props {
@@ -158,6 +159,7 @@ const dateFormatter = new Intl.DateTimeFormat(locale === 'id' ? 'id-ID' : 'en-US
       </div>
     </div>
   </section>
+  <FinalCTA locale={locale} surface="founder-profile" />
 </article>
 
 <script>
@@ -197,7 +199,7 @@ const dateFormatter = new Intl.DateTimeFormat(locale === 'id' ? 'id-ID' : 'en-US
     display: grid;
     align-items: center;
     min-height: min(820px, 92svh);
-    padding: clamp(92px, 9vw, 116px) 0 clamp(48px, 5vw, 66px);
+    padding: clamp(96px, 10svh, 112px) 0 clamp(40px, 5vw, 60px);
   }
 
   .founder-intro__back {
@@ -223,7 +225,8 @@ const dateFormatter = new Intl.DateTimeFormat(locale === 'id' ? 'id-ID' : 'en-US
 
   .founder-portrait {
     position: relative;
-    width: min(100%, 450px);
+    width: min(100%, 420px, calc((100svh - 180px) * 0.8));
+    align-self: start;
     aspect-ratio: 4 / 5;
     overflow: hidden;
     border-radius: 8px;
@@ -526,7 +529,7 @@ const dateFormatter = new Intl.DateTimeFormat(locale === 'id' ? 'id-ID' : 'en-US
     }
 
     .founder-portrait {
-      width: min(78vw, 430px);
+      width: min(78vw, 420px, calc((100svh - 180px) * 0.8));
     }
 
     .founder-expertise__list {
@@ -550,7 +553,7 @@ const dateFormatter = new Intl.DateTimeFormat(locale === 'id' ? 'id-ID' : 'en-US
 
   @media (max-width: 640px) {
     .founder-intro {
-      padding: 64px 0 34px;
+      padding: 96px 0 34px;
     }
 
     .founder-intro__after {
@@ -564,10 +567,9 @@ const dateFormatter = new Intl.DateTimeFormat(locale === 'id' ? 'id-ID' : 'en-US
     }
 
     .founder-portrait {
-      width: 100%;
-      height: 220px;
-      max-height: none;
-      aspect-ratio: auto;
+      width: min(100%, 340px, calc((100svh - 160px) * 0.8));
+      height: auto;
+      aspect-ratio: 4 / 5;
     }
 
     .founder-portrait figcaption {

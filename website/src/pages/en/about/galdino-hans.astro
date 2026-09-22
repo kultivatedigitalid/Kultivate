@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import FounderProfile from '../../../components/about/FounderProfile.astro';
-import FinalCTA from '../../../components/home/FinalCTA.astro';
 import { founderCopy, founderIdentity, founderPersonSchema } from '../../../data/founder';
 import { breadcrumbSchema } from '../../../utils/seo';
 
@@ -30,5 +29,4 @@ const site = Astro.site ?? new URL('https://kultivate.id');
   ]}
 >
   <FounderProfile locale="en" insights={insights} />
-  <FinalCTA locale="en" surface="founder-profile" />
 </BaseLayout>

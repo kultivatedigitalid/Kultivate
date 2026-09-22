@@ -49,10 +49,10 @@ body { position:relative; isolation:isolate; }
 
 /* Slate surfaces and restrained image contrast sit comfortably in the light. */
 #main-content .light-field :is(.services-header p,.partnership-promises p,.partnership-statement,.principles-layout p,.learn-series-card p,.story-copy p) { color:#203d51; }
-#main-content .light-field .service-panel { background:#304f64; }
-#main-content .light-field .service-panel > img { opacity:.58; filter:brightness(1.08) contrast(.82) saturate(.82); }
-#main-content .light-field .service-panel::before { background:linear-gradient(180deg,rgba(33,65,86,.04),rgba(36,67,88,.45) 40%,#2b4a60); }
-#main-content .light-field .service-panel--support::before { background:linear-gradient(90deg,rgba(38,70,92,.96),rgba(42,73,93,.86) 55%,rgba(48,80,102,.32)); }
+#main-content .light-field .service-panel { background:#203f54; }
+#main-content .light-field .service-panel > img { opacity:.68; filter:brightness(1.02) contrast(.94) saturate(.88); }
+#main-content .light-field .service-panel::before { background:linear-gradient(180deg,rgba(17,40,58,.06),rgba(24,49,69,.48) 40%,#19374d); }
+#main-content .light-field .service-panel--support::before { background:linear-gradient(90deg,rgba(22,48,67,.97),rgba(29,57,77,.9) 55%,rgba(33,63,85,.38)); }
 #main-content .light-field .service-number { color:#c3d4df; }
 #main-content .light-field .service-copy p { color:#d2dfe7; }
 #main-content .light-field :is(.learn-series-card figure,.story-card figure) { background:#425f72; }

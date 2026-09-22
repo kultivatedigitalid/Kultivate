@@ -39,7 +39,7 @@ const copy = locale === 'id'
     <div class="container">
       <div class="article-layout">
         {toc.length > 0 && (
-          <aside class="article-toc" aria-label={copy.contents} data-article-toc data-reveal>
+          <aside class="article-toc" aria-label={copy.contents} data-article-toc>
             <span class="text-mono">{copy.contents}</span>
             <ol>
               {toc.map((heading, index) => (
@@ -157,7 +157,7 @@ const copy = locale === 'id'
   .article-surface {
     position: relative;
     padding: 1px 0 clamp(96px, 11vw, 148px);
-    background: linear-gradient(180deg, rgba(7, 11, 18, 0.28), rgba(6, 10, 17, 0.58) 58%, rgba(5, 8, 14, 0.5));
+    background: transparent;
   }
 
   .article-layout {
@@ -169,10 +169,22 @@ const copy = locale === 'id'
     align-items: start;
   }
 
+  .article-toc {
+    position: sticky;
+    top: 104px;
+    align-self: start;
+    max-height: calc(100svh - 136px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(103, 217, 255, 0.34) transparent;
+  }
+
   .article-toc > span {
     display: block;
     margin-bottom: 20px;
-    color: rgba(201, 211, 223, 0.48);
+    color: #a9bdce;
   }
 
   .article-toc ol {
@@ -187,7 +199,7 @@ const copy = locale === 'id'
     display: block;
     border-left: 1px solid rgba(89, 106, 130, 0.3);
     padding: 7px 0 7px 14px;
-    color: rgba(201, 211, 223, 0.64);
+    color: #b7c8d6;
     font-size: 0.82rem;
     line-height: 1.4;
     transition:
@@ -348,17 +360,25 @@ const copy = locale === 'id'
     }
   }
 
-  @media (min-width: 821px) and (min-height: 680px) {
-    .article-toc { position: sticky; top: 116px; }
-  }
-
   @media (max-width: 820px) {
     .article-layout { grid-template-columns: 1fr; }
 
     .article-toc {
+      top: 72px;
+      z-index: 2;
+      max-height: none;
+      overflow: visible;
       border-bottom: 1px solid rgba(89, 106, 130, 0.34);
-      padding-bottom: 30px;
+      padding: 14px 0 10px;
+      background: #0c1c2b;
     }
+
+    .article-toc > span { margin-bottom: 8px; }
+    .article-toc ol { flex-direction: row; gap: 12px; overflow-x: auto; padding: 0 4px 6px; }
+    .article-toc li { flex: 0 0 auto; max-width: 28ch; }
+    .article-toc a { padding: 6px 10px; border: 0; font-size: 0.78rem; }
+    .article-toc a[aria-current='location'] { background: #19384e; border-radius: 4px; transform: none; }
+    .article-body :global(h2) { scroll-margin-top: 208px; }
 
     .article-main { max-width: none; }
 
