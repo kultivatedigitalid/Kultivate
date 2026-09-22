@@ -1,0 +1,71 @@
+---
+import LearnSeriesCard from '../learn/LearnSeriesCard.astro';
+import { getLearningSeries, type LearningLocale } from '../../data/learning';
+interface Props { locale: LearningLocale; }
+const { locale } = Astro.props;
+const series = getLearningSeries();
+// Internal provenance: provisional preview copy; course content comes from the existing collection.
+const copy = locale === 'id'
+  ? { title: 'Belajar bersama Kultivate', description: 'Jelajahi course untuk memahami langkah berikutnya bagi bisnis Anda.', all: 'Lihat semua course', previous: 'Course sebelumnya', next: 'Course berikutnya', label: 'Preview course, geser untuk melihat lainnya' }
+  : { title: 'Learn with Kultivate', description: 'Explore courses to understand the next step for your business.', all: 'Explore all courses', previous: 'Previous courses', next: 'Next courses', label: 'Course previews, scroll to explore more' };
+---
+<section id="system" class="learn-preview flow-section" aria-labelledby="home-learn-title" data-scroll-key="home-system" data-course-preview>
+  <div class="container">
+    <header class="preview-header">
+      <div><h2 id="home-learn-title">{copy.title}</h2><p>{copy.description}</p></div>
+      <a class="preview-all" href={`/${locale}/learn/`}>{copy.all} <span aria-hidden="true">↗</span></a>
+    </header>
+    <div id="home-course-rail" class="course-rail" role="region" aria-label={copy.label} tabindex="0">
+      {series.map(item => <LearnSeriesCard locale={locale} series={item} compact />)}
+    </div>
+    <div class="preview-controls" hidden>
+      <button type="button" data-course-back aria-controls="home-course-rail" aria-label={copy.previous}><span aria-hidden="true">←</span></button>
+      <button type="button" data-course-next aria-controls="home-course-rail" aria-label={copy.next}><span aria-hidden="true">→</span></button>
+    </div>
+  </div>
+</section>
+<style>
+  .learn-preview { padding-block: clamp(56px, 7vw, 92px); }
+  .preview-header { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 28px; }
+  .preview-header h2 { color: var(--cloud-white); font-size: clamp(2rem, 3.3vw, 3.2rem); line-height: 1.08; font-weight: 540; letter-spacing: -.035em; }
+  .preview-header p { max-width: 52ch; margin-top: 14px; color: var(--mist); line-height: 1.6; }
+  .preview-all { flex: none; color: var(--signal-ice); min-height: 44px; display: inline-flex; gap: 12px; align-items: center; font-size: .9rem; }
+  .course-rail { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 48px) / 3); gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #7bacc9 #142c3e; padding-bottom: 18px; }
+  .course-rail > :global(article) { scroll-snap-align: start; min-width: 0; }
+  .preview-controls { display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px; }
+  .preview-controls[hidden] { display: none; }
+  .preview-controls button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #7994a8; border-radius: 50%; color: var(--cloud-white); font-size: 1.3rem; }
+  .preview-controls button:hover:not(:disabled) { background: #18364b; }
+  .preview-controls button:disabled { opacity: .4; cursor: default; }
+  .preview-controls button:focus-visible, .preview-all:focus-visible, .course-rail:focus-visible { outline: 2px solid var(--signal-ice); outline-offset: 3px; }
+  @media (max-width: 900px) { .course-rail { grid-auto-columns: calc((100% - 24px) / 2); } }
+  @media (max-width: 600px) { .preview-header { align-items: start; flex-direction: column; gap: 10px; } .course-rail { grid-auto-columns: 86%; gap: 18px; } .preview-header p { font-size: .95rem; } }
+</style>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-course-preview]').forEach(root => {
+    const rail = root.querySelector<HTMLElement>('.course-rail');
+    const previous = root.querySelector<HTMLButtonElement>('[data-course-back]');
+    const next = root.querySelector<HTMLButtonElement>('[data-course-next]');
+    const controls = root.querySelector<HTMLElement>('.preview-controls');
+    if (!rail || !previous || !next || !controls) return;
+    controls.hidden = false;
+    const update = () => {
+      previous.disabled = rail.scrollLeft <= 2;
+      next.disabled = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2;
+    };
+    const move = (direction: number) => {
+      const card = rail.firstElementChild as HTMLElement | null;
+      if (!card) return;
+      const stride = card.getBoundingClientRect().width + parseFloat(getComputedStyle(rail).columnGap);
+      const count = Math.max(1, Math.round(rail.clientWidth / stride));
+      rail.scrollBy({ left: direction * stride * count, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    };
+    previous.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
+    rail.addEventListener('scroll', update, { passive: true });
+    const observer = new ResizeObserver(update);
+    observer.observe(rail);
+    update();
+    document.addEventListener('astro:before-swap', () => observer.disconnect(), { once: true });
+  });
+</script>

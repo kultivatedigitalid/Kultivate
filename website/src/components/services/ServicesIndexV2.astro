@@ -5,9 +5,9 @@ interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
 const services = servicesData[locale];
 const copy = locale === 'id' ? {
-  title:'Layanan untuk prioritas Anda', description:'Search, website, visual, dan social media. Dimulai dari bisnis Anda dan cara pelanggan mengambil keputusan.', explore:'Lihat layanan',
+  title:'Layanan untuk prioritas Anda', description:'Dibangun untuk bisnis Anda dan untuk meningkatkan cara kerja Anda', explore:'Lihat layanan',
 } : {
-  title:'Services for your priorities', description:'Search, websites, visual strategy, and social media. Built around your business and how customers make decisions.', explore:'View service',
+  title:'Services for your priorities', description:'Built for your business and to improve your work', explore:'View service',
 };
 ---
 <InteriorHero title={copy.title} description={copy.description} label="KULTIVATE SERVICES"
@@ -19,7 +19,7 @@ const copy = locale === 'id' ? {
         <figure class="service-row__visual"><img src={service.image} alt="" width="1440" height="1080" loading="lazy" decoding="async" /></figure>
         <div class="service-row__copy">
           <div class="service-row__meta text-mono"><span>0{index+1}</span></div>
-          <h2>{service.title}</h2><h3>{service.tagline}</h3><p>{service.description}</p>
+          <h2>{service.title}</h2><p>{service.description}</p>
           <a href={`/${locale}/services/${service.slug}/`} class="link-hover-arrow"><span>{copy.explore}</span><span aria-hidden="true">→</span></a>
         </div>
       </article>
@@ -37,10 +37,9 @@ const copy = locale === 'id' ? {
   .service-row__copy { min-width:0; }
   .service-row__meta { display:flex; margin-bottom:22px; color:rgba(201,211,223,.52); }
   .service-row__copy h2 { max-width:12ch; margin-bottom:22px; font-size:clamp(2.8rem,5vw,5.5rem); font-weight:540; letter-spacing:-.04em; line-height:.94; }
-  .service-row__copy h3 { max-width:29ch; margin-bottom:18px; color:rgba(238,245,250,.92); font-size:clamp(1.28rem,1.4rem + .45vw,2rem); font-weight:540; letter-spacing:-.025em; line-height:1.18; text-wrap:balance; }
   .service-row__copy > p { max-width:49ch; margin-bottom:22px; color:rgba(201,211,223,.76); font-size:.96rem; line-height:1.62; }
   @media (hover:hover) and (pointer:fine) { .service-row:hover img { transform:scale(1.015) translate3d(-1.2%,0,0); filter:saturate(1.04); } }
-  @media (max-width:840px) { .service-row { grid-template-columns:1fr; gap:30px; } .service-row:nth-child(even) .service-row__visual { order:initial; } .service-row__copy h3 { max-width:34ch; } }
+  @media (max-width:840px) { .service-row { grid-template-columns:1fr; gap:30px; } .service-row:nth-child(even) .service-row__visual { order:initial; } }
   @media (max-width:840px) { .service-row__visual img,.service-row:nth-child(even) img { transform:none; } }
   @media (prefers-reduced-motion:reduce) { .service-row__visual img,.service-row:nth-child(even) img { transition:none; transform:none; } }
 </style>

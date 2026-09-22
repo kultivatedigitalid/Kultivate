@@ -4,12 +4,12 @@ interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
 const services = servicesData[locale];
 const copy = locale === 'id' ? {
-  title: 'Keahlian mendalam untuk pertumbuhan digital',
-  body: 'Kami menghubungkan cara orang menemukan bisnis Anda, memahami nilainya, dan mengambil langkah berikutnya.',
+  title: 'Keahlian Kami',
+  body: 'Kami membawa keahlian mendalam dalam pertumbuhan digital agar orang dapat menemukan bisnis Anda, memahami nilainya, dan mengambil langkah berikutnya.',
   foundation: 'Search + website', explore: 'Lihat layanan', label: 'Layanan',
 } : {
-  title: 'Deep Expertise in Digital Growth',
-  body: 'We connect how people discover your business, understand its value, and take the next step.',
+  title: 'Our Expertise',
+  body: 'We bring deep expertise in digital growth to help people discover your business, understand its value, and take the next step.',
   foundation: 'Search + website', explore: 'Explore service', label: 'Services',
 };
 ---

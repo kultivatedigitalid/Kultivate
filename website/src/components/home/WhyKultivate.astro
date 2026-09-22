@@ -3,23 +3,21 @@ interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
 const copy = locale === 'id'
   ? {
-      kicker: 'Mengapa Kultivate',
-      title: 'Nilai bisnis lebih dulu',
-      intro: 'Kami menghubungkan hasil yang Anda inginkan dengan dukungan yang dibutuhkan bisnis Anda, lalu memberikan pertimbangan terbaik pada setiap rekomendasi.',
+      title: 'Mengapa Memilih Kultivate?',
+      intro: 'Kami menghubungkan hasil yang Anda inginkan dengan dukungan yang dibutuhkan serta nilai inti bisnis Anda.',
       reasons: [
         ['01', 'Dimulai dari bisnis Anda', 'Kami mulai dari apa yang Anda tawarkan, pelanggan yang ingin dijangkau, dan cara mereka mencari.', '/assets/why/connected-system.webp', 'Bidang search yang disusun berdasarkan kebutuhan bisnis'],
         ['02', 'Rekomendasi yang jelas', 'Kami menjelaskan apa yang direkomendasikan, alasan di baliknya, dan pekerjaan yang terlibat.', '/assets/why/visible-decisions.webp', 'Bidang transparan yang bergerak menuju susunan yang selaras'],
-        ['03', 'Strategi tetap dekat dengan pekerjaan', 'Orang yang menyusun arah tetap terlibat saat halaman, konten, dan perbaikan teknis dikerjakan.', '/assets/why/purposeful-craft.webp', 'Detail digital presisi dengan tepi cahaya biru']
+        ['03', 'Strategi tetap dekat dengan bisnis Anda', 'Kami mengutamakan nilai bisnis Anda dan melibatkan orang-orang di baliknya sepanjang proses.', '/assets/why/purposeful-craft.webp', 'Detail digital presisi dengan tepi cahaya biru']
       ]
     }
   : {
-      kicker: 'Why Kultivate',
-      title: 'Business value comes first',
-      intro: 'We connect the outcomes you want with the support your business needs, then bring our best thinking to every recommendation.',
+      title: 'Why Pick Kultivate?',
+      intro: 'We connect the outcomes you want with the support your business needs and the core value of your business.',
       reasons: [
         ['01', 'Built around your business', 'We begin with what you offer, the customers you want to reach, and how they search.', '/assets/why/connected-system.webp', 'Search layers arranged around business needs'],
         ['02', 'Clear recommendations', 'We explain what we recommend, the reason behind it, and the work involved.', '/assets/why/visible-decisions.webp', 'Transparent planes moving into exact alignment'],
-        ['03', 'Strategy stays close to the work', 'The people shaping the direction stay involved as pages, content, and technical improvements are carried out.', '/assets/why/purposeful-craft.webp', 'A precision digital detail with a blue illuminated edge']
+        ['03', 'Strategy stays close to your business', 'We prioritize your business value and involve the people behind your business throughout the process.', '/assets/why/purposeful-craft.webp', 'A precision digital detail with a blue illuminated edge']
       ]
     };
 ---
@@ -27,7 +25,6 @@ const copy = locale === 'id'
 <section id="why" class="why-kultivate section-padding" aria-labelledby="why-title">
   <div class="container why-layout">
     <div class="why-intro">
-      <span class="section-kicker">{copy.kicker}</span>
       <h2 id="why-title">{copy.title}</h2>
       <p>{copy.intro}</p>
     </div>
@@ -48,17 +45,17 @@ const copy = locale === 'id'
   .why-layout { display:grid; grid-template-columns:minmax(300px,.78fr) minmax(520px,1.22fr); gap:clamp(52px,7vw,104px); align-items:start; }
   .why-intro { position:sticky; top:126px; }
   .why-intro h2 { max-width:13ch; margin-bottom:24px; font-size:clamp(2.8rem,1.9rem + 3vw,4.9rem); font-weight:520; letter-spacing:-.04em; line-height:.97; }
-  .why-intro p { max-width:38ch; color:var(--steel); }
+  .why-intro p { max-width:38ch; color:var(--mist); }
   .reasons-list { display:flex; flex-direction:column; gap:12px; }
-  .reason-item { position:relative; min-height:220px; display:flex; align-items:flex-end; overflow:hidden; border-radius:8px; outline:none; background:rgba(16,43,66,.76); transition:min-height 520ms var(--ease-out),opacity 340ms var(--ease-out),transform 520ms var(--ease-out); }
+  .reason-item { position:relative; min-height:180px; display:flex; align-items:flex-end; overflow:hidden; border-radius:8px; outline:none; background:rgba(16,43,66,.76); transition:min-height 520ms var(--ease-out),opacity 340ms var(--ease-out),transform 520ms var(--ease-out); }
   .reason-item img,.reason-veil { position:absolute; inset:0; }
   .reason-item img { width:100%; height:100%; object-fit:cover; opacity:.18; transform:translate3d(-2%,0,0) scale(1.045); transition:opacity 460ms var(--ease-out),transform 720ms var(--ease-out); }
   .reason-veil { background:linear-gradient(90deg,rgba(8,21,34,.96),rgba(10,29,45,.8) 48%,rgba(8,22,35,.24)),linear-gradient(180deg,transparent 26%,rgba(8,20,32,.88)); opacity:.88; transition:opacity 420ms var(--ease-out); }
-  .reason-copy { position:relative; z-index:1; width:100%; display:grid; grid-template-columns:46px minmax(0,1fr); gap:16px; padding:clamp(24px,3vw,36px); }
+  .reason-copy { position:relative; z-index:1; width:100%; display:grid; grid-template-columns:46px minmax(0,1fr); gap:16px; padding:18px clamp(24px,3vw,36px) clamp(24px,3vw,36px); }
   .reason-index { padding-top:6px; color:rgba(201,211,223,.5); }
   .reason-item h3 { margin-bottom:10px; font-size:clamp(1.45rem,1.8vw,2.1rem); font-weight:560; line-height:1.08; }
   .reason-item p { max-width:48ch; color:rgba(201,211,223,.72); font-size:.92rem; line-height:1.55; }
-  @media (hover:hover) and (pointer:fine) { .reasons-list:hover .reason-item:not(:hover){min-height:204px;opacity:.72;transform:scale(.994)} .reason-item:hover,.reason-item:focus-visible{min-height:276px;transform:translateX(-6px)} .reason-item:hover img,.reason-item:focus-visible img{opacity:.9;transform:scale(1.02)} .reason-item:hover .reason-veil,.reason-item:focus-visible .reason-veil{opacity:.96} }
+  @media (hover:hover) and (pointer:fine) { .reasons-list:hover .reason-item:not(:hover){min-height:180px;opacity:.72;transform:scale(.994)} .reason-item:hover,.reason-item:focus-visible{min-height:276px;transform:translateX(-6px)} .reason-item:hover img,.reason-item:focus-visible img{opacity:.9;transform:scale(1.02)} .reason-item:hover .reason-veil,.reason-item:focus-visible .reason-veil{opacity:.96} }
   @media (max-width:1020px) { .why-layout{grid-template-columns:1fr;gap:44px}.why-intro{position:static}.why-intro h2{max-width:11ch} }
   @media (max-width:760px) {
     .why-kultivate { padding-block:56px; }

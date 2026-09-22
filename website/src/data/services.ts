@@ -1,4 +1,5 @@
-/** Public adaptation of Kultivate Services.docx, supplied 15 September 2026. */
+/** Public adaptation of Kultivate Services.docx, supplied 15 September 2026.
+ * Summary/description refinements: provisional editorial copy, 22 September 2026. */
 export interface ServiceDetail {
   id: string; title: string; slug: string; tagline: string; summary: string;
   description: string; image: string; principles: string[];
@@ -14,8 +15,8 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       "slug": "seo",
       "title": "SEO",
       "tagline": "Temukan demand yang bernilai bagi bisnis Anda.",
-      "summary": "Pahami apa yang pelanggan cari, lalu hubungkan pencarian itu dengan halaman yang membantu mereka mengambil keputusan.",
-      "description": "Kami memulai SEO dari bisnis, buyer, dan demand. Peluang pencarian menentukan halaman, konten, dan perbaikan teknis yang diprioritaskan; hasilnya ditinjau hingga inquiry dan peluang bisnis yang dapat diukur.",
+      "summary": "Kami membantu Anda memahami apa yang pelanggan cari.",
+      "description": "Kami membantu pelanggan menemukan bisnis Anda melalui riset search, konten yang relevan, dan perbaikan teknis website.",
       "image": "/assets/services/seo-focus-v3.webp",
       "principles": [
         "Demand sebelum keyword.",
@@ -85,8 +86,8 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       "slug": "web-services",
       "title": "Web Services",
       "tagline": "Bangun website dari cara pelanggan mencari dan memutuskan.",
-      "summary": "Search membentuk apa yang perlu dibangun. Kebutuhan buyer membentuk bagaimana website menjelaskan, meyakinkan, dan mengarahkan tindakan.",
-      "description": "Sebelum sitemap dan UI, kami memahami bisnis, buyer, dan search demand Anda. Insight tersebut membentuk arsitektur, pesan, pengalaman, dan fondasi teknis website sebagai bagian dari satu sistem akuisisi customer.",
+      "summary": "Kami membangun website yang membantu pelanggan Anda.",
+      "description": "Kami merancang dan membangun website yang menjelaskan penawaran Anda, mendukung pelanggan, dan memudahkan langkah berikutnya.",
       "image": "/assets/services/web-foundation-v3.webp",
       "principles": [
         "Search sebelum sitemap.",
@@ -160,8 +161,8 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       "slug": "social-media-management",
       "title": "Social Media Management",
       "tagline": "Ubah expertise menjadi kehadiran yang konsisten.",
-      "summary": "Bawa pengetahuan dan pengalaman bisnis ke konten yang bernilai, agar audiens terus mengenal kemampuan Anda.",
-      "description": "Kami menggali pengetahuan dari founder, tim, customer questions, dan pengalaman proyek. Insight tersebut menjadi arah konten, materi sumber, dan komunikasi yang membangun attention, familiarity, serta authority secara konsisten.",
+      "summary": "Kami membantu Anda terhubung dengan audiens Anda.",
+      "description": "Kami merencanakan, membuat, dan mengelola konten social media agar bisnis Anda tetap relevan bagi audiens Anda.",
       "image": "/assets/services/social-distribution-v2.webp",
       "principles": [
         "Expertise sebelum konten.",
@@ -235,8 +236,8 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       "slug": "visual-strategy",
       "title": "Visual Strategy",
       "tagline": "Buat brand lebih mudah dipahami, dikenali, dan diingat.",
-      "summary": "Mulai dari pesan yang perlu dipahami, lalu bangun bahasa visual yang khas dan konsisten di berbagai touchpoint.",
-      "description": "Kami menerjemahkan tujuan bisnis, kebutuhan audiens, dan pesan menjadi satu sistem komunikasi visual. Konsep, ilustrasi, diagram, iconography, dan motion dipilih berdasarkan apa yang perlu dipahami dan diingat.",
+      "summary": "Kami memperjelas nilai bisnis Anda melalui visual.",
+      "description": "Kami menerjemahkan nilai bisnis Anda menjadi visual, panduan, dan aset yang konsisten dan mudah digunakan tim Anda.",
       "image": "/assets/why/purposeful-craft.webp",
       "principles": [
         "Makna sebelum gaya.",
@@ -312,8 +313,8 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       "slug": "seo",
       "title": "SEO",
       "tagline": "Find the demand that matters to your business.",
-      "summary": "Understand what customers search for, then connect that demand to pages that help them make a decision.",
-      "description": "We start SEO with the business, the buyer, and the demand. Search opportunities guide the pages, content, and technical work we prioritize; progress is reviewed through to inquiries and measurable business opportunities.",
+      "summary": "We help you understand what your customers search for.",
+      "description": "We help customers find your business through search research, relevant content, and technical website improvements.",
       "image": "/assets/services/seo-focus-v3.webp",
       "principles": [
         "Demand before keywords.",
@@ -383,8 +384,8 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       "slug": "web-services",
       "title": "Web Services",
       "tagline": "Build around how customers search and decide.",
-      "summary": "Search shapes what needs to be built. Buyer needs shape how the website explains, earns trust, and guides action.",
-      "description": "Before the sitemap and interface, we understand your business, buyers, and search demand. Those insights shape the architecture, messaging, experience, and technical foundations of a website designed as part of one customer acquisition system.",
+      "summary": "We build websites that work for your customers.",
+      "description": "We design and build websites that explain your offer, support your customers, and make the next step easier.",
       "image": "/assets/services/web-foundation-v3.webp",
       "principles": [
         "Search before sitemap.",
@@ -458,8 +459,8 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       "slug": "social-media-management",
       "title": "Social Media Management",
       "tagline": "Turn expertise into consistent market presence.",
-      "summary": "Bring your knowledge and experience into useful content, so the right audience keeps recognizing what you know.",
-      "description": "We uncover knowledge from founders, teams, customer questions, and project experience. Those insights become content territories, source material, and communication that consistently builds attention, familiarity, and authority.",
+      "summary": "We help you connect with your audience.",
+      "description": "We plan, create, and manage social content to keep your business relevant to your audience.",
       "image": "/assets/services/social-distribution-v2.webp",
       "principles": [
         "Expertise before content.",
@@ -533,8 +534,8 @@ export const servicesData: Record<'id' | 'en', ServiceDetail[]> = {
       "slug": "visual-strategy",
       "title": "Visual Strategy",
       "tagline": "Make your brand easier to understand, recognize, and remember.",
-      "summary": "Start with what people need to understand, then build a distinctive visual language that works across touchpoints.",
-      "description": "We translate business goals, audience needs, and meaning into a visual communication system. Concepts, illustration, diagrams, iconography, and motion are chosen around what people need to understand and remember.",
+      "summary": "We make your business value clear through visuals.",
+      "description": "We turn your business value into clear visuals, guidelines, and assets your team can use consistently.",
       "image": "/assets/why/purposeful-craft.webp",
       "principles": [
         "Meaning before style.",

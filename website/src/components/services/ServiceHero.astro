@@ -9,7 +9,7 @@ interface Props {
   systemRole: string;
   locale: 'id' | 'en';
 }
-const { title, tagline, locale, serviceId } = Astro.props;
+const { title, description, locale, serviceId } = Astro.props;
 // Hero artwork is separate from the process imagery used by service cards.
 const banners: Record<string, string> = {
   'seo': '/assets/banners/seo-gradient.webp',
@@ -25,7 +25,7 @@ const imageAlt = locale === 'id'
 
 <HeroShell
   title={title}
-  description={tagline}
+  description={description}
   image={image}
   imageAlt={imageAlt}
   variant="service-detail"

@@ -7,7 +7,7 @@ const { locale } = Astro.props;
 const projects = (await getProjects(locale)).slice(0, 3);
 const copy = locale === 'id'
   ? { kicker: 'Portofolio', title: 'Karya kami', all: 'Lihat semua proyek', region: 'Pilihan karya Kultivate' }
-  : { kicker: 'Portfolio', title: 'Our works', all: 'View all projects', region: 'Selected Kultivate work' };
+  : { kicker: 'Portfolio', title: 'Our work', all: 'View all projects', region: 'Selected Kultivate work' };
 ---
 
 <section

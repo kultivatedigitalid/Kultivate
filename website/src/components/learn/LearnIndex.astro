@@ -10,19 +10,17 @@ const series = getLearningSeries();
 const copy = locale === 'id'
   ? {
       title: 'Belajar untuk Prioritas Anda',
-      description: 'Pahami cara search dan website bekerja bersama, lalu gunakan pengetahuan itu untuk mengambil keputusan bisnis dengan lebih jelas.',
+      description: 'Pahami bagaimana search, web, visual, dan social media dapat membantu bisnis Anda.',
       heroAlt: 'Buku terbuka berbentuk sculptural dengan garis cahaya biru di ruang gelap',
       introTitle: 'Mulai dari pertanyaan yang sedang Anda hadapi',
       introBody: 'Pilih course yang paling dekat dengan kondisi bisnis Anda saat ini. Setiap course berisi enam lesson yang membantu Anda memahami masalah, menilai pilihan, dan menentukan next step.',
-      directory: '6 courses',
     }
   : {
       title: 'Learn for Your Priorities',
-      description: 'Understand how search and websites work together, then turn that knowledge into clearer decisions for your business.',
+      description: 'Understand how search, web, visual, and social media could help your business.',
       heroAlt: 'A sculptural open book with an ice-blue edge in a dark space',
       introTitle: 'Start with the question in front of you',
       introBody: 'Choose the course closest to your business today. Each course includes six lessons that help you understand the problem, assess the options, and choose a useful next step.',
-      directory: '6 courses',
     };
 ---
 
@@ -42,7 +40,6 @@ const copy = locale === 'id'
     <div class="container">
       <header class="learn-directory__header" data-reveal>
         <div>
-          <span class="text-mono">{copy.directory}</span>
           <h2 id="learn-directory-title">{copy.introTitle}</h2>
         </div>
         <p>{copy.introBody}</p>

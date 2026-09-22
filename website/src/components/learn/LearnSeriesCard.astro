@@ -4,9 +4,10 @@ import type { LearningLocale, LearningSeries } from '../../data/learning';
 interface Props {
   locale: LearningLocale;
   series: LearningSeries;
+  compact?: boolean;
 }
 
-const { locale, series } = Astro.props;
+const { locale, series, compact = false } = Astro.props;
 const categoryLabel = series.category === 'seo' ? 'SEARCH' : 'WEB';
 const copy = locale === 'id'
   ? {
@@ -21,7 +22,7 @@ const copy = locale === 'id'
     };
 ---
 
-<article class="learn-series-card" data-reveal>
+<article class:list={["learn-series-card", compact && "learn-series-card--compact"]} data-reveal={compact ? undefined : ''}>
   <a href={'/' + locale + '/learn/' + series.slug + '/'} aria-label={copy.cta + ': ' + series.title[locale]}>
     <figure>
       {series.teachingThumbnail ? (
@@ -47,7 +48,7 @@ const copy = locale === 'id'
         <span>{copy.count}</span>
       </div>
       <h3>{series.title[locale]}</h3>
-      <p>{series.description[locale]}</p>
+      {!compact && <p>{series.description[locale]}</p>}
       <span class="learn-series-card__link">
         <span>{copy.cta}</span><span aria-hidden="true">&#8594;</span>
       </span>
@@ -187,4 +188,11 @@ const copy = locale === 'id'
       transform: none;
     }
   }
+  .learn-series-card--compact > a { height: 100%; display: flex; flex-direction: column; border-radius: 8px; }
+  .learn-series-card--compact > a:focus-visible { outline: 2px solid var(--signal-ice); outline-offset: -2px; }
+  .learn-series-card--compact .learn-series-card__copy { display: flex; flex-direction: column; flex: 1; padding: 18px 2px 2px; }
+  .learn-series-card--compact h3 { max-width: none; font-size: clamp(1.2rem, 1.8vw, 1.6rem); line-height: 1.2; margin: 14px 0 18px; }
+  .learn-series-card--compact .learn-series-card__meta { color: var(--mist); font-size: .72rem; }
+  .learn-series-card--compact .learn-series-card__link { margin-top: auto; font-size: .7rem; }
+  .learn-series-card--compact .series-word { font-size: clamp(2.5rem, 4vw, 4rem); }
 </style>
