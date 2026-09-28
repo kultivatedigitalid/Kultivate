@@ -437,31 +437,22 @@ Every article requires:
 
 **Primary job:** collect enough context for an initial review.
 
-Fields:
-- Name.
-- Company/brand.
-- Email.
-- WhatsApp.
-- Service interest.
-- Current website/social account, optional.
-- Project summary.
-- Objective or current problem.
-- Target launch.
-- Indicative budget, optional.
-- Attachment, optional only if the external form provider supports it safely.
-- Consent checkbox and privacy link.
+Current approved fields (25 September 2026):
+- Name, company/brand, email, WhatsApp/phone, service interest, project/requirement summary, and optional target timeline.
+- Required Privacy Policy acknowledgement linked to the active locale; separate optional marketing_consent.
 
-Because the website is static, form submission must use one of these approved approaches:
-
-1. Configurable third-party form endpoint.
-2. Embedded external form.
-3. Direct WhatsApp/email CTA if no processor is approved.
-
-Do not create a custom API route or database.
+Current processing uses a third-party form provider, delivery to Kultivate email, and storage/copying into Google Sheets. Do not add new fields, a custom API route, a database, or a newsletter as part of the privacy update. FormData retains marketing consent as yes/no alongside the required acknowledgement.
 
 ### Privacy and 404
 
-- Privacy text must match the actual analytics and form processor.
+- PrivacyPolicy.astro uses the Kultivate dark navy palette with light reading text and independently scrollable, sticky contents navigation. The explicit 25 September visual revision supersedes the prior styling freeze; the approved EN/ID policy content is unchanged. Stripe remains only a topic-coverage and information-hierarchy reference.
+- Controller/operator: PT Karya Lintas Generasi / Kultivate; privacy contact halo@kultivate.id; do not publish the street address in this policy.
+- Explain collection, sources, use, lawful bases, limited sharing, optional marketing, browser storage/analytics, YouTube, retention/security, transfers, rights, updates/language/contact.
+- Kultivate-controlled inquiry/email/Google Sheets records: up to 12 months after last communication; earlier deletion where applicable; narrow legal exceptions. Assign an operational review/deletion process. Third-party form archive retention remains unverified.
+- Separate optional promotional consent from the required acknowledgement. No newsletter.
+- GA4/GTM intended but inactive; IDs remain empty and analyticsConsentRequired is true. Consent implementation is a prerequisite to activation; no tracking vendor is added. No Meta Pixel, Hotjar or Clarity.
+- Disclose Learn localStorage and temporary language-position sessionStorage; neither is by itself an analytics identifier sent to Kultivate. Preserve click-to-load youtube-nocookie.com embeds and disclose Google processing.
+- English policy is authoritative subject to applicable law; Indonesian must retain substantive parity. Update the policy date when implemented.
 - 404 provides routes back to Work, Services, and Home.
 - Both pages need bilingual copy.
 
@@ -775,7 +766,7 @@ Not allowed for MVP:
 - No global animation library for Concept 01.
 - Avoid hydrating components that can work with HTML and CSS.
 - Defer non-critical scripts.
-- Load analytics only after the approved consent strategy when required.
+- Load optional analytics only after relevant user consent. GA4/GTM activation is blocked until a consent mechanism exists; keep identifiers empty until then.
 
 ### Font policy
 
@@ -837,7 +828,7 @@ Required:
 
 ## 15. Analytics and Inquiry Measurement
 
-Pending provider approval, plan events for:
+GA4/GTM are intended but inactive as of 25 September 2026; a verified consent mechanism is required before activation. Existing local funnel events do not themselves transmit analytics. Future consent-gated measurement may cover:
 - Primary CTA click.
 - WhatsApp click.
 - Email click.

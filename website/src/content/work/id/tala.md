@@ -1,5 +1,5 @@
 ---
-title: "Tala — Mobilitas yang terhubung"
+title: "Tala"
 slug: "tala"
 locale: "id"
 translationKey: "tala"
@@ -24,7 +24,7 @@ approach: "Kami menata navigasi berdasarkan perencanaan perjalanan, informasi la
 deliverables: ["Arsitektur informasi", "Template halaman responsif", "Alur pertanyaan dan catatan serah terima"]
 outcomes: ["Sistem informasi berdasarkan perjalanan memberi tim struktur konsisten untuk memelihara konten layanan."]
 proofStatus: "pending"
-seoTitle: "Tala — Mobilitas yang terhubung | Kultivate"
+seoTitle: "Tala | Kultivate"
 seoDescription: "Membantu orang menemukan informasi yang dibutuhkan sebelum bepergian."
 draft: false
 ---

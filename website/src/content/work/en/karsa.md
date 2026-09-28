@@ -1,5 +1,5 @@
 ---
-title: "Karsa — Local food connected"
+title: "Karsa"
 slug: "karsa"
 locale: "en"
 translationKey: "karsa"
@@ -24,7 +24,7 @@ approach: "We grouped buyer questions into product, sourcing and fulfilment them
 deliverables: ["Search-to-page map", "Priority content briefs", "Internal linking plan", "Information architecture", "Responsive page templates", "Enquiry journey and handoff notes"]
 outcomes: ["A search-to-page map and connected product structure support the next round of content development."]
 proofStatus: "pending"
-seoTitle: "Karsa — Local food connected | Kultivate"
+seoTitle: "Karsa | Kultivate"
 seoDescription: "Connecting local produce, supplier information and buyer questions."
 draft: false
 ---

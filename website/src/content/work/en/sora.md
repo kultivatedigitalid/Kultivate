@@ -1,5 +1,5 @@
 ---
-title: "Sora — Home made simple"
+title: "Sora"
 slug: "sora"
 locale: "en"
 translationKey: "sora"
@@ -24,7 +24,7 @@ approach: "We mapped the journey around rooms, needs and product detail. The pag
 deliverables: ["Information architecture", "Responsive page templates", "Enquiry journey and handoff notes", "Visual direction", "Typography and image guidelines", "Application examples"]
 outcomes: ["A connected browsing structure makes the offer easier to explain and gives the team a reusable pattern for new collections."]
 proofStatus: "pending"
-seoTitle: "Sora — Home made simple | Kultivate"
+seoTitle: "Sora | Kultivate"
 seoDescription: "A clearer route from home inspiration to choosing the right product."
 draft: false
 ---

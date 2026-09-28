@@ -12,20 +12,20 @@ export const siteConfig = {
 
   // PENDING - PLACEHOLDER - NOT PUBLIC PROOF
   domain: 'https://kultivate.id', // Target domain
-  email: 'halo@kultivate.id', // Target public business email
+  email: 'halo@kultivate.id', // CONFIRMED public and privacy contact, 2026-09-25
   phone: '+6281234567890', // Target business phone/WhatsApp
   whatsappLink: 'https://wa.me/6281234567890?text=Halo%20Kultivate%2C%20saya%20tertarik%20untuk%20memulai%20proyek.',
 
   // PENDING - PLACEHOLDER - NOT PUBLIC PROOF (Address and Legal Details)
   address: 'Jln Mujahiddin No. 29, Perigi Baru, Tangerang Selatan, ID',
-  companyLegalName: 'PT Karya Lintas Generasi',
+  companyLegalName: 'PT Karya Lintas Generasi', // CONFIRMED Kultivate operator/controller, 2026-09-25
   addressClassification: 'Office',
 
-  // PENDING - PLACEHOLDER - NOT PUBLIC PROOF (Form submission)
-  formEndpoint: 'https://formspree.io/f/xdenzbqy', // Will be updated when Formspree endpoint is approved
+  // CONFIRMED flow: third-party form provider -> email + Google Sheets; archive retention remains unverified
+  formEndpoint: 'https://formspree.io/f/xdenzbqy', // Existing endpoint; account plan/archive retention needs operational verification
 
-  // PENDING - PLACEHOLDER - NOT PUBLIC PROOF (Analytics)
+  // GA4/GTM intended but inactive. A consent mechanism is required before activation.
   gtmId: '',
   gaId: '',
-  analyticsConsentRequired: false
+  analyticsConsentRequired: true
 };

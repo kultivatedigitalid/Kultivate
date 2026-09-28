@@ -75,10 +75,15 @@ const t = useTranslations(locale);
             </div>
 
             <div class="form-group checkbox-group">
-              <input type="checkbox" id="consent" name="consent" required class="form-checkbox" />
+              <input type="checkbox" id="consent" name="consent" value="acknowledged" required class="form-checkbox" />
               <label for="consent" class="checkbox-label">
-                {t('contact.consent')}
+                {t('contact.consent')} <a href={`/${locale}/privacy/`}>{t('footer.privacy')}</a>.
               </label>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="marketing-consent" name="marketing_consent" value="yes" class="form-checkbox" />
+              <label for="marketing-consent" class="checkbox-label">{t('contact.marketing_consent')}</label>
             </div>
 
             <div class="form-actions">

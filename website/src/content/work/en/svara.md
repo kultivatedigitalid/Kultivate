@@ -1,5 +1,5 @@
 ---
-title: "Svara — Sound finds its audience"
+title: "Svara"
 slug: "svara"
 locale: "en"
 translationKey: "svara"
@@ -24,7 +24,7 @@ approach: "We organized the publishing sequence around anticipation, context and
 deliverables: ["Content themes", "Publishing sequence", "Editorial format guidelines", "Visual direction", "Typography and image guidelines", "Application examples"]
 outcomes: ["A connected release narrative and reusable formats give the team a practical base for the next campaign."]
 proofStatus: "pending"
-seoTitle: "Svara — Sound finds its audience | Kultivate"
+seoTitle: "Svara | Kultivate"
 seoDescription: "A release-led content system that keeps the artist’s story connected."
 draft: false
 ---

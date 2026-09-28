@@ -1,5 +1,5 @@
 ---
-title: "Aruna — Bergerak dengan yakin"
+title: "Aruna"
 slug: "aruna"
 locale: "id"
 translationKey: "aruna"
@@ -24,7 +24,7 @@ approach: "Kami memasangkan bahasa visual yang terarah dengan perencanaan halama
 deliverables: ["Arah visual", "Panduan tipografi dan gambar", "Contoh penerapan", "Arsitektur informasi", "Template halaman responsif", "Alur pertanyaan dan catatan serah terima"]
 outcomes: ["Kerangka visual dan halaman yang dapat digunakan ulang menghubungkan gagasan brand dengan penjelasan layanan."]
 proofStatus: "pending"
-seoTitle: "Aruna — Bergerak dengan yakin | Kultivate"
+seoTitle: "Aruna | Kultivate"
 seoDescription: "Mengubah penawaran mobilitas elektrik menjadi cerita layanan yang mudah dipahami."
 draft: false
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Sora — Rumah lebih ringan"
+title: "Sora"
 slug: "sora"
 locale: "id"
 translationKey: "sora"
@@ -24,7 +24,7 @@ approach: "Kami memetakan perjalanan berdasarkan ruang, kebutuhan, dan detail pr
 deliverables: ["Arsitektur informasi", "Template halaman responsif", "Alur pertanyaan dan catatan serah terima", "Arah visual", "Panduan tipografi dan gambar", "Contoh penerapan"]
 outcomes: ["Struktur penelusuran yang terhubung mempermudah penjelasan penawaran dan memberi tim pola untuk koleksi baru."]
 proofStatus: "pending"
-seoTitle: "Sora — Rumah lebih ringan | Kultivate"
+seoTitle: "Sora | Kultivate"
 seoDescription: "Jalur yang lebih jelas dari inspirasi hunian menuju pilihan produk."
 draft: false
 ---

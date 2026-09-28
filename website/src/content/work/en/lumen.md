@@ -1,5 +1,5 @@
 ---
-title: "Lumen — Frictionless finance"
+title: "Lumen"
 slug: "lumen"
 locale: "en"
 translationKey: "lumen"
@@ -24,7 +24,7 @@ approach: "We separated the core explanation, suitability questions and supporti
 deliverables: ["Information architecture", "Responsive page templates", "Enquiry journey and handoff notes"]
 outcomes: ["A coherent explanation and enquiry flow establish a practical foundation for future content and interface review."]
 proofStatus: "pending"
-seoTitle: "Lumen — Frictionless finance | Kultivate"
+seoTitle: "Lumen | Kultivate"
 seoDescription: "An information structure that makes a financial offer easier to evaluate."
 draft: false
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Lumen — Finansial tanpa friksi"
+title: "Lumen"
 slug: "lumen"
 locale: "id"
 translationKey: "lumen"
@@ -24,7 +24,7 @@ approach: "Kami memisahkan penjelasan inti, pertanyaan kesesuaian, dan detail pe
 deliverables: ["Arsitektur informasi", "Template halaman responsif", "Alur pertanyaan dan catatan serah terima"]
 outcomes: ["Alur penjelasan dan pertanyaan yang utuh menjadi dasar praktis untuk review konten dan antarmuka berikutnya."]
 proofStatus: "pending"
-seoTitle: "Lumen — Finansial tanpa friksi | Kultivate"
+seoTitle: "Lumen | Kultivate"
 seoDescription: "Struktur informasi yang membantu pengunjung mengevaluasi penawaran keuangan."
 draft: false
 ---

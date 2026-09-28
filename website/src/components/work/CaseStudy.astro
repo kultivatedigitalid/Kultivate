@@ -9,38 +9,94 @@ const { project, nextProject, locale } = Astro.props;
 const { data } = project;
 const services = servicesData[locale].filter(service => data.serviceIds.includes(service.id));
 const copy = locale === 'id'
-  ? { challenge: 'Tantangan', objective: 'Tujuan', role: 'Peran Kultivate', approach: 'Pendekatan', deliverables: 'Hasil kerja', outcome: 'Hasil', services: 'Layanan terkait' }
-  : { challenge: 'Challenge', objective: 'Objective', role: 'Kultivate’s role', approach: 'Approach', deliverables: 'Deliverables', outcome: 'Outcome', services: 'Related services' };
+  ? { challenge: 'Tantangan', objective: 'Tujuan', role: 'Peran Kultivate', approach: 'Pendekatan', deliverables: 'Hasil kerja', execution: 'Eksekusi', outcome: 'Hasil', services: 'Layanan terkait', contents: 'Isi studi kasus' }
+  : { challenge: 'Challenge', objective: 'Objective', role: 'Kultivate’s role', approach: 'Approach', deliverables: 'Deliverables', execution: 'Execution', outcome: 'Outcome', services: 'Related services', contents: 'Case study contents' };
+const sections = [
+  { id: 'case-challenge', title: copy.challenge },
+  ...(data.objective ? [{ id: 'case-objective', title: copy.objective }] : []),
+  ...(data.role ? [{ id: 'case-role', title: copy.role }] : []),
+  { id: 'case-approach', title: copy.approach },
+  { id: 'case-deliverables', title: copy.deliverables },
+  { id: 'case-execution', title: copy.execution },
+  { id: 'case-outcome', title: copy.outcome },
+];
 ---
-<article class="case-study-page">
-  <div class="container">
-    <CaseStudyHeader title={data.title} client={projectName(project)} industry={data.industry} period={data.period} services={data.services} summary={data.summary} coverImage={data.coverImage} coverAlt={data.coverAlt} proofStatus={data.proofStatus} locale={locale} />
+<article class="case-study-page" data-case-study>
+  <div class="container case-layout">
+    <aside class="case-sidebar">
+      <CaseStudyHeader title={data.title} client={projectName(project)} industry={data.industry} period={data.period} services={data.services} summary={data.summary} locale={locale} />
+      <nav class="case-toc" aria-label={copy.contents}>
+        <ol>{sections.map(section => <li><a href={`#${section.id}`} data-case-link={section.id}>{section.title}</a></li>)}</ol>
+      </nav>
+    </aside>
+    <figure class="case-hero-media">
+      <img src={data.coverImage} alt={data.coverAlt} width="1536" height="1024" loading="eager" fetchpriority="high" />
+    </figure>
     <div class="case-story">
-      <div class="case-story__context">
-        <section><h2>{copy.challenge}</h2><p>{data.challenge}</p></section>
-        {data.objective && <section><h2>{copy.objective}</h2><p>{data.objective}</p></section>}
-        {data.role && <section><h2>{copy.role}</h2><p>{data.role}</p></section>}
-        {services.length > 0 && <nav aria-label={copy.services}><h2>{copy.services}</h2>{services.map(service => <a href={`/${locale}/services/${service.slug}/`}>{service.title}<span aria-hidden="true"> ↗</span></a>)}</nav>}
-      </div>
-      <div class="case-story__body">
-        <section><h2>{copy.approach}</h2><p>{data.approach}</p></section>
-        <section><h2>{copy.deliverables}</h2><ul>{data.deliverables.map(item => <li>{item}</li>)}</ul></section>
-        <div class="case-execution"><slot /></div>
-        <section class="case-outcome"><h2>{copy.outcome}</h2><ul>{data.outcomes.map(item => <li>{item}</li>)}</ul></section>
-      </div>
+      <section id="case-challenge" tabindex="-1"><h2>{copy.challenge}</h2><p>{data.challenge}</p></section>
+      {data.objective && <section id="case-objective" tabindex="-1"><h2>{copy.objective}</h2><p>{data.objective}</p></section>}
+      {data.role && <section id="case-role" tabindex="-1"><h2>{copy.role}</h2><p>{data.role}</p></section>}
+      <section id="case-approach" tabindex="-1"><h2>{copy.approach}</h2><p>{data.approach}</p></section>
+      <section id="case-deliverables" tabindex="-1"><h2>{copy.deliverables}</h2><ul>{data.deliverables.map(item => <li>{item}</li>)}</ul></section>
+      <section id="case-execution" class="case-execution" tabindex="-1" aria-label={copy.execution}><slot /></section>
+      <section id="case-outcome" tabindex="-1"><h2>{copy.outcome}</h2><ul>{data.outcomes.map(item => <li>{item}</li>)}</ul></section>
+      {services.length > 0 && <nav class="case-services" aria-label={copy.services}><h2>{copy.services}</h2>{services.map(service => <a href={`/${locale}/services/${service.slug}/`}>{service.title}<span aria-hidden="true"> ↗</span></a>)}</nav>}
+      <NextProject nextSlug={nextProject?.data.slug} nextTitle={nextProject?.data.title} locale={locale} />
     </div>
-    <NextProject nextSlug={nextProject?.data.slug} nextTitle={nextProject?.data.title} locale={locale} />
   </div>
 </article>
 <style>
-  .case-study-page { padding: clamp(96px, 9vw, 128px) 0 96px; }
-  .case-story { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.2fr); gap: clamp(32px, 8vw, 120px); padding-top: clamp(28px, 5vw, 64px); }
-  .case-story__context, .case-story__body { display: flex; flex-direction: column; gap: 40px; min-width: 0; }
-  .case-story h2, .case-execution :global(h2) { margin-bottom: 16px; font-size: 1.5rem; font-weight: 560; letter-spacing: -.02em; color: var(--cloud-white); }
+  .case-study-page { padding: 104px 0 80px; }
+  .case-layout { display: grid; grid-template-columns: minmax(240px, .72fr) minmax(0, 1.8fr); gap: 44px clamp(32px, 5vw, 72px); align-items: start; }
+  .case-sidebar { grid-row: 1 / 3; position: sticky; top: 100px; max-height: calc(100svh - 124px); overflow-y: auto; padding: 4px 8px 8px 4px; scrollbar-width: thin; scrollbar-color: #7898ae transparent; }
+  .case-toc { margin-top: 28px; }
+  .case-toc ol { list-style: none; display: grid; gap: 2px; }
+  .case-toc a { display: block; padding: 8px 10px; color: var(--mist); font-size: .9rem; line-height: 1.35; border-radius: 4px; }
+  .case-toc a:hover, .case-toc a[aria-current='location'] { color: var(--signal-ice); background: #17354a; }
+  .case-toc a:focus-visible, .case-services a:focus-visible { outline: 2px solid var(--signal-ice); outline-offset: -2px; }
+  .case-hero-media { grid-column: 2; width: 100%; overflow: hidden; border-radius: 8px; }
+  .case-hero-media img { display: block; width: 100%; height: auto; }
+  .case-execution :global(img) { display:block; width:100%; height:auto; }
+  .case-story { grid-column: 2; min-width: 0; }
+  .case-story > section { margin-bottom: clamp(40px, 5vw, 68px); scroll-margin-top: 108px; }
+  .case-story > section:focus-visible { outline: 2px solid var(--signal-ice); outline-offset: 8px; }
+  .case-story h2, .case-execution :global(h2) { margin-bottom: 16px; font-size: clamp(1.4rem, 2vw, 1.8rem); font-weight: 560; letter-spacing: -.02em; color: var(--cloud-white); }
   .case-story p, .case-execution :global(p), .case-story li { max-width: 68ch; color: var(--mist); font-size: 1.0625rem; line-height: 1.75; }
   .case-story ul { padding-left: 1.2em; display: grid; gap: 12px; }
-  .case-story nav a { display: block; width: fit-content; padding-block: 10px; color: var(--signal-ice); text-decoration: underline; text-underline-offset: 5px; }
-  .case-outcome { padding-top: 32px; border-top: 1px solid var(--slate); }
-  .case-story a:focus-visible { outline: 2px solid var(--signal-ice); outline-offset: 5px; }
-  @media (max-width: 760px) { .case-story { grid-template-columns: minmax(0, 1fr); } }
+  .case-services a { display: block; width: fit-content; padding-block: 10px; color: var(--signal-ice); text-decoration: underline; text-underline-offset: 5px; }
+  @media (max-width: 900px) {
+    .case-study-page { padding-top: 100px; }
+    .case-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .case-sidebar { display: contents; }
+    .case-sidebar :global(.case-header) { grid-row: 1; }
+    .case-hero-media { grid-column: 1; grid-row: 2; }
+    .case-toc { grid-row: 3; position: sticky; top: 72px; z-index: 2; margin: 0; padding: 10px 0; background: #0c1c2b; }
+    .case-toc ol { display: flex; overflow-x: auto; gap: 8px; scrollbar-width: thin; padding-bottom: 4px; }
+    .case-toc li { flex: none; }
+    .case-toc a { white-space: nowrap; min-height: 44px; display: flex; align-items: center; }
+    .case-story { grid-column: 1; grid-row: 4; }
+    .case-story > section { scroll-margin-top: 158px; }
+  }
 </style>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-case-study]').forEach(root => {
+    const links = Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-case-link]'));
+    const pairs = links.map(link => ({ link, target: document.getElementById(link.dataset.caseLink ?? '') })).filter(pair => pair.target);
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const marker = matchMedia('(max-width: 900px)').matches ? 170 : 120;
+      let active = pairs[0];
+      for (const pair of pairs) { if (pair.target!.getBoundingClientRect().top <= marker) active = pair; }
+      for (const pair of pairs) {
+        if (pair === active) pair.link.setAttribute('aria-current', 'location');
+        else pair.link.removeAttribute('aria-current');
+      }
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    update();
+    document.addEventListener('astro:before-swap', () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule); }, { once: true });
+  });
+</script>

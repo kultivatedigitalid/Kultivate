@@ -1,5 +1,5 @@
 ---
-import type { LearningLesson, LearningLocale } from '../../data/learning';
+import { learningCategoryLabels, type LearningLesson, type LearningLocale } from '../../data/learning';
 
 interface Props {
   lesson: LearningLesson;
@@ -18,7 +18,7 @@ const {
   display = lesson.featured ? 'featured' : 'standard',
   eyebrow
 } = Astro.props;
-const categoryLabel = lesson.category === 'seo' ? 'SEO' : 'Web Services';
+const categoryLabel = learningCategoryLabels[lesson.category];
 const hasVideo = lesson.videoId.trim().length > 0;
 const title = lesson.title[locale];
 const playLabel = locale === 'id' ? 'Putar: ' + title : 'Play: ' + title;
@@ -28,12 +28,12 @@ const lessonLabel = locale === 'id'
 const takeawayLabel = locale === 'id' ? 'HASIL BELAJAR' : 'TAKEAWAY';
 const completeLabel = locale === 'id' ? 'Tandai materi selesai' : 'Mark lesson complete';
 const completedLabel = locale === 'id' ? 'Materi selesai' : 'Lesson complete';
-const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
+const visualWord = { seo: 'SEARCH', 'web-services': 'WEB', 'social-media-management': 'SOCIAL', 'visual-strategy': 'DESIGN' }[lesson.category];
 ---
 
 <article
   id={'lesson-' + lesson.id}
-  class:list={['lesson-card', 'lesson-card--' + display]}
+  class:list={['lesson-card', 'lesson-card--' + display, !hasVideo && 'lesson-card--pending']}
   data-video-lesson
   data-video-id={hasVideo ? lesson.videoId : undefined}
   data-lesson-id={lesson.id}
@@ -47,8 +47,8 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
         <span class="lesson-card__signal" aria-hidden="true"><span></span></span>
       </button>
     ) : (
-      <div class="lesson-card__graphic" role="img" aria-label={locale === 'id' ? `Placeholder video untuk ${title}` : `Video placeholder for ${title}`}>
-        <span class="lesson-card__graphic-index">{String(index + 1).padStart(2, '0')}</span>
+      <div class="lesson-card__graphic" role="img" aria-label={locale === 'id' ? `Video belum tersedia: ${title}` : `Video coming soon: ${title}`}>
+        <p class="lesson-card__pending">{locale === 'id' ? 'Video belum tersedia' : 'Video coming soon'}</p>
         <span class="lesson-card__graphic-word" aria-hidden="true">{visualWord}</span>
         <span class="lesson-card__graphic-lines" aria-hidden="true"><i></i><i></i><i></i></span>
       </div>
@@ -61,13 +61,13 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
       <span>{categoryLabel}</span>
       {lesson.duration && <span>{lesson.duration}</span>}
     </div>
-    <h3>{title}</h3>
+    <h2 id={`lesson-heading-${lesson.id}`} tabindex="-1">{title}</h2>
     <p>{lesson.summary[locale]}</p>
     <div class="lesson-card__outcome">
       <span class="text-mono">{takeawayLabel}</span>
       <p>{lesson.outcome[locale]}</p>
     </div>
-    {display === 'player' && (
+    {display === 'player' && hasVideo && (
       <button type="button" class="lesson-card__complete" data-lesson-complete={lesson.id} aria-pressed="false">
         <span data-complete-default>{completeLabel}</span>
         <span data-complete-active hidden>{completedLabel}</span>
@@ -108,6 +108,7 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
         iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
         iframe.allowFullscreen = true;
         button.replaceWith(iframe);
+        card.addEventListener('learn:pause-video', () => iframe.replaceWith(button), { once: true });
       });
     });
   };
@@ -212,13 +213,7 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
     mask-image: linear-gradient(135deg, transparent 4%, #000 44%, transparent 92%);
   }
 
-  .lesson-card__graphic-index {
-    color: rgba(213, 230, 241, 0.58);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-  }
-
+  .lesson-card__pending { position: absolute; left: 28px; top: 24px; color: #d0e7f5; font-size: .9rem; }
   .lesson-card__graphic-word {
     position: absolute;
     right: clamp(18px, 3vw, 38px);
@@ -265,7 +260,7 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
   .lesson-card__meta { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 14px; color: rgba(169, 194, 211, 0.62); font-size: 0.64rem; }
   .lesson-card__meta span + span::before { content: '·'; margin-right: 18px; }
 
-  .lesson-card h3 {
+  .lesson-card h2 {
     max-width: 24ch;
     margin-bottom: 14px;
     font-size: clamp(1.38rem, 1.05rem + 1vw, 2rem);
@@ -275,14 +270,16 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
     text-wrap: balance;
   }
 
-  .lesson-card--featured h3 {
+  .lesson-card__body h2:focus { outline: none; }
+
+  .lesson-card--featured h2 {
     max-width: 15ch;
     font-size: clamp(2rem, 3.35vw, 3.9rem);
     letter-spacing: -0.04em;
     line-height: 0.99;
   }
 
-  .lesson-card--player h3 {
+  .lesson-card--player h2 {
     grid-column: 1;
     max-width: 19ch;
     font-size: clamp(1.8rem, 2.7vw, 2.9rem);
@@ -291,6 +288,10 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
   }
 
   .lesson-card--player .lesson-card__visual { aspect-ratio: 16 / 9; }
+  .lesson-card--player.lesson-card--pending .lesson-card__visual { aspect-ratio: auto; height: clamp(132px, 14vw, 190px); }
+  .lesson-card--pending .lesson-card__graphic-word { font-size: clamp(2.4rem, 4vw, 4rem); }
+  .lesson-card--pending .lesson-card__graphic-lines { opacity: .45; }
+  .lesson-card--pending .lesson-card__graphic::after { display: none; }
   .lesson-card--player .lesson-card__rank { grid-column: 1; }
   .lesson-card--player .lesson-card__meta { grid-column: 2; grid-row: 1; justify-self: end; }
   .lesson-card--player .lesson-card__body > p { grid-column: 1; }
@@ -354,7 +355,7 @@ const visualWord = lesson.category === 'seo' ? 'SEARCH' : 'WEB';
 
   @media (max-width: 620px) {
     .lesson-card__visual { max-width: 540px; }
-    .lesson-card--featured h3 { max-width: 22ch; font-size: clamp(1.8rem, 8vw, 2.55rem); }
+    .lesson-card--featured h2 { max-width: 22ch; font-size: clamp(1.8rem, 8vw, 2.55rem); }
   }
 
   @media (prefers-reduced-motion: reduce) {

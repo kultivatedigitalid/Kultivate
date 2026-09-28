@@ -1,5 +1,5 @@
 ---
-title: "Loka — Pengalaman yang berkesan"
+title: "Loka"
 slug: "loka"
 locale: "id"
 translationKey: "loka"
@@ -24,7 +24,7 @@ approach: "Kami memetakan pertanyaan tamu ke halaman akomodasi, lokasi, dan peng
 deliverables: ["Peta pencarian ke halaman", "Brief konten prioritas", "Rencana tautan internal", "Arsitektur informasi", "Template halaman responsif", "Alur pertanyaan dan catatan serah terima"]
 outcomes: ["Struktur penelusuran dan pertanyaan yang terhubung menjadi dasar konten hospitalitas yang konsisten."]
 proofStatus: "pending"
-seoTitle: "Loka — Pengalaman yang berkesan | Kultivate"
+seoTitle: "Loka | Kultivate"
 seoDescription: "Membantu tamu menghubungkan suasana tempat dengan detail menginap."
 draft: false
 ---

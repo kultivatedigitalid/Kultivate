@@ -1,5 +1,5 @@
 ---
-title: "Naru — Energi sehari-hari"
+title: "Naru"
 slug: "naru"
 locale: "id"
 translationKey: "naru"
@@ -24,7 +24,7 @@ approach: "Kami menyusun pesan berdasarkan momen sehari-hari, lalu menetapkan ar
 deliverables: ["Arah visual", "Panduan tipografi dan gambar", "Contoh penerapan", "Tema konten", "Urutan publikasi", "Panduan format editorial"]
 outcomes: ["Arah visual dan struktur konten bersama menjadi titik awal yang konsisten untuk publikasi berikutnya."]
 proofStatus: "pending"
-seoTitle: "Naru — Energi sehari-hari | Kultivate"
+seoTitle: "Naru | Kultivate"
 seoDescription: "Bahasa visual dan konten yang konsisten untuk brand energi sehari-hari."
 draft: false
 ---

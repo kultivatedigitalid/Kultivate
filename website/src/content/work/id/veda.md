@@ -1,5 +1,5 @@
 ---
-title: "Veda — Wellbeing yang terjaga"
+title: "Veda"
 slug: "veda"
 locale: "id"
 translationKey: "veda"
@@ -24,7 +24,7 @@ approach: "Kami menetapkan peran konten untuk pemahaman produk, rutinitas, dan p
 deliverables: ["Arah visual", "Panduan tipografi dan gambar", "Contoh penerapan", "Tema konten", "Urutan publikasi", "Panduan format editorial"]
 outcomes: ["Rencana konten dan aturan visual bersama mempermudah persiapan siklus publikasi berikutnya secara konsisten."]
 proofStatus: "pending"
-seoTitle: "Veda — Wellbeing yang terjaga | Kultivate"
+seoTitle: "Veda | Kultivate"
 seoDescription: "Ritme visual dan editorial yang konsisten untuk brand wellbeing sehari-hari."
 draft: false
 ---

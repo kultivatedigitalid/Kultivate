@@ -1,5 +1,5 @@
 ---
-title: "Nadi — Perawatan yang mengikuti"
+title: "Nadi"
 slug: "nadi"
 locale: "id"
 translationKey: "nadi"
@@ -24,7 +24,7 @@ approach: "Kami menyusun cerita berdasarkan penggunaan harian, persiapan, dan du
 deliverables: ["Arsitektur informasi", "Template halaman responsif", "Alur pertanyaan dan catatan serah terima", "Arah visual", "Panduan tipografi dan gambar", "Contoh penerapan"]
 outcomes: ["Cerita produk dan struktur halaman pendukung yang konsisten menjadi dasar komunikasi berikutnya."]
 proofStatus: "pending"
-seoTitle: "Nadi — Perawatan yang mengikuti | Kultivate"
+seoTitle: "Nadi | Kultivate"
 seoDescription: "Penjelasan yang tenang untuk pengalaman perawatan yang terhubung."
 draft: false
 ---

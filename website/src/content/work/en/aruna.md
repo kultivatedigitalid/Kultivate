@@ -1,5 +1,5 @@
 ---
-title: "Aruna — Move with confidence"
+title: "Aruna"
 slug: "aruna"
 locale: "en"
 translationKey: "aruna"
@@ -24,7 +24,7 @@ approach: "We paired a directional visual language with journey-led page plannin
 deliverables: ["Visual direction", "Typography and image guidelines", "Application examples", "Information architecture", "Responsive page templates", "Enquiry journey and handoff notes"]
 outcomes: ["A reusable visual and page framework connects the brand idea with a practical service explanation."]
 proofStatus: "pending"
-seoTitle: "Aruna — Move with confidence | Kultivate"
+seoTitle: "Aruna | Kultivate"
 seoDescription: "Turning an electric mobility proposition into an understandable service story."
 draft: false
 ---

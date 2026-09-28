@@ -1,5 +1,5 @@
 ---
-title: "Nadi — Care that follows"
+title: "Nadi"
 slug: "nadi"
 locale: "en"
 translationKey: "nadi"
@@ -24,7 +24,7 @@ approach: "We structured the story around everyday use, setup and ongoing suppor
 deliverables: ["Information architecture", "Responsive page templates", "Enquiry journey and handoff notes", "Visual direction", "Typography and image guidelines", "Application examples"]
 outcomes: ["A consistent product story and supporting page structure create a clearer basis for future communication."]
 proofStatus: "pending"
-seoTitle: "Nadi — Care that follows | Kultivate"
+seoTitle: "Nadi | Kultivate"
 seoDescription: "A calm explanation of a connected care experience."
 draft: false
 ---

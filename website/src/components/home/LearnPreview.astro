@@ -12,7 +12,7 @@ const copy = locale === 'id'
 <section id="system" class="learn-preview flow-section" aria-labelledby="home-learn-title" data-scroll-key="home-system" data-course-preview>
   <div class="container">
     <header class="preview-header">
-      <div><h2 id="home-learn-title">{copy.title}</h2><p>{copy.description}</p></div>
+      <div><span class="section-kicker">LEARN</span><h2 id="home-learn-title">{copy.title}</h2><p>{copy.description}</p></div>
       <a class="preview-all" href={`/${locale}/learn/`}>{copy.all} <span aria-hidden="true">↗</span></a>
     </header>
     <div id="home-course-rail" class="course-rail" role="region" aria-label={copy.label} tabindex="0">
@@ -27,6 +27,7 @@ const copy = locale === 'id'
 <style>
   .learn-preview { padding-block: clamp(56px, 7vw, 92px); }
   .preview-header { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 28px; }
+  .preview-header .section-kicker { display:block; margin-bottom:14px; }
   .preview-header h2 { color: var(--cloud-white); font-size: clamp(2rem, 3.3vw, 3.2rem); line-height: 1.08; font-weight: 540; letter-spacing: -.035em; }
   .preview-header p { max-width: 52ch; margin-top: 14px; color: var(--mist); line-height: 1.6; }
   .preview-all { flex: none; color: var(--signal-ice); min-height: 44px; display: inline-flex; gap: 12px; align-items: center; font-size: .9rem; }

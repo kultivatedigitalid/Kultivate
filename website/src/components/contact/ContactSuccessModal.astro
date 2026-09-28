@@ -106,6 +106,13 @@ const { locale } = Astro.props;
     trackFunnelEvent('consultation_form_start', { source });
   };
 
+  // Store an explicit choice even when the optional checkbox is left unchecked.
+  // The formdata event covers both fetch/FormData and native form submission.
+  form?.addEventListener('formdata', (event) => {
+    const marketing = form.querySelector<HTMLInputElement>('[name="marketing_consent"]');
+    event.formData.set('marketing_consent', marketing?.checked ? 'yes' : 'no');
+  });
+
   form?.addEventListener('focusin', recordFormStart, { once: true });
   document.querySelectorAll<HTMLAnchorElement>('[data-whatsapp-link]').forEach((link) => {
     link.addEventListener('click', () => {

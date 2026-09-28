@@ -4,58 +4,88 @@ import PrivacyPolicy from '../../components/legal/PrivacyPolicy.astro';
 import { siteConfig } from '../../data/site';
 
 const locale = 'id';
-const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURIComponent('Permintaan penghapusan data')}&body=${encodeURIComponent('Nama lengkap:\nEmail atau nomor WhatsApp yang digunakan saat mengisi formulir:\nPerkiraan tanggal pengiriman formulir:\n\nMohon hapus data saya yang tersimpan melalui formulir website Kultivate.')}`;
+const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURIComponent('Permintaan privasi')}&body=${encodeURIComponent('Nama:\nInformasi kontak yang digunakan dengan Kultivate:\nPermintaan Anda (misalnya akses, koreksi, penghapusan, atau penarikan persetujuan promosi):')}`;
 const sections = [
-  { id: 'data-collected', title: 'Data yang Dikumpulkan' },
-  { id: 'use-and-access', title: 'Penggunaan dan Akses' },
-  { id: 'form-processing', title: 'Pemrosesan Formulir' },
-  { id: 'retention-and-deletion', title: 'Penyimpanan dan Penghapusan' },
-  { id: 'analytics-and-cookies', title: 'Analytics dan Cookie' },
-  { id: 'privacy-contact', title: 'Kontak Privasi' }
+  { id: 'about-policy', title: 'Tentang kebijakan ini' },
+  { id: 'data-collected', title: 'Data pribadi yang dikumpulkan' },
+  { id: 'data-sources', title: 'Cara kami mengumpulkan data' },
+  { id: 'use-and-access', title: 'Cara kami menggunakan data' },
+  { id: 'legal-bases', title: 'Dasar pemrosesan' },
+  { id: 'form-processing', title: 'Pembagian dan pemrosesan data' },
+  { id: 'marketing', title: 'Pilihan komunikasi promosi' },
+  { id: 'analytics-and-cookies', title: 'Cookie, penyimpanan dan analitik' },
+  { id: 'third-party-content', title: 'Konten pihak ketiga' },
+  { id: 'retention-and-deletion', title: 'Retensi dan keamanan' },
+  { id: 'international-transfers', title: 'Pemrosesan lintas negara' },
+  { id: 'rights-and-choices', title: 'Hak dan pilihan Anda' },
+  { id: 'privacy-contact', title: 'Pembaruan, bahasa dan kontak' },
 ];
 ---
 
-<BaseLayout
-  locale={locale}
-  title="Kebijakan Privasi - Kultivate"
-  description="Kebijakan privasi perlindungan data pribadi pengunjung dan pengiriman formulir di website Kultivate."
->
-  <PrivacyPolicy locale={locale} intro="Apa yang kami kumpulkan, mengapa dibutuhkan, dan bagaimana Anda tetap memegang kendali." updated="Berlaku sejak: 13 Agustus 2026" sections={sections}>
+<BaseLayout locale={locale} title="Kebijakan Privasi - Kultivate" description="Cara kami memproses data pribadi Anda dan pilihan yang tersedia bagi Anda.">
+  <PrivacyPolicy locale={locale} intro="Cara kami memproses data pribadi Anda dan pilihan yang tersedia bagi Anda." updated="Terakhir diperbarui: 25 September 2026" sections={sections}>
+    <section id="about-policy">
+      <h2>1. Tentang kebijakan ini</h2>
+      <p>Kebijakan ini menjelaskan cara Kultivate memproses data pribadi dari website, inquiry, konsultasi, dan komunikasi digital terkait. Kultivate dioperasikan oleh {siteConfig.companyLegalName}, entitas yang bertanggung jawab menentukan tujuan dan cara pemrosesan data pribadi yang dijelaskan di sini, sesuai konteks yang berlaku.</p>
+      <p>Untuk pertanyaan atau permintaan terkait privasi, hubungi <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.</p>
+    </section>
     <section id="data-collected">
-      <h2>1. Data yang Dikumpulkan</h2>
-      <p>
-        Kami menyimpan data yang Anda kirim melalui formulir kontak: nama, perusahaan, email, nomor WhatsApp, layanan yang diminati, ringkasan kebutuhan, dan target waktu.
-      </p>
+      <h2>2. Data pribadi yang dikumpulkan</h2>
+      <p>Kami mengumpulkan informasi yang Anda berikan: nama, perusahaan, email, nomor WhatsApp atau telepon, layanan yang diminati, ringkasan proyek atau kebutuhan, dan target waktu. Kami juga menyimpan korespondensi terkait, pengakuan bahwa Anda telah membaca kebijakan privasi, serta pilihan komunikasi promosi yang Anda berikan.</p>
+      <p>Koneksi dengan hosting website, pemrosesan formulir, atau konten eksternal dapat menghasilkan informasi teknis seperti alamat IP, informasi browser atau perangkat, waktu permintaan, serta halaman atau sumber daya yang diminta. Analitik opsional dijelaskan secara terpisah di bawah.</p>
+      <p>Mohon tidak menyertakan informasi sensitif yang tidak diperlukan dalam inquiry umum, seperti dokumen identitas pemerintah, kata sandi atau kredensial autentikasi, informasi keuangan terperinci, informasi kesehatan, atau data sensitif lain yang tidak berkaitan dengan permintaan Anda.</p>
+    </section>
+    <section id="data-sources">
+      <h2>3. Cara kami mengumpulkan data</h2>
+      <p>Informasi berasal langsung dari Anda melalui formulir kontak, email, WhatsApp, atau komunikasi lain tentang inquiry atau proyek Anda. Informasi teknis dapat timbul saat Anda mengunjungi website atau memilih memuat konten pihak ketiga, seperti video pembelajaran.</p>
     </section>
     <section id="use-and-access">
-      <h2>2. Penggunaan dan Akses</h2>
-      <p>
-        Data digunakan untuk meninjau kebutuhan, merespons inquiry, menyiapkan lingkup kerja, dan berkomunikasi mengenai proyek. Akses dibatasi kepada tim internal Kultivate yang membutuhkannya untuk proses tersebut.
-      </p>
+      <h2>4. Cara kami menggunakan data</h2>
+      <p>Kami menggunakan informasi inquiry dan komunikasi untuk memahami kebutuhan dan konteks bisnis Anda, merespons permintaan konsultasi, menyiapkan atau membahas rekomendasi cakupan pekerjaan, serta berkomunikasi tentang rencana atau pekerjaan yang sedang berjalan. Informasi teknis yang relevan mendukung pengoperasian dan keamanan website.</p>
+      <p>Dengan persetujuan Anda yang terpisah dan opsional, kami dapat menggunakan detail kontak untuk update layanan dan tindak lanjut promosi yang relevan. Permintaan konsultasi tidak mensyaratkan persetujuan untuk komunikasi promosi.</p>
+    </section>
+    <section id="legal-bases">
+      <h2>5. Dasar pemrosesan</h2>
+      <p>Sepanjang diperbolehkan oleh hukum yang berlaku, kami memproses informasi yang diperlukan untuk merespons permintaan Anda atau mengambil langkah yang Anda minta sebelum memulai hubungan bisnis. Kami mengandalkan persetujuan eksplisit untuk komunikasi promosi opsional dan, jika diterapkan, analitik opsional.</p>
+      <p>Kami juga dapat memproses informasi untuk memenuhi kewajiban hukum yang berlaku. Untuk tujuan terbatas seperti pemeliharaan dan keamanan website, kami dapat menggunakan dasar kepentingan yang sah apabila sesuai, dengan mempertimbangkan kebutuhan pemrosesan dan dampaknya terhadap hak Anda. Dasar tersebut tidak menggantikan persetujuan ketika persetujuan diwajibkan.</p>
     </section>
     <section id="form-processing">
-      <h2>3. Pemrosesan Formulir</h2>
-      <p>
-        Formulir dikirim melalui Formspree sebagai penyedia pemrosesan formulir. Selain pemrosesan teknis tersebut, Kultivate tidak menjual atau membagikan data formulir kepada pihak lain untuk pemasaran.
-      </p>
+      <h2>6. Pembagian dan pemrosesan data</h2>
+      <p>Akses dibatasi kepada anggota tim Kultivate yang berwenang dan penyedia layanan yang diperlukan untuk tujuan terkait. Kiriman formulir kontak diproses melalui penyedia pemrosesan formulir pihak ketiga, diteruskan ke email Kultivate, dan disimpan atau disalin ke Google Sheets. Infrastruktur email serta layanan produktivitas cloud Google yang relevan mendukung alur ini.</p>
+      <p>Penyedia hosting dan infrastruktur website dapat memproses informasi yang diperlukan untuk menyajikan dan melindungi website. Data juga dapat diungkapkan apabila diwajibkan oleh hukum yang berlaku. Kultivate tidak menjual data inquiry.</p>
     </section>
-    <section id="retention-and-deletion">
-      <h2>4. Penyimpanan dan Penghapusan</h2>
-      <p>
-        Kultivate menyimpan data formulir sampai Anda meminta penghapusan. Kirim permintaan melalui <a href={privacyRequestHref}>template email penghapusan data</a> agar kami dapat menemukan data yang tepat dan mengonfirmasi penyelesaiannya.
-      </p>
+    <section id="marketing">
+      <h2>7. Pilihan komunikasi promosi</h2>
+      <p>Formulir konsultasi memisahkan pengakuan wajib atas Kebijakan Privasi dari persetujuan opsional untuk update layanan dan tindak lanjut promosi yang relevan. Anda dapat mengirim inquiry tanpa mencentang persetujuan promosi. Kultivate saat ini tidak mengoperasikan newsletter.</p>
+      <p>Anda dapat menarik persetujuan promosi kapan saja dengan menghubungi <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>. Penarikan menghentikan penggunaan untuk promosi berikutnya yang didasarkan pada persetujuan tersebut; komunikasi yang diperlukan terkait inquiry atau proyek aktif dapat berlanjut jika ada dasar pemrosesan lain yang sah.</p>
     </section>
     <section id="analytics-and-cookies">
-      <h2>5. Analytics dan Cookie</h2>
-      <p>
-        Website ini saat ini tidak menggunakan analytics atau cookie pelacakan. Cookie yang diperlukan oleh layanan pihak ketiga hanya mengikuti kebutuhan teknis layanan tersebut.
-      </p>
+      <h2>8. Cookie, penyimpanan dan analitik</h2>
+      <p>Fitur Learn menggunakan localStorage di browser untuk mengingat materi yang selesai dan progres course. Progres ini tetap berada di perangkat Anda dan tidak dengan sendirinya menjadi pengenal analitik yang dikirim ke Kultivate. Anda dapat menghapusnya melalui pengaturan data situs di browser, yang juga menghapus progres tersimpan. Kami juga menggunakan sessionStorage sementara untuk memulihkan posisi baca saat berpindah bahasa; posisi tersebut dibaca dan dihapus pada halaman tujuan.</p>
+      <p>Penyimpanan lokal browser berbeda dari cookie dan analitik opsional. Google Analytics 4 dan Google Tag Manager direncanakan untuk pengukuran di masa mendatang, tetapi saat ini belum aktif. Analitik opsional, termasuk cookie atau pengenal terkait, hanya akan dimuat setelah persetujuan pengguna yang sesuai; mekanisme persetujuan harus tersedia sebelum aktivasi. Website ini saat ini tidak menggunakan Meta Pixel, Hotjar, Microsoft Clarity, atau alat pelacakan perilaku sejenis.</p>
+    </section>
+    <section id="third-party-content">
+      <h2>9. Konten pihak ketiga</h2>
+      <p>Sebagian konten pembelajaran disajikan melalui YouTube. Website membuat pemutar dengan mode peningkatan privasi melalui youtube-nocookie.com setelah Anda memilih memuat atau memutar video. Tindakan tersebut memulai koneksi ke pemutar eksternal; bukan berarti tidak ada data yang diproses. YouTube/Google dapat memproses informasi teknis terkait koneksi itu sesuai <a href="https://policies.google.com/privacy">praktik privasi Google</a>.</p>
+    </section>
+    <section id="retention-and-deletion">
+      <h2>10. Retensi dan keamanan</h2>
+      <p>Catatan inquiry dan komunikasi terkait di bawah kendali Kultivate, termasuk catatan email dan Google Sheets yang relevan, disimpan hingga 12 bulan setelah komunikasi terakhir. Kami dapat menghapusnya lebih awal ketika tidak lagi dibutuhkan atau untuk memenuhi permintaan penghapusan yang sah. Penyimpanan lebih lama dibatasi pada yang diwajibkan oleh hukum yang berlaku atau kewajiban hukum yang sah.</p>
+      <p>Penyedia pemrosesan formulir pihak ketiga dapat menyimpan arsip kiriman tersendiri sesuai ketentuannya. Aturan 12 bulan di atas tidak menentukan periode arsip penyedia tersebut. Kami menggunakan langkah teknis dan organisasi yang wajar serta membatasi akses untuk melindungi data pribadi; tidak ada sistem pengiriman atau penyimpanan yang dapat menjamin keamanan sepenuhnya.</p>
+    </section>
+    <section id="international-transfers">
+      <h2>11. Pemrosesan lintas negara</h2>
+      <p>Sebagian penyedia layanan atau infrastrukturnya dapat memproses informasi di luar Indonesia. Lokasi hosting di Indonesia tidak berarti setiap penyedia hanya memproses data di Indonesia. Apabila pemrosesan lintas negara dilakukan, kami mempertimbangkan perlindungan yang sesuai bagi informasi tersebut dan persyaratan hukum yang berlaku.</p>
+    </section>
+    <section id="rights-and-choices">
+      <h2>12. Hak dan pilihan Anda</h2>
+      <p>Sesuai hukum yang berlaku, Anda dapat meminta informasi mengenai pemrosesan, akses atau salinan data, koreksi atau pembaruan, penghapusan atau penghentian pemrosesan, penarikan persetujuan, serta pembatasan atau keberatan atas pemrosesan apabila berlaku. Anda juga dapat menggunakan hak lain yang tersedia berdasarkan hukum privasi yang berlaku.</p>
+      <p>Kirim permintaan ke <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> atau gunakan <a href={privacyRequestHref}>template email permintaan privasi</a> ini. Kami dapat meminta informasi yang secara wajar diperlukan untuk menemukan catatan Anda dan memverifikasi bahwa permintaan tersebut berkaitan dengan Anda. Kami menilai permintaan berdasarkan hukum yang berlaku, termasuk batasan yang sah atau kewajiban retensi, tanpa menjanjikan waktu respons tetap.</p>
     </section>
     <section id="privacy-contact">
-      <h2>6. Kontak Privasi</h2>
-      <p>
-        Pertanyaan, koreksi, atau permintaan penghapusan data dapat dikirim ke <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
-      </p>
+      <h2>13. Pembaruan, bahasa dan kontak</h2>
+      <p>Kami dapat memperbarui Kebijakan ini jika praktik kami atau persyaratan yang berlaku berubah. Tanggal pembaruan terakhir menunjukkan versi terkini. Versi bahasa Inggris menjadi acuan utama: apabila terdapat ketidaksesuaian antara versi bahasa Inggris dan bahasa Indonesia, versi bahasa Inggris berlaku sebagai acuan, dengan tetap tunduk pada hukum yang berlaku.</p>
+      <p>Untuk pertanyaan atau permintaan tentang Kebijakan ini, hubungi Kultivate, yang dioperasikan oleh {siteConfig.companyLegalName}, melalui <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.</p>
     </section>
   </PrivacyPolicy>
 </BaseLayout>

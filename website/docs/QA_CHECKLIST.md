@@ -1,5 +1,39 @@
 # QA Checklist
 
+## Banner scale and Home frame pacing · 25 September 2026
+
+- [x] Services and Learn artwork at 76% scale; Services at 72% opacity; soft artboard edges. Desktop and mobile final screenshots reviewed.
+- [x] Home live SVG filters replaced with cached Canvas 2D lighting, capped at 1280 × 720. The original upper-right-to-lower-left curve, four-second entrance, front-surface glow and static final image remain.
+- [x] Same software-rendered Edge profile before/after: original median frame intervals 399.9/316.6ms, revised 16.7/16.7ms; p95 and cold-start limitations recorded in motion-system.md.
+- [x] Home paused pixels remain unchanged; reveal alpha decreases; completion and no-replay behavior pass. Occluded ribbon canvases are absent during Home entrance and return below the hero. Reduced motion and 390px layout pass.
+- [x] 78-page build, nine existing tests and diff whitespace checks pass. Browser validation has no runtime errors or failed responses. Artifacts: revision11-validation.json, revision11-perf-*.json and revision11-*.jpg.
+
+## Symbols, heroes and dark privacy revision · 25 September 2026
+
+- [x] 78-page production build and nine existing tests pass after cleanup; internal links, anchors and assets are intact.
+- [x] All four SVG symbols have visible front/back depth. Social is frontal; SEO has no lettering; Web uses monitor and gear. Hover expansion and animation rate changes pass browser assertions.
+- [x] New Services/Learn artwork loads, light reveals settle once at 6.133s, and reduced motion remains static. Services artwork and masks share a fixed rightward perspective.
+- [x] Home has no horizontal overflow at 1366, 390 and 320px; desktop idle/hover and mobile screenshots reviewed.
+- [x] Dark EN/ID privacy layouts tested at 1366 and 390px. Contents scroll independently, all anchors exist, and page position does not move when the contents list scrolls. This approved visual revision supersedes the earlier byte-for-byte style-freeze check below.
+- [x] 42 images and 11 unreferenced components removed after source, dynamic-path and complete built-output checks. Recovery copies are outside the project. 67 tracked legacy QA files and browser profiles archived outside the codebase; `/tmp/` is now ignored.
+- [x] Focused browser run: no runtime exceptions or failed responses. Evidence: revision10-validation.json, revision10-cleanup-proof.json, revision10-*.jpg.
+
+## Privacy and motion revision · 25 September 2026
+
+- [x] Production build: 78 pages. Existing quiz suite: 7 tests, including all 1,024 combinations. `git diff --check` passes.
+- [x] All eight localized service-detail routes use the requested asset mapping. Four desktop/mobile hero compositions and reveal frames reviewed.
+- [x] Ten banner timelines verified at 1.5×: Home 4s; Services/Learn 6.133s; other layered heroes 4.133s. Completed heroes settle to static posters.
+- [x] Original ThreeUI file hashes unchanged. Document-anchored repeats verified on twelve page types/routes, including contact, privacy, article, case-study and Learn detail. At most three nearby canvases; shared pause/resume and reduced-motion checks pass. Privacy's opaque visual surface remains unchanged above the shared background.
+- [x] Blog filter still works and stray “Filtered stories” text is absent. Related Insight fallback is absent from service details; actual Learn course links remain.
+- [x] EN/ID Privacy Policy: 13 matching sections, equivalent substantive decisions, date 25 September 2026, controller/contact, no street address or public Formspree naming. All TOC anchors, footer links and actual locale-switch navigation pass.
+- [x] Privacy layouts at 1440/390/320px show no horizontal overflow. Desktop/mobile screenshots reviewed. PrivacyPolicy.astro is byte-for-byte unchanged (SHA-256 1d1024f0cce1c9e44f4007c70a57a96dfaca89a751ccf9f42504cfe8cd6d8162).
+- [x] Contact acknowledgement remains required and links to the locale policy; marketing consent remains optional and unchecked. Both languages submit `consent=acknowledged` and explicit `marketing_consent=yes/no`; checked and unchecked cases trigger the existing success state. Provider responses were intercepted locally, so no test inquiry was sent to external email/Sheets.
+- [x] Input labels/required semantics and consent link targets checked. No GA/GTM, Meta, Hotjar or Clarity network requests observed; identifiers remain empty and analyticsConsentRequired is true. No Stripe code or visual assets introduced. Existing click-to-load YouTube and local Learn storage implementation preserved.
+- [x] No JavaScript runtime exceptions in completed browser QA. Artifacts: revision9-validation.json and revision9-*.jpg in the task visualization folder.
+- [ ] Operational verification: Formspree plan/submission archive retention and existing delivery/copying into email/Google Sheets. The email/Sheets flow is owner-confirmed, not verified through the provider account in this task.
+- [ ] Assign and operate the email/Sheets retention review and deletion process. Implement a consent mechanism before any future GA4/GTM activation.
+
+
 - [x] Latest banner/contrast revision: eight localized service routes at desktop/mobile use one loaded banner image; Blog handoff and filter verified; small light-field label contrast measures 8.28:1 / 4.69:1; 52-page build passes with no browser errors or failed local assets.
 
 - [x] Latest scroll revision: Home and Learn at 1440/390 px retain absolute document coordinates from top to bottom, render at most three canvases, preserve pause/reduced motion, and report no runtime errors, failed local requests, or WebGL context warnings.

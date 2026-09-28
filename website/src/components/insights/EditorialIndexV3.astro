@@ -10,13 +10,12 @@ const topics = [...new Set(articles.map((article) => article.category))];
 const copy = locale === 'id'
   ? {
       label: 'BLOG',
-      title: 'Catatan praktis tentang search',
-      description: 'Penjelasan yang membantu Anda memahami pilihan, pekerjaan, dan alasan di balik rekomendasi search',
+      title: 'Artikel Blog',
+      description: 'Insight untuk membantu Anda memahami pilihan digital, strategi, dan hal yang mendukung keputusan lebih baik.',
       heroAlt: 'Bidang informasi biru tersusun dalam kedalaman',
       topics: 'Topik',
       allTopic: 'Semua',
       all: 'Semua artikel',
-      filtered: 'Artikel terpilih',
       featured: 'Artikel pilihan',
       story: 'Story',
       read: 'Baca artikel',
@@ -24,13 +23,12 @@ const copy = locale === 'id'
     }
   : {
       label: 'BLOG',
-      title: 'Practical search notes',
-      description: 'Clear explanations to help you understand the choices, work, and reasoning behind search recommendations',
+      title: 'Blog Post',
+      description: 'Insights to help you understand digital choices, strategies, and what drives better decisions.',
       heroAlt: 'Blue information surfaces arranged with depth',
       topics: 'Topics',
       allTopic: 'All',
       all: 'All stories',
-      filtered: 'Filtered stories',
       featured: 'Featured story',
       story: 'Story',
       read: 'Read article',
@@ -39,10 +37,10 @@ const copy = locale === 'id'
 ---
 
 <div class="insights-page page-flow">
-  <HeroShell
+  <HeroShell scene="insights"
     title={copy.title}
     description={copy.description}
-    image="/assets/banners/insights-gradient.webp"
+    image="/assets/hero-scenes/insights-wave.webp"
     imageAlt={copy.heroAlt}
     label={copy.label}
     variant="insights"
@@ -80,8 +78,9 @@ const copy = locale === 'id'
         </header>
 
         <div class="story-grid" data-story-grid>
+          <div class="story-backdrop light-field" aria-hidden="true"></div>
           {articles.map((article, index) => (
-            <div class:list={[index === 0 ? 'story-feature light-field' : 'story-item']}>
+            <div class:list={[index === 0 ? 'story-feature' : 'story-item']}>
             <a
               href={'/' + locale + '/insights/' + article.slug + '/'}
               class="story-card"
@@ -133,10 +132,25 @@ const copy = locale === 'id'
       const title = root.querySelector<HTMLElement>('[data-stories-title]');
       const count = root.querySelector<HTMLElement>('[data-result-count]');
       const allTitle = title?.textContent?.trim() ?? '';
-      const filteredTitle = root.closest('.insights-page')?.querySelector<HTMLElement>('[data-filtered-title]')?.textContent?.trim() ?? '';
       const resultLabel = count?.textContent?.replace(/^\s*\d+\s*/, '').trim() ?? '';
 
+      const grid = root.querySelector<HTMLElement>('[data-story-grid]');
+      const feature = root.querySelector<HTMLElement>('.story-feature');
+      // The light field belongs to the result area, never to a filtered card.
+      // Capture the normal feature footprint before switching to equal cards.
+      const syncBackdrop = () => {
+        if (!grid || !feature || root.dataset.filtered === 'true') return;
+        const height = Math.ceil(feature.getBoundingClientRect().height);
+        if (height > 0) grid.style.setProperty('--story-field-height', `${height}px`);
+      };
+      const observer = new ResizeObserver(syncBackdrop);
+      if (feature) observer.observe(feature);
+      document.fonts.ready.then(syncBackdrop);
+      syncBackdrop();
+      document.addEventListener('astro:before-swap', () => observer.disconnect(), { once: true });
+
       const applyFilter = (topic: string) => {
+        syncBackdrop();
         root.dataset.filtering = 'true';
         root.dataset.filtered = topic ? 'true' : 'false';
 
@@ -147,8 +161,6 @@ const copy = locale === 'id'
           if (matches) visibleCount += 1;
         });
 
-        const feature = root.querySelector<HTMLElement>('.story-feature');
-        if (feature) feature.hidden = cards[0]?.hidden ?? true;
 
         buttons.forEach((button) => {
           button.setAttribute('aria-pressed', String((button.dataset.topic ?? '') === topic));
@@ -156,7 +168,7 @@ const copy = locale === 'id'
 
         if (title) {
           title.textContent = topic
-            ? `${filteredTitle || (root.ownerDocument.documentElement.lang === 'id' ? 'Artikel' : 'Stories')}: ${topic}`
+            ? topic
             : allTitle;
         }
         if (count) count.textContent = `${visibleCount} ${resultLabel}`;
@@ -176,12 +188,11 @@ const copy = locale === 'id'
   document.addEventListener('astro:page-load', setupInsightsFilters);
 </script>
 
-<span class="visually-hidden" data-filtered-title>{copy.filtered}</span>
 
 <style>
   .editorial {
     position: relative;
-    padding: clamp(48px, 6vw, 86px) 0 clamp(96px, 11vw, 148px);
+    padding: clamp(28px, 4vw, 48px) 0 clamp(64px, 7vw, 96px);
     background: linear-gradient(180deg, rgba(7, 11, 18, 0.24), rgba(6, 10, 17, 0.56) 54%, rgba(5, 8, 14, 0.48));
   }
 
@@ -191,7 +202,7 @@ const copy = locale === 'id'
     gap: clamp(28px, 6vw, 88px);
     align-items: center;
     border: 0;
-    padding-block: 18px;
+    padding-block: 8px;
   }
 
   .topic-row > span { color: rgba(201, 211, 223, 0.5); }
@@ -229,14 +240,14 @@ const copy = locale === 'id'
     outline-offset: 3px;
   }
 
-  .stories-block { padding-top: clamp(68px, 8vw, 110px); }
+  .stories-block { padding-top: clamp(24px, 3vw, 40px); }
 
   .stories-heading {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 32px;
-    margin-bottom: clamp(28px, 4vw, 50px);
+    margin-bottom: clamp(20px, 2.5vw, 32px);
   }
 
   .section-label {
@@ -254,9 +265,13 @@ const copy = locale === 'id'
   .result-count { color: rgba(201, 211, 223, 0.5); }
 
   .story-grid {
+    position: relative;
+    isolation: isolate;
+    min-height: var(--story-field-height, 520px);
+    align-content: start;
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: clamp(54px, 7vw, 92px) clamp(18px, 3vw, 42px);
+    gap: clamp(32px, 4vw, 56px) clamp(18px, 3vw, 42px);
     transition: opacity 180ms var(--ease-out);
   }
 
@@ -383,7 +398,7 @@ const copy = locale === 'id'
       gap: 14px;
     }
 
-    .story-grid { grid-template-columns: 1fr; gap: 58px; }
+    .story-grid { grid-template-columns: 1fr; gap: 36px; }
 
     .story-card,
     .story-card[data-rank],
@@ -436,19 +451,28 @@ const copy = locale === 'id'
   }
 
   .story-item { display:contents; }
-  .story-feature { grid-column:1/-1; padding-block:160px; margin-block:-24px 20px; }
-  .story-feature::after { left:calc((min(100vw,1440px) - 100vw) / 2 - 10vw); right:calc((min(100vw,1440px) - 100vw) / 2 - 10vw); }
+  .story-feature { grid-column:1/-1; padding-block:clamp(28px,3.5vw,48px); margin-block:0 12px; }
+  :global(#main-content) .story-backdrop::after { left:calc((min(100vw,1440px) - 100vw) / 2 - 10vw); right:calc((min(100vw,1440px) - 100vw) / 2 - 10vw); }
   .story-feature > .story-card { width:100%; }
   .story-feature :is(h3,.story-link) { color:#0c2940; }
   .story-feature :is(p,.story-rank,.story-meta) { color:#2a4c65; }
   .story-feature .story-link { border-color:rgba(16,57,87,.45); }
   .story-feature .story-card:is(:hover,:focus-visible) .story-link { color:#071c2d; border-color:#071c2d; }
-  [data-filtered='true'] .story-feature .story-card { display:grid; grid-template-columns:1.18fr .82fr; }
+  .story-backdrop.light-field { position:absolute; inset:0 0 auto; height:var(--story-field-height,520px); z-index:-1; pointer-events:none; }
+  [data-filtered='true'] .story-feature { display:contents; }
+  [data-filtered='true'] .story-card[data-rank] { display:flex; flex-direction:column; width:100%; min-width:0; gap:0; align-items:stretch; background:#0b1b29; border-radius:8px; overflow:hidden; }
+  [data-filtered='true'] .story-card figure { flex:none; width:100%; border-radius:0; }
+  [data-filtered='true'] .story-card .story-copy { display:flex; flex-direction:column; flex:1; padding:20px; max-width:none; }
+  [data-filtered='true'] .story-card h3 { color:#edf5fa; }
+  [data-filtered='true'] .story-card :is(p,.story-meta) { color:#c1d4e1; }
+  [data-filtered='true'] .story-card .story-link { color:#d6edf8; border-color:#7393aa; margin-top:auto; align-self:flex-start; }
+  [data-filtered='true'] .story-card .story-copy > p { margin-bottom:20px; }
+  [data-filtered='true'] .story-card:is(:hover,:focus-visible) .story-link { color:#fff; border-color:#c6edfc; }
   .story-feature[hidden] { display:none; }
   @media(max-width:1050px) {
-    .story-feature { padding-block:160px; }
-    .story-feature::after { background:linear-gradient(180deg,transparent,#bfd8e7 15%,#e5f1f7 39%,#b6d2e6 83%,transparent); }
-    [data-filtered='true'] .story-feature .story-card { display:block; }
+    .story-feature { padding-block:32px; }
+    :global(#main-content) .story-backdrop::after { background:linear-gradient(180deg,transparent,#bfd8e7 15%,#e5f1f7 39%,#b6d2e6 83%,transparent); }
+
   }
 
 </style>

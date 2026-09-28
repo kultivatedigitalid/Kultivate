@@ -1,5 +1,5 @@
 ---
-title: "Aksa — Belajar lebih terarah"
+title: "Aksa"
 slug: "aksa"
 locale: "id"
 translationKey: "aksa"
@@ -24,7 +24,7 @@ approach: "Kami memetakan kebutuhan topik ke kategori belajar, lalu menetapkan s
 deliverables: ["Peta pencarian ke halaman", "Brief konten prioritas", "Rencana tautan internal", "Arsitektur informasi", "Template halaman responsif", "Alur pertanyaan dan catatan serah terima"]
 outcomes: ["Arsitektur pembelajaran yang dapat digunakan ulang mendukung penelusuran course dan pembaruan editorial."]
 proofStatus: "pending"
-seoTitle: "Aksa — Belajar lebih terarah | Kultivate"
+seoTitle: "Aksa | Kultivate"
 seoDescription: "Sistem penelusuran pembelajaran berdasarkan keputusan berikutnya bagi peserta."
 draft: false
 ---

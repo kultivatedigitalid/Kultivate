@@ -2,6 +2,8 @@
 import VideoLessonCard from '../learning/VideoLessonCard.astro';
 import {
   getLearningLessonsForSeries,
+  learningCategoryLabels,
+  learningStageLabels,
   type LearningLocale,
   type LearningSeries,
 } from '../../data/learning';
@@ -14,47 +16,28 @@ interface Props {
 const { locale, series } = Astro.props;
 const lessons = getLearningLessonsForSeries(series.id);
 const relatedServicePath = `/${locale}/services/${series.category}/`;
-const roadmapPath = `/${locale}/services/#website-growth-roadmap`;
+const serviceLabel = learningCategoryLabels[series.category];
+const hasVideos = lessons.some(lesson => lesson.videoId.trim());
 const learnPath = `/${locale}/learn/`;
-const copy = locale === 'id'
-  ? {
-      back: 'Kembali ke Learn',
-      course: `Course ${String(series.order).padStart(2, '0')}`,
-      lessonCount: `${lessons.length} materi`,
-      modules: 'Isi course',
-      current: 'Sedang dibuka',
-      lesson: 'Materi',
-      previous: 'Materi sebelumnya',
-      next: 'Materi berikutnya',
-      progress: 'Progress',
-      related: 'Layanan terkait',
-      relatedBody: series.category === 'seo'
-        ? 'Butuh bantuan menerapkan keputusan search ini ke konteks bisnis Anda? Lihat cara kami menangani SEO.'
-        : 'Butuh bantuan menerapkan keputusan website ini ke konteks bisnis Anda? Lihat cara kami menangani Web Services.',
-      relatedCta: series.category === 'seo' ? 'Pelajari layanan SEO' : 'Pelajari Web Services',
-      roadmapTitle: 'Lanjutkan dari insight ke prioritas',
-      roadmapBody: 'Gunakan Growth Roadmap untuk menemukan prioritas berikutnya di search, website, visual strategy, atau social media.',
-      roadmapCta: 'Buka Website Growth Roadmap',
-    }
-  : {
-      back: 'Back to Learn',
-      course: `Course ${String(series.order).padStart(2, '0')}`,
-      lessonCount: `${lessons.length} lessons`,
-      modules: 'Course contents',
-      current: 'Current',
-      lesson: 'Lesson',
-      previous: 'Previous lesson',
-      next: 'Next lesson',
-      progress: 'Progress',
-      related: 'Related service',
-      relatedBody: series.category === 'seo'
-        ? 'Need help applying these search decisions to your business context? See how we approach SEO.'
-        : 'Need help applying these website decisions to your business context? See how we approach Web Services.',
-      relatedCta: series.category === 'seo' ? 'Explore SEO services' : 'Explore Web Services',
-      roadmapTitle: 'Turn the insight into a priority',
-      roadmapBody: 'Use the Growth Roadmap to find your next priority in search, websites, visual strategy, or social media.',
-      roadmapCta: 'Open the Website Growth Roadmap',
-    };
+const copy = locale === 'id' ? {
+  back: 'Kembali ke Learn', course: `Course ${String(series.order).padStart(2, '0')}`,
+  lessonCount: `${series.chapters.length} chapter · ${lessons.length} materi`,
+  audience: 'Untuk', modules: 'Isi course', lesson: 'Materi',
+  upcoming: 'Video akan tersedia. Jelajahi ringkasan dan tujuan setiap materi terlebih dahulu.',
+  previous: 'Materi sebelumnya', next: 'Materi berikutnya', progress: 'Progress',
+  related: 'Layanan terkait',
+  relatedBody: 'Ingin menerapkan pemahaman ini pada kebutuhan bisnis Anda? Pelajari pendekatan layanan kami.',
+  relatedCta: `Pelajari ${serviceLabel}`,
+} : {
+  back: 'Back to Learn', course: `Course ${String(series.order).padStart(2, '0')}`,
+  lessonCount: `${series.chapters.length} chapters · ${lessons.length} lessons`,
+  audience: 'For', modules: 'Course contents', lesson: 'Lesson',
+  upcoming: 'Videos are coming. Explore the lesson summaries and learning objectives in the meantime.',
+  previous: 'Previous lesson', next: 'Next lesson', progress: 'Progress',
+  related: 'Related service',
+  relatedBody: 'Ready to apply these ideas to your business? Explore how our service can help.',
+  relatedCta: `Explore ${serviceLabel}`,
+};
 ---
 
 <div
@@ -66,85 +49,76 @@ const copy = locale === 'id'
   <section class="learn-workspace flow-section" aria-labelledby="course-title">
     <div class="container">
       <div class="learn-workspace__layout">
-        <aside class="learn-modules" aria-labelledby="course-title" data-reveal>
-          <span class="text-mono">{copy.modules}</span>
+        <aside class="learn-modules" aria-labelledby="course-title">
+          <a class="learn-back" href={learnPath}>← {copy.back}</a>
+          <span class="text-mono">{copy.course}</span>
           <h1 id="course-title">{series.title[locale]}</h1>
-          <div class="learn-progress" aria-label={copy.progress}>
+          <p class="learn-course-count">{copy.lessonCount}</p>
+          {hasVideos && <div class="learn-progress" aria-label={copy.progress}>
             <div class="learn-progress__meta text-mono">
               <span>{copy.progress}</span>
               <span data-learn-progress-count>0 / {lessons.length}</span>
             </div>
             <div class="learn-progress__track" role="progressbar" aria-valuemin="0" aria-valuemax={lessons.length} aria-valuenow="0" data-learn-progress><span data-learn-progress-fill></span></div>
-          </div>
-          <ol>
-            {lessons.map((lesson, index) => (
-              <li>
-                <button
-                  type="button"
-                  data-lesson-select={lesson.id}
-                  aria-controls={`series-panel-${lesson.id}`}
-                  aria-current={index === 0 ? 'step' : undefined}
-                >
-                  <span class="learn-modules__index text-mono">{String(index + 1).padStart(2, '0')}</span>
-                  <span class="learn-modules__title">{lesson.title[locale]}</span>
-                  <span class="learn-modules__done" data-lesson-done hidden aria-label={locale === 'id' ? 'Selesai' : 'Complete'}>&#10003;</span>
-                  <span class="learn-modules__current text-mono" data-current-label hidden={index !== 0}>
-                    {copy.current}
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ol>
+          </div>}
+          <details class="learn-outline" open data-course-outline>
+            <summary>{copy.modules}<span aria-hidden="true">⌄</span></summary>
+            <nav aria-label={copy.modules}>
+              <ol class="learn-chapters">
+                {series.chapters.map((chapter, chapterIndex) => (
+                  <li class="learn-chapter" data-chapter={chapter.id}>
+                    <h2><span>{String(chapterIndex + 1).padStart(2, '0')}</span>{chapter.title[locale]}</h2>
+                    <p class="learn-chapter__stage">{learningStageLabels[chapter.stage][locale]}</p>
+                    <ol>
+                      {chapter.lessons.map(lesson => (
+                        <li>
+                          <a href={`#lesson-${lesson.id}`} data-lesson-select={lesson.id} aria-controls={`series-panel-${lesson.id}`}>
+                            <span class="learn-modules__title">{lesson.title[locale]}</span>
+                            <span class="learn-modules__done" data-lesson-done hidden aria-label={locale === 'id' ? 'Selesai' : 'Complete'}>✓</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ol>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </details>
         </aside>
 
-        <div class="learn-player" data-reveal="content">
-          <div class="learn-player__topbar">
-            <a class="link-hover-arrow" href={learnPath}>
-              <span aria-hidden="true">&#8592;</span><span>{copy.back}</span>
-            </a>
-          </div>
+        <div class="learn-player">
+          <header class="learn-player__intro">
+            <p>{series.description[locale]}</p>
+            <p class="learn-audience"><strong>{copy.audience}</strong> {series.audience[locale]}</p>
+            {!hasVideos && <p class="learn-availability">{copy.upcoming}</p>}
+          </header>
 
           {lessons.map((lesson, index) => (
             <section
               id={`series-panel-${lesson.id}`}
               class="learn-player__panel"
               data-lesson-panel={lesson.id}
-              hidden={index !== 0}
               aria-labelledby={`lesson-heading-${lesson.id}`}
             >
-              <span id={`lesson-heading-${lesson.id}`} class="sr-only">
-                {copy.lesson} {index + 1}: {lesson.title[locale]}
-              </span>
               <VideoLessonCard
                 lesson={lesson}
                 locale={locale}
                 context="learn"
                 index={index}
                 display="player"
+                eyebrow={`${series.chapters.find(chapter => chapter.id === lesson.chapterId)?.title[locale]} · ${copy.lesson} ${index + 1} / ${lessons.length}`}
               />
-
-              {index === lessons.length - 1 && (
-                <aside class="learn-roadmap-cta" aria-labelledby={`roadmap-cta-${series.id}`}>
-                  <div>
-                    <h2 id={`roadmap-cta-${series.id}`}>{copy.roadmapTitle}</h2>
-                    <p>{copy.roadmapBody}</p>
-                  </div>
-                  <a class="btn btn-primary" href={roadmapPath} data-learn-roadmap-link>
-                    <span>{copy.roadmapCta}</span><span aria-hidden="true">&#8594;</span>
-                  </a>
-                </aside>
-              )}
 
               <nav class="learn-player__controls" aria-label={locale === 'id' ? 'Navigasi materi' : 'Lesson navigation'}>
                 {index > 0 ? (
-                  <button type="button" class="link-hover-arrow" data-lesson-step={lessons[index - 1].id} data-step-direction="previous">
-                    <span aria-hidden="true">&#8592;</span><span>{copy.previous}</span>
-                  </button>
+                  <a href={`#lesson-${lessons[index - 1].id}`} class="link-hover-arrow" data-lesson-step={lessons[index - 1].id} data-step-direction="previous">
+                    <span aria-hidden="true">&#8592;</span><span><small>{copy.previous}</small>{lessons[index - 1].title[locale]}</span>
+                  </a>
                 ) : <span></span>}
                 {index < lessons.length - 1 ? (
-                  <button type="button" class="link-hover-arrow" data-lesson-step={lessons[index + 1].id} data-step-direction="next">
-                    <span>{copy.next}</span><span aria-hidden="true">&#8594;</span>
-                  </button>
+                  <a href={`#lesson-${lessons[index + 1].id}`} class="link-hover-arrow" data-lesson-step={lessons[index + 1].id} data-step-direction="next">
+                    <span><small>{copy.next}</small>{lessons[index + 1].title[locale]}</span><span aria-hidden="true">&#8594;</span>
+                  </a>
                 ) : <span></span>}
               </nav>
             </section>
@@ -158,7 +132,7 @@ const copy = locale === 'id'
     <div class="container learn-related__layout" data-reveal>
       <div>
         <span class="text-mono">{copy.related}</span>
-        <h2 id="learn-related-title">{series.category === 'seo' ? 'SEO' : 'Web Services'}</h2>
+        <h2 id="learn-related-title">{serviceLabel}</h2>
       </div>
       <div>
         <p>{copy.relatedBody}</p>
@@ -174,170 +148,112 @@ const copy = locale === 'id'
   import { trackFunnelEvent } from '../../scripts/funnel-analytics';
 
   const setupLearnSeries = () => {
-    document.querySelectorAll<HTMLElement>('[data-learn-series]').forEach((root) => {
+    document.querySelectorAll<HTMLElement>('[data-learn-series]').forEach(root => {
       if (root.dataset.seriesReady === 'true') return;
       root.dataset.seriesReady = 'true';
-
       const seriesId = root.dataset.seriesId ?? '';
-      const selectors = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-lesson-select]'));
+      const selectors = Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-lesson-select]'));
       const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-lesson-panel]'));
-      const player = root.querySelector<HTMLElement>('.learn-player');
-      const progress = root.querySelector<HTMLElement>('[data-learn-progress]');
-      const progressFill = root.querySelector<HTMLElement>('[data-learn-progress-fill]');
-      const progressCount = root.querySelector<HTMLElement>('[data-learn-progress-count]');
-      const storageKey = `kultivate:learn-progress:${root.dataset.locale ?? ''}:${seriesId}`;
+      const outline = root.querySelector<HTMLDetailsElement>('[data-course-outline]');
+      const mobileLayout = matchMedia('(max-width: 920px)');
+      const updateOutline = () => { if (outline) outline.open = !mobileLayout.matches; };
+      mobileLayout.addEventListener('change', updateOutline);
+      const storageKey = `kultivate:learn-progress:${root.dataset.locale}:${seriesId}`;
+      const completionButtons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-lesson-complete]'));
       let completed = new Set<string>();
-
       try {
-        const saved = JSON.parse(window.localStorage.getItem(storageKey) ?? '[]');
+        const saved = JSON.parse(localStorage.getItem(storageKey) ?? '[]');
         if (Array.isArray(saved)) completed = new Set(saved.filter((id): id is string => typeof id === 'string'));
-      } catch {
-        completed = new Set();
-      }
-
+      } catch { /* Storage is optional; navigation does not depend on it. */ }
       const updateProgress = () => {
-        const completedCount = selectors.filter((button) => completed.has(button.dataset.lessonSelect ?? '')).length;
-        if (progressCount) progressCount.textContent = `${completedCount} / ${selectors.length}`;
-        if (progress) progress.setAttribute('aria-valuenow', String(completedCount));
-        if (progressFill) progressFill.style.width = `${selectors.length ? (completedCount / selectors.length) * 100 : 0}%`;
-
-        selectors.forEach((button) => {
-          const isComplete = completed.has(button.dataset.lessonSelect ?? '');
-          button.dataset.completed = String(isComplete);
-          const done = button.querySelector<HTMLElement>('[data-lesson-done]');
-          if (done) done.hidden = !isComplete;
+        const count = selectors.filter(link => completed.has(link.dataset.lessonSelect ?? '')).length;
+        const counter = root.querySelector('[data-learn-progress-count]');
+        const fill = root.querySelector<HTMLElement>('[data-learn-progress-fill]');
+        if (counter) counter.textContent = `${count} / ${selectors.length}`;
+        root.querySelector('[data-learn-progress]')?.setAttribute('aria-valuenow', String(count));
+        if (fill) fill.style.width = `${selectors.length ? count / selectors.length * 100 : 0}%`;
+        selectors.forEach(link => {
+          const done = link.querySelector<HTMLElement>('[data-lesson-done]');
+          if (done) done.hidden = !completed.has(link.dataset.lessonSelect ?? '');
         });
-
-        root.querySelectorAll<HTMLButtonElement>('[data-lesson-complete]').forEach((button) => {
-          const isComplete = completed.has(button.dataset.lessonComplete ?? '');
-          button.setAttribute('aria-pressed', String(isComplete));
-          const defaultLabel = button.querySelector<HTMLElement>('[data-complete-default]');
-          const activeLabel = button.querySelector<HTMLElement>('[data-complete-active]');
-          if (defaultLabel) defaultLabel.hidden = isComplete;
-          if (activeLabel) activeLabel.hidden = !isComplete;
+        completionButtons.forEach(button => {
+          const done = completed.has(button.dataset.lessonComplete ?? '');
+          button.setAttribute('aria-pressed', String(done));
+          button.querySelector<HTMLElement>('[data-complete-default]')!.hidden = done;
+          button.querySelector<HTMLElement>('[data-complete-active]')!.hidden = !done;
         });
       };
-
-      const persistProgress = () => {
-        try {
-          window.localStorage.setItem(storageKey, JSON.stringify(Array.from(completed)));
-        } catch {
-          // Progress remains available for this page view when storage is unavailable.
+      const openLesson = (id: string, focus = false) => {
+        const target = panels.find(panel => panel.dataset.lessonPanel === id) ?? panels[0];
+        if (!target) return;
+        const selectedId = target.dataset.lessonPanel;
+        panels.forEach(panel => {
+          const active = panel === target;
+          if (!active) panel.querySelector('[data-video-lesson]')?.dispatchEvent(new Event('learn:pause-video'));
+          panel.hidden = !active;
+        });
+        selectors.forEach(link => {
+          if (link.dataset.lessonSelect === selectedId) link.setAttribute('aria-current', 'step');
+          else link.removeAttribute('aria-current');
+        });
+        if (!mobileLayout.matches) {
+          const current = selectors.find(link => link.dataset.lessonSelect === selectedId);
+          const sidebar = root.querySelector<HTMLElement>('.learn-modules');
+          if (current && sidebar) {
+            const item = current.getBoundingClientRect(), bounds = sidebar.getBoundingClientRect();
+            if (item.bottom > bounds.bottom) sidebar.scrollTop += item.bottom - bounds.bottom + 12;
+            else if (item.top < bounds.top) sidebar.scrollTop -= bounds.top - item.top + 12;
+          }
         }
-        updateProgress();
+        if (focus) {
+          if (outline && matchMedia('(max-width: 920px)').matches) outline.open = false;
+          const heading = target.querySelector<HTMLElement>('h2');
+          heading?.focus({ preventScroll: true });
+          target.scrollIntoView({ block: 'start', behavior: 'instant' });
+          if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            target.getAnimations().forEach(animation => animation.cancel());
+            target.animate([{opacity: .55, transform: 'translateY(4px)'}, {opacity: 1, transform: 'translateY(0)'}], {duration: 180, easing: 'ease-out'});
+          }
+        }
       };
-
-      const openLesson = (lessonId: string, source: 'module' | 'previous' | 'next') => {
-        const targetPanel = panels.find((panel) => panel.dataset.lessonPanel === lessonId);
-        if (!targetPanel) return;
-
-        const activePanel = panels.find((panel) => !panel.hidden);
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const shouldAnimate = Boolean(player && activePanel && activePanel !== targetPanel && !reduceMotion);
-        const previousHeight = shouldAnimate ? player?.getBoundingClientRect().height ?? 0 : 0;
-
-        selectors.forEach((button) => {
-          const isCurrent = button.dataset.lessonSelect === lessonId;
-          if (isCurrent) button.setAttribute('aria-current', 'step');
-          else button.removeAttribute('aria-current');
-          const label = button.querySelector<HTMLElement>('[data-current-label]');
-          if (label) label.hidden = !isCurrent;
-        });
-
-        panels.forEach((panel) => {
-          panel.hidden = panel.dataset.lessonPanel !== lessonId;
-        });
-
-        if (shouldAnimate && player) {
-          const nextHeight = player.getBoundingClientRect().height;
-          player.getAnimations().forEach((animation) => animation.cancel());
-          player.animate(
-            [
-              { height: `${previousHeight}px` },
-              { height: `${nextHeight}px` },
-            ],
-            {
-              duration: 420,
-              easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
-            },
-          );
-          targetPanel.animate(
-            [
-              { opacity: 0, transform: 'translate3d(0, 10px, 0)' },
-              { opacity: 1, transform: 'translate3d(0, 0, 0)' },
-            ],
-            { duration: 360, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' },
-          );
-        }
-
-        history.replaceState(null, '', `#lesson-${lessonId}`);
-        trackFunnelEvent(source === 'next' ? 'learn_next_lesson' : 'learn_lesson_start', {
-          series_id: seriesId,
-          lesson_id: lessonId,
-          source,
-        });
-
-        if (source === 'module' && window.matchMedia('(max-width: 920px)').matches) {
-          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          window.requestAnimationFrame(() => {
-            root.querySelector<HTMLElement>('.learn-player')?.scrollIntoView({
-              behavior: reduceMotion ? 'auto' : 'smooth',
-              block: 'start',
-            });
+      root.querySelectorAll<HTMLAnchorElement>('[data-lesson-select], [data-lesson-step]').forEach(link => {
+        link.addEventListener('click', event => {
+          if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          const id = link.dataset.lessonSelect ?? link.dataset.lessonStep;
+          if (!id) return;
+          event.preventDefault();
+          if (location.hash !== `#lesson-${id}`) history.pushState(null, '', `#lesson-${id}`);
+          openLesson(id, true);
+          trackFunnelEvent(link.dataset.stepDirection === 'next' ? 'learn_next_lesson' : 'learn_lesson_start', {
+            series_id: seriesId, lesson_id: id, source: link.dataset.stepDirection ?? 'chapter',
           });
-        }
-      };
-
-      selectors.forEach((button) => {
-        button.addEventListener('click', () => {
-          const lessonId = button.dataset.lessonSelect;
-          if (lessonId) openLesson(lessonId, 'module');
         });
       });
-
-      root.querySelectorAll<HTMLButtonElement>('[data-lesson-step]').forEach((button) => {
-        button.addEventListener('click', () => {
-          const lessonId = button.dataset.lessonStep;
-          const source = button.dataset.stepDirection === 'next' ? 'next' : 'previous';
-          if (lessonId) openLesson(lessonId, source);
-        });
-      });
-
-      root.querySelector<HTMLElement>('[data-learn-service-link]')?.addEventListener('click', () => {
+      completionButtons.forEach(button => button.addEventListener('click', () => {
+        const id = button.dataset.lessonComplete!;
+        const done = !completed.has(id);
+        if (done) completed.add(id); else completed.delete(id);
+        try { localStorage.setItem(storageKey, JSON.stringify([...completed])); } catch { /* Keep in-memory progress. */ }
+        updateProgress();
+        if (done) trackFunnelEvent('learn_lesson_complete', { series_id: seriesId, lesson_id: id });
+      }));
+      root.querySelector('[data-learn-service-link]')?.addEventListener('click', () => {
         trackFunnelEvent('learn_to_service_click', { series_id: seriesId });
       });
-
-      root.querySelector<HTMLElement>('[data-learn-roadmap-link]')?.addEventListener('click', () => {
-        trackFunnelEvent('learn_to_service_click', { series_id: seriesId, target: 'website-growth-roadmap' });
-      });
-
-      root.querySelectorAll<HTMLButtonElement>('[data-lesson-complete]').forEach((button) => {
-        button.addEventListener('click', () => {
-          const lessonId = button.dataset.lessonComplete;
-          if (!lessonId) return;
-          const isNowComplete = !completed.has(lessonId);
-          if (isNowComplete) completed.add(lessonId);
-          else completed.delete(lessonId);
-          persistProgress();
-          if (isNowComplete) {
-            trackFunnelEvent('learn_lesson_complete', { series_id: seriesId, lesson_id: lessonId });
-          }
-        });
-      });
-
-      const hashLesson = window.location.hash.replace('#lesson-', '');
-      if (hashLesson && panels.some((panel) => panel.dataset.lessonPanel === hashLesson)) {
-        openLesson(hashLesson, 'module');
-      }
+      const syncHash = () => openLesson(location.hash.replace(/^#lesson-/, ''));
+      window.addEventListener('hashchange', syncHash);
+      window.addEventListener('popstate', syncHash);
+      document.addEventListener('astro:before-swap', () => {
+        window.removeEventListener('hashchange', syncHash);
+        window.removeEventListener('popstate', syncHash);
+        mobileLayout.removeEventListener('change', updateOutline);
+      }, { once: true });
+      updateOutline();
+      syncHash();
       updateProgress();
-
-      trackFunnelEvent('learn_series_open', {
-        series_id: seriesId,
-        locale: root.dataset.locale ?? '',
-      });
+      trackFunnelEvent('learn_series_open', { series_id: seriesId, locale: root.dataset.locale ?? '' });
     });
   };
-
   setupLearnSeries();
   document.addEventListener('astro:page-load', setupLearnSeries);
 </script>
@@ -360,92 +276,46 @@ const copy = locale === 'id'
     align-items: start;
   }
 
-  .learn-modules {
-    position: sticky;
-    top: 94px;
-  }
-
-  .learn-modules > .text-mono,
-  .learn-related .text-mono {
-    color: rgba(103, 217, 255, 0.72);
-    font-size: 0.6rem;
-  }
-
-  .learn-modules h1 {
-    max-width: 15ch;
-    margin: 13px 0 26px;
-    font-size: clamp(1.55rem, 2.2vw, 2.3rem);
-    font-weight: 530;
-    letter-spacing: -0.034em;
-    line-height: 1.04;
-  }
-
+  .learn-modules { position: sticky; top: 102px; max-height: calc(100svh - 122px); overflow-y: auto; padding-right: 12px; scrollbar-width: thin; scrollbar-color: #7198b0 #243441; }
+  .learn-back { display: block; margin: 0 0 28px; color: #d5e5f0; font-size: .88rem; }
+  .learn-modules > .text-mono { color: #9fdef5; font-size: .68rem; }
+  .learn-modules h1 { margin: 12px 0 16px; font-size: clamp(1.5rem, 2.1vw, 2.1rem); font-weight: 530; letter-spacing: -.03em; line-height: 1.15; text-wrap: balance; }
+  .learn-course-count { margin-bottom: 22px; color: #c9dbe7; font-size: .8rem; }
   .learn-progress { margin-bottom: 22px; }
-  .learn-progress__meta { display: flex; justify-content: space-between; gap: 18px; margin-bottom: 9px; color: rgba(226, 234, 243, 0.78); font-size: 0.55rem; }
-  .learn-progress__track { height: 2px; overflow: hidden; background: rgba(201, 211, 223, 0.16); }
-  .learn-progress__track span { display: block; width: 0; height: 100%; background: var(--signal-ice); transition: width 320ms var(--ease-out); }
-
-  .learn-modules ol {
-    list-style: none;
-    border-top: 1px solid rgba(126, 153, 178, 0.22);
-  }
-
-  .learn-modules li {
-    border-bottom: 1px solid rgba(126, 153, 178, 0.2);
-  }
-
-  .learn-modules button {
-    position: relative;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 26px minmax(0, 1fr) auto;
-    gap: 7px 11px;
-    padding: 14px 12px 14px 0;
-    color: rgba(226, 234, 243, 0.82);
-    text-align: left;
-    transition: color 180ms var(--ease-out), padding-left 180ms var(--ease-out), background 180ms var(--ease-out);
-  }
-
-  .learn-modules button[aria-current='step'] {
-    padding-left: 10px;
-    color: var(--cloud-white);
-    background: rgba(5, 18, 29, 0.28);
-    box-shadow: inset 0 0 0 1px rgba(103, 217, 255, 0.2);
-  }
-
-  .learn-modules__index {
-    color: rgba(103, 217, 255, 0.64);
-    font-size: 0.56rem;
-  }
-
-  .learn-modules__title {
-    font-size: 0.84rem;
-    line-height: 1.35;
-  }
-
-  .learn-modules__current {
-    grid-column: 2;
-    color: rgba(103, 217, 255, 0.72);
-    font-size: 0.52rem;
-  }
+  .learn-progress__meta { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: .7rem; }
+  .learn-progress__track { height: 2px; background: #526573; }
+  .learn-progress__track span { display: block; width: 0; height: 100%; background: var(--signal-ice); }
+  .learn-outline summary { display: flex; justify-content: space-between; align-items: center; min-height: 44px; cursor: pointer; color: #eef5fa; font-size: .9rem; border-block: 1px solid #627988; padding-block: 12px; list-style: none; }
+  .learn-outline summary::-webkit-details-marker { display: none; }
+  .learn-outline[open] summary > span { transform: rotate(180deg); }
+  .learn-modules ol { list-style: none; padding: 0; margin: 0; }
+  .learn-chapter { padding-top: 24px; }
+  .learn-chapter h2 { display: flex; align-items: baseline; gap: 10px; font-size: .91rem; line-height: 1.45; font-weight: 570; }
+  .learn-chapter h2 > span { color: #a5ddef; font-family: var(--font-mono); font-size: .66rem; }
+  .learn-chapter__stage { margin: 4px 0 10px 26px; color: #bfd4e2; font-size: .75rem; }
+  .learn-chapter a { display: flex; gap: 10px; align-items: center; padding: 12px 12px 12px 26px; min-height: 44px; border-radius: 4px; color: #d5e5f0; font-size: .88rem; line-height: 1.45; transition: background 160ms ease-out; }
+  .learn-chapter a[aria-current='step'] { color: #f4faff; background: #122c3e; outline: 1px solid #5d8a9f; outline-offset: -1px; }
+  .learn-chapter a:hover { background: #233e51; }
+  .learn-modules :is(a, summary):focus-visible { outline: 2px solid var(--signal-ice); outline-offset: -2px; }
+  .learn-modules__done { margin-left: auto; color: #b7edff; }
+  .learn-modules__done[hidden] { display: none; }
+  .learn-player__intro { margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid #667e8e; }
+  .learn-player__intro > p:first-child { color: #eef5fa; max-width: 65ch; font-size: 1.08rem; line-height: 1.65; }
+  .learn-audience { margin-top: 12px; color: #d5e5f0; font-size: .87rem; line-height: 1.6; }
+  .learn-audience strong { font-weight: 550; margin-right: 5px; }
+  .learn-availability { margin-top: 12px; color: #bee8fa; font-size: .85rem; line-height: 1.55; }
+  .learn-player__panel { scroll-margin-top: 100px; }
+  .learn-player__panel + .learn-player__panel { margin-top: 60px; }
+  [data-series-ready='true'] .learn-player__panel { margin-top: 0; }
+  .learn-player__controls a { display: inline-flex; align-items: center; min-height: 56px; font-size: .9rem; line-height: 1.45; }
+  .learn-player__controls a:last-child { justify-self: end; text-align: right; }
+  .learn-player__controls small { display: block; color: #c8dce9; font-size: .74rem; margin-bottom: 4px; }
+  .learn-player__controls a:focus-visible { outline: 2px solid var(--signal-ice); outline-offset: 4px; }
 
   .learn-player {
     min-width: 0;
     overflow: clip;
     scroll-margin-top: 84px;
-  }
-
-  .learn-player__topbar {
-    min-height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-bottom: 12px;
-  }
-
-  .learn-player__topbar .link-hover-arrow {
-    color: rgba(238, 245, 250, 0.84);
-    font-size: 0.82rem;
   }
 
   .learn-series-page :global(.lesson-card--player .lesson-card__rank),
@@ -459,13 +329,6 @@ const copy = locale === 'id'
 
   .learn-series-page :global(.lesson-card--player .lesson-card__outcome p) {
     color: rgba(244, 247, 251, 0.92);
-  }
-
-  .learn-modules__done {
-    grid-column: 3;
-    grid-row: 1;
-    color: rgba(103, 217, 255, 0.82);
-    font-size: 0.72rem;
   }
 
   .learn-player__panel[hidden] {
@@ -484,33 +347,8 @@ const copy = locale === 'id'
     justify-self: end;
   }
 
-  .learn-player__controls button {
+  .learn-player__controls a {
     color: rgba(226, 234, 243, 0.82);
-  }
-
-  .learn-roadmap-cta {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 24px 40px;
-    align-items: center;
-    margin-top: 32px;
-    border-radius: 12px;
-    padding: clamp(22px, 3vw, 32px);
-    background: rgba(5, 15, 24, 0.34);
-  }
-
-  .learn-roadmap-cta h2 {
-    max-width: 18ch;
-    font-size: clamp(1.55rem, 2.4vw, 2.35rem);
-    font-weight: 540;
-    letter-spacing: -0.03em;
-  }
-
-  .learn-roadmap-cta p {
-    max-width: 58ch;
-    margin-top: 10px;
-    color: rgba(226, 234, 243, 0.78);
-    font-size: 0.9rem;
   }
 
   .learn-related {
@@ -540,10 +378,7 @@ const copy = locale === 'id'
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .learn-modules button:hover {
-      color: var(--cloud-white);
-      padding-left: 6px;
-    }
+    .learn-modules a:hover { color: var(--cloud-white); }
   }
 
   @media (max-width: 920px) {
@@ -557,17 +392,14 @@ const copy = locale === 'id'
       position: static;
     }
 
-    .learn-player {
-      order: -1;
-    }
+    .learn-modules { max-height: none; overflow: visible; padding-right: 0; }
+    .learn-outline nav { max-height: min(55svh, 480px); overflow-y: auto; }
 
     .learn-modules h1 {
       max-width: none;
     }
 
-    .learn-roadmap-cta {
-      grid-template-columns: minmax(0, 1fr);
-    }
+
   }
 
   @media (max-width: 560px) {
@@ -575,13 +407,13 @@ const copy = locale === 'id'
       gap: 12px;
     }
 
-    .learn-player__controls button {
+    .learn-player__controls a {
       max-width: 15ch;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .learn-modules button {
+    .learn-modules a {
       transition: none;
     }
     .learn-progress__track span { transition: none; }

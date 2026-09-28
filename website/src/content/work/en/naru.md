@@ -1,5 +1,5 @@
 ---
-title: "Naru — Everyday energy"
+title: "Naru"
 slug: "naru"
 locale: "en"
 translationKey: "naru"
@@ -24,7 +24,7 @@ approach: "We organized the message around everyday moments, then defined a rest
 deliverables: ["Visual direction", "Typography and image guidelines", "Application examples", "Content themes", "Publishing sequence", "Editorial format guidelines"]
 outcomes: ["A shared visual direction and content structure give the team a consistent starting point for the next release."]
 proofStatus: "pending"
-seoTitle: "Naru — Everyday energy | Kultivate"
+seoTitle: "Naru | Kultivate"
 seoDescription: "A consistent visual and content language for an everyday energy brand."
 draft: false
 ---

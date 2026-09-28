@@ -1,5 +1,5 @@
 ---
-title: "Veda — Wellbeing, sustained"
+title: "Veda"
 slug: "veda"
 locale: "en"
 translationKey: "veda"
@@ -24,7 +24,7 @@ approach: "We defined content roles for product understanding, routines and prac
 deliverables: ["Visual direction", "Typography and image guidelines", "Application examples", "Content themes", "Publishing sequence", "Editorial format guidelines"]
 outcomes: ["A shared content plan and visual rules make the next publishing cycle easier to prepare consistently."]
 proofStatus: "pending"
-seoTitle: "Veda — Wellbeing, sustained | Kultivate"
+seoTitle: "Veda | Kultivate"
 seoDescription: "A steady visual and editorial rhythm for an everyday wellbeing brand."
 draft: false
 ---

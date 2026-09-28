@@ -1,5 +1,5 @@
 ---
-title: "Reka — Ruang yang bekerja"
+title: "Reka"
 slug: "reka"
 locale: "id"
 translationKey: "reka"
@@ -24,7 +24,7 @@ approach: "Kami memetakan pertanyaan kebutuhan ruang kerja ke halaman layanan da
 deliverables: ["Peta pencarian ke halaman", "Brief konten prioritas", "Rencana tautan internal", "Arsitektur informasi", "Template halaman responsif", "Alur pertanyaan dan catatan serah terima"]
 outcomes: ["Struktur layanan dan proyek yang terhubung mendukung pencarian dan pertanyaan proyek yang lebih terarah."]
 proofStatus: "pending"
-seoTitle: "Reka — Ruang yang bekerja | Kultivate"
+seoTitle: "Reka | Kultivate"
 seoDescription: "Menghubungkan keahlian ruang kerja dengan pertanyaan di balik permintaan proyek."
 draft: false
 ---

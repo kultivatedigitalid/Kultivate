@@ -4,58 +4,88 @@ import PrivacyPolicy from '../../components/legal/PrivacyPolicy.astro';
 import { siteConfig } from '../../data/site';
 
 const locale = 'en';
-const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURIComponent('Data deletion request')}&body=${encodeURIComponent('Full name:\nEmail address or WhatsApp number used on the form:\nApproximate form submission date:\n\nPlease delete the data I submitted through the Kultivate website form.')}`;
+const privacyRequestHref = `mailto:${siteConfig.email}?subject=${encodeURIComponent('Privacy request')}&body=${encodeURIComponent('Name:\nContact information used with Kultivate:\nYour request (for example access, correction, deletion, or withdrawal of marketing consent):')}`;
 const sections = [
-  { id: 'data-collected', title: 'Data We Collect' },
-  { id: 'use-and-access', title: 'Use and Access' },
-  { id: 'form-processing', title: 'Form Processing' },
-  { id: 'retention-and-deletion', title: 'Retention and Deletion' },
-  { id: 'analytics-and-cookies', title: 'Analytics and Cookies' },
-  { id: 'privacy-contact', title: 'Privacy Contact' }
+  { id: 'about-policy', title: 'About this policy' },
+  { id: 'data-collected', title: 'Personal data we collect' },
+  { id: 'data-sources', title: 'How we collect data' },
+  { id: 'use-and-access', title: 'How we use data' },
+  { id: 'legal-bases', title: 'Bases for processing' },
+  { id: 'form-processing', title: 'Sharing and processing' },
+  { id: 'marketing', title: 'Marketing choices' },
+  { id: 'analytics-and-cookies', title: 'Cookies, storage and analytics' },
+  { id: 'third-party-content', title: 'Third-party content' },
+  { id: 'retention-and-deletion', title: 'Retention and security' },
+  { id: 'international-transfers', title: 'International processing' },
+  { id: 'rights-and-choices', title: 'Your rights and choices' },
+  { id: 'privacy-contact', title: 'Updates, language and contact' },
 ];
 ---
 
-<BaseLayout
-  locale={locale}
-  title="Privacy Policy - Kultivate"
-  description="Kultivate privacy policy regarding visitor personal data protection and form submissions."
->
-  <PrivacyPolicy locale={locale} intro="What we collect, why it is needed, and how you stay in control." updated="Effective date: August 13, 2026" sections={sections}>
+<BaseLayout locale={locale} title="Privacy Policy - Kultivate" description="How we handle your personal data and the choices available to you.">
+  <PrivacyPolicy locale={locale} intro="How we handle your personal data and the choices available to you." updated="Last updated: September 25, 2026" sections={sections}>
+    <section id="about-policy">
+      <h2>1. About this policy</h2>
+      <p>This Policy explains how Kultivate handles personal data from this website, inquiries, consultations, and related digital communications. Kultivate is operated by {siteConfig.companyLegalName}, the entity responsible for deciding how and why the personal data described here is processed, where applicable.</p>
+      <p>For privacy questions or requests, contact <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.</p>
+    </section>
     <section id="data-collected">
-      <h2>1. Data We Collect</h2>
-      <p>
-        We retain the information you submit through the contact form: name, company, email, WhatsApp number, service interest, project summary, and target timeline.
-      </p>
+      <h2>2. Personal data we collect</h2>
+      <p>We collect the information you provide: name, company, email, WhatsApp or phone number, service interest, project or requirement summary, and target timeline. We also retain related correspondence, your privacy acknowledgement, and any promotional communication preference you provide.</p>
+      <p>Website hosting, form processing, or external content connections may generate technical information such as an IP address, browser or device information, request time, and pages or resources requested. Optional analytics is addressed separately below.</p>
+      <p>Please do not include unnecessary sensitive information in a general inquiry, such as government identity documents, passwords or authentication credentials, detailed financial information, health information, or other sensitive details unrelated to your request.</p>
+    </section>
+    <section id="data-sources">
+      <h2>3. How we collect data</h2>
+      <p>Information comes directly from you through the contact form, email, WhatsApp, or other communication about your inquiry or project. Technical information may arise when you visit the website or choose to load third-party content, such as a learning video.</p>
     </section>
     <section id="use-and-access">
-      <h2>2. Use and Access</h2>
-      <p>
-        We use this data to review your needs, respond to inquiries, prepare a scope of work, and communicate about the project. Access is limited to Kultivate team members who need it for these purposes.
-      </p>
+      <h2>4. How we use data</h2>
+      <p>We use inquiry and communication information to understand your needs and business context, respond to consultation requests, prepare or discuss recommended scope, and communicate about potential or active work. Relevant technical information supports website operation and security.</p>
+      <p>With your separate, optional consent, we may use your contact details for relevant service updates and promotional follow-up. Requesting a consultation does not require agreeing to promotional communication.</p>
+    </section>
+    <section id="legal-bases">
+      <h2>5. Bases for processing</h2>
+      <p>Where applicable law permits, we process information needed to respond to your request or take steps you ask for before a business engagement. We rely on explicit consent for optional promotional communication and, if introduced, optional analytics.</p>
+      <p>We may also process information to meet an applicable legal obligation. For limited purposes such as maintaining and securing the website, we may rely on legitimate interests where appropriate, after considering the necessity of the processing and its effect on your rights. These bases do not replace consent where consent is required.</p>
     </section>
     <section id="form-processing">
-      <h2>3. Form Processing</h2>
-      <p>
-        Form submissions are delivered through Formspree as our form processor. Beyond that technical processing, Kultivate does not sell or share form data with other parties for marketing.
-      </p>
+      <h2>6. Sharing and processing</h2>
+      <p>Access is limited to authorized Kultivate team members and providers needed for the relevant purpose. Contact form submissions pass through a third-party form processing provider, are delivered to Kultivate email, and are stored or copied into Google Sheets. Email infrastructure and relevant Google cloud productivity services support this workflow.</p>
+      <p>Website hosting and infrastructure providers may process information needed to serve and protect the site. Data may also be disclosed when required by applicable law. Kultivate does not sell inquiry data.</p>
     </section>
-    <section id="retention-and-deletion">
-      <h2>4. Retention and Deletion</h2>
-      <p>
-        Kultivate retains form data until you request deletion. Use our <a href={privacyRequestHref}>data deletion email template</a> so we can locate the correct information and confirm when the request is complete.
-      </p>
+    <section id="marketing">
+      <h2>7. Marketing choices</h2>
+      <p>The consultation form separates the required Privacy Policy acknowledgement from optional consent to relevant service updates and promotional follow-up. You can submit an inquiry without selecting the marketing checkbox. Kultivate does not currently operate a newsletter.</p>
+      <p>You can withdraw promotional consent at any time by contacting <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>. Withdrawal stops future promotional use based on that consent; necessary communication about an active inquiry or project may continue when another valid basis applies.</p>
     </section>
     <section id="analytics-and-cookies">
-      <h2>5. Analytics and Cookies</h2>
-      <p>
-        This website currently does not use analytics or tracking cookies. Cookies required by third-party services are limited to the technical needs of those services.
-      </p>
+      <h2>8. Cookies, storage and analytics</h2>
+      <p>The Learn experience uses localStorage in your browser to remember completed lessons and course progress. This progress stays on your device and is not, by itself, an analytics identifier sent to Kultivate. You can remove it through your browser's site-data settings, which also clears the saved progress. We also use temporary sessionStorage to restore your reading position when switching languages; the position is read and removed on the destination page.</p>
+      <p>Local browser storage is distinct from cookies and optional analytics. Google Analytics 4 and Google Tag Manager are intended for future measurement but are currently inactive. Optional analytics, including associated cookies or identifiers, will only load after the relevant user consent; activation requires a consent mechanism first. This website does not currently use Meta Pixel, Hotjar, Microsoft Clarity, or equivalent behavior-tracking tools.</p>
+    </section>
+    <section id="third-party-content">
+      <h2>9. Third-party content</h2>
+      <p>Some learning content is delivered through YouTube. The site creates a privacy-enhanced player using youtube-nocookie.com after you choose to load or play a video. That action initiates an external player connection; it does not mean no data is processed. YouTube/Google may process technical information associated with the connection according to <a href="https://policies.google.com/privacy">Google's privacy practices</a>.</p>
+    </section>
+    <section id="retention-and-deletion">
+      <h2>10. Retention and security</h2>
+      <p>Inquiry records and related communications under Kultivate's control, including relevant email and Google Sheets records, are kept for up to 12 months after the last communication. We may delete them earlier when no longer needed or when fulfilling a valid deletion request. Longer retention is limited to what applicable law or a legitimate legal obligation requires.</p>
+      <p>The third-party form processing provider may keep separate submission archives under its own terms. The 12-month rule above does not specify that provider's archive period. We use reasonable technical and organizational measures and limit access to protect personal data; no transmission or storage system can guarantee complete security.</p>
+    </section>
+    <section id="international-transfers">
+      <h2>11. International processing</h2>
+      <p>Some providers or their infrastructure may process information outside Indonesia. A hosting location in Indonesia does not mean every provider processes data only in Indonesia. When cross-border processing is involved, we consider appropriate protection for the information and the requirements of applicable law.</p>
+    </section>
+    <section id="rights-and-choices">
+      <h2>12. Your rights and choices</h2>
+      <p>Subject to applicable law, you may request information about processing, access to or a copy of your data, correction or updates, deletion or termination of processing, withdrawal of consent, or restriction of or objection to processing where applicable. You may also exercise other rights available under applicable privacy law.</p>
+      <p>Send requests to <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> or use this <a href={privacyRequestHref}>privacy request email template</a>. We may ask for information reasonably needed to locate your records and verify that the request relates to you. We assess requests under applicable law, including any lawful limits or retention obligations, without promising a fixed response time.</p>
     </section>
     <section id="privacy-contact">
-      <h2>6. Privacy Contact</h2>
-      <p>
-        Questions, corrections, or deletion requests can be sent to <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
-      </p>
+      <h2>13. Updates, language and contact</h2>
+      <p>We may update this Policy as our practices or applicable requirements change. The last-updated date identifies the current version. The English version is authoritative: if there is any inconsistency between the English and Indonesian versions, the English version will prevail, subject to applicable law.</p>
+      <p>For questions or requests about this Policy, contact Kultivate, operated by {siteConfig.companyLegalName}, at <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.</p>
     </section>
   </PrivacyPolicy>
 </BaseLayout>

@@ -1,5 +1,5 @@
 ---
-title: "Reka — Spaces that work"
+title: "Reka"
 slug: "reka"
 locale: "en"
 translationKey: "reka"
@@ -24,7 +24,7 @@ approach: "We mapped questions about workspace needs to service and project page
 deliverables: ["Search-to-page map", "Priority content briefs", "Internal linking plan", "Information architecture", "Responsive page templates", "Enquiry journey and handoff notes"]
 outcomes: ["A connected service and project structure supports discovery and more focused project enquiries."]
 proofStatus: "pending"
-seoTitle: "Reka — Spaces that work | Kultivate"
+seoTitle: "Reka | Kultivate"
 seoDescription: "Connecting workspace expertise with the questions behind a project enquiry."
 draft: false
 ---

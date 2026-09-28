@@ -1,0 +1,144 @@
+---
+import { heroScenes, type HeroSceneName } from '../../data/hero-scenes';
+interface Props { scene: HeroSceneName; }
+const { scene } = Astro.props;
+const art = heroScenes[scene];
+const id = `hero-scene-${scene}`;
+const ref = (name: string) => `url(#${id}-${name})`;
+const asset = `/assets/hero-scenes/${art.asset}`;
+const about = scene === 'about';
+const learn = scene === 'learn';
+const slowReveal = scene === 'services' || learn;
+---
+<layered-hero data-scene={scene} data-state="idle" aria-hidden="true">
+  <svg viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid slice" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      {slowReveal && <>
+        <radialGradient id={`${id}-composition-fade`}><stop offset=".82" stop-color="white"/><stop offset="1" stop-color="black"/></radialGradient>
+        <mask id={`${id}-composition-edge`} maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941" style="mask-type:luminance">
+          <rect width="1672" height="941" fill={ref('composition-fade')}/>
+        </mask>
+      </>}
+      <!-- Fixed artboard bounds also support the horizontal Blog sweep, whose object bounding box has zero height. -->
+      <filter id={`${id}-feather`} filterUnits="userSpaceOnUse" x="-128" y="-128" width="1928" height="1197" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="24" /></filter>
+      <filter id={`${id}-sweep-soft`} filterUnits="userSpaceOnUse" x="-192" y="-192" width="2056" height="1325" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation={slowReveal ? 64 : 24}/></filter>
+      <filter id={`${id}-halo-soft`} x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="46" /></filter>
+      <clipPath id={`${id}-surface`}><path d={art.face} /></clipPath>
+      <mask id={`${id}-ambient`} maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941" style="mask-type:luminance">
+        <rect width="1672" height="941" fill="white" />
+        <path d={art.face} fill="black" />
+        <path d={art.beam} fill="none" stroke="black" stroke-width={art.beamWidth} stroke-linecap="round" filter={ref('feather')} />
+      </mask>
+      <mask id={`${id}-quiet`} maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941" style="mask-type:luminance">
+        <rect width="1672" height="941" fill="white" />
+        <path d={art.beam} fill="none" stroke="black" stroke-width={art.beamWidth} stroke-linecap="round" filter={ref('feather')} />
+      </mask>
+      <mask id={`${id}-beam-region`} maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+        <path d={art.beam} fill="none" stroke="white" stroke-width={art.beamWidth} stroke-linecap="round" filter={ref('feather')} />
+      </mask>
+      <mask id={`${id}-sweep`} maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+        <path data-light-sweep d={art.sweep} pathLength="1000" fill="none" stroke="white" stroke-width="3000" stroke-linecap="butt"
+          stroke-dasharray="1000 1000" stroke-dashoffset="0" filter={ref('sweep-soft')} />
+      </mask>
+      {about && <mask id={`${id}-backlight`} maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+        <ellipse data-backlight cx="836" cy="420" rx="850" ry="620" fill="white" filter={ref('halo-soft')} />
+      </mask>}
+      {about && <>
+        <radialGradient id={`${id}-handshake-fade`}>
+          <stop offset=".6" stop-color="white"/><stop offset="1" stop-color="black"/>
+        </radialGradient>
+        <mask id={`${id}-handshake-edge`} maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941" style="mask-type:luminance">
+          <rect width="1672" height="941" fill={ref('handshake-fade')}/>
+        </mask>
+      </>}
+      <g id={`${id}-art`} transform={about ? 'translate(209 105) scale(.75)' : undefined}>
+        <image data-asset href={asset} opacity={scene === 'services' ? .72 : 1} x="0" y="0" width="1672" height="941" mask={about ? ref('handshake-edge') : undefined} />
+      </g>
+      {about && <g id={`${id}-triangle`}>
+        <image data-asset href="/assets/hero-scenes/triangle-light.webp" x="0" y="0" width="1672" height="941" />
+      </g>}
+    </defs>
+    <g data-scene-body mask={slowReveal ? ref('composition-edge') : undefined} transform={slowReveal ? 'translate(200.64 112.92) scale(.76)' : undefined}>
+      <g class="scene-motion">
+        {about ? <>
+          <g data-layer="backlight" mask={ref('backlight')}><use href={`#${id}-art`} /></g>
+          <g class="triangle-glaze" data-layer="triangle" mask={ref('sweep')}><use href={`#${id}-triangle`} /></g>
+        </> : <>
+          <g data-layer="ambient" mask={ref('ambient')}><use href={`#${id}-art`} /></g>
+          <g data-layer="surface" clip-path={ref('surface')}><g mask={ref('quiet')}><use href={`#${id}-art`} /></g></g>
+          <g data-layer="beam" mask={ref('beam-region')}><g mask={ref('sweep')}><use href={`#${id}-art`} /></g></g>
+        </>}
+      </g>
+      <g data-poster>
+        <use href={`#${id}-art`} />
+        {about && <use class="triangle-glaze" href={`#${id}-triangle`} />}
+      </g>
+    </g>
+  </svg>
+  <span class="scene-readability"></span>
+</layered-hero>
+<style>
+  layered-hero { position:absolute; inset:0; display:block; overflow:hidden; background:#02050a; }
+  layered-hero svg { width:100%; height:100%; display:block; }
+  /* Turn the complete artwork and its reveal masks together, keeping the supplied
+     Services composition centered and every highlight aligned with its panel. */
+  layered-hero[data-scene='services'] svg { transform: perspective(1800px) rotateY(12deg) scale(1.025); transform-origin: 50% 50%; }
+  .scene-motion { display:none; }
+  layered-hero:is([data-state='running'],[data-state='paused']) .scene-motion { display:block; }
+  :global(.js) layered-hero:is([data-state='idle'],[data-state='waiting']) [data-scene-body] { opacity:0; animation:scene-fallback 300ms ease 7500ms forwards; }
+  @keyframes scene-fallback { to { opacity:1; } }
+  .triangle-glaze { mix-blend-mode:screen; opacity:.42; }
+  [data-backlight] { transform-origin:836px 420px; }
+  [data-layer='surface'], [data-layer='triangle'] { transform-origin:836px 470px; }
+  .scene-readability { position:absolute; inset:0; background:radial-gradient(ellipse 33% 21% at 50% 45%,rgba(1,5,12,.12),transparent 100%),linear-gradient(180deg,rgba(2,5,10,.06),transparent 22%,transparent 70%,#070b12); }
+  @media(max-width:760px) {
+    /* Keep both heads and the handshake inside a portrait viewport. */
+    layered-hero[data-scene='about'] svg { position:absolute; top:8%; width:100%; height:84%; }
+    .scene-readability { background:radial-gradient(ellipse 72% 20% at 50% 45%,rgba(1,5,12,.17),transparent),linear-gradient(180deg,transparent 60%,#070b12); }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    :global(.js) layered-hero:is([data-state='idle'],[data-state='waiting']) [data-scene-body] { opacity:1; animation:none; }
+  }
+</style>
+<script>
+  import { observeHeroEntrance } from '../../scripts/hero-entrance';
+  import { HERO_MOTION_SPEED } from '../../scripts/hero-motion';
+  class LayeredHero extends HTMLElement {
+    private dispose?: () => void;
+    connectedCallback() {
+      if (this.dispose) return;
+      const urls = [...new Set(Array.from(this.querySelectorAll<SVGImageElement>('image[data-asset]'), image => image.href.baseVal))];
+      const ready = Promise.all(urls.map(src => { const image = new Image(); image.src=src; return image.decode(); }));
+      this.dispose = observeHeroEntrance(this, () => {
+        const animations: Animation[] = [];
+        const animate = (selector: string, frames: Keyframe[], duration: number, delay=0, easing='cubic-bezier(.4,0,.3,1)') => {
+          this.querySelectorAll<SVGElement>(selector).forEach(element => animations.push(element.animate(frames,{duration:duration/HERO_MOTION_SPEED,delay:delay/HERO_MOTION_SPEED,easing,fill:'both'})));
+        };
+        const about = this.dataset.scene === 'about';
+        const slow = this.dataset.scene === 'services' || this.dataset.scene === 'learn';
+        // Settle to the exact static composition over the last 700 ms; this also
+        // removes masked-edge seams and leaves no animation or filter work active.
+        animate('[data-poster]',[{opacity:0,offset:0},{opacity:0,offset:.88},{opacity:1}],slow ? 9200 : 6200,0,'linear');
+        if (about) {
+          animate('[data-layer="backlight"]',[{opacity:0},{opacity:1}],4100);
+          animate('[data-backlight]',[{transform:'scale(.05)'},{transform:'scale(1)'}],4500);
+          animate('[data-layer="triangle"]',[{opacity:0,transform:'translateY(8px)'},{opacity:.42,transform:'none'}],3700,2000);
+          animate('[data-light-sweep]',[{strokeDashoffset:'1000'},{strokeDashoffset:'0'}],4000,1800);
+        } else if (slow) {
+          animate('[data-layer="ambient"]',[{opacity:0},{opacity:1}],8500);
+          animate('[data-layer="surface"]',[{opacity:0},{opacity:1}],7800,600);
+          animate('[data-layer="beam"]',[{opacity:0},{opacity:1,offset:.32},{opacity:1}],8500,150);
+          animate('[data-light-sweep]',[{strokeDashoffset:'1000'},{strokeDashoffset:'0'}],8600,250,'cubic-bezier(.45,0,.55,1)');
+        } else {
+          animate('[data-layer="ambient"]',[{opacity:0},{opacity:1}],5700);
+          animate('[data-layer="surface"]',[{opacity:0},{opacity:1}],5100,500);
+          animate('[data-layer="beam"]',[{opacity:0},{opacity:1,offset:.22},{opacity:1}],5800,100);
+          animate('[data-light-sweep]',[{strokeDashoffset:'1000'},{strokeDashoffset:'0'}],5700,250,'cubic-bezier(.45,0,.55,1)');
+        }
+        return animations;
+      },ready);
+    }
+    disconnectedCallback() { this.dispose?.(); this.dispose=undefined; }
+  }
+  if (!customElements.get('layered-hero')) customElements.define('layered-hero',LayeredHero);
+</script>

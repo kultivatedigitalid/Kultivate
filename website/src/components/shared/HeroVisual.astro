@@ -1,6 +1,9 @@
 ---
+import LayeredHero from './LayeredHero.astro';
+import type { HeroSceneName } from '../../data/hero-scenes';
 interface Props {
   src: string;
+  scene?: HeroSceneName;
   alt?: string;
   priority?: boolean;
   ambient?: boolean;
@@ -12,6 +15,7 @@ interface Props {
 
 const {
   src,
+  scene,
   alt = '',
   priority = true,
   ambient = true,
@@ -25,12 +29,13 @@ const {
 <div
   class="hero-visual"
   data-hero-visual
-  data-depth={depth ? 'true' : undefined}
-  data-motion={motion ? 'true' : undefined}
+  data-depth={depth && !scene ? 'true' : undefined}
+  data-motion={motion && !scene ? 'true' : undefined}
   data-centered={centered ? 'true' : undefined}
-  aria-hidden={alt ? undefined : 'true'}
+  data-mode={scene ? 'layered' : 'image'}
+  aria-hidden={scene || !alt ? 'true' : undefined}
 >
-  <img
+  {scene ? <LayeredHero scene={scene} /> : <img
     src={src}
     alt={alt}
     width="1536"
@@ -41,10 +46,12 @@ const {
     data-ambient={ambient ? 'true' : undefined}
     data-load-reveal={motion ? 'true' : undefined}
     style={`--hero-focal-point: ${focalPoint}`}
-  />
+  />}
+  <slot />
 </div>
 
 <script>
+  import { HERO_MOTION_SPEED } from '../../scripts/hero-motion';
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -56,7 +63,7 @@ const {
         if (reducedMotion.matches) return;
         image.animate(
           [{ opacity: 0.32 }, { opacity: 1 }],
-          { duration: 560, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+          { duration: 560 / HERO_MOTION_SPEED, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
         );
       };
       if (image.complete && image.naturalWidth > 0) {
@@ -106,6 +113,8 @@ const {
     --hero-art-shift-y: 0%;
   }
 
+  .hero-visual[data-mode='layered'] { transform:none; transition:none; }
+
   .hero-visual[data-centered='true'] {
     --hero-art-shift-y: -5%;
   }
@@ -121,13 +130,13 @@ const {
     object-fit: cover;
     object-position: var(--hero-focal-point);
     transform: scale(1.02) translate3d(0, var(--hero-art-shift-y), 0);
-    animation: hero-ambient 20s var(--ease-in-out) infinite alternate;
+    animation: hero-ambient calc(20s / 1.5) var(--ease-in-out) infinite alternate;
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 68%, rgba(0, 0, 0, 0.92) 78%, rgba(0, 0, 0, 0.48) 91%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 0%, #000 68%, rgba(0, 0, 0, 0.92) 78%, rgba(0, 0, 0, 0.48) 91%, transparent 100%);
   }
 
   .hero-visual[data-motion='true'] img[data-ambient='true'] {
-    animation: hero-ambient-active 15s var(--ease-in-out) infinite alternate both;
+    animation: hero-ambient-active calc(15s / 1.5) var(--ease-in-out) infinite alternate both;
   }
 
   @keyframes hero-ambient-active {
@@ -153,11 +162,11 @@ const {
 
     .hero-visual img {
       transform: scale(1.025) translate3d(0, var(--hero-art-shift-y), 0);
-      animation-duration: 24s;
+      animation-duration: calc(24s / 1.5);
     }
 
     .hero-visual[data-motion='true'] img[data-ambient='true'] {
-      animation-duration: 18s;
+      animation-duration: calc(18s / 1.5);
     }
   }
 

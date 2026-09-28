@@ -1,5 +1,5 @@
 ---
-title: "Svara — Suara yang menemukan audiens"
+title: "Svara"
 slug: "svara"
 locale: "id"
 translationKey: "svara"
@@ -24,7 +24,7 @@ approach: "Kami menata urutan publikasi berdasarkan antisipasi, konteks, dan kel
 deliverables: ["Tema konten", "Urutan publikasi", "Panduan format editorial", "Arah visual", "Panduan tipografi dan gambar", "Contoh penerapan"]
 outcomes: ["Narasi rilisan yang terhubung dan format yang dapat digunakan ulang memberi tim dasar praktis untuk kampanye berikutnya."]
 proofStatus: "pending"
-seoTitle: "Svara — Suara yang menemukan audiens | Kultivate"
+seoTitle: "Svara | Kultivate"
 seoDescription: "Sistem konten berdasarkan rilisan yang menjaga cerita musisi tetap terhubung."
 draft: false
 ---

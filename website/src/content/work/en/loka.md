@@ -1,5 +1,5 @@
 ---
-title: "Loka — A memorable stay"
+title: "Loka"
 slug: "loka"
 locale: "en"
 translationKey: "loka"
@@ -24,7 +24,7 @@ approach: "We mapped guest questions to accommodation, location and experience p
 deliverables: ["Search-to-page map", "Priority content briefs", "Internal linking plan", "Information architecture", "Responsive page templates", "Enquiry journey and handoff notes"]
 outcomes: ["A connected discovery and enquiry structure provides a consistent foundation for hospitality content."]
 proofStatus: "pending"
-seoTitle: "Loka — A memorable stay | Kultivate"
+seoTitle: "Loka | Kultivate"
 seoDescription: "Helping guests connect a sense of place with the details of a stay."
 draft: false
 ---

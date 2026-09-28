@@ -1,24 +1,24 @@
 ---
 import InteriorHero from '../shared/InteriorHero.astro';
+import ServiceObject from '../shared/ServiceObject.astro';
 import { servicesData } from '../../data/services';
 interface Props { locale: 'id' | 'en'; }
 const { locale } = Astro.props;
 const services = servicesData[locale];
 const copy = locale === 'id' ? {
-  title:'Layanan untuk prioritas Anda', description:'Dibangun untuk bisnis Anda dan untuk meningkatkan cara kerja Anda', explore:'Lihat layanan',
+  title:'Layanan', description:'Dibangun untuk bisnis Anda dan untuk meningkatkan cara kerja Anda', explore:'Lihat layanan',
 } : {
-  title:'Services for your priorities', description:'Built for your business and to improve your work', explore:'View service',
+  title:'Services', description:'Built for your business and to improve your work', explore:'View service',
 };
 ---
-<InteriorHero title={copy.title} description={copy.description} label="KULTIVATE SERVICES"
-  image="/assets/banners/services-gradient.webp" imageAlt="" variant="services" />
+<InteriorHero scene="services" title={copy.title} description={copy.description} label="KULTIVATE SERVICES"
+  image="/assets/hero-scenes/services-panels.webp" imageAlt="" variant="services" />
 <section id="services-list" class="services-index flow-section" aria-label="Kultivate services" data-scroll-key="services-list">
   <div class="container service-stream">
-    {services.map((service,index) => (
-      <article class="service-row" data-reveal>
-        <figure class="service-row__visual"><img src={service.image} alt="" width="1440" height="1080" loading="lazy" decoding="async" /></figure>
+    {services.map(service => (
+      <article class="service-row" data-service-card data-reveal>
+        <figure class="service-row__visual" aria-hidden="true"><ServiceObject variant={service.id} /></figure>
         <div class="service-row__copy">
-          <div class="service-row__meta text-mono"><span>0{index+1}</span></div>
           <h2>{service.title}</h2><p>{service.description}</p>
           <a href={`/${locale}/services/${service.slug}/`} class="link-hover-arrow"><span>{copy.explore}</span><span aria-hidden="true">→</span></a>
         </div>
@@ -31,15 +31,10 @@ const copy = locale === 'id' ? {
   .service-stream { display:flex; flex-direction:column; gap:clamp(96px,12vw,172px); }
   .service-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(42px,7vw,108px); align-items:center; }
   .service-row:nth-child(even) .service-row__visual { order:2; }
-  .service-row__visual { aspect-ratio:4 / 3; overflow:hidden; border-radius:8px; background:#07101a; }
-  .service-row__visual img { width:100%; height:100%; object-fit:cover; transform:scale(1.035) translate3d(-1.2%,0,0); transition:transform 680ms var(--ease-out),filter 360ms var(--ease-out); }
-  .service-row:nth-child(even) img { animation-direction:alternate-reverse; }
+  .service-row__visual { aspect-ratio:4 / 3; display:grid; place-items:center; padding:clamp(28px,4vw,60px); overflow:visible; }
   .service-row__copy { min-width:0; }
-  .service-row__meta { display:flex; margin-bottom:22px; color:rgba(201,211,223,.52); }
+  @media (min-width:841px) { .service-row:nth-child(even) .service-row__copy { padding-left:clamp(32px,5vw,72px); } }
   .service-row__copy h2 { max-width:12ch; margin-bottom:22px; font-size:clamp(2.8rem,5vw,5.5rem); font-weight:540; letter-spacing:-.04em; line-height:.94; }
   .service-row__copy > p { max-width:49ch; margin-bottom:22px; color:rgba(201,211,223,.76); font-size:.96rem; line-height:1.62; }
-  @media (hover:hover) and (pointer:fine) { .service-row:hover img { transform:scale(1.015) translate3d(-1.2%,0,0); filter:saturate(1.04); } }
   @media (max-width:840px) { .service-row { grid-template-columns:1fr; gap:30px; } .service-row:nth-child(even) .service-row__visual { order:initial; } }
-  @media (max-width:840px) { .service-row__visual img,.service-row:nth-child(even) img { transform:none; } }
-  @media (prefers-reduced-motion:reduce) { .service-row__visual img,.service-row:nth-child(even) img { transition:none; transform:none; } }
 </style>

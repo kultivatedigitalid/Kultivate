@@ -1,5 +1,5 @@
 ---
-title: "Tala — Connected mobility"
+title: "Tala"
 slug: "tala"
 locale: "en"
 translationKey: "tala"
@@ -24,7 +24,7 @@ approach: "We organized the navigation around journey planning, service informat
 deliverables: ["Information architecture", "Responsive page templates", "Enquiry journey and handoff notes"]
 outcomes: ["A journey-led information system gives the team a consistent structure for maintaining service content."]
 proofStatus: "pending"
-seoTitle: "Tala — Connected mobility | Kultivate"
+seoTitle: "Tala | Kultivate"
 seoDescription: "Helping people find the information they need before a journey."
 draft: false
 ---

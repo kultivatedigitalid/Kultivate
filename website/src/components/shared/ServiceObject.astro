@@ -1,0 +1,229 @@
+---
+interface Props { variant: string; compact?: boolean; }
+const { variant, compact = false } = Astro.props;
+const viewBox = compact
+  ? variant === 'social-media-management' ? '48 14 224 212' : '28 -4 256 244'
+  : '0 0 320 240';
+// Upright faces retain their proportions; offset backs and connected edges give
+// every object physical thickness without compressing its front surface.
+const face = (x:number,y:number) => `matrix(.96 .22 0 1 ${x} ${y})`;
+const bars = [{x:0,h:34,spread:'-5px,-3px'},{x:38,h:60,spread:'0px,-8px'},{x:76,h:88,spread:'4px,-13px'}];
+const gear = Array.from({length:48},(_,i)=>{
+  const a=i/48*Math.PI*2, r=[25,25,33,33,25,25][i%6];
+  return `${i?'L':'M'}${(Math.cos(a)*r).toFixed(2)} ${(Math.sin(a)*r).toFixed(2)}`;
+}).join(' ')+'Z';
+const gallery = [
+  {x:62,y:51,spread:'-17px,-17px',opacity:.68},
+  {x:86,y:67,spread:'0px,-6px',opacity:.84},
+  {x:110,y:83,spread:'19px,12px',opacity:1},
+];
+const arrow='M 0 60 C 40 47 71 23 95 -8 L 84 -12 L 115 -35 L 112 3 L 104 -3 C 76 32 41 54 3 67 Q -2 68 0 60 Z';
+---
+<service-illustration aria-hidden="true">
+  <svg class="service-object" data-service-object={variant} viewBox={viewBox} fill="none" focusable="false">
+    <g class="object-assembly">
+      {variant==='seo' && <>
+        <g transform={face(79,65)}>
+          <g class="object-layer" style="--spread:0px,0px">
+            <path class="object-side" d="M-17 112 H118 V121 H-17 Z"/>
+            <path class="object-side object-side--dark" d="M118 112 L130 102 V111 L118 121 Z"/>
+            <path class="object-top" d="M-17 112 L-5 102 H130 L118 112 Z"/>
+          </g>
+          {bars.map(bar=><g class="object-layer" style={`--spread:${bar.spread}`}>
+            <rect class="object-side" x={bar.x+8} y={104-bar.h-7} width="25" height={bar.h} rx="9"/>
+            <path class="object-side" d={`M${bar.x+16} ${104-bar.h} L${bar.x+24} ${97-bar.h} Q${bar.x+33} ${97-bar.h} ${bar.x+33} ${106-bar.h} V96 L${bar.x+25} 103 Z`}/>
+            <rect class="object-top" x={bar.x} y={104-bar.h} width="25" height={bar.h} rx="9"/>
+            <path class="object-faint" d={`M${bar.x+7} ${120-bar.h} V94`}/>
+          </g>)}
+          <g class="object-layer" style="--spread:3px,-10px">
+            <path class="object-side" d={arrow} transform="translate(4 -4)"/>
+            <path class="object-top" d={arrow}/>
+            <path class="object-detail" d="M12 57 Q59 37 91 2"/>
+          </g>
+        </g>
+        <g class="object-layer" style="--spread:-8px,-8px">
+          <g transform={face(218,139)}>
+            <g transform="translate(6 -5)">
+              <path class="object-side" d="M20 23 L46 50 Q49 53 46 56 L41 61 Q38 64 35 60 L12 31 Z"/>
+              <circle class="object-side" r="33"/>
+            </g>
+            <path class="object-side" d="M46 50 L52 45 L52 51 L46 56 L41 61 L47 56 L44 66 L38 65 Z"/>
+            <path class="object-top" d="M20 23 L46 50 Q49 53 46 56 L41 61 Q38 64 35 60 L12 31 Z"/>
+            <path class="object-detail" d="M29 39 L41 52"/>
+            <circle class="object-top" r="33"/>
+            <circle class="object-glass" r="26"/>
+            <path class="object-detail" d="M-25 -14 A29 29 0 0 1 15 -25 M24 16 A28 28 0 0 1 13 25"/>
+            <path class="object-reflection" d="M-19 -4 Q-13 -21 6 -20"/>
+          </g>
+        </g>
+      </>}
+      {variant==='web-services' && <>
+        <g class="object-layer" style="--spread:-4px,3px">
+          <g transform={face(80,54)}>
+            <path class="object-side" d="M48 129 L61 118 H103 L113 129 V136 H48 Z"/>
+            <path class="object-top" d="M48 129 L61 118 H103 L113 129 Z"/>
+            <path class="object-side object-side--dark" d="M73 81 H88 L94 121 L81 126 L67 121 Z"/>
+            <path class="object-top" d="M67 83 H81 L85 121 H67 Z"/>
+            <rect class="object-side" x="10" y="-8" width="143" height="96" rx="7"/>
+            <path class="object-side" d="M7 0 L17 -8 H146 Q153 -8 153 -1 V81 L143 89 Z"/>
+            <rect class="object-top" width="143" height="96" rx="7"/>
+            <rect class="object-screen" x="8" y="8" width="127" height="71" rx="3"/>
+            <path class="object-faint" d="M22 30 H83 M22 40 H109 M22 50 H66"/>
+            <rect class="object-track" x="22" y="62" width="88" height="3" rx="1.5"/>
+            <rect class="object-loading" data-motion="loading" x="22" y="62" width="88" height="3" rx="1.5"/>
+            <path class="object-detail" d="M65 87 H78"/>
+          </g>
+        </g>
+        <g class="object-layer" style="--spread:10px,-7px">
+          <g transform={face(233,67)}>
+            <g class="motion-gear" data-motion="gear">
+              <path class="object-side" d={gear} transform="translate(6 -5)"/>
+              <path class="object-top" d={gear}/>
+              <circle class="object-screen" r="12"/>
+              <circle class="object-detail" r="6"/>
+            </g>
+          </g>
+        </g>
+      </>}
+      {variant==='social-media-management' && <>
+        {/* Distinct orbital planes wrap a frontal, extruded person. */}
+        {['1 .18 -.3 .46','.5 .18 .12 -.92','-.65 .22 .26 -.86'].map((plane,index)=><g class="object-layer" style={`--spread:${['0px,7px','-7px,-4px','7px,-4px'][index]}`}>
+          <g transform={`matrix(${plane} 160 120)`}>
+            <circle class="object-orbit" r="76"/>
+            <g transform={`rotate(${index*120})`}>
+              <g class="motion-orbit-node" data-motion="orbit">
+                <circle class="object-node" cx="76" r="5"/>
+                <circle class="object-node object-node--small" cx="-76" r="3"/>
+              </g>
+            </g>
+          </g>
+        </g>)}
+        <g class="object-layer" style="--spread:0px,-5px">
+          <g transform="translate(156 116)">
+            <g transform="translate(9 -6)">
+              <circle class="object-side" cy="-23" r="18"/>
+              <path class="object-side" d="M-32 31 V19 C-32 4 -21 -3 -9 -3 H9 C21 -3 32 4 32 19 V31 Q0 42 -32 31 Z"/>
+            </g>
+            <path class="object-side" d="M32 19 L41 13 V25 L32 31 L0 36 L9 30 Z"/>
+            <circle class="object-person" cy="-23" r="18"/>
+            <path class="object-person" d="M-32 31 V19 C-32 4 -21 -3 -9 -3 H9 C21 -3 32 4 32 19 V31 Q0 42 -32 31 Z"/>
+            <path class="object-faint" d="M-22 14 V27 M22 14 V27"/>
+            <path class="object-detail" d="M-11 -32 A13 13 0 0 1 2 -36"/>
+          </g>
+        </g>
+        <path class="object-orbit" d="M86 126 C107 149 187 156 229 140"/>
+      </>}
+      {variant==='visual-strategy' && gallery.map((panel,index)=><g class="object-layer" style={`--spread:${panel.spread}`}>
+        <g transform={face(panel.x,panel.y)} opacity={panel.opacity}>
+          <rect class="object-side" x="10" y="-8" width="118" height="87" rx="4"/>
+          <path class="object-side" d="M4 0 L14 -8 H124 Q128 -8 128 -4 V75 L118 83 Z"/>
+          <rect class="object-top" width="118" height="87" rx="4"/>
+          <rect class="object-screen" x="8" y="8" width="102" height="57" rx="2"/>
+          <circle class="object-detail" cx={index===1?79:32} cy="25" r="8"/>
+          <path class="object-landscape" d={index===1?'M9 63 L33 35 L57 57 L78 42 L109 64 Z':'M9 64 L46 31 L76 55 L91 43 L109 64 Z'}/>
+          <path class="object-detail" d="M10 74 H48 M10 79 H33"/>
+          <rect class="object-swatch" x="81" y="73" width="7" height="7" rx="1"/>
+          <rect class="object-swatch" x="91" y="73" width="7" height="7" rx="1" opacity=".6"/>
+          <rect class="object-swatch" x="101" y="73" width="7" height="7" rx="1" opacity=".3"/>
+        </g>
+      </g>)}
+    </g>
+  </svg>
+</service-illustration>
+<style>
+  service-illustration { display:block; width:100%; height:100%; }
+  .service-object { width:100%; height:100%; overflow:visible; stroke-width:1.1; stroke-linejoin:round; stroke-linecap:round; }
+  .object-assembly { transform-origin:160px 120px; transition:transform 380ms cubic-bezier(.16,1,.3,1); }
+  /* --spread contains comma-separated arguments for the translate() function. */
+  .object-layer { transition:transform 380ms cubic-bezier(.16,1,.3,1); }
+  .service-object :is(path,rect,circle,ellipse) { transition:stroke 220ms ease-out,fill 220ms ease-out,stroke-opacity 220ms ease-out; }
+  .object-top { fill:#102638; stroke:#a5c0d1; stroke-opacity:.88; }
+  .object-side { fill:#0b1e2e; stroke:#7494ab; stroke-opacity:.64; }
+  .object-side--dark { fill:#091925; }
+  .object-floor { fill:#0b1d2b; stroke:#7091a8; stroke-opacity:.42; }
+  .object-screen { fill:#081722; stroke:#789bb2; stroke-opacity:.56; }
+  .object-glass { fill:#173b50; fill-opacity:.45; stroke:#a5c9de; stroke-opacity:.68; }
+  .object-reflection { fill:none; stroke:#d0e9f4; stroke-width:2; stroke-opacity:.5; }
+  .object-detail { fill:none; stroke:#b1d0e1; stroke-opacity:.66; }
+  .object-faint { fill:none; stroke:#8eb6ce; stroke-opacity:.28; }
+  .object-track { fill:#345266; }
+  .object-loading,.object-swatch { fill:#a9d4ed; }
+  .object-loading { transform-box:fill-box; transform-origin:left center; }
+  .object-orbit { fill:none; stroke:#8eafc5; stroke-opacity:.65; }
+  .object-node { fill:#aecfe4; stroke:#d1e6f3; stroke-width:.8; }
+  .object-node--small { fill:#1d425b; }
+  .object-person { fill:#102638; stroke:#c1d9e8; stroke-width:1.35; }
+  .object-landscape { fill:#17364b; stroke:#9cbed3; stroke-opacity:.7; }
+  .motion-gear { transform-origin:0px 0px; }
+  .motion-orbit-node { transform-origin:0px 0px; }
+  @media (hover:hover) and (pointer:fine) {
+    :global([data-service-card]:hover) .object-assembly { transform:translateY(-4px) scale(1.07); }
+    :global([data-service-card]:hover) .object-layer { transform:translate(var(--spread)); }
+    :global([data-service-card]:hover) :is(.object-top,.object-person) { fill:#1c425b; stroke:#d6efff; stroke-opacity:1; }
+    :global([data-service-card]:hover) :is(.object-side,.object-floor,.object-screen) { stroke:#aad2eb; stroke-opacity:.9; }
+    :global([data-service-card]:hover) :is(.object-detail,.object-orbit,.object-landscape,.object-glass) { stroke:#c8eaff; stroke-opacity:1; }
+    :global([data-service-card]:hover) .object-faint { stroke-opacity:.65; }
+  }
+  :global([data-service-card]:focus-visible) .object-assembly,
+  :global([data-service-card]:has(:focus-visible)) .object-assembly { transform:translateY(-4px) scale(1.07); }
+  :global([data-service-card]:focus-visible) .object-layer,
+  :global([data-service-card]:has(:focus-visible)) .object-layer { transform:translate(var(--spread)); }
+  :global([data-service-card]:focus-visible) :is(.object-top,.object-person),
+  :global([data-service-card]:has(:focus-visible)) :is(.object-top,.object-person) { stroke:#d6efff; stroke-opacity:1; }
+  @media (prefers-reduced-motion:reduce) {
+    .object-assembly,.object-layer,.service-object :is(path,rect,circle,ellipse) { transition:none; }
+    :global([data-service-card]) :is(.object-assembly,.object-layer) { transform:none!important; }
+  }
+</style>
+<script>
+  // Lightweight SVG motion, shared by the homepage cards and service-page rows.
+  class ServiceIllustration extends HTMLElement {
+    private dispose?:()=>void;
+    connectedCallback() {
+      if(this.dispose || !this.querySelector('[data-motion]'))return;
+      const card=this.closest<HTMLElement>('[data-service-card]');
+      const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+      const fine=matchMedia('(hover: hover) and (pointer: fine)');
+      let visible=false, hovered=false, focused=false, frame=0;
+      const animations:{animation:Animation;boost:number}[]=[];
+      const update=()=>{
+        if(reduced.matches){animations.splice(0).forEach(({animation})=>animation.cancel());this.dataset.motion='static';return;}
+        const active=visible&&!document.hidden&&!document.querySelector('.atmosphere-toggle[aria-pressed="true"]');
+        if(active&&!animations.length){
+          this.querySelectorAll<SVGElement>('[data-motion]').forEach(element=>{
+            const loading=element.dataset.motion==='loading';
+            const orbit=element.dataset.motion==='orbit';
+            const animation=element.animate(loading?
+              [{transform:'scaleX(.12)',opacity:.55},{transform:'scaleX(1)',opacity:1,offset:.75},{transform:'scaleX(.12)',opacity:.55}]:
+              [{transform:'rotate(0deg)'},{transform:'rotate(360deg)'}],
+              {duration:loading?4200:orbit?34000:26000,iterations:Infinity,easing:loading?'ease-in-out':'linear'});
+            animations.push({animation,boost:loading?1.5:orbit?1.8:2.6});
+          });
+        }
+        animations.forEach(({animation,boost})=>{
+          animation.updatePlaybackRate((hovered&&fine.matches)||focused?boost:1);
+          if(active){if(animation.playState!=='running')animation.play();}else animation.pause();
+        });
+        this.dataset.motion=active?'running':'paused';
+      };
+      const enter=()=>{hovered=true;update();};
+      const leave=()=>{hovered=false;update();};
+      const focus=()=>{focused=true;update();};
+      const blur=(event:FocusEvent)=>{if(!card?.contains(event.relatedTarget as Node|null)){focused=false;update();}};
+      const click=(event:MouseEvent)=>{if(event.target instanceof Element&&event.target.closest('.atmosphere-toggle')){cancelAnimationFrame(frame);frame=requestAnimationFrame(update);}};
+      const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;update();});observer.observe(this);
+      card?.addEventListener('pointerenter',enter);card?.addEventListener('pointerleave',leave);
+      card?.addEventListener('focusin',focus);card?.addEventListener('focusout',blur);
+      document.addEventListener('visibilitychange',update);document.addEventListener('click',click);reduced.addEventListener('change',update);
+      this.dispose=()=>{
+        observer.disconnect();cancelAnimationFrame(frame);animations.forEach(({animation})=>animation.cancel());
+        card?.removeEventListener('pointerenter',enter);card?.removeEventListener('pointerleave',leave);
+        card?.removeEventListener('focusin',focus);card?.removeEventListener('focusout',blur);
+        document.removeEventListener('visibilitychange',update);document.removeEventListener('click',click);reduced.removeEventListener('change',update);
+      };
+      update();
+    }
+    disconnectedCallback(){this.dispose?.();this.dispose=undefined;}
+  }
+  if(!customElements.get('service-illustration'))customElements.define('service-illustration',ServiceIllustration);
+</script>

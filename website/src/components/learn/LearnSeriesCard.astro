@@ -8,15 +8,15 @@ interface Props {
 }
 
 const { locale, series, compact = false } = Astro.props;
-const categoryLabel = series.category === 'seo' ? 'SEARCH' : 'WEB';
+const categoryLabel = series.coverLabel;
 const copy = locale === 'id'
   ? {
-      count: `${series.lessonIds.length} materi`,
+      count: `${series.chapters.length} chapter · ${series.lessonIds.length} materi`,
       cta: 'Buka course',
       alt: `Cover course ${series.title[locale]}`,
     }
   : {
-      count: `${series.lessonIds.length} lessons`,
+      count: `${series.chapters.length} chapters · ${series.lessonIds.length} lessons`,
       cta: 'Open course',
       alt: `Course cover for ${series.title[locale]}`,
     };
@@ -48,7 +48,7 @@ const copy = locale === 'id'
         <span>{copy.count}</span>
       </div>
       <h3>{series.title[locale]}</h3>
-      {!compact && <p>{series.description[locale]}</p>}
+      {!compact && <><p>{series.description[locale]}</p><p class="learn-series-card__audience">{locale === 'id' ? 'Untuk' : 'For'}: {series.audience[locale]}</p></>}
       <span class="learn-series-card__link">
         <span>{copy.cta}</span><span aria-hidden="true">&#8594;</span>
       </span>
@@ -85,6 +85,8 @@ const copy = locale === 'id'
   }
 
   .learn-series-card__placeholder {
+    transform:scale(1);
+    transition:transform 620ms var(--ease-out);
     position: relative;
     display: grid;
     place-items: center;
@@ -95,6 +97,7 @@ const copy = locale === 'id'
       linear-gradient(145deg, rgba(14, 37, 56, 0.96), rgba(5, 12, 20, 0.99));
   }
 
+  .learn-series-card__placeholder::after { content:''; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 72% 30%,rgba(103,217,255,.26),transparent 72%); opacity:0; transition:opacity 400ms var(--ease-out); }
   .series-signal {
     position: absolute;
     inset: 18% 9%;
@@ -115,8 +118,10 @@ const copy = locale === 'id'
     position: absolute;
     right: clamp(18px, 3vw, 36px);
     bottom: clamp(12px, 2vw, 24px);
-    color: rgba(226, 244, 252, 0.13);
-    font-size: clamp(2.5rem, 6vw, 6.2rem);
+    color: rgba(226, 244, 252, 0.38);
+    opacity: .35;
+    transition: opacity 400ms var(--ease-out);
+    font-size: clamp(1.8rem, 4vw, 4.1rem);
     font-weight: 650;
     letter-spacing: -0.07em;
     line-height: 0.8;
@@ -128,8 +133,8 @@ const copy = locale === 'id'
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    color: rgba(201, 211, 223, 0.52);
-    font-size: 0.62rem;
+    color: #bfd4e2;
+    font-size: 0.7rem;
   }
 
   .learn-series-card h3 {
@@ -147,6 +152,8 @@ const copy = locale === 'id'
     font-size: 0.92rem;
     line-height: 1.62;
   }
+
+  .learn-series-card .learn-series-card__audience { margin-top: 12px; font-size: .8rem; color: #c3d9e7; }
 
   .learn-series-card__link {
     width: fit-content;
@@ -167,6 +174,9 @@ const copy = locale === 'id'
   }
 
   @media (hover: hover) and (pointer: fine) {
+    .learn-series-card > a:is(:hover,:focus-visible) .learn-series-card__placeholder { transform:scale(1.045); }
+    .learn-series-card > a:is(:hover,:focus-visible) .learn-series-card__placeholder::after,
+    .learn-series-card > a:is(:hover,:focus-visible) .series-word { opacity:1; }
     .learn-series-card > a:hover figure img,
     .learn-series-card > a:focus-visible figure img {
       transform: scale(1.045);
@@ -183,10 +193,14 @@ const copy = locale === 'id'
 
   @media (prefers-reduced-motion: reduce) {
     .learn-series-card figure img,
+    .learn-series-card__placeholder,
+    .learn-series-card__placeholder::after,
+    .series-word,
     .learn-series-card__link {
       transition: none;
       transform: none;
     }
+    .learn-series-card > a:is(:hover,:focus-visible) .learn-series-card__placeholder { transform:none; }
   }
   .learn-series-card--compact > a { height: 100%; display: flex; flex-direction: column; border-radius: 8px; }
   .learn-series-card--compact > a:focus-visible { outline: 2px solid var(--signal-ice); outline-offset: -2px; }
@@ -194,5 +208,5 @@ const copy = locale === 'id'
   .learn-series-card--compact h3 { max-width: none; font-size: clamp(1.2rem, 1.8vw, 1.6rem); line-height: 1.2; margin: 14px 0 18px; }
   .learn-series-card--compact .learn-series-card__meta { color: var(--mist); font-size: .72rem; }
   .learn-series-card--compact .learn-series-card__link { margin-top: auto; font-size: .7rem; }
-  .learn-series-card--compact .series-word { font-size: clamp(2.5rem, 4vw, 4rem); }
+  .learn-series-card--compact .series-word { font-size: clamp(1.4rem, 2.5vw, 2.5rem); }
 </style>

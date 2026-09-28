@@ -40,6 +40,7 @@ export default function SiteAtmosphere({ locale }: { locale: 'en' | 'id' }) {
   const [active, setActive] = useState(false);
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(true);
+  const [heroPriority, setHeroPriority] = useState(true);
   const [backdrop, setBackdrop] = useState<Backdrop | null>(null);
 
   useEffect(() => {
@@ -64,6 +65,27 @@ export default function SiteAtmosphere({ locale }: { locale: 'en' | 'id' }) {
       document.removeEventListener('visibilitychange', update);
       window.removeEventListener('pointermove', pointer);
     };
+  }, []);
+
+  // The opaque Home artwork covers the expensive background. Give its entrance
+  // the frame budget, and mount the ribbon only as the page beneath is revealed.
+  useEffect(() => {
+    const hero = document.querySelector<HTMLElement>('.hero-shell--home');
+    const entrance = hero?.querySelector<HTMLElement>('home-hero-light');
+    if (!hero || !entrance) { setHeroPriority(false); return; }
+    const update = () => {
+      const bounds = hero.getBoundingClientRect();
+      const visible = bounds.bottom > 0 && bounds.top < innerHeight;
+      const entering = entrance.dataset.state !== 'complete';
+      setHeroPriority(visible && (entering || bounds.bottom >= innerHeight * .72));
+    };
+    const intersection = new IntersectionObserver(update, { threshold: [0, .1, .25, .5, .7, .9, 1] });
+    const state = new MutationObserver(update);
+    intersection.observe(hero);
+    state.observe(entrance, { attributes: true, attributeFilter: ['data-state'] });
+    window.addEventListener('resize', update);
+    update();
+    return () => { intersection.disconnect(); state.disconnect(); window.removeEventListener('resize', update); };
   }, []);
 
   useEffect(() => {
@@ -111,7 +133,7 @@ export default function SiteAtmosphere({ locale }: { locale: 'en' | 'id' }) {
     return () => document.documentElement.classList.remove('atmosphere-ready');
   }, [ready]);
 
-  const moving = ready && active && !reduced && !paused;
+  const moving = ready && active && !reduced && !paused && !heroPriority;
   const tileHeight = backdrop?.tileHeight ?? 900;
   const tileStep = tileHeight * 0.8;
   const overlap = tileHeight - tileStep;
@@ -130,7 +152,7 @@ export default function SiteAtmosphere({ locale }: { locale: 'en' | 'id' }) {
     {!reduced && <button className="atmosphere-toggle" type="button" aria-pressed={paused}
       onClick={() => setPaused(!paused)}>
       <span aria-hidden="true">{paused ? '▶' : 'Ⅱ'}</span>
-      <span>{locale === 'id' ? 'Jeda animasi latar' : 'Pause background motion'}</span>
+      <span>{locale === 'id' ? (paused ? 'Lanjutkan animasi latar' : 'Jeda animasi latar') : (paused ? 'Resume background motion' : 'Pause background motion')}</span>
     </button>}
   </>;
 }

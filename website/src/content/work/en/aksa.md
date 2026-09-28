@@ -1,5 +1,5 @@
 ---
-title: "Aksa — Learning with direction"
+title: "Aksa"
 slug: "aksa"
 locale: "en"
 translationKey: "aksa"
@@ -24,7 +24,7 @@ approach: "We mapped topic demand to learning categories, then defined a common 
 deliverables: ["Search-to-page map", "Priority content briefs", "Internal linking plan", "Information architecture", "Responsive page templates", "Enquiry journey and handoff notes"]
 outcomes: ["A reusable learning architecture supports course discovery and consistent editorial updates."]
 proofStatus: "pending"
-seoTitle: "Aksa — Learning with direction | Kultivate"
+seoTitle: "Aksa | Kultivate"
 seoDescription: "A learning discovery system organized around the learner’s next decision."
 draft: false
 ---

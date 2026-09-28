@@ -16,7 +16,7 @@ const title = locale === 'id' ? 'Kebijakan Privasi' : 'Privacy Policy';
       <p class="privacy-intro">{intro}</p>
     </header>
     <div class="privacy-layout">
-      <nav class="privacy-nav" aria-label={locale === 'id' ? 'Isi kebijakan privasi' : 'Privacy policy contents'}>
+      <nav class="privacy-nav" tabindex="0" aria-label={locale === 'id' ? 'Isi kebijakan privasi' : 'Privacy policy contents'}>
         <p>{locale === 'id' ? 'Di halaman ini' : 'On this page'}</p>
         <ol>{sections.map(section => <li><a href={`#${section.id}`}>{section.title}</a></li>)}</ol>
         <a class="privacy-home" href={`/${locale}/`}>{locale === 'id' ? 'Kembali ke website' : 'Back to the website'} <span aria-hidden="true">↗</span></a>
@@ -27,30 +27,31 @@ const title = locale === 'id' ? 'Kebijakan Privasi' : 'Privacy Policy';
 </section>
 <style>
   :global(body:has(.privacy-document) .header) { background: #070b12; }
-  .privacy-document { position: relative; background: #f3f6f8; color: #102b42; padding: clamp(120px, 12vw, 168px) 0 clamp(72px, 9vw, 128px); }
+  .privacy-document { position: relative; background: rgba(7, 11, 18, .76); color: #d1dde7; padding: clamp(120px, 12vw, 168px) 0 clamp(72px, 9vw, 128px); }
   .privacy-shell { --privacy-nav-width: 220px; --privacy-gap: clamp(40px, 6vw, 88px); max-width: 1184px; }
   .privacy-heading { margin-left: calc(var(--privacy-nav-width) + var(--privacy-gap)); margin-bottom: 48px; }
-  h1 { color: #102b42; font-size: clamp(2.5rem, 4.6vw, 4.5rem); line-height: 1.05; font-weight: 570; letter-spacing: -.035em; margin-bottom: 28px; }
-  .privacy-updated { color: #40566a; font-size: .9rem; margin-bottom: 16px; }
-  .privacy-intro { color: #30495e; max-width: 65ch; font-size: 1.08rem; line-height: 1.7; }
+  h1 { color: #f2f6fa; font-size: clamp(2.5rem, 4.6vw, 4.5rem); line-height: 1.05; font-weight: 570; letter-spacing: -.035em; margin-bottom: 28px; }
+  .privacy-updated { color: #a2b5c5; font-size: .9rem; margin-bottom: 16px; }
+  .privacy-intro { color: #cad7e2; max-width: 65ch; font-size: 1.08rem; line-height: 1.7; }
   .privacy-layout { display: grid; grid-template-columns: var(--privacy-nav-width) minmax(0, 1fr); gap: var(--privacy-gap); align-items: start; }
-  .privacy-nav { position: sticky; top: 112px; }
-  .privacy-nav p { margin-bottom: 18px; color: #102b42; font-size: .94rem; font-weight: 650; }
+  .privacy-nav { position: sticky; top: 112px; max-height: calc(100svh - 136px); overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: thin; scrollbar-color: #52768d transparent; scrollbar-gutter: stable; padding: 4px 14px 6px 4px; margin-left: -4px; }
+  .privacy-nav:focus-visible { outline: 2px solid #91c9eb; outline-offset: 4px; }
+  .privacy-nav p { margin-bottom: 18px; color: #f2f6fa; font-size: .94rem; font-weight: 650; }
   .privacy-nav ol { list-style: none; display: grid; gap: 4px; }
-  .privacy-nav a { display: inline-block; color: #30495e; padding: 7px 0; font-size: .94rem; line-height: 1.5; }
-  .privacy-nav a:hover { color: #124f76; text-decoration: underline; text-underline-offset: 4px; }
-  .privacy-nav .privacy-home { margin-top: 24px; color: #185b83; }
+  .privacy-nav a { display: inline-block; color: #cad7e2; padding: 7px 0; font-size: .94rem; line-height: 1.5; }
+  .privacy-nav a:hover { color: #e1f4ff; text-decoration: underline; text-underline-offset: 4px; }
+  .privacy-nav .privacy-home { margin-top: 24px; color: #91c9eb; }
   .privacy-body { min-width: 0; max-width: 72ch; }
   .privacy-body :global(section) { margin-bottom: 40px; scroll-margin-top: 108px; }
   .privacy-body :global(section:last-child) { margin-bottom: 0; }
-  .privacy-body :global(h2) { color: #102b42; font-size: clamp(1.4rem, 2.2vw, 1.85rem); letter-spacing: -.02em; line-height: 1.25; margin-bottom: 16px; font-weight: 600; }
-  .privacy-body :global(p) { color: #30495e; font-size: 1rem; line-height: 1.8; }
-  .privacy-body :global(a) { color: #185b83; text-decoration: underline; text-underline-offset: 4px; }
-  .privacy-document a:focus-visible, .privacy-body :global(a:focus-visible) { outline: 2px solid #185b83; outline-offset: 4px; }
+  .privacy-body :global(h2) { color: #f2f6fa; font-size: clamp(1.4rem, 2.2vw, 1.85rem); letter-spacing: -.02em; line-height: 1.25; margin-bottom: 16px; font-weight: 600; }
+  .privacy-body :global(p) { color: #cad7e2; font-size: 1rem; line-height: 1.8; }
+  .privacy-body :global(a) { color: #91c9eb; text-decoration: underline; text-underline-offset: 4px; }
+  .privacy-document a:focus-visible, .privacy-body :global(a:focus-visible) { outline: 2px solid #91c9eb; outline-offset: 4px; }
   @media (max-width: 760px) {
     .privacy-heading { margin-left: 0; margin-bottom: 32px; }
     .privacy-layout { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-    .privacy-nav { position: static; }
+    .privacy-nav { position: static; max-height: min(360px, 48svh); }
     .privacy-nav ol { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; }
     .privacy-nav .privacy-home { margin-top: 16px; }
   }

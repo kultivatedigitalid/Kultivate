@@ -1,5 +1,5 @@
 ---
-title: "Karsa — Pangan lokal terhubung"
+title: "Karsa"
 slug: "karsa"
 locale: "id"
 translationKey: "karsa"
@@ -24,7 +24,7 @@ approach: "Kami mengelompokkan pertanyaan pembeli menjadi tema produk, sumber, d
 deliverables: ["Peta pencarian ke halaman", "Brief konten prioritas", "Rencana tautan internal", "Arsitektur informasi", "Template halaman responsif", "Alur pertanyaan dan catatan serah terima"]
 outcomes: ["Peta pencarian ke halaman dan struktur produk yang terhubung mendukung pengembangan konten berikutnya."]
 proofStatus: "pending"
-seoTitle: "Karsa — Pangan lokal terhubung | Kultivate"
+seoTitle: "Karsa | Kultivate"
 seoDescription: "Menghubungkan hasil pangan lokal, informasi pemasok, dan pertanyaan pembeli."
 draft: false
 ---
